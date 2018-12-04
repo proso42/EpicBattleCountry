@@ -1,0 +1,36 @@
+body
+{
+    background-image: url(file:///D:/Propri%C3%A9taire/Desktop/site/images/epic_battle.jpg);
+}
+            
+.menu-left
+{
+    background-color: rgba(119, 136, 153, 0.8);
+    line-height: 34px;
+    color: black;
+    margin-left: 15px;
+    width: 150px;
+    cursor: pointer;
+    border-radius: 4px;
+    border: solid 1px lightblue;
+    border-bottom: 0px;
+}
+            
+.menu-left:hover
+{
+    background-color: rgba(105, 105, 105, 0.9);
+    color: white;
+    margin-left: 35px;
+    font-weight: bold;
+}
+            
+.last-case
+{
+    border: solid 1px lightblue;
+}
+            
+.icon
+{
+    text-align: left;
+    margin-right: 15px;
+}

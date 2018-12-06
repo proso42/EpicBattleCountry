@@ -12,16 +12,32 @@
             <div class="col-lg-3 col-md-3 col-sm-2 col-1"></div>
             <div class="col-lg-6 col-md-6 col-sm-8 col-10 center-rect">
                 <h2>Inscription</h2>
-                <form>
-                    <input class="signup-input" placeholder="Login *" type="email">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-2 col-2"></div>
+                    <div id="err_password" class="col-lg-6 col-md-6 col-sm-8 col-8 signup-err-password">
+                        <p>Les deux mots de passe ne sont pas identiques !</p>
+                    </div>
+                </div>
+                <form id="signup_form">
+                    <input class="signup-input" placeholder="Login *" type="text" pattern="[a-zA-Z]{3,20}" required>
                     </br>
-                    <input class="signup-input" placeholder="Cité de départ *" type="email">
+                    <input class="signup-input" placeholder="Cité de départ *" type="text" pattern="^(?=.*[a-zA-Z]{3})[-a-zA-Z ]{3,20}$" required>
                     </br>
-                    <input class="signup-input" placeholder="Email *" type="email">
+                    <select id="slc" class="signup-select-race" required>
+                        <optgroup style="background-color: white;" label="Races disponibles">
+                                <option disabled selected hidden class="signup-option-race">Race *</option>
+                                <option onclick="change_color()" class="signup-option-race">Humain</option>
+                                <option onclick="change_color()" class="signup-option-race">Elfe</option>
+                                <option onclick="change_color()" class="signup-option-race">Orc</option>
+                                <option onclick="change_color()" class="signup-option-race">Nain</option>
+                        </optgroup>
+                    </select>
                     </br>
-                    <input class="signup-input" placeholder="Mot de passe *" type="password">
+                    <input class="signup-input" placeholder="Email *" type="email" required>
                     </br>
-                    <input class="signup-input" placeholder="Confirmer mot de passe *" type="password">
+                    <input id="password" class="signup-input" placeholder="Mot de passe *" type="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[\da-zA-Z!-/:-@[-`{-~]{12,20}$" required>
+                    </br>
+                    <input id="password2" class="signup-input" placeholder="Confirmer mot de passe *" type="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[\da-zA-Z!-/:-@[-`{-~]{12,20}$" required>
                     </br>
                     <input class="signup-input" placeholder="Parrain" type="text">
                     </br>
@@ -30,10 +46,41 @@
                 <hr class="signup-footer"/>
                 <div class="signup-conditions">
                     <p style="font-size: 12px;">
-                        Votre mot de passe doit être composé de 12 caractères minimum, comprenant au moins une minuscule, une majuscule et un chiffre.
+                        Votre mot de passe doit être composé de 12 à 20 caractères non accentué, comprenant au moins une minuscule, une majuscule et un chiffre.
+                        </br>
+                        Votre login doit être composé de 3 à 20 lettres, minuscule et/ou majuscule.
+                        </br>
+                        Le nom de votre cité de départ doit être composé de 3 à 20 lettres, minuscule et/ou majuscule. Vous pouvez aussi utiliser des espaces et des tirets.
                     </p>
                 </div>
             </div>
         </div>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script>
+            $('#signup_form').submit(function(e) {
+                e.preventDefault();
+                console.log("On intercepte");
+                let password = document.getElementById("password").value
+                let password2 = document.getElementById("password2").value
+                if (password != password2)
+                {
+                    console.log("Mots de passe différent");
+                    document.getElementById("err_password").style.display = 'block';
+                    setTimeout(() =>{
+                        document.getElementById("err_password").style.display = 'none';
+                    }, 5000);
+                }
+                else
+                {
+                    console.log("Mots de passe identique")
+                    e.submit();
+                }
+            });
+
+            function change_color()
+            {
+                document.getElementById("slc").style.color = "black";
+            }
+        </script>
     </body>
 </html>

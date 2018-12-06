@@ -60,6 +60,11 @@ body
     margin-right: 15px;
 }
 
+input::placeholder
+{
+    color: #8C5D53;
+}
+
 .signup-input
 {
     margin-top: 25px;
@@ -68,6 +73,27 @@ body
     text-align: center;
     border: 1px solid black;
     border-radius: 4px;
+    height: 28px;
+    width: 204px;
+}
+
+.signup-select-race
+{
+    margin-top: 25px;
+    background-color: tan;
+    color: #8C5D53;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    height: 28px;
+    width: 204px;
+    padding-left: 73px;
+}
+
+.signup-option-race
+{
+    background-color: white;
+    padding-left: 0px;
 }
 
 .signup-button
@@ -101,4 +127,14 @@ body
     text-align: left;
     color: black;
     font-style: italic;
+}
+
+.signup-err-password
+{
+    color: crimson;
+    background-color: lightpink;
+    border: 1px solid black;
+    border-radius: 4px;
+    display: none;
+    padding-top: 10px;
 }

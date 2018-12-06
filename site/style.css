@@ -40,6 +40,15 @@ body
     height: 200px;
 }
 
+.center-rect
+{
+    background-color: rgba(105, 105, 105, 0.9);
+    border: solid 1px lightblue;
+    border-radius: 4px;
+    text-align: center;
+    margin-top: 75px;
+}
+
 .last-case
 {
     border: solid 1px lightblue;
@@ -49,4 +58,47 @@ body
 {
     text-align: left;
     margin-right: 15px;
+}
+
+.signup-input
+{
+    margin-top: 25px;
+    background-color: tan;
+    color: black;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+.signup-button
+{
+    margin-top: 25px;
+    background-color: aquamarine;
+    color: black;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 28px;
+    width: 204px;
+}
+
+.signup-button:hover
+{
+    background-color: darkcyan;
+    font-weight: bold;
+    color: white;
+}
+
+.signup-footer
+{
+    background-color: lightgray;
+    height: 1px;
+}
+
+.signup-conditions
+{
+    text-align: left;
+    color: black;
+    font-style: italic;
 }

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf8">
+        <title>Sign-In</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="file:///C:/Users/Propri%C3%A9taire/test/site/style.css"/>
+    </head>
+    <body>
+        <div class="signin-rect">
+            <h2>Connexion</h2>
+            <div id="err_password" class="signin-err-connexion">
+                <p>Mot de passe et/ou login/email incorrect</p>
+            </div>
+            <form style="margin-left: auto;margin-right: auto;">
+                <input id="account" type="text" class="signin-input" placeholder="Login ou email" required>
+                </br>
+                <input id="password" type="password" class="signin-input" placeholder="Mot de passe" required>
+                </br>
+                <input id="connexion" type="submit" class="signin-button" value="Se connecter">
+                <hr class="signin-footer"/>
+                <div class="signin-forgot">
+                    <a class="signin-forgot-link" href="signup.html">Mot de passe oublié ?</a>
+                </div>
+                <div class="signin-forgot">
+                    <a class="signin-forgot-link" href="signup.html">Pas encore de compte ?</a>
+                </div>
+            </form>
+        </div>
+        <script>
+            let ua = navigator.userAgent;
+            if (ua.indexOf("Firefox") >= 0)
+            {
+                document.getElementById("account").style.marginLeft = "auto";
+                document.getElementById("account").style.marginRight = "auto";
+                document.getElementById("password").style.marginLeft = "auto";
+                document.getElementById("password").style.marginRight = "auto";
+                document.getElementById("connexion").style.marginLeft = "auto";
+                document.getElementById("connexion").style.marginRight = "auto";
+            }
+        </script>
+    </body>
+</html>

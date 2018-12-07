@@ -1,6 +1,10 @@
 body
 {
-    background-image: url(file:///C:/Users/Propri%C3%A9taire/test/site/images/epic_battle.jpg);
+    margin:0;
+    padding:0;
+    background: url(images/epic_battle.jpg) no-repeat center fixed;
+    -webkit-background-size: cover;
+    background-size: cover;
 }
             
 .menu-left
@@ -40,14 +44,51 @@ body
     height: 200px;
 }
 
-.center-rect
+@media screen and (max-width: 767px)
 {
-    background-color: rgba(105, 105, 105, 0.9);
-    border: solid 1px lightblue;
-    border-radius: 4px;
-    text-align: center;
-    margin-top: 75px;
+    .center-rect
+    {
+        background-color: rgba(105, 105, 105, 0.9);
+        border: solid 1px lightblue;
+        border-radius: 4px;
+        text-align: center;
+        margin-top: 75px;
+        width: 364px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
+
+@media screen and (min-width: 768px) and (max-width: 1199px)
+{
+    .center-rect
+    {
+        background-color: rgba(105, 105, 105, 0.9);
+        border: solid 1px lightblue;
+        border-radius: 4px;
+        text-align: center;
+        margin-top: 75px;
+        width: 487px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media screen and (min-width: 1200px)
+{
+    .center-rect
+    {
+        background-color: rgba(105, 105, 105, 0.9);
+        border: solid 1px lightblue;
+        border-radius: 4px;
+        text-align: center;
+        margin-top: 75px;
+        width: 875px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
 
 .last-case
 {
@@ -118,6 +159,13 @@ input::placeholder
     color: white;
 }
 
+.signin-spin
+{
+    margin-top: 15px;
+    width: 50px;
+    height: 50px;
+}
+
 .signup-footer
 {
     background-color: lightgray;
@@ -151,6 +199,19 @@ input::placeholder
     width: 270px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.signin-rect-lg
+{
+    background-color: rgba(105, 105, 105, 0.9);
+    border: solid 1px lightblue;
+    border-radius: 4px;
+    text-align: center;
+    margin-top: 200px;
+    width: 340px;
+    margin-left: auto;
+    margin-right: auto;
+    display: none;
 }
 
 .signin-input
@@ -209,6 +270,8 @@ input::placeholder
 {
     color: black;
     text-decoration: none;
+    cursor: pointer;
+    margin-bottom: -5px;
 }
 
 .signin-forgot-link:hover

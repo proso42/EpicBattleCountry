@@ -1,0 +1,318 @@
+body
+{
+    margin:0;
+    padding:0;
+    background: url(images/epic_battle.jpg) no-repeat center fixed;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+            
+.menu-left
+{
+    background-color: rgba(119, 136, 153, 0.8);
+    line-height: 34px;
+    color: black;
+    margin-left: 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    border: solid 1px lightblue;
+    border-bottom: 0px;
+}
+
+.menu-left:hover
+{
+    background-color: rgba(105, 105, 105, 0.9);
+    color: white;
+    margin-left: 35px;
+    font-weight: bold;
+}
+
+.res
+{
+    color: black;
+    display: -webkit-inline-box;
+    text-align: center;
+    margin-left: 15px;
+    margin-top: 75px;
+}
+
+@media screen and (max-width: 767px)
+{
+    .center-rect
+    {
+        width: 364px;
+    }
+
+    .menu-left
+    {
+        margin-right: 15px;
+        text-align: left;
+    }
+
+    .menu-top
+    {
+        height: 210px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1199px)
+{
+    .center-rect
+    {
+        width: 487px;
+    }
+
+    .menu-left
+    {
+        width: 150px;
+    }
+
+    .menu-top
+    {
+        height: 200px;
+    }
+}
+
+@media screen and (min-width: 1200px)
+{
+    .center-rect
+    {
+        width: 875px;   
+    }
+
+    .menu-left
+    {
+        width: 150px;
+    }
+
+    .menu-top
+    {
+        height: 200px;
+    }
+}
+
+.center-rect
+{
+    background-color: rgba(105, 105, 105, 0.9);
+    border: solid 1px lightblue;
+    border-radius: 4px;
+    text-align: center;
+    margin-top: 75px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.menu-top
+{
+    margin-top: 20px;
+    background-color: rgba(119, 136, 153, 0.8);
+    color: black;
+    border: solid 1px lightblue;
+    border-radius: 4px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.last-case
+{
+    border: solid 1px lightblue;
+}
+            
+.icon
+{
+    text-align: left;
+    margin-right: 15px;
+}
+
+input::placeholder
+{
+    color: #8C5D53;
+    font-style: normal;
+    font-stretch: normal;
+    font-weight: normal;
+    font-variant: normal;
+}
+
+.signup-input
+{
+    margin-top: 25px;
+    background-color: tan;
+    color: black;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    height: 28px;
+    width: 204px;
+}
+
+.signup-select-race
+{
+    margin-top: 25px;
+    background-color: tan;
+    color: black;
+    border: 1px solid black;
+    border-radius: 4px;
+    height: 28px;
+    width: 204px;
+}
+
+.signup-option-race
+{
+    background-color: white;
+    color: black;
+}
+
+.signup-button
+{
+    margin-top: 25px;
+    background-color: aquamarine;
+    color: black;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 28px;
+    width: 204px;
+}
+
+.signup-button:hover
+{
+    background-color: darkcyan;
+    font-weight: bold;
+    color: white;
+}
+
+.signin-spin
+{
+    margin-top: 15px;
+    width: 50px;
+    height: 50px;
+}
+
+.signup-footer
+{
+    background-color: lightgray;
+    height: 1px;
+}
+
+.signup-conditions
+{
+    text-align: left;
+    color: black;
+    font-style: italic;
+}
+
+.signup-err-password
+{
+    color: crimson;
+    background-color: lightpink;
+    border: 1px solid black;
+    border-radius: 4px;
+    display: none;
+    padding-top: 10px;
+}
+
+.signin-rect
+{
+    background-color: rgba(105, 105, 105, 0.9);
+    border: solid 1px lightblue;
+    border-radius: 4px;
+    text-align: center;
+    margin-top: 200px;
+    width: 270px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.signin-rect-lg
+{
+    background-color: rgba(105, 105, 105, 0.9);
+    border: solid 1px lightblue;
+    border-radius: 4px;
+    text-align: center;
+    margin-top: 200px;
+    width: 340px;
+    margin-left: auto;
+    margin-right: auto;
+    display: none;
+}
+
+.signin-input
+{
+    margin-top: 25px;
+    background-color: tan;
+    color: black;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    height: 28px;
+    width: 204px;
+    margin-left: 5px;
+}
+
+.signin-button
+{
+    margin-top: 25px;
+    background-color: aquamarine;
+    color: black;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 28px;
+    width: 204px;
+    margin-left: 1px;
+}
+
+.signin-button:hover
+{
+    background-color: darkcyan;
+    font-weight: bold;
+    color: white;
+}
+
+.signin-footer
+{
+    background-color: lightgray;
+    height: 1px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.signin-forgot
+{
+    margin-bottom: 5px;
+    margin-left: 5px;
+    text-align: left;
+    font-style: italic;
+    font-size: 12px;
+}
+
+.signin-forgot-link
+{
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    margin-bottom: -5px;
+}
+
+.signin-forgot-link:hover
+{
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.signin-err-connexion
+{
+    color: crimson;
+    background-color: lightpink;
+    border: 1px solid black;
+    border-radius: 4px;
+    display: none;
+    padding-top: 10px;
+    width: 204px;
+    margin-left: auto;
+    margin-right: auto;
+}

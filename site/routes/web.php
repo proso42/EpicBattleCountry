@@ -18,3 +18,8 @@ Route::get('/', function () {
 Route::get('salut', function() {
     return 'Yolo swag';
 });
+
+Route::group(['middleware' => 'guest'], function(){
+    Route::get('/signup', 'SignupController@register');
+    Route::get('/signin', 'SigninController@login');
+});

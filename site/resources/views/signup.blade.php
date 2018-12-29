@@ -16,7 +16,7 @@
                     <p>Les deux mots de passe ne sont pas identiques !</p>
                 </div>
             </div>
-            <form id="signup_form" action="/register">
+            <form method="POST" id="signup_form" action="/register">
                 <input id="login" class="signup-input" placeholder="Login *" type="text" pattern="[a-zA-Z]{3,20}" required>
                 </br>
                 <input id="city" class="signup-input" placeholder="Cité de départ *" type="text" pattern="^(?=.*[a-zA-Z]{3})[-a-zA-Z ]{3,20}$" required>

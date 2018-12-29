@@ -38,6 +38,7 @@
                 </br>
                 <input id="sponsor" class="signup-input" placeholder="Parrain" type="text">
                 </br>
+                {{csrf_filed()}}
                 <button class="signup-button" type="submit">S'inscrire</button>        
             </form>
             <hr class="signup-footer"/>

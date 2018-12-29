@@ -16,12 +16,12 @@
                     <p>Les deux mots de passe ne sont pas identiques !</p>
                 </div>
             </div>
-            <form id="signup_form">
-                <input class="signup-input" placeholder="Login *" type="text" pattern="[a-zA-Z]{3,20}" required>
+            <form id="signup_form" action="/register">
+                <input id="login" class="signup-input" placeholder="Login *" type="text" pattern="[a-zA-Z]{3,20}" required>
                 </br>
-                <input class="signup-input" placeholder="Cité de départ *" type="text" pattern="^(?=.*[a-zA-Z]{3})[-a-zA-Z ]{3,20}$" required>
+                <input id="city" class="signup-input" placeholder="Cité de départ *" type="text" pattern="^(?=.*[a-zA-Z]{3})[-a-zA-Z ]{3,20}$" required>
                 </br>
-                <select id="slc" class="signup-select-race" required>
+                <select id="race" class="signup-select-race" required>
                     <optgroup style="background-color: white" label="Races disponibles">
                             <option selected class="signup-option-race">Humain</option>
                             <option class="signup-option-race">Elfe</option>
@@ -30,15 +30,15 @@
                     </optgroup>
                 </select>
                 </br>
-                <input class="signup-input" placeholder="Email *" type="email" required>
+                <input id="email" class="signup-input" placeholder="Email *" type="email" required>
                 </br>
                 <input id="password" class="signup-input" placeholder="Mot de passe *" type="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[\da-zA-Z!-/:-@[-`{-~]{12,20}$" required>
                 </br>
                 <input id="password2" class="signup-input" placeholder="Confirmer mot de passe *" type="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[\da-zA-Z!-/:-@[-`{-~]{12,20}$" required>
                 </br>
-                <input class="signup-input" placeholder="Parrain" type="text">
+                <input id="sponsor" class="signup-input" placeholder="Parrain" type="text">
                 </br>
-                <input class="signup-button" value="S'inscrire" type="submit">          
+                <button class="signup-button" type="submit">S'inscrire</button>        
             </form>
             <hr class="signup-footer"/>
             <div class="signup-conditions">
@@ -55,9 +55,9 @@
         <script>
             let ua = navigator.userAgent;
             if (ua.indexOf("Chrome") >= 0)
-                document.getElementById("slc").style.textAlignLast = "center";
+                document.getElementById("race").style.textAlignLast = "center";
             else if (ua.indexOf("Firefox") >= 0)
-                document.getElementById("slc").style.textAlign = "center";
+                document.getElementById("race").style.textAlign = "center";
             $('#signup_form').submit(function(e) {
                 e.preventDefault();
                 console.log("On intercepte");
@@ -80,7 +80,7 @@
 
             function change_color()
             {
-                document.getElementById("slc").style.color = "black";
+                document.getElementById("race").style.color = "black";
             }
         </script>
     </body>

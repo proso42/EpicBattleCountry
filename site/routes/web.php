@@ -20,6 +20,7 @@ Route::get('salut', function() {
 });
 
 Route::group(['middleware' => 'guest'], function(){
-    Route::get('/signup', 'SignupController@register');
+    Route::get('/signup', 'SignupController@index');
+    Route::post('/register', 'SignupController@register');
     Route::get('/signin', 'SigninController@login');
 });

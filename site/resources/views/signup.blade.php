@@ -58,9 +58,9 @@
                 document.getElementById("race").style.textAlignLast = "center";
             else if (ua.indexOf("Firefox") >= 0)
                 document.getElementById("race").style.textAlign = "center";
-            $('#signup_form').submit(function(e) {
+            /*$('#signup_form').submit(function(e) {
                 e.preventDefault();
-                console.log("On intercepte");
+                //console.log("On intercepte");
                 let password = document.getElementById("password").value
                 let password2 = document.getElementById("password2").value
                 if (password != password2)
@@ -73,10 +73,10 @@
                 }
                 else
                 {
-                    console.log("Mots de passe identique")
+                    //console.log("Mots de passe identique")
                     e.submit();
                 }
-            });
+            });*/
 
             function change_color()
             {

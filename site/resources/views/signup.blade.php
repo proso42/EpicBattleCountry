@@ -84,6 +84,10 @@
                 spin.style.display = '';
                 var password = document.getElementById("password").value
                 var password2 = document.getElementById("password2").value
+                var login = document.getElementById('login').value
+                var city = document.getElementById('city').value
+                var email = document.getElementById('email').value
+                var sponsor = document.getElementById('sponsor').value
                 var xhr = new XMLHttpRequest()
                 xhr.open('GET', 'http://www.epicbattlecorp.fr/check_infos?login=' + login + '&city=' + city + '&email=' + email + '&sponsor=' + sponsor);
                 xhr.send(null);

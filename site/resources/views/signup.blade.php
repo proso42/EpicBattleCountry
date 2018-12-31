@@ -48,7 +48,7 @@
                 </br>
                 <input id="password2" name="password2" class="signup-input" placeholder="Confirmer mot de passe *" type="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[\da-zA-Z!-/:-@[-`{-~]{12,20}$" required>
                 </br>
-                <input name="sponsor" class="signup-input" placeholder="Parrain" type="text">
+                <input id="sponsor" name="sponsor" class="signup-input" placeholder="Parrain" type="text">
                 </br>
                 {{csrf_field()}}
                 <div id="spin" style="display: none;">
@@ -84,10 +84,10 @@
                 spin.style.display = '';
                 var password = document.getElementById("password").value
                 var password2 = document.getElementById("password2").value
-                var login = document.getElementById('login').value
-                var city = document.getElementById('city').value
-                var email = document.getElementById('email').value
-                var sponsor = document.getElementById('sponsor').value
+                var login = document.getElementById("login").value
+                var city = document.getElementById("city").value
+                var email = document.getElementById("email").value
+                var sponsor = document.getElementById("sponsor").value
                 var xhr = new XMLHttpRequest()
                 xhr.open('GET', 'http://www.epicbattlecorp.fr/check_infos?login=' + login + '&city=' + city + '&email=' + email + '&sponsor=' + sponsor);
                 xhr.send(null);

@@ -85,7 +85,7 @@
                 var password = document.getElementById("password").value
                 var password2 = document.getElementById("password2").value
                 var xhr = new XMLHttpRequest()
-                xhr.open('GET', 'http://www.epicbattlecorp.fr/check_infos?login=' + login + '&city=' + city + '&email=' + email + '&sponsor=' sponsor);
+                xhr.open('GET', 'http://www.epicbattlecorp.fr/check_infos?login=' + login + '&city=' + city + '&email=' + email + '&sponsor=' + sponsor);
                 xhr.send(null);
                 xhr.addEventListener('readystatechange', function(){
                     if (xhr.readystate === 4 && xhr.status === 200)

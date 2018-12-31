@@ -19,7 +19,7 @@
                 if ($_GET['login'] === 'bbb')
                     return 1;
                 else
-                    return 0;
+                    return 3;
             }
             return 2;
         }

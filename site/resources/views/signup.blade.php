@@ -97,6 +97,7 @@
                         btn.style.display = ''
                         btn.disabled = false
                         console.log('Receive datas')
+                        console.log(xhr.responseText)
                         if (xhr.responseText === 1)
                         {
                             console.log('1')

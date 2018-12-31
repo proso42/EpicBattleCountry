@@ -15,23 +15,23 @@
 
         public function check_infos()
         {
-            /*if (!isset($_GET['login']) || !isset($_GET['email']) || !isset($_GET['sponsor']))
-                return 404;*/
+            if (!isset($_GET['login']) || !isset($_GET['email']) || !isset($_GET['sponsor']))
+                return 404;
             $existing_login = DB::table('users')
             ->select('login')
             ->where('login', '=', $_GET['login'])->first();
-            if ($existing_login->login == $_GET['login'])
+            if ($existing_login && $existing_login->login == $_GET['login'])
                 return 1;
-            /*$existing_email = DB::table('users')
+            $existing_email = DB::table('users')
             ->select('email')
             ->where('email', '=', $_GET['email'])->first();
-            if ($existing_email->email == $_GET['email'])
+            if ($existing_email && $existing_email->email == $_GET['email'])
                 return 3;
             $existing_sponsor = DB::table('users')
             ->select('login')
             ->where('login', '=', $_GET['sponsor'])->first();
             if (!$existing_sponsor->login)
-                return 4;*/
+                return 4;
             return 0;
         }
 

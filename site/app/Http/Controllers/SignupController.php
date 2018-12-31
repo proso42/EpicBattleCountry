@@ -14,8 +14,14 @@
 
         public function check_infos()
         {
-            dd($_GET);
-            return 0;
+            if (isset($_GET['login']))
+            {
+                if ($_GET['login'] === 'bbb')
+                    return 1;
+                else
+                    return 0;
+            }
+            return 2;
         }
 
         public function register(Request $request)

@@ -39,7 +39,7 @@
                 <input name="sponsor" class="signup-input" placeholder="Parrain" type="text">
                 </br>
                 {{csrf_field()}}
-                <button class="signup-button" type="submit">S'inscrire</button>        
+                <input class="signup-button" type="button" value="S'inscrire">        
             </form>
             <hr class="signup-footer"/>
             <div class="signup-conditions">

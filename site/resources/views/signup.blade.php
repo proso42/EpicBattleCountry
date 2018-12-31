@@ -12,19 +12,19 @@
             <h2>Inscription</h2>
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-2 col-2"></div>
-                <div id="err_password" class="col-lg-6 col-md-6 col-sm-8 col-8 signup-err-password">
+                <div id="err_password" class="col-lg-6 col-md-6 col-sm-8 col-8 signup-err-password" style="display: none">
                     <p>Les deux mots de passe ne sont pas identiques !</p>
                 </div>
-                <div id="err_login" class="col-lg-6 col-md-6 col-sm-8 col-8 signup-err-password">
+                <div id="err_login" class="col-lg-6 col-md-6 col-sm-8 col-8 signup-err-password" style="display: none">
                     <p>Ce login est déjà utilisé !</p>
                 </div>
-                <div id="err_city" class="col-lg-6 col-md-6 col-sm-8 col-8 signup-err-password">
+                <div id="err_city" class="col-lg-6 col-md-6 col-sm-8 col-8 signup-err-password" style="display: none">
                     <p>Ce nom de cité est déjà utilisé</p>
                 </div>
-                <div id="err_email" class="col-lg-6 col-md-6 col-sm-8 col-8 signup-err-password">
+                <div id="err_email" class="col-lg-6 col-md-6 col-sm-8 col-8 signup-err-password" style="display: none">
                     <p>Cet email est déjà utilisé</p>
                 </div>
-                <div id="err_sponsor" class="col-lg-6 col-md-6 col-sm-8 col-8 signup-err-password">
+                <div id="err_sponsor" class="col-lg-6 col-md-6 col-sm-8 col-8 signup-err-password" style="display: none">
                     <p>Ce parrain n'existe pas !</p>
                 </div>
             </div>

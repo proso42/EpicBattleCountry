@@ -12,6 +12,12 @@
             return view('signup');
         }
 
+        public function check_infos()
+        {
+            dd($_GET);
+            return 0;
+        }
+
         public function register(Request $request)
         {
             dd($request->all());

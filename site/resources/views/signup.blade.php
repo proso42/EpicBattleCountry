@@ -15,6 +15,18 @@
                 <div id="err_password" class="col-lg-6 col-md-6 col-sm-8 col-8 signup-err-password">
                     <p>Les deux mots de passe ne sont pas identiques !</p>
                 </div>
+                <div id="err_login" class="col-lg-6 col-md-6 col-sm-8 col-8 signup-err-password">
+                    <p>Ce login est déjà utilisé !</p>
+                </div>
+                <div id="err_city" class="col-lg-6 col-md-6 col-sm-8 col-8 signup-err-password">
+                    <p>Ce nom de cité est déjà utilisé</p>
+                </div>
+                <div id="err_email" class="col-lg-6 col-md-6 col-sm-8 col-8 signup-err-password">
+                    <p>Cet email est déjà utilisé</p>
+                </div>
+                <div id="err_sponsor" class="col-lg-6 col-md-6 col-sm-8 col-8 signup-err-password">
+                    <p>Ce parrain n'existe pas !</p>
+                </div>
             </div>
             <form method="POST" id="signup_form" action="/register" onsubmit="return check_form()">
                 <input name="login" class="signup-input" placeholder="Login *" type="text" pattern="[a-zA-Z]{3,20}" required>
@@ -39,6 +51,9 @@
                 <input name="sponsor" class="signup-input" placeholder="Parrain" type="text">
                 </br>
                 {{csrf_field()}}
+                <div id="spin" style="display: none;">
+                    <img class="signin-spin" src="images/loader.gif">
+                </div>
                 <input id="submit_btn" class="signup-button" type="submit" value="S'inscrire">      
             </form>
             <hr class="signup-footer"/>
@@ -62,25 +77,67 @@
 
             function check_form() 
             {
-                console.log("On intercepte");
-                document.getElementById('submit_btn').disabled = true;
-                let password = document.getElementById("password").value
-                let password2 = document.getElementById("password2").value
-                if (password != password2)
-                {
-                    console.log("Mots de passe différent");
-                    document.getElementById("err_password").style.display = 'block';
-                    setTimeout(() =>{
-                        document.getElementById("err_password").style.display = 'none';
-                    }, 5000);
-                    document.getElementById('submit_btn').disabled = false;
-                    return false;
-                }
-                else
-                {
-                    console.log("Mots de passe identique")
-                    return true;
-                }
+                var btn = document.getElementById('submit_btn');
+                btn.disabled = true;
+                btn.style.display = 'none';
+                var spin = document.getElementById('spin');
+                spin.style.display = '';
+                var password = document.getElementById("password").value
+                var password2 = document.getElementById("password2").value
+                var xhr = new XMLHttpRequest()
+                xhr.open('GET', 'http://www.epicbattlecorp.fr/check_infos?login=' + login + '&city=' + city + '&email=' + email + '&sponsor=' sponsor);
+                xhr.send(null);
+                xhr.addEventListener('readystatechange', function(){
+                    if (xhr.readystate === 4 && xhr.status === 200)
+                    {
+                        spin.style.display = 'none'
+                        btn.style.display = ''
+                        btn.disabled = false
+                        if (xhr.responseText === 1)
+                        {
+                            document.getElementById('err_login').style.display = ''
+                            setTimeout(() =>{
+                                document.getElementById("err_login").style.display = 'none';
+                                }, 5000);
+                            return false;
+                        }
+                        else if (xhr.responseText === 2)
+                        {
+                            document.getElementById('err_city').style.display = ''
+                            setTimeout(() =>{
+                                document.getElementById("err_city").style.display = 'none';
+                                }, 5000);
+                            return false;
+                        }
+                        else if (xhr.responseText === 3)
+                        {
+                            document.getElementById('err_email').style.display = ''
+                            setTimeout(() =>{
+                                document.getElementById("err_email").style.display = 'none';
+                                }, 5000);
+                            return false;
+                        }
+                        else if (xhr.responseText === 4)
+                        {
+                            document.getElementById('err_sponsor').style.display = ''
+                            setTimeout(() =>{
+                                document.getElementById("err_sponsor").style.display = 'none';
+                                }, 5000);
+                            return false;
+                        }
+                        else if (xhr.responseText === 0 && password != password2)
+                        {
+                            document.getElementById("err_password").style.display = 'block';
+                            setTimeout(() =>{
+                                document.getElementById("err_password").style.display = 'none';
+                            }, 5000);
+                            document.getElementById('submit_btn').disabled = false;
+                            return false;
+                        }
+                        else
+                            return true;
+                    }
+                });
             }
 
             function change_color()

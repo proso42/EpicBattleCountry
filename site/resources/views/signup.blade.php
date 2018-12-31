@@ -149,7 +149,7 @@
                             return false;
                         }
                     }
-                });
+                };
                 xhr.send();
                 return false;
             }

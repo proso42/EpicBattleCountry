@@ -39,7 +39,7 @@
                 <input name="sponsor" class="signup-input" placeholder="Parrain" type="text">
                 </br>
                 {{csrf_field()}}
-                <button class="signup-button" type="submit">S'inscrire</button>        
+                <button id="submit_button" class="signup-button" onclick="form_submit()">S'inscrire</button>      
             </form>
             <hr class="signup-footer"/>
             <div class="signup-conditions">
@@ -59,9 +59,31 @@
                 document.getElementById("race").style.textAlignLast = "center";
             else if (ua.indexOf("Firefox") >= 0)
                 document.getElementById("race").style.textAlign = "center";
-            $('#signup_form').submit(function(e) {
+
+            function form_submit()
+            {
+                document.getElementById('submit_button').disabled = true;
+                let e = document.getElementById('signup_form')
+                let password = document.getElementById("password").value
+                let password2 = document.getElementById("password2").value
+                if (password != password2)
+                {
+                    document.getElementById('submit_button').disabled = false;
+                    console.log("Mots de passe différent");
+                    document.getElementById("err_password").style.display = 'block';
+                    setTimeout(() =>{
+                        document.getElementById("err_password").style.display = 'none';
+                    }, 5000);
+                }
+                else
+                {
+                    console.log("Mots de passe identique")
+                    e.submit();
+                }
+            }
+            /*$('#signup_form').submit(function(e) {
                 e.preventDefault();
-                //console.log("On intercepte");
+                console.log("On intercepte");
                 let password = document.getElementById("password").value
                 let password2 = document.getElementById("password2").value
                 if (password != password2)
@@ -74,10 +96,10 @@
                 }
                 else
                 {
-                    //console.log("Mots de passe identique")
-                    $('#signup_form').submit();
+                    console.log("Mots de passe identique")
+                    e.submit();
                 }
-            });
+            });*/
 
             function change_color()
             {

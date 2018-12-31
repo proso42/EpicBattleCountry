@@ -93,8 +93,10 @@
                         spin.style.display = 'none'
                         btn.style.display = ''
                         btn.disabled = false
+                        console.log('Receive datas')
                         if (xhr.responseText === 1)
                         {
+                            console.log('1')
                             document.getElementById('err_login').style.display = ''
                             setTimeout(() =>{
                                 document.getElementById("err_login").style.display = 'none';
@@ -103,6 +105,7 @@
                         }
                         else if (xhr.responseText === 2)
                         {
+                            console.log('2')
                             document.getElementById('err_city').style.display = ''
                             setTimeout(() =>{
                                 document.getElementById("err_city").style.display = 'none';
@@ -111,6 +114,7 @@
                         }
                         else if (xhr.responseText === 3)
                         {
+                            console.log('3')
                             document.getElementById('err_email').style.display = ''
                             setTimeout(() =>{
                                 document.getElementById("err_email").style.display = 'none';
@@ -119,6 +123,7 @@
                         }
                         else if (xhr.responseText === 4)
                         {
+                            console.log('4')
                             document.getElementById('err_sponsor').style.display = ''
                             setTimeout(() =>{
                                 document.getElementById("err_sponsor").style.display = 'none';
@@ -127,6 +132,7 @@
                         }
                         else if (xhr.responseText === 0 && password != password2)
                         {
+                            console.log('bad passwords')
                             document.getElementById("err_password").style.display = 'block';
                             setTimeout(() =>{
                                 document.getElementById("err_password").style.display = 'none';
@@ -135,7 +141,10 @@
                             return false;
                         }
                         else
-                            return true;
+                        {
+                            console.log('0 and good passwords')
+                            return false;
+                        }
                     }
                 });
                 return false;

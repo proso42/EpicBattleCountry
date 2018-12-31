@@ -64,6 +64,7 @@
             {
                 document.getElementById('submit_button').disabled = true;
                 let e = document.getElementById('signup_form')
+                e.preventDefault();
                 let password = document.getElementById("password").value
                 let password2 = document.getElementById("password2").value
                 if (password != password2)

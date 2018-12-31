@@ -37,7 +37,20 @@
 
         public function register(Request $request)
         {
-            dd($request->all());
+            //dd($request->all());
+            if ($request['password'] !== $request['password2'])
+                return view('signup_internal_fail');
+            $id_race = DB::table('races')
+            ->select('id')
+            ->where('race_name', '=', $request['race'])
+            ->first();
+            $crypted_password = bcrypt($request['password']);
+            $email = $request['email'];
+            DB::table('users')
+            ->insertGetId((
+                array('login' => $request['login'], 'email' => $email, 'password' => $crypted_password, 'token' => $request['_token'], 'created_at' => time(), 'race' => $id_race)
+            ));
+            return view('register', compact('email'));
         }
     }
 

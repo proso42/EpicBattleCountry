@@ -138,6 +138,7 @@
                             return true;
                     }
                 });
+                return false;
             }
 
             function change_color()

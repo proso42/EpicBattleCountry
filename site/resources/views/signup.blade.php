@@ -29,9 +29,9 @@
                 </div>
             </div>
             <form method="POST" id="signup_form" action="/register" onsubmit="return check_form()">
-                <input name="login" class="signup-input" placeholder="Login *" type="text" pattern="[a-zA-Z]{3,20}" required>
+                <input id="login" name="login" class="signup-input" placeholder="Login *" type="text" pattern="[a-zA-Z]{3,20}" required>
                 </br>
-                <input name="city" class="signup-input" placeholder="Cité de départ *" type="text" pattern="^(?=.*[a-zA-Z]{3})[-a-zA-Z ]{3,20}$" required>
+                <input id="city" name="city" class="signup-input" placeholder="Cité de départ *" type="text" pattern="^(?=.*[a-zA-Z]{3})[-a-zA-Z ]{3,20}$" required>
                 </br>
                 <select id="race" name="race" class="signup-select-race" required>
                     <optgroup style="background-color: white" label="Races disponibles">
@@ -42,7 +42,7 @@
                     </optgroup>
                 </select>
                 </br>
-                <input name="email" class="signup-input" placeholder="Email *" type="email" required>
+                <input id="email" name="email" class="signup-input" placeholder="Email *" type="email" required>
                 </br>
                 <input id="password" name="password" class="signup-input" placeholder="Mot de passe *" type="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[\da-zA-Z!-/:-@[-`{-~]{12,20}$" required>
                 </br>

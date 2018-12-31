@@ -97,46 +97,46 @@
                         btn.style.display = ''
                         btn.disabled = false
                         console.log('Receive datas')
-                        console.log(xhr.responseText)
-                        if (xhr.responseText === 1)
+                        console.log('Value : ' + xhr.responseText)
+                        if (xhr.responseText == 1)
                         {
-                            console.log('1')
+                            console.log('Login')
                             document.getElementById('err_login').style.display = ''
                             setTimeout(() =>{
                                 document.getElementById("err_login").style.display = 'none';
                                 }, 5000);
                             return false;
                         }
-                        else if (xhr.responseText === 2)
+                        else if (xhr.responseText == 2)
                         {
-                            console.log('2')
+                            console.log('City')
                             document.getElementById('err_city').style.display = ''
                             setTimeout(() =>{
                                 document.getElementById("err_city").style.display = 'none';
                                 }, 5000);
                             return false;
                         }
-                        else if (xhr.responseText === 3)
+                        else if (xhr.responseText == 3)
                         {
-                            console.log('3')
+                            console.log('Email')
                             document.getElementById('err_email').style.display = ''
                             setTimeout(() =>{
                                 document.getElementById("err_email").style.display = 'none';
                                 }, 5000);
                             return false;
                         }
-                        else if (xhr.responseText === 4)
+                        else if (xhr.responseText == 4)
                         {
-                            console.log('4')
+                            console.log('Sponsor')
                             document.getElementById('err_sponsor').style.display = ''
                             setTimeout(() =>{
                                 document.getElementById("err_sponsor").style.display = 'none';
                                 }, 5000);
                             return false;
                         }
-                        else if (xhr.responseText === 0 && password != password2)
+                        else if (xhr.responseText == 0 && password != password2)
                         {
-                            console.log('bad passwords')
+                            console.log('Passwords')
                             document.getElementById("err_password").style.display = 'block';
                             setTimeout(() =>{
                                 document.getElementById("err_password").style.display = 'none';
@@ -146,7 +146,7 @@
                         }
                         else
                         {
-                            console.log('0 and good passwords')
+                            console.log('Good')
                             return false;
                         }
                     }

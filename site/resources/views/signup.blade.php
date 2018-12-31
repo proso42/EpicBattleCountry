@@ -17,11 +17,11 @@
                 </div>
             </div>
             <form method="POST" id="signup_form" action="/register">
-                <input id="login" class="signup-input" placeholder="Login *" type="text" pattern="[a-zA-Z]{3,20}" required>
+                <input name="login" class="signup-input" placeholder="Login *" type="text" pattern="[a-zA-Z]{3,20}" required>
                 </br>
-                <input id="city" class="signup-input" placeholder="Cité de départ *" type="text" pattern="^(?=.*[a-zA-Z]{3})[-a-zA-Z ]{3,20}$" required>
+                <input name="city" class="signup-input" placeholder="Cité de départ *" type="text" pattern="^(?=.*[a-zA-Z]{3})[-a-zA-Z ]{3,20}$" required>
                 </br>
-                <select id="race" class="signup-select-race" required>
+                <select name="race" class="signup-select-race" required>
                     <optgroup style="background-color: white" label="Races disponibles">
                             <option selected class="signup-option-race">Humain</option>
                             <option class="signup-option-race">Elfe</option>
@@ -30,13 +30,13 @@
                     </optgroup>
                 </select>
                 </br>
-                <input id="email" class="signup-input" placeholder="Email *" type="email" required>
+                <input name="email" class="signup-input" placeholder="Email *" type="email" required>
                 </br>
-                <input id="password" class="signup-input" placeholder="Mot de passe *" type="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[\da-zA-Z!-/:-@[-`{-~]{12,20}$" required>
+                <input name="password" class="signup-input" placeholder="Mot de passe *" type="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[\da-zA-Z!-/:-@[-`{-~]{12,20}$" required>
                 </br>
-                <input id="password2" class="signup-input" placeholder="Confirmer mot de passe *" type="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[\da-zA-Z!-/:-@[-`{-~]{12,20}$" required>
+                <input name="password2" class="signup-input" placeholder="Confirmer mot de passe *" type="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[\da-zA-Z!-/:-@[-`{-~]{12,20}$" required>
                 </br>
-                <input id="sponsor" class="signup-input" placeholder="Parrain" type="text">
+                <input name="sponsor" class="signup-input" placeholder="Parrain" type="text">
                 </br>
                 {{csrf_field()}}
                 <button class="signup-button" type="submit">S'inscrire</button>        

@@ -21,7 +21,7 @@
                 </br>
                 <input name="city" class="signup-input" placeholder="Cité de départ *" type="text" pattern="^(?=.*[a-zA-Z]{3})[-a-zA-Z ]{3,20}$" required>
                 </br>
-                <select name="race" class="signup-select-race" required>
+                <select id="race" name="race" class="signup-select-race" required>
                     <optgroup style="background-color: white" label="Races disponibles">
                             <option selected class="signup-option-race">Humain</option>
                             <option class="signup-option-race">Elfe</option>

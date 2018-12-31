@@ -16,7 +16,7 @@
                     <p>Les deux mots de passe ne sont pas identiques !</p>
                 </div>
             </div>
-            <form method="POST" id="signup_form" action="/register">
+            <form method="POST" id="signup_form" action="/register" onsubmit="check_form()">
                 <input name="login" class="signup-input" placeholder="Login *" type="text" pattern="[a-zA-Z]{3,20}" required>
                 </br>
                 <input name="city" class="signup-input" placeholder="Cité de départ *" type="text" pattern="^(?=.*[a-zA-Z]{3})[-a-zA-Z ]{3,20}$" required>
@@ -39,7 +39,7 @@
                 <input name="sponsor" class="signup-input" placeholder="Parrain" type="text">
                 </br>
                 {{csrf_field()}}
-                <button class="signup-button" type="submit">S'inscrire</button>      
+                <button id="submit_btn" class="signup-button" type="submit">S'inscrire</button>      
             </form>
             <hr class="signup-footer"/>
             <div class="signup-conditions">
@@ -59,9 +59,11 @@
                 document.getElementById("race").style.textAlignLast = "center";
             else if (ua.indexOf("Firefox") >= 0)
                 document.getElementById("race").style.textAlign = "center";
-            $('#signup_form').submit(function(e) {
-                e.preventDefault();
+
+            function check_form() 
+            {
                 console.log("On intercepte");
+                document.getElementById('submit_btn').disabled = true;
                 let password = document.getElementById("password").value
                 let password2 = document.getElementById("password2").value
                 if (password != password2)
@@ -71,11 +73,13 @@
                     setTimeout(() =>{
                         document.getElementById("err_password").style.display = 'none';
                     }, 5000);
+                    document.getElementById('submit_btn').disabled = false;
+                    return false;
                 }
                 else
                 {
                     console.log("Mots de passe identique")
-                    e.submit();
+                    return true;
                 }
             });
 

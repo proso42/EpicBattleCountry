@@ -144,6 +144,11 @@
                             document.getElementById('submit_btn').disabled = false;
                             return false;
                         }
+                        else if (xhr.responseText == 404)
+                        {
+                            console.log('404 => Missing variable');
+                            return false;
+                        }
                         else
                         {
                             console.log('Good')

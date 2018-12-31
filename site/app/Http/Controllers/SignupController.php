@@ -15,6 +15,8 @@
 
         public function check_infos()
         {
+            if (!isset($_GET['login']) || !isset($_GET['email']) || !isset($_GET['sponsor']))
+                return 404;
             $existing_login = DB::table('users')
             ->select('login')
             ->where('login', '=', $_GET['login'])->first();

@@ -20,17 +20,17 @@
             $existing_login = DB::table('users')
             ->select('login')
             ->where('login', '=', $_GET['login'])->first();
-            if ($existing_login && $existing_login->login == $_GET['login'])
+            if (isset($existing_login->login) && $existing_login->login == $_GET['login'])
                 return 1;
             $existing_email = DB::table('users')
             ->select('email')
             ->where('email', '=', $_GET['email'])->first();
-            if ($existing_email && $existing_email->email == $_GET['email'])
+            if (isset($existing_email->email) && $existing_email->email == $_GET['email'])
                 return 3;
             $existing_sponsor = DB::table('users')
             ->select('login')
             ->where('login', '=', $_GET['sponsor'])->first();
-            if (!$existing_sponsor->login)
+            if (!isset($existing_sponsor->login))
                 return 4;
             return 0;
         }

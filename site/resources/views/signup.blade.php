@@ -81,7 +81,7 @@
                     console.log("Mots de passe identique")
                     return true;
                 }
-            });
+            }
 
             function change_color()
             {

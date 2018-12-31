@@ -39,7 +39,7 @@
                 <input name="sponsor" class="signup-input" placeholder="Parrain" type="text">
                 </br>
                 {{csrf_field()}}
-                <input class="signup-button" type="button" value="S'inscrire">        
+                <button class="signup-button" type="submit">S'inscrire</button>        
             </form>
             <hr class="signup-footer"/>
             <div class="signup-conditions">
@@ -75,7 +75,7 @@
                 else
                 {
                     //console.log("Mots de passe identique")
-                    e.submit();
+                    $('#signup_form').submit();
                 }
             });
 

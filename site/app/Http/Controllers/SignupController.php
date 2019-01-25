@@ -27,6 +27,8 @@
             ->where('email', '=', $_GET['email'])->first();
             if (isset($existing_email->email) && $existing_email->email == $_GET['email'])
                 return 3;
+            if ($_GET['sponsor'] == null)
+                return 0;
             $existing_sponsor = DB::table('users')
             ->select('login')
             ->where('login', '=', $_GET['sponsor'])->first();
@@ -37,13 +39,14 @@
 
         public function register(Request $request)
         {
-            dd($request->all());
+            //dd($request->all());
             if ($request['password'] !== $request['password2'])
                 return view('signup_internal_fail');
             $id_race = DB::table('races')
             ->select('id')
             ->where('race_name', '=', $request['race'])
             ->first();
+            dd($request->all());
             $crypted_password = bcrypt($request['password']);
             $email = $request['email'];
             DB::table('users')

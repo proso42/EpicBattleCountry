@@ -49,7 +49,7 @@
             $email = $request['email'];
             DB::table('users')
             ->insertGetId(
-                array('login' => $request['login'], 'email' => $email, 'password' => $crypted_password, 'token' => $request['_token'], 'created_at' => time(), 'race' => $id_race['id'])
+                array('login' => $request['login'], 'email' => $email, 'password' => $crypted_password, 'token' => $request['_token'], 'created_at' => time(), 'race' => $id_race->id)
             );
             dd($request->all());
             return view('register', compact('email'));

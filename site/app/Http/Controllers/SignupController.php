@@ -45,12 +45,11 @@
             ->select('id')
             ->where('race_name', '=', $request['race'])
             ->first();
-            dd($id_race);
             $crypted_password = bcrypt($request['password']);
             $email = $request['email'];
             DB::table('users')
             ->insertGetId(
-                array('login' => $request['login'], 'email' => $email, 'token' => $request['_token'])
+                array('login' => $request['login'], 'email' => $email, 'password' => $crypted_password, 'token' => $request['_token'], 'created_at' => time(), 'race' => $id_race['id'])
             );
             dd($request->all());
             return view('register', compact('email'));

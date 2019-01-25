@@ -39,7 +39,7 @@
 
         public function register(Request $request)
         {
-            echo $request['email'];
+            dd($request['email']);
             if ($request['password'] !== $request['password2'])
                 return view('signup_internal_fail');
             $id_race = DB::table('races')

@@ -39,7 +39,6 @@
 
         public function register(Request $request)
         {
-            dd($request['email']);
             if ($request['password'] !== $request['password2'])
                 return view('signup_internal_fail');
             $id_race = DB::table('races')
@@ -50,7 +49,7 @@
             $email = $request['email'];
             DB::table('users')
             ->insertGetId(
-                array('login' => $request['login'], 'email' => $email, 'password' => $crypted_password, 'token' => $request['_token'], 'created_at' => time(), 'race' => $id_race)
+                array('login' => $request['login'])
             );
             dd($request->all());
             return view('register', compact('email'));

@@ -46,8 +46,8 @@
             ->select('id')
             ->where('race_name', '=', $request['race'])
             ->first();
-            dd($request->all());
             $crypted_password = bcrypt($request['password']);
+            dd($request->all());
             $email = $request['email'];
             DB::table('users')
             ->insertGetId((

@@ -27,8 +27,8 @@
             ->where('email', '=', $_GET['email'])->first();
             if (isset($existing_email->email) && $existing_email->email == $_GET['email'])
                 return 3;
-            if ($_GET['sponsor'] == null)
-                return 0;
+            /*if ($_GET['sponsor'] == null)
+                return 0;*/
             $existing_sponsor = DB::table('users')
             ->select('login')
             ->where('login', '=', $_GET['sponsor'])->first();

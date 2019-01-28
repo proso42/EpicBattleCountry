@@ -28,7 +28,7 @@
                     <p>Ce parrain n'existe pas !</p>
                 </div>
             </div>
-            <form method="POST" id="signup_form" action="/register" onsubmit="return false">
+            <form method="POST" id="signup_form" action="/register" onsubmit="return check_form()">
                 <input id="login" name="login" class="signup-input" placeholder="Login *" type="text" pattern="[a-zA-Z]{3,20}" required>
                 </br>
                 <input id="city" name="city" class="signup-input" placeholder="Cité de départ *" type="text" pattern="^(?=.*[a-zA-Z]{3})[-a-zA-Z ]{3,20}$" required>
@@ -77,7 +77,7 @@
 
             function check_form()
             {
-                //return false;
+                return false;
                 var btn = document.getElementById('submit_btn');
                 btn.disabled = true;
                 btn.style.display = 'none';

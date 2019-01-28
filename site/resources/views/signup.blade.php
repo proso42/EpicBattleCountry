@@ -28,7 +28,7 @@
                     <p>Ce parrain n'existe pas !</p>
                 </div>
             </div>
-            <form method="POST" id="signup_form" action="/register" onsubmit="return check_form()">
+            <form method="POST" id="signup_form" action="/register" onSubmit="return false">
                 <input id="login" name="login" class="signup-input" placeholder="Login *" type="text" pattern="[a-zA-Z]{3,20}" required>
                 </br>
                 <input id="city" name="city" class="signup-input" placeholder="Cité de départ *" type="text" pattern="^(?=.*[a-zA-Z]{3})[-a-zA-Z ]{3,20}$" required>
@@ -75,7 +75,7 @@
             else if (ua.indexOf("Firefox") >= 0)
                 document.getElementById("race").style.textAlign = "center";
 
-            function check_form() 
+            function check_form()
             {
                 var btn = document.getElementById('submit_btn');
                 btn.disabled = true;

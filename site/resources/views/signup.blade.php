@@ -90,7 +90,7 @@
                 var sponsor = document.getElementById("sponsor").value
                 console.log('ici');
                 var xhr = new XMLHttpRequest()
-                xhr.open('GET', 'http://www.epicbattlecorp.fr/check_infos?login=' + login + '&city=' + city + '&email=' + email + '&sponsor=' + sponsor, false);
+                xhr.open('GET', 'http://www.epicbattlecorp.fr/check_infos?login=' + login + '&city=' + city + '&email=' + email + '&sponsor=' + sponsor, true);
                 xhr.onreadystatechange =  function(){
                     console.log('onreadystatechange')
                     if (xhr.readyState === 4 && xhr.status === 200)
@@ -159,7 +159,6 @@
                     }
                 };
                 xhr.send();
-                return false;
             }
 
             function change_color()

@@ -157,6 +157,7 @@
                     }
                 };
                 xhr.send();
+                return false;
             }
 
             function change_color()

@@ -105,6 +105,13 @@ body
     width: 204px;
 }
 
+.return-button:hover
+{
+    background-color: royalblue;
+    font-weight: bold;
+    color: white;
+}
+
 .center-rect
 {
     background-color: rgba(105, 105, 105, 0.9);

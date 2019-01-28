@@ -6,7 +6,7 @@
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\DB;
 
-    class SignupController extends Controller
+    class SigninController extends Controller
     {
         public function index()
         {

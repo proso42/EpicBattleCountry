@@ -29,10 +29,7 @@
                     <p class="signin-forgot-link" style="width:132px;">Mot de passe oublié ?</p>
                 </div>
                 <div id="link_no_account" class="signin-forgot">
-                    <a href="signup.html" class="signin-forgot-link">Pas encore de compte ?</a>
-                </div>
-                <div id="text_no_account" class="signin-forgot" style="display: none; width: 144px;">
-                    <p class="signin-forgot-link">Pas encore de compte ?</p>
+                    <a href="/signup" class="signin-forgot-link">Pas encore de compte ?</a>
                 </div>
             </form>
         </div>

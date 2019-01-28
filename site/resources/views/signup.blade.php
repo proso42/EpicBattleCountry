@@ -89,11 +89,12 @@
                 var email = document.getElementById("email").value
                 var sponsor = document.getElementById("sponsor").value
                 console.log('ici');
-                return false;
                 var xhr = new XMLHttpRequest()
                 xhr.open('GET', 'http://www.epicbattlecorp.fr/check_infos?login=' + login + '&city=' + city + '&email=' + email + '&sponsor=' + sponsor, true);
                 xhr.onreadystatechange =  function(){
-                    if (xhr.readyState === 4 && xhr.status === 200)
+                    console.log('onreadystatechange')
+                    return false;
+                    /*if (xhr.readyState === 4 && xhr.status === 200)
                     {
                         spin.style.display = 'none'
                         btn.style.display = ''
@@ -156,10 +157,9 @@
                             console.log('Good')
                             return true;
                         }
-                    }
+                    }*/
                 };
                 xhr.send();
-                //return false;
             }
 
             function change_color()

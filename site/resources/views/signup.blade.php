@@ -93,8 +93,7 @@
                 xhr.open('GET', 'http://www.epicbattlecorp.fr/check_infos?login=' + login + '&city=' + city + '&email=' + email + '&sponsor=' + sponsor, false);
                 xhr.onreadystatechange =  function(){
                     console.log('onreadystatechange')
-                    return false;
-                    /*if (xhr.readyState === 4 && xhr.status === 200)
+                    if (xhr.readyState === 4 && xhr.status === 200)
                     {
                         spin.style.display = 'none'
                         btn.style.display = ''
@@ -160,6 +159,7 @@
                     }*/
                 };
                 xhr.send();
+                return false;
             }
 
             function change_color()

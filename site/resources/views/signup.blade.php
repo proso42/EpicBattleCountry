@@ -77,7 +77,6 @@
 
             function check_form()
             {
-                return false;
                 var btn = document.getElementById('submit_btn');
                 btn.disabled = true;
                 btn.style.display = 'none';
@@ -89,6 +88,8 @@
                 var city = document.getElementById("city").value
                 var email = document.getElementById("email").value
                 var sponsor = document.getElementById("sponsor").value
+                console.log('ici');
+                return false;
                 var xhr = new XMLHttpRequest()
                 xhr.open('GET', 'http://www.epicbattlecorp.fr/check_infos?login=' + login + '&city=' + city + '&email=' + email + '&sponsor=' + sponsor, true);
                 xhr.onreadystatechange =  function(){

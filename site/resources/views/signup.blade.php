@@ -54,7 +54,7 @@
                 <div id="spin" style="display: none;">
                     <img class="signin-spin" src="images/loader.gif">
                 </div>
-                <input id="submit_btn" class="signup-button" type="submit" value="S'inscrire">      
+                <input id="fuck" class="signup-button" type="submit" value="S'inscrire">      
             </form>
             <hr class="signup-footer"/>
             <div class="signup-conditions">
@@ -78,7 +78,7 @@
             var f = document.getElementById('signup_form');
             f.addEventListener('submit', function(e){
                 e.preventDefault();
-                var btn = document.getElementById('submit_btn');
+                var btn = document.getElementById('fuck');
                 btn.disabled = true;
                 btn.style.display = 'none';
                 var spin = document.getElementById('spin');
@@ -144,7 +144,7 @@
                             setTimeout(() =>{
                                 document.getElementById("err_password").style.display = 'none';
                             }, 5000);
-                            document.getElementById('submit_btn').disabled = false;
+                            document.getElementById('fuck').disabled = false;
                             return false;
                         }
                         else if (xhr.responseText == 404)
@@ -155,98 +155,12 @@
                         else
                         {
                             console.log('Good')
-                            e.submit();
+                            document.getElementById('signup_form').submit();
                         }
                     }
                 };
                 xhr.send();
             });
-
-            /*function check_form()
-            {
-                var btn = document.getElementById('submit_btn');
-                btn.disabled = true;
-                btn.style.display = 'none';
-                var spin = document.getElementById('spin');
-                spin.style.display = '';
-                var password = document.getElementById("password").value
-                var password2 = document.getElementById("password2").value
-                var login = document.getElementById("login").value
-                var city = document.getElementById("city").value
-                var email = document.getElementById("email").value
-                var sponsor = document.getElementById("sponsor").value
-                console.log('ici');
-                var xhr = new XMLHttpRequest()
-                xhr.open('GET', 'http://www.epicbattlecorp.fr/check_infos?login=' + login + '&city=' + city + '&email=' + email + '&sponsor=' + sponsor, true);
-                xhr.onreadystatechange =  function(){
-                    console.log('onreadystatechange')
-                    if (xhr.readyState === 4 && xhr.status === 200)
-                    {
-                        spin.style.display = 'none'
-                        btn.style.display = ''
-                        btn.disabled = false
-                        console.log('Receive datas')
-                        console.log('Value : ' + xhr.responseText)
-                        if (xhr.responseText == 1)
-                        {
-                            console.log('Login')
-                            document.getElementById('err_login').style.display = ''
-                            setTimeout(() =>{
-                                document.getElementById("err_login").style.display = 'none';
-                                }, 5000);
-                            return false;
-                        }
-                        else if (xhr.responseText == 2)
-                        {
-                            console.log('City')
-                            document.getElementById('err_city').style.display = ''
-                            setTimeout(() =>{
-                                document.getElementById("err_city").style.display = 'none';
-                                }, 5000);
-                            return false;
-                        }
-                        else if (xhr.responseText == 3)
-                        {
-                            console.log('Email')
-                            document.getElementById('err_email').style.display = ''
-                            setTimeout(() =>{
-                                document.getElementById("err_email").style.display = 'none';
-                                }, 5000);
-                            return false;
-                        }
-                        else if (xhr.responseText == 4)
-                        {
-                            console.log('Sponsor')
-                            document.getElementById('err_sponsor').style.display = ''
-                            setTimeout(() =>{
-                                document.getElementById("err_sponsor").style.display = 'none';
-                                }, 5000);
-                            return false;
-                        }
-                        else if (xhr.responseText == 0 && password != password2)
-                        {
-                            console.log('Passwords')
-                            document.getElementById("err_password").style.display = 'block';
-                            setTimeout(() =>{
-                                document.getElementById("err_password").style.display = 'none';
-                            }, 5000);
-                            document.getElementById('submit_btn').disabled = false;
-                            return false;
-                        }
-                        else if (xhr.responseText == 404)
-                        {
-                            console.log('404 => Missing variable');
-                            return false;
-                        }
-                        else
-                        {
-                            console.log('Good')
-                            return true;
-                        }
-                    }
-                };
-                xhr.send();
-            }*/
 
             function change_color()
             {

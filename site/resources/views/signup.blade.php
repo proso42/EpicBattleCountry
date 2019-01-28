@@ -156,7 +156,7 @@
                             console.log('Good')
                             return true;
                         }
-                    }*/
+                    }
                 };
                 xhr.send();
                 return false;

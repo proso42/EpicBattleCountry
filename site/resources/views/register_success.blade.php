@@ -8,8 +8,9 @@
         <link rel="stylesheet" type="text/css" href="css/style.css"/>
     </head>
     <body>
-        <div class="center-rect">
-            Votre compte a été créer avec succès ! Un email de confirmation a été envoyé à {{ $email }}.
+        <div class="center-rect" style="margin-top: 270px">
+            Votre compte a été créer avec succès ! Un email de confirmation a été envoyé à {{ $email }}
+            <button class="retrun-button" onclick="window.location.href='/signin'">Retour</button>
         </div>
     </body>
 </html>

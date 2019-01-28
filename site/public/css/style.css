@@ -91,6 +91,20 @@ body
     }
 }
 
+.return-button
+{
+    margin-top: 25px;
+    margin-bottom: 25px;
+    background-color: cornflowerblue;
+    color: black;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 28px;
+    width: 204px;
+}
+
 .center-rect
 {
     background-color: rgba(105, 105, 105, 0.9);

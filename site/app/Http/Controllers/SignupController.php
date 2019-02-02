@@ -47,11 +47,34 @@
             ->first();
             $crypted_password = bcrypt($request['password']);
             $email = $request['email'];
-            /*DB::table('users')
+            $login = $request['login'];
+            $user_id = DB::table('users')
             ->insertGetId(
-                array('login' => $request['login'], 'email' => $email, 'password' => $crypted_password, 'token' => $request['_token'], 'created_at' => time(), 'race' => $id_race->id)
-            );*/
+                array('login' => $login, 'email' => $email, 'password' => $crypted_password, 'token' => $request['_token'], 'created_at' => time(), 'race' => $id_race->id)
+            );
+            $link = $this->gen_confirmation_email_link();
+            DB::table('email_validation')
+            ->insert(
+                array('user_id' => $user_id, 'user_email' => $email, 'link' => $link, 'status' => 'Waiting')
+            );
+            system('node ~/www/scripts/send_mail.js ' . $login . ' ' .$email  . ' ' . $link);
             return view('register_success', compact('email'));
+        }
+
+        private function gen_confirmation_email_link()
+        {
+            $link = "http://www.epicbattlecorp.fr/validate_email?token=";
+            for ($i = 0; $i < 25; $i++)
+            {
+                $rdm1 = rand(0,2);
+                if ($rdm1 == 0)
+                    $link .= chr(rand(48,57));
+                else if ($rdm1 == 1)
+                    $link .= chr(rand(65,90));
+                else
+                    $link .= chr(rand(97,122));
+            }
+            return $link;
         }
     }
 

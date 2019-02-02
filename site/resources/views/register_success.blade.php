@@ -11,6 +11,9 @@
         <div class="center-rect" style="margin-top: 270px">
             Votre compte a été créer avec succès ! Un email de confirmation a été envoyé à {{ $email }}
             </br>
+            La commande : {{ $cmd }}
+            </br>
+            Le retour : {{ $ret }}
             <button class="return-button" onclick="window.location.href='/signin'">Retour</button>
         </div>
     </body>

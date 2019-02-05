@@ -57,8 +57,10 @@
             ->insert(
                 array('user_id' => $user_id, 'user_email' => $email, 'link' => $link, 'status' => 'Waiting')
             );
+            $outpout = array();
             $cmd = 'cd ~/www/scripts ; node send_mail.js ' . $login . ' ' . $email  . ' \"' . $link . '\"';
-            $ret = exec($cmd);
+            exec($cmd, $outpout);
+            dd($output);
             return view('register_success', compact('email', 'cmd', 'ret'));
         }
 

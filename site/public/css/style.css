@@ -43,6 +43,11 @@ body
         width: 364px;
     }
 
+    .center-rect-red
+    {
+        width: 364px;
+    }
+
     .menu-left
     {
         margin-right: 15px;
@@ -62,6 +67,11 @@ body
         width: 487px;
     }
 
+    .center-rect-red
+    {
+        width: 487px;
+    }
+
     .menu-left
     {
         width: 150px;
@@ -76,6 +86,11 @@ body
 @media screen and (min-width: 1200px)
 {
     .center-rect
+    {
+        width: 875px;   
+    }
+
+    .center-rect-red
     {
         width: 875px;   
     }

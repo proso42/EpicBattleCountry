@@ -21,7 +21,7 @@
             }
             if ($url_email_token == '')
                 return view('validate_email_failed');
-            $db_email_validation = DB::table('confirmation_email')
+            $db_email_validation = DB::table('email_validation')
                 ->select('email_token', 'user_email')
                 ->where('email_token', '=', $url_email_token)
                 ->where('status', '=', 'Waiting')
@@ -30,7 +30,7 @@
             $db_email_token = $db_email_validation->email_token;
             if ($url_email_token == $db_email_token)
             {
-                DB::table('confirmation_email')
+                DB::table('email_validation')
                 ->update('status', '=', 'Validated')
                 ->where('email_token', '=', $url_email_token);
                 DB::table('users')

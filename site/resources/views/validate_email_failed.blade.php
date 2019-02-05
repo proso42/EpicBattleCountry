@@ -14,8 +14,6 @@
             Vérifier que vous avez suivis le bon lien.            
             </br>
             Si le problème persiste merci de contacter notre support à l'addresse suivante : support@epicbattlecorp.fr            
-            </br>
-            </br>
             <button class="return-button" onclick="window.location.href='/signin'">Retour</button>
         </div>
     </body>

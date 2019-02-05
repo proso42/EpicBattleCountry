@@ -53,7 +53,7 @@
                 array('login' => $login, 'email' => $email, 'password' => $crypted_password, 'token' => $request['_token'], 'created_at' => time(), 'race' => $id_race->id)
             );
             $link = $this->gen_confirmation_email_link();
-            $email_token = $link.split('=')[1];
+            $email_token = explode('=', $link)[1];
             DB::table('email_validation')
             ->insert(
                 array('user_id' => $user_id, 'user_email' => $email, 'email_token' => $email_token, 'status' => 'Waiting')

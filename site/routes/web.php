@@ -19,6 +19,8 @@ Route::get('salut', function() {
     return 'Yolo swag';
 });
 
+Route::get('/validate_email', 'ValidateEmailController@index');
+
 Route::group(['middleware' => 'guest'], function(){
     Route::get('/signup', 'SignupController@index');
     Route::get('/check_infos', 'SignupController@check_infos');

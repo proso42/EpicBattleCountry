@@ -15,10 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('salut', function() {
-    return 'Yolo swag';
-});
-
 Route::get('/validate_email', 'ValidateEmailController@index');
 
 Route::group(['middleware' => 'guest'], function(){

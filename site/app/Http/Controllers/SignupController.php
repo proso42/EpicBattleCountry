@@ -58,10 +58,11 @@
                 array('user_id' => $user_id, 'user_email' => $email, 'link' => $link, 'status' => 'Waiting')
             );
             $output = array();
-            $cmd = "node ~/www/scripts/send_mail.js " . $login . " " . $email  . " \"" . $link . "\"";
-            exec($cmd, $output);
-            dd($output);
-            return view('register_success', compact('email', 'cmd', 'ret'));
+            $err = 0;
+            $cmd = "cd /home/boss/www/scripts ; node ./send_mail.js " . $login . " " . $email  . " \"" . $link . "\"";
+            exec($cmd, $output, $err);
+            dd($err);
+            return view('register_success', compact('email', 'cmd', 'ret', 'err'));
         }
 
         private function gen_confirmation_email_link()

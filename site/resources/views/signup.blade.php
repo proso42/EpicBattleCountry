@@ -96,11 +96,14 @@
                     console.log('onreadystatechange')
                     if (xhr.readyState === 4 && xhr.status === 200)
                     {
-                        spin.style.display = 'none'
-                        btn.style.display = ''
-                        btn.disabled = false
                         console.log('Receive datas')
                         console.log('Value : ' + xhr.responseText)
+                        if (xhr.responseText > 0 || xhr.responseText == 0 && password != password2)
+                        {
+                            spin.style.display = 'none'
+                            btn.style.display = ''
+                            btn.disabled = false
+                        }
                         if (xhr.responseText == 1)
                         {
                             console.log('Login')

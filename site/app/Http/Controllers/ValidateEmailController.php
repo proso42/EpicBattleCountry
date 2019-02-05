@@ -31,11 +31,11 @@
             if ($url_email_token == $db_email_token)
             {
                 DB::table('email_validation')
-                ->update('status', '=', 'Validated')
-                ->where('email_token', '=', $url_email_token);
+                ->where('email_token', '=', $url_email_token)
+                ->update(['status' => 'Validated']);
                 DB::table('users')
-                ->update('email_verified_at', '=', time())
-                ->where('email', '=', $user_email);
+                ->where('email', '=', $user_email)
+                ->update(['email_verified_at' => time()]);
                 return redirect('validate_email_success', 'user_email');
             }
             else

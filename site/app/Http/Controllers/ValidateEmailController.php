@@ -38,7 +38,7 @@
                 DB::table('users')
                 ->where('email', '=', $user_email)
                 ->update(['email_verified_at' => time()]);
-                return view('validate_email_success', 'user_email');
+                return view('validate_email_success', compact('user_email'));
             }
             else
                 return view('validate_email_failed');

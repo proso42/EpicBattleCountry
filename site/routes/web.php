@@ -22,4 +22,7 @@ Route::group(['middleware' => 'guest'], function(){
     Route::get('/check_infos', 'SignupController@check_infos');
     Route::post('/register', 'SignupController@register');
     Route::get('/signin', 'SigninController@index');
+    Route::get('/try_to_login', 'SigninController@try_to_login');
+    Route::post('login', 'SigninController@login');
+    Route::get('forgot_password', 'ForgotPasswordController@index');
 });

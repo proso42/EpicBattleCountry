@@ -10,10 +10,13 @@
     <body>
         <div id="main" class="signin-rect">
             <h2>Connexion</h2>
-            <div id="err_password" class="signin-err-connexion">
-                <p>Mot de passe et/ou login/email incorrect</p>
+            <div id="connection_failed" class="signin-err-connexion">
+                <p>Identifiant et/ou mot de passe incorrect</p>
             </div>
-            <form id="signin_form">
+            <div id="email_not_validated" class="signin-err-connexion">
+                <p>Vous devez valider votre email avant de vous connecter</p>
+            </div>
+            <form method="POST" action="/login" id="signin_form">
                 <input id="account" type="text" class="signin-input" placeholder="Login ou email" required>
                 </br>
                 <input id="password" type="password" class="signin-input" placeholder="Mot de passe" required>
@@ -25,8 +28,9 @@
                     <img class="signin-spin" src="images/loader.gif">
                 </div>
                 <hr class="signin-footer"/>
-                <div id="forgot" class="signin-forgot" onclick="hide_main()">
-                    <p class="signin-forgot-link" style="width:132px;">Mot de passe oublié ?</p>
+                <div id="forgot" class="signin-forgot">
+                    <a href="/forgot_password" class="signin-forgot-link">Mot de passe oublié ?</a>
+                    <!--<p class="signin-forgot-link" style="width:132px;">Mot de passe oublié ?</p> -->
                 </div>
                 <div id="link_no_account" class="signin-forgot">
                     <a href="/signup" class="signin-forgot-link">Pas encore de compte ?</a>
@@ -49,15 +53,51 @@
                 document.getElementById("connexion").style.marginLeft = "auto";
                 document.getElementById("connexion").style.marginRight = "auto";
             }
-            $('#signin_form').submit(function(e) {
+            var f = document.getElementById('signin_form');
+            f.addEventListener('submit', function(e){
                 e.preventDefault();
-                console.log("On intercepte");
-                document.getElementById("forgot").onclick = ''
-                document.getElementById("link_no_account").style.display = "none"
-                document.getElementById("text_no_account").style.display = ""
-                document.getElementById("connexion").style.display = "none"
-                document.getElementById("spin").style.display = ""
-            });
+                var btn = document.getElementById('connexion');
+                btn.disabled = true;
+                btn.style.display = 'none';
+                var spin = document.getElementById('spin');
+                spin.style.display = '';
+                var login = document.getElementById('account');
+                var passwd = document.getElementById('password');
+                var xhr = new XMLHttpRequest()
+                xhr.open('GET', 'http://epicbatllecorp.fr/try_to_login?account=' + login + '&password=' + passwd)
+                xhr.onreadystatechange =  function(){
+                    if (xhr.readyState === 4 && xhr.status === 200)
+                    {
+                        if (xhr.responseText > 0)
+                        {
+                            btn.disabled = false;
+                            bnt.style.display = '';
+                            spin.style.display = 'none';
+                        }
+                        if (xhr.responseText == 1)
+                        {
+                            document.getElementById('connection_failed').style.display = '';
+                            setTimeout(() =>{
+                                document.getElementById("connection_failed").style.display = 'none';
+                            }, 5000);
+                            return false;
+                        }
+                        else if (xhr.responseText == 2)
+                        {
+                            document.getElementById('email_not_validated').style.display = '';
+                            setTimeout(() =>{
+                                document.getElementById("email_not_validated").style.display = 'none';
+                            }, 5000);
+                            return false;
+                        }
+                        else
+                        {
+                            document.getElementById('signin_form').submit();
+                        }
+                    }
+                }
+                xhr.send()
+            }
             function hide_main()
             {
                 document.getElementById("main").style.display = "none";

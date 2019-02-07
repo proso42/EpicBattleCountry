@@ -71,7 +71,7 @@
                         if (xhr.responseText > 0)
                         {
                             btn.disabled = false;
-                            bnt.style.display = '';
+                            btn.style.display = '';
                             spin.style.display = 'none';
                         }
                         if (xhr.responseText == 1)

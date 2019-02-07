@@ -97,7 +97,7 @@
                     }
                 }
                 xhr.send()
-            }
+            });
             function hide_main()
             {
                 document.getElementById("main").style.display = "none";

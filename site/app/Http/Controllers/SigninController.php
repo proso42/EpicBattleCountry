@@ -16,22 +16,20 @@
         public function try_to_login()
         {
             $account = $_GET['account'];
-            $crypted_password = bcrypt($_GET['password']);
+            $password = $_GET['password'];
             $auth = DB::table('users')
-            ->select('id', 'email_verified_at')
+            ->select('email_verified_at', 'password')
             ->where('login', '=', $account)
-            ->where('password', '=', $crypted_password)
             ->first();
             return $crypted_password;
             if ($auth == null)
             {
                 $auth = DB::table('users')
-                ->select('id', 'email_verified_at')
+                ->select('email_verified_at', 'password')
                 ->where('email', '=', $account)
-                ->where('password', '=', $crypted_password)
                 ->first();
             }
-            if ($auth == null)
+            if ($auth == null || !password_verify($password, $auth->password))
                 return 1;
             else if ($auth->email_verified_at == null)
                 return 2;

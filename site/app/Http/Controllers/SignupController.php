@@ -45,7 +45,7 @@
             ->select('id')
             ->where('race_name', '=', $request['race'])
             ->first();
-            $crypted_password = bcrypt($request['password']);
+            $crypted_password = passwordhash($request['password'], PASSWORD_BCRYPT);
             $email = $request['email'];
             $login = $request['login'];
             $user_id = DB::table('users')

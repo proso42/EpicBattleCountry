@@ -61,8 +61,8 @@
                 btn.style.display = 'none';
                 var spin = document.getElementById('spin');
                 spin.style.display = '';
-                var login = document.getElementById('account');
-                var passwd = document.getElementById('password');
+                var login = document.getElementById('account').value;
+                var passwd = document.getElementById('password').value;
                 var xhr = new XMLHttpRequest()
                 xhr.open('GET', 'http://epicbatllecorp.fr/try_to_login?account=' + login + '&password=' + passwd)
                 xhr.onreadystatechange =  function(){

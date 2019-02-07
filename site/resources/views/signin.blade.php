@@ -93,11 +93,11 @@
                             }, 5000);
                             return false;
                         }
-                        else
+                        /*else
                         {
                             console.log('Good');
                             document.getElementById('signin_form').submit();
-                        }
+                        }*/
                     }
                 }
                 xhr.send()

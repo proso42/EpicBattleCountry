@@ -76,6 +76,7 @@
                         }
                         if (xhr.responseText == 1)
                         {
+                            console.log('erreur 1');
                             document.getElementById('connection_failed').style.display = '';
                             setTimeout(() =>{
                                 document.getElementById("connection_failed").style.display = 'none';
@@ -84,6 +85,7 @@
                         }
                         else if (xhr.responseText == 2)
                         {
+                            console.log('erreur 2');
                             document.getElementById('email_not_validated').style.display = '';
                             setTimeout(() =>{
                                 document.getElementById("email_not_validated").style.display = 'none';
@@ -92,6 +94,7 @@
                         }
                         else
                         {
+                            console.log('Good');
                             document.getElementById('signin_form').submit();
                         }
                     }

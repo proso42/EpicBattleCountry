@@ -10,10 +10,10 @@
     <body>
         <div id="main" class="signin-rect">
             <h2>Connexion</h2>
-            <div id="connection_failed" class="signin-err-connexion">
+            <div id="connection_failed" class="signin-err-connexion" style="display: none;">
                 <p>Identifiant et/ou mot de passe incorrect</p>
             </div>
-            <div id="email_not_validated" class="signin-err-connexion">
+            <div id="email_not_validated" class="signin-err-connexion" style="display: none;">
                 <p>Vous devez valider votre email avant de vous connecter</p>
             </div>
             <form method="POST" action="/login" id="signin_form">
@@ -68,7 +68,6 @@
                 xhr.onreadystatechange =  function(){
                     if (xhr.readyState === 4 && xhr.status === 200)
                     {
-                        console.log(xhr.responseText);
                         if (xhr.responseText > 0)
                         {
                             btn.disabled = false;
@@ -93,11 +92,11 @@
                             }, 5000);
                             return false;
                         }
-                        /*else
+                        else
                         {
                             console.log('Good');
                             document.getElementById('signin_form').submit();
-                        }*/
+                        }
                     }
                 }
                 xhr.send()

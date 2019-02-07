@@ -21,7 +21,6 @@
             ->select('email_verified_at', 'password')
             ->where('login', '=', $account)
             ->first();
-            return $crypted_password;
             if ($auth == null)
             {
                 $auth = DB::table('users')

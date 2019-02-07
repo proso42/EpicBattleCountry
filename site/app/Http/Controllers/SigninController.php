@@ -17,6 +17,7 @@
         {
             $account = $_GET['account'];
             $crypted_password = bcrypt($_GET['password']);
+            dd($_GET);
             $auth = DB::table('users')
             ->select('id', 'email_verified_at')
             ->where('login', '=', $account)

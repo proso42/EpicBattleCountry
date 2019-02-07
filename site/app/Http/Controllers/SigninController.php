@@ -36,7 +36,7 @@
             else if ($auth->email_verified_at == null)
                 return 2;
             else
-                return 0;
+                return -1;
         }
 
         public function login()

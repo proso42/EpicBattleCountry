@@ -68,6 +68,7 @@
                 xhr.onreadystatechange =  function(){
                     if (xhr.readyState === 4 && xhr.status === 200)
                     {
+                        console.log(xhr.responseText);
                         if (xhr.responseText > 0)
                         {
                             btn.disabled = false;

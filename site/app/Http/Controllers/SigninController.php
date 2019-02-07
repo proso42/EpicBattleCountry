@@ -39,7 +39,7 @@
 
         public function login()
         {
-            Auth::login();
+            Auth::login(['login' => 'zoulouxF', 'password' => '-NF5ppZcI-42']);
             return redirect('/');
         }
     }

@@ -64,7 +64,7 @@
                 var login = document.getElementById('account').value;
                 var passwd = document.getElementById('password').value;
                 var xhr = new XMLHttpRequest()
-                xhr.open('GET', 'http://epicbatllecorp.fr/try_to_login?account=' + login + '&password=' + passwd)
+                xhr.open('GET', 'http://www.epicbatllecorp.fr/try_to_login?account=' + login + '&password=' + passwd)
                 xhr.onreadystatechange =  function(){
                     if (xhr.readyState === 4 && xhr.status === 200)
                     {

@@ -6,7 +6,7 @@
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\DB;
 
-    class SigninController extends Controller
+    class ForgotPasswordController extends Controller
     {
         public function index()
         {

@@ -22,7 +22,7 @@
             ->where('login', '=', $account)
             ->where('password', '=', $crypted_password)
             ->first();
-            return $auth;
+            return $_GET;
             if ($auth == null)
             {
                 $auth = DB::table('users')

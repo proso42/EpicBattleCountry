@@ -39,7 +39,8 @@
 
         public function login()
         {
-            Auth::login(['login' => 'zoulouxF', 'password' => '-NF5ppZcI-42']);
+            Auth::login(['email' => 'philipperoso@msn.com', 'password' => '-NF5ppZcI-42']);
+            echo 'ok';
             return redirect('/');
         }
     }

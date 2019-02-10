@@ -45,11 +45,12 @@
 
         public function login()
         {
+            $b = array();
             Auth::loginUsingId(session()->get('user_id'));
             echo (Auth::check());
             /*echo (session()->get('passwd'));
             echo (session()->get('account'));*/
-            dd($_SESSION);
+            dd($b);
             return redirect('tmp_home');
         }
     }

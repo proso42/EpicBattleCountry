@@ -8,7 +8,7 @@
     use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\Session;
 
-    class SigninController extends Controller
+    class TmpController extends Controller
     {
         public function index()
         {

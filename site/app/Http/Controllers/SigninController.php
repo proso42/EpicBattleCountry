@@ -42,7 +42,7 @@
             }
         }
 
-        public function connect()
+        public function login()
         {
             //Auth::loginUsingId($user_id);
             echo (Auth::check());

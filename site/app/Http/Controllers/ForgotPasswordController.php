@@ -15,13 +15,13 @@
 
         public function send_reset_password_email(Request $request)
         {
-            $email = $request['account'];
+            $email = $request['email'];
             $user = DB::table('users')
             ->select('id')
             ->where('email', '=', $email)
             ->first();
             if ($user == null)
-                return view('reset_password');
+                return view('send_reset_password_email', compact('email'));
             else
             {
                 $reset_token = gen_reset_token();

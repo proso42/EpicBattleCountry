@@ -9,8 +9,14 @@
     </head>
     <body>
         <div class="center-rect" style="margin-top: 270px">
-            En construction
-            <br/>
+            <h2>Mot de passe oublié</h2>
+            <form method="POST" action="/reset_password" id="reset_form">
+                <input id="email" type="text" class="signin-input" placeholder="Email" required>
+                <div id="reset-button">
+                    <input type="submit" class="signin-button" value="Réinitialiser">
+                </div>
+                {{csrf_field()}}            
+            </form>
             <button class="return-button" onclick="window.location.href='/signin'">Retour</button>
         </div>
     </body>

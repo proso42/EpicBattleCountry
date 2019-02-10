@@ -18,9 +18,9 @@
             </div>
             <form method="POST" action="/login" id="signin_form">
                 <input id="account" type="text" class="signin-input" placeholder="Login ou email" required>
-                </br>
+                <br/>
                 <input id="password" type="password" class="signin-input" placeholder="Mot de passe" required>
-                </br>
+                <br/>
                 <div id="connexion">
                     <input type="submit" class="signin-button" value="Se connecter">
                 </div>
@@ -30,7 +30,6 @@
                 <hr class="signin-footer"/>
                 <div id="forgot" class="signin-forgot">
                     <a href="/forgot_password" class="signin-forgot-link">Mot de passe oublié ?</a>
-                    <!--<p class="signin-forgot-link" style="width:132px;">Mot de passe oublié ?</p> -->
                 </div>
                 <div id="link_no_account" class="signin-forgot">
                     <a href="/signup" class="signin-forgot-link">Pas encore de compte ?</a>

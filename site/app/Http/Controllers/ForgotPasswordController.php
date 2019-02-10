@@ -12,6 +12,48 @@
         {
             return view('forgot_password');
         }
+
+        public function send_reset_password_email(Request $request)
+        {
+            $email = $request['account'];
+            $user = DB::table('users')
+            ->select('id')
+            ->where('email', '=', $email)
+            ->first();
+            if ($user == null)
+                return view('reset_password');
+            else
+            {
+                $reset_token = gen_reset_token();
+                $link = "http://www.epicbattlecorp.fr/set_new_password?user_email=" . $email . "&reset_token=" . $reset_token;
+                DB::table('send_reset_password_email')
+                ->insert(['user_id' => $user->id, 'user_email' => $email, 'reset_token' => $reset_token, 'status' => 'Waiting']);
+                $cmd = "cd /home/boss/www/scripts ; node ./send_reset_password_email.js " . $email  . " \"" . $link . "\"";
+                exec($cmd);
+                return view('send_reset_password_email');
+            }
+        }
+
+        private function gen_reset_token()
+        {
+            $reset_token = "";
+            for ($i = 0; $i < 48; $i++)
+            {
+                $rdm1 = rand(0,4);
+                if ($rdm1 == 0)
+                    $reset_token .= chr(rand(48,57));
+                else if ($rdm1 == 1)
+                    $reset_token .= chr(rand(65,90));
+                else if ($rdm == 2)
+                    $reset_token .= chr(rand(97,122));
+                else if ($rdm == 3)
+                    $reset_token .= chr(rand(33,37));
+                else
+                    $reset_token .= chr(rand(39,46));
+                
+            }
+            return $reset_token;
+        }
     }
 
 ?>

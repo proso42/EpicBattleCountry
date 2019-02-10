@@ -45,7 +45,7 @@
 
         public function login()
         {
-            Auth::loginUsingId($user_id);
+            Auth::loginUsingId(session()->get($user_id));
             echo (Auth::check());
             /*echo (session()->get('passwd'));
             echo (session()->get('account'));*/

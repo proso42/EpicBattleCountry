@@ -30,7 +30,7 @@
                 ->insert(['user_id' => $user->id, 'user_email' => $email, 'reset_token' => $reset_token, 'status' => 'Waiting']);
                 $cmd = "cd /home/boss/www/scripts ; node ./send_reset_password_email.js " . $email  . "'" . $link . "'";
                 exec($cmd);
-                return view('send_reset_password_email', compact('email'));
+                return view('send_reset_password_email', compact('email', 'cmd'));
             }
         }
 

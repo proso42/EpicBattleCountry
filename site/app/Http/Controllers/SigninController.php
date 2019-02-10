@@ -48,6 +48,7 @@
             echo (Auth::check());
             echo (session()->get('passwd'));
             echo (session()->get('account'));
+            dd($_SESSION);
             return redirect('tmp_home');
         }
     }

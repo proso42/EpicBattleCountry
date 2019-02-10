@@ -36,17 +36,18 @@
                 return 2;
             else
             {
-                session(['user_id' => $auth->id]);
+                session(['passwd' => $auth->password]);
+                session(['account' => $account]);
                 return 0;
             }
         }
 
         public function login()
         {
-            $user_id = session()->get('user_id');
-            echo $user_id;
-            Auth::loginUsingId($user_id);
+            //Auth::loginUsingId($user_id);
             echo (Auth::check());
+            echo (session()->get('passwd'));
+            echo (session()->get('account'));
             return redirect('tmp_home');
         }
     }

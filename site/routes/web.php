@@ -33,6 +33,8 @@ Route::group(['middleware' => 'guest'], function(){
     Route::post('/login', 'SigninController@login');
     Route::get('/forgot_password', 'ForgotPasswordController@index');
     Route::post('/send_reset_password_email', 'ForgotPasswordController@send_reset_password_email');
+    Route::get('/reset_password', 'ForgotPasswordController@reset');
+    Route::post('set_password', 'ResetPasswordController@set');
 });
 
 

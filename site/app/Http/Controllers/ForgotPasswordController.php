@@ -25,12 +25,12 @@
             else
             {
                 $reset_token = gen_reset_token();
-                $link = "http://www.epicbattlecorp.fr/set_new_password?user_email=" . $email . "&reset_token=" . $reset_token;
+                $link = "http://www.epicbattlecorp.fr/reset_password?user_email=" . $email . "&reset_token=" . $reset_token;
                 DB::table('send_reset_password_email')
                 ->insert(['user_id' => $user->id, 'user_email' => $email, 'reset_token' => $reset_token, 'status' => 'Waiting']);
                 $cmd = "cd /home/boss/www/scripts ; node ./send_reset_password_email.js " . $email  . " \"" . $link . "\"";
                 exec($cmd);
-                return view('send_reset_password_email');
+                return view('send_reset_password_email', compact('email'));
             }
         }
 
@@ -50,7 +50,6 @@
                     $reset_token .= chr(rand(33,37));
                 else
                     $reset_token .= chr(rand(39,46));
-                
             }
             return $reset_token;
         }

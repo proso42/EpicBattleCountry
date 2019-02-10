@@ -10,14 +10,28 @@
     <body>
         <div class="center-rect" style="margin-top: 270px">
             <h2>Mot de passe oublié</h2>
-            <form method="POST" action="/reset_password" id="reset_form">
+            <form method="POST" action="/send_reset_password_email" id="send_reset_password_email_form">
                 <input id="email" type="text" class="signin-input" placeholder="Email" required>
                 <div id="reset-button">
-                    <input type="submit" class="signin-button" value="Réinitialiser">
+                    <input type="submit" class="signin-button" value="Confirmer">
                 </div>
                 {{csrf_field()}}            
             </form>
-            <button class="return-button" onclick="window.location.href='/signin'">Retour</button>
         </div>
+        <script>
+            var f = document.getElementById('send_reset_password_email_form');
+            f.addEventListener('submit', function(e)
+            {
+                e.preventDefault();
+                var btn = document.getElementById('fuck');
+                btn.disabled = true;
+                btn.style.display = 'none';
+                var spin = document.getElementById('spin');
+                spin.style.display = '';
+                setTimeout(() =>{
+                    document.getElementById('send_reset_password_email_form').submit();
+                }, 1500);
+            });
+        </script>
     </body>
 </html>

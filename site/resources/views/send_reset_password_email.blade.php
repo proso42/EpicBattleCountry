@@ -9,7 +9,7 @@
     </head>
     <body>
         <div class="center-rect" style="margin-top: 270px">
-            Un email de réinisilisation de mot de passe a été envoyé à {{ $email }} ! Cmd : {{ $cmd }}
+            Un email de réinisilisation de mot de passe a été envoyé à {{ $email }} !
             <br/>
             <button class="return-button" onclick="window.location.href='/signin'">Retour</button>
         </div>

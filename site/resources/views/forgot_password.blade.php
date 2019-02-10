@@ -18,6 +18,7 @@
                 <div>
                     <input id="reset-button" type="submit" class="signin-button" value="Confirmer">
                 </div>
+                <br/>
                 {{csrf_field()}}            
             </form>
         </div>

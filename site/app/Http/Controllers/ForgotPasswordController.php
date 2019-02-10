@@ -47,9 +47,9 @@
                 else if ($rdm1 == 2)
                     $reset_token .= chr(rand(97,122));
                 else if ($rdm1 == 3)
-                    $reset_token .= chr(rand(33,37));
+                    $reset_token .= chr(rand(35,36));
                 else
-                    $reset_token .= chr(rand(39,46));
+                    $reset_token .= chr(rand(40,46));
             }
             return $reset_token;
         }

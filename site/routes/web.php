@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/tmp_home', 'TmpController@index');
+
 Route::get('/validate_email', 'ValidateEmailController@index');
 
 Route::group(['middleware' => 'guest'], function(){

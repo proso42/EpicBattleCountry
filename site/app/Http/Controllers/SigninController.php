@@ -6,6 +6,7 @@
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\DB;
     use Illuminate\Support\Facades\Auth;
+    use Illuminate\Support\Facades\Session;
 
     class SigninController extends Controller
     {
@@ -19,13 +20,13 @@
             $account = $_GET['account'];
             $password = $_GET['password'];
             $auth = DB::table('users')
-            ->select('email_verified_at', 'password')
+            ->select('id', 'email_verified_at', 'password')
             ->where('login', '=', $account)
             ->first();
             if ($auth == null)
             {
                 $auth = DB::table('users')
-                ->select('email_verified_at', 'password')
+                ->select('id', 'email_verified_at', 'password')
                 ->where('email', '=', $account)
                 ->first();
             }
@@ -34,14 +35,19 @@
             else if ($auth->email_verified_at == null)
                 return 2;
             else
+            {
+                session(['user_id' => $auth->id]);
                 return 0;
+            }
         }
 
         public function login()
         {
-            Auth::login(['email' => 'philipperoso@msn.com', 'password' => '-NF5ppZcI-42']);
-            echo 'ok';
-            return redirect('/');
+            $user_id = session()->get('user_id');
+            echo $user_id;
+            Auth::loginUsingId($user_id);
+            echo (Auth::check());
+            return redirect('tmp_home');
         }
     }
 

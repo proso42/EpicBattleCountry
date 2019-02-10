@@ -16,6 +16,7 @@ body
     border-radius: 4px;
     border: solid 1px lightblue;
     border-bottom: 0px;
+    margin-left: 1px;
 }
 
 .menu-left:hover

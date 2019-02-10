@@ -14,7 +14,7 @@
                 <div id="err_password" class="col-lg-6 col-md-6 col-sm-8 col-8 signup-err-password" style="display: none">
                     <p>Les deux mots de passe ne sont pas identiques !</p>
                 </div>
-                <input id="user_id" type="hidden" value="{{ $user_id }}"> 
+                <input id="user_id" name="user_id" type="hidden" value="{{ $user_id }}"> 
                 <!--<input id="password" name="password" class="signup-input" placeholder="Mot de passe *" type="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[\da-zA-Z!-/:-@[-`{-~]{12,20}$" required>
                 <br/>
                 <input id="password2" name="password2" class="signup-input" placeholder="Confirmer mot de passe *" type="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[\da-zA-Z!-/:-@[-`{-~]{12,20}$" required> -->

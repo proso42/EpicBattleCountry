@@ -8,11 +8,11 @@
     use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\Session;
 
-    class TmpController extends Controller
+    class HomeController extends Controller
     {
         public function index()
         {
-            return view('tmp_home');
+            return view('home');
         }
     }
 

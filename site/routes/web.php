@@ -37,8 +37,8 @@ Route::group(['middleware' => 'guest'], function(){
 
 // LOGGED ROUTES
 Route::group(['middleware' => 'logged'], function(){
-    Route::get('logout', 'LogoutController@logout');
-    Route::get('/tmp_home', 'TmpController@index');
+    Route::get('/logout', 'LogoutController@logout');
+    Route::get('/home', 'HomeController@index');
 });
 
 

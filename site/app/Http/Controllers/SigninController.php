@@ -44,7 +44,7 @@
         public function login()
         {
             Auth::loginUsingId(session()->get('user_id'));
-            return redirect('tmp_home');
+            return redirect('/home');
         }
     }
 

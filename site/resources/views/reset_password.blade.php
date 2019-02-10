@@ -15,14 +15,19 @@
                     <p>Les deux mots de passe ne sont pas identiques !</p>
                 </div>
                 <input id="user_id" type="hidden" value="{{ $user_id }}"> 
-                <input id="password" name="password" class="signup-input" placeholder="Mot de passe *" type="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[\da-zA-Z!-/:-@[-`{-~]{12,20}$" required>
+                <!--<input id="password" name="password" class="signup-input" placeholder="Mot de passe *" type="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[\da-zA-Z!-/:-@[-`{-~]{12,20}$" required>
                 <br/>
-                <input id="password2" name="password2" class="signup-input" placeholder="Confirmer mot de passe *" type="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[\da-zA-Z!-/:-@[-`{-~]{12,20}$" required>
+                <input id="password2" name="password2" class="signup-input" placeholder="Confirmer mot de passe *" type="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[\da-zA-Z!-/:-@[-`{-~]{12,20}$" required> -->
+                <input id="password" name="password" class="signup-input" placeholder="Mot de passe *" type="password" required>
+                <br/>
+                <input id="password2" name="password2" class="signup-input" placeholder="Confirmer mot de passe *" type="password" required>
                 {{csrf_field()}}
+                <br/>
                 <div id="spin" style="display: none;">
                     <img class="signin-spin" src="images/loader.gif">
                 </div>
                 <input id="reset-button" class="signup-button" type="submit" value="Réinitialiser">
+                <br/>
             </form>
         </div>
         <script>

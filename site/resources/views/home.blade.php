@@ -44,11 +44,11 @@
                     </div>
             </div>-->
         </div>
-        <div>
-            <div style="margin-top: 50px;">
-                <div class="row menu-left" onclick="document.location.href='file:///C:/Users/Propri%C3%A9taire/test/site/home.html'">
+        <div class="row">
+            <div class="col-lg-2 col-md-2" style="margin-top: 50px;">
+                <div class="row menu-left">
                     <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-home icon"></i></div>
-                    <div class="col-lg-3 col-md-3 col-sm-1 col-3">Acceuil</div>
+                    <div onclick="document.location.href='/home'" class="col-lg-3 col-md-3 col-sm-1 col-3">Acceuil</div>
                 </div>
                 <div class="row menu-left">
                     <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-hammer icon"></i></div>
@@ -106,6 +106,8 @@
                     <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-sign-out-alt icon"></i></div>
                     <div onclick="document.location.href='/logout'" class="col-lg-3 col-md-3 col-sm-10 col-10">Déconnexion</div>
                 </div>
+            </div>
+            <div class="col-lg-9 col-md-4 center-win" style="margin-top: 50px;">
             </div>
         </div>
     </body>

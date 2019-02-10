@@ -31,10 +31,10 @@
 
         public function set(Request $request)
         {
-            if (!isset($request['password1']) || !isset($request['password2']) || !isset($request['user_id']))
+            if (!isset($request['password']) || !isset($request['password2']) || !isset($request['user_id']))
                 return 1;
             $user_id = $request['user_id'];
-            $new_password = $request['password1'];
+            $new_password = $request['password'];
             $confirm_new_password = $request['password2'];
             if ($new_password !== $confirm_new_password)
                 return 2;

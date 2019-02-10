@@ -46,7 +46,7 @@
             ->where('user_id', '=', $user_id)
             ->where('status', '=', 'Waiting')
             ->delete();
-            return redirect('reset_password_success');
+            return view('reset_password_success');
         }
     }
 

@@ -50,7 +50,7 @@
             $login = $request['login'];
             $user_id = DB::table('users')
             ->insertGetId(
-                array('login' => $login, 'email' => $email, 'password' => $crypted_password, 'token' => $request['_token'], 'created_at' => time(), 'race' => $id_race->id)
+                array('login' => $login, 'email' => $email, 'password' => $crypted_password, 'remember_token' => $request['_token'], 'created_at' => time(), 'race' => $id_race->id)
             );
             $link = $this->gen_confirmation_email_link();
             $email_token = explode('=', $link)[1];

@@ -24,7 +24,7 @@
                 return view('send_reset_password_email', compact('email'));
             else
             {
-                $reset_token = gen_reset_token();
+                $reset_token = $this->gen_reset_token();
                 $link = "http://www.epicbattlecorp.fr/reset_password?user_email=" . $email . "&reset_token=" . $reset_token;
                 DB::table('reseting_password')
                 ->insert(['user_id' => $user->id, 'user_email' => $email, 'reset_token' => $reset_token, 'status' => 'Waiting']);

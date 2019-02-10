@@ -19,6 +19,8 @@ Route::get('/tmp_home', 'TmpController@index');
 
 Route::get('/validate_email', 'ValidateEmailController@index');
 
+Route::get('logout', 'LogoutController@logout');
+
 Route::group(['middleware' => 'guest'], function(){
     Route::get('/signup', 'SignupController@index');
     Route::get('/check_infos', 'SignupController@check_infos');

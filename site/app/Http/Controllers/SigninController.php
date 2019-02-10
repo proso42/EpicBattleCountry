@@ -37,20 +37,13 @@
             else
             {
                 session(['user_id' => $auth->id]);
-                /*session(['passwd' => $auth->password]);
-                session(['account' => $account]);*/
                 return 0;
             }
         }
 
         public function login()
         {
-            $b = array();
             Auth::loginUsingId(session()->get('user_id'));
-            echo (Auth::check());
-            /*echo (session()->get('passwd'));
-            echo (session()->get('account'));*/
-            dd($b);
             return redirect('tmp_home');
         }
     }

@@ -8,12 +8,12 @@
     use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\Session;
 
-    class TmpController extends Controller
+    class LogoutController extends Controller
     {
-        public function index()
+        public function logout()
         {
-            echo Auth::check();
-            return view('tmp_home');
+            Auth::logout();
+            return redirect('/signin');
         }
     }
 

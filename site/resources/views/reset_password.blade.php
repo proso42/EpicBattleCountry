@@ -26,8 +26,7 @@
                 <div id="spin" style="display: none;">
                     <img class="signin-spin" src="images/loader.gif">
                 </div>
-                <input id="reset-button" class="signup-button" type="submit" value="Réinitialiser">
-                <br/>
+                <input id="reset-button" class="signup-button" style="margin-bottom: 15px;" type="submit" value="Réinitialiser">
             </form>
         </div>
         <script>

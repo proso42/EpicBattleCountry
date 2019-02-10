@@ -12,6 +12,9 @@
             <h2>Mot de passe oublié</h2>
             <form method="POST" action="/send_reset_password_email" id="send_reset_password_email_form">
                 <input id="email" type="text" class="signin-input" placeholder="Email" required>
+                <div id="spin" style="display: none;">
+                    <img class="signin-spin" src="images/loader.gif">
+                </div>
                 <div id="reset-button">
                     <input type="submit" class="signin-button" value="Confirmer">
                 </div>

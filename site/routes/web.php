@@ -11,16 +11,19 @@
 |
 */
 
+// TEST ROUTES
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/tmp_home', 'TmpController@index');
+
+// ANYONE ROUTES
 
 Route::get('/validate_email', 'ValidateEmailController@index');
 
-Route::get('logout', 'LogoutController@logout');
 
+// GUEST ROUTES
 Route::group(['middleware' => 'guest'], function(){
     Route::get('/signup', 'SignupController@index');
     Route::get('/check_infos', 'SignupController@check_infos');
@@ -30,3 +33,12 @@ Route::group(['middleware' => 'guest'], function(){
     Route::post('/login', 'SigninController@login');
     Route::get('/forgot_password', 'ForgotPasswordController@index');
 });
+
+
+// LOGGED ROUTES
+Route::group(['middleware' => 'logged'], function(){
+    Route::get('logout', 'LogoutController@logout');
+    Route::get('/tmp_home', 'TmpController@index');
+});
+
+

@@ -12,7 +12,6 @@
     {
         public function index()
         {
-            echo Auth::check();
             return view('tmp_home');
         }
     }

@@ -16,7 +16,7 @@
             <div id="email_not_validated" class="signin-err-connexion" style="display: none;">
                 <p>Vous devez valider votre email avant de vous connecter</p>
             </div>
-            <form method="POST" action="/login" id="signin_form">
+            <form method="POST" action="/connect_user" id="signin_form">
                 <input id="account" type="text" class="signin-input" placeholder="Login ou email" required>
                 </br>
                 <input id="password" type="password" class="signin-input" placeholder="Mot de passe" required>
@@ -35,6 +35,7 @@
                 <div id="link_no_account" class="signin-forgot">
                     <a href="/signup" class="signin-forgot-link">Pas encore de compte ?</a>
                 </div>
+                {{csrf_field()}}
             </form>
         </div>
         <div id="second" class="signin-rect-lg">

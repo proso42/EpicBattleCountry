@@ -39,17 +39,13 @@
             $reset_token = "";
             for ($i = 0; $i < 48; $i++)
             {
-                $rdm1 = rand(0,4);
+                $rdm1 = rand(0,2);
                 if ($rdm1 == 0)
                     $reset_token .= chr(rand(48,57));
                 else if ($rdm1 == 1)
                     $reset_token .= chr(rand(65,90));
-                else if ($rdm1 == 2)
-                    $reset_token .= chr(rand(97,122));
-                else if ($rdm1 == 3)
-                    $reset_token .= chr(rand(35,37));
                 else
-                    $reset_token .= chr(rand(40,46));
+                    $reset_token .= chr(rand(97,122));
             }
             return $reset_token;
         }

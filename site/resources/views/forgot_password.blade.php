@@ -15,8 +15,8 @@
                 <div id="spin" style="display: none;">
                     <img class="signin-spin" src="images/loader.gif">
                 </div>
-                <div id="reset-button">
-                    <input type="submit" class="signin-button" value="Confirmer">
+                <div>
+                    <input id="reset-button" type="submit" class="signin-button" value="Confirmer">
                 </div>
                 {{csrf_field()}}            
             </form>
@@ -26,7 +26,7 @@
             f.addEventListener('submit', function(e)
             {
                 e.preventDefault();
-                var btn = document.getElementById('fuck');
+                var btn = document.getElementById('reset-button');
                 btn.disabled = true;
                 btn.style.display = 'none';
                 var spin = document.getElementById('spin');

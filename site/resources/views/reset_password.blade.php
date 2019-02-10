@@ -30,7 +30,7 @@
             f.addEventListener('submit', function(e)
             {
                 e.preventDefault();
-                var btn = document.getElementById('fuck');
+                var btn = document.getElementById('reset-button');
                 btn.disabled = true;
                 btn.style.display = 'none';
                 var spin = document.getElementById('spin');

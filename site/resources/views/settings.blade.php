@@ -113,7 +113,7 @@
                     <p>Ce login est déjà utilisé !</p>
                 </div>
                 <div>
-                    <span style="margin-right: 20px;">Psuedo : {{ $user_login }}</span><input id="new_login" name="new_login" class="settings-input" placeholder="Nouveau pseudo" type="text" pattern="[a-zA-Z]{3,20}" required>{{csrf_field()}}<img id="spin_login" class="settings-spin" style="display: none" src="images/loader.gif"><input onclick="reset_login()" id="change_login_button" class="settings-button" type="button" value="Modifier">
+                    <span style="margin-right: 20px;">Psuedo : {{ $user_login }}</span><input id="new_login" name="new_login" class="settings-input" placeholder="Nouveau pseudo" type="text" pattern="[a-zA-Z]{3,20}" required><input id="_token" name="_token" type="hidden" value="{{ csrf_token() }}"> <img id="spin_login" class="settings-spin" style="display: none" src="images/loader.gif"><input onclick="reset_login()" id="change_login_button" class="settings-button" type="button" value="Modifier">
                 </div>
             </div>
         </div>
@@ -126,12 +126,14 @@
                 var spin = document.getElementById('spin_login');
                 spin.style.display = '';
                 var new_login = document.getElementById('new_login').value;
+                var _token = document.getElementById('_token').value;
                 var xhr = new XMLHttpRequest();
                 xhr.open('POST', 'http://www.epicbattlecorp.fr/reset_login');
                 xhr.onreadystatechange =  function(){
                     console.log('onreadystatechange')
                     if (xhr.readyState === 4 && xhr.status === 200)
                     {
+                        console.log('')
                         if (xhr.responseText == 1)
                         {
                             btn.disabled = false;
@@ -146,7 +148,7 @@
                     }
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                xhr.send('new_login=' + new_login);
+                xhr.send('new_login=' + new_login + '&_token=' + _token);
             }
         </script>
     </body>

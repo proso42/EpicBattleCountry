@@ -107,7 +107,7 @@
                     <div class="col-lg-3 col-md-3 col-sm-10 col-10">Déconnexion</div>
                 </div>
             </div>
-            <div class="col-lg-9 col-md-4 center-win" style="margin-top: 50px;">
+            <div class="col-lg-9 col-md-4 center-win">
                 <h2>Profile</h2>
                 <form id="change_login_form" method="POST" action="/reset_login">
                         <span style="margin-right: 20px;">Psuedo : {{ $user_login }}</span><input id="new_login" name="new_login" class="settings-input" placeholder="Nouveau pseudo" type="text" pattern="[a-zA-Z]{3,20}" required>{{csrf_field()}}<div id="spin_login" style="display: none;"><img class="signin-spin" src="images/loader.gif"></div><input id="change_login_button" class="settings-button" type="submit" value="Modifier">

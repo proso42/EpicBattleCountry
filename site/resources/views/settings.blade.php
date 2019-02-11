@@ -108,7 +108,24 @@
                 </div>
             </div>
             <div class="col-lg-9 col-md-4 center-win" style="margin-top: 50px;">
+                <h2>Profile</h2>
+                <form id="change_login_form" method="POST" action="/reset_login">
+                        <span style="margin-right: 20px;">Psuedo : {{ $login }}</span><input id="new_login" name="new_login" class="settings-input" placeholder="Nouveau pseudo" type="text" pattern="[a-zA-Z]{3,20}" required>{{csrf_field()}}<div id="spin_login" style="display: none;"><img class="signin-spin" src="images/loader.gif"></div><input id="change_login_button" class="settings-button" type="submit" value="Modifier">
+                </form>
             </div>
         </div>
+        <script>
+            var f = document.getElementById('change_login_form');
+            f.addEventListener('submit', function(e){
+                e.preventDefault();
+                var btn = document.getElementById('change_login_button');
+                btn.disabled = true;
+                btn.style.display = 'none';
+                var spin = document.getElementById('spin_login');
+                spin.style.display = '';
+                var ret_form = document.getElementById('change_login_form').submit();
+                console.log(ret_form);
+            });
+        </script>
     </body>
 </html>

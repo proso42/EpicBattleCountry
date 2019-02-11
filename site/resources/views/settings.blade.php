@@ -113,7 +113,7 @@
                     <p>Ce login est déjà utilisé !</p>
                 </div>
                 <div>
-                    <span style="margin-right: 20px;">Psuedo : {{ $user_login }}</span><input id="new_login" name="new_login" class="settings-input" placeholder="Nouveau pseudo" type="text" pattern="[a-zA-Z]{3,20}" required>{{csrf_field()}}<div id="spin_login" style="display: none;"><img class="signin-spin" src="images/loader.gif"></div><input onclick="reset_login()" id="change_login_button" class="settings-button" type="button" value="Modifier">
+                    <span style="margin-right: 20px;">Psuedo : {{ $user_login }}</span><input id="new_login" name="new_login" class="settings-input" placeholder="Nouveau pseudo" type="text" pattern="[a-zA-Z]{3,20}" required>{{csrf_field()}}<img id="spin_login" class="signin-spin" src="images/loader.gif"><input onclick="reset_login()" id="change_login_button" class="settings-button" type="button" value="Modifier">
                 </div>
             </div>
         </div>
@@ -126,6 +126,7 @@
                 var spin = document.getElementById('spin_login');
                 spin.style.display = '';
                 var new_login = document.getElementById('new_login').value;
+                var xhr = new XMLHttpRequest();
                 xhr.open('POST', 'http://epicbattlecorp.fr/reset_login');
                 xhr.onreadystatechange =  function(){
                     console.log('onreadystatechange')

@@ -417,8 +417,8 @@ input::placeholder
 
 .settings-update-success
 {
-    color: rgb(29, 238, 10);
-    background-color: rgb(145, 199, 140);
+    color: #155d26;
+    background-color: rgb(165, 228, 160);
     border: 1px solid black;
     border-radius: 4px;
     padding-top: 10px;

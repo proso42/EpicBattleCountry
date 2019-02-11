@@ -149,7 +149,7 @@
                         }
                         else
                         {
-                            document.getElementById('current_login').textContent = new_login;
+                            document.getElementById('current_login').textContent = 'Pseudo : ' + new_login;
                             document.getElementById('login_updated').style.display = '';
                             setTimeout(() =>{
                                 document.getElementById("login_updated").style.display = 'none';

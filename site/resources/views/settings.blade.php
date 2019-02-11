@@ -109,11 +109,14 @@
             </div>
             <div class="col-lg-9 col-md-4 center-win">
                 <h2>Profile</h2>
-                <div id="err_login" class="col-lg-6 col-md-6 col-sm-8 col-8 signup-err-password" style="display: none">
+                <div id="err_login" class="signup-err-password" style="display: none">
                     <p>Ce login est déjà utilisé !</p>
                 </div>
+                <div id="login_updated" class="settings-update-success" style="display: none">
+                    <p>Votre login a été modifié avec succès ! </p>
+                </div>
                 <div>
-                    <span style="margin-right: 20px;">Psuedo : {{ $user_login }}</span><input id="new_login" name="new_login" class="settings-input" placeholder="Nouveau pseudo" type="text" pattern="[a-zA-Z]{3,20}" required><input id="_token" name="_token" type="hidden" value="{{ csrf_token() }}"> <img id="spin_login" class="settings-spin" style="display: none" src="images/loader.gif"><input onclick="reset_login()" id="change_login_button" class="settings-button" type="button" value="Modifier">
+                    <span id="current_login" name="current_login" style="margin-right: 20px;">Psuedo : {{ $user_login }}</span><input id="new_login" name="new_login" class="settings-input" placeholder="Nouveau pseudo" type="text" pattern="[a-zA-Z]{3,20}" required><input id="_token" name="_token" type="hidden" value="{{ csrf_token() }}"> <img id="spin_login" class="settings-spin" style="display: none" src="images/loader.gif"><input onclick="reset_login()" id="change_login_button" class="settings-button" type="button" value="Modifier">
                 </div>
             </div>
         </div>
@@ -133,17 +136,25 @@
                     console.log('onreadystatechange')
                     if (xhr.readyState === 4 && xhr.status === 200)
                     {
-                        console.log('')
+                        btn.disabled = false;
+                        btn.style.display = '';
+                        spin.style.display = 'none';
                         if (xhr.responseText == 1)
                         {
-                            btn.disabled = false;
-                            btn.style.display = '';
-                            spin.style.display = 'none';
                             document.getElementById('err_login').style.display = '';
                             setTimeout(() =>{
                                 document.getElementById("err_login").style.display = 'none';
-                                }, 5000);
-                                return false;
+                            }, 5000);
+                            return false;
+                        }
+                        else
+                        {
+                            document.getElementById('current_login').textContent = new_login;
+                            document.getElementById('login_updated').style.display = '';
+                            setTimeout(() =>{
+                                document.getElementById("login_updated").style.display = 'none';
+                            }, 5000);
+                            return true;
                         }
                     }
                 }

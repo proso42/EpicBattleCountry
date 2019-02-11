@@ -34,7 +34,7 @@
                 DB::table('users')
                 ->where('id', '=', session()->get('user_id'))
                 ->update(['login' => $new_login]);
-                return ($new_login);
+                return (0);
             }
             return (1);
         }

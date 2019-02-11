@@ -109,23 +109,44 @@
             </div>
             <div class="col-lg-9 col-md-4 center-win">
                 <h2>Profile</h2>
-                <form id="change_login_form" method="POST" action="/reset_login">
-                        <span style="margin-right: 20px;">Psuedo : {{ $user_login }}</span><input id="new_login" name="new_login" class="settings-input" placeholder="Nouveau pseudo" type="text" pattern="[a-zA-Z]{3,20}" required>{{csrf_field()}}<div id="spin_login" style="display: none;"><img class="signin-spin" src="images/loader.gif"></div><input id="change_login_button" class="settings-button" type="submit" value="Modifier">
-                </form>
+                <div id="err_login" class="col-lg-6 col-md-6 col-sm-8 col-8 signup-err-password" style="display: none">
+                    <p>Ce login est déjà utilisé !</p>
+                </div>
+                <div>
+                    <span style="margin-right: 20px;">Psuedo : {{ $user_login }}</span><input id="new_login" name="new_login" class="settings-input" placeholder="Nouveau pseudo" type="text" pattern="[a-zA-Z]{3,20}" required>{{csrf_field()}}<div id="spin_login" style="display: none;"><img class="signin-spin" src="images/loader.gif"></div><input onclick="reset_login()" id="change_login_button" class="settings-button" type="button" value="Modifier">
+                </div>
             </div>
         </div>
         <script>
-            var f = document.getElementById('change_login_form');
-            f.addEventListener('submit', function(e){
-                e.preventDefault();
+            function reset_login()
+            {
                 var btn = document.getElementById('change_login_button');
                 btn.disabled = true;
                 btn.style.display = 'none';
                 var spin = document.getElementById('spin_login');
                 spin.style.display = '';
-                var ret_form = document.getElementById('change_login_form').submit();
-                console.log(ret_form);
-            });
+                var new_login = document.getElementById('new_login').value;
+                xhr.open('POST', 'http://epicbattlecorp.fr/reset_login');
+                xhr.onreadystatechange =  function(){
+                    console.log('onreadystatechange')
+                    if (xhr.readyState === 4 && xhr.status === 200)
+                    {
+                        if (xhr.responseText == 1)
+                        {
+                            btn.disabled = false;
+                            btn.style.display = '';
+                            spin.style.display = 'none';
+                            document.getElementById('err_login').style.display = '';
+                            setTimeout(() =>{
+                                document.getElementById("err_login").style.display = 'none';
+                                }, 5000);
+                                return false;
+                        }
+                    }
+                }
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.send('new_login=' + new_login);
+            }
         </script>
     </body>
 </html>

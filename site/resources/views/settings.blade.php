@@ -113,7 +113,7 @@
                     <p>Ce login est déjà utilisé !</p>
                 </div>
                 <div>
-                    <span style="margin-right: 20px;">Psuedo : {{ $user_login }}</span><input id="new_login" name="new_login" class="settings-input" placeholder="Nouveau pseudo" type="text" pattern="[a-zA-Z]{3,20}" required>{{csrf_field()}}<img id="spin_login" class="signin-spin" src="images/loader.gif"><input onclick="reset_login()" id="change_login_button" class="settings-button" type="button" value="Modifier">
+                    <span style="margin-right: 20px;">Psuedo : {{ $user_login }}</span><input id="new_login" name="new_login" class="settings-input" placeholder="Nouveau pseudo" type="text" pattern="[a-zA-Z]{3,20}" required>{{csrf_field()}}<img id="spin_login" class="signin-spin" style="display: none" src="images/loader.gif"><input onclick="reset_login()" id="change_login_button" class="settings-button" type="button" value="Modifier">
                 </div>
             </div>
         </div>

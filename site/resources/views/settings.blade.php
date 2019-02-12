@@ -120,12 +120,12 @@
                 <div id="email_updated" class="settings-update-success" style="display: none">
                     <p>Un email de confirmation a été envoyé à votre nouvelle adresse email !</p>
                 </div>
-                <div style="text-align: left">
-                    <div>
-                        <span id="current_login" name="current_login" style="margin-right: 20px;">Psuedo : {{ $user_login }}</span><input id="new_login" name="new_login" class="settings-input" placeholder="Nouveau pseudo" type="text" pattern="[a-zA-Z]{3,20}"><input id="_token" name="_token" type="hidden" value="{{ csrf_token() }}"> <img id="spin_login" class="settings-spin" style="display: none" src="images/loader.gif"><input onclick="reset_login()" id="change_login_button" class="settings-button" type="button" value="Modifier">
+                <div>
+                    <div class="row">
+                        <span class="col-lg-1" id="current_login" name="current_login" style="margin-right: 20px;">Psuedo : {{ $user_login }}</span><input id="new_login" name="new_login" class="settings-input col-lg-1" placeholder="Nouveau pseudo" type="text" pattern="[a-zA-Z]{3,20}"><input id="_token" name="_token" type="hidden" value="{{ csrf_token() }}"> <img id="spin_login" class="settings-spin col-lg-1" style="display: none" src="images/loader.gif"><input onclick="reset_login()" id="change_login_button" class="settings-button col-lg-1" style="margin-top: 4px;" type="button" value="Modifier">
                     </div>
                     <div>
-                        <span id="current_email" name="current_email" style="margin-right: 20px;">Email : {{ $user_email }}</span><input id="new_email" name="new_email" class="settings-input" placeholder="Nouvel email" type="text"><input id="_token2" name="_token2" type="hidden" value="{{ csrf_token() }}"> <img id="spin_email" class="settings-spin" style="display: none" src="images/loader.gif"><input onclick="reset_email()" id="change_email_button" class="settings-button" type="button" value="Modifier">
+                        <span class="col-lg-1" id="current_email" name="current_email" style="margin-right: 20px;">Email : {{ $user_email }}</span><input id="new_email" name="new_email" class="settings-input col-lg-1" placeholder="Nouvel email" type="text"><input id="_token2" name="_token2" type="hidden" value="{{ csrf_token() }}"> <img id="spin_email" class="settings-spin col-lg-1" style="display: none" src="images/loader.gif"><input onclick="reset_email()" id="change_email_button" class="settings-button col-lg-1" type="button" value="Modifier">
                     </div>
                 </div>
             </div>

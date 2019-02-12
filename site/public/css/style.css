@@ -390,7 +390,7 @@ input::placeholder
 
 .settings-button
 {
-    margin-top: 26px;
+    margin-top: 0px;
     line-height: 0;
     background-color: aquamarine;
     color: black;

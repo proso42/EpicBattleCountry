@@ -44,11 +44,11 @@
             $new_email = $request['new_email'];
             $existing_email = DB::table('users')
             ->select('id')
-            ->where('email', '=', $new_login)
+            ->where('email', '=', $new_email)
             ->first();
             if ($existing_email == null)
             {
-                $email_token = $this->gen_confirmation_email_link();
+                $email_token = $this->gen_confirmation_email_token();
                 $link = "http://www.epicbattlecorp.fr/validate_email?token=" . $email_token;
                 DB::table('email_validation')
                 ->insert(

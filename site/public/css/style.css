@@ -378,6 +378,7 @@ input::placeholder
 .settings-input
 {
     margin-top: 25px;
+    padding: 0px;
     margin-right: 20px;
     background-color: tan;
     color: black;
@@ -391,6 +392,7 @@ input::placeholder
 .settings-button
 {
     margin-top: 0px;
+    padding: 0px;
     line-height: 0;
     background-color: aquamarine;
     color: black;

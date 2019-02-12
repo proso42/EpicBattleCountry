@@ -111,12 +111,20 @@
                 <h2>Profile</h2>
                 <div id="err_login" class="signup-err-password" style="display: none">
                     <p>Ce login est déjà utilisé !</p>
+                </div><div id="err_email" class="signup-err-password" style="display: none">
+                    <p>Cet email est déjà utilisé !</p>
                 </div>
                 <div id="login_updated" class="settings-update-success" style="display: none">
                     <p>Votre login a été modifié avec succès ! </p>
                 </div>
+                <div id="email_updated" class="settings-update-success" style="display: none">
+                    <p>Un email de confirmation a été envoyé à votre nouvelle adresse email !</p>
+                </div>
                 <div>
-                    <span id="current_login" name="current_login" style="margin-right: 20px;">Psuedo : {{ $user_login }}</span><input id="new_login" name="new_login" class="settings-input" placeholder="Nouveau pseudo" type="text" pattern="[a-zA-Z]{3,20}" required><input id="_token" name="_token" type="hidden" value="{{ csrf_token() }}"> <img id="spin_login" class="settings-spin" style="display: none" src="images/loader.gif"><input onclick="reset_login()" id="change_login_button" class="settings-button" type="button" value="Modifier">
+                    <span id="current_login" name="current_login" style="margin-right: 20px;">Psuedo : {{ $user_login }}</span><input id="new_login" name="new_login" class="settings-input" placeholder="Nouveau pseudo" type="text" pattern="[a-zA-Z]{3,20}"><input id="_token" name="_token" type="hidden" value="{{ csrf_token() }}"> <img id="spin_login" class="settings-spin" style="display: none" src="images/loader.gif"><input onclick="reset_login()" id="change_login_button" class="settings-button" type="button" value="Modifier">
+                </div>
+                <div>
+                    <span id="current_email" name="current_email" style="margin-right: 20px;">Email : {{ $user_email }}</span><input id="new_email" name="new_email" class="settings-input" placeholder="Nouvel email" type="email"><input id="_token2" name="_token2" type="hidden" value="{{ csrf_token() }}"> <img id="spin_email" class="settings-spin" style="display: none" src="images/loader.gif"><input onclick="reset_email()" id="change_email_button" class="settings-button" type="button" value="Modifier">
                 </div>
             </div>
         </div>
@@ -160,6 +168,46 @@
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhr.send('new_login=' + new_login + '&_token=' + _token);
+            }
+            function reset_email()
+            {
+                var btn = document.getElementById('change_email_button');
+                btn.disabled = true;
+                btn.style.display = 'none';
+                var spin = document.getElementById('spin_email');
+                spin.style.display = '';
+                var new_login = document.getElementById('new_email').value;
+                var _token = document.getElementById('_token2').value;
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'http://www.epicbattlecorp.fr/send_email_reset_email');
+                xhr.onreadystatechange =  function(){
+                    console.log('onreadystatechange')
+                    if (xhr.readyState === 4 && xhr.status === 200)
+                    {
+                        btn.disabled = false;
+                        btn.style.display = '';
+                        spin.style.display = 'none';
+                        if (xhr.responseText == 1)
+                        {
+                            document.getElementById('err_email').style.display = '';
+                            setTimeout(() =>{
+                                document.getElementById("err_email").style.display = 'none';
+                            }, 5000);
+                            return false;
+                        }
+                        else
+                        {
+                            document.getElementById('current_email').textContent = 'Pseudo : ' + new_login;
+                            document.getElementById('email_updated').style.display = '';
+                            setTimeout(() =>{
+                                document.getElementById("email_updated").style.display = 'none';
+                            }, 5000);
+                            return true;
+                        }
+                    }
+                }
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.send('new_email=' + new_login + '&_token=' + _token);
             }
         </script>
     </body>

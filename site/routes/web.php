@@ -44,6 +44,7 @@ Route::group(['middleware' => 'logged'], function(){
     Route::get('/home', 'HomeController@index');
     Route::get('/settings', 'SettingsController@index');
     Route::post('reset_login', 'SettingsController@reset_login');
+    Route::post('send_email_reset_email', 'SettingsController@send_email_reset_email');
 });
 
 

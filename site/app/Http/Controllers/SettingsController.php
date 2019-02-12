@@ -38,6 +38,44 @@
             }
             return (1);
         }
+
+        public function send_email_reset_email(Request $request)
+        {
+            $new_email = $request['new_email'];
+            $existing_email = DB::table('users')
+            ->select('id')
+            ->where('email', '=', $new_login)
+            ->first();
+            if ($existing_email == null)
+            {
+                $email_token = $this->gen_confirmation_email_link();
+                $link = "http://www.epicbattlecorp.fr/validate_email?token=" . $email_token;
+                DB::table('email_validation')
+                ->insert(
+                    array('user_id' => session()->get('user_id'), 'user_email' => $new_email, 'email_token' => $email_token, 'status' => 'Waiting')
+                );
+                $cmd = "cd /home/boss/www/scripts ; node ./send_mail.js " . $email  . " \"" . $link . "\"";
+                exec($cmd);
+                return (0);
+            }
+            return (1);
+        }
+
+        private function gen_confirmation_email_token()
+        {
+            $email_token = "";
+            for ($i = 0; $i < 25; $i++)
+            {
+                $rdm1 = rand(0,2);
+                if ($rdm1 == 0)
+                    $email_token .= chr(rand(48,57));
+                else if ($rdm1 == 1)
+                    $email_token .= chr(rand(65,90));
+                else
+                    $email_token .= chr(rand(97,122));
+            }
+            return $email_token;
+        }
     }
 
 ?>

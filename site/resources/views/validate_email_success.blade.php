@@ -9,7 +9,7 @@
     </head>
     <body>
         <div class="center-rect" style="margin-top: 270px">
-            Votre adresse mail : {{ $user_email }} a été validé avec succès ! Votre compte est maintenant actif !
+            Votre adresse mail : {{ $user_email }} a été validé avec succès !
             <br/>
             <button class="return-button" onclick="window.location.href='/signin'">Retour</button>
         </div>

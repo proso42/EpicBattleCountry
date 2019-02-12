@@ -140,11 +140,6 @@
         <script>
             function reset_login()
             {
-                var btn = document.getElementById('change_login_button');
-                btn.disabled = true;
-                btn.style.display = 'none';
-                var spin = document.getElementById('spin_login');
-                spin.style.display = '';
                 var new_login = document.getElementById('new_login').value;
                 var _token = document.getElementById('_token').value;
                 if (new_login === '')
@@ -155,6 +150,11 @@
                     }, 5000);
                     return false;
                 }
+                var btn = document.getElementById('change_login_button');
+                var spin = document.getElementById('spin_login');
+                spin.style.display = '';
+                btn.disabled = true;
+                btn.style.display = 'none';
                 var xhr = new XMLHttpRequest();
                 xhr.open('POST', 'http://www.epicbattlecorp.fr/reset_login');
                 xhr.onreadystatechange =  function(){
@@ -175,7 +175,7 @@
                         else
                         {
                             document.getElementById('current_login').textContent = 'Pseudo : ' + new_login;
-                            document.getElementById('new_login').textContent = '';
+                            document.getElementById('new_login').value = '';
                             document.getElementById('login_updated').style.display = '';
                             setTimeout(() =>{
                                 document.getElementById("login_updated").style.display = 'none';
@@ -189,11 +189,6 @@
             }
             function reset_email()
             {
-                var btn = document.getElementById('change_email_button');
-                btn.disabled = true;
-                btn.style.display = 'none';
-                var spin = document.getElementById('spin_email');
-                spin.style.display = '';
                 var new_email = document.getElementById('new_email').value;
                 var _token = document.getElementById('_token2').value;
                 if (new_email === '')
@@ -204,6 +199,11 @@
                     }, 5000);
                     return false;
                 }
+                var btn = document.getElementById('change_email_button');
+                var spin = document.getElementById('spin_email');
+                spin.style.display = '';
+                btn.disabled = true;
+                btn.style.display = 'none';
                 var xhr = new XMLHttpRequest();
                 xhr.open('POST', 'http://www.epicbattlecorp.fr/send_email_reset_email');
                 xhr.onreadystatechange =  function(){

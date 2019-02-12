@@ -54,7 +54,7 @@
                 ->insert(
                     array('user_id' => session()->get('user_id'), 'user_email' => $new_email, 'email_token' => $email_token, 'status' => 'Waiting')
                 );
-                $cmd = "cd /home/boss/www/scripts ; node ./send_mail.js " . $email  . " \"" . $link . "\"";
+                $cmd = "cd /home/boss/www/scripts ; node ./send_email_reset_email.js " . $email  . " \"" . $link . "\"";
                 exec($cmd);
                 return (0);
             }

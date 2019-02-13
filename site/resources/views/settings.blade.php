@@ -107,7 +107,7 @@
                     <div class="col-lg-3 col-md-3 col-sm-10 col-10">Déconnexion</div>
                 </div>
             </div>
-            <div class="col-lg-9 col-md-4 center-win">
+            <div class="col-lg-9 col-md-9 center-win">
                 <h2>Profile</h2>
                 <div id="err_login" class="signup-err-password" style="display: none">
                     <p>Ce login est déjà utilisé !</p>
@@ -129,10 +129,10 @@
                 </div>
                 <div>
                     <div class="row" style="align-items: baseline;">
-                        <span class="col-lg-2 offset-lg-2 col-md-2 offset-md-2" id="current_login" name="current_login">Psuedo : {{ $user_login }}</span><input id="new_login" name="new_login" class="settings-input col-lg-2 col-md-2" placeholder="Nouveau pseudo" type="text" pattern="[a-zA-Z]{3,20}"><input id="_token" name="_token" type="hidden" value="{{ csrf_token() }}"><div style="margin-left: 190px;"><img id="spin_login" class="settings-spin" style="display: none" src="images/loader.gif"></div><input onclick="reset_login()" id="change_login_button" class="settings-button col-lg-2 col-md-2" type="button" value="Modifier">
+                        <span class="col-lg-2 offset-lg-1 col-md-2 offset-md-1" id="current_login" name="current_login">Psuedo : {{ $user_login }}</span><input id="new_login" name="new_login" class="settings-input col-lg-2 col-md-2" placeholder="Nouveau pseudo" type="text" pattern="[a-zA-Z]{3,20}"><input id="_token" name="_token" type="hidden" value="{{ csrf_token() }}"><div style="margin-left: 190px;"><img id="spin_login" class="settings-spin" style="display: none" src="images/loader.gif"></div><input onclick="reset_login()" id="change_login_button" class="settings-button col-lg-2 col-md-2" type="button" value="Modifier">
                     </div>
                     <div class="row" style="align-items: baseline;">
-                        <span class="col-lg-2 offset-lg-2 col-md-2 offset-md-2" id="current_email" name="current_email">Email : {{ $user_email }}</span><input id="new_email" name="new_email" class="settings-input col-lg-2 col-md-2" placeholder="Nouvel email" type="text"><input id="_token2" name="_token2" type="hidden" value="{{ csrf_token() }}"><div style="margin-left: 190px;"><img id="spin_email" class="settings-spin" style="display: none" src="images/loader.gif"></div><input onclick="reset_email()" id="change_email_button" class="settings-button col-lg-2 col-md-2" type="button" value="Modifier">
+                        <span class="col-lg-2 offset-lg-1 col-md-2 offset-md-1" id="current_email" name="current_email">Email : {{ $user_email }}</span><input id="new_email" name="new_email" class="settings-input col-lg-2 col-md-2" placeholder="Nouvel email" type="text"><input id="_token2" name="_token2" type="hidden" value="{{ csrf_token() }}"><div style="margin-left: 190px;"><img id="spin_email" class="settings-spin" style="display: none" src="images/loader.gif"></div><input onclick="reset_email()" id="change_email_button" class="settings-button col-lg-2 col-md-2" type="button" value="Modifier">
                     </div>
                     <hr class="signin-footer"/>
                     <div>

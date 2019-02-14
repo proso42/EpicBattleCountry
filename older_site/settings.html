@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf8">
-        <title>Menu-top</title>
+        <title>EpicBattleCorp</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="style.css"/>
@@ -44,7 +44,7 @@
                     </div>
             </div>-->
         </div>
-        <div class="row" style="margin-left:0; margin-right: 0;">
+        <div class="row" style="margin-left:0; margin-right: 0px;">
             <div class="col-lg-2 col-md-1" style="margin-top: 50px;">
                 <div class="row menu-left" onclick="document.location.href='file:///C:/Users/Propri%C3%A9taire/test/site/home.html'">
                     <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-home icon"></i></div>
@@ -107,11 +107,85 @@
                     <div class="col-lg-3 col-md-3 col-sm-10 col-10">Déconnexion</div>
                 </div>
             </div>
-            <div class="col-lg-9 col-md-4 center-win" style="margin-top: 50px;">
+            <div class="col-lg-9 col-md-8 center-win">
                 <h2>Profile</h2>
-                <form id="change_login_form" method="POST" action="/change_login">
-                        <span style="margin-right: 20px;">Psuedo : {{ $login }}</span><input id="login" name="login" class="settings-input" placeholder="Nouveau pseudo" type="text" pattern="[a-zA-Z]{3,20}" required><input id="change_login_button" class="settings-button" type="submit" value="Modifier">
-                </form>
+                <div id="err_login" class="signup-err-password" style="display: none">
+                    <p>Ce login est déjà utilisé !</p>
+                </div>
+                <div id="empty_login" class="signup-err-password" style="display: none">
+                    <p>Merci de renseigner un pseudo !</p>
+                </div>
+                <div id="err_email" class="signup-err-password" style="display: none">
+                    <p>Cet email est déjà utilisé !</p>
+                </div>
+                <div id="empty_email" class="signup-err-password" style="display: none">
+                    <p>Merci de renseigner un email !</p>
+                </div>
+                <div id="login_updated" class="settings-update-success" style="display: none">
+                    <p>Votre login a été modifié avec succès ! </p>
+                </div>
+                <div id="email_updated" class="settings-update-success" style="display: none">
+                    <p>Un email de confirmation a été envoyé à votre nouvelle adresse email !</p>
+                </div>
+                <div>
+                    <!-- User Settings for Large Screen -->
+                    <div class="row large-screen" style="align-items: baseline;">
+                        <span class="col-lg-4 col-md-5" id="current_login" name="current_login">Psuedo : aaaaaaaaaaaaaaaaa</span>
+                        <br class="md-br"/>
+                        <input id="new_login" name="new_login" class="settings-input col-lg-3 col-md-3" placeholder="Nouveau pseudo" type="text" pattern="[a-zA-Z]{3,20}">
+                        <input id="_token" name="_token" type="hidden" value="{{ csrf_token() }}">
+                        <img id="spin_login" class="settings-spin" style="display: none" src="images/loader.gif">
+                        <input onclick="reset_login()" id="change_login_button" class="settings-button col-lg-3 col-md-3" type="button" value="Modifier">
+                    </div>
+                    <div class="row large-screen" style="align-items: baseline;line-height: 31px;">
+                        <span class="col-lg-4 col-md-5" id="current_email" name="current_email">Email : aaaaaaaa@gmail.com</span>
+                        <input id="new_email" name="new_email" class="settings-input col-lg-3 col-md-3" placeholder="Nouvel email" type="text">
+                        <input id="_token2" name="_token2" type="hidden" value="{{ csrf_token() }}">
+                        <img id="spin_email" class="settings-spin" style="display: none" src="images/loader.gif">
+                        <input onclick="reset_email()" id="change_email_button" class="settings-button col-lg-3 col-md-3" type="button" value="Modifier">
+                    </div>
+                    <!-- User Settings for Medium Screen -->
+                    <div class="medium-screen" style="align-items: baseline;">
+                        <span id="current_login" name="current_login">Psuedo : aaaaaaaaaaaaaaaaa</span>
+                        <br class="md-br"/>
+                        <input id="new_login" name="new_login" class="settings-input" placeholder="Nouveau pseudo" type="text" pattern="[a-zA-Z]{3,20}">
+                        <input id="_token" name="_token" type="hidden" value="{{ csrf_token() }}">
+                        <img id="spin_login" class="settings-spin" style="display: none" src="images/loader.gif">
+                        <input onclick="reset_login()" id="change_login_button" class="settings-button" type="button" value="Modifier">
+                    </div>
+                    <div class="medium-screen" style="align-items: baseline;line-height: 31px;">
+                        <span id="current_email" name="current_email">Email : aaaaaaaa@gmail.com</span>
+                        <br class="md-br"/>
+                        <input id="new_email" name="new_email" class="settings-input" placeholder="Nouvel email" type="text">
+                        <input id="_token2" name="_token2" type="hidden" value="{{ csrf_token() }}">
+                        <img id="spin_email" class="settings-spin" style="display: none" src="images/loader.gif">
+                        <input onclick="reset_email()" id="change_email_button" class="settings-button" type="button" value="Modifier">
+                    </div>
+                    <!-- User Settings for Small Screen -->
+                    <div class="small-screen" style="align-items: baseline;">
+                        <span id="current_login" name="current_login">Psuedo : aaaaaaaaaaaaaaaaa</span>
+                        <br/>
+                        <input id="new_login" name="new_login" class="settings-input" placeholder="Nouveau pseudo" type="text" pattern="[a-zA-Z]{3,20}">
+                        <br/>
+                        <input id="_token" name="_token" type="hidden" value="{{ csrf_token() }}">
+                        <img id="spin_login" class="settings-spin" style="display: none" src="images/loader.gif">
+                        <input onclick="reset_login()" id="change_login_button" class="settings-button" type="button" value="Modifier">
+                    </div>
+                    <div class="small-screen" style="align-items: baseline;line-height: 31px;">
+                        <span id="current_email" name="current_email">Email : aaaaaaaa@gmail.com</span>
+                        <br/>
+                        <input id="new_email" name="new_email" class="settings-input" placeholder="Nouvel email" type="text">
+                        <br/>
+                        <input id="_token2" name="_token2" type="hidden" value="{{ csrf_token() }}">
+                        <img id="spin_email" class="settings-spin" style="display: none" src="images/loader.gif">
+                        <input onclick="reset_email()" id="change_email_button" class="settings-button" type="button" value="Modifier">
+                    </div>
+                    <hr class="signin-footer"/>
+                    <div>
+                        <span>Premium : Non</span>
+                        <br/>
+                    </div>
+                </div>
             </div>
         </div>
     </body>

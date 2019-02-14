@@ -36,6 +36,54 @@ body
     margin-top: 75px;
 }
 
+.md-br
+{
+    display: none;
+}
+
+@media screen and (min-width: 992px)
+{
+    .center-win
+    {
+        margin-left: 50px;
+    }
+
+    .medium-screen
+    {
+        display: none;
+    }
+
+    .small-screen
+    {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px)
+{
+    .center-win
+    {
+        margin-left: 130px;
+    }
+
+    .md-br
+    {
+        display: block;
+    }
+
+    .large-screen
+    {
+        display: none;
+    }
+
+    .small-screen
+    {
+        display: none;
+    }
+}
+
+
+
 @media screen and (max-width: 767px)
 {
     .center-rect
@@ -52,6 +100,34 @@ body
     .menu-top
     {
         height: 210px;
+    }
+
+    .large-screen
+    {
+        display: none;
+    }
+
+    .medium-screen
+    {
+        display: none;
+    }
+
+    .center-win
+    {
+        width: 692px;
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+
+    .settings-input
+    {
+        margin-right: -5px;
+        margin-bottom: 5px;
+    }
+
+    .settings-button
+    {
+        margin-bottom: 20px;
     }
 }
 
@@ -71,6 +147,12 @@ body
     {
         height: 200px;
     }
+
+    .settings-input
+    {
+        margin-right: 20px;
+        margin-bottom: 20px;
+    }
 }
 
 @media screen and (min-width: 1200px)
@@ -88,6 +170,12 @@ body
     .menu-top
     {
         height: 200px;
+    }
+
+    .settings-input
+    {
+        margin-right: 20px;
+        margin-bottom: 20px;
     }
 }
 
@@ -322,7 +410,7 @@ input::placeholder
     background-color: rgba(119, 136, 153, 0.8);
     line-height: 34px;
     color: black;
-    margin-left: 15px;
+    margin-top: 50px;
     cursor: pointer;
     border-radius: 4px;
     border: solid 1px lightblue;
@@ -332,7 +420,6 @@ input::placeholder
 .settings-input
 {
     margin-top: 25px;
-    margin-right: 20px;
     background-color: tan;
     color: black;
     text-align: center;

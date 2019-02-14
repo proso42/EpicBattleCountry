@@ -107,10 +107,30 @@
                     <div class="col-lg-3 col-md-3 col-sm-10 col-10">Déconnexion</div>
                 </div>
             </div>
-            <div>
+            <div class="col-lg-9 col-md-8 center-win">
+                <h2>Profile</h2>
+                <div id="err_login" class="signup-err-password" style="display: none">
+                    <p>Ce login est déjà utilisé !</p>
+                </div>
+                <div id="empty_login" class="signup-err-password" style="display: none">
+                    <p>Merci de renseigner un pseudo !</p>
+                </div>
+                <div id="err_email" class="signup-err-password" style="display: none">
+                    <p>Cet email est déjà utilisé !</p>
+                </div>
+                <div id="empty_email" class="signup-err-password" style="display: none">
+                    <p>Merci de renseigner un email !</p>
+                </div>
+                <div id="login_updated" class="settings-update-success" style="display: none">
+                    <p>Votre login a été modifié avec succès ! </p>
+                </div>
+                <div id="email_updated" class="settings-update-success" style="display: none">
+                    <p>Un email de confirmation a été envoyé à votre nouvelle adresse email !</p>
+                </div>
+                <div>
                     <!-- User Settings for Large Screen -->
                     <div class="row large-screen" style="align-items: baseline;">
-                        <span class="col-lg-4 col-md-5" id="current_login" name="current_login">Psuedo : {{ $user_login }}</span>
+                        <span class="col-lg-4 col-md-5" id="current_login" name="current_login">Psuedo : aaaaaaaaaaaaaaaaa</span>
                         <br class="md-br"/>
                         <input id="new_login" name="new_login" class="settings-input col-lg-3 col-md-3" placeholder="Nouveau pseudo" type="text" pattern="[a-zA-Z]{3,20}">
                         <input id="_token" name="_token" type="hidden" value="{{ csrf_token() }}">
@@ -118,7 +138,7 @@
                         <input onclick="reset_login()" id="change_login_button" class="settings-button col-lg-3 col-md-3" type="button" value="Modifier">
                     </div>
                     <div class="row large-screen" style="align-items: baseline;line-height: 31px;">
-                        <span class="col-lg-4 col-md-5" id="current_email" name="current_email">Email : {{ $user_email }}</span>
+                        <span class="col-lg-4 col-md-5" id="current_email" name="current_email">Email : aaaaaaaa@gmail.com</span>
                         <input id="new_email" name="new_email" class="settings-input col-lg-3 col-md-3" placeholder="Nouvel email" type="text">
                         <input id="_token2" name="_token2" type="hidden" value="{{ csrf_token() }}">
                         <img id="spin_email" class="settings-spin" style="display: none" src="images/loader.gif">
@@ -126,7 +146,7 @@
                     </div>
                     <!-- User Settings for Medium Screen -->
                     <div class="medium-screen" style="align-items: baseline;">
-                        <span id="current_login" name="current_login">Psuedo : {{ $user_login }}</span>
+                        <span id="current_login" name="current_login">Psuedo : aaaaaaaaaaaaaaaaa</span>
                         <br class="md-br"/>
                         <input id="new_login" name="new_login" class="settings-input" placeholder="Nouveau pseudo" type="text" pattern="[a-zA-Z]{3,20}">
                         <input id="_token" name="_token" type="hidden" value="{{ csrf_token() }}">
@@ -134,7 +154,7 @@
                         <input onclick="reset_login()" id="change_login_button" class="settings-button" type="button" value="Modifier">
                     </div>
                     <div class="medium-screen" style="align-items: baseline;line-height: 31px;">
-                        <span id="current_email" name="current_email">Email : {{ $user_email }}</span>
+                        <span id="current_email" name="current_email">Email : aaaaaaaa@gmail.com</span>
                         <br class="md-br"/>
                         <input id="new_email" name="new_email" class="settings-input" placeholder="Nouvel email" type="text">
                         <input id="_token2" name="_token2" type="hidden" value="{{ csrf_token() }}">
@@ -143,7 +163,7 @@
                     </div>
                     <!-- User Settings for Small Screen -->
                     <div class="small-screen" style="align-items: baseline;">
-                        <span id="current_login" name="current_login">Psuedo : {{ $user_login }}</span>
+                        <span id="current_login" name="current_login">Psuedo : aaaaaaaaaaaaaaaaa</span>
                         <br/>
                         <input id="new_login" name="new_login" class="settings-input" placeholder="Nouveau pseudo" type="text" pattern="[a-zA-Z]{3,20}">
                         <br/>
@@ -152,7 +172,7 @@
                         <input onclick="reset_login()" id="change_login_button" class="settings-button" type="button" value="Modifier">
                     </div>
                     <div class="small-screen" style="align-items: baseline;line-height: 31px;">
-                        <span id="current_email" name="current_email">Email : {{ $user_email }}</span>
+                        <span id="current_email" name="current_email">Email : aaaaaaaa@gmail.com</span>
                         <br/>
                         <input id="new_email" name="new_email" class="settings-input" placeholder="Nouvel email" type="text">
                         <br/>
@@ -166,6 +186,7 @@
                         <br/>
                     </div>
                 </div>
+            </div>
         </div>
         <script>
             function reset_login()

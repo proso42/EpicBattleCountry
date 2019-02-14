@@ -17,10 +17,10 @@
             ->where('id', '=', session()->get('user_id'))
             ->first();
             $user_email = $user_infos->email;
-            if ($user_email.length() > 18)
+            if (strlen($user_email) > 18)
                 $user_email = substr($user_email, 0, 15) . "...";
             $user_login = $user_infos->login;
-            if ($user_login.length() > 17)
+            if (strlen($user_login) > 17)
                 $user_login = substr($user_login, 0, 14) . "...";
             $user_race = $user_infos->race;
             return view('settings', compact('user_email', 'user_login', 'user_race'));

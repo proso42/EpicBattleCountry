@@ -130,69 +130,69 @@
                 <div>
                     <!-- User Settings for Large Screen -->
                     <div class="row large-screen" style="align-items: baseline;">
-                        <span class="col-lg-4 col-md-5" id="current_login" name="current_login">Psuedo : aaaaaaaaaaaaaaaaa</span>
+                        <span class="col-lg-4 col-md-5" id="current-login-lg" name="current_login">Psuedo : {{ $user_login }}</span>
                         <br class="md-br"/>
-                        <input id="new_login" name="new_login" class="settings-input col-lg-3 col-md-3" placeholder="Nouveau pseudo" type="text" pattern="[a-zA-Z]{3,20}">
-                        <input id="_token" name="_token" type="hidden" value="{{ csrf_token() }}">
-                        <img id="spin_login" class="settings-spin" style="display: none" src="images/loader.gif">
-                        <input onclick="reset_login()" id="change_login_button" class="settings-button col-lg-3 col-md-3" type="button" value="Modifier">
+                        <input id="new-login-lg" name="new_login" class="settings-input col-lg-3 col-md-3" placeholder="Nouveau pseudo" type="text" pattern="[a-zA-Z]{3,20}">
+                        <input id="_token-lg" name="_token" type="hidden" value="{{ csrf_token() }}">
+                        <img id="spin-login-lg" class="settings-spin" style="display: none" src="images/loader.gif">
+                        <input onclick="reset_login('lg')" id="change-login-button-lg" class="settings-button col-lg-3 col-md-3" type="button" value="Modifier">
                     </div>
                     <div class="row large-screen" style="align-items: baseline;line-height: 31px;">
-                        <span class="col-lg-4 col-md-5" id="current_email" name="current_email">Email : aaaaaaaa@gmail.com</span>
-                        <input id="new_email" name="new_email" class="settings-input col-lg-3 col-md-3" placeholder="Nouvel email" type="text">
-                        <input id="_token2" name="_token2" type="hidden" value="{{ csrf_token() }}">
-                        <img id="spin_email" class="settings-spin" style="display: none" src="images/loader.gif">
-                        <input onclick="reset_email()" id="change_email_button" class="settings-button col-lg-3 col-md-3" type="button" value="Modifier">
+                        <span class="col-lg-4 col-md-5" id="current_email-lg" name="current_email">Email : {{ $user_email }}</span>
+                        <input id="new-email-lg" name="new_email" class="settings-input col-lg-3 col-md-3" placeholder="Nouvel email" type="text">
+                        <input id="_token2-lg" name="_token2" type="hidden" value="{{ csrf_token() }}">
+                        <img id="spin-email-lg" class="settings-spin" style="display: none" src="images/loader.gif">
+                        <input onclick="reset_email('lg')" id="change-email-button-lg" class="settings-button col-lg-3 col-md-3" type="button" value="Modifier">
                     </div>
                     <!-- User Settings for Medium Screen -->
                     <div class="medium-screen" style="align-items: baseline;">
-                        <span id="current_login" name="current_login">Psuedo : aaaaaaaaaaaaaaaaa</span>
+                        <span id="current-login-md" name="current_login">Psuedo : {{ $user_login }}</span>
                         <br class="md-br"/>
-                        <input id="new_login" name="new_login" class="settings-input" placeholder="Nouveau pseudo" type="text" pattern="[a-zA-Z]{3,20}">
-                        <input id="_token" name="_token" type="hidden" value="{{ csrf_token() }}">
-                        <img id="spin_login" class="settings-spin" style="display: none" src="images/loader.gif">
-                        <input onclick="reset_login()" id="change_login_button" class="settings-button" type="button" value="Modifier">
+                        <input id="new-login-md" name="new_login" class="settings-input" placeholder="Nouveau pseudo" type="text" pattern="[a-zA-Z]{3,20}">
+                        <input id="_token-md" name="_token" type="hidden" value="{{ csrf_token() }}">
+                        <img id="spin-login-md" class="settings-spin" style="display: none" src="images/loader.gif">
+                        <input onclick="reset_login('md')" id="change-login-button-md" class="settings-button" type="button" value="Modifier">
                     </div>
                     <div class="medium-screen" style="align-items: baseline;line-height: 31px;">
-                        <span id="current_email" name="current_email">Email : aaaaaaaa@gmail.com</span>
+                        <span id="current-email-md" name="current_email">Email : {{ $user_email }}</span>
                         <br class="md-br"/>
-                        <input id="new_email" name="new_email" class="settings-input" placeholder="Nouvel email" type="text">
-                        <input id="_token2" name="_token2" type="hidden" value="{{ csrf_token() }}">
-                        <img id="spin_email" class="settings-spin" style="display: none" src="images/loader.gif">
-                        <input onclick="reset_email()" id="change_email_button" class="settings-button" type="button" value="Modifier">
+                        <input id="new-email-md" name="new_email" class="settings-input" placeholder="Nouvel email" type="text">
+                        <input id="_token2-md" name="_token2" type="hidden" value="{{ csrf_token() }}">
+                        <img id="spin-email-md" class="settings-spin" style="display: none" src="images/loader.gif">
+                        <input onclick="reset_email('md')" id="change-email-button-md" class="settings-button" type="button" value="Modifier">
                     </div>
                     <!-- User Settings for Small Screen -->
                     <div class="small-screen" style="align-items: baseline;">
-                        <span id="current_login" name="current_login">Psuedo : aaaaaaaaaaaaaaaaa</span>
+                        <span id="current-login-sm" name="current_login">Psuedo : {{ $user_login }}</span>
                         <br/>
-                        <input id="new_login" name="new_login" class="settings-input" placeholder="Nouveau pseudo" type="text" pattern="[a-zA-Z]{3,20}">
+                        <input id="new-login-sm" name="new_login" class="settings-input" placeholder="Nouveau pseudo" type="text" pattern="[a-zA-Z]{3,20}">
                         <br/>
-                        <input id="_token" name="_token" type="hidden" value="{{ csrf_token() }}">
-                        <img id="spin_login" class="settings-spin" style="display: none" src="images/loader.gif">
-                        <input onclick="reset_login()" id="change_login_button" class="settings-button" type="button" value="Modifier">
+                        <input id="_token-sm" name="_token" type="hidden" value="{{ csrf_token() }}">
+                        <img id="spin-login-sm" class="settings-spin" style="display: none" src="images/loader.gif">
+                        <input onclick="reset_login('sm')" id="change-login-button-sm" class="settings-button" type="button" value="Modifier">
                     </div>
                     <div class="small-screen" style="align-items: baseline;line-height: 31px;">
-                        <span id="current_email" name="current_email">Email : aaaaaaaa@gmail.com</span>
+                        <span id="current-email-sm" name="current_email">Email : {{ $user_email }}</span>
                         <br/>
-                        <input id="new_email" name="new_email" class="settings-input" placeholder="Nouvel email" type="text">
+                        <input id="new-email-sm" name="new_email" class="settings-input" placeholder="Nouvel email" type="text">
                         <br/>
-                        <input id="_token2" name="_token2" type="hidden" value="{{ csrf_token() }}">
-                        <img id="spin_email" class="settings-spin" style="display: none" src="images/loader.gif">
-                        <input onclick="reset_email()" id="change_email_button" class="settings-button" type="button" value="Modifier">
+                        <input id="_token2-sm" name="_token2" type="hidden" value="{{ csrf_token() }}">
+                        <img id="spin-email-sm" class="settings-spin" style="display: none" src="images/loader.gif">
+                        <input onclick="reset_email('sm')" id="change-email-button-sm" class="settings-button" type="button" value="Modifier">
                     </div>
                     <hr class="signin-footer"/>
                     <div>
-                        <span>Premium : Non</span>
-                        <br/>
+                        <p>Premium : {{ $is_premium }}</p>
+                        <p>Race : {{ $user_race }}</p>
                     </div>
                 </div>
             </div>
         </div>
         <script>
-            function reset_login()
+            function reset_login(id)
             {
-                var new_login = document.getElementById('new_login').value;
-                var _token = document.getElementById('_token').value;
+                var new_login = document.getElementById('new-login-' + id).value;
+                var _token = document.getElementById('_token-' + id).value;
                 if (new_login === '')
                 {
                     document.getElementById('empty_login').style.display = '';
@@ -201,8 +201,8 @@
                     }, 5000);
                     return false;
                 }
-                var btn = document.getElementById('change_login_button');
-                var spin = document.getElementById('spin_login');
+                var btn = document.getElementById('change-login-button-' + id);
+                var spin = document.getElementById('spin-login-' + id);
                 spin.style.display = '';
                 btn.disabled = true;
                 btn.style.display = 'none';
@@ -225,8 +225,8 @@
                         }
                         else
                         {
-                            document.getElementById('current_login').textContent = 'Pseudo : ' + new_login;
-                            document.getElementById('new_login').value = '';
+                            document.getElementById('current-login-' + id).textContent = 'Pseudo : ' + new_login;
+                            document.getElementById('new-login-' + id).value = '';
                             document.getElementById('login_updated').style.display = '';
                             setTimeout(() =>{
                                 document.getElementById("login_updated").style.display = 'none';
@@ -238,10 +238,10 @@
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhr.send('new_login=' + new_login + '&_token=' + _token);
             }
-            function reset_email()
+            function reset_email(id2)
             {
-                var new_email = document.getElementById('new_email').value;
-                var _token = document.getElementById('_token2').value;
+                var new_email = document.getElementById('new-email-' + id2).value;
+                var _token = document.getElementById('_token2-' + id2).value;
                 if (new_email === '')
                 {
                     document.getElementById('empty_email').style.display = '';
@@ -250,8 +250,8 @@
                     }, 5000);
                     return false;
                 }
-                var btn = document.getElementById('change_email_button');
-                var spin = document.getElementById('spin_email');
+                var btn = document.getElementById('change-email-button-' + id2);
+                var spin = document.getElementById('spin-email-' + id2);
                 spin.style.display = '';
                 btn.disabled = true;
                 btn.style.display = 'none';

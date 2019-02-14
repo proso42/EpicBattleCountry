@@ -8,7 +8,7 @@
         <link rel="stylesheet" type="text/css" href="css/style.css"/>
     </head>
     <body>
-        <div class="menu-top">
+    <div class="menu-top">
             <div class="row">
                 <div class="col-lg-4 col-md-2 col-sm-2"></div>
                 <div class="col-lg-1 col-md-2 col-sm-2 col-3">
@@ -44,11 +44,11 @@
                     </div>
             </div>-->
         </div>
-        <div class="row" style="margin-left:0; margin-right: 0;">
-            <div class="col-lg-2 col-md-2" style="margin-top: 50px;">
-                <div class="row menu-left">
+        <div class="row" style="margin-left:0; margin-right: 0px;">
+            <div class="col-lg-2 col-md-1" style="margin-top: 50px;">
+                <div class="row menu-left" onclick="document.location.href='file:///C:/Users/Propri%C3%A9taire/test/site/home.html'">
                     <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-home icon"></i></div>
-                    <div onclick="document.location.href='/home'" class="col-lg-3 col-md-3 col-sm-1 col-3">Acceuil</div>
+                    <div class="col-lg-3 col-md-3 col-sm-1 col-3">Acceuil</div>
                 </div>
                 <div class="row menu-left">
                     <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-hammer icon"></i></div>
@@ -94,7 +94,7 @@
                     <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-chart-line icon"></i></div>
                     <div class="col-lg-3 col-md-3 col-sm-10 col-10">Statistiques</div>
                 </div>
-                <div onclick="document.location.href='/settings'" class="row menu-left">
+                <div class="row menu-left">
                     <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-user-circle icon"></i></div>
                     <div class="col-lg-3 col-md-3 col-sm-10 col-10">Profile</div>
                 </div>

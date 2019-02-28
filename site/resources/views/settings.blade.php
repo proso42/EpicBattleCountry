@@ -344,7 +344,7 @@
                             return false;
                         }
                         else
-                            document.location.href('/set_new_password');
+                            document.location.href = '/set_new_password';
                     }
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

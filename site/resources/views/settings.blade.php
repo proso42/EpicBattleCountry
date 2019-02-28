@@ -146,9 +146,10 @@
                     </div>
                     <div class="row large-screen" style="align-items: baseline;line-height: 31px;">
                         <span class="col-lg-4 col-md-5" id="current_mdp-lg" name="current_mdp">Mot de passe : xxxxxxxxxxxxx</span>
+                        <input id="new-mdp-lg" name="new_mdp" class="settings-input col-lg-3 col-md-3" placeholder="Nouveau mot de passe" type="password">
                         <input id="_token3-lg" name="_token3" type="hidden" value="{{ csrf_token() }}">
                         <img id="spin-mdp-lg" class="settings-spin" style="display: none" src="images/loader.gif">
-                        <input onclick="reset_mdp('lg')" id="change-mdp-button-lg" class="settings-button col-lg-3 offset-lg-1 col-md-3 offset-md-1" type="button" value="Modifier le mot de passe">
+                        <input onclick="reset_mdp('lg')" id="change-mdp-button-lg" class="settings-button col-lg-3 col-md-3" type="button" value="Modifier le mot de passe">
                     </div>
                     <!-- User Settings for Medium Screen -->
                     <div class="medium-screen" style="align-items: baseline;">

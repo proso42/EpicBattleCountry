@@ -95,11 +95,15 @@
                             }, 5000);
                             return false;
                         }
-                        else
+                        else if (xhr.responseText == 0)
                         {
                             document.getElementById('password_updated').style.display = '';
                             docuemt.getElementById('new_password_form').remove();
                             return true;
+                        }
+                        else
+                        {
+                            console.log('new_password en session => ' + xhr.responseText)
                         }
                     }
                 }

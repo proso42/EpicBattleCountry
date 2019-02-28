@@ -44,7 +44,7 @@
             if ($new_password == null)
                 return (7);
             else if ($new_password !== $confirm_new_password)
-                return (1);
+                return ($new_password);
             else if (!password_verify($user_current_password, $db_current_password))
                 return (2);
             else if (password_verify($confirm_new_password, $db_current_password))

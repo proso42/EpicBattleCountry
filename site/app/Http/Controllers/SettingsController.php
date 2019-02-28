@@ -17,7 +17,7 @@
             ->where('id', '=', session()->get('user_id'))
             ->first();
             $complete_email = $user_infos->email;
-            if (strlen($user_email) > 18)
+            if (strlen($complete_email) > 18)
                 $user_email = substr($complete_email, 0, 15) . "...";
             $complete_login = $user_infos->login;
             if (strlen($complete_login) > 17)

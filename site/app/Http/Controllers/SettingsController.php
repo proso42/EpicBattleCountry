@@ -29,12 +29,12 @@
             $user_race = DB::table('races')
             ->select('race_name')
             ->where('id', '=', $user_infos->race)
-            ->get();
+            ->value();
             if ($user_infos->is_premium)
                 $is_premium = "Oui";
             else
                 $is_premium = "Non";
-            return view('settings', compact('complete_email', 'user_email', 'complete_login', 'user_login', 'user_race', 'is_premium', 'user_race'));
+            return view('settings', compact('complete_email', 'user_email', 'complete_login', 'user_login', 'user_race', 'is_premium'));
         }
 
         public function reset_login(Request $request)

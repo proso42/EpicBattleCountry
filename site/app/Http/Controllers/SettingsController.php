@@ -26,7 +26,10 @@
                 $user_login = substr($complete_login, 0, 14) . "...";
             else
                 $user_login = $complete_login;
-            $user_race = $user_infos->race;
+            $user_race = DB::table('races')
+            ->select('race_name')
+            ->where('id', '=', $user_infos->race)
+            ->first();
             if ($user_infos->is_premium)
                 $is_premium = "Oui";
             else

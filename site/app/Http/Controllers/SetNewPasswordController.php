@@ -8,7 +8,7 @@
     use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\Session;
 
-    class SetNewPasswordControllerController extends Controller
+    class SetNewPasswordController extends Controller
     {
         public function index()
         {

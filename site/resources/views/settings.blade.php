@@ -310,8 +310,8 @@
                     }, 5000);
                     return false;
                 }
-                var btn = document.getElementById('change-mdp-button-' + id2);
-                var spin = document.getElementById('spin-mdp-' + id2);
+                var btn = document.getElementById('change-mdp-button-' + id3);
+                var spin = document.getElementById('spin-mdp-' + id3);
                 spin.style.display = '';
                 btn.disabled = true;
                 btn.style.display = 'none';

@@ -179,6 +179,27 @@ body
     }
 }
 
+.return-button
+{
+    margin-top: 25px;
+    background-color: cornflowerblue;
+    color: black;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 28px;
+    width: 204px;
+    margin-left: 1px;
+}
+
+.return-button:hover
+{
+    background-color: royalblue;
+    font-weight: bold;
+    color: white;
+}
+
 .center-rect
 {
     background-color: rgba(105, 105, 105, 0.9);
@@ -446,4 +467,17 @@ input::placeholder
     background-color: darkcyan;
     font-weight: bold;
     color: white;
+}
+
+.settings-update-success
+{
+    color: green;
+    background-color: lightgreen;
+    border: 1px solid black;
+    border-radius: 4px;
+    display: none;
+    padding-top: 10px;
+    width: 204px;
+    margin-left: auto;
+    margin-right: auto;
 }

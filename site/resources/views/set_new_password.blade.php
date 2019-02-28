@@ -24,9 +24,6 @@
                 <div id="err_same_password" class="col-lg-6 col-md-6 col-sm-8 col-8 signup-err-password" style="display: none">
                     <p>Le nouveau mot de passe ne peut pas être le mot de passe actuel !</p>
                 </div>
-                <div id="err_7" class="col-lg-6 col-md-6 col-sm-8 col-8 signup-err-password" style="display: none">
-                    <p>NULL</p>
-                </div>
                 <!--<input id="password" name="password" class="signup-input" placeholder="Mot de passe *" type="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[\da-zA-Z!-/:-@[-`{-~]{12,20}$" required>
                 <br/>
                 <input id="password2" name="password2" class="signup-input" placeholder="Confirmer mot de passe *" type="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[\da-zA-Z!-/:-@[-`{-~]{12,20}$" required> -->
@@ -90,7 +87,7 @@
                         else
                         {
                             document.getElementById('password_updated').style.display = '';
-                            docuemt.getElementById('new_password_form').remove();
+                            document.getElementById('new_password_form').remove();
                             return true;
                         }
                     }

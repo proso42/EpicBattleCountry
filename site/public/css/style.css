@@ -411,7 +411,6 @@ input::placeholder
     line-height: 34px;
     color: black;
     margin-top: 50px;
-    cursor: pointer;
     border-radius: 4px;
     border: solid 1px lightblue;
     text-align: center;

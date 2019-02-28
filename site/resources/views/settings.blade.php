@@ -144,6 +144,12 @@
                         <img id="spin-email-lg" class="settings-spin" style="display: none" src="images/loader.gif">
                         <input onclick="reset_email('lg')" id="change-email-button-lg" class="settings-button col-lg-3 col-md-3" type="button" value="Modifier">
                     </div>
+                    <div class="row large-screen" style="align-items: baseline;line-height: 31px;">
+                        <span class="col-lg-4 col-md-5" id="current_mdp-lg" name="current_mdp">Mot de passe : xxxxxxxxxxxxx</span>
+                        <input id="_token3-lg" name="_token3" type="hidden" value="{{ csrf_token() }}">
+                        <img id="spin-mdp-lg" class="settings-spin" style="display: none" src="images/loader.gif">
+                        <input onclick="reset_mdp('lg')" id="change-mdp-button-lg" class="settings-button col-lg-6 col-md-6" type="button" value="Modifier le mot de passe">
+                    </div>
                     <!-- User Settings for Medium Screen -->
                     <div class="medium-screen" style="align-items: baseline;">
                         <span id="current-login-md" name="current_login" id="current-login-md" title="{{ $complete_login }}">Psuedo : {{ $user_login }}</span>

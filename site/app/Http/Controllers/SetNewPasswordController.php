@@ -41,7 +41,9 @@
             $db_current_password = DB::table('users')
             ->where('id', '=', $user_id)
             ->value('password');
-            if ($new_password !== $confirm_new_password)
+            if ($new_password == null)
+                return (7);
+            else if ($new_password !== $confirm_new_password)
                 return (1);
             else if (!password_verify($user_current_password, $db_current_password))
                 return (2);

@@ -44,7 +44,7 @@
             {
                 e.preventDefault();
                 var btn = document.getElementById('update-button');
-                var _token = document.getElementById('_token').value();
+                var _token = document.getElementById('_token').value;
                 btn.disabled = true;
                 btn.style.display = 'none';
                 var spin = document.getElementById('spin');

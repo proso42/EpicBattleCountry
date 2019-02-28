@@ -182,6 +182,7 @@ body
 .return-button
 {
     margin-top: 25px;
+    margin-bottom: 20px;
     background-color: cornflowerblue;
     color: black;
     text-align: center;
@@ -479,4 +480,5 @@ input::placeholder
     width: 204px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 20px;
 }

@@ -12,7 +12,7 @@
             <h2>Modification de mot de passe</h2>
             <div id="password_updated" class="settings-update-success" style="display: none">
                 <p>Votre mot de passe a été modifié avec succès !</p>
-                <button class="return-button" onclick="window.location.href='/home'">Retour</button>
+                <button class="return-button" onclick="window.location.href='/settings'">Retour</button>
             </div>
             <form method="POST" id="new_password_form">
                 <div id="err_password" class="col-lg-6 col-md-6 col-sm-8 col-8 signup-err-password" style="display: none">

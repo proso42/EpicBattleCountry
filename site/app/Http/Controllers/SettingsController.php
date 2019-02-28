@@ -16,18 +16,18 @@
             ->select('email', 'login', 'race', 'is_premium')
             ->where('id', '=', session()->get('user_id'))
             ->first();
-            $user_email = $user_infos->email;
+            $complete_email = $user_infos->email;
             if (strlen($user_email) > 18)
-                $user_email = substr($user_email, 0, 15) . "...";
-            $user_login = $user_infos->login;
-            if (strlen($user_login) > 17)
-                $user_login = substr($user_login, 0, 14) . "...";
+                $user_email = substr($complete_email, 0, 15) . "...";
+            $complete_login = $user_infos->login;
+            if (strlen($complete_login) > 17)
+                $user_login = substr($complete_login, 0, 14) . "...";
             $user_race = $user_infos->race;
             if ($user_infos->is_premium)
                 $is_premium = "Oui";
             else
                 $is_premium = "Non";
-            return view('settings', compact('user_email', 'user_login', 'user_race', 'is_premium', 'user_race'));
+            return view('settings', compact('complete_email', 'user_email', 'complete_login', 'user_login', 'user_race', 'is_premium', 'user_race'));
         }
 
         public function reset_login(Request $request)

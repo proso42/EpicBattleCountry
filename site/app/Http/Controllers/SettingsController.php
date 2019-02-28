@@ -29,7 +29,7 @@
             $user_race = DB::table('races')
             ->select('race_name')
             ->where('id', '=', $user_infos->race)
-            ->first();
+            ->get();
             if ($user_infos->is_premium)
                 $is_premium = "Oui";
             else

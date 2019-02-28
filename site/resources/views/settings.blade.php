@@ -204,21 +204,31 @@
         <script>
             function reset_login(id)
             {
+                console.log('1');
                 var new_login = document.getElementById('new-login-' + id).value;
+                console.log('2');
                 var _token = document.getElementById('_token-' + id).value;
+                console.log('3');
                 if (new_login === '')
                 {
+                    console.log('4');
                     document.getElementById('empty_login').style.display = '';
                     setTimeout(() =>{
                         document.getElementById("empty_login").style.display = 'none';
                     }, 5000);
                     return false;
                 }
+                console.log('5');
                 var btn = document.getElementById('change-login-button-' + id);
+                console.log('6');
                 var spin = document.getElementById('spin-login-' + id);
+                console.log('7');
                 spin.style.display = '';
+                console.log('8');
                 btn.disabled = true;
+                console.log('9');
                 btn.style.display = 'none';
+                console.log('10');
                 var xhr = new XMLHttpRequest();
                 xhr.open('POST', 'http://www.epicbattlecorp.fr/reset_login');
                 xhr.onreadystatechange =  function(){

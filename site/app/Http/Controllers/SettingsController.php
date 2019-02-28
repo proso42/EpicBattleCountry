@@ -19,9 +19,13 @@
             $complete_email = $user_infos->email;
             if (strlen($complete_email) > 18)
                 $user_email = substr($complete_email, 0, 15) . "...";
+            else
+                $user_email = $complete_email;
             $complete_login = $user_infos->login;
             if (strlen($complete_login) > 17)
                 $user_login = substr($complete_login, 0, 14) . "...";
+            else
+                $user_login = $complete_login;
             $user_race = $user_infos->race;
             if ($user_infos->is_premium)
                 $is_premium = "Oui";

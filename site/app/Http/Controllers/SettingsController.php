@@ -27,9 +27,8 @@
             else
                 $user_login = $complete_login;
             $user_race = DB::table('races')
-            ->select('race_name')
             ->where('id', '=', $user_infos->race)
-            ->value();
+            ->value('race_name');
             if ($user_infos->is_premium)
                 $is_premium = "Oui";
             else

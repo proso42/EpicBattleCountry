@@ -8,7 +8,7 @@
         <link rel="stylesheet" type="text/css" href="css/style.css"/>
     </head>
     <body>
-    <div class="menu-top">
+        <div class="menu-top">
             <div class="row">
                 <div class="col-lg-4 col-md-2 col-sm-2"></div>
                 <div class="col-lg-1 col-md-2 col-sm-2 col-3">

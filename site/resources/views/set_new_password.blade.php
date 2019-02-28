@@ -87,28 +87,16 @@
                             }, 5000);
                             return false;
                         }
-                        else if (xhr.responseText == 7)
-                        {
-                            document.getElementById('err_7').style.display = '';
-                            setTimeout(() =>{
-                                document.getElementById("err_7").style.display = 'none';
-                            }, 5000);
-                            return false;
-                        }
-                        else if (xhr.responseText == 0)
+                        else
                         {
                             document.getElementById('password_updated').style.display = '';
                             docuemt.getElementById('new_password_form').remove();
                             return true;
                         }
-                        else
-                        {
-                            console.log('new_password en session => ' + xhr.responseText)
-                        }
                     }
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                xhr.send('current_password=' + user_current_password + 'confirm_new_password=' + confirm_new_password + '&_token=' + _token);
+                xhr.send('user_current_password=' + user_current_password + 'confirm_new_password=' + confirm_new_password + '&_token=' + _token);
             });
         </script>
     </body>

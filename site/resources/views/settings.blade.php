@@ -121,6 +121,12 @@
                 <div id="empty_email" class="signup-err-password" style="display: none">
                     <p>Merci de renseigner un email !</p>
                 </div>
+                <div id="empty_mdp" class="signup-err-password" style="display: none">
+                    <p>Merci de renseigner un mot de passe !</p>
+                </div>
+                <div id="err_same_mdp" class="signup-err-password" style="display: none">
+                    <p>Votre nouveau mot de passe ne peut pas être votre mot de passe actuel !</p>
+                </div>
                 <div id="login_updated" class="settings-update-success" style="display: none">
                     <p>Votre login a été modifié avec succès ! </p>
                 </div>
@@ -291,6 +297,48 @@
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhr.send('new_email=' + new_email + '&_token=' + _token);
+            }
+            function reset_mdp(id3)
+            {
+                var new_password = document.getElementById('new-mdp-' + id3).value;
+                var _token = document.getElementById('_token3-' + id3).value;
+                if (new_password === '')
+                {
+                    document.getElementById('empty_mdp').style.display = '';
+                    setTimeout(() =>{
+                        document.getElementById("empty_mdp").style.display = 'none';
+                    }, 5000);
+                    return false;
+                }
+                var btn = document.getElementById('change-mdp-button-' + id2);
+                var spin = document.getElementById('spin-mdp-' + id2);
+                spin.style.display = '';
+                btn.disabled = true;
+                btn.style.display = 'none';
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'http://www.epicbattlecorp.fr/check_new_password');
+                xhr.onreadystatechange =  function()
+                {
+                    console.log('onreadystatechange')
+                    if (xhr.readyState === 4 && xhr.status === 200)
+                    {
+                        btn.disabled = false;
+                        btn.style.display = '';
+                        spin.style.display = 'none';
+                        if (xhr.responseText == 1)
+                        {
+                            document.getElementById('err_same_mdp').style.display = '';
+                            setTimeout(() =>{
+                                document.getElementById("err_same_mdp").style.display = 'none';
+                            }, 5000);
+                            return false;
+                        }
+                        else
+                            document.location.href('/set_new_password');
+                    }
+                }
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.send('new_password=' + new_password + '&_token=' + _token);
             }
         </script>
     </body>

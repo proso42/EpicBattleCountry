@@ -475,7 +475,6 @@ input::placeholder
     background-color: lightgreen;
     border: 1px solid black;
     border-radius: 4px;
-    display: none;
     padding-top: 10px;
     width: 204px;
     margin-left: auto;

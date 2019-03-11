@@ -345,7 +345,7 @@
                         }
                         else
                         {
-                            document.location.href= '/set_new_password?_token=' + $csrf_token_password;
+                            document.location.href= '/set_new_password?_token=' + document.getElementById('_token3-' + id3).value;;
                         }
                     }
                 }

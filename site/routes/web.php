@@ -45,7 +45,7 @@ Route::group(['middleware' => 'logged'], function(){
     Route::get('/settings', 'SettingsController@index');
     Route::post('/reset_login', 'SettingsController@reset_login');
     Route::post('/send_email_reset_email', 'SettingsController@send_email_reset_email');
-    Route::get('/set_new_password', 'SetNewPasswordController@index');
+    Route::post('/set_new_password', 'SetNewPasswordController@index');
     Route::post('/check_new_password', 'SetNewPasswordController@check_new_password');
     Route::post('/update_password', 'SetNewPasswordController@update_password');
 });

@@ -344,7 +344,12 @@
                             return false;
                         }
                         else
-                            document.location.href = '/set_new_password';
+                        {
+                            var xhr2 = new XMLHttpRequest();
+                            xhr2.open('POST', 'http://www.epicbattlecorp.fr/set_new_password');
+                            xhr2.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                            xhr2.send('_token=' + _token);
+                        }
                     }
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

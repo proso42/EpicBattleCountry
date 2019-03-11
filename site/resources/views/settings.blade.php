@@ -345,7 +345,7 @@
                         }
                         else
                         {
-                            document.location.href= '/set_new_password?_token=' + _token;
+                            document.location.href= '/set_new_password';
                         }
                     }
                 }

@@ -508,3 +508,10 @@ input::placeholder
     height: 28px;
     width: 261px;
 }
+
+.set-new-password-button:hover
+{
+    background-color: darkcyan;
+    font-weight: bold;
+    color: white;
+}

@@ -21,7 +21,7 @@
                     <img style="margin-top: 15px;" src="images/swords.png">
                 </div>
             </div>
-            <!--<div>
+            <div>
                     <div  class="res">
                         <img src="images/food.png">
                         <p style="margin-left: 5px;margin-top: 5px;margin-right: 10px;">Vivres : 0 / 100</p>
@@ -42,11 +42,11 @@
                         <img src="images/gold.png">
                         <p style="margin-left: 5px;margin-top: 5px;margin-right: 10px;">Or : 0 / 100</p>
                     </div>
-            </div>-->
+            </div>
         </div>
         <div class="row" style="margin-left:0; margin-right: 0px;">
             <div class="col-lg-2 col-md-1" style="margin-top: 50px;">
-                <div class="row menu-left" onclick="document.location.href='file:///C:/Users/Propri%C3%A9taire/test/site/home.html'">
+                <div class="row menu-left" onclick="document.location.href='/home'">
                     <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-home icon"></i></div>
                     <div class="col-lg-3 col-md-3 col-sm-1 col-3">Acceuil</div>
                 </div>

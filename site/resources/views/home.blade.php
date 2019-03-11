@@ -21,7 +21,7 @@
                     <img style="margin-top: 15px;" src="images/swords.png">
                 </div>
             </div>
-            <!--<div>
+            <div>
                     <div  class="res">
                         <img src="images/food.png">
                         <p style="margin-left: 5px;margin-top: 5px;margin-right: 10px;">Vivres : 0 / 100</p>
@@ -42,7 +42,7 @@
                         <img src="images/gold.png">
                         <p style="margin-left: 5px;margin-top: 5px;margin-right: 10px;">Or : 0 / 100</p>
                     </div>
-            </div>-->
+            </div>
         </div>
         <div class="row" style="margin-left:0; margin-right: 0;">
             <div class="col-lg-2 col-md-2" style="margin-top: 50px;">

@@ -24,7 +24,7 @@
             }
             $city = DB::table('cities')
             ->where('owner', '=', $user_id)
-            ->where('city_id', '=', $city_id)
+            ->where('id', '=', $city_id)
             ->first();
             $food = $city->food;
             $compact_food = $food;

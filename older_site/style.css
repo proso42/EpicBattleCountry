@@ -30,7 +30,7 @@ body
 .res
 {
     color: black;
-    display: -webkit-inline-box;
+    /*display: -webkit-inline-box;*/
     text-align: center;
     margin-left: 15px;
     margin-top: 75px;

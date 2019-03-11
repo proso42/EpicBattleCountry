@@ -12,9 +12,16 @@
     {
         public function index()
         {
+            if (!isset($_GET['_token']) || session()->get('csrf_token_password') === null || session()->get('new_password') === null)
+            {
+                if (session()->get('new_password') !== null)
+                    session()->forget('new_password');
+                if (session()->get('csrf_token_password') !== null)
+                    session()->forget('csrf_token_password');
+                return redirect('/home');
+            }
             $csrf_token_password = csrf_token();
-            if (session()->get('csrf_token_password'))
-                session()->forget('csrf_token_password');
+            session()->forget('csrf_token_password');
             session()->put(['csrf_token_password' => $csrf_token_password]);
             return view('set_new_password', compact('csrf_token_password'));
         }

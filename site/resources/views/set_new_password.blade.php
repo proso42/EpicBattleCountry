@@ -93,7 +93,7 @@
                     }
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                xhr.send('user_current_password=' + user_current_password + 'confirm_new_password=' + confirm_new_password + '&_token=' + _token);
+                xhr.send('user_current_password=' + user_current_password + '&confirm_new_password=' + confirm_new_password + '&_token=' + _token);
             });
         </script>
     </body>

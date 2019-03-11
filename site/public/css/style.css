@@ -482,3 +482,29 @@ input::placeholder
     margin-right: auto;
     margin-bottom: 20px;
 }
+
+.set-new-password-input
+{
+    margin-top: 25px;
+    background-color: tan;
+    color: black;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    height: 28px;
+    width: 261px;
+}
+
+.set-new-password-button
+{
+    margin-top: 25px;
+    margin-right: 5px;
+    background-color: aquamarine;
+    color: black;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 28px;
+    width: 261px;
+}

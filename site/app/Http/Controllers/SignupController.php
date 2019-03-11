@@ -48,9 +48,45 @@
             $crypted_password = password_hash($request['password'], PASSWORD_BCRYPT);
             $email = $request['email'];
             $login = $request['login'];
+            $city = $request['city'];
+            $city_x_pos = rand(-2000, 2000);
+            $city_y_pos = rand(-2000, 2000);
+            while (1)
+            {    
+                $ret = DB::table('cities')
+                ->where('x_pos', '=', $city_x_pos)
+                ->where('y_pos', '=', $city_y_pos)
+                ->first();
+                if ($ret === null)
+                    break;
+                else
+                {
+                    $city_x_pos = rand(-2000, 2000);
+                    $city_y_pos = rand(-2000, 2000);
+                }
+            }
             $user_id = DB::table('users')
             ->insertGetId(
                 array('login' => $login, 'email' => $email, 'password' => $crypted_password, 'remember_token' => $request['_token'], 'created_at' => time(), 'race' => $id_race->id)
+            );
+            $city_id = DB::table('cities')
+            ->insertGetId(
+                array(
+                    'name' => $city,
+                    'owner' => $user_id,
+                    'x_pos' => $city_x_pos,
+                    'y_pos' => $city_y_pos,
+                    'is_capital' => 1,
+                    'food' => 500,
+                    'max_food' => 2500,
+                    'wood' => 350,
+                    'max_wood' => 2500,
+                    'rock' => 350,
+                    'max_rock' => 2500,
+                    'steel' => 100,
+                    'max_steel' => 2500,
+                    'gold' => 25,
+                    'max_gold' => 2500)
             );
             $link = $this->gen_confirmation_email_link();
             $email_token = explode('=', $link)[1];

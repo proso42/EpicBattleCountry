@@ -30,9 +30,9 @@
             </div>
             <form method="POST" id="signup_form" action="/register">
                 <input id="login" name="login" class="signup-input" placeholder="Login *" type="text" pattern="[a-zA-Z]{3,20}" required>
-                </br>
+                <br/>
                 <input id="city" name="city" class="signup-input" placeholder="Cité de départ *" type="text" pattern="^(?=.*[a-zA-Z]{3})[-a-zA-Z ]{3,20}$" required>
-                </br>
+                <br/>
                 <select id="race" name="race" class="signup-select-race" required>
                     <optgroup style="background-color: white" label="Races disponibles">
                             <option selected class="signup-option-race">Humain</option>
@@ -41,20 +41,20 @@
                             <option class="signup-option-race">Nain</option>
                     </optgroup>
                 </select>
-                </br>
+                <br/>
                 <input id="email" name="email" class="signup-input" placeholder="Email *" type="email" required>
-                </br>
+                <br/>
                 <!--
                 <input id="password" name="password" class="signup-input" placeholder="Mot de passe *" type="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[\da-zA-Z!-/:-@[-`{-~]{12,20}$" required>
                 </br>
                 <input id="password2" name="password2" class="signup-input" placeholder="Confirmer mot de passe *" type="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[\da-zA-Z!-/:-@[-`{-~]{12,20}$" required>
                 </br> -->
                 <input id="password" name="password" class="signup-input" placeholder="Mot de passe *" type="password" required>
-                </br>
+                <br/>
                 <input id="password2" name="password2" class="signup-input" placeholder="Confirmer mot de passe *" type="password" required>
-                </br>
+                <br/>
                 <input id="sponsor" name="sponsor" class="signup-input" placeholder="Parrain" type="text">
-                </br>
+                <br/>
                 {{csrf_field()}}
                 <div id="spin" style="display: none;">
                     <img class="signin-spin" src="images/loader.gif">
@@ -65,9 +65,9 @@
             <div class="signup-conditions">
                 <p style="font-size: 12px;">
                     Votre mot de passe doit être composé de 12 à 20 caractères non accentué, comprenant au moins une minuscule, une majuscule et un chiffre.
-                    </br>
+                    <br/>
                     Votre login doit être composé de 3 à 20 lettres, minuscule et/ou majuscule.
-                    </br>
+                    <br/>
                     Le nom de votre cité de départ doit être composé de 3 à 20 lettres, minuscule et/ou majuscule. Vous pouvez aussi utiliser des espaces et des tirets.
                 </p>
             </div>

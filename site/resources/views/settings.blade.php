@@ -27,7 +27,7 @@
                         <div class="row">
                             <div  class="col-lg-12">
                                 <img src="images/food.png">
-                                <span style="margin-left: 5px;margin-top: 7px;margin-right: 10px;color:peru">10000...</span>
+                                <span style="margin-left: 5px;margin-top: 7px;margin-right: 10px;color:darkorange">10000...</span>
                             </div>
                         </div>
                     </div>

@@ -27,7 +27,12 @@
                         <div class="row">
                             <div  class="col-lg-12">
                                 <img src="images/food.png">
-                                <span style="margin-left: 5px;margin-top: 7px;margin-right: 10px;color:peru">10000...</span>
+                                <span id="food" style="margin-left: 5px;margin-top: 7px;margin-right: 10px; {{ if ($food == $max_food) }} color:maroon {{ else if ($food >= ($max_food / 10 * 9)) }} color:darkorange">
+                                {{ $food }}
+                                </span>
+                                <span id="compact_food" style="margin-left: 5px;margin-top: 7px;margin-right: 10px;color:darkorange;display: none">
+                                {{ $compact_food }}
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -132,5 +137,50 @@
             <div class="col-lg-9 col-md-4 center-win" style="margin-top: 50px;">
             </div>
         </div>
+        <script>
+            var screen_width = window.innerWidth;
+            if (screen_width <= 563)
+            {
+                document.getElementById('food').style.display = 'none';
+                document.getElementById('compact_food').style.display = '';
+                document.getElementById('wood').style.display = 'none';
+                document.getElementById('compact_wood').style.display = '';
+                document.getElementById('rock').style.display = 'none';
+                document.getElementById('compact_rock').style.display = '';
+                document.getElementById('steel').style.display = 'none';
+                document.getElementById('compact_steel').style.display = '';
+                document.getElementById('gold').style.display = 'none';
+                document.getElementById('compact_gold').style.display = '';
+            }
+            window.onresize = function(){
+                let new_screen_width = window.innerWidth;
+                if (new_screen_width <= 563)
+                {
+                    document.getElementById('food').style.display = 'none';
+                    document.getElementById('compact_food').style.display = '';
+                    document.getElementById('wood').style.display = 'none';
+                    document.getElementById('compact_wood').style.display = '';
+                    document.getElementById('rock').style.display = 'none';
+                    document.getElementById('compact_rock').style.display = '';
+                    document.getElementById('steel').style.display = 'none';
+                    document.getElementById('compact_steel').style.display = '';
+                    document.getElementById('gold').style.display = 'none';
+                    document.getElementById('compact_gold').style.display = '';
+                }
+                else
+                {
+                    document.getElementById('food').style.display = '';
+                    document.getElementById('compact_food').style.display = 'none';
+                    document.getElementById('wood').style.display = '';
+                    document.getElementById('compact_wood').style.display = 'none';
+                    document.getElementById('rock').style.display = '';
+                    document.getElementById('compact_rock').style.display = 'none';
+                    document.getElementById('steel').style.display = '';
+                    document.getElementById('compact_steel').style.display = 'none';
+                    document.getElementById('gold').style.display = '';
+                    document.getElementById('compact_gold').style.display = 'none';
+                }
+            }
+        </script>
     </body>
 </html>

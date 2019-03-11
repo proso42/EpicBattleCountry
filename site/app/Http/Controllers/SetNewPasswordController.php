@@ -21,7 +21,7 @@
 
         public function check_new_password(Request $request)
         {
-            $_token = $_GET['_token'];
+            $_token = $request['_token'];
             $csrf_token_password = session()->get('csrf_token_password');
             if ($csrf_token_password === null)
                 return redirect('/home');
@@ -47,7 +47,7 @@
 
         public function update_password(Request $request)
         {
-            $_token = $_GET['_token'];
+            $_token = $request['_token'];
             $csrf_token_password = session()->get('csrf_token_password');
             if ($csrf_token_password === null)
                 return redirect('/home');

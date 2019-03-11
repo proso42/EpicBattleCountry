@@ -30,7 +30,7 @@
                 <input id="current_password" name="current_password" class="signup-input" placeholder="Mot de passe actuel *" type="password" required>
                 <br/>
                 <input id="confirm_new_password" name="confirm_new_password" class="signup-input" placeholder="Confirmer nouveau mot de passe *" type="password" required>
-                <input id="_token" name="_token" type="hidden" value="{{ csrf_token() }}">
+                <input id="_token" name="_token" type="hidden" value="{{ $csrf_token_password }}">
                 <br/>
                 <div id="spin" style="display: none;">
                     <img class="signin-spin" src="images/loader.gif">

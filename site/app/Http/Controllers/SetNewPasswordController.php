@@ -12,11 +12,24 @@
     {
         public function index()
         {
-            return view('set_new_password');
+            $csrf_token_password = csrf_token();
+            if (session()->get('csrf_token_password'))
+                session()->forget('csrf_token_password');
+            session()->put(['csrf_token_password' => $csrf_token_password]);
+            return view('set_new_password', compact('csrf_token_password'));
         }
 
         public function check_new_password(Request $request)
         {
+            $_token = $_GET['_token'];
+            $csrf_token_password = session()->get('csrf_token_password');
+            if ($csrf_token_password === null)
+                return redirect('/home');
+            else if ($csrf_token_password !== $_token)
+            {
+                session()->forget('csrf_token_password');
+                return redirect('/home');
+            }
             $new_password = $request['new_password'];
             $current_password = DB::table('users')
             ->where('id', '=', session()->get('user_id'))
@@ -34,6 +47,15 @@
 
         public function update_password(Request $request)
         {
+            $_token = $_GET['_token'];
+            $csrf_token_password = session()->get('csrf_token_password');
+            if ($csrf_token_password === null)
+                return redirect('/home');
+            else if ($csrf_token_password !== $_token)
+            {
+                session()->forget('csrf_token_password');
+                return redirect('/home');
+            }
             $user_id = session()->get('user_id');
             $new_password = session()->get('new_password');
             $confirm_new_password = $request['confirm_new_password'];
@@ -51,6 +73,7 @@
             ->where('id', '=', $user_id)
             ->update(['password' => password_hash($confirm_new_password, PASSWORD_BCRYPT)]);
             session()->forget('new_password');
+            session()->forget('csrf_token_password');
             return (0);
         }
     }

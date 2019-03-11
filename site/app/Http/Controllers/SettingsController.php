@@ -33,11 +33,30 @@
                 $is_premium = "Oui";
             else
                 $is_premium = "Non";
-            return view('settings', compact('complete_email', 'user_email', 'complete_login', 'user_login', 'user_race', 'is_premium'));
+            if (session()->get('csrf_token_login') !== null)
+                session()->forget('csrf_token_login');
+            if (session()->get('csrf_token_email') !== null)
+                session()->forget('csrf_token_email');
+            if (session()->get('csrf_token_password') !== null)
+                session()->forget('csrf_token_password');
+            $csrf_token_login = csrf_token();
+            $csrf_token_email = csrf_token();
+            $csrf_token_password = csrf_token();
+            session()->put(['csrf_token_login' => $csrf_token_login, 'csrf_token_email' => $csrf_token_email, 'csrf_token_password' => $csrf_token_password]);
+            return view('settings', compact('complete_email', 'user_email', 'complete_login', 'user_login', 'user_race', 'is_premium', 'csrf_token_login', 'csrf_token_email', 'csrf_token_password'));
         }
 
         public function reset_login(Request $request)
         {
+            $_token = $request['_token'];
+            $csrf_token_login = session()->get('csrf_token_login');
+            if ($csrf_token_login === null)
+                return redirect('/home');
+            else if ($_token !== $csrf_token_login)
+            {
+                session()->forget('csrf_token_login');
+                return redirect('/home');
+            }
             $new_login = $request['new_login'];
             $existing_login = DB::table('users')
             ->select('id')
@@ -55,6 +74,15 @@
 
         public function send_email_reset_email(Request $request)
         {
+            $_token = $request['_token'];
+            $csrf_token_email = session()->get('csrf_token_email');
+            if ($csrf_token_email === null)
+                return redirect('/home');
+            else if ($_token !== $csrf_token_email)
+            {
+                session()->forget('csrf_token_email');
+                return redirect('/home');
+            }
             $new_email = $request['new_email'];
             $existing_email = DB::table('users')
             ->select('id')

@@ -139,21 +139,21 @@
                         <span class="col-lg-4 col-md-5" id="current-login-lg" name="current_login" title="{{ $complete_login }}" >Psuedo : {{ $user_login }}</span>
                         <br class="md-br"/>
                         <input id="new-login-lg" name="new_login" class="settings-input col-lg-3 col-md-3" placeholder="Nouveau pseudo" type="text" pattern="[a-zA-Z]{3,20}">
-                        <input id="_token-lg" name="_token" type="hidden" value="{{ csrf_token() }}">
+                        <input id="_token-lg" name="_token" type="hidden" value="{{ $csrf_token_login }}">
                         <img id="spin-login-lg" class="settings-spin" style="display: none" src="images/loader.gif">
                         <input onclick="reset_login('lg')" id="change-login-button-lg" class="settings-button col-lg-3 col-md-3" type="button" value="Modifier">
                     </div>
                     <div class="row large-screen" style="align-items: baseline;line-height: 31px;">
                         <span class="col-lg-4 col-md-5" id="current_email-lg" name="current_email" title="{{ $complete_email }}">Email : {{ $user_email }}</span>
                         <input id="new-email-lg" name="new_email" class="settings-input col-lg-3 col-md-3" placeholder="Nouvel email" type="text">
-                        <input id="_token2-lg" name="_token2" type="hidden" value="{{ csrf_token() }}">
+                        <input id="_token2-lg" name="_token2" type="hidden" value="{{ $csrf_token_email }}">
                         <img id="spin-email-lg" class="settings-spin" style="display: none" src="images/loader.gif">
                         <input onclick="reset_email('lg')" id="change-email-button-lg" class="settings-button col-lg-3 col-md-3" type="button" value="Modifier">
                     </div>
                     <div class="row large-screen" style="align-items: baseline;line-height: 31px;">
                         <span class="col-lg-4 col-md-5" id="current_mdp-lg" name="current_mdp">Mot de passe : xxxxxxxxxxxxx</span>
                         <input id="new-mdp-lg" name="new_mdp" class="settings-input col-lg-3 col-md-3" placeholder="Nouveau mot de passe" type="password">
-                        <input id="_token3-lg" name="_token3" type="hidden" value="{{ csrf_token() }}">
+                        <input id="_token3-lg" name="_token3" type="hidden" value="{{ $csrf_token_password }}">
                         <img id="spin-mdp-lg" class="settings-spin" style="display: none" src="images/loader.gif">
                         <input onclick="reset_mdp('lg')" id="change-mdp-button-lg" class="settings-button col-lg-3 col-md-3" type="button" value="Modifier le mot de passe">
                     </div>
@@ -162,7 +162,7 @@
                         <span id="current-login-md" name="current_login" id="current-login-md" title="{{ $complete_login }}">Psuedo : {{ $user_login }}</span>
                         <br class="md-br"/>
                         <input id="new-login-md" name="new_login" class="settings-input" placeholder="Nouveau pseudo" type="text" pattern="[a-zA-Z]{3,20}">
-                        <input id="_token-md" name="_token" type="hidden" value="{{ csrf_token() }}">
+                        <input id="_token-md" name="_token" type="hidden" value="{{ $csrf_token_login }}">
                         <img id="spin-login-md" class="settings-spin" style="display: none" src="images/loader.gif">
                         <input onclick="reset_login('md')" id="change-login-button-md" class="settings-button" type="button" value="Modifier">
                     </div>
@@ -170,7 +170,7 @@
                         <span id="current-email-md" name="current_email" title="{{ $complete_email }}">Email : {{ $user_email }}</span>
                         <br class="md-br"/>
                         <input id="new-email-md" name="new_email" class="settings-input" placeholder="Nouvel email" type="text">
-                        <input id="_token2-md" name="_token2" type="hidden" value="{{ csrf_token() }}">
+                        <input id="_token2-md" name="_token2" type="hidden" value="{{ $csrf_token_email }}">
                         <img id="spin-email-md" class="settings-spin" style="display: none" src="images/loader.gif">
                         <input onclick="reset_email('md')" id="change-email-button-md" class="settings-button" type="button" value="Modifier">
                     </div>
@@ -180,7 +180,7 @@
                         <br/>
                         <input id="new-login-sm" name="new_login" class="settings-input" placeholder="Nouveau pseudo" type="text" pattern="[a-zA-Z]{3,20}">
                         <br/>
-                        <input id="_token-sm" name="_token" type="hidden" value="{{ csrf_token() }}">
+                        <input id="_token-sm" name="_token" type="hidden" value="{{ $csrf_token_login }}">
                         <img id="spin-login-sm" class="settings-spin" style="display: none" src="images/loader.gif">
                         <input onclick="reset_login('sm')" id="change-login-button-sm" class="settings-button" type="button" value="Modifier">
                     </div>
@@ -189,7 +189,7 @@
                         <br/>
                         <input id="new-email-sm" name="new_email" class="settings-input" placeholder="Nouvel email" type="text">
                         <br/>
-                        <input id="_token2-sm" name="_token2" type="hidden" value="{{ csrf_token() }}">
+                        <input id="_token2-sm" name="_token2" type="hidden" value="{{ $csrf_token_email }}">
                         <img id="spin-email-sm" class="settings-spin" style="display: none" src="images/loader.gif">
                         <input onclick="reset_email('sm')" id="change-email-button-sm" class="settings-button" type="button" value="Modifier">
                     </div>
@@ -207,7 +207,7 @@
                 console.log('1');
                 var new_login = document.getElementById('new-login-' + id).value;
                 console.log('2');
-                var _token = document.getElementById('_token-' + id).value;
+                var csrf_token_login = document.getElementById('_token-' + id).value;
                 console.log('3');
                 if (new_login === '')
                 {
@@ -259,12 +259,12 @@
                     }
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                xhr.send('new_login=' + new_login + '&_token=' + _token);
+                xhr.send('new_login=' + new_login + '&_token=' + csrf_token_login);
             }
             function reset_email(id2)
             {
                 var new_email = document.getElementById('new-email-' + id2).value;
-                var _token = document.getElementById('_token2-' + id2).value;
+                var csrf_token_email = document.getElementById('_token2-' + id2).value;
                 if (new_email === '')
                 {
                     document.getElementById('empty_email').style.display = '';
@@ -306,12 +306,12 @@
                     }
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                xhr.send('new_email=' + new_email + '&_token=' + _token);
+                xhr.send('new_email=' + new_email + '&_token=' + csrf_token_email);
             }
             function reset_mdp(id3)
             {
                 var new_password = document.getElementById('new-mdp-' + id3).value;
-                var _token = document.getElementById('_token3-' + id3).value;
+                var csrf_token_password = document.getElementById('_token3-' + id3).value;
                 if (new_password === '')
                 {
                     document.getElementById('empty_mdp').style.display = '';
@@ -345,15 +345,12 @@
                         }
                         else
                         {
-                            var xhr2 = new XMLHttpRequest();
-                            xhr2.open('POST', 'http://www.epicbattlecorp.fr/set_new_password');
-                            xhr2.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                            xhr2.send('_token=' + _token);
+                            document.location.href= '/set_new_password?_token=' + _token;
                         }
                     }
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                xhr.send('new_password=' + new_password + '&_token=' + _token);
+                xhr.send('new_password=' + new_password + '&_token=' + csrf_token_password);
             }
         </script>
     </body>

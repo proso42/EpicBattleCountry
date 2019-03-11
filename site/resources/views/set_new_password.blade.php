@@ -27,15 +27,15 @@
                 <!--<input id="password" name="password" class="signup-input" placeholder="Mot de passe *" type="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[\da-zA-Z!-/:-@[-`{-~]{12,20}$" required>
                 <br/>
                 <input id="password2" name="password2" class="signup-input" placeholder="Confirmer mot de passe *" type="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[\da-zA-Z!-/:-@[-`{-~]{12,20}$" required> -->
-                <input id="current_password" name="current_password" class="signup-input" placeholder="Mot de passe actuel *" type="password" required>
+                <input id="current_password" name="current_password" class="set-new-password-input" placeholder="Mot de passe actuel *" type="password" required>
                 <br/>
-                <input id="confirm_new_password" name="confirm_new_password" class="signup-input" placeholder="Confirmer nouveau mot de passe *" type="password" required>
+                <input id="confirm_new_password" name="confirm_new_password" class="set-new-password-input" placeholder="Confirmer nouveau mot de passe *" type="password" required>
                 <input id="_token" name="_token" type="hidden" value="{{ $csrf_token_password }}">
                 <br/>
                 <div id="spin" style="display: none;">
                     <img class="signin-spin" src="images/loader.gif">
                 </div>
-                <input id="update-button" class="signup-button" style="margin-bottom: 15px;" type="submit" value="Modifier">
+                <input id="update-button" class="set-new-password-button" style="margin-bottom: 15px;" type="submit" value="Modifier">
             </form>
         </div>
         <script>

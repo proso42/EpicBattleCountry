@@ -30,7 +30,7 @@
                                 <span id="food" style="margin-left: 5px;margin-top: 7px;margin-right: 10px; @if ($food == $max_food) color:maroon @elseif ($food >= ($max_food / 10 * 9)) color:darkorange @endif">
                                 {{ $food }}
                                 </span>
-                                <span id="compact_food" style="margin-left: 5px;margin-top: 7px;margin-right: 10px;color:darkorange;display: none">
+                                <span id="compact_food" style="margin-left: 5px;margin-top: 7px;margin-right: 10px;@if ($food == $max_food) color:maroon @elseif ($food >= ($max_food / 10 * 9)) color:darkorange @endif; display: none">
                                 {{ $compact_food }}
                                 </span>
                             </div>

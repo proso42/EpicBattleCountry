@@ -378,8 +378,7 @@
                         m="0"+m
                     }
                     compteur.textContent= h+":"+m+":"+s;
-                    duration=duration-1;
-                    setTimeout(function(id, duration){
+                    setTimeout(function(id=id, duration=duration-1){
                         timer(id, duration);
                     },1000);
                 }

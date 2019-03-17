@@ -85,6 +85,8 @@
                                 }
                             }
                         }
+                        else
+                            $allowed = 1;
                         if ($allowed == 0)
                             continue;
                         if ($val->building_required !== "NONE")

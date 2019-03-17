@@ -237,7 +237,7 @@
             $rock_required = $request['rock_required'];
             $steel_required = $request['steel_required'];
             $gold_required = $request['gold_required'];
-            $finishing_date = $this->date_to_sec($request['duration']);
+            /*$finishing_date = $this->date_to_sec($request['duration']);
             DB::table('waiting_building')
             ->insert(["city_id" => $city_id, "type" => $building_type, "building_id" => $building_id, "finishing_date" => $finishing_date]);
             $city_res = DB::table('cities')
@@ -246,7 +246,7 @@
             ->get();
             DB::table('cities')
             ->where('id', '=', $city_id)
-            ->update(['food' => $city_res->food - $food_required, 'wood' => $city_res->wood - $wood_required, 'rock' => $city_res->rock - $rock_required, 'steel' => $city_res->steel - $steel_required, 'gold' => $city_res->gold - $gold_required]);
+            ->update(['food' => $city_res->food - $food_required, 'wood' => $city_res->wood - $wood_required, 'rock' => $city_res->rock - $rock_required, 'steel' => $city_res->steel - $steel_required, 'gold' => $city_res->gold - $gold_required]);*/
         }
     }
 

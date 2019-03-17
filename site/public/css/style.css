@@ -561,7 +561,6 @@ input::placeholder
     background-color: darkcyan;
     color: white;
     font-weight: bold;
-    display: block;
 }
 
 .building-button-impossible
@@ -581,7 +580,6 @@ input::placeholder
     background-color: crimson;
     color: white;
     font-weight: bold;
-    display: block;
 }
 
 .building-name
@@ -593,6 +591,16 @@ input::placeholder
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     border: solid 1px lightblue;
+}
+
+.building-button:hover .building-res-needed
+{
+    display: block;
+}
+
+.building-button-impossible:hover .building-res-needed
+{
+    display: block;
 }
 
 .building-res-needed

@@ -379,7 +379,7 @@
                     compteur.textContent= h+":"+m+":"+s;
                 }
                 duration=duration-1;
-                window.setTimeout("timer(" + name + ", " + duration + ");",999);
+                window.setTimeout("timer(" + id + ", " + duration + ");",999);
             }
 
             function update_building(name, food, wood, rock, steel, gold, duration)

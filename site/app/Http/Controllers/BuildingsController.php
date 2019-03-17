@@ -83,6 +83,7 @@
                     $status = "OK";
                 else
                     $status = "WIP";
+                dd($status);
                 $niv = DB::table('cities')
                 ->where('id', '=', $city_id)
                 ->value($val->name);

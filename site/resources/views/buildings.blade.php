@@ -195,6 +195,7 @@
                                     @if ($build['gold_required'] > 0)
                                         <li>Gold : {{ $build['gold_required'] }} @if ($build['gold_required'] > $gold) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
                                     @endif
+                                    <li>Time : {{ $build['duration'] }} <i class="fas fa-clock icon"></i></li>
                                 </ul>
                             </div>                        
                             </div>
@@ -231,6 +232,7 @@
                                     @if ($build['gold_required'] > 0)
                                         <li>Gold : {{ $build['gold_required'] }} @if ($build['gold_required'] > $gold) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
                                     @endif
+                                    <li>Time : {{ $build['duration'] }} <i class="fas fa-clock icon"></i></li>
                                 </ul>
                             </div>                         
                         </div>
@@ -267,6 +269,7 @@
                                     @if ($build['gold_required'] > 0)
                                         <li>Gold : {{ $build['gold_required'] }} @if ($build['gold_required'] > $gold) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
                                     @endif
+                                    <li>Time : {{ $build['duration'] }} <i class="fas fa-clock icon"></i></li>
                                 </ul>
                             </div>                          
                         </div>
@@ -303,6 +306,7 @@
                                     @if ($build['gold_required'] > 0)
                                         <li>Gold : {{ $build['gold_required'] }} @if ($build['gold_required'] > $gold) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
                                     @endif
+                                    <li>Time : {{ $build['duration'] }} <i class="fas fa-clock icon"></i></li>
                                 </ul>
                             </div>
                         </div>

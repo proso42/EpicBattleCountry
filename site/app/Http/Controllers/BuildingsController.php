@@ -138,7 +138,8 @@
                             $gold_required = $this->get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);
                     }
                     $illustration = "images/" . $val->illustration . ".jpg";
-                    array_push($allowed_type_buildings, ["name" => $val->name, "niv" => $niv, "illustration" => $illustration, "food_required" => $food_required, "wood_required" => $wood_required, "rock_required" => $rock_required, "steel_required" => $steel_required, "gold_required" => $gold_required]);
+                    $duration = $this->sec_to_date($niv, $val->duration, $val->levelup_price);
+                    array_push($allowed_type_buildings, ["name" => $val->name, "niv" => $niv, "illustration" => $illustration, "duration" => $duration, "food_required" => $food_required, "wood_required" => $wood_required, "rock_required" => $rock_required, "steel_required" => $steel_required, "gold_required" => $gold_required]);
                 }
                 else
                     continue;
@@ -152,6 +153,24 @@
             for ($i = 1; $i <= $niv; $i++)
                 $final_value *= $levelup;
             return round($final_value, 0, PHP_ROUND_HALF_DOWN);
+        }
+
+        private function sec_to_date($niv, $duration, $levelup)
+        {
+            $duration = $this->get_exp_value($niv, $duration, $levelup);
+            if ($duration < 60)
+                return ($duration . " s");
+            $new_duration = ($duration % 60) . " s";
+            $duration = round($duration / 60, 0, PHP_ROUND_HALF_DOWN);
+            if ($duration < 60)
+                return ($duration . " m " . $new_duration);
+            $new_duration = ($duration % 60) . " m " . $new_duration;
+            $duration = round($duration / 60, 0, PHP_ROUND_HALF_DOWN);
+            if ($duration < 60)
+                return ($duration . " h " . $new_duration);
+            $new_duration = ($duration % 60) . " h " . $new_duration;
+            $duration = round($duration / 24, 0, PHP_ROUND_HALF_DOWN);
+            return ($duration . " j " . $new_duration);
         }
     }
 

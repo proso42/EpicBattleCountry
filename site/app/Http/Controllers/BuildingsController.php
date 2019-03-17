@@ -237,7 +237,7 @@
             $rock_required = $request['rock_required'];
             $steel_required = $request['steel_required'];
             $gold_required = $request['gold_required'];
-            $finishing_date = date_to_sec($request['duration']);
+            $finishing_date = $this->date_to_sec($request['duration']);
             DB::table('waiting_building')
             ->insert(["city_id" => $city_id, "type" => $building_type, "building_id" => $building_id, "finishing_date" => $finishing_date]);
             $city_res = DB::table('cities')

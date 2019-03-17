@@ -350,6 +350,8 @@
 
             function timer(id, duration)
             {
+                console.log("ID : " + id);
+                console.log("Duration : " + duration);
                 var compteur=document.getElementById(id);
                 var s=duration;
                 var m=0;

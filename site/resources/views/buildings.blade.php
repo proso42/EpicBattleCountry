@@ -200,9 +200,7 @@
                                     </div>                        
                                 </div>
                             @else
-                                <div class="building-wip">
-                                    En construction . . .
-                                </div>
+                                <div id="compteur_{{ $build['name'] }}" duration="{{ $build['duration'] }}" class="building-wip"></div>
                             @endif
                         </div>
                     @endforeach
@@ -319,6 +317,7 @@
             </div>
         </div>
         <script>
+            launch_all_timers();
             var activeTab = "eco-tab";
             var activeBuildings = "eco-buildings";
             function switchTab(activeId)
@@ -337,6 +336,48 @@
                     activeTab = activeId + "-tab";
                     activeBuildings = activeId + "-buildings";
                 }
+            }
+
+            function launch_all_timers()
+            {
+                var timers = documents.getElementsByClassName('building-wip');
+                timers.forEach(function(e){
+                    timer(e.id, e.duration);
+                });
+            }
+
+            function timer(id, duration)
+            {
+                var compteur=document.getElementById(id);
+                var s=duration;
+                var m=0;
+                var h=0;
+                if(s<0)
+                    compteur.textContent = "Terminé";
+                else
+                {
+                    if(s>59)
+                    {
+                        m=Math.floor(s/60);
+                        s=s-m*60
+                    }
+                    if(m>59)
+                    {
+                        h=Math.floor(m/60);
+                        m=m-h*60
+                    }
+                    if(s<10)
+                    {
+                        s="0"+s
+                    }
+                    if(m<10)
+                    {
+                        m="0"+m
+                    }
+                    compteur.textContent= h+":"+m+":"+s;
+                }
+                duree=duree-1;
+                window.setTimeout("timer(" + name + ", " + duration + ");",999);
             }
 
             function update_building(name, food, wood, rock, steel, gold, duration)

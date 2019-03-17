@@ -148,7 +148,10 @@
                             $gold_required = $this->get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);
                     }
                     $illustration = "images/" . $val->illustration . ".jpg";
-                    $duration = $this->sec_to_date($niv, $val->duration, $val->levelup_price);
+                    if ($status === "OK")
+                        $duration = $this->sec_to_date($niv, $val->duration, $val->levelup_price);
+                    else
+                        $duration = $this->get_exp_value($niv, $val->duration, $val->levelup_price);
                     array_push($allowed_type_buildings, ["status" => $status, "name" => $val->name, "niv" => $niv, "illustration" => $illustration, "duration" => $duration, "food_required" => $food_required, "wood_required" => $wood_required, "rock_required" => $rock_required, "steel_required" => $steel_required, "gold_required" => $gold_required]);
                 }
                 else

@@ -556,7 +556,7 @@ input::placeholder
     cursor: pointer;
 }
 
-.building-button:hover .building-res-needed
+.building-button:hover
 {
     background-color: darkcyan;
     color: white;
@@ -575,7 +575,7 @@ input::placeholder
     cursor: pointer;
 }
 
-.building-button-impossible:hover .building-res-needed
+.building-button-impossible:hover
 {
     background-color: crimson;
     color: white;

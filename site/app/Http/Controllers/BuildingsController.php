@@ -68,13 +68,23 @@
 
         private function get_allowed_buildings($building_type)
         {
+            $city_id = session()->get('city_id');
             $all_type_buildings = DB::table($building_type)
             ->get();
             $allowed_type_buildings = array();
             foreach ($all_type_buildings as $val)
             {
+                $is_wip = DB::table('waiting_buildings')
+                ->where('city_id', '=', $city_id)
+                ->where('type', '=', $building_type)
+                ->where('building_id', '=', $val->id)
+                ->get();
+                if ($is_wip !== null)
+                    $status = "WIP";
+                else
+                    $status = "OK";
                 $niv = DB::table('cities')
-                ->where('id', '=', session()->get('city_id'))
+                ->where('id', '=', $city_id)
                 ->value($val->name);
                 if ($niv >= 0)
                 {
@@ -106,7 +116,7 @@
                                 ->where('id', '=', $key)
                                 ->value('name');
                                 $building_niv = DB::table('cities')
-                                ->where('id', '=', session()->get('city_id'))
+                                ->where('id', '=', $city_id)
                                 ->value($building_name);
                                 if ($building_niv <= 0)
                                 {
@@ -139,7 +149,7 @@
                     }
                     $illustration = "images/" . $val->illustration . ".jpg";
                     $duration = $this->sec_to_date($niv, $val->duration, $val->levelup_price);
-                    array_push($allowed_type_buildings, ["name" => $val->name, "niv" => $niv, "illustration" => $illustration, "duration" => $duration, "food_required" => $food_required, "wood_required" => $wood_required, "rock_required" => $rock_required, "steel_required" => $steel_required, "gold_required" => $gold_required]);
+                    array_push($allowed_type_buildings, ["status" => $status, "name" => $val->name, "niv" => $niv, "illustration" => $illustration, "duration" => $duration, "food_required" => $food_required, "wood_required" => $wood_required, "rock_required" => $rock_required, "steel_required" => $steel_required, "gold_required" => $gold_required]);
                 }
                 else
                     continue;
@@ -178,6 +188,65 @@
                 return ($duration . " j " . $new_duration);
             else
                 return ($duration . " j");
+        }
+
+        private function date_to_sec($date)
+        {
+            $date = preg_replace('/\s+/', "", $date);
+            $finishing_date = time();
+            if (strpos($date, "j") !== FALSE)
+            {
+                $tmp = explode("j", $date);
+                $days = intval($tmp[0]);
+                $date = $tmp[1];
+                $finishing_date += ($days * 86400);
+            }
+            if (strpos($date, "h") !== FALSE)
+            {
+                $tmp = explode("h", $date);
+                $hours = intval($tmp[0]);
+                $date = $tmp[1];
+                $finishing_date += ($hours * 3600);
+            }
+            if (strpos($date, "m") !== FALSE)
+            {
+                $tmp = explode("m", $date);
+                $min = intval($tmp[0]);
+                $date = $tmp[1];
+                $finishing_date += ($min * 60);
+            }
+            if (strpos($date, "s") !== FALSE)
+            {
+                $tmp = explode("s", $date);
+                $sec = intval($tmp[0]);
+                $finishing_date += $sec;
+            }
+            return $finishing_date;
+        }
+
+        public function update(Request $request)
+        {
+            $city_id = session()->get('city_id');
+            $building_name = $request['building_name'];
+            $building_type = $request['building_type'];
+            $building_id = DB::table($building_type)
+            ->where('name', '=', $building_name)
+            ->value('id');
+            $food_required = $request['food_required'];
+            $wood_required = $request['wood_required'];
+            $rock_required = $request['rock_required'];
+            $steel_required = $request['steel_required'];
+            $gold_required = $request['gold_required'];
+            $finishing_date = date_to_sec($request['duration']);
+            DB::table('waiting_building')
+            ->insert(["city_id" => $city_id, "type" => $building_type, "building_id" => $building_id, "finishing_date" => $finishing_date]);
+            $city_res = DB::table('cities')
+            ->select('food', 'wood', 'rock', 'steel', 'gold')
+            ->where('id', '=', $city_id)
+            ->get();
+            DB::table('cities')
+            ->where('id', '=', $city_id)
+            ->update(['food' => $city_res->food - $food_required, 'wood' => $city_res->wood - $wood_required, 'rock' => $city_res->rock - $rock_required, 'steel' => $city_res->steel - $steel_required, 'gold' => $city_res->gold - $gold_required]);
         }
     }
 

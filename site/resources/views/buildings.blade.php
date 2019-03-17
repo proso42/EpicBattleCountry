@@ -229,8 +229,8 @@
                             @else
                                 Améliorer <i class="fas fa-arrow-alt-circle-up icon"></i>
                             @endif
-                            <div>
-                                <ul style="text-align: left">
+                            <div class="building-res-needed">
+                                <ul>
                                     @if ($build['food_required'] > 0)
                                         <li>Food : {{ $build['food_required'] }}</li>
                                     @endif

@@ -556,13 +556,12 @@ input::placeholder
     cursor: pointer;
 }
 
-.building-button:hover
+.building-button:hover .building-res-needed
 {
     background-color: darkcyan;
     color: white;
     font-weight: bold;
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
+    display: '';
 }
 
 .building-button-impossible
@@ -577,11 +576,12 @@ input::placeholder
     cursor: pointer;
 }
 
-.building-button-impossible:hover
+.building-button-impossible:hover .building-res-needed
 {
     background-color: crimson;
     color: white;
     font-weight: bold;
+    display: '';
 }
 
 .building-name
@@ -593,4 +593,10 @@ input::placeholder
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     border: solid 1px lightblue;
+}
+
+.building-res-needed
+{
+    text-align: left;
+    display: none;
 }

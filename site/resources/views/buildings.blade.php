@@ -344,7 +344,7 @@
                 if (timers.length == 0)
                     return ;
                 timers.forEach(function(e){
-                    timer(e.id, e.getAttribute(duration));
+                    timer(e.id, e.getAttribute("duration"));
                 });
             }
 

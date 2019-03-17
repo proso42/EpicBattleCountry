@@ -379,7 +379,9 @@
                     }
                     compteur.textContent= h+":"+m+":"+s;
                     duration=duration-1;
-                    setTimeout(timer(id, duration),1000);
+                    setTimeout((id, duration)=>{
+                        timer(id, duration);
+                    },1000);
                 }
             }
 

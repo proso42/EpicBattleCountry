@@ -59,12 +59,20 @@
                 $compact_steel = substr($steel, 0, 5) . '...';
             if ($gold > 999999)
                 $compact_gold = substr($gold, 0, 5) . '...';
-            $all_eco_buildings = DB::table('eco_buildings')
+            $allowed_eco_buildings = $this->get_allowed_buildings('eco_buildings');
+            $allowed_army_buildings = $this->get_allowed_buildings('army_buildings');
+            $allowed_defensive_buildings = $this->get_allowed_buildings('defensive_buildings');
+            $allowed_tech_buildings = $this->get_allowed_buildings('tech_buildings');
+            return view('buildings', compact('food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold', 'allowed_eco_buildings', 'allowed_army_buildings', 'allowed_defensive_buildings', 'allowed_tech_buildings'));
+        }
+
+        private function get_allowed_buildings($building_type)
+        {
+            $all_type_buildings = DB::table($building_type)
             ->get();
-            $allowed_eco_buildings = array();
-            foreach ($all_eco_buildings as $val)
+            $allowed_type_buildings = array();
+            foreach ($all_type_buildings as $val)
             {
-                //echo ("foreach;");
                 $niv = DB::table('cities')
                 ->where('id', '=', $city_id)
                 ->value($val->name);
@@ -94,7 +102,7 @@
                             $buildings_required = explode(";", $val->building_required);
                             foreach ($buildings_required as $building => $key)
                             {
-                                $building_name = DB::table('eco_buildings')
+                                $building_name = DB::table($building_type)
                                 ->where('id', '=', $key)
                                 ->value('name');
                                 $building_niv = DB::table('cities')
@@ -130,13 +138,12 @@
                             $gold_required = $this->get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);
                     }
                     $illustration = "images/" . $val->illustration . ".jpg";
-                    array_push($allowed_eco_buildings, ["name" => $val->name, "niv" => $niv, "illustration" => $illustration, "food_required" => $food_required, "wood_required" => $wood_required, "rock_required" => $rock_required, "steel_required" => $steel_required, "gold_required" => $gold_required]);
+                    array_push($allowed_type_buildings, ["name" => $val->name, "niv" => $niv, "illustration" => $illustration, "food_required" => $food_required, "wood_required" => $wood_required, "rock_required" => $rock_required, "steel_required" => $steel_required, "gold_required" => $gold_required]);
                 }
                 else
                     continue;
             }
-            //dd($allowed_eco_buildings);
-            return view('buildings', compact('food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold', 'allowed_eco_buildings'));
+            return $allowed_type_buildings;
         }
 
         private function get_exp_value($niv, $basic_value, $levelup)

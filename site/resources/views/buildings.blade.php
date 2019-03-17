@@ -156,60 +156,49 @@
                     @endforeach
                 </div>
                 <div id="army-buildings" class="row" style="margin-top: 30px;display:none">
-                    <!-- <div style="text-align: center;margin-right: auto;margin-left: auto">
-                            <div class="building-name">Caserne 1</div>
-                            <img class="building" style="width:250px;height: 250px;" src="images/building_caserne.jpg">
-                            <div class="building-button" style="width: 250px;">Construire</div>
-                    </div>
+                @foreach ($allowed_army_buildings as $build)
                     <div style="text-align: center;margin-right: auto;margin-left: auto">
-                            <div class="building-name">Ecurie 1</div>
-                            <img class="building" style="width:250px;height: 250px;" src="images/building_ecurie.jpg">
-                            <div class="building-button" style="width: 250px;">Construire</div>
+                        <div class="building-name">{{ $build["name"] }} @if ($build["niv"] > 0) {{$build["niv"]}} @endif</div>
+                        <img class="building" style="width:250px;height: 250px;" src="{{ $build['illustration'] }}">
+                        <div title="@if ($build['food_required'] > 0) Food : {{ $build['food_required'] }} @endif @if ($build['wood_required'] > 0) Wood : {{ $build['wood_required'] }} @endif @if ($build['rock_required'] > 0) Rock : {{ $build['rock_required'] }} @endif @if ($build['steel_required'] > 0) Steel : {{ $build['steel_required'] }} @endif @if ($build['gold_required'] > 0) Gold : {{ $build['gold_required'] }} @endif" class="building-button" style="width: 250px;">
+                            @if ($build["niv"] == 0)
+                                Construire <i class="fas fa-hammer icon"></i>
+                            @else
+                                Améliorer <i class="fas fa-arrow-alt-circle-up icon"></i>
+                            @endif                            
+                        </div>
                     </div>
-                    <div style="text-align: center;margin-right: auto;margin-left: auto">
-                            <div class="building-name">Prison 1</div>
-                            <img class="building" style="width:250px;height: 250px;" src="images/building_prison.jpg">
-                            <div class="building-button" style="width: 250px;">Construire</div>
-                    </div> -->
+                @endforeach
                 </div>
                 <div id="def-buildings" class="row" style="margin-top: 30px;display:none">
-                    <!-- <div style="text-align: center;margin-right: auto;margin-left: auto">
-                            <div class="building-name">Mur basique 1</div>
-                            <img class="building" style="width:250px;height: 250px;" src="https://www.magic-ville.com/fr/scan_art?imid=20039">
-                            <div class="building-button" style="width: 250px;">Construire</div>
-                    </div>
+                @foreach ($allowed_defensive_buildings as $build)
                     <div style="text-align: center;margin-right: auto;margin-left: auto">
-                            <div class="building-name">Douves de lave 1</div>
-                            <img class="building" style="width:250px;height: 250px;" src="images/building_lava_moats.jpg">
-                            <div class="building-button" style="width: 250px;">Construire</div>
+                        <div class="building-name">{{ $build["name"] }} @if ($build["niv"] > 0) {{$build["niv"]}} @endif</div>
+                        <img class="building" style="width:250px;height: 250px;" src="{{ $build['illustration'] }}">
+                        <div title="@if ($build['food_required'] > 0) Food : {{ $build['food_required'] }} @endif @if ($build['wood_required'] > 0) Wood : {{ $build['wood_required'] }} @endif @if ($build['rock_required'] > 0) Rock : {{ $build['rock_required'] }} @endif @if ($build['steel_required'] > 0) Steel : {{ $build['steel_required'] }} @endif @if ($build['gold_required'] > 0) Gold : {{ $build['gold_required'] }} @endif" class="building-button" style="width: 250px;">
+                            @if ($build["niv"] == 0)
+                                Construire <i class="fas fa-hammer icon"></i>
+                            @else
+                                Améliorer <i class="fas fa-arrow-alt-circle-up icon"></i>
+                            @endif                            
+                        </div>
                     </div>
-                    <div style="text-align: center;margin-right: auto;margin-left: auto">
-                            <div class="building-name">Piège à piques 1</div>
-                            <img class="building" style="width:250px;height: 250px;" src="images/building_spike_trap.jpg">
-                            <div class="building-button" style="width: 250px;">Construire</div>
-                    </div>
-                    <div style="text-align: center;margin-right: auto;margin-left: auto">
-                            <div class="building-name">Fosse cachée 1</div>
-                            <img class="building" style="width:250px;height: 250px;" src="images/building_falling_trap.jpg">
-                            <div class="building-button" style="width: 250px;">Construire</div>
-                    </div> -->
+                @endforeach
                 </div>
                 <div id="tech-buildings" class="row" style="margin-top: 30px;display:none">
-                    <!-- <div style="text-align: center;margin-right: auto;margin-left: auto">
-                            <div class="building-name">Laboratoire 1</div>
-                            <img class="building" style="width:250px;height: 250px;" src="images/building_lab.jpg">
-                            <div class="building-button" style="width: 250px;">Construire</div>
+                @foreach ($allowed_tech_buildings as $build)
+                    <div style="text-align: center;margin-right: auto;margin-left: auto">
+                        <div class="building-name">{{ $build["name"] }} @if ($build["niv"] > 0) {{$build["niv"]}} @endif</div>
+                        <img class="building" style="width:250px;height: 250px;" src="{{ $build['illustration'] }}">
+                        <div title="@if ($build['food_required'] > 0) Food : {{ $build['food_required'] }} @endif @if ($build['wood_required'] > 0) Wood : {{ $build['wood_required'] }} @endif @if ($build['rock_required'] > 0) Rock : {{ $build['rock_required'] }} @endif @if ($build['steel_required'] > 0) Steel : {{ $build['steel_required'] }} @endif @if ($build['gold_required'] > 0) Gold : {{ $build['gold_required'] }} @endif" class="building-button" style="width: 250px;">
+                            @if ($build["niv"] == 0)
+                                Construire <i class="fas fa-hammer icon"></i>
+                            @else
+                                Améliorer <i class="fas fa-arrow-alt-circle-up icon"></i>
+                            @endif                            
+                        </div>
                     </div>
-                    <div style="text-align: center;margin-right: auto;">
-                            <div class="building-name">Cartographe 1</div>
-                            <img class="building" style="width:250px;height: 250px;" src="images/building_carthographe.jpg">
-                            <div class="building-button" style="width: 250px;">Construire</div>
-                    </div>
-                    <div style="text-align: center;margin-right: auto;">
-                            <div class="building-name">Bibliothèque 1</div>
-                            <img class="building" style="width:250px;height: 250px;" src="images/building_bibliotheque.jpg">
-                            <div class="building-button" style="width: 250px;">Construire</div>
-                    </div> -->
+                @endforeach
                 </div>
             </div>
         </div>

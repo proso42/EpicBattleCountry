@@ -79,11 +79,10 @@
                 ->where('type', '=', $building_type)
                 ->where('building_id', '=', $val->id)
                 ->get();
-                dd($is_wip);
-                if ($is_wip !== null)
-                    $status = "WIP";
-                else
+                if (empty($is_wip))
                     $status = "OK";
+                else
+                    $status = "WIP";
                 $niv = DB::table('cities')
                 ->where('id', '=', $city_id)
                 ->value($val->name);

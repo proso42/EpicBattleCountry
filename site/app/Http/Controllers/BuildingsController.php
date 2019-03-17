@@ -74,7 +74,7 @@
             foreach ($all_type_buildings as $val)
             {
                 $niv = DB::table('cities')
-                ->where('id', '=', $city_id)
+                ->where('id', '=', session()->get('city_id'))
                 ->value($val->name);
                 if ($niv >= 0)
                 {
@@ -106,7 +106,7 @@
                                 ->where('id', '=', $key)
                                 ->value('name');
                                 $building_niv = DB::table('cities')
-                                ->where('id', '=', $city_id)
+                                ->where('id', '=', session()->get('city_id'))
                                 ->value($building_name);
                                 if ($building_niv <= 0)
                                 {

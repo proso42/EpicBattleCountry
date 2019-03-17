@@ -340,7 +340,7 @@
 
             function launch_all_timers()
             {
-                var timers = document.getElementsByClassName('building-wip');
+                var timers = Array.prototype.slice.call(document.getElementsByClassName('building-wip'));
                 if (timers.length == 0)
                     return ;
                 timers.forEach(function(e){

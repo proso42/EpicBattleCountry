@@ -176,24 +176,24 @@
                                 @if ($build["niv"] == 0)
                                     Construire <i class="fas fa-hammer icon"></i>
                                 @else
-                                    Améliorer <i class="fas fa-arrow-alt-circle-up icon"></i>
+                                    Améliorer <i class="fas fa-angle-double-up icon"></i>
                                 @endif
                                 <div class="building-res-needed">
                                 <ul>
-                                    @if ($build['food_required'] > 0)
-                                        <li>Food : {{ $build['food_required'] }}</li>
+                                @if ($build['food_required'] > 0)
+                                        <li>Food : {{ $build['food_required'] }} @if ($build['food_required'] > $food) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
                                     @endif
                                     @if ($build['wood_required'] > 0)
-                                        <li>Wood : {{ $build['wood_required'] }}</li>
+                                        <li>Wood : {{ $build['wood_required'] }} @if ($build['wood_required'] > $wood) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
                                     @endif
                                     @if ($build['rock_required'] > 0)
-                                        <li>Rock : {{ $build['rock_required'] }}</li>
+                                        <li>Rock : {{ $build['rock_required'] }} @if ($build['rock_required'] > $rock) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
                                     @endif
                                     @if ($build['steel_required'] > 0)
-                                        <li>Steel : {{ $build['steel_required'] }}</li>
+                                        <li>Steel : {{ $build['steel_required'] }} @if ($build['steel_required'] > $steel) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
                                     @endif
                                     @if ($build['gold_required'] > 0)
-                                        <li>Gold : {{ $build['gold_required'] }}</li>
+                                        <li>Gold : {{ $build['gold_required'] }} @if ($build['gold_required'] > $gold) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
                                     @endif
                                 </ul>
                             </div>                        
@@ -212,24 +212,24 @@
                             @if ($build["niv"] == 0)
                                 Construire <i class="fas fa-hammer icon"></i>
                             @else
-                                Améliorer <i class="fas fa-arrow-alt-circle-up icon"></i>
+                                Améliorer <i class="fas fa-angle-double-up icon"></i>
                             @endif
                             <div class="building-res-needed">
                                 <ul>
-                                    @if ($build['food_required'] > 0)
-                                        <li>Food : {{ $build['food_required'] }}</li>
+                                @if ($build['food_required'] > 0)
+                                        <li>Food : {{ $build['food_required'] }} @if ($build['food_required'] > $food) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
                                     @endif
                                     @if ($build['wood_required'] > 0)
-                                        <li>Wood : {{ $build['wood_required'] }}</li>
+                                        <li>Wood : {{ $build['wood_required'] }} @if ($build['wood_required'] > $wood) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
                                     @endif
                                     @if ($build['rock_required'] > 0)
-                                        <li>Rock : {{ $build['rock_required'] }}</li>
+                                        <li>Rock : {{ $build['rock_required'] }} @if ($build['rock_required'] > $rock) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
                                     @endif
                                     @if ($build['steel_required'] > 0)
-                                        <li>Steel : {{ $build['steel_required'] }}</li>
+                                        <li>Steel : {{ $build['steel_required'] }} @if ($build['steel_required'] > $steel) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
                                     @endif
                                     @if ($build['gold_required'] > 0)
-                                        <li>Gold : {{ $build['gold_required'] }}</li>
+                                        <li>Gold : {{ $build['gold_required'] }} @if ($build['gold_required'] > $gold) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
                                     @endif
                                 </ul>
                             </div>                         
@@ -248,24 +248,24 @@
                             @if ($build["niv"] == 0)
                                 Construire <i class="fas fa-hammer icon"></i>
                             @else
-                                Améliorer <i class="fas fa-arrow-alt-circle-up icon"></i>
+                                Améliorer <i class="fas fa-angle-double-up icon"></i>
                             @endif
                             <div class="building-res-needed">
                                 <ul>
-                                    @if ($build['food_required'] > 0)
-                                        <li>Food : {{ $build['food_required'] }}</li>
+                                @if ($build['food_required'] > 0)
+                                        <li>Food : {{ $build['food_required'] }} @if ($build['food_required'] > $food) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
                                     @endif
                                     @if ($build['wood_required'] > 0)
-                                        <li>Wood : {{ $build['wood_required'] }}</li>
+                                        <li>Wood : {{ $build['wood_required'] }} @if ($build['wood_required'] > $wood) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
                                     @endif
                                     @if ($build['rock_required'] > 0)
-                                        <li>Rock : {{ $build['rock_required'] }}</li>
+                                        <li>Rock : {{ $build['rock_required'] }} @if ($build['rock_required'] > $rock) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
                                     @endif
                                     @if ($build['steel_required'] > 0)
-                                        <li>Steel : {{ $build['steel_required'] }}</li>
+                                        <li>Steel : {{ $build['steel_required'] }} @if ($build['steel_required'] > $steel) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
                                     @endif
                                     @if ($build['gold_required'] > 0)
-                                        <li>Gold : {{ $build['gold_required'] }}</li>
+                                        <li>Gold : {{ $build['gold_required'] }} @if ($build['gold_required'] > $gold) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
                                     @endif
                                 </ul>
                             </div>                          
@@ -284,24 +284,24 @@
                             @if ($build["niv"] == 0)
                                 Construire <i class="fas fa-hammer icon"></i>
                             @else
-                                Améliorer <i class="fas fa-arrow-alt-circle-up icon"></i>
+                                Améliorer <i class="fas fa-angle-double-up icon"></i>
                             @endif
                             <div class="building-res-needed">
                                 <ul>
                                     @if ($build['food_required'] > 0)
-                                        <li>Food : {{ $build['food_required'] }}</li>
+                                        <li>Food : {{ $build['food_required'] }} @if ($build['food_required'] > $food) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
                                     @endif
                                     @if ($build['wood_required'] > 0)
-                                        <li>Wood : {{ $build['wood_required'] }}</li>
+                                        <li>Wood : {{ $build['wood_required'] }} @if ($build['wood_required'] > $wood) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
                                     @endif
                                     @if ($build['rock_required'] > 0)
-                                        <li>Rock : {{ $build['rock_required'] }}</li>
+                                        <li>Rock : {{ $build['rock_required'] }} @if ($build['rock_required'] > $rock) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
                                     @endif
                                     @if ($build['steel_required'] > 0)
-                                        <li>Steel : {{ $build['steel_required'] }}</li>
+                                        <li>Steel : {{ $build['steel_required'] }} @if ($build['steel_required'] > $steel) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
                                     @endif
                                     @if ($build['gold_required'] > 0)
-                                        <li>Gold : {{ $build['gold_required'] }}</li>
+                                        <li>Gold : {{ $build['gold_required'] }} @if ($build['gold_required'] > $gold) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
                                     @endif
                                 </ul>
                             </div>

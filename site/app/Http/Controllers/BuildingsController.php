@@ -144,7 +144,7 @@
             $final_value = $basic_value;
             for ($i = 1; $i <= $niv; $i++)
                 $final_value *= $levelup;
-            return $final_value;
+            return round($final_value, 0, PHP_ROUND_HALF_DOWN);
         }
     }
 

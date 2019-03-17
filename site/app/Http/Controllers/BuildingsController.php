@@ -74,7 +74,7 @@
                         $allowed = 0;
                         if ($val->race_required !== "ALL")
                         {
-                            $races_required = $val->race_required.split(";");
+                            $races_required = explode(";", $val->race_required);
                             foreach ($races_required as $race => $key)
                             {
                                 if ($key == $user_race)

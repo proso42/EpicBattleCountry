@@ -177,7 +177,26 @@
                                     Construire <i class="fas fa-hammer icon"></i>
                                 @else
                                     Améliorer <i class="fas fa-arrow-alt-circle-up icon"></i>
-                                @endif                            
+                                @endif
+                                <div class="building-res-needed">
+                                <ul>
+                                    @if ($build['food_required'] > 0)
+                                        <li>Food : {{ $build['food_required'] }}</li>
+                                    @endif
+                                    @if ($build['wood_required'] > 0)
+                                        <li>Wood : {{ $build['wood_required'] }}</li>
+                                    @endif
+                                    @if ($build['rock_required'] > 0)
+                                        <li>Rock : {{ $build['rock_required'] }}</li>
+                                    @endif
+                                    @if ($build['steel_required'] > 0)
+                                        <li>Steel : {{ $build['steel_required'] }}</li>
+                                    @endif
+                                    @if ($build['gold_required'] > 0)
+                                        <li>Gold : {{ $build['gold_required'] }}</li>
+                                    @endif
+                                </ul>
+                            </div>                        
                             </div>
                         </div>
                     @endforeach
@@ -194,7 +213,26 @@
                                 Construire <i class="fas fa-hammer icon"></i>
                             @else
                                 Améliorer <i class="fas fa-arrow-alt-circle-up icon"></i>
-                            @endif                            
+                            @endif
+                            <div class="building-res-needed">
+                                <ul>
+                                    @if ($build['food_required'] > 0)
+                                        <li>Food : {{ $build['food_required'] }}</li>
+                                    @endif
+                                    @if ($build['wood_required'] > 0)
+                                        <li>Wood : {{ $build['wood_required'] }}</li>
+                                    @endif
+                                    @if ($build['rock_required'] > 0)
+                                        <li>Rock : {{ $build['rock_required'] }}</li>
+                                    @endif
+                                    @if ($build['steel_required'] > 0)
+                                        <li>Steel : {{ $build['steel_required'] }}</li>
+                                    @endif
+                                    @if ($build['gold_required'] > 0)
+                                        <li>Gold : {{ $build['gold_required'] }}</li>
+                                    @endif
+                                </ul>
+                            </div>                         
                         </div>
                     </div>
                 @endforeach
@@ -211,7 +249,26 @@
                                 Construire <i class="fas fa-hammer icon"></i>
                             @else
                                 Améliorer <i class="fas fa-arrow-alt-circle-up icon"></i>
-                            @endif                            
+                            @endif
+                            <div class="building-res-needed">
+                                <ul>
+                                    @if ($build['food_required'] > 0)
+                                        <li>Food : {{ $build['food_required'] }}</li>
+                                    @endif
+                                    @if ($build['wood_required'] > 0)
+                                        <li>Wood : {{ $build['wood_required'] }}</li>
+                                    @endif
+                                    @if ($build['rock_required'] > 0)
+                                        <li>Rock : {{ $build['rock_required'] }}</li>
+                                    @endif
+                                    @if ($build['steel_required'] > 0)
+                                        <li>Steel : {{ $build['steel_required'] }}</li>
+                                    @endif
+                                    @if ($build['gold_required'] > 0)
+                                        <li>Gold : {{ $build['gold_required'] }}</li>
+                                    @endif
+                                </ul>
+                            </div>                          
                         </div>
                     </div>
                 @endforeach

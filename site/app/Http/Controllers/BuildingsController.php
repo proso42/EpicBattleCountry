@@ -79,7 +79,7 @@
                 ->where('type', '=', $building_type)
                 ->where('building_id', '=', $val->id)
                 ->get();
-                if ($is_wip !== null)
+                if ($is_wip[0] !== null)
                     $status = "WIP";
                 else
                     $status = "OK";

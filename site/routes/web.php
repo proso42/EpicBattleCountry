@@ -48,6 +48,7 @@ Route::group(['middleware' => 'logged'], function(){
     Route::get('/set_new_password', 'SetNewPasswordController@index');
     Route::post('/check_new_password', 'SetNewPasswordController@check_new_password');
     Route::post('/update_password', 'SetNewPasswordController@update_password');
+    Route::get('/buildings', 'BuildingsController@index');
 });
 
 

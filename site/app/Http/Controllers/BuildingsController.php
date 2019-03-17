@@ -64,7 +64,7 @@
             $allowed_eco_buildings = array();
             foreach ($all_eco_buildings as $val)
             {
-                echo ("foreach;");
+                //echo ("foreach;");
                 $niv = DB::table('cities')
                 ->where('id', '=', $city_id)
                 ->value($val->name);
@@ -119,15 +119,15 @@
                     foreach ($res_required as $res => $amount)
                     {
                         if ($amount[-1] == "F")
-                            $food_required = intval(substr($amount, 0, -1));
+                            $food_required = $this->get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);
                         else if ($amount[-1] == "W")
-                            $wood_required = intval(substr($amount, 0, -1));
+                            $wood_required = $this->get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);
                         else if ($amount[-1] == "R")
-                            $rock_required = intval(substr($amount, 0, -1));
+                            $rock_required = $this->get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);
                         else if ($amount[-1] == "S")
-                            $steel_required = intval(substr($amount, 0, -1));
+                            $steel_required = $this->get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);
                         else
-                            $gold_required = intval(substr($amount, 0, -1));
+                            $gold_required = $this->get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);
                     }
                     $illustration = "images/" . $val->illustration . ".jpg";
                     array_push($allowed_eco_buildings, ["name" => $val->name, "niv" => $niv, "illustration" => $illustration, "food_required" => $food_required, "wood_required" => $wood_required, "rock_required" => $rock_required, "steel_required" => $steel_required, "gold_required" => $gold_required]);
@@ -135,8 +135,16 @@
                 else
                     continue;
             }
-            dd($allowed_eco_buildings);
+            //dd($allowed_eco_buildings);
             return view('buildings', compact('food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold', 'allowed_eco_buildings'));
+        }
+
+        private function get_exp_value($niv, $basic_value, $levelup)
+        {
+            $final_value = $basic_value;
+            for ($i = 1; $i <= $niv; $i++)
+                $final_value *= $levelup;
+            return $final_value;
         }
     }
 

@@ -78,7 +78,7 @@
                 ->where('city_id', '=', $city_id)
                 ->where('type', '=', $building_type)
                 ->where('building_id', '=', $val->id)
-                ->value('idfinishing_date');
+                ->value('finishing_date');
                 if ($is_wip == null)
                     $status = "OK";
                 else

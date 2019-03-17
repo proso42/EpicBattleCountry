@@ -88,7 +88,7 @@
                             continue;
                         if ($val->building_required !== "NONE")
                         {
-                            $buildings_required = $val->building_required.split(";");
+                            $buildings_required = explode(";", $val->building_required);
                             foreach ($buildings_required as $building => $key)
                             {
                                 $building_name = DB::table('eco_buildings')
@@ -107,7 +107,7 @@
                         if ($allowed == 0)
                             continue;
                     }
-                    $res_required = $val->basic_price.split(';');
+                    $res_required = explode(";", $val->basic_price);
                     $food_required = 0;
                     $wood_required = 0;
                     $rock_required = 0;

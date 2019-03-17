@@ -170,7 +170,9 @@
                         <div style="text-align: center;margin-right: auto;margin-left: auto">
                             <div class="building-name">{{ $build["name"] }} @if ($build["niv"] > 0) {{$build["niv"]}} @endif</div>
                             <img class="building" style="width:250px;height: 250px;" src="{{ $build['illustration'] }}">
-                            <div title="@if ($build['food_required'] > 0) Food : {{ $build['food_required'] }} @endif @if ($build['wood_required'] > 0) Wood : {{ $build['wood_required'] }} @endif @if ($build['rock_required'] > 0) Rock : {{ $build['rock_required'] }} @endif @if ($build['steel_required'] > 0) Steel : {{ $build['steel_required'] }} @endif @if ($build['gold_required'] > 0) Gold : {{ $build['gold_required'] }} @endif" class="building-button" style="width: 250px;">
+                            <div class="@if ($build['food_required'] > $food || $build['wood_required'] > $wood || $build['rock_required'] > $rock || $build['steel_required'] > $steel || $build['gold_required'] > $gold) building-button-impossible @else building-button @endif"
+                            title="@if ($build['food_required'] > 0) Food : {{ $build['food_required'] }} @endif @if ($build['wood_required'] > 0) Wood : {{ $build['wood_required'] }} @endif @if ($build['rock_required'] > 0) Rock : {{ $build['rock_required'] }} @endif @if ($build['steel_required'] > 0) Steel : {{ $build['steel_required'] }} @endif @if ($build['gold_required'] > 0) Gold : {{ $build['gold_required'] }} @endif"
+                            style="width: 250px;">
                                 @if ($build["niv"] == 0)
                                     Construire <i class="fas fa-hammer icon"></i>
                                 @else
@@ -202,7 +204,9 @@
                     <div style="text-align: center;margin-right: auto;margin-left: auto">
                         <div class="building-name">{{ $build["name"] }} @if ($build["niv"] > 0) {{$build["niv"]}} @endif</div>
                         <img class="building" style="width:250px;height: 250px;" src="{{ $build['illustration'] }}">
-                        <div title="@if ($build['food_required'] > 0) Food : {{ $build['food_required'] }} @endif @if ($build['wood_required'] > 0) Wood : {{ $build['wood_required'] }} @endif @if ($build['rock_required'] > 0) Rock : {{ $build['rock_required'] }} @endif @if ($build['steel_required'] > 0) Steel : {{ $build['steel_required'] }} @endif @if ($build['gold_required'] > 0) Gold : {{ $build['gold_required'] }} @endif" class="building-button" style="width: 250px;">
+                        <div class="@if ($build['food_required'] > $food || $build['wood_required'] > $wood || $build['rock_required'] > $rock || $build['steel_required'] > $steel || $build['gold_required'] > $gold) building-button-impossible @else building-button @endif"
+                        title="@if ($build['food_required'] > 0) Food : {{ $build['food_required'] }} @endif @if ($build['wood_required'] > 0) Wood : {{ $build['wood_required'] }} @endif @if ($build['rock_required'] > 0) Rock : {{ $build['rock_required'] }} @endif @if ($build['steel_required'] > 0) Steel : {{ $build['steel_required'] }} @endif @if ($build['gold_required'] > 0) Gold : {{ $build['gold_required'] }} @endif"
+                        style="width: 250px;">
                             @if ($build["niv"] == 0)
                                 Construire <i class="fas fa-hammer icon"></i>
                             @else
@@ -217,12 +221,33 @@
                     <div style="text-align: center;margin-right: auto;margin-left: auto">
                         <div class="building-name">{{ $build["name"] }} @if ($build["niv"] > 0) {{$build["niv"]}} @endif</div>
                         <img class="building" style="width:250px;height: 250px;" src="{{ $build['illustration'] }}">
-                        <div title="@if ($build['food_required'] > 0) Food : {{ $build['food_required'] }} @endif @if ($build['wood_required'] > 0) Wood : {{ $build['wood_required'] }} @endif @if ($build['rock_required'] > 0) Rock : {{ $build['rock_required'] }} @endif @if ($build['steel_required'] > 0) Steel : {{ $build['steel_required'] }} @endif @if ($build['gold_required'] > 0) Gold : {{ $build['gold_required'] }} @endif" class="building-button" style="width: 250px;">
+                        <div class="@if ($build['food_required'] > $food || $build['wood_required'] > $wood || $build['rock_required'] > $rock || $build['steel_required'] > $steel || $build['gold_required'] > $gold) building-button-impossible @else building-button @endif"
+                        title="@if ($build['food_required'] > 0) Food : {{ $build['food_required'] }} @endif @if ($build['wood_required'] > 0) Wood : {{ $build['wood_required'] }} @endif @if ($build['rock_required'] > 0) Rock : {{ $build['rock_required'] }} @endif @if ($build['steel_required'] > 0) Steel : {{ $build['steel_required'] }} @endif @if ($build['gold_required'] > 0) Gold : {{ $build['gold_required'] }} @endif"
+                        style="width: 250px;">
                             @if ($build["niv"] == 0)
                                 Construire <i class="fas fa-hammer icon"></i>
                             @else
                                 Améliorer <i class="fas fa-arrow-alt-circle-up icon"></i>
-                            @endif                            
+                            @endif
+                            <div>
+                                <ul>
+                                    @if ($build['food_required'] > 0)
+                                        <li>Food : {{ $build['food_required'] }}</li>
+                                    @endif
+                                    @if ($build['wood_required'] > 0)
+                                        <li>Wood : {{ $build['wood_required'] }}</li>
+                                    @endif
+                                    @if ($build['rock_required'] > 0)
+                                        <li>Rock : {{ $build['rock_required'] }}</li>
+                                    @endif
+                                    @if ($build['steel_required'] > 0)
+                                        <li>Steel : {{ $build['steel_required'] }}</li>
+                                    @endif
+                                    @if ($build['gold_required'] > 0)
+                                        <li>Gold : {{ $build['gold_required'] }}</li>
+                                    @endif
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 @endforeach

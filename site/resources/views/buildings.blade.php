@@ -344,7 +344,7 @@
                 if (timers.length == 0)
                     return ;
                 timers.forEach(function(e){
-                    timer(e.id, e.getAttribute("duration"));
+                    timer(e.id, e.getAttribute("duration));
                 });
             }
 
@@ -381,7 +381,7 @@
                     compteur.textContent= h+":"+m+":"+s;
                 }
                 duration=duration-1;
-                window.setTimeout("timer(" + id + ", " + duration + ");",999);
+                window.setTimeout(timer(id, duration),999);
             }
 
             function update_building(name, food, wood, rock, steel, gold, duration)

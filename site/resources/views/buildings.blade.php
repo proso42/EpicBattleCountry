@@ -172,7 +172,7 @@
                             <img class="building" style="width:250px;height: 250px;" src="{{ $build['illustration'] }}">
                             @if ($build['status'] == "OK")
                                 <div class="@if ($build['food_required'] > $food || $build['wood_required'] > $wood || $build['rock_required'] > $rock || $build['steel_required'] > $steel || $build['gold_required'] > $gold) building-button-impossible @else building-button @endif"
-                                onclick="update_building({{ $build['name'] }})">
+                                onclick="update_building('{{ $build['name'] }}', '{{ $build['food_required'] }}', '{{ $build['wood_required'] }}', '{{ $build['rock_required'] }}', '{{ $build['steel_required'] }}', '{{ $build['gold_required'] }}', '{{ $build['duration'] }}')">                                
                                     @if ($build["niv"] == 0)
                                         Construire <i class="fas fa-hammer icon"></i>
                                     @else
@@ -213,7 +213,7 @@
                         <div class="building-name">{{ $build["name"] }} @if ($build["niv"] > 0) {{$build["niv"]}} @endif</div>
                         <img class="building" style="width:250px;height: 250px;" src="{{ $build['illustration'] }}">
                         <div class="@if ($build['food_required'] > $food || $build['wood_required'] > $wood || $build['rock_required'] > $rock || $build['steel_required'] > $steel || $build['gold_required'] > $gold) building-button-impossible @else building-button @endif" 
-                        onclick="update_building({{ $build['name'] }})">
+                        onclick="update_building('{{ $build['name'] }}', '{{ $build['food_required'] }}', '{{ $build['wood_required'] }}', '{{ $build['rock_required'] }}', '{{ $build['steel_required'] }}', '{{ $build['gold_required'] }}', '{{ $build['duration'] }}')">                        
                             @if ($build["niv"] == 0)
                                 Construire <i class="fas fa-hammer icon"></i>
                             @else
@@ -249,7 +249,7 @@
                         <div class="building-name">{{ $build["name"] }} @if ($build["niv"] > 0) {{$build["niv"]}} @endif</div>
                         <img class="building" style="width:250px;height: 250px;" src="{{ $build['illustration'] }}">
                         <div class="@if ($build['food_required'] > $food || $build['wood_required'] > $wood || $build['rock_required'] > $rock || $build['steel_required'] > $steel || $build['gold_required'] > $gold) building-button-impossible @else building-button @endif"
-                        onclick="update_building({{ $build['name'] }})">
+                        onclick="update_building('{{ $build['name'] }}', '{{ $build['food_required'] }}', '{{ $build['wood_required'] }}', '{{ $build['rock_required'] }}', '{{ $build['steel_required'] }}', '{{ $build['gold_required'] }}', '{{ $build['duration'] }}')">                        
                             @if ($build["niv"] == 0)
                                 Construire <i class="fas fa-hammer icon"></i>
                             @else
@@ -285,7 +285,7 @@
                         <div class="building-name">{{ $build["name"] }} @if ($build["niv"] > 0) {{$build["niv"]}} @endif</div>
                         <img class="building" style="width:250px;height: 250px;" src="{{ $build['illustration'] }}">
                         <div class="@if ($build['food_required'] > $food || $build['wood_required'] > $wood || $build['rock_required'] > $rock || $build['steel_required'] > $steel || $build['gold_required'] > $gold) building-button-impossible @else building-button @endif"
-                        onclick="update_building({{ $build['name'] }}, {{ $build['food_required'] }}, {{ $build['wood_required'] }}, {{ $build['rock_required'] }}, {{ $build['steel_required'] }}, {{ $build['gold_required'] }}, {{ $build['duration'] }})">
+                        onclick="update_building('{{ $build['name'] }}', '{{ $build['food_required'] }}', '{{ $build['wood_required'] }}', '{{ $build['rock_required'] }}', '{{ $build['steel_required'] }}', '{{ $build['gold_required'] }}', '{{ $build['duration'] }}')">
                             @if ($build["niv"] == 0)
                                 Construire <i class="fas fa-hammer icon"></i>
                             @else

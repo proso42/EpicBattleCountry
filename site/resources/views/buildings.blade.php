@@ -340,7 +340,7 @@
 
             function launch_all_timers()
             {
-                var timers = documents.getElementsByClassName('building-wip');
+                var timers = document.getElementsByClassName('building-wip');
                 timers.forEach(function(e){
                     timer(e.id, e.duration);
                 });

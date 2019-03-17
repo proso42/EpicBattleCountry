@@ -314,7 +314,7 @@
                         </div>
                     </div>
                 @endforeach
-                <input id="_token" name="_token" type="hidden" value="{{ {{csrf_token()}} }}">
+                <input id="_token" name="_token" type="hidden" value="{{csrf_token()}}">
                 </div>
             </div>
         </div>

@@ -151,7 +151,7 @@
                     if ($status === "OK")
                         $duration = $this->sec_to_date($niv, $val->duration, $val->levelup_price);
                     else
-                        $duration = $this->get_exp_value($niv, $duration, $levelup);
+                        $duration = $this->get_exp_value($niv, $val->duration, $val->levelup);
                     array_push($allowed_type_buildings, ["status" => $status, "name" => $val->name, "niv" => $niv, "illustration" => $illustration, "duration" => $duration, "food_required" => $food_required, "wood_required" => $wood_required, "rock_required" => $rock_required, "steel_required" => $steel_required, "gold_required" => $gold_required]);
                 }
                 else

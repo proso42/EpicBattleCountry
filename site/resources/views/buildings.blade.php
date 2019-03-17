@@ -378,7 +378,7 @@
                     }
                     compteur.textContent= h+":"+m+":"+s;
                 }
-                duree=duree-1;
+                duration=duration-1;
                 window.setTimeout("timer(" + name + ", " + duration + ");",999);
             }
 

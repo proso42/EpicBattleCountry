@@ -157,20 +157,27 @@
 
         private function sec_to_date($niv, $duration, $levelup)
         {
+            $new_duration = "";
             $duration = $this->get_exp_value($niv, $duration, $levelup);
             if ($duration < 60)
                 return ($duration . " s");
-            $new_duration = ($duration % 60) . " s";
+            if ($duration % 60 > 0)
+                $new_duration = ($duration % 60) . " s";
             $duration = round($duration / 60, 0, PHP_ROUND_HALF_DOWN);
             if ($duration < 60)
                 return ($duration . " m " . $new_duration);
-            $new_duration = ($duration % 60) . " m " . $new_duration;
+            if ($duration % 60 > 0)
+                $new_duration = ($duration % 60) . " m " . $new_duration;
             $duration = round($duration / 60, 0, PHP_ROUND_HALF_DOWN);
             if ($duration < 60)
                 return ($duration . " h " . $new_duration);
-            $new_duration = ($duration % 60) . " h " . $new_duration;
+            if ($duration % 60 > 0)
+                $new_duration = ($duration % 60) . " h " . $new_duration;
             $duration = round($duration / 24, 0, PHP_ROUND_HALF_DOWN);
-            return ($duration . " j " . $new_duration);
+            if ($new_duration !== "")
+                return ($duration . " j " . $new_duration);
+            else
+                return ($duration . " j");
         }
     }
 

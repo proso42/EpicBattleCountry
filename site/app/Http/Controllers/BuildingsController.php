@@ -79,7 +79,8 @@
                 ->where('type', '=', $building_type)
                 ->where('building_id', '=', $val->id)
                 ->get();
-                if ($is_wip[0] !== null)
+                dd($is_wip);
+                if ($is_wip !== null)
                     $status = "WIP";
                 else
                     $status = "OK";

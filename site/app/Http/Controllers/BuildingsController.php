@@ -86,7 +86,7 @@
                             $races_required = explode(";", $val->race_required);
                             foreach ($races_required as $race => $key)
                             {
-                                if ($key == $user_race)
+                                if ($key == session()->get('user_race'))
                                 {
                                     $allowed = 1;
                                     break; 

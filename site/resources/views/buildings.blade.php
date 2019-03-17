@@ -167,7 +167,7 @@
                 </div>
                 <div id="eco-buildings" class="row" style="margin-top: 30px;">
                     @foreach ($allowed_eco_buildings as $build)
-                        <div style="text-align: center;margin-right: auto;margin-left: auto">
+                        <div class="building-block">
                             <div class="building-name">{{ $build["name"] }} @if ($build["niv"] > 0) {{$build["niv"]}} @endif</div>
                             <img class="building" style="width:250px;height: 250px;" src="{{ $build['illustration'] }}">
                             <div class="@if ($build['food_required'] > $food || $build['wood_required'] > $wood || $build['rock_required'] > $rock || $build['steel_required'] > $steel || $build['gold_required'] > $gold) building-button-impossible @else building-button @endif"
@@ -184,7 +184,7 @@
                 </div>
                 <div id="army-buildings" class="row" style="margin-top: 30px;display:none">
                 @foreach ($allowed_army_buildings as $build)
-                    <div style="text-align: center;margin-right: auto;margin-left: auto">
+                    <div class="building-block">
                         <div class="building-name">{{ $build["name"] }} @if ($build["niv"] > 0) {{$build["niv"]}} @endif</div>
                         <img class="building" style="width:250px;height: 250px;" src="{{ $build['illustration'] }}">
                         <div class="@if ($build['food_required'] > $food || $build['wood_required'] > $wood || $build['rock_required'] > $rock || $build['steel_required'] > $steel || $build['gold_required'] > $gold) building-button-impossible @else building-button @endif" 
@@ -201,7 +201,7 @@
                 </div>
                 <div id="def-buildings" class="row" style="margin-top: 30px;display:none">
                 @foreach ($allowed_defensive_buildings as $build)
-                    <div style="text-align: center;margin-right: auto;margin-left: auto">
+                    <div class="building-block">
                         <div class="building-name">{{ $build["name"] }} @if ($build["niv"] > 0) {{$build["niv"]}} @endif</div>
                         <img class="building" style="width:250px;height: 250px;" src="{{ $build['illustration'] }}">
                         <div class="@if ($build['food_required'] > $food || $build['wood_required'] > $wood || $build['rock_required'] > $rock || $build['steel_required'] > $steel || $build['gold_required'] > $gold) building-button-impossible @else building-button @endif"
@@ -218,7 +218,7 @@
                 </div>
                 <div id="tech-buildings" class="row" style="margin-top: 30px;display:none">
                 @foreach ($allowed_tech_buildings as $build)
-                    <div style="text-align: center;margin-right: auto;margin-left: auto">
+                    <div class="building-block">
                         <div class="building-name">{{ $build["name"] }} @if ($build["niv"] > 0) {{$build["niv"]}} @endif</div>
                         <img class="building" style="width:250px;height: 250px;" src="{{ $build['illustration'] }}">
                         <div class="@if ($build['food_required'] > $food || $build['wood_required'] > $wood || $build['rock_required'] > $rock || $build['steel_required'] > $steel || $build['gold_required'] > $gold) building-button-impossible @else building-button @endif"
@@ -230,7 +230,7 @@
                                 Améliorer <i class="fas fa-arrow-alt-circle-up icon"></i>
                             @endif
                             <div>
-                                <ul>
+                                <ul style="text-align: left">
                                     @if ($build['food_required'] > 0)
                                         <li>Food : {{ $build['food_required'] }}</li>
                                     @endif

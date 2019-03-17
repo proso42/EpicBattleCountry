@@ -379,7 +379,7 @@
                     }
                     compteur.textContent= h+":"+m+":"+s;
                     duration=duration-1;
-                    setTimeout((id, duration)=>{
+                    setTimeout(function(id, duration){
                         timer(id, duration);
                     },1000);
                 }

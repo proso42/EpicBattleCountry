@@ -97,11 +97,11 @@
                     <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-home icon"></i></div>
                     <div onclick="document.location.href='/home'" class="col-lg-3 col-md-3 col-sm-1 col-3">Acceuil</div>
                 </div>
-                <div class="row menu-left">
+                <div onclick="document.location.href='/buildings'" class="row menu-left">
                     <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-hammer icon"></i></div>
                     <div class="col-lg-3 col-md-3 col-sm-10 col-10">Construction</div>
                 </div>
-                <div onclick="document.location.href='/buildings'" class="row menu-left">
+                <div class="row menu-left">
                     <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fab fa-whmcs icon"></i></div>
                     <div class="col-lg-3 col-md-3 col-sm-10 col-10">Production</div>
                 </div>

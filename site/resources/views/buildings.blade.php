@@ -143,7 +143,7 @@
                 <div id="eco-buildings" class="row" style="margin-top: 30px;">
                     @foreach ($allowed_eco_buildings as $build)
                         <div style="text-align: center;margin-right: auto;margin-left: auto">
-                            <div class="building-name">{{ $build["name"] }} @if ($build["niv"] > 0) {{$build["niv"]} @endif</div>
+                            <div class="building-name">{{ $build["name"] }} @if ($build["niv"] > 0) {{$build["niv"]}} @endif</div>
                             <img class="building" style="width:250px;height: 250px;" src="{{ $build['illustration'] }}">
                             <div class="building-button" style="width: 250px;">
                                 @if ($build["niv"] == 0)

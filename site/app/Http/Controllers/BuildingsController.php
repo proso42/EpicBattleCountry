@@ -128,7 +128,7 @@
                             $gold_required = intval(substr($amount, 0, -1));
                     }
                     $illustration = "images/" . $val->illustration . ".jpg";
-                    $allowed_eco_buildings.push(["name" => $val->name, "niv" => $niv, "illustration" => $illustration, "food_required" => $food_required, "wood_required" => $wood_required, "rock_required" => $rock_required, "steel_required" => $steel_required, "gold_required" => $gold_required]);
+                    array_push($allowed_eco_buildings, ["name" => $val->name, "niv" => $niv, "illustration" => $illustration, "food_required" => $food_required, "wood_required" => $wood_required, "rock_required" => $rock_required, "steel_required" => $steel_required, "gold_required" => $gold_required]);
                 }
                 else
                     continue;

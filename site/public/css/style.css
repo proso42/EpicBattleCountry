@@ -561,7 +561,7 @@ input::placeholder
     background-color: darkcyan;
     color: white;
     font-weight: bold;
-    display: 'block';
+    display: block;
 }
 
 .building-button-impossible
@@ -581,7 +581,7 @@ input::placeholder
     background-color: crimson;
     color: white;
     font-weight: bold;
-    display: 'block';
+    display: block;
 }
 
 .building-name

@@ -561,6 +561,8 @@ input::placeholder
     background-color: darkcyan;
     color: white;
     font-weight: bold;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
 }
 
 .building-button-impossible

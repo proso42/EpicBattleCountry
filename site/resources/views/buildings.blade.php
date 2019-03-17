@@ -350,8 +350,7 @@
 
             function timer(id, duration)
             {
-                console.log("ID : " + id);
-                console.log("Duration : " + duration);
+                console.log(duration);
                 var compteur=document.getElementById(id);
                 var s=duration;
                 var m=0;
@@ -380,7 +379,7 @@
                     }
                     compteur.textContent= h+":"+m+":"+s;
                     duration=duration-1;
-                    window.setTimeout(timer(id, duration),999);
+                    setTimeout(timer(id, duration),1000);
                 }
             }
 

@@ -64,6 +64,7 @@
             $allowed_eco_buildings = array();
             foreach ($all_eco_buildings as $val)
             {
+                echo ("foreach;");
                 $niv = DB::table('cities')
                 ->where('id', '=', $city_id)
                 ->value($val->name);
@@ -131,6 +132,7 @@
                 }
                 else
                     continue;
+                dd($allowed_eco_buildings);
             }
             return view('buildings', compact('food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold', 'allowed_eco_buildings'));
         }

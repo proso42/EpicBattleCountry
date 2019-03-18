@@ -444,6 +444,7 @@
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhr.send('_token=' + _token + '&building_name=' + name + '&building_type=' + building_type + '&food_required=' + food + '&wood_required=' + wood + '&rock_required=' + rock + '&steel_required=' + steel + '&gold_required=' + gold + '&duration=' + duration + '&niv=' + niv);
+                window.location.href="http://www.epicbattlecorp.fr/buildings?activeTab=" + (activeTab.split('-'))[0];
             }
         </script>
     </body>

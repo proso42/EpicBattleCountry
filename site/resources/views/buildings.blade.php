@@ -158,7 +158,7 @@
                     <div id="army-tab" class="col-lg-3 col-md-3 col-sm-3 col-3 generique-tab" onclick="switchTab('army')">
                         Militaire
                     </div>
-                    <div id="def-tab" class="col-lg-3 col-md-3 col-sm-3 col-3 generique-tab" onclick="switchTab('def')">
+                    <div id="def-tab" class="col-lg-3 col-md-3 col-sm-3 col-3 generique-tab" onclick="switchTab('defensive')">
                         Défensif                    
                     </div>
                     <div id="tech-tab" class="col-lg-3 col-md-3 col-sm-3 col-3 generique-tab" onclick="switchTab('tech')">
@@ -332,6 +332,7 @@
             launch_all_timers();
             var activeTab = "eco-tab";
             var activeBuildings = "eco-buildings";
+
             function switchTab(activeId)
             {
                 if (activeId + "-tab" === activeTab)

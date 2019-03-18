@@ -325,12 +325,13 @@
                     </div>
                 @endforeach
                 <input id="_token" name="_token" type="hidden" value="{{csrf_token()}}">
+                <div id="fat" style="display: none" first_active_tab="{{ $first_active_tab }}" ></div>
                 </div>
             </div>
         </div>
         <script>
             launch_all_timers();
-            var activeTab = "eco-tab";
+            var activeTab = document.getElementById("fat").getAttribute("first_active_tab");
             var activeBuildings = "eco-buildings";
 
             function switchTab(activeId)
@@ -435,7 +436,7 @@
                 {
                     if (xhr.readyState === 4 && xhr.status === 200)
                     {
-                        window.location.reload();
+                        window.location.href="http://epicbattlecorp/buildings?activeTab=" + activeTab;
                     }
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

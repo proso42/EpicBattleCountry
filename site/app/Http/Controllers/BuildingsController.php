@@ -12,8 +12,8 @@
     {
         public function index()
         {
-            if (!isset($_GET['activeTab'])|| ($_GET['activeTab'] !== "eco-tab" && $_GET['activeTab'] !== "army-tab" && $_GET['activeTab'] !== "defensive-tab" && $_GET['activeTab'] !== "tech-tab"))
-                $first_active_tab = "eco-tab";
+            if (!isset($_GET['activeTab'])|| ($_GET['activeTab'] !== "eco" && $_GET['activeTab'] !== "army" && $_GET['activeTab'] !== "defensive" && $_GET['activeTab'] !== "tech"))
+                $first_active_tab = "eco";
             else
                 $first_active_tab = $_GET['activeTab'];
             $user_id = session()->get('user_id');

@@ -332,7 +332,7 @@
         <script>
             launch_all_timers();
             var activeTab = document.getElementById("fat").getAttribute("first_active_tab") + "-tab";
-            var activeBuildings = document.getElementById("fat").getAttribute("first_active_tab") + "buildings";
+            var activeBuildings = document.getElementById("fat").getAttribute("first_active_tab") + "-buildings";
             document.getElementById(activeTab).className = "col-lg-3 col-md-3 col-sm-3 col-3 generique-tab-active";
             document.getElementById(activeBuildings).style.display = '';
 

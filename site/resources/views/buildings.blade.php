@@ -152,7 +152,7 @@
             </div>
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding-right: 10px;">
                 <div class="row">
-                    <div id="eco-tab" class="col-lg-3 col-md-3 col-sm-3 col-3 generique-tab-active" onclick="switchTab('eco')">
+                    <div id="eco-tab" class="col-lg-3 col-md-3 col-sm-3 col-3 generique-tab" onclick="switchTab('eco')">
                         Economie
                     </div>
                     <div id="army-tab" class="col-lg-3 col-md-3 col-sm-3 col-3 generique-tab" onclick="switchTab('army')">
@@ -165,7 +165,7 @@
                         Technique                    
                     </div>
                 </div>
-                <div id="eco-buildings" class="row" style="margin-top: 30px;">
+                <div id="eco-buildings" class="row" style="margin-top: 30px;display:none">
                     @foreach ($allowed_eco_buildings as $build)
                         <div class="building-block">
                             <div class="building-name">{{ $build["name"] }} @if ($build["niv"] > 0) {{$build["niv"]}} @endif</div>
@@ -331,8 +331,10 @@
         </div>
         <script>
             launch_all_timers();
-            var activeTab = document.getElementById("fat").getAttribute("first_active_tab");
-            var activeBuildings = "eco-buildings";
+            var activeTab = document.getElementById("fat").getAttribute("first_active_tab") . "-tab";
+            var activeBuildings = document.getElementById("fat").getAttribute("first_active_tab") . "buildings";
+            document.getElementById(activeTab).className = "col-lg-3 col-md-3 col-sm-3 col-3 generique-tab-active";
+            document.getElementById(activeBuildings).style.display = '';
 
             function switchTab(activeId)
             {

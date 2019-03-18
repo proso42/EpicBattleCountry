@@ -436,7 +436,7 @@
                 {
                     if (xhr.readyState === 4 && xhr.status === 200)
                     {
-                        window.location.href="http://epicbattlecorp/buildings?activeTab=" + activeTab;
+                        window.location.href="http://www.epicbattlecorp.fr/buildings?activeTab=" + activeTab;
                     }
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

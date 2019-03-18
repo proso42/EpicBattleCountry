@@ -405,7 +405,7 @@
                     {
                         h += " h ";
                     }
-                    compteur.textContent= "Time remaining : " + h+":"+m+":"+s;
+                    compteur.textContent= "Time remaining : " + h+" "+m+" "+s;
                     setTimeout(function(same_id=id, new_duration=duration-1){
                         timer(same_id, new_duration);
                     },1000);

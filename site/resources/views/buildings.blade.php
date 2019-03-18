@@ -93,9 +93,9 @@
         </div>
         <div class="row" style="margin-left:0; margin-right: 0;">
             <div class="col-lg-2 col-md-2" style="margin-top: 50px;">
-                <div class="row menu-left">
+                <div onclick="document.location.href='/home'" class="row menu-left">
                     <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-home icon"></i></div>
-                    <div onclick="document.location.href='/home'" class="col-lg-3 col-md-3 col-sm-3 col-3">Acceuil</div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-3">Acceuil</div>
                 </div>
                 <div onclick="document.location.href='/buildings'" class="row menu-left">
                     <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-hammer icon"></i></div>
@@ -350,7 +350,6 @@
 
             function timer(id, duration)
             {
-                console.log(duration);
                 var compteur=document.getElementById(id);
                 var s=duration;
                 var m=0;
@@ -359,23 +358,52 @@
                     compteur.textContent = "Terminé";
                 else
                 {
+                    let new_time = "";
                     if(s>59)
                     {
                         m=Math.floor(s/60);
-                        s=s-m*60
+                        s=s - m * 60;
                     }
                     if(m>59)
                     {
                         h=Math.floor(m/60);
-                        m=m-h*60
+                        m= m - h * 60;
                     }
-                    if(s<10)
+                    if(s<10 && s > 0)
                     {
-                        s="0"+s
+                        s= "0" + s + " s";
                     }
-                    if(m<10)
+                    else if (s == 0)
                     {
-                        m="0"+m
+                        s = "";
+                    }
+                    else
+                    {
+                        s += " s";
+                    }
+                    if(m<10 && m > 0)
+                    {
+                        m= "0" + m + " m ";
+                    }
+                    else if (m == 0)
+                    {
+                        m = "";
+                    }
+                    else
+                    {
+                        m += " m ";
+                    }
+                    if (h < 10 && h > 0)
+                    {
+                        h= "0" + h + " h ";
+                    }
+                    else if (h == 0)
+                    {
+                        h = "";
+                    }
+                    else
+                    {
+                        h += " h ";
                     }
                     compteur.textContent= "Time remaining : " + h+":"+m+":"+s;
                     setTimeout(function(same_id=id, new_duration=duration-1){

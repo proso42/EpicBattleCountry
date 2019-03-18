@@ -72,7 +72,7 @@
                     <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-home icon"></i></div>
                     <div class="col-lg-3 col-md-3 col-sm-1 col-3">Acceuil</div>
                 </div>
-                <div class="row menu-left">
+                <div class="row menu-left" onclick="document.location.href='/buildings'">
                     <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-hammer icon"></i></div>
                     <div class="col-lg-3 col-md-3 col-sm-10 col-10">Construction</div>
                 </div>

@@ -259,6 +259,7 @@
             ->insertGetId(["city_id" => $city_id, "type" => $building_type, "building_id" => $building_id, "finishing_date" => $finishing_date, "next_level" => $next_level]);
             $cmd = "cd /home/boss/www/scripts ; node ./finish_building.js " . $finishing_date  . " " . $id;
             exec($cmd);
+            return ;
         }
     }
 

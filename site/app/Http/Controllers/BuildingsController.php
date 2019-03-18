@@ -13,9 +13,9 @@
         public function index()
         {
             if (!isset($_GET['activeTab'])|| ($_GET['activeTab'] !== "eco-tab" && $_GET['activeTab'] !== "army-tab" && $_GET['activeTab'] !== "defensive-tab" && $_GET['activeTab'] !== "tech-tab"))
-                $activeTab = "eco-tab";
+                $first_active_tab = "eco-tab";
             else
-                $activeTab = $_GET['activeTab'];
+                $first_active_tab = $_GET['activeTab'];
             $user_id = session()->get('user_id');
             $user_race = session()->get('user_race');
             if ($user_race === null)
@@ -67,7 +67,7 @@
             $allowed_army_buildings = $this->get_allowed_buildings('army_buildings');
             $allowed_defensive_buildings = $this->get_allowed_buildings('defensive_buildings');
             $allowed_tech_buildings = $this->get_allowed_buildings('tech_buildings');
-            return view('buildings', compact('activeTab', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold', 'allowed_eco_buildings', 'allowed_army_buildings', 'allowed_defensive_buildings', 'allowed_tech_buildings'));
+            return view('buildings', compact('first_active_tab', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold', 'allowed_eco_buildings', 'allowed_army_buildings', 'allowed_defensive_buildings', 'allowed_tech_buildings'));
         }
 
         private function get_allowed_buildings($building_type)

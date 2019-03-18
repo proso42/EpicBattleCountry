@@ -354,7 +354,7 @@
                 var s=duration;
                 var m=0;
                 var h=0;
-                if(s<0)
+                if(s<=0)
                     compteur.textContent = "Terminé";
                 else
                 {
@@ -405,7 +405,7 @@
                     {
                         h += " h ";
                     }
-                    compteur.textContent= "Time remaining : " + h+" "+m+" "+s;
+                    compteur.textContent= "In Progress : " + h+" "+m+" "+s;
                     setTimeout(function(same_id=id, new_duration=duration-1){
                         timer(same_id, new_duration);
                     },1000);

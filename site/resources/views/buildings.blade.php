@@ -245,7 +245,7 @@
                     </div>
                 @endforeach
                 </div>
-                <div id="def-buildings" class="row" style="margin-top: 30px;display:none">
+                <div id="defensive-buildings" class="row" style="margin-top: 30px;display:none">
                 @foreach ($allowed_defensive_buildings as $build)
                     <div class="building-block">
                         <div class="building-name">{{ $build["name"] }} @if ($build["niv"] > 0) {{$build["niv"]}} @endif</div>

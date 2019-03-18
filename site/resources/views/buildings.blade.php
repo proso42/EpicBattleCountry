@@ -172,7 +172,7 @@
                             <img class="building" style="width:250px;height: 250px;" src="{{ $build['illustration'] }}">
                             @if ($build['status'] == "OK")
                                 <div @if ($build['food_required'] > $food || $build['wood_required'] > $wood || $build['rock_required'] > $rock || $build['steel_required'] > $steel || $build['gold_required'] > $gold) class="building-button-impossible" @else class="building-button"
-                                onclick="update_building('{{ $build['name'] }}', '{{ $build['food_required'] }}', '{{ $build['wood_required'] }}', '{{ $build['rock_required'] }}', '{{ $build['steel_required'] }}', '{{ $build['gold_required'] }}', '{{ $build['duration'] }}')"@endif>                                
+                                onclick="update_building('{{ $build['name'] }}', '{{ $build['food_required'] }}', '{{ $build['wood_required'] }}', '{{ $build['rock_required'] }}', '{{ $build['steel_required'] }}', '{{ $build['gold_required'] }}', '{{ $build['duration'] }}', '{{ $build['niv'] }}')"@endif>                                
                                     @if ($build["niv"] == 0)
                                         Construire <i class="fas fa-hammer icon"></i>
                                     @else
@@ -212,7 +212,7 @@
                         <img class="building" style="width:250px;height: 250px;" src="{{ $build['illustration'] }}">
                         @if ($build['status'] == "OK")
                             <div @if ($build['food_required'] > $food || $build['wood_required'] > $wood || $build['rock_required'] > $rock || $build['steel_required'] > $steel || $build['gold_required'] > $gold) class="building-button-impossible" @else class="building-button"
-                            onclick="update_building('{{ $build['name'] }}', '{{ $build['food_required'] }}', '{{ $build['wood_required'] }}', '{{ $build['rock_required'] }}', '{{ $build['steel_required'] }}', '{{ $build['gold_required'] }}', '{{ $build['duration'] }}')"@endif>                                
+                            onclick="update_building('{{ $build['name'] }}', '{{ $build['food_required'] }}', '{{ $build['wood_required'] }}', '{{ $build['rock_required'] }}', '{{ $build['steel_required'] }}', '{{ $build['gold_required'] }}', '{{ $build['duration'] }}', '{{ $build['niv'] }}')"@endif>                                
                                 @if ($build["niv"] == 0)
                                     Construire <i class="fas fa-hammer icon"></i>
                                 @else
@@ -252,7 +252,7 @@
                         <img class="building" style="width:250px;height: 250px;" src="{{ $build['illustration'] }}">
                         @if ($build['status'] == "OK")
                             <div @if ($build['food_required'] > $food || $build['wood_required'] > $wood || $build['rock_required'] > $rock || $build['steel_required'] > $steel || $build['gold_required'] > $gold) class="building-button-impossible" @else class="building-button"
-                            onclick="update_building('{{ $build['name'] }}', '{{ $build['food_required'] }}', '{{ $build['wood_required'] }}', '{{ $build['rock_required'] }}', '{{ $build['steel_required'] }}', '{{ $build['gold_required'] }}', '{{ $build['duration'] }}')"@endif>                                
+                            onclick="update_building('{{ $build['name'] }}', '{{ $build['food_required'] }}', '{{ $build['wood_required'] }}', '{{ $build['rock_required'] }}', '{{ $build['steel_required'] }}', '{{ $build['gold_required'] }}', '{{ $build['duration'] }}', '{{ $build['niv'] }}')"@endif>                                
                                 @if ($build["niv"] == 0)
                                     Construire <i class="fas fa-hammer icon"></i>
                                 @else
@@ -292,7 +292,7 @@
                         <img class="building" style="width:250px;height: 250px;" src="{{ $build['illustration'] }}">
                         @if ($build['status'] == "OK")
                             <div @if ($build['food_required'] > $food || $build['wood_required'] > $wood || $build['rock_required'] > $rock || $build['steel_required'] > $steel || $build['gold_required'] > $gold) class="building-button-impossible" @else class="building-button"
-                            onclick="update_building('{{ $build['name'] }}', '{{ $build['food_required'] }}', '{{ $build['wood_required'] }}', '{{ $build['rock_required'] }}', '{{ $build['steel_required'] }}', '{{ $build['gold_required'] }}', '{{ $build['duration'] }}')"@endif>                                
+                            onclick="update_building('{{ $build['name'] }}', '{{ $build['food_required'] }}', '{{ $build['wood_required'] }}', '{{ $build['rock_required'] }}', '{{ $build['steel_required'] }}', '{{ $build['gold_required'] }}', '{{ $build['duration'] }}', '{{ $build['niv'] }}')"@endif>                                
                                 @if ($build["niv"] == 0)
                                     Construire <i class="fas fa-hammer icon"></i>
                                 @else
@@ -429,7 +429,7 @@
                 }
             }
 
-            function update_building(name, food, wood, rock, steel, gold, duration)
+            function update_building(name, food, wood, rock, steel, gold, duration, niv)
             {
                 var _token = document.getElementById('_token').value;
                 var building_type = activeBuildings.replace(/-/gi, '_');
@@ -443,7 +443,7 @@
                     }
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                xhr.send('_token=' + _token + '&building_name=' + name + '&building_type=' + building_type + '&food_required=' + food + '&wood_required=' + wood + '&rock_required=' + rock + '&steel_required=' + steel + '&gold_required=' + gold + '&duration=' + duration);
+                xhr.send('_token=' + _token + '&building_name=' + name + '&building_type=' + building_type + '&food_required=' + food + '&wood_required=' + wood + '&rock_required=' + rock + '&steel_required=' + steel + '&gold_required=' + gold + '&duration=' + duration + '&niv=' + niv);
             }
         </script>
     </body>

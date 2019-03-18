@@ -234,6 +234,7 @@
         public function update(Request $request)
         {
             $city_id = session()->get('city_id');
+            $next_level = $request['niv'] + 1;
             $building_name = $request['building_name'];
             $building_type = $request['building_type'];
             $building_id = DB::table($building_type)
@@ -255,7 +256,7 @@
             ->where('id', '=', $city_id)
             ->update(['food' => $city_res->food - $food_required, 'wood' => $city_res->wood - $wood_required, 'rock' => $city_res->rock - $rock_required, 'steel' => $city_res->steel - $steel_required, 'gold' => $city_res->gold - $gold_required]);
             DB::table('waiting_buildings')
-            ->insert(["city_id" => $city_id, "type" => $building_type, "building_id" => $building_id, "finishing_date" => $finishing_date]);
+            ->insert(["city_id" => $city_id, "type" => $building_type, "building_id" => $building_id, "finishing_date" => $finishing_date, "next_level" => $next_level]);
         }
     }
 

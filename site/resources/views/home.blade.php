@@ -170,7 +170,7 @@
             launch_all_timers();
             function launch_all_timers()
             {
-                var timers = Array.prototype.slice.call(document.getElementsByClassName('info-building-wip'));
+                var timers = Array.prototype.slice.call(document.getElementsByClassName('infos-building-wip'));
                 if (timers.length == 0)
                     return ;
                 timers.forEach(function(e){

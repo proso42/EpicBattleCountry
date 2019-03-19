@@ -161,7 +161,7 @@
                 <hr class="signin-footer">
                 <div>
                     @foreach ($waiting_list as $build)
-                        <div id="compteur_{{ $build['name'] }}" duration="{{ $build['duration'] }}" name="{{ $build['name'] }}" class="infos-building-wip">{{ $build['name'] }} {{ $build['duration'] }}</div>
+                        <div id="compteur_{{ $build['name'] }}" duration="{{ $build['duration'] }}" name="{{ $build['name'] }}" class="infos-building-wip"></div>
                     @endforeach
                 </div>
             </div>

@@ -235,8 +235,8 @@
                         h += " h ";
                     }
                     compteur.textContent= name + " " + h+" "+m+" "+s;
-                    setTimeout(function(same_id=id, new_duration=duration-1){
-                        timer(same_id, new_duration);
+                    setTimeout(function(same_id=id, new_duration=duration-1, same_name=name){
+                        timer(same_id, new_duration,same_name);
                     },1000);
                 }
             }

@@ -70,7 +70,7 @@
             $waiting_list = array();
             foreach ($waiting_buildings as $build => $value)
             {
-                $building_name = DB::table($build['type']])
+                $building_name = DB::table($build['type'])
                 ->where('id', '=', $build['building_id'])
                 ->value('name');
                 array_push($waiting_list, ["name" => $building_name, "duration" => $build['finishing_date'] - time()]);

@@ -36,7 +36,7 @@
                 return 2;
             else
             {
-                session(['user_id' => $auth->id]);
+                session()->put(['user_id' => $auth->id]);
                 return 0;
             }
         }

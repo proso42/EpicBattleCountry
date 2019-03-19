@@ -12,7 +12,19 @@
     {
         public function index()
         {
+            if (!isset($_GET['activeTab'])|| ($_GET['activeTab'] !== "eco" && $_GET['activeTab'] !== "army" && $_GET['activeTab'] !== "religious" && $_GET['activeTab'] !== "tech"))
+                $first_active_tab = "eco";
+            else
+                $first_active_tab = $_GET['activeTab'];
             $user_id = session()->get('user_id');
+            $user_race = session()->get('user_race');
+            if ($user_race === null)
+            {
+                $user_race = DB::table('users')
+                ->where('id', '=', $user_id)
+                ->value('race');
+                session()->put(['user_race' => $user_race]);
+            }
             $city_id = session()->get('city_id');
             if ($city_id === null)
             {

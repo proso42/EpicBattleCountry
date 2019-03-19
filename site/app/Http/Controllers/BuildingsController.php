@@ -38,7 +38,6 @@
             ->where('owner', '=', $user_id)
             ->where('id', '=', $city_id)
             ->first();
-            dd($city);
             $food = $city->food;
             $compact_food = $food;
             $max_food = $city->max_food;

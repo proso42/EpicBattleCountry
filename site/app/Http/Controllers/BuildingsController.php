@@ -119,7 +119,7 @@
                                 $building_name = DB::table($building_type)
                                 ->where('id', '=', $key)
                                 ->value('name');
-                                $building_name_format = preg_replace('/\s+/', "_", $building_name);
+                                $building_name_format = preg_replace('/\s/', "_", $building_name);
                                 $building_niv = DB::table('cities')
                                 ->where('id', '=', $city_id)
                                 ->value($building_name_format);

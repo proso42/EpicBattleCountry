@@ -68,6 +68,7 @@
             ->where('city_id', '=', $city_id)
             ->get();
             $waiting_list = array();
+            dd($waiting_buildings);
             foreach ($waiting_buildings as $build => $value)
             {
                 $building_name = DB::table($build['type'])

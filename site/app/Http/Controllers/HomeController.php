@@ -70,10 +70,10 @@
             $waiting_list = array();
             foreach ($waiting_buildings as $build => $value)
             {
-                $building_name = DB::table($build->type)
-                ->where('id', '=', $build->building_id)
+                $building_name = DB::table($build['type']])
+                ->where('id', '=', $build['building_id'])
                 ->value('name');
-                array_push($waiting_list, ["name" => $building_name, "duration" => $build->finishing_date - time()]);
+                array_push($waiting_list, ["name" => $building_name, "duration" => $build['finishing_date'] - time()]);
             }
             return view('home', compact('food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold', 'city_name', 'waiting_list'));
         }

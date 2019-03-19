@@ -69,25 +69,7 @@
             ->insertGetId(
                 array('login' => $login, 'email' => $email, 'password' => $crypted_password, 'remember_token' => $request['_token'], 'created_at' => time(), 'race' => $id_race->id)
             );
-            $city_id = DB::table('cities')
-            ->insertGetId(
-                array(
-                    'name' => $city,
-                    'owner' => $user_id,
-                    'x_pos' => $city_x_pos,
-                    'y_pos' => $city_y_pos,
-                    'is_capital' => 1,
-                    'food' => 500,
-                    'max_food' => 2500,
-                    'wood' => 350,
-                    'max_wood' => 2500,
-                    'rock' => 350,
-                    'max_rock' => 2500,
-                    'steel' => 100,
-                    'max_steel' => 2500,
-                    'gold' => 25,
-                    'max_gold' => 2500)
-            );
+            $city_id = $this->create_capital($city, $user_id, $city_x_pos, $city_y_pos, $id_race);
             $link = $this->gen_confirmation_email_link();
             $email_token = explode('=', $link)[1];
             DB::table('email_validation')
@@ -113,6 +95,136 @@
                     $link .= chr(rand(97,122));
             }
             return $link;
+        }
+
+        private function create_capital($city, $user_id, $city_x_pos, $city_y_pos, $id_race)
+        {
+            $city_id = -1;
+            if ($id_race == 1)
+            {
+                $city_id = DB::table('cities')
+                ->insertGetId(
+                    array(
+                        'name' => $city,
+                        'owner' => $user_id,
+                        'x_pos' => $city_x_pos,
+                        'y_pos' => $city_y_pos,
+                        'is_capital' => 1,
+                        'food' => 500,
+                        'max_food' => 2500,
+                        'wood' => 350,
+                        'max_wood' => 2500,
+                        'rock' => 350,
+                        'max_rock' => 2500,
+                        'steel' => 100,
+                        'max_steel' => 2500,
+                        'gold' => 25,
+                        'max_gold' => 2500,
+                        'Douves_de_lave' => -1,
+                        "Fosse_cachée" => -1,
+                        "Temple_de_la_Vie" => -1,
+                        "Temple_de_la_Montagne" => -1,
+                        "Temple_de_la_Mort" => -1,
+                        "Arbre_de_la_Vie" => -1,
+                        "Statue_du_Dieu_Nain" => -1,
+                        "Statue_engloutie_de_la_Mort" => -1)   
+                );
+            }
+            else if ($id_race == 2)
+            {
+                $city_id = DB::table('cities')
+                ->insertGetId(
+                    array(
+                        'name' => $city,
+                        'owner' => $user_id,
+                        'x_pos' => $city_x_pos,
+                        'y_pos' => $city_y_pos,
+                        'is_capital' => 1,
+                        'food' => 500,
+                        'max_food' => 2500,
+                        'wood' => 350,
+                        'max_wood' => 2500,
+                        'rock' => 350,
+                        'max_rock' => 2500,
+                        'steel' => 100,
+                        'max_steel' => 2500,
+                        'gold' => 25,
+                        'max_gold' => 2500,
+                        'Douves_de_lave' => -1,
+                        "Temple_de_la_Guerre" => -1,
+                        "Temple_de_la_Montagne" => -1,
+                        "Temple_de_la_Mort" => -1,
+                        "Statue_de_la_Guerre" => -1,
+                        "Statue_du_Dieu_Nain" => -1,
+                        "Statue_engloutie_de_la_Mort" => -1,
+                        "Sanctuaire" => -1)
+                );
+            }
+            else if ($id_race == 3)
+            {
+                $city_id = DB::table('cities')
+                ->insertGetId(
+                    array(
+                        'name' => $city,
+                        'owner' => $user_id,
+                        'x_pos' => $city_x_pos,
+                        'y_pos' => $city_y_pos,
+                        'is_capital' => 1,
+                        'food' => 500,
+                        'max_food' => 2500,
+                        'wood' => 350,
+                        'max_wood' => 2500,
+                        'rock' => 350,
+                        'max_rock' => 2500,
+                        'steel' => 100,
+                        'max_steel' => 2500,
+                        'gold' => 25,
+                        'max_gold' => 2500,
+                        "Champs" => -1,
+                        'Douves_de_lave' => -1,
+                        "Fosse_cachée" => -1,
+                        "Temple_de_la_Guerre" => -1,
+                        "Temple_de_la_Vie" => -1,
+                        "Temple_de_la_Mort" => -1,
+                        "Arbre_de_la_Vie" => -1,
+                        "Statue_de_la_Guerre" => -1,
+                        "Statue_engloutie_de_la_Mort" => -1,
+                        "Sanctuaire" => -1)
+                );
+            }
+            else
+            {
+                $city_id = DB::table('cities')
+                ->insertGetId(
+                    array(
+                        'name' => $city,
+                        'owner' => $user_id,
+                        'x_pos' => $city_x_pos,
+                        'y_pos' => $city_y_pos,
+                        'is_capital' => 1,
+                        'food' => 500,
+                        'max_food' => 2500,
+                        'wood' => 350,
+                        'max_wood' => 2500,
+                        'rock' => 350,
+                        'max_rock' => 2500,
+                        'steel' => 100,
+                        'max_steel' => 2500,
+                        'gold' => 25,
+                        'max_gold' => 2500,
+                        "Champs" => -1,
+                        "Mur_basique" => -1,
+                        "Fosse_cachée" => -1,
+                        "Temple_de_la_Guerre" => -1,
+                        "Temple_de_la_Vie" => -1,
+                        "Temple_de_la_Montagne" => -1,
+                        "Arbre_de_la_Vie" => -1,
+                        "Statue_de_la_Guerre" => -1,
+                        "Statue_du_Dieu_Nain" => -1,
+                        "Sanctuaire" => -1)
+                );
+            }
+            return $city_id;
         }
     }
 

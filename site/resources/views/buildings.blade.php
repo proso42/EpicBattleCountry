@@ -158,8 +158,8 @@
                     <div id="army-tab" class="col-lg-3 col-md-3 col-sm-3 col-3 generique-tab" onclick="switchTab('army')">
                         Militaire
                     </div>
-                    <div id="defensive-tab" class="col-lg-3 col-md-3 col-sm-3 col-3 generique-tab" onclick="switchTab('defensive')">
-                        Défensif                    
+                    <div id="religious-tab" class="col-lg-3 col-md-3 col-sm-3 col-3 generique-tab" onclick="switchTab('religious')">
+                        Religieux                    
                     </div>
                     <div id="tech-tab" class="col-lg-3 col-md-3 col-sm-3 col-3 generique-tab" onclick="switchTab('tech')">
                         Technique                    
@@ -245,8 +245,8 @@
                     </div>
                 @endforeach
                 </div>
-                <div id="defensive-buildings" class="row" style="margin-top: 30px;display:none">
-                @foreach ($allowed_defensive_buildings as $build)
+                <div id="religious-buildings" class="row" style="margin-top: 30px;display:none">
+                @foreach ($allowed_religious_buildings as $build)
                     <div class="building-block">
                         <div class="building-name">{{ $build["name"] }} @if ($build["niv"] > 0) {{$build["niv"]}} @endif</div>
                         <img class="building" style="width:250px;height: 250px;" src="{{ $build['illustration'] }}">

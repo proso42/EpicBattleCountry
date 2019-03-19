@@ -89,7 +89,7 @@
                     $status = "WIP";
                 $niv = DB::table('cities')
                 ->where('id', '=', $city_id)
-                ->value($val->name.preg_replace('/\s/',"_"));
+                ->value(preg_replace('/\s/',"_", $val->name));
                 if ($niv >= 0)
                 {
                     if ($niv == 0)

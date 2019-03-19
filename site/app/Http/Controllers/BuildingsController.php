@@ -169,7 +169,7 @@
             $final_value = intval($basic_value);
             for ($i = 1; $i <= $niv; $i++)
                 $final_value *= $levelup;
-            return round($final_value, 0, PHP_ROUND_HALF_DOWN);
+            return variant_int($final_value);
         }
 
         private function sec_to_date($niv, $duration, $levelup)
@@ -180,17 +180,17 @@
                 return ($duration . " s");
             if ($duration % 60 > 0)
                 $new_duration = ($duration % 60) . " s";
-            $duration = round($duration / 60, 0, PHP_ROUND_HALF_DOWN);
+            $duration = variant_int($duration / 60);
             if ($duration < 60)
                 return ($duration . " m " . $new_duration);
             if ($duration % 60 > 0)
                 $new_duration = ($duration % 60) . " m " . $new_duration;
-            $duration = round($duration / 60, 0, PHP_ROUND_HALF_DOWN);
+            $duration = variant_int($duration / 60);
             if ($duration < 60)
                 return ($duration . " h " . $new_duration);
             if ($duration % 60 > 0)
                 $new_duration = ($duration % 60) . " h " . $new_duration;
-            $duration = round($duration / 24, 0, PHP_ROUND_HALF_DOWN);
+            $duration = variant_int($duration / 24);
             if ($new_duration !== "")
                 return ($duration . " j " . $new_duration);
             else

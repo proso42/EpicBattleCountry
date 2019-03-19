@@ -69,7 +69,7 @@
             ->insertGetId(
                 array('login' => $login, 'email' => $email, 'password' => $crypted_password, 'remember_token' => $request['_token'], 'created_at' => time(), 'race' => $id_race->id)
             );
-            $city_id = $this->create_capital($city, $user_id, $city_x_pos, $city_y_pos, $id_race);
+            $city_id = $this->create_capital($city, $user_id, $city_x_pos, $city_y_pos, $id_race->id);
             $link = $this->gen_confirmation_email_link();
             $email_token = explode('=', $link)[1];
             DB::table('email_validation')

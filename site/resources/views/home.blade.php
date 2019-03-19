@@ -154,10 +154,92 @@
                     <div class="col-lg-3 col-md-3 col-sm-10 col-10">Déconnexion</div>
                 </div>
             </div>
-            <div class="col-lg-9 col-md-4 center-win" style="margin-top: 50px;">
+            <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding-right: 10px;">
+                <div style="text-align:center">
+                    <h2>{{ $city_name }}</h2>
+                </div>
+                <hr class="signin-footer">
+                <div>
+                    @foreach ($waiting_list as $build)
+                        <div id="compteur_{{ $build['name'] }}" duration="{{ $build['duration'] }}" name="{{ $build['name'] }}" class="info-building-wip">{{ $build['name'] }} {{ $build['duration'] }}</div>
+                    @endforeach
+                </div>
             </div>
         </div>
         <script>
+            launch_all_timers();
+            function launch_all_timers()
+            {
+                var timers = Array.prototype.slice.call(document.getElementsByClassName('info-building-wip'));
+                if (timers.length == 0)
+                    return ;
+                timers.forEach(function(e){
+                    timer(e.id, e.getAttribute("duration"), e.getAttribute("name"));
+                });
+            }
+            function timer(id, duration, name)
+            {
+                var compteur=document.getElementById(id);
+                var s=duration;
+                var m=0;
+                var h=0;
+                if(s<=0)
+                    compteur.textContent = name + " Terminé";
+                else
+                {
+                    let new_time = "";
+                    if(s>59)
+                    {
+                        m=Math.floor(s/60);
+                        s=s - m * 60;
+                    }
+                    if(m>59)
+                    {
+                        h=Math.floor(m/60);
+                        m= m - h * 60;
+                    }
+                    if(s<10 && s > 0)
+                    {
+                        s= "0" + s + " s";
+                    }
+                    else if (s == 0)
+                    {
+                        s = "";
+                    }
+                    else
+                    {
+                        s += " s";
+                    }
+                    if(m<10 && m > 0)
+                    {
+                        m= "0" + m + " m ";
+                    }
+                    else if (m == 0)
+                    {
+                        m = "";
+                    }
+                    else
+                    {
+                        m += " m ";
+                    }
+                    if (h < 10 && h > 0)
+                    {
+                        h= "0" + h + " h ";
+                    }
+                    else if (h == 0)
+                    {
+                        h = "";
+                    }
+                    else
+                    {
+                        h += " h ";
+                    }
+                    compteur.textContent= name + " " + h+" "+m+" "+s;
+                    setTimeout(function(same_id=id, new_duration=duration-1){
+                        timer(same_id, new_duration);
+                    },1000);
+                }
+            }
             var screen_width = window.innerWidth;
             if (screen_width <= 563)
             {

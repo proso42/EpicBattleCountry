@@ -38,6 +38,7 @@
             ->where('owner', '=', $user_id)
             ->where('id', '=', $city_id)
             ->first();
+            $city_name = $city->name;
             $food = $city->food;
             $compact_food = $food;
             $max_food = $city->max_food;
@@ -63,7 +64,18 @@
                 $compact_steel = substr($steel, 0, 5) . '...';
             if ($gold > 999999)
                 $compact_gold = substr($gold, 0, 5) . '...';
-            return view('home', compact('food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
+            $waiting_buildings = DB::table('waiting_buildings')
+            ->where('city_id', '=', $city_id)
+            ->get();
+            $waiting_list = array();
+            foreach ($waiting_buildings as $build => $value)
+            {
+                $building_name = DB::table($build->type)
+                ->where('id', '=', $build->building_id)
+                ->value('name');
+                array_push($waiting_list, ["name" => $building_name, "duration" => $build->finishing_date - time()]);
+            }
+            return view('home', compact('food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold', 'city_name', 'waiting_list'));
         }
     }
 

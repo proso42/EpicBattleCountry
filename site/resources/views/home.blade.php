@@ -8,7 +8,7 @@
         <link rel="stylesheet" type="text/css" href="css/style.css"/>
     </head>
     <body>
-        @extends (default)
+        @extends ('default')
         <div class="row" style="margin-left:0; margin-right: 0;">
             <div class="col-lg-2 col-md-2" style="margin-top: 50px;">
                 <div class="row menu-left">

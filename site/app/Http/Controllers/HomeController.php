@@ -42,18 +42,23 @@
             $food = $city->food;
             $compact_food = $food;
             $max_food = $city->max_food;
+            $food_prod = $city->food_prod;
             $wood = $city->wood;
             $compact_wood = $wood;
             $max_wood = $city->max_wood;
+            $wood_prod = $city->wood_prod;
             $rock = $city->rock;
             $compact_rock = $rock;
             $max_rock = $city->max_rock;
+            $rock_prod = $city->rock_prod;
             $steel = $city->steel;
             $compact_steel = $steel;
             $max_steel = $city->max_steel;
+            $steel_prod = $city->steel_prod;
             $gold = $city->gold;
             $compact_gold = $gold;
             $max_gold = $city->max_gold;
+            $gold_prod = $city->gold_prod;
             if ($food > 999999)
                 $compact_food = substr($food, 0, 5) . '...';
             if ($wood > 999999)
@@ -75,7 +80,7 @@
                 ->value('name');
                 array_push($waiting_list, ["name" => $building_name, "duration" => $build->finishing_date - time()]);
             }
-            return view('home', compact('food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold', 'city_name', 'waiting_list'));
+            return view('home', compact('food', 'compact_food', 'max_food', 'food_prod', 'wood', 'compact_wood' ,'max_wood', 'wood_prod', 'rock', 'compact_rock', 'max_rock', 'rock_prod', 'steel', 'compact_steel', 'max_steel', 'steel_prod', 'gold', 'compact_gold', 'max_gold', 'gold_prod', 'city_name', 'waiting_list'));
         }
     }
 

@@ -624,3 +624,12 @@ input::placeholder
 {
     color: gold;
 }
+
+.production-tab
+{
+    border: solid 1px lightblue;
+    border-radius: 4px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 350px;
+}

@@ -159,10 +159,22 @@
                     <h2>{{ $city_name }}</h2>
                 </div>
                 <hr class="signin-footer">
+                <div class="production-tab">
+                    <ul>
+                        <li>Nourriture : {{ $food_prod }} / h | Stock Max : {{ $max_food }}</li>
+                        <li>Bois : {{ $wood_prod }} / h | Stock Max : {{ $max_wood }}</li>
+                        <li>Pierre : {{ $rock_prod }} / h | Stock Max : {{ $max_rock }}</li>
+                        <li>Fer : {{ $steel_prod }} / h | Stock Max : {{ $max_steel }}</li>
+                        <li>Or : {{ $gold_prod }} / h | Stock Max : {{ $max_gold }}</li>
+                    </ul>
+                </div>
+                <hr class="signin-footer">
                 <div>
+                    <ul>
                     @foreach ($waiting_list as $build)
-                        <div id="compteur_{{ $build['name'] }}" duration="{{ $build['duration'] }}" name="{{ $build['name'] }}" class="infos-building-wip"></div>
+                        <li id="compteur_{{ $build['name'] }}" duration="{{ $build['duration'] }}" name="{{ $build['name'] }}" class="infos-building-wip"></li>
                     @endforeach
+                    </ul>
                 </div>
             </div>
         </div>

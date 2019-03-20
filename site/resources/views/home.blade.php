@@ -159,8 +159,8 @@
                     <h2>{{ $city_name }}</h2>
                 </div>
                 <hr class="signin-footer">
-                <div class="production-tab">
-                    <table style="margin-left: auto; margin-right: auto;border-collapse: separate;border-spacing: 15px 0px; background-color: rgba(105, 105, 105, 0.9)">
+                <div class="prod-div">
+                    <table class="prod-table">
                         <tr>
                             <td>Ressources</td><td>Prod par heure</td><td>Stockage Max</td>
                         </tr>

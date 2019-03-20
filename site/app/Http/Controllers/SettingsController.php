@@ -44,7 +44,7 @@
             $csrf_token_password = csrf_token();
             session()->put(['csrf_token_login' => $csrf_token_login, 'csrf_token_email' => $csrf_token_email, 'csrf_token_password' => $csrf_token_password]);
             $city = DB::table('cities')
-            ->where('owner', '=', $user_id)
+            ->where('owner', '=', session()->get('user_id'))
             ->where('id', '=', $city_id)
             ->first();
             $city_name = $city->name;

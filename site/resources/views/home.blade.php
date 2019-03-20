@@ -160,24 +160,24 @@
                 </div>
                 <hr class="signin-footer">
                 <div class="production-tab">
-                    <table>
+                    <table style="margin-left auto; margin-right: auto">
                         <tr>
-                            <td></td><td>Production par heure</td><td>Stockage Maximum</td>
+                            <td>Ressources</td><td>Prod par heure</td><td></td><td>Stockage Max</td>
                         </tr>
                         <tr>
-                            <td>Nourriture</td><td>{{ $food_prod * 60 }}</td><td>{{ $max_food }}</td>
+                            <td>Nourriture</td><td>{{ $food_prod * 60 }}</td><td></td><td>{{ $max_food }}</td>
                         </tr>
                         <tr>
-                            <td>Bois</td><td>{{ $wood_prod * 60 }}</td><td>{{ $max_wood }}</td>
+                            <td>Bois</td><td>{{ $wood_prod * 60 }}</td><td></td><td>{{ $max_wood }}</td>
                         </tr>
                         <tr>
-                            <td>Pierre</td><td>{{ $rock_prod * 60 }}</td><td>{{ $max_rock }}</td>
+                            <td>Pierre</td><td>{{ $rock_prod * 60 }}</td><td></td><td>{{ $max_rock }}</td>
                         </tr>
                         <tr>
-                            <td>Fer</td><td>{{ $steel_prod * 60 }}</td><td>{{ $max_steel }}</td>
+                            <td>Fer</td><td>{{ $steel_prod * 60 }}</td><td></td><td>{{ $max_steel }}</td>
                         </tr>
                         <tr>
-                            <td>Or</td><td>{{ $gold_prod * 60 }}</td><td>{{ $max_gold }}</td>
+                            <td>Or</td><td>{{ $gold_prod * 60 }}</td><td></td><td>{{ $max_gold }}</td>
                         </tr>
                     </table>
                 </div>

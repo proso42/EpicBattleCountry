@@ -160,13 +160,26 @@
                 </div>
                 <hr class="signin-footer">
                 <div class="production-tab">
-                    <ul>
-                        <li>Nourriture : {{ $food_prod * 60 }} / h | Stock Max : {{ $max_food }}</li>
-                        <li>Bois : {{ $wood_prod * 60 }} / h | Stock Max : {{ $max_wood }}</li>
-                        <li>Pierre : {{ $rock_prod * 60}} / h | Stock Max : {{ $max_rock }}</li>
-                        <li>Fer : {{ $steel_prod * 60}} / h | Stock Max : {{ $max_steel }}</li>
-                        <li>Or : {{ $gold_prod * 60}} / h | Stock Max : {{ $max_gold }}</li>
-                    </ul>
+                    <table>
+                        <tr>
+                            <td></td><td>Production par heure</td><td>Stockage Maximum</td>
+                        </tr>
+                        <tr>
+                            <td>Nourriture</td><td>{{ $food_prod * 60 }}</td><td>{{ $max_food }}</td>
+                        </tr>
+                        <tr>
+                            <td>Bois</td><td>{{ $wood_prod * 60 }}</td><td>{{ $max_wood }}</td>
+                        </tr>
+                        <tr>
+                            <td>Pierre</td><td>{{ $rock_prod * 60 }}</td><td>{{ $max_rock }}</td>
+                        </tr>
+                        <tr>
+                            <td>Fer</td><td>{{ $steel_prod * 60 }}</td><td>{{ $max_steel }}</td>
+                        </tr>
+                        <tr>
+                            <td>Or</td><td>{{ gold_prod * 60 }}</td><td>{{ $max_gold }}</td>
+                        </tr>
+                    </table>
                 </div>
                 <hr class="signin-footer">
                 <div>

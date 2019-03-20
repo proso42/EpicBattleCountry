@@ -9,69 +9,6 @@
     </head>
     <body>
         @extends ('default')
-        <div class="row" style="margin-left:0; margin-right: 0;">
-            <div class="col-lg-2 col-md-2" style="margin-top: 50px;">
-                <div class="row menu-left">
-                    <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-home icon"></i></div>
-                    <div onclick="document.location.href='/home'" class="col-lg-3 col-md-3 col-sm-1 col-3">Acceuil</div>
-                </div>
-                <div onclick="document.location.href='/buildings'" class="row menu-left">
-                    <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-hammer icon"></i></div>
-                    <div class="col-lg-3 col-md-3 col-sm-10 col-10">Construction</div>
-                </div>
-                <div class="row menu-left">
-                    <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fab fa-whmcs icon"></i></div>
-                    <div class="col-lg-3 col-md-3 col-sm-10 col-10">Production</div>
-                </div>
-                <div class="row menu-left">
-                    <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-flask icon"></i></div>
-                    <div class="col-lg-3 col-md-3 col-sm-10 col-10">Technologie</div>
-                </div>
-                <div class="row menu-left">
-                    <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-map-marked-alt icon"></i></div>
-                    <div class="col-lg-3 col-md-3 col-sm-10 col-10">Exploration</div>
-                </div>
-                <div class="row menu-left">
-                    <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-fist-raised icon"></i></div>
-                    <div class="col-lg-3 col-md-3 col-sm-10 col-10">Invasion</div>
-                </div>
-                <div class="row menu-left">
-                    <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-flag icon"></i></div>
-                    <div class="col-lg-3 col-md-3 col-sm-10 col-10">Diplomatie</div>
-                </div>
-                <div class="row menu-left">
-                    <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-balance-scale icon"></i></div>
-                    <div class="col-lg-3 col-md-3 col-sm-10 col-10">Commerce</div>
-                </div>
-                <div class="row menu-left">
-                    <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-shield-alt icon"></i></div>
-                    <div class="col-lg-3 col-md-3 col-sm-10 col-10">Alliance</div>
-                </div>
-                <div class="row menu-left">
-                    <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-globe-americas icon"></i></div>
-                    <div class="col-lg-3 col-md-3 col-sm-10 col-10">Carte</div>
-                </div>
-                <div class="row menu-left">
-                    <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-comment icon"></i></div>
-                    <div class="col-lg-3 col-md-3 col-sm-10 col-10">Messages</div>
-                </div>
-                <div class="row menu-left">
-                    <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-chart-line icon"></i></div>
-                    <div class="col-lg-3 col-md-3 col-sm-10 col-10">Statistiques</div>
-                </div>
-                <div onclick="document.location.href='/settings'" class="row menu-left">
-                    <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-user-circle icon"></i></div>
-                    <div class="col-lg-3 col-md-3 col-sm-10 col-10">Profile</div>
-                </div>
-                <div class="row menu-left">
-                    <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-store-alt icon"></i></div>
-                    <div class="col-lg-3 col-md-3 col-sm-10 col-10">Boutique</div>
-                </div>
-                <div onclick="document.location.href='/logout'" class="row menu-left last-case">
-                    <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-sign-out-alt icon"></i></div>
-                    <div class="col-lg-3 col-md-3 col-sm-10 col-10">Déconnexion</div>
-                </div>
-            </div>
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding-right: 10px;">
                 <div style="text-align:center">
                     <h2>{{ $city_name }}</h2>

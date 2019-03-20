@@ -177,7 +177,7 @@
                             <td>Fer</td><td>{{ $steel_prod * 60 }}</td><td>{{ $max_steel }}</td>
                         </tr>
                         <tr>
-                            <td>Or</td><td>{{ gold_prod * 60 }}</td><td>{{ $max_gold }}</td>
+                            <td>Or</td><td>{{ $gold_prod * 60 }}</td><td>{{ $max_gold }}</td>
                         </tr>
                     </table>
                 </div>

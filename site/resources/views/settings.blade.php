@@ -9,6 +9,32 @@
     </head>
     <body>
         @include('default')
+            <div class="col-lg-9 col-md-8 center-win">
+                <h2>Profile</h2>
+                <div id="err_login" class="signup-err-password" style="display: none">
+                    <p>Ce login est déjà utilisé !</p>
+                </div>
+                <div id="empty_login" class="signup-err-password" style="display: none">
+                    <p>Merci de renseigner un pseudo !</p>
+                </div>
+                <div id="err_email" class="signup-err-password" style="display: none">
+                    <p>Cet email est déjà utilisé !</p>
+                </div>
+                <div id="empty_email" class="signup-err-password" style="display: none">
+                    <p>Merci de renseigner un email !</p>
+                </div>
+                <div id="empty_mdp" class="signup-err-password" style="display: none">
+                    <p>Merci de renseigner un mot de passe !</p>
+                </div>
+                <div id="err_same_mdp" class="signup-err-password" style="display: none">
+                    <p>Votre nouveau mot de passe ne peut pas être votre mot de passe actuel !</p>
+                </div>
+                <div id="login_updated" class="settings-update-success" style="display: none">
+                    <p>Votre login a été modifié avec succès ! </p>
+                </div>
+                <div id="email_updated" class="settings-update-success" style="display: none">
+                    <p>Un email de confirmation a été envoyé à votre nouvelle adresse email !</p>
+                </div>
                 <div>
                     <!-- User Settings for Large Screen -->
                     <div class="row large-screen" style="align-items: baseline;">

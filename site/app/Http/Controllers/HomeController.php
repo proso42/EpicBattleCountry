@@ -72,6 +72,9 @@
             $waiting_buildings = DB::table('waiting_buildings')
             ->where('city_id', '=', $city_id)
             ->get();
+            $waiting_techs = DB::table('waiting_techs')
+            ->where('city_id', '=', $city_id)
+            ->get();
             $waiting_list = array();
             foreach ($waiting_buildings as $build)
             {
@@ -79,6 +82,13 @@
                 ->where('id', '=', $build->building_id)
                 ->value('name');
                 array_push($waiting_list, ["name" => $building_name, "duration" => $build->finishing_date - time()]);
+            }
+            foreach ($waiting_techs as $tech)
+            {
+                $tech_name = DB::table('techs')
+                ->where('id', '=', $tech->tech_id)
+                ->value('name');
+                array_push($waiting_list, ["name" => $tech_name, "duration" => $tech->finishing_date - time()]);
             }
             return view('home', compact('food', 'compact_food', 'max_food', 'food_prod', 'wood', 'compact_wood' ,'max_wood', 'wood_prod', 'rock', 'compact_rock', 'max_rock', 'rock_prod', 'steel', 'compact_steel', 'max_steel', 'steel_prod', 'gold', 'compact_gold', 'max_gold', 'gold_prod', 'city_name', 'waiting_list'));
         }

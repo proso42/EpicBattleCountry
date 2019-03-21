@@ -38,12 +38,11 @@
                 </div>
                 <hr class="signin-footer">
                 <div>
-                    <ul>
                     @foreach ($waiting_list as $build)
-                        <li id="compteur_{{ $build['name'] }}" duration="{{ $build['duration'] }}" name="{{ $build['name'] }}" class="infos-building-wip"></li>
+                        <p id="compteur_{{ $build['name'] }}" duration="{{ $build['duration'] }}" name="{{ $build['name'] }}" class="infos-building-wip"></p>
                     @endforeach
-                    </ul>
                 </div>
+                @if ($wai)
             </div>
         </div>
         <script>

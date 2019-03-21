@@ -42,7 +42,6 @@
                         <p id="compteur_{{ $build['name'] }}" duration="{{ $build['duration'] }}" name="{{ $build['name'] }}" class="infos-building-wip"></p>
                     @endforeach
                 </div>
-                @if ($wai)
             </div>
         </div>
         <script>

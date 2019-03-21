@@ -84,7 +84,7 @@
                 else
                     $status = "WIP";
                 $niv = DB::table('cities_techs')
-                ->where('id', '=', $city_id)
+                ->where('city_id', '=', $city_id)
                 ->value(preg_replace('/\s/',"_", $val->name));
                 if ($niv >= 0)
                 {

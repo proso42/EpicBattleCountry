@@ -70,7 +70,7 @@
         private function get_allowed_techs()
         {
             $city_id = session()->get('city_id');
-            $all_techs = DB::table($techs)
+            $all_techs = DB::table('techs')
             ->get();
             $allowed_techs = array();
             foreach ($all_techs as $val)

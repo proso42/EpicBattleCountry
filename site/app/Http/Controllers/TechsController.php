@@ -110,7 +110,7 @@
                         if ($val->building_required !== "NONE")
                         {
                             $buildings_required = explode(";", $val->building_required);
-                            for($i = 0; i < count($buildings_required); $i++)
+                            for($i = 0; $i < count($buildings_required); $i++)
                             {
                                 $building_type = $buildings_required[i];
                                 $building_id = $buildings_required[i + 1];

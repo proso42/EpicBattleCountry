@@ -141,12 +141,12 @@
                 {
                     if (xhr.readyState === 4 && xhr.status === 200)
                     {
-                        window.location.href="http://www.epicbattlecorp.fr/tech";
+                        window.location.href="http://www.epicbattlecorp.fr/techs";
                     }
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhr.send('_token=' + _token + '&tech_name=' + name + '&food_required=' + food + '&wood_required=' + wood + '&rock_required=' + rock + '&steel_required=' + steel + '&gold_required=' + gold + '&duration=' + duration + '&niv=' + niv);
-                window.location.href="http://www.epicbattlecorp.fr/tech";
+                window.location.href="http://www.epicbattlecorp.fr/techs";
             }
         </script>
     </body>

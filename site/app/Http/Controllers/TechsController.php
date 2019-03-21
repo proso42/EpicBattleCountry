@@ -252,7 +252,7 @@
             $city_id = session()->get('city_id');
             $next_level = $request['niv'] + 1;
             $tech_name = $request['tech_name'];
-            $tech_id = DB::table('cities_techs')
+            $tech_id = DB::table('techs')
             ->where('name', '=', $tech_name)
             ->value('id');
             $food_required = $request['food_required'];

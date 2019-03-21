@@ -45,6 +45,7 @@ Route::group(['middleware' => 'logged'], function(){
     Route::get('/buildings', 'BuildingsController@index');
     Route::post('/update_building', 'BuildingsController@update');
     Route::get('/techs', 'TechsController@index');
+    Route::post('/update_tech', 'TechsController@update');
 });
 
 

@@ -46,6 +46,7 @@
                                 @endif
                             </div>
                         @endforeach
+                        <input id="_token" name="_token" type="hidden" value="{{csrf_token()}}">
                     </div>
                 @else
                     <div id="need_lab" style="margin-top: 30px">

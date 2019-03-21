@@ -146,7 +146,9 @@
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhr.send('_token=' + _token + '&tech_name=' + name + '&food_required=' + food + '&wood_required=' + wood + '&rock_required=' + rock + '&steel_required=' + steel + '&gold_required=' + gold + '&duration=' + duration + '&niv=' + niv);
-                window.location.href="http://www.epicbattlecorp.fr/techs";
+                setTimeout(() => {
+                    window.location.href="http://www.epicbattlecorp.fr/techs";
+                }, 500);
             }
         </script>
     </body>

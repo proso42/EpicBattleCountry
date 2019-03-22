@@ -15,7 +15,7 @@
             $wait_id = $request['wait_id'];
             $type_canceled = $request['type'];
             $city_id = session()->get('city_id');
-            /*if ($type_canceled == "buildings")
+            if ($type_canceled == "building")
                 $table = "waiting_buildings";
             else
                 $table = "waiting_techs";

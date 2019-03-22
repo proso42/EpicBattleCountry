@@ -89,7 +89,7 @@
             ->update(['food' => $food_refund, 'wood' => $wood_refund, 'rock' => $rock_refund, 'steel' => $steel_refund, 'gold' => $gold_refund]);
             DB::table($table)
             ->where('id', '=', $wait_id)
-            ->delete();*/
+            ->delete();
         }
 
         private function get_exp_value($niv, $basic_value, $levelup)

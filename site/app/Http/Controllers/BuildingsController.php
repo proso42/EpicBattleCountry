@@ -87,7 +87,7 @@
                     $status = "OK";
                 else
                     $status = "WIP";
-                $niv = DB::table('cities')
+                $niv = DB::table('cities_buildings')
                 ->where('id', '=', $city_id)
                 ->value(preg_replace('/\s/',"_", $val->name));
                 if ($niv >= 0)
@@ -120,7 +120,7 @@
                                 ->where('id', '=', $key)
                                 ->value('name');
                                 $building_name_format = preg_replace('/\s/', "_", $building_name);
-                                $building_niv = DB::table('cities')
+                                $building_niv = DB::table('cities_buildings')
                                 ->where('id', '=', $city_id)
                                 ->value($building_name_format);
                                 if ($building_niv <= 0)

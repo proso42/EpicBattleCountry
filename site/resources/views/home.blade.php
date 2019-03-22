@@ -38,8 +38,10 @@
                 </div>
                 <hr class="signin-footer">
                 <div>
-                    @foreach ($waiting_list as $build)
-                        <p id="compteur_{{ $build['name'] }}" duration="{{ $build['duration'] }}" name="{{ $build['name'] }}" class="infos-building-wip"></p>
+                    @foreach ($waiting_list as $elem)
+                        <div>
+                            @if ($elem['type'] == "build") <i class="fas fa-hammer icon"></i> @else <i class="fas fa-flask icon"></i> @endif<span id="compteur_{{ $elem['name'] }}" duration="{{ $elem['duration'] }}" name="{{ $elem['name'] }}" class="infos-building-wip"></span>
+                        </div>
                     @endforeach
                 </div>
             </div>

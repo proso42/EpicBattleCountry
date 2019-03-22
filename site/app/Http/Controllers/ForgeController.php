@@ -10,7 +10,7 @@
 
     class ForgeController extends Controller
     {
-        public function interrupt(Request $request)
+        public function index(Request $request)
         {
             $user_id = session()->get('user_id');
             $user_race = session()->get('user_race');

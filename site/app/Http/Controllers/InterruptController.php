@@ -25,7 +25,7 @@
             $niv = $elem_canceled->next_level - 1;
             $basic_price = 0;
             $levelup_price = 0;
-            if ($type_canceled == "building")
+            /*if ($type_canceled == "building")
             {
                 $build_info = DB::table($elem_canceled->type)
                 ->where('id', '=', $elem_canceled->building_id)
@@ -89,7 +89,7 @@
             ->update(['food' => $food_refund, 'wood' => $wood_refund, 'rock' => $rock_refund, 'steel' => $steel_refund, 'gold' => $gold_refund]);
             DB::table($table)
             ->where('id', '=', $wait_id)
-            ->delete();
+            ->delete();*/
         }
 
         private function get_exp_value($niv, $basic_value, $levelup)

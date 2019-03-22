@@ -40,7 +40,14 @@
                 <div class="waiting-list">
                     @foreach ($waiting_list as $elem)
                         <div class="row">
-                            @if ($elem['type'] == "building") <i class="fas fa-hammer icon"></i> @else <i class="fas fa-flask icon"></i> @endif<span id="compteur_{{ $elem['name'] }}" duration="{{ $elem['duration'] }}" name="{{ $elem['name'] }}" class="infos-building-wip"></span>
+                            <div>
+                                @if ($elem['type'] == "building") 
+                                    <i class="fas fa-hammer icon"></i>
+                                @else
+                                    <i class="fas fa-flask icon"></i>
+                                @endif
+                            </div>
+                            <div id="compteur_{{ $elem['name'] }}" duration="{{ $elem['duration'] }}" name="{{ $elem['name'] }}" class="infos-building-wip"></div>
                         </div>
                     @endforeach
                 </div>

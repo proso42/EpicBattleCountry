@@ -41,7 +41,7 @@
                 $basic_price = $tech_info->basic_price;
                 $levelup_price = $tech_info->levelup_price;
             }
-            $res_refund = explode(";", $basic_price);
+            /*$res_refund = explode(";", $basic_price);
             $food_refund = 0;
             $wood_refund = 0;
             $rock_refund = 0;
@@ -89,7 +89,7 @@
             ->update(['food' => $food_refund, 'wood' => $wood_refund, 'rock' => $rock_refund, 'steel' => $steel_refund, 'gold' => $gold_refund]);
             DB::table($table)
             ->where('id', '=', $wait_id)
-            ->delete();
+            ->delete();*/
         }
 
         private function get_exp_value($niv, $basic_value, $levelup)

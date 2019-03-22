@@ -50,7 +50,7 @@
                                 </div>
                                 <div id="compteur_{{ $elem['name'] }}" duration="{{ $elem['duration'] }}" name="{{ $elem['name'] }}" class="col-lg-8 col-md-8 col-sm-8 col-8 infos-building-wip"></div>
                                 <div id="interrupt_{{ $elem['name'] }}" class="col-lg-2 col-md-2 col-sm-2 col-2">
-                                    <i title="Interrompre" onclick="interrupt('{{ $elem['wait_id'] }}', '{{ $elem['type'] }}','id_{{ $elem['name'] }}')" class="fas fa-times icon-red"></i>
+                                    <i title="Interrompre" onclick="interrupt('{{ $elem['wait_id'] }}', '{{ $elem['type'] }}', 'id_{{ $elem['name'] }}')" class="fas fa-times icon-red"></i>
                                 </div>
                             </div>
                         @endforeach

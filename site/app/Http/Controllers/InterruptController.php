@@ -25,7 +25,7 @@
             $niv = $elem_canceled->next_level - 1;
             $basic_price = 0;
             $levelup_price = 0;
-            if ($type_canceled == "buildings")
+            if ($type_canceled == "building")
             {
                 $build_info = DB::table($elem_canceled->type)
                 ->where('id', '=', $elem_canceled->building_id)

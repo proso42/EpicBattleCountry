@@ -15,7 +15,7 @@
             $wait_id = $request['wait_id'];
             $type_canceled = $request['type'];
             $city_id = session()->get('city_id');
-            if ($type_canceled == "buildings")
+            /*if ($type_canceled == "buildings")
                 $table = "waiting_buildings";
             else
                 $table = "waiting_techs";
@@ -25,7 +25,7 @@
             $niv = $elem_canceled->next_level - 1;
             $basic_price = 0;
             $levelup_price = 0;
-            /*if ($type_canceled == "buildings")
+            if ($type_canceled == "buildings")
             {
                 $build_info = DB::table($elem_canceled->type)
                 ->where('id', '=', $elem_canceled->building_id)

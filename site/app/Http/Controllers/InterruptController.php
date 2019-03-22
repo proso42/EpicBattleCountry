@@ -19,13 +19,13 @@
                 $table = "waiting_buildings";
             else
                 $table = "waiting_techs";
-            /*$elem_canceled = DB::table($table)
+            $elem_canceled = DB::table($table)
             ->where('id', '=', $wait_id)
             ->get();
-            $niv = $elem_canceled->next_level - 1;
+            /*$niv = $elem_canceled->next_level - 1;
             $basic_price = 0;
             $levelup_price = 0;
-            /*if ($type_canceled == "building")
+            if ($type_canceled == "building")
             {
                 $build_info = DB::table($elem_canceled->type)
                 ->where('id', '=', $elem_canceled->building_id)

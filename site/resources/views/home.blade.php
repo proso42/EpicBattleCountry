@@ -48,8 +48,8 @@
                                         <i class="fas fa-flask icon"></i>
                                     @endif
                                 </div>
-                                <div id="compteur_{{ $elem['name'] }}" duration="{{ $elem['duration'] }}" name="{{ $elem['name'] }}" class="col-lg-9 col-md-9 col-sm-9 col-9 infos-building-wip"></div>
-                                <div class="col-lg-1 col-md-1 col-sm-1 col-1">
+                                <div id="compteur_{{ $elem['name'] }}" duration="{{ $elem['duration'] }}" name="{{ $elem['name'] }}" class="col-lg-8 col-md-8 col-sm-8 col-8 infos-building-wip"></div>
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-2">
                                     <i class="fas fa-times icon-red"></i>
                                 </div>
                             </div>

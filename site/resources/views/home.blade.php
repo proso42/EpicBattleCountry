@@ -36,21 +36,23 @@
                         </tr>
                     </table>
                 </div>
-                <hr class="signin-footer">
-                <div class="waiting-list">
-                    @foreach ($waiting_list as $elem)
-                        <div class="row">
-                            <div class="offset-lg-1 offset-md-1 offset-sm-1 offset-1 col-lg-1 col-md-1 col-sm-1 col-1">
-                                @if ($elem['type'] == "building") 
-                                    <i class="fas fa-hammer icon"></i>
-                                @else
-                                    <i class="fas fa-flask icon"></i>
-                                @endif
+                @if (count($waiting_list) > 0)
+                    <hr class="signin-footer">
+                    <div class="waiting-list">
+                        @foreach ($waiting_list as $elem)
+                            <div class="row">
+                                <div class="offset-lg-1 offset-md-1 offset-sm-1 offset-1 col-lg-1 col-md-1 col-sm-1 col-1">
+                                    @if ($elem['type'] == "building") 
+                                        <i class="fas fa-hammer icon"></i>
+                                    @else
+                                        <i class="fas fa-flask icon"></i>
+                                    @endif
+                                </div>
+                                <div id="compteur_{{ $elem['name'] }}" duration="{{ $elem['duration'] }}" name="{{ $elem['name'] }}" class="col-lg-10 col-md-10 col-sm-10 col-10 infos-building-wip"></div>
                             </div>
-                            <div id="compteur_{{ $elem['name'] }}" duration="{{ $elem['duration'] }}" name="{{ $elem['name'] }}" class="col-lg-10 col-md-10 col-sm-10 col-10 infos-building-wip"></div>
-                        </div>
-                    @endforeach
-                </div>
+                        @endforeach
+                    </div>
+                @endif
             </div>
         </div>
         <script>

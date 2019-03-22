@@ -95,6 +95,10 @@
             <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-flask icon"></i></div>
             <div class="col-lg-3 col-md-3 col-sm-3 col-3">Technologie</div>
         </div>
+        <div onclick="document.location.href='/forge'" class="row menu-left">
+            <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-cog icon"></i></div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-3">Forge</div>
+        </div>
         <div class="row menu-left">
             <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-map-marked-alt icon"></i></div>
             <div class="col-lg-3 col-md-3 col-sm-3 col-3">Exploration</div>

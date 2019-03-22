@@ -47,6 +47,7 @@ Route::group(['middleware' => 'logged'], function(){
     Route::get('/techs', 'TechsController@index');
     Route::post('/update_tech', 'TechsController@update');
     Route::post('/interrupt', 'InterruptController@interrupt');
+    Route::get('/forge', 'ForgeController@ndex');
 });
 
 

@@ -9,6 +9,7 @@
     </head>
     <body>
             @include('default')
+            @if ($greg == 0)
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding-right: 10px;">
                 <div class="row">
                     <div id="eco-tab" class="col-lg-3 col-md-3 col-sm-3 col-3 generique-tab" onclick="switchTab('eco')">
@@ -187,6 +188,11 @@
                 <div id="fat" style="display: none" first_active_tab="{{ $first_active_tab }}" ></div>
                 </div>
             </div>
+            @else
+                <div>
+                    Votre compte a été bloqué car vous etes un HACKEUR               
+                </div>
+            @endif
         </div>
         <script>
             launch_all_timers();

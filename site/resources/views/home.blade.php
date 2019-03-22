@@ -40,7 +40,7 @@
                     <hr class="signin-footer">
                     <div class="waiting-list">
                         @foreach ($waiting_list as $elem)
-                            <div class="row">
+                            <div id="id_{{$elem['name']}}" class="row">
                                 <div class="offset-lg-1 offset-md-1 offset-sm-1 offset-1 col-lg-1 col-md-1 col-sm-1 col-1">
                                     @if ($elem['type'] == "building") 
                                         <i class="fas fa-hammer icon"></i>
@@ -49,17 +49,33 @@
                                     @endif
                                 </div>
                                 <div id="compteur_{{ $elem['name'] }}" duration="{{ $elem['duration'] }}" name="{{ $elem['name'] }}" class="col-lg-8 col-md-8 col-sm-8 col-8 infos-building-wip"></div>
-                                <div class="col-lg-2 col-md-2 col-sm-2 col-2">
-                                    <i class="fas fa-times icon-red"></i>
+                                <div id="interrupt_{{ $elem['name'] }}" class="col-lg-2 col-md-2 col-sm-2 col-2">
+                                    <i title="Interrompre" onclick="interrupt({{ $elem['wait_id'] }}, {{ $elem['type'] }},'id_{{ $elem['name'] }}')" class="fas fa-times icon-red"></i>
                                 </div>
                             </div>
                         @endforeach
                     </div>
                 @endif
             </div>
+            <input id="_token" name="_token" type="hidden" value="{{csrf_token()}}">
         </div>
         <script>
             launch_all_timers();
+            function interrupt(wait_id, type, id)
+            {
+                var _token = document.getElementById("_token").value;
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'http://www.epicbattlecorp.fr/interrupt');
+                xhr.onreadystatechange =  function()
+                {
+                    if (xhr.readyState === 4 && xhr.status === 200)
+                    {
+                        document.getElementById(id).remove();
+                    }
+                }
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.send('_token=' + _token + '&wait_id=' + wait_id + "&type=" + type);
+            }
             function launch_all_timers()
             {
                 var timers = Array.prototype.slice.call(document.getElementsByClassName('infos-building-wip'));
@@ -76,7 +92,11 @@
                 var m=0;
                 var h=0;
                 if(s<=0)
+                {
+                    let id_to_hide = id.replace(/compteur/gi, "interrupt");
+                    document.getElementById(id_to_hide).remove();
                     compteur.textContent = name + " Terminé";
+                }
                 else
                 {
                     let new_time = "";

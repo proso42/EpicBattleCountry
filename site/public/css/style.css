@@ -217,6 +217,14 @@ body
     margin-right: 15px;
 }
 
+.icon-red
+{
+    text-align: left;
+    margin-right: 15px;
+    color: crimson;
+    cursor: pointer;
+}
+
 input::placeholder
 {
     color: #8C5D53;

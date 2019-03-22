@@ -25,7 +25,7 @@
             $niv = $elem_canceled->next_level - 1;
             $basic_price = 0;
             $levelup_price = 0;
-            if ($type_canceled == "buildings")
+            /*if ($type_canceled == "buildings")
             {
                 $build_info = DB::table($elem_canceled->type)
                 ->where('id', '=', $elem_canceled->building_id)
@@ -41,7 +41,7 @@
                 $basic_price = $tech_info->basic_price;
                 $levelup_price = $tech_info->levelup_price;
             }
-            /*$res_refund = explode(";", $basic_price);
+            $res_refund = explode(";", $basic_price);
             $food_refund = 0;
             $wood_refund = 0;
             $rock_refund = 0;

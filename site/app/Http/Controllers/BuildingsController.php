@@ -270,7 +270,7 @@
             ->where('id', '=', $building_id)
             ->first();
             $allowed = 0;
-            if ($building_info->race_required !== "ALL")
+            /*if ($building_info->race_required !== "ALL")
             {
                 $races_required = explode(";", $building_info->race_required);
                 foreach ($races_required as $race => $key)
@@ -307,8 +307,7 @@
             }
             if ($allowed == 0)
                 return ("bad building required");
-            return ("OK");            
-            /*$finishing_date = $this->get_exp_value($niv, $building_info->duration, $building_info->levelup_price) + time();
+            $finishing_date = $this->get_exp_value($niv, $building_info->duration, $building_info->levelup_price) + time();
             $res_required = explode(";", $building_info->basic_price);
             $food_required = 0;
             $wood_required = 0;

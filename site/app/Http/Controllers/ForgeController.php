@@ -82,7 +82,7 @@
             ->get();
             foreach ($all_items as $item)
             {
-                $allowed = 0;
+                $allowed = 1;
                 if ($item->race_required !== "NONE")
                 {
                     $races_allowed = explode(";", $item->race_required);
@@ -90,11 +90,11 @@
                     {
                         if ($race == $user_race)
                         {
-                            $allowed = 1;
+                            $allowed = 2;
                             break;
                         }
                     }
-                    if ($allowed == 0)
+                    if ($allowed == 1)
                         continue;
                 }
                 if ($item->building_required !== "NONE")

@@ -65,7 +65,7 @@
             ->value('Forge');
             if ($allowed == 0)
                 return view('forge', compact('allowed' ,'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
-            $allowed_items = $this->get_allowed_tiems($city_id, $user_race);
+            $allowed_items = $this->get_allowed_items($city_id, $user_race);
             return view('forge', compact('allowed' ,'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold', 'allowed_items'));
         }
 

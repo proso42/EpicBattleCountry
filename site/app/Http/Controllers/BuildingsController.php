@@ -245,7 +245,7 @@
             for ($i = 0; $i < 4; $i++)
             {
                 $search = DB::table($types[$i])
-                ->where('name', '=', $building_name_format)
+                ->where('name', '=', $building_name)
                 ->value('id');
                 if ($search !== null && $search > 0)
                 {
@@ -256,7 +256,7 @@
             if ($building_type == "none")
                 return ("bad buildings type");
             $building_id = DB::table($building_type)
-            ->where('name', '=', $building_name_format)
+            ->where('name', '=', $building_name)
             ->value('id');
             $alreday_waiting = DB::table('waiting_buildings')
             ->where('city_id', '=', $city_id)

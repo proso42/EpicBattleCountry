@@ -76,10 +76,10 @@
                 {
                     if (xhr.readyState === 4 && xhr.status === 200)
                     {
-                        console.log(xhr.responseText);
+                        if (xhr.responseText = "item_error")
+                            return ;
                         var need_tab = xhr.responseText.replace(/]/gi, "").replace(/\[/gi, "").split(",");
                         var new_duration = need_tab[5].replace(/"/gi, "");
-                        console.log(need_tab);
                         document.getElementById("confirm-title").textContent = "Fabriquer " + quantity + " " + name + " ?";
                         if (need_tab[0] > 0)
                         {

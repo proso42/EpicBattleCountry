@@ -197,6 +197,8 @@
             $item = DB::table('forge')
             ->where('name', '=', $item_name)
             ->first();
+            if ($item === null)
+                return ("item_error");
             $duration = $this->sec_to_date($item->duration * $quantity);
             $food_required = 0;
             $wood_required = 0;

@@ -30,7 +30,7 @@
                 ->value('id');
                 session()->put(['city_id' => $city_id]);
             }
-            $city = DB::table('cities_buildings')
+            $city_build = DB::table('cities_buildings')
             ->where('owner', '=', $user_id)
             ->where('id', '=', $city_id)
             ->first();
@@ -38,6 +38,10 @@
                 $allowed = 1;
             else
                 $allowed = 0;
+            $city = DB::table('cities')
+            ->where('owner', '=', $user_id)
+            ->where('id', '=', $city_id)
+            ->first();
             $food = $city->food;
             $compact_food = $food;
             $max_food = $city->max_food;

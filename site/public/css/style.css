@@ -763,7 +763,7 @@ input::placeholder
     text-align: center;
     border: 1px solid black;
     border-radius: 4px;
-    height: 28px;
+    height: 32px;
     width: 204px;
 }
 
@@ -777,7 +777,7 @@ input::placeholder
     border: 1px solid black;
     border-radius: 4px;
     cursor: pointer;
-    height: 28px;
+    height: 32px;
     width: 204px;
 }
 
@@ -790,7 +790,7 @@ input::placeholder
     text-align: center;
     border: 1px solid black;
     border-radius: 4px;
-    height: 28px;
+    height: 32px;
     width: 204px;
 }
 

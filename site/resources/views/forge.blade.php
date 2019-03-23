@@ -17,7 +17,7 @@
                         <div id="id_{{ $item['name'] }}" class="row" style="align-items: baseline">
                             <span class="offset-lg-3 offset-md-3 offset-sm-3 offset-3 col-lg-2 col-md-2 col-sm-2 col-2" style="text-align:left">{{ $item['name'] }}</span>
                             <input type="text" placeholder="Quantité" class="col-lg-2 col-md-2 col-sm-2 col-2 forge-input">
-                            <input type="button" class="col-lg-2 col-md-2 col-sm-2 col-2 forge-button">Produire</div>
+                            <input type="button" class="col-lg-2 col-md-2 col-sm-2 col-2 forge-button" value="Produire">
                         </div>
                     @endforeach
                 @endif

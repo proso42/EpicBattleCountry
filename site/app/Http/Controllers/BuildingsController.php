@@ -235,7 +235,7 @@
         public function update(Request $request)
         {
             $city_id = session()->get('city_id');
-            $building_name = $request['building_name'];
+            $building_name = $request['name'];
             $building_name_format = preg_replace('/\s/',"_", $building_name);
             $niv = DB::table('cities_buildings')
             ->where('city_id', '=', $city_id)

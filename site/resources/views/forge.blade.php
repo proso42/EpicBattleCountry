@@ -79,7 +79,7 @@
                         console.log(xhr.responseText);
                         var need_tab = xhr.responseText.split(",");
                         var new_duration = need_tab[5].replace(/"/gi, "");
-                        console.log(need_tab)
+                        console.log(need_tab);
                         document.getElementById("confirm-title").textContent = "Fabriquer " + quantity + " " + name + " ?";
                         if (need_tab[0] > 0)
                         {
@@ -116,7 +116,7 @@
                         }
                         else
                             document.getElementById("gold_list").style.display = "none";
-                        document.getElementById("time_list").textContent = "Time : " +  new_duration " <i class='fas fa-clock'></i>";
+                        document.getElementById("time_list").textContent = "Time : " +  new_duration + " <i class='fas fa-clock'></i>";
                         document.getElementById('items_list').style.display = "none";
                         document.getElementById('confirm_win').style.display = "";
                     }

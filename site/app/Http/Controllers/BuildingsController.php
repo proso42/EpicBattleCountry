@@ -242,7 +242,8 @@
             ->value($building_name_format);
             $types = ["eco_buildings", "army_buildings", "religious_buildings", "tech_buildings"];
             $building_type = "none";
-            for ($i = 0; $i < 4; $i++)
+            return ("bad buildings type");
+            /*for ($i = 0; $i < 4; $i++)
             {
                 $search = DB::table($types[i])
                 ->where('name', '=', $building_name_format)
@@ -254,9 +255,7 @@
                 }
             }
             if ($building_type == "none")
-                return ("bad buildings type");
-            return ("this part is ok");
-            /*$building_id = DB::table($building_type)
+            $building_id = DB::table($building_type)
             ->where('name', '=', $building_name_format)
             ->value('id');
             $alreday_waiting = DB::table('waiting_buildings')

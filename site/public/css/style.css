@@ -788,6 +788,27 @@ input::placeholder
     color: white;
 }
 
+.forge-button-cancel
+{
+    margin-top: 26px;
+    line-height: 0;
+    background-color: lightpink;
+    color: black;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 32px;
+    width: 204px;
+}
+
+.forge-button-cancel:hover
+{
+    background-color: crimson;
+    font-weight: bold;
+    color: white;
+}
+
 .forge-ressources
 {
     margin-top: 25px;
@@ -816,4 +837,13 @@ input::placeholder
 {
     height: 15px;
     width: 15px;
+}
+
+.confirm-win
+{
+    background-color: rgba(105, 105, 105, 0.9);
+    color: black;
+    text-align: center;
+    border: 1px solid lightblue;
+    border-radius: 4px;
 }

@@ -40,17 +40,33 @@
                         </div>
                     @endforeach
                     </div>
-                    <div id="confirm_win">
+                    <div id="confirm_win" class="confirm-win" style="display: none">
+                        <h3 id="confirm-title"></h3>
+                        <ul>
+                            <li id="food_list"></li>
+                            <li id="wood_list"></li>
+                            <li id="rock_list"></li>
+                            <li id="steel_list"></li>
+                            <li id="gold_list"></li>
+                            <li id="time_list"></li>
+                        </ul>
+                        <input type="button" class="forge-button" value="Confirmer">
+                        <input onclick="cancel()" type="button" class="forge-button-cancel" value="Annuler">
                     </div>
                 @endif
             </div>
         </div>
         <input id="_token" name="_token" type="hidden" value="{{csrf_token()}}">
         <script>
+
+            function cancel()
+            {
+                document.getElementById("confirm-win").style.display = "none";
+                document.getElementById("items_list").style.display = "";
+            }
+
             function craft(name)
             {
-                /*document.getElementById('items_list').style.display = "none";
-                document.getElementById('confirm_win').style.display = "";*/
                 var _token = document.getElementById("_token").value;
                 var quantity = document.getElementById("input_" + name).value;
                 var name_format = name.replace(/\s/gi, "_");
@@ -61,6 +77,45 @@
                     if (xhr.readyState === 4 && xhr.status === 200)
                     {
                         console.log(xhr.responseText);
+                        document.getElementById("confirm-title").textContent = "Fabriquer " + quantity + " " + name + " ?";
+                        if (xhr.responseText[0] > 0)
+                        {
+                            document.getElementById("food_list").contentText = "Food : " +  xhr.responseText[0];
+                            document.getElementById("food_list").style.display = "";
+                        }
+                        else
+                            document.getElementById("food_list").style.display = "none";
+                        if (xhr.responseText[1] > 0)
+                        {
+                            document.getElementById("wood_list").contentText = "Wood : " +  xhr.responseText[1];
+                            document.getElementById("wood_list").style.display = "";
+                        }
+                        else
+                            document.getElementById("wood_list").style.display = "none";
+                        if (xhr.responseText[2] > 0)
+                        {
+                            document.getElementById("rock_list").contentText = "Rock : " +  xhr.responseText[2];
+                            document.getElementById("rock_list").style.display = "";
+                        }
+                        else
+                            document.getElementById("rock_list").style.display = "none";
+                        if (xhr.responseText[3] > 0)
+                        {
+                            document.getElementById("steel_list").contentText = "Steel : " +  xhr.responseText[3];
+                            document.getElementById("steel_list").style.display = "";
+                        }
+                        else
+                            document.getElementById("steel_list").style.display = "none";
+                        if (xhr.responseText[4] > 0)
+                        {
+                            document.getElementById("gold_list").contentText = "Gold : " +  xhr.responseText[4];
+                            document.getElementById("gold_list").style.display = "";
+                        }
+                        else
+                            document.getElementById("gold_list").style.display = "none";
+                        document.getElementById("time_list").contentText = "Time : " +  xhr.responseText[5];
+                        document.getElementById('items_list').style.display = "none";
+                        document.getElementById('confirm_win').style.display = "";
                     }
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

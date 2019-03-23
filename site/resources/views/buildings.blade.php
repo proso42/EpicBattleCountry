@@ -295,7 +295,7 @@
                     }
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                xhr.send('_token=' + _token + '&building_name=' + name);
+                xhr.send('_token=' + _token + '&name=' + name);
                 /*setTimeout(() => {
                     window.location.href="http://www.epicbattlecorp.fr/buildings?activeTab=" + (activeTab.split('-'))[0];
                 }, 500);*/

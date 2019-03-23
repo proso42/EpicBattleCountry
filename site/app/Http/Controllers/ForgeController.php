@@ -194,7 +194,7 @@
             $item_name = preg_replace("/_/", " ", $request['name']);
             $quantity = $request['quantity'];
             $city_id = session()->get('city_id');
-            $item = DB::table('forge')
+            /*$item = DB::table('forge')
             ->where('name', '=', $item_name)
             ->fisrt();
             $duration = $this->sec_to_date($item->duration * $quantity);
@@ -217,7 +217,7 @@
                 else
                     $gold_required = intval(substr($amount, 0, -1)) * $quantity;
             }
-            return ([$food_required, $wood_required, $rock_required, $steel_required, $gold_required, $duration]);
+            return ([$food_required, $wood_required, $rock_required, $steel_required, $gold_required, $duration]);*/
         }
     }
 ?>

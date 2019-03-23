@@ -36,7 +36,7 @@
                                 @endif
                                 <i class="fas fa-clock"></i> {{ $item['duration'] }}
                             </div>
-                            <input onclick="craft({{ $item['name'] }})" type="button" class="forge-button col-lg-2 col-md-2 col-sm-2 col-2" value="Produire">
+                            <input onclick="craft('{{ $item['name'] }}')" type="button" class="forge-button col-lg-2 col-md-2 col-sm-2 col-2" value="Produire">
                         </div>
                     @endforeach
                     </div>

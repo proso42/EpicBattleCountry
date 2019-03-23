@@ -265,7 +265,7 @@
             ->value('id');
             if ($alreday_waiting !== null && $alreday_waiting > 0)
                 return ("already waiting");
-            return ($building_type);
+            return ($building_id);
             $building_info = DB::table($building_type)
             ->select('race_required', 'building_required', 'tech_required', 'basic_price', 'levelup_price', 'duration')
             ->where('id', '=', $building_id)

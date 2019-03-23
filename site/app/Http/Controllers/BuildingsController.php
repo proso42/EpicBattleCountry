@@ -254,7 +254,7 @@
                 }
             }
             if ($building_type == "none")
-                return("bad buildings type");
+                return ("bad buildings type");
             $building_id = DB::table($building_type)
             ->where('name', '=', $building_name_format)
             ->value('id');
@@ -264,7 +264,7 @@
             ->where('building_id', '=', $building_id)
             ->value('id');
             if ($alreday_waiting !== null && $alreday_waiting > 0)
-                return("already waiting");
+                return ("already waiting");
             $building_info = DB::table($building_type)
             ->select('race_required', 'building_required', 'tech_required', 'basic_price', 'levelup_price', 'duration')
             ->where('id', '=', $building_id)
@@ -285,7 +285,7 @@
             else
                 $allowed = 1;
             if ($allowed == 0)
-                return("bad race");
+                return ("bad race");
             if ($building_info->building_required !== "NONE")
             {
                 $buildings_required = explode(";", $building_info->building_required);
@@ -306,7 +306,7 @@
                 }
             }
             if ($allowed == 0)
-                return("bad building required");
+                return ("bad building required");
             $res_required = explode(";", $building_info->basic_price);
             $food_required = 0;
             $wood_required = 0;
@@ -331,7 +331,7 @@
             ->where('id', '=', $city_id)
             ->first();
             if ($city_res->food < $food_required || $city_res->wood < $wood_required || $city_res->rock < $rock_required || $city_res->steel < $steel_required || $city_res->gold < $gold_required)
-                return("need more ressources");
+                return ("need more ressources");
             DB::table('cities')
             ->where('id', '=', $city_id)
             ->update(['food' => $city_res->food - $food_required, 'wood' => $city_res->wood - $wood_required, 'rock' => $city_res->rock - $rock_required, 'steel' => $city_res->steel - $steel_required, 'gold' => $city_res->gold - $gold_required]);
@@ -339,7 +339,7 @@
             ->insertGetId(["city_id" => $city_id, "type" => $building_type, "building_id" => $building_id, "finishing_date" => $finishing_date, "next_level" => $next_level]);
             $cmd = "cd /home/boss/www/scripts ; node ./finish_building.js " . $finishing_date  . " " . $id;
             exec($cmd);
-            return("Good");
+            return ("Good");
         }
     }
 

@@ -34,7 +34,7 @@
             ->where('owner', '=', $user_id)
             ->where('id', '=', $city_id)
             ->first();
-            if ($city->Laboratoire > 0)
+            if ($city_build->Laboratoire > 0)
                 $allowed = 1;
             else
                 $allowed = 0;

@@ -51,6 +51,7 @@
             {
                 /*document.getElementById('items_list').style.display = "none";
                 document.getElementById('confirm_win').style.display = "";*/
+                var _token = document.getElementById("_token").value;
                 var quantity = document.getElementById("input_" + name).value;
                 var name_format = name.replace(/\s/gi, "_");
                 var xhr = new XMLHttpRequest();

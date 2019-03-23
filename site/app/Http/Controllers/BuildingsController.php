@@ -244,10 +244,10 @@
             $building_type = "none";
             for ($i = 0; $i < 4; $i++)
             {
-                /*$search = DB::table($types[i])
+                $search = DB::table($types[i])
                 ->where('name', '=', $building_name_format)
                 ->value('id');
-                if ($search !== null && $search > 0)
+                /*if ($search !== null && $search > 0)
                 {
                     $building_type = $types[i];
                     break;

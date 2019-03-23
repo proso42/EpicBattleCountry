@@ -78,7 +78,7 @@
                     {
                         console.log(xhr.responseText);
                         var need_tab = xhr.responseText.split(",");
-                        //console.log(need_tab)
+                        console.log(need_tab)
                         document.getElementById("confirm-title").textContent = "Fabriquer " + quantity + " " + name + " ?";
                         if (need_tab[0] > 0)
                         {

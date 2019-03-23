@@ -781,6 +781,13 @@ input::placeholder
     width: 204px;
 }
 
+.forge-button:hover
+{
+    background-color: darkcyan;
+    font-weight: bold;
+    color: white;
+}
+
 .forge-ressources
 {
     margin-top: 25px;

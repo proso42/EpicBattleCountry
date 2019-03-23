@@ -60,7 +60,7 @@
                 $compact_steel = substr($steel, 0, 5) . '...';
             if ($gold > 999999)
                 $compact_gold = substr($gold, 0, 5) . '...';
-            return view('forge', compact('food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
+            return view('forge', compact('allowed' ,'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
         }
             
     }

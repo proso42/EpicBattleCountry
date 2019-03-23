@@ -244,18 +244,18 @@
             $building_type = "none";
             for ($i = 0; $i < 4; $i++)
             {
-                $search = DB::table($types[i])
+                $search = DB::table($types[$i])
                 ->where('name', '=', $building_name_format)
                 ->value('id');
-                /*if ($search !== null && $search > 0)
+                if ($search !== null && $search > 0)
                 {
-                    $building_type = $types[i];
+                    $building_type = $types[$i];
                     break;
-                }*/
+                }
             }
             if ($building_type == "none")
                 return ("bad buildings type");
-            /*$building_id = DB::table($building_type)
+            $building_id = DB::table($building_type)
             ->where('name', '=', $building_name_format)
             ->value('id');
             $alreday_waiting = DB::table('waiting_buildings')
@@ -339,7 +339,7 @@
             ->insertGetId(["city_id" => $city_id, "type" => $building_type, "building_id" => $building_id, "finishing_date" => $finishing_date, "next_level" => $next_level]);
             $cmd = "cd /home/boss/www/scripts ; node ./finish_building.js " . $finishing_date  . " " . $id;
             exec($cmd);
-            return ("Good");*/
+            return ("Good");
         }
     }
 

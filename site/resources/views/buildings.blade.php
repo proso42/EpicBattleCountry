@@ -290,15 +290,15 @@
                 {
                     if (xhr.readyState === 4 && xhr.status === 200)
                     {
-                        //window.location.href="http://www.epicbattlecorp.fr/buildings?activeTab=" + (activeTab.split('-'))[0];
+                        window.location.href="http://www.epicbattlecorp.fr/buildings?activeTab=" + (activeTab.split('-'))[0];
                         console.log(xhr.responseText);
                     }
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhr.send('_token=' + _token + '&name=' + name);
-                /*setTimeout(() => {
+                setTimeout(() => {
                     window.location.href="http://www.epicbattlecorp.fr/buildings?activeTab=" + (activeTab.split('-'))[0];
-                }, 500);*/
+                }, 300);
             }
         </script>
     </body>

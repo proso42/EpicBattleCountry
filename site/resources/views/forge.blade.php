@@ -48,7 +48,7 @@
                             <li id="rock_list"></li>
                             <li id="steel_list"></li>
                             <li id="gold_list"></li>
-                            <li id="time_list"><i class="fas fa-clock"></i></li>
+                            <li><span id="time_list"></span><i class="fas fa-clock"></i></li>
                         </ul>
                         <input type="button" class="forge-button" value="Confirmer">
                         <input onclick="cancel()" type="button" class="forge-button-cancel" value="Annuler">
@@ -77,7 +77,7 @@
                     if (xhr.readyState === 4 && xhr.status === 200)
                     {
                         console.log(xhr.responseText);
-                        var need_tab = xhr.responseText.replace(/\[\]/gi, "").split(",");
+                        var need_tab = xhr.responseText.replace(/]/gi, "").replace(/\[/gi, "").split(",");
                         var new_duration = need_tab[5].replace(/"/gi, "");
                         console.log(need_tab);
                         document.getElementById("confirm-title").textContent = "Fabriquer " + quantity + " " + name + " ?";

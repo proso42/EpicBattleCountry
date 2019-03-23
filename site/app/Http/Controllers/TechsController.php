@@ -121,7 +121,7 @@
                                 $building_name = DB::table($building_type)
                                 ->where('id', '=', $building_id)
                                 ->value('name');
-                                $building_niv = DB::table('cities')
+                                $building_niv = DB::table('cities_buildings')
                                 ->where('id', '=', $city_id)
                                 ->value(preg_replace('/\s/',"_", $building_name));
                                 if ($building_niv == 0)

@@ -10,6 +10,45 @@
     <body>
         @include('default')
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding-right: 10px;">
+                @if($allowed == 0)
+                    <p>Vous devez construire uen Forge avant de pouvoir l'utiliser !</p>
+                @else
+                    @foreach ($allowed_items as $item)
+                        <div id="id_{{ $item_name }}">
+                            <span>{{ $item['name'] }}</span><input type="text" class="signup-input">
+                            <table>
+                                <tr>
+                                    @if ($item['food_required'] > 0)
+                                        <td>
+                                            <img src="images/food.png"> x{{ $item['food_required'] }}
+                                        </td>
+                                    @endif
+                                    @if ($item['wood_required'] > 0)
+                                        <td>
+                                            <img src="images/wood.png"> x{{ $item['wood_required'] }}
+                                        </td>
+                                    @endif
+                                    @if ($item['rock_required'] > 0)
+                                        <td>
+                                            <img src="images/rock.png"> x{{ $item['rock_required'] }}
+                                        </td>
+                                    @endif
+                                    @if ($item['steel_required'] > 0)
+                                        <td>
+                                            <img src="images/steel.png"> x{{ $item['steel_required'] }}
+                                        </td>
+                                    @endif
+                                    @if ($item['gold_required'] > 0)
+                                        <td>
+                                            <img src="images/gold.png"> x{{ $item['gold_required'] }}
+                                        </td>
+                                    @endif
+                                </tr>
+                            </table>
+                            <div class="signup-button">Produires</div>
+                        </div>
+                    @endforeach
+                @endif
             </div>
         </div>
     </body>

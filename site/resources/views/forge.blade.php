@@ -82,40 +82,40 @@
                         document.getElementById("confirm-title").textContent = "Fabriquer " + quantity + " " + name + " ?";
                         if (need_tab[0] > 0)
                         {
-                            document.getElementById("food_list").contentText = "Food : " +  need_tab[0];
+                            document.getElementById("food_list").textContent = "Food : " +  need_tab[0];
                             document.getElementById("food_list").style.display = "";
                         }
                         else
                             document.getElementById("food_list").style.display = "none";
                         if (need_tab[1] > 0)
                         {
-                            document.getElementById("wood_list").contentText = "Wood : " +  need_tab[1];
+                            document.getElementById("wood_list").textContent = "Wood : " +  need_tab[1];
                             document.getElementById("wood_list").style.display = "";
                         }
                         else
                             document.getElementById("wood_list").style.display = "none";
                         if (need_tab[2] > 0)
                         {
-                            document.getElementById("rock_list").contentText = "Rock : " +  need_tab[2];
+                            document.getElementById("rock_list").textContent = "Rock : " +  need_tab[2];
                             document.getElementById("rock_list").style.display = "";
                         }
                         else
                             document.getElementById("rock_list").style.display = "none";
                         if (need_tab[3] > 0)
                         {
-                            document.getElementById("steel_list").contentText = "Steel : " +  need_tab[3];
+                            document.getElementById("steel_list").textContent = "Steel : " +  need_tab[3];
                             document.getElementById("steel_list").style.display = "";
                         }
                         else
                             document.getElementById("steel_list").style.display = "none";
                         if (need_tab[4] > 0)
                         {
-                            document.getElementById("gold_list").contentText = "Gold : " +  need_tab[4];
+                            document.getElementById("gold_list").textContent = "Gold : " +  need_tab[4];
                             document.getElementById("gold_list").style.display = "";
                         }
                         else
                             document.getElementById("gold_list").style.display = "none";
-                        document.getElementById("time_list").contentText = "Time : " +  need_tab[5];
+                        document.getElementById("time_list").textContent = "Time : " +  need_tab[5];
                         document.getElementById('items_list').style.display = "none";
                         document.getElementById('confirm_win').style.display = "";
                     }

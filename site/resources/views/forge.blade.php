@@ -35,7 +35,7 @@
                                 @endif
                                 <i class="fas fa-clock icon"></i> {{ $item['duration'] }}
                             </div>
-                            <input type="button" class="settings-button col-lg-2 col-md-2 col-sm-2 col-2" value="Produire">
+                            <input type="button" class="forge-button col-lg-2 col-md-2 col-sm-2 col-2" value="Produire">
                         </div>
                     @endforeach
                 @endif

@@ -785,6 +785,7 @@ input::placeholder
 {
     margin-top: 25px;
     margin-right: 20px;
+    margin-left: 20px;
     background-color: rgba(105, 105, 105, 0.9);
     color: black;
     text-align: center;

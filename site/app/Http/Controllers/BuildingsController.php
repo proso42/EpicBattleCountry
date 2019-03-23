@@ -307,6 +307,7 @@
             }
             if ($allowed == 0)
                 return ("bad building required");
+            $finishing_date = $this->get_exp_value($niv, $building_info->duration, $building_info->levelup_price) + time();
             $res_required = explode(";", $building_info->basic_price);
             $food_required = 0;
             $wood_required = 0;
@@ -326,7 +327,7 @@
                 else
                     $gold_required = $this->get_exp_value($niv, intval(substr($amount, 0, -1)), $building_info->levelup_price);
             }
-            /*$city_res = DB::table('cities')
+            $city_res = DB::table('cities')
             ->select('food', 'wood', 'rock', 'steel', 'gold')
             ->where('id', '=', $city_id)
             ->first();
@@ -339,7 +340,7 @@
             ->insertGetId(["city_id" => $city_id, "type" => $building_type, "building_id" => $building_id, "finishing_date" => $finishing_date, "next_level" => $next_level]);
             $cmd = "cd /home/boss/www/scripts ; node ./finish_building.js " . $finishing_date  . " " . $id;
             exec($cmd);
-            return ("Good");*/
+            return ("Good");
         }
     }
 

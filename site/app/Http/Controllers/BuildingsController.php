@@ -255,8 +255,7 @@
             }
             if ($building_type == "none")
                 return ("bad buildings type");
-            return ("OK");
-            /*$building_id = DB::table($building_type)
+            $building_id = DB::table($building_type)
             ->where('name', '=', $building_name_format)
             ->value('id');
             $alreday_waiting = DB::table('waiting_buildings')
@@ -266,7 +265,8 @@
             ->value('id');
             if ($alreday_waiting !== null && $alreday_waiting > 0)
                 return ("already waiting");
-            $building_info = DB::table($building_type)
+            return ("OK");
+            /*$building_info = DB::table($building_type)
             ->select('race_required', 'building_required', 'tech_required', 'basic_price', 'levelup_price', 'duration')
             ->where('id', '=', $building_id)
             ->first();

@@ -33,7 +33,7 @@
                                 @if ($item['gold_required'] > 0)
                                     <img class="forge-image" src="images/gold.png"> x{{ $item['gold_required'] }}
                                 @endif
-                                <i class="fas fa-clock icon"></i> {{ $item['duration'] }}
+                                <i class="fas fa-clock"></i> {{ $item['duration'] }}
                             </div>
                             <input type="button" class="forge-button col-lg-2 col-md-2 col-sm-2 col-2" value="Produire">
                         </div>

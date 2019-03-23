@@ -41,8 +41,8 @@
                     @endforeach
                     </div>
                     <div id="confirm_win" class="confirm-win" style="display: none">
-                        <h3 id="confirm-title"></h3>
-                        <ul>
+                        <h3 id="confirm-title"style="margin-top: 25px"></h3>
+                        <ul style="text-align:left;margin-top: 25px;">
                             <li id="food_list"></li>
                             <li id="wood_list"></li>
                             <li id="rock_list"></li>
@@ -78,6 +78,7 @@
                     {
                         console.log(xhr.responseText);
                         var need_tab = xhr.responseText.split(",");
+                        var new_duration = need_tab[5].replace(/"/gi, "");
                         console.log(need_tab)
                         document.getElementById("confirm-title").textContent = "Fabriquer " + quantity + " " + name + " ?";
                         if (need_tab[0] > 0)
@@ -115,7 +116,7 @@
                         }
                         else
                             document.getElementById("gold_list").style.display = "none";
-                        document.getElementById("time_list").textContent = "Time : " +  need_tab[5];
+                        document.getElementById("time_list").textContent = "Time : " +  new_duration " <i class='fas fa-clock'></i>";
                         document.getElementById('items_list').style.display = "none";
                         document.getElementById('confirm_win').style.display = "";
                     }

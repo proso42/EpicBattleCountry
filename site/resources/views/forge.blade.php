@@ -14,7 +14,7 @@
                     <p>Vous devez construire uen Forge avant de pouvoir l'utiliser !</p>
                 @else
                     @foreach ($allowed_items as $item)
-                        <div id="id_{{ $item_name }}">
+                        <div id="id_{{ $item['name'] }}">
                             <span>{{ $item['name'] }}</span><input type="text" class="signup-input">
                             <table>
                                 <tr>

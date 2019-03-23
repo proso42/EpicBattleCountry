@@ -14,8 +14,8 @@
                     <p>Vous devez construire uen Forge avant de pouvoir l'utiliser !</p>
                 @else
                     @foreach ($allowed_items as $item)
-                        <div id="id_{{ $item['name'] }}" class="row" style="align-items: baseline;">
-                            <span class="offset-lg-3 offset-md-3 offset-sm-3 offset-3 col-lg-2 col-md-2 col-sm-2 col-2">{{ $item['name'] }}</span>
+                        <div id="id_{{ $item['name'] }}" class="row" style="align-items: baseline;margin-left: auto;margin-right: auto">
+                            <span class="col-lg-2 col-md-2 col-sm-2 col-2">{{ $item['name'] }}</span>
                             <input type="text" placeholder="Quantité" class="col-lg-2 col-md-2 col-sm-2 col-2 forge-input">
                             <div class="col-lg-2 col-md-2 col-sm-2 col-2 forge-button">Produire</div>
                         </div>

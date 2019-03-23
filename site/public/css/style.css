@@ -802,6 +802,16 @@ input::placeholder
     width: 204px;
 }
 
+.forge-item
+{
+    text-align: center;
+    background-color: floralwhite;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin-right: 20px;
+    height: 32px;
+}
+
 .forge-image
 {
     height: 15px;

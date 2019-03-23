@@ -159,7 +159,7 @@
                     else
                         $gold_required = intval(substr($amount, 0, -1));
                 }
-                $duration = $this->set_to_date($duration);
+                $duration = $this->set_to_date($item->duration);
                 array_push($allowed_items, ["name" => $item->name, "food_required" => $food_required, "wood_required" => $wood_required, "rock_required" => $rock_required, "steel_required" => $steel_required, "gold_required" => $gold_required, "duration" => $duration]); 
             }
             return $allowed_items;

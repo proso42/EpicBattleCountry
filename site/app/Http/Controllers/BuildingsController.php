@@ -269,8 +269,8 @@
             ->where('id', '=', $building_id)
             ->first();
             $allowed = 0;
-            return ("OK");
-            /*if ($building_info->race_required !== "ALL")
+            //return ("OK");
+            if ($building_info->race_required !== "ALL")
             {
                 $races_required = explode(";", $building_info->race_required);
                 foreach ($races_required as $race => $key)
@@ -340,7 +340,7 @@
             ->insertGetId(["city_id" => $city_id, "type" => $building_type, "building_id" => $building_id, "finishing_date" => $finishing_date, "next_level" => $niv + 1]);
             $cmd = "cd /home/boss/www/scripts ; node ./finish_building.js " . $finishing_date  . " " . $id;
             exec($cmd);
-            return ("Good");*/
+            return ("Good");
         }
     }
 

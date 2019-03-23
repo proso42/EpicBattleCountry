@@ -265,8 +265,7 @@
             ->value('id');
             if ($alreday_waiting !== null && $alreday_waiting > 0)
                 return ("already waiting");
-            return ("OK");
-            /*$building_info = DB::table($building_type)
+            $building_info = DB::table($building_type)
             ->select('race_required', 'building_required', 'tech_required', 'basic_price', 'levelup_price', 'duration')
             ->where('id', '=', $building_id)
             ->first();
@@ -308,7 +307,8 @@
             }
             if ($allowed == 0)
                 return ("bad building required");
-            $finishing_date = $this->get_exp_value($niv, $building_info->duration, $building_info->levelup_price) + time();
+            return ("OK");            
+            /*$finishing_date = $this->get_exp_value($niv, $building_info->duration, $building_info->levelup_price) + time();
             $res_required = explode(";", $building_info->basic_price);
             $food_required = 0;
             $wood_required = 0;

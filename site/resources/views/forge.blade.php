@@ -43,6 +43,9 @@
                                             <img src="images/gold.png"> x{{ $item['gold_required'] }}
                                         </td>
                                     @endif
+                                    <td>
+                                        <i class="fas fa-clock icon"></i>{{ $item['duration'] }}
+                                    </td>
                                 </tr>
                             </table>
                             <div class="signup-button">Produires</div>

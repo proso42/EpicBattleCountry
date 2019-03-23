@@ -307,7 +307,7 @@
             }
             if ($allowed == 0)
                 return ("bad building required");
-            /*$res_required = explode(";", $building_info->basic_price);
+            $res_required = explode(";", $building_info->basic_price);
             $food_required = 0;
             $wood_required = 0;
             $rock_required = 0;
@@ -326,7 +326,7 @@
                 else
                     $gold_required = $this->get_exp_value($niv, intval(substr($amount, 0, -1)), $building_info->levelup_price);
             }
-            $city_res = DB::table('cities')
+            /*$city_res = DB::table('cities')
             ->select('food', 'wood', 'rock', 'steel', 'gold')
             ->where('id', '=', $city_id)
             ->first();

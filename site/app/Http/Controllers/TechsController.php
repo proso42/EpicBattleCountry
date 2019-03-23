@@ -30,7 +30,7 @@
                 ->value('id');
                 session()->put(['city_id' => $city_id]);
             }
-            $city = DB::table('cities')
+            $city = DB::table('cities_buildings')
             ->where('owner', '=', $user_id)
             ->where('id', '=', $city_id)
             ->first();

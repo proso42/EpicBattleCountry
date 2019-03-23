@@ -48,6 +48,7 @@ Route::group(['middleware' => 'logged'], function(){
     Route::post('/update_tech', 'TechsController@update');
     Route::post('/interrupt', 'InterruptController@interrupt');
     Route::get('/forge', 'ForgeController@index');
+    Route::post('/calculate_price', 'ForgeController@calculate_price');
 });
 
 

@@ -94,9 +94,9 @@
                             break;
                         }
                     }
+                    if ($allowed == 0)
+                        continue;
                 }
-                if ($allowed == 0)
-                    continue;
                 if ($item->building_required !== "NONE")
                 {
                     $buildings_required = explode(";", $item->building_required);
@@ -116,9 +116,9 @@
                             break;
                         }
                     }
+                    if ($allowed == 0)
+                        continue;
                 }
-                if ($allowed == 0)
-                    continue;
                 if ($item->tech_required !== "NONE")
                 {
                     $techs_required = explode(";", $item->tech_required);
@@ -137,9 +137,9 @@
                             break;
                         }
                     }
+                    if ($allowed == 0)
+                        continue;
                 }
-                if ($allowed == 0)
-                    continue;
                 $res_required = explode(";", $item->price);
                 $food_required = 0;
                 $wood_required = 0;

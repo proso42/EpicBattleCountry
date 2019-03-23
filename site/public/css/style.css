@@ -754,3 +754,41 @@ input::placeholder
     margin-top: 25px;
     text-align: left;
 }
+
+.forge-input
+{
+    margin-top: 25px;
+    background-color: tan;
+    color: black;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    height: 28px;
+    width: 75px;
+}
+
+.forge-button
+{
+    margin-top: 25px;
+    background-color: aquamarine;
+    color: black;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 28px;
+    width: 75px;
+}
+
+.forge-table-res
+{
+    border: solid 1px black;
+    border-collapse: separate;
+    border-spacing: 5px 0px;
+}
+
+.forge-image
+{
+    height: 15px;
+    width: 15px;
+}

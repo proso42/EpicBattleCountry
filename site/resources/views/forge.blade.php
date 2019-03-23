@@ -14,33 +14,33 @@
                     <p>Vous devez construire uen Forge avant de pouvoir l'utiliser !</p>
                 @else
                     @foreach ($allowed_items as $item)
-                        <div id="id_{{ $item['name'] }}">
-                            <span>{{ $item['name'] }}</span><input type="text" class="signup-input">
-                            <table>
+                        <div id="id_{{ $item['name'] }}" class="row">
+                            <span class="col-lg-2 col-md-2 col-sm-2 col-2">{{ $item['name'] }}</span><input type="text" placeholder="quantité" class="col-lg-2 col-md-2 col-sm-2 col-2 forge-input">
+                            <table class="col-lg-6 col-md-6 col-sm-6 col-6 forge-table-res">
                                 <tr>
                                     @if ($item['food_required'] > 0)
                                         <td>
-                                            <img src="images/food.png"> x{{ $item['food_required'] }}
+                                            <img class="forge-image" src="images/food.png"> x{{ $item['food_required'] }}
                                         </td>
                                     @endif
                                     @if ($item['wood_required'] > 0)
                                         <td>
-                                            <img src="images/wood.png"> x{{ $item['wood_required'] }}
+                                            <img class="forge-image" src="images/wood.png"> x{{ $item['wood_required'] }}
                                         </td>
                                     @endif
                                     @if ($item['rock_required'] > 0)
                                         <td>
-                                            <img src="images/rock.png"> x{{ $item['rock_required'] }}
+                                            <img class="forge-image" src="images/rock.png"> x{{ $item['rock_required'] }}
                                         </td>
                                     @endif
                                     @if ($item['steel_required'] > 0)
                                         <td>
-                                            <img src="images/steel.png"> x{{ $item['steel_required'] }}
+                                            <img class="forge-image"src="images/steel.png"> x{{ $item['steel_required'] }}
                                         </td>
                                     @endif
                                     @if ($item['gold_required'] > 0)
                                         <td>
-                                            <img src="images/gold.png"> x{{ $item['gold_required'] }}
+                                            <img class="forge-image" src="images/gold.png"> x{{ $item['gold_required'] }}
                                         </td>
                                     @endif
                                     <td>
@@ -48,7 +48,7 @@
                                     </td>
                                 </tr>
                             </table>
-                            <div class="signup-button">Produires</div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-2 forge-button">Produire</div>
                         </div>
                     @endforeach
                 @endif

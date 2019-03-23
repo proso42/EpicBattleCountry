@@ -191,7 +191,7 @@
 
         public function calculate_price(Request $request)
         {
-            $item_name = $request['name'];
+            $item_name = preg_replace("/_/", " ", $request['name']);
             $quantity = $request['quantity'];
             $city_id = session()->get('city_id');
             $item = DB::table('forge')

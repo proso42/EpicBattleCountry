@@ -52,6 +52,7 @@
                 /*document.getElementById('items_list').style.display = "none";
                 document.getElementById('confirm_win').style.display = "";*/
                 var quantity = document.getElementById("input_" + name).value;
+                var name_format = name.replace(/\s/gi, "_");
                 var xhr = new XMLHttpRequest();
                 xhr.open('POST', 'http://www.epicbattlecorp.fr/calculate_price');
                 xhr.onreadystatechange =  function()
@@ -62,7 +63,7 @@
                     }
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                xhr.send('_token=' + _token + '&name=' + name + "&quantity=" + quantity);
+                xhr.send('_token=' + _token + '&name=' + name_format + "&quantity=" + quantity);
             }
         </script>
     </body>

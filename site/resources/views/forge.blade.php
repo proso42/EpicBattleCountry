@@ -61,7 +61,7 @@
 
             function cancel()
             {
-                document.getElementById("confirm-win").style.display = "none";
+                document.getElementById("confirm_win").style.display = "none";
                 document.getElementById("items_list").style.display = "";
             }
 
@@ -77,6 +77,12 @@
                     if (xhr.readyState === 4 && xhr.status === 200)
                     {
                         console.log(xhr.responseText);
+                        console.log(xhr.responseText[0]);
+                        console.log(xhr.responseText[1]);
+                        console.log(xhr.responseText[2]);
+                        console.log(xhr.responseText[3]);
+                        console.log(xhr.responseText[4]);
+                        console.log(xhr.responseText[5]);
                         document.getElementById("confirm-title").textContent = "Fabriquer " + quantity + " " + name + " ?";
                         if (xhr.responseText[0] > 0)
                         {

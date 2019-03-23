@@ -19,19 +19,19 @@
                             <input type="text" placeholder="Quantité" class="settings-input col-lg-2 col-md-2 col-sm-2 col-2">
                             <div class="forge-ressources col-lg-2 col-md-2 col-sm-2 col-2">
                                 @if ($item['food_required'] > 0)
-                                    <img src="images/food.png"> x{{ $item['food_required'] }}
+                                    <img class="forge-image" src="images/food.png"> x{{ $item['food_required'] }}
                                 @endif
                                 @if ($item['wood_required'] > 0)
-                                    <img src="images/wood.png"> x{{ $item['wood_required'] }}
+                                    <img class="forge-image" src="images/wood.png"> x{{ $item['wood_required'] }}
                                 @endif
                                 @if ($item['rock_required'] > 0)
-                                    <img src="images/rock.png"> x{{ $item['rock_required'] }}
+                                    <img class="forge-image" src="images/rock.png"> x{{ $item['rock_required'] }}
                                 @endif
                                 @if ($item['steel_required'] > 0)
-                                    <img src="images/steel.png"> x{{ $item['steel_required'] }}
+                                    <img class="forge-image" src="images/steel.png"> x{{ $item['steel_required'] }}
                                 @endif
                                 @if ($item['gold_required'] > 0)
-                                    <img src="images/gold.png"> x{{ $item['gold_required'] }}
+                                    <img class="forge-image" src="images/gold.png"> x{{ $item['gold_required'] }}
                                 @endif
                                 <i class="fas fa-clock icon"></i> {{ $item['duration'] }}
                             </div>

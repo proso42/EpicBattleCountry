@@ -78,36 +78,37 @@
                     {
                         console.log(xhr.responseText);
                         var need_tab = xhr.responseText.split(",");
+                        //console.log(need_tab)
                         document.getElementById("confirm-title").textContent = "Fabriquer " + quantity + " " + name + " ?";
-                        if (xhr.responseText[0] > 0)
+                        if (need_tab[0] > 0)
                         {
                             document.getElementById("food_list").contentText = "Food : " +  need_tab[0];
                             document.getElementById("food_list").style.display = "";
                         }
                         else
                             document.getElementById("food_list").style.display = "none";
-                        if (xhr.responseText[1] > 0)
+                        if (need_tab[1] > 0)
                         {
                             document.getElementById("wood_list").contentText = "Wood : " +  need_tab[1];
                             document.getElementById("wood_list").style.display = "";
                         }
                         else
                             document.getElementById("wood_list").style.display = "none";
-                        if (xhr.responseText[2] > 0)
+                        if (need_tab[2] > 0)
                         {
                             document.getElementById("rock_list").contentText = "Rock : " +  need_tab[2];
                             document.getElementById("rock_list").style.display = "";
                         }
                         else
                             document.getElementById("rock_list").style.display = "none";
-                        if (xhr.responseText[3] > 0)
+                        if (need_tab[3] > 0)
                         {
                             document.getElementById("steel_list").contentText = "Steel : " +  need_tab[3];
                             document.getElementById("steel_list").style.display = "";
                         }
                         else
                             document.getElementById("steel_list").style.display = "none";
-                        if (xhr.responseText[4] > 0)
+                        if (need_tab[4] > 0)
                         {
                             document.getElementById("gold_list").contentText = "Gold : " +  need_tab[4];
                             document.getElementById("gold_list").style.display = "";

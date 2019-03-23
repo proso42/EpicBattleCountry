@@ -17,7 +17,7 @@
                     @foreach ($allowed_items as $item)
                         <div id="id_{{ $item['name'] }}" class="row" style="align-items: baseline;line-height: 31px;">
                             <span class="forge-item offset-lg-2 offset-md-2 offset-sm-2 offset-2 col-lg-2 col-md-2 col-sm-2 col-2" style="text-align:center">{{ $item['name'] }}</span>
-                            <input onclick="craft({{ $item['name'] }})" id="input_{{ $item['name'] }}" type="text" placeholder="Quantité" class="forge-input col-lg-2 col-md-2 col-sm-2 col-2">
+                            <input onclick="craft({{ $item['name'] }})" id="input_{{ $item['name'] }})" type="text" placeholder="Quantité" class="forge-input col-lg-2 col-md-2 col-sm-2 col-2">
                             <div class="forge-ressources col-lg-2 col-md-2 col-sm-2 col-2">
                                 @if ($item['food_required'] > 0)
                                     <img class="forge-image" src="images/food.png"> x{{ $item['food_required'] }}

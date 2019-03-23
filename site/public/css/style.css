@@ -758,19 +758,19 @@ input::placeholder
 .forge-input
 {
     margin-top: 25px;
-    margin-right: 20px;
     background-color: tan;
     color: black;
     text-align: center;
     border: 1px solid black;
     border-radius: 4px;
     height: 28px;
-    width: 75px;
+    width: 204px;
 }
 
 .forge-button
 {
     margin-top: 26px;
+    line-height: 0;
     background-color: aquamarine;
     color: black;
     text-align: center;
@@ -778,5 +778,17 @@ input::placeholder
     border-radius: 4px;
     cursor: pointer;
     height: 28px;
-    width: 75px;
+    width: 204px;
+}
+
+.forge-ressources
+{
+    margin-top: 25px;
+    background-color: rgba(105, 105, 105, 0.9);
+    color: black;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    height: 28px;
+    width: 204px;
 }

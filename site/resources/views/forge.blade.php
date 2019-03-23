@@ -15,8 +15,26 @@
                 @else
                     @foreach ($allowed_items as $item)
                         <div id="id_{{ $item['name'] }}" class="row" style="align-items: baseline;line-height: 31px;">
-                            <span class="offset-lg-3 offset-md-3 offset-sm-3 offset-3 col-lg-2 col-md-2 col-sm-2 col-2" style="text-align:left">{{ $item['name'] }}</span>
+                            <span class="offset-lg-2 offset-md-2 offset-sm-2 offset-2 col-lg-2 col-md-2 col-sm-2 col-2" style="text-align:center">{{ $item['name'] }}</span>
                             <input type="text" placeholder="Quantité" class="settings-input col-lg-2 col-md-2 col-sm-2 col-2">
+                            <div class="forge-ressources">
+                                @if ($item['food_required'] > 0)
+                                    <img src="images/food.png"> x{{ $item['food_required'] }}
+                                @endif
+                                @if ($item['wood_required'] > 0)
+                                    <img src="images/wood.png"> x{{ $item['wood_required'] }}
+                                @endif
+                                @if ($item['rock_required'] > 0)
+                                    <img src="images/rock.png"> x{{ $item['rock_required'] }}
+                                @endif
+                                @if ($item['steel_required'] > 0)
+                                    <img src="images/steel.png"> x{{ $item['steel_required'] }}
+                                @endif
+                                @if ($item['gold_required'] > 0)
+                                    <img src="images/gold.png"> x{{ $item['gold_required'] }}
+                                @endif
+                                <i class="fas fa-clock icon"></i> {{ $item['duration'] }}
+                            </div>
                             <input type="button" class="settings-button col-lg-2 col-md-2 col-sm-2 col-2" value="Produire">
                         </div>
                     @endforeach

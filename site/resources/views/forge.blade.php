@@ -16,8 +16,8 @@
                     @foreach ($allowed_items as $item)
                         <div id="id_{{ $item['name'] }}" class="row" style="align-items: baseline">
                             <span class="offset-lg-3 offset-md-3 offset-sm-3 offset-3 col-lg-2 col-md-2 col-sm-2 col-2" style="text-align:left">{{ $item['name'] }}</span>
-                            <input type="text" placeholder="Quantité" class="forge-input col-lg-2 col-md-2 col-sm-2 col-2">
-                            <input type="button" class="forge-button col-lg-2 col-md-2 col-sm-2 col-2" value="Produire">
+                            <input type="text" placeholder="Quantité" class="settings-input col-lg-2 col-md-2 col-sm-2 col-2">
+                            <input type="button" class="settings-button col-lg-2 col-md-2 col-sm-2 col-2" value="Produire">
                         </div>
                     @endforeach
                 @endif

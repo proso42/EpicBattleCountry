@@ -21,8 +21,8 @@
                 @elseif ($allowed == -1)
                     <div class="confirm-win">
                         <h3>Production en cours</h3>
-                        <p>{{ $busy['name'] }} x{{ $busy['quantity'] }}</p>
-                        <p id="item_timer" duration="{{ $busy['finihing_date']}} "></p>
+                        <p>{{ $waiting_item['name'] }} x{{ $waiting_item['quantity'] }}</p>
+                        <p id="item_timer" duration="{{ $waiting_item['finihing_date']}} "></p>
                         <input type="button" class="forge-button-cancel" value="Annuler">
                     </div>
                 @else

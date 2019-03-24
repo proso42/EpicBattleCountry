@@ -278,7 +278,7 @@
             $city_res = DB::table('cities')
             ->where('id', '=', $city_id)
             ->first();
-            $duration = $item->duration * $quantity;
+            $finishing_date = ($item->duration * $quantity) + time();
             $food_required = 0;
             $wood_required = 0;
             $rock_required = 0;
@@ -301,8 +301,8 @@
             if ($food_required > $city_res->food || $wood_required > $city_res->wood || $rock_required > $city_res->rock || $steel_required > $city_res->steel || $gold_required > $city_res->gold)
                 return ;
             $id = DB::table('waiting_items')
-            ->insertGetId(["city_id" => $city_id, "item_id" => $item->id, "finishing_date" => $duration + time(), "quantity" => $quantity]);
-            $cmd = "cd ~/www/srcipts ; node finish_item.js " . $id . " " . $quantity . " " . $duration + time();
+            ->insertGetId(["city_id" => $city_id, "item_id" => $item->id, "finishing_date" => $finishing_date, "quantity" => $quantity]);
+            $cmd = "cd ~/www/srcipts ; node finish_item.js " . $id . " " . $quantity . " " . $finishing_date;
             exec($cmd);
             return ;
         }

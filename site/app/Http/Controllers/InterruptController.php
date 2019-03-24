@@ -96,7 +96,7 @@
 
         private function interrupt_item($city_id)
         {
-            $item = DB::table('waiting')
+            $item = DB::table('waiting_items')
             ->where('city_id', '=', $city_id)
             ->first();
             $res_refund = explode(";", $item->price);

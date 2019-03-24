@@ -300,6 +300,9 @@
             }
             if ($food_required > $city_res->food || $wood_required > $city_res->wood || $rock_required > $city_res->rock || $steel_required > $city_res->steel || $gold_required > $city_res->gold)
                 return ;
+            DB::table('cities')
+            ->where('id', '=', $city_id)
+            ->update(['food' => $city_res->food - $food_required, 'wood' => $city_res->wood - $wood_required, 'rock' => $city_res->rock - $rock_required, 'steel' => $city_res->steel - $steel_required, 'gold' => $city_res->gold - $gold_required]);
             $id = DB::table('waiting_items')
             ->insertGetId(["city_id" => $city_id, "item_id" => $item->id, "finishing_date" => $finishing_date, "quantity" => $quantity]);
             $cmd = "cd /home/boss/www/scripts ; node finish_item.js " . $id . " " . $quantity . " " . $finishing_date;

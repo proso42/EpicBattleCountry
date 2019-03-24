@@ -49,12 +49,12 @@
                     <div id="confirm_win" class="confirm-win" style="display: none">
                         <h3 id="confirm-title"style="margin-top: 25px"></h3>
                         <ul style="text-align:left;margin-top: 25px;">
-                            <li><span id="food_list"></span><i id="food_icon" class=""></i></li>
-                            <li><span id="wood_list"></span><i id="wood_icon" class=""></i></li>
-                            <li><span id="rock_list"></span><i id="rock_icon" class=""></i></li>
-                            <li><span id="steel_list"></span><i id="steel_icon" class=""></i></li>
-                            <li><span id="gold_list"></span><i id="gold_icon" class=""></i></li>
-                            <li><span id="time_list"></span><i class="fas fa-clock"></i></li>
+                            <li id="list1"><span style="margin-right:5px" id="food_list"></span><i id="food_icon" class=""></i></li>
+                            <li id="list2"><span style="margin-right:5px" id="wood_list"></span><i id="wood_icon" class=""></i></li>
+                            <li id="list3"><span style="margin-right:5px" id="rock_list"></span><i id="rock_icon" class=""></i></li>
+                            <li id="list4"><span style="margin-right:5px" id="steel_list"></span><i id="steel_icon" class=""></i></li>
+                            <li id="list5"><span style="margin-right:5px" id="gold_list"></span><i id="gold_icon" class=""></i></li>
+                            <li><span style="margin-right:5px" id="time_list"></span><i class="fas fa-clock"></i></li>
                         </ul>
                         <input id="confirm-button" type="button" class="forge-button" value="Confirmer">
                         <input onclick="cancel()" type="button" class="forge-button-cancel" value="Annuler">
@@ -117,42 +117,42 @@
                         {
                             document.getElementById("food_list").textContent = "Food : " +  need_tab[1];
                             document.getElementById("food_icon").className = need_tab[2];
-                            document.getElementById("food_list").style.display = "";
+                            document.getElementById("list1").style.display = "";
                         }
                         else
-                            document.getElementById("food_list").style.display = "none";
+                            document.getElementById("list1").style.display = "none";
                         if (need_tab[3] > 0)
                         {
                             document.getElementById("wood_list").textContent = "Wood : " +  need_tab[3];
                             document.getElementById("wood_icon").className = need_tab[4];
-                            document.getElementById("wood_list").style.display = "";
+                            document.getElementById("list2").style.display = "";
                         }
                         else
-                            document.getElementById("wood_list").style.display = "none";
+                            document.getElementById("list2").style.display = "none";
                         if (need_tab[5] > 0)
                         {
                             document.getElementById("rock_list").textContent = "Rock : " +  need_tab[5];
                             document.getElementById("rock_icon").className = need_tab[6];
-                            document.getElementById("rock_list").style.display = "";
+                            document.getElementById("list3").style.display = "";
                         }
                         else
-                            document.getElementById("rock_list").style.display = "none";
+                            document.getElementById("list3").style.display = "none";
                         if (need_tab[7] > 0)
                         {
                             document.getElementById("steel_list").textContent = "Steel : " +  need_tab[7];
                             document.getElementById("steel_icon").className = need_tab[8];
-                            document.getElementById("steel_list").style.display = "";
+                            document.getElementById("list4").style.display = "";
                         }
                         else
-                            document.getElementById("steel_list").style.display = "none";
+                            document.getElementById("list4").style.display = "none";
                         if (need_tab[9] > 0)
                         {
                             document.getElementById("gold_list").textContent = "Gold : " +  need_tab[9];
                             document.getElementById("gold_icon").className = need_tab[10];
-                            document.getElementById("gold_list").style.display = "";
+                            document.getElementById("list5").style.display = "";
                         }
                         else
-                            document.getElementById("gold_list").style.display = "none";
+                            document.getElementById("list5").style.display = "none";
                         document.getElementById("time_list").textContent = "Time : " +  new_duration + " ";
                         document.getElementById('items_list').style.display = "none";
                         document.getElementById('confirm_win').style.display = "";

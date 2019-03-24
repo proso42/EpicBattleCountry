@@ -63,7 +63,7 @@
                             <li id="list5"><span style="margin-right:5px" id="gold_list"></span><i id="gold_icon" class=""></i></li>
                             <li><span style="margin-right:5px" id="time_list"></span><i class="fas fa-clock"></i></li>
                         </ul>
-                        <input onclick="" id="confirm-button" type="button" class="forge-button" value="Confirmer">
+                        <input onclick="confirm()" id="confirm-button" type="button" class="forge-button" value="Confirmer">
                         <input onclick="cancel()" type="button" class="forge-button-cancel" value="Annuler">
                     </div>
                 @endif

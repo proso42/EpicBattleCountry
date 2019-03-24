@@ -116,7 +116,7 @@
                         }
                         else
                             document.getElementById("gold_list").style.display = "none";
-                        document.getElementById("time_list").textContent = "Time : " +  new_duration + " " + document.getElementById("time_list").textContent;
+                        document.getElementById("time_list").textContent = "Time : " +  new_duration;
                         document.getElementById('items_list').style.display = "none";
                         document.getElementById('confirm_win').style.display = "";
                     }

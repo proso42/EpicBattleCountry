@@ -44,11 +44,13 @@
                                 <div class="offset-lg-1 offset-md-1 offset-sm-1 offset-1 col-lg-1 col-md-1 col-sm-1 col-1">
                                     @if ($elem['type'] == "building") 
                                         <i class="fas fa-hammer icon"></i>
-                                    @else
+                                    @elseif ($elem['type'] == "tech")
                                         <i class="fas fa-flask icon"></i>
+                                    @else
+                                        <i class="fas fa-cog icon"></i>
                                     @endif
                                 </div>
-                                <div id="compteur_{{ $elem['name'] }}" duration="{{ $elem['duration'] }}" name="{{ $elem['name'] }}" class="col-lg-8 col-md-8 col-sm-8 col-8 infos-building-wip"></div>
+                                <div id="compteur_{{ $elem['name'] }}" duration="{{ $elem['duration'] }}" name="{{ $elem['name'] }}" @if($elem['type'] == 'item') quantity="x{{ $elem['quantity'] }}" @endif class="col-lg-8 col-md-8 col-sm-8 col-8 infos-building-wip"></div>
                                 <div id="interrupt_{{ $elem['name'] }}" class="col-lg-2 col-md-2 col-sm-2 col-2">
                                     <i title="Interrompre" onclick="interrupt('{{ $elem['wait_id'] }}', '{{ $elem['type'] }}', 'id_{{ $elem['name'] }}')" class="fas fa-times icon-red"></i>
                                 </div>
@@ -146,7 +148,10 @@
                     {
                         h += " h ";
                     }
-                    compteur.textContent= name + " " + h+" "+m+" "+s;
+                    if (compteur.hasAttribute('quantity'))
+                        compteur.textContent = name + " " + compteur.getAttribute('quantity') + " " + h+" "+m+" "+s;
+                    else
+                        compteur.textContent= name + " " + h+" "+m+" "+s;
                     setTimeout(function(same_id=id, new_duration=duration-1, same_name=name){
                         timer(same_id, new_duration,same_name);
                     },1000);

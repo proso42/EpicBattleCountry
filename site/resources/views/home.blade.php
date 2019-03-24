@@ -53,7 +53,7 @@
                 @endif
                 @if (count($waiting_list) > 0)
                     <hr class="signin-footer">
-                    <div class="waiting-list">
+                    <div class="waiting-list" style="margin-bottom: 20px;">
                         @foreach ($waiting_list as $elem)
                             <div id="id_{{$elem['name']}}" class="row">
                                 <div class="offset-lg-1 offset-md-1 offset-sm-1 offset-1 col-lg-1 col-md-1 col-sm-1 col-1">

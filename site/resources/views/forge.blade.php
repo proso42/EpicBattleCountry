@@ -10,10 +10,10 @@
     <body>
         @include('default')
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding-right: 10px;">
-                <div id="error-empty-input" class="signin-err-connexion" style="display: none;">
+                <div id="error_empty_input" class="signin-err-connexion" style="display: none;">
                     <p>Merci de remplir le champs !</p>
                 </div>
-                <div id="error-bad-input" class="signin-err-connexion" style="display: none;">
+                <div id="error_bad_input" class="signin-err-connexion" style="display: none;">
                     <p>Merci de remplir le champs seulement avec des chiffres !</p>
                 </div>
                 @if($allowed == 0)

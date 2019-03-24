@@ -145,12 +145,12 @@
                 $gold_refund = $city_infos->max_gold;
             else
                 $gold_refund += $city_infos->gold;
-            /*DB::table('cities')
+            DB::table('cities')
             ->where('id', '=', $city_id)
             ->update(['food' => $food_refund, 'wood' => $wood_refund, 'rock' => $rock_refund, 'steel' => $steel_refund, 'gold' => $gold_refund]);
-            DB::table($table)
+            DB::table('waiting_items')
             ->where('id', '=', $item->id)
-            ->delete();*/
+            ->delete();
         }
 
         private function get_exp_value($niv, $basic_value, $levelup)

@@ -100,8 +100,8 @@
                     {
                         if (xhr.responseText === "item_error")
                             return ;
-                        var need_tab = xhr.responseText.replace(/]/gi, "").replace(/\[/gi, "").split(",");
-                        var new_duration = need_tab[11].replace(/"/gi, "");
+                        var need_tab = xhr.responseText.replace(/]/gi, "").replace(/\[/gi, "").replace(/"/gi, "").split(",");
+                        var new_duration = need_tab[11];
                         if (need_tab[0] == "KO")
                         {
                             document.getElementById("confirm-button").style.display = "none";

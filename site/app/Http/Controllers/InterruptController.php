@@ -102,7 +102,7 @@
             $price = DB::table('forge')
             ->where('id', '=', $item->item_id)
             ->value('price');
-            /*$res_refund = explode(";", $price);
+            $res_refund = explode(";", $price);
             $food_refund = 0;
             $wood_refund = 0;
             $rock_refund = 0;
@@ -121,7 +121,7 @@
                 else
                     $gold_refund = intval(substr($amount, 0, -1)) * $item->quantity;
             }
-            $city_infos = DB::table('cities')
+            /*$city_infos = DB::table('cities')
             ->select('food', 'max_food', 'wood', 'max_wood', 'rock', 'max_rock', 'steel', 'max_steel', 'gold', 'max_gold')
             ->where('id', '=', $city_id)
             ->first();

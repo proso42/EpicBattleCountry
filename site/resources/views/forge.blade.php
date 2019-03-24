@@ -74,7 +74,7 @@
 
             var g_name = "";
             var item_timing = document.getElementById('item_timer');
-            if (timers.length > 0)
+            if (item_timing.length > 0)
                 timer('item_timer', item_timing.getAttribute("duration"));
 
             function timer(id, duration)

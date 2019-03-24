@@ -50,6 +50,7 @@ Route::group(['middleware' => 'logged'], function(){
     Route::get('/forge', 'ForgeController@index');
     Route::post('/calculate_price', 'ForgeController@calculate_price');
     Route::post('/craft_item', 'ForgeController@craft_item');
+    Route::get('/army', 'ArmyController@index');
 });
 
 

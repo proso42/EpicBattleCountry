@@ -104,6 +104,10 @@
             <div class="col-lg-3 col-md-3 col-sm-3 col-3">Exploration</div>
         </div>
         <div class="row menu-left">
+            <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-chess-rook icon"></i></div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-3">Armée</div>
+        </div>
+        <div class="row menu-left">
             <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-fist-raised icon"></i></div>
             <div class="col-lg-3 col-md-3 col-sm-3 col-3">Invasion</div>
         </div>

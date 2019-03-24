@@ -139,6 +139,7 @@
                         timer(same_id, new_duration);
                     },1000);
                 }
+            }
 
             function cancel()
             {

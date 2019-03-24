@@ -225,6 +225,16 @@ body
     cursor: pointer;
 }
 
+.icon-color-red
+{
+    color: crimson;
+}
+
+.icon-color-green
+{
+    color: greenyellow;
+}
+
 input::placeholder
 {
     color: #8C5D53;
@@ -790,6 +800,7 @@ input::placeholder
 .forge-button-cancel
 {
     margin-top: 26px;
+    margin-bottom: 20px;
     line-height: 0;
     background-color: lightpink;
     color: black;

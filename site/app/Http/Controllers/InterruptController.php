@@ -121,7 +121,7 @@
                 else
                     $gold_refund = intval(substr($amount, 0, -1)) * $item->quantity;
             }
-            /*$city_infos = DB::table('cities')
+            $city_infos = DB::table('cities')
             ->select('food', 'max_food', 'wood', 'max_wood', 'rock', 'max_rock', 'steel', 'max_steel', 'gold', 'max_gold')
             ->where('id', '=', $city_id)
             ->first();
@@ -145,7 +145,7 @@
                 $gold_refund = $city_infos->max_gold;
             else
                 $gold_refund += $city_infos->gold;
-            DB::table('cities')
+            /*DB::table('cities')
             ->where('id', '=', $city_id)
             ->update(['food' => $food_refund, 'wood' => $wood_refund, 'rock' => $rock_refund, 'steel' => $steel_refund, 'gold' => $gold_refund]);
             DB::table($table)

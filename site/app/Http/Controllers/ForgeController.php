@@ -65,6 +65,15 @@
             ->value('Forge');
             if ($allowed == 0)
                 return view('forge', compact('allowed' ,'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
+            $busy = DB::table('waiting_items')
+            ->where('city_id', '=', $city_id)
+            ->first();
+            if ($busy !== null)
+            {
+                $allowed = -1;
+                $waiting_item = ["name" => DB::table('forge')->where('id', '=', $busy->item_id)->value('name'), "quantity" => $busy->quantity, "finishing_date" => $item->finishing_date - time()];
+                return view('forge', compact('allowed' , 'waiting_item', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
+            }
             $allowed_items = $this->get_allowed_items($city_id, $user_race);
             return view('forge', compact('allowed' ,'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold', 'allowed_items'));
         }
@@ -254,6 +263,48 @@
                 $allowed = "KO";
             }
             return ([$allowed, $food_required, $enough_food, $wood_required, $enough_wood, $rock_required, $enough_rock, $steel_required, $enough_steel, $gold_required, $enough_gold, $duration]);
+        }
+
+        public function craft_item(Request $request)
+        {
+            $city_id = session()->get('city_id');
+            $item_name = preg_replace("/_/", " ", $request['name']);
+            $quantity = $request['quantity'];
+            $item = DB::table('forge')
+            ->where('name', '=', $item_name)
+            ->first();
+            if ($item === null)
+                return ("item_error");
+            $city_res = DB::table('cities')
+            ->where('id', '=', $city_id)
+            ->first();
+            $duration = $item->duration * $quantity;
+            $food_required = 0;
+            $wood_required = 0;
+            $rock_required = 0;
+            $gold_required = 0;
+            $steel_required = 0;
+            $res_required = explode(";", $item->price);
+            foreach ($res_required as $res => $amount)
+            {
+                if ($amount[-1] == "F")
+                    $food_required = intval(substr($amount, 0, -1)) * $quantity;
+                else if ($amount[-1] == "W")
+                    $wood_required = intval(substr($amount, 0, -1)) * $quantity;
+                else if ($amount[-1] == "R")
+                    $rock_required = intval(substr($amount, 0, -1)) * $quantity;
+                else if ($amount[-1] == "S")
+                    $steel_required = intval(substr($amount, 0, -1)) * $quantity;
+                else
+                    $gold_required = intval(substr($amount, 0, -1)) * $quantity;
+            }
+            if ($food_required > $city_res->food || $wood_required > $city_res->wood || $rock_required > $city_res->rock || $steel_required > $city_res->steel || $gold_required > $city_res->gold)
+                return ;
+            $id = DB::table('waiting_items')
+            ->insertGetId(["city_id" => $city_id, "item_id" => $item->id, "finishing_date" => $duration + time(), "quantity" => $quantity]);
+            $cmd = "cd ~/www/srcipts ; node finish_item.js " + $id;
+            exec($cmd);
+            return;
         }
     }
 ?>

@@ -18,6 +18,13 @@
                 </div>
                 @if($allowed == 0)
                     <p>Vous devez construire uen Forge avant de pouvoir l'utiliser !</p>
+                @else if ($allowed == -1)
+                    <div class="confirm-win">
+                        <h3>Production en cours</h3>
+                        <p>{{ $busy['name'] }} x{{ $busy['quantity'] }}</p>
+                        <p id="item_timer" duration="{{ $busy['finihing_date']}} "></p>
+                        <input type="button" class="forge-button-cancel" value="Annuler">
+                    </div>
                 @else
                     <div id="items_list">
                     @foreach ($allowed_items as $item)
@@ -56,7 +63,7 @@
                             <li id="list5"><span style="margin-right:5px" id="gold_list"></span><i id="gold_icon" class=""></i></li>
                             <li><span style="margin-right:5px" id="time_list"></span><i class="fas fa-clock"></i></li>
                         </ul>
-                        <input id="confirm-button" type="button" class="forge-button" value="Confirmer">
+                        <input onclick="" id="confirm-button" type="button" class="forge-button" value="Confirmer">
                         <input onclick="cancel()" type="button" class="forge-button-cancel" value="Annuler">
                     </div>
                 @endif
@@ -65,14 +72,106 @@
         <input id="_token" name="_token" type="hidden" value="{{csrf_token()}}">
         <script>
 
+            var g_name = "";
+            var item_timing = document.getElementsById('item_timer');
+            if (timers.length > 0)
+                timer('item_timer', item_timing.getAttribute("duration"));
+
+            function timer(id, duration)
+            {
+                var compteur=document.getElementById(id);
+                var s=duration;
+                var m=0;
+                var h=0;
+                if(s<=0)
+                    compteur.textContent = "Terminé";
+                else
+                {
+                    let new_time = "";
+                    if(s>59)
+                    {
+                        m=Math.floor(s/60);
+                        s=s - m * 60;
+                    }
+                    if(m>59)
+                    {
+                        h=Math.floor(m/60);
+                        m= m - h * 60;
+                    }
+                    if(s<10 && s > 0)
+                    {
+                        s= "0" + s + " s";
+                    }
+                    else if (s == 0)
+                    {
+                        s = "";
+                    }
+                    else
+                    {
+                        s += " s";
+                    }
+                    if(m<10 && m > 0)
+                    {
+                        m= "0" + m + " m ";
+                    }
+                    else if (m == 0)
+                    {
+                        m = "";
+                    }
+                    else
+                    {
+                        m += " m ";
+                    }
+                    if (h < 10 && h > 0)
+                    {
+                        h= "0" + h + " h ";
+                    }
+                    else if (h == 0)
+                    {
+                        h = "";
+                    }
+                    else
+                    {
+                        h += " h ";
+                    }
+                    compteur.textContent= "In Progress : " + h+" "+m+" "+s;
+                    setTimeout(function(same_id=id, new_duration=duration-1){
+                        timer(same_id, new_duration);
+                    },1000);
+                }
+
             function cancel()
             {
+                g_name = "";
                 document.getElementById("confirm_win").style.display = "none";
                 document.getElementById("items_list").style.display = "";
             }
 
+            function confirm()
+            {
+                var _token = document.getElementById("_token").value;
+                var name = g_name;
+                var name_format = name.replace(/\s/gi, "_");
+                var quantity = document.getElementById("input_" + name).value;
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'http://www.epicbattlecorp.fr/craft_item');
+                xhr.onreadystatechange =  function()
+                {
+                    if (xhr.readyState === 4 && xhr.status === 200)
+                    {
+                        window.location.reload();
+                    }
+                }
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.send('_token=' + _token + '&name=' + name_format + "&quantity=" + quantity);
+                setTimeout(() => {
+                    window.location.reload();
+                }, 300);
+            }
+
             function craft(name)
             {
+                g_name = name;
                 var _token = document.getElementById("_token").value;
                 var quantity = document.getElementById("input_" + name).value;
                 if (quantity == "")

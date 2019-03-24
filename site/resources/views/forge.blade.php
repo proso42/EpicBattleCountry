@@ -160,14 +160,14 @@
                 {
                     if (xhr.readyState === 4 && xhr.status === 200)
                     {
-                        //window.location.reload();
+                        window.location.reload();
                     }
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhr.send('_token=' + _token + '&name=' + name_format + "&quantity=" + quantity);
-                /*setTimeout(() => {
+                setTimeout(() => {
                     window.location.reload();
-                }, 300);*/
+                }, 300);
             }
 
             function craft(name)

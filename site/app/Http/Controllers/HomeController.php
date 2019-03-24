@@ -69,6 +69,16 @@
                 $compact_steel = substr($steel, 0, 5) . '...';
             if ($gold > 999999)
                 $compact_gold = substr($gold, 0, 5) . '...';
+            $all_items = DB::table('forge')
+            ->get();
+            $items_owned = array();
+            foreach ($all_items as $item)
+            {
+                $item_format = preg_replace('/\s/', '_', $item->name);
+                $item_quantity = $city->$item_format;
+                if ($item_quantity > 0)
+                    array_push($items_owned, ["name" => $item->name, "quantity" => $item_quantity]);
+            }
             $waiting_buildings = DB::table('waiting_buildings')
             ->where('city_id', '=', $city_id)
             ->get();
@@ -95,7 +105,7 @@
             }
             if ($waiting_item !== null)
                 array_push($waiting_list, ["wait_id" => $waiting_item->id, "type" => "item", "name" => DB::table('forge')->where('id', '=', $waiting_item->item_id)->value('name'), "duration" => $waiting_item->finishing_date - time(), "quantity" => $waiting_item->quantity]);
-            return view('home', compact('food', 'compact_food', 'max_food', 'food_prod', 'wood', 'compact_wood' ,'max_wood', 'wood_prod', 'rock', 'compact_rock', 'max_rock', 'rock_prod', 'steel', 'compact_steel', 'max_steel', 'steel_prod', 'gold', 'compact_gold', 'max_gold', 'gold_prod', 'city_name', 'waiting_list'));
+            return view('home', compact('food', 'compact_food', 'max_food', 'food_prod', 'wood', 'compact_wood' ,'max_wood', 'wood_prod', 'rock', 'compact_rock', 'max_rock', 'rock_prod', 'steel', 'compact_steel', 'max_steel', 'steel_prod', 'gold', 'compact_gold', 'max_gold', 'gold_prod', 'city_name', 'waiting_list', 'items_owned'));
         }
     }
 

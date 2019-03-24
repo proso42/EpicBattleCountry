@@ -36,6 +36,21 @@
                         </tr>
                     </table>
                 </div>
+                @if (count($items_owned) > 0)
+                <hr class="signin-footer">
+                <div class="prod-div">
+                    <table class="prod-table">
+                        <tr>
+                            <td>Item</td><td>Stock</td>
+                        </tr>
+                        @foreach ($items_owned as $item)
+                            <tr>
+                                <td>{{ $item['name'] }}</td><td>{{ $item['quantity'] }}</td>
+                            </tr>
+                        @endforeach
+                    </table>
+                </div>
+                @endif
                 @if (count($waiting_list) > 0)
                     <hr class="signin-footer">
                     <div class="waiting-list">

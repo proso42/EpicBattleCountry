@@ -32,7 +32,7 @@
             }
             $city_build = DB::table('cities_buildings')
             ->where('owner', '=', $user_id)
-            ->where('id', '=', $city_id)
+            ->where('city_id', '=', $city_id)
             ->first();
             if ($city_build->Laboratoire > 0)
                 $allowed = 1;

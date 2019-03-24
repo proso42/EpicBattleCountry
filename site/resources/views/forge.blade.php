@@ -10,6 +10,12 @@
     <body>
         @include('default')
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding-right: 10px;">
+                <div id="error-empty-input" class="signin-err-connexion" style="display: none;">
+                    <p>Merci de remplir le champs !</p>
+                </div>
+                <div id="error-bad-input" class="signin-err-connexion" style="display: none;">
+                    <p>Merci de remplir le champs seulement avec des chiffres !</p>
+                </div>
                 @if($allowed == 0)
                     <p>Vous devez construire uen Forge avant de pouvoir l'utiliser !</p>
                 @else
@@ -69,6 +75,22 @@
             {
                 var _token = document.getElementById("_token").value;
                 var quantity = document.getElementById("input_" + name).value;
+                if (quantity == "")
+                {
+                    document.getElementById("error_empty_input").style.display = "";
+                    setTimeout(() =>{
+                        document.getElementById("error_empty_input").style.display = 'none';
+                    }, 5000);
+                    return ;
+                }
+                else if (isNan(quantity))
+                {
+                    document.getElementById("error_bad_input").style.display = "";
+                    setTimeout(() =>{
+                        document.getElementById("error_bad_input").style.display = 'none';
+                    }, 5000);
+                    return ;
+                }
                 var name_format = name.replace(/\s/gi, "_");
                 var xhr = new XMLHttpRequest();
                 xhr.open('POST', 'http://www.epicbattlecorp.fr/calculate_price');
@@ -116,7 +138,7 @@
                         }
                         else
                             document.getElementById("gold_list").style.display = "none";
-                        document.getElementById("time_list").textContent = "Time : " +  new_duration;
+                        document.getElementById("time_list").textContent = "Time : " +  new_duration + " ";
                         document.getElementById('items_list').style.display = "none";
                         document.getElementById('confirm_win').style.display = "";
                     }

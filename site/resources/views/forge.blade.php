@@ -14,7 +14,7 @@
                     <p>Merci de remplir le champs !</p>
                 </div>
                 <div id="error_bad_input" class="forge-input-error" style="display: none;">
-                    <p>Merci de remplir le champs seulement avec des chiffres !</p>
+                    <p>Merci de remplir correctement le champs !</p>
                 </div>
                 @if($allowed == 0)
                     <p>Vous devez construire uen Forge avant de pouvoir l'utiliser !</p>

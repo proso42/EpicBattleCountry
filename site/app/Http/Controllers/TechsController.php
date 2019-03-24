@@ -122,7 +122,7 @@
                                 ->where('id', '=', $building_id)
                                 ->value('name');
                                 $building_niv = DB::table('cities_buildings')
-                                ->where('id', '=', $city_id)
+                                ->where('city_id', '=', $city_id)
                                 ->value(preg_replace('/\s/',"_", $building_name));
                                 if ($building_niv == 0)
                                     $allowed = 0;
@@ -140,7 +140,7 @@
                                 ->value('name');
                                 $tech_name_format = preg_replace('/\s/', "_", $tech_name);
                                 $tech_niv = DB::table('cities_techs')
-                                ->where('id', '=', $city_id)
+                                ->where('city_id', '=', $city_id)
                                 ->value($tech_name_format);
                                 if ($tech_niv <= 0)
                                 {

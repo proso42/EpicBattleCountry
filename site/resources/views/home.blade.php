@@ -50,8 +50,7 @@
                                         <i class="fas fa-cog icon"></i>
                                     @endif
                                 </div>
-                                <span style="color: gold">@if($elem['type'] == 'item') {{ $elem['name'] }} x{{ $elem['quantity'] }} @else {{ $elem['name'] }} @endif}</span>
-                                <span id="compteur_{{ $elem['name'] }}" duration="{{ $elem['duration'] }}" name="{{ $elem['name'] }}" @if($elem['type'] == 'item') quantity="x{{ $elem['quantity'] }}" @endif class="col-lg-8 col-md-8 col-sm-8 col-8 infos-building-wip"></span>
+                                <div id="compteur_{{ $elem['name'] }}" duration="{{ $elem['duration'] }}" name="{{ $elem['name'] }}" @if($elem['type'] == 'item') quantity="x{{ $elem['quantity'] }}" @endif class="col-lg-8 col-md-8 col-sm-8 col-8 infos-building-wip"></div>
                                 <div id="interrupt_{{ $elem['name'] }}" class="col-lg-2 col-md-2 col-sm-2 col-2">
                                     <i title="Interrompre" onclick="interrupt('{{ $elem['wait_id'] }}', '{{ $elem['type'] }}', 'id_{{ $elem['name'] }}')" class="fas fa-times icon-red"></i>
                                 </div>
@@ -85,10 +84,10 @@
                 if (timers.length == 0)
                     return ;
                 timers.forEach(function(e){
-                    timer(e.id, e.getAttribute("duration"));
+                    timer(e.id, e.getAttribute("duration"), e.getAttribute("name"));
                 });
             }
-            function timer(id, duration)
+            function timer(id, duration, name)
             {
                 var compteur=document.getElementById(id);
                 var s=duration;
@@ -98,7 +97,7 @@
                 {
                     let id_to_hide = id.replace(/compteur/gi, "interrupt");
                     document.getElementById(id_to_hide).remove();
-                    compteur.textContent = " Terminé";
+                    compteur.textContent = name + " Terminé";
                 }
                 else
                 {
@@ -149,9 +148,12 @@
                     {
                         h += " h ";
                     }
-                    compteur.textContent= name + " " + h+" "+m+" "+s;
-                    setTimeout(function(same_id=id, new_duration=duration-1){
-                        timer(same_id, new_duration);
+                    if (compteur.hasAttribute('quantity'))
+                        compteur.textContent = name + " " + compteur.getAttribute('quantity') + " " + h+" "+m+" "+s;
+                    else
+                        compteur.textContent= name + " " + h+" "+m+" "+s;
+                    setTimeout(function(same_id=id, new_duration=duration-1, same_name=name){
+                        timer(same_id, new_duration,same_name);
                     },1000);
                 }
             }

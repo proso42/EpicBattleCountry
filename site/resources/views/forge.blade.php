@@ -224,6 +224,7 @@
                     }, 5000);
                     return ;
                 }
+                quantity = parseInt(quantity);
                 var name_format = name.replace(/\s/gi, "_");
                 var xhr = new XMLHttpRequest();
                 xhr.open('POST', 'http://www.epicbattlecorp.fr/calculate_price');

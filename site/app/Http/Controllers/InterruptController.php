@@ -12,13 +12,15 @@
     {
         public function interrupt(Request $request)
         {
-            $wait_id = $request['wait_id'];
             $type_canceled = $request['type'];
             $city_id = session()->get('city_id');
             if ($type_canceled == "building")
                 $table = "waiting_buildings";
-            else
+            else if ($type_canceled == "techs")
                 $table = "waiting_techs";
+            else
+                return $this->interrupt_item($city_id);
+            $wait_id = $request['wait_id'];
             $elem_canceled = DB::table($table)
             ->where('id', '=', $wait_id)
             ->first();
@@ -89,6 +91,62 @@
             ->update(['food' => $food_refund, 'wood' => $wood_refund, 'rock' => $rock_refund, 'steel' => $steel_refund, 'gold' => $gold_refund]);
             DB::table($table)
             ->where('id', '=', $wait_id)
+            ->delete();
+        }
+
+        private function interrupt_item($city_id)
+        {
+            $item = DB::table('waiting')
+            ->where('city_id', '=', $city_id)
+            ->first();
+            $res_refund = explode(";", $item->price);
+            $food_refund = 0;
+            $wood_refund = 0;
+            $rock_refund = 0;
+            $steel_refund = 0;
+            $gold_refund = 0;
+            foreach ($res_refund as $res => $amount)
+            {
+                if ($amount[-1] == "F")
+                    $food_refund = intval(substr($amount, 0, -1)) * $item->quantity;
+                else if ($amount[-1] == "W")
+                    $wood_refund = intval(substr($amount, 0, -1)) * $item->quantity;
+                else if ($amount[-1] == "R")
+                    $rock_refund = intval(substr($amount, 0, -1)) * $item->quantity;
+                else if ($amount[-1] == "S")
+                    $steel_refund = intval(substr($amount, 0, -1)) * $item->quantity;
+                else
+                    $gold_refund = intval(substr($amount, 0, -1)) * $item->quantity;
+            }
+            $city_infos = DB::table('cities')
+            ->select('food', 'max_food', 'wood', 'max_wood', 'rock', 'max_rock', 'steel', 'max_steel', 'gold', 'max_gold')
+            ->where('id', '=', $city_id)
+            ->first();
+            if ($food_refund + $city_infos->food > $city_infos->max_food)
+                $food_refund = $city_infos->max_food;
+            else
+                $food_refund += $city_infos->food;
+            if ($wood_refund + $city_infos->wood > $city_infos->max_wood)
+                $wood_refund = $city_infos->max_wood;
+            else
+                $wood_refund += $city_infos->wood;
+            if ($rock_refund + $city_infos->rock > $city_infos->max_rock)
+                $rock_refund = $city_infos->max_rock;
+            else
+                $rock_refund += $city_infos->rock;
+            if ($steel_refund + $city_infos->steel > $city_infos->max_steel)
+                $steel_refund = $city_infos->max_steel;
+            else
+                $steel_refund += $city_infos->steel;
+            if ($gold_refund + $city_infos->gold > $city_infos->max_gold)
+                $gold_refund = $city_infos->max_gold;
+            else
+                $gold_refund += $city_infos->gold;
+            DB::table('cities')
+            ->where('id', '=', $city_id)
+            ->update(['food' => $food_refund, 'wood' => $wood_refund, 'rock' => $rock_refund, 'steel' => $steel_refund, 'gold' => $gold_refund]);
+            DB::table($table)
+            ->where('id', '=', $item->id)
             ->delete();
         }
 

@@ -23,7 +23,7 @@
                         <h3>Production en cours</h3>
                         <p>{{ $waiting_item['name'] }} x{{ $waiting_item['quantity'] }}</p>
                         <p id="item_timer" duration="{{ $waiting_item['finishing_date']}} "></p>
-                        <input type="button" class="forge-button-cancel" value="Annuler">
+                        <input id="interrupt_item_button" onclick="interrupt_item()" type="button" class="forge-button-cancel" value="Annuler">
                     </div>
                 @else
                     <div id="items_list">
@@ -84,7 +84,13 @@
                 var m=0;
                 var h=0;
                 if(s<=0)
+                {
                     compteur.textContent = "Terminé";
+                    $cancel_button = document.getElementById("interrupt_item_button");
+                    $cancel_button.className = "forge-button";
+                    $cancel_button.value = "Ok";
+                    $cancel_button.onclick = "window.location.reload()";
+                }
                 else
                 {
                     let new_time = "";
@@ -139,6 +145,22 @@
                         timer(same_id, new_duration);
                     },1000);
                 }
+            }
+
+            function interrupt_item()
+            {
+                var _token = document.getElementById("_token").value;
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'http://www.epicbattlecorp.fr/interrupt');
+                xhr.onreadystatechange =  function()
+                {
+                    if (xhr.readyState === 4 && xhr.status === 200)
+                    {
+                        window.location.reload();
+                    }
+                }
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.send('_token=' + _token + '&type=item');
             }
 
             function cancel()

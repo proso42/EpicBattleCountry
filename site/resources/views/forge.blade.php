@@ -16,6 +16,9 @@
                 <div id="error_bad_input" class="forge-input-error" style="display: none;">
                     <p>Merci de remplir correctement le champs !</p>
                 </div>
+                <div id="error_negative_value" class="forge-input-error" style="display: none;">
+                    <p>Merci de renseigner une valeur supérieur à zéro !</p>
+                </div>
                 @if($allowed == 0)
                     <p>Vous devez construire uen Forge avant de pouvoir l'utiliser !</p>
                 @elseif ($allowed == -1)
@@ -210,6 +213,14 @@
                     document.getElementById("error_bad_input").style.display = "";
                     setTimeout(() =>{
                         document.getElementById("error_bad_input").style.display = 'none';
+                    }, 5000);
+                    return ;
+                }
+                else if (quantity <= 0)
+                {
+                    document.getElementById("error_negative_value").style.display = "";
+                    setTimeout(() =>{
+                        document.getElementById("error_negative_value").style.display = 'none';
                     }, 5000);
                     return ;
                 }

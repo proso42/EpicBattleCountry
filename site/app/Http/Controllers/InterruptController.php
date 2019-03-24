@@ -102,7 +102,7 @@
             $price = DB::table('forge')
             ->where('id', '=', $item->item_id)
             ->value('price');
-            $res_refund = explode(";", $price);
+            /*$res_refund = explode(";", $price);
             $food_refund = 0;
             $wood_refund = 0;
             $rock_refund = 0;
@@ -150,7 +150,7 @@
             ->update(['food' => $food_refund, 'wood' => $wood_refund, 'rock' => $rock_refund, 'steel' => $steel_refund, 'gold' => $gold_refund]);
             DB::table($table)
             ->where('id', '=', $item->id)
-            ->delete();
+            ->delete();*/
         }
 
         private function get_exp_value($niv, $basic_value, $levelup)

@@ -18,7 +18,7 @@
                 </div>
                 @if($allowed == 0)
                     <p>Vous devez construire uen Forge avant de pouvoir l'utiliser !</p>
-                @else if ($allowed == -1)
+                @elseif ($allowed == -1)
                     <div class="confirm-win">
                         <h3>Production en cours</h3>
                         <p>{{ $busy['name'] }} x{{ $busy['quantity'] }}</p>

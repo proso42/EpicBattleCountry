@@ -216,7 +216,7 @@
                     }, 5000);
                     return ;
                 }
-                else if (quantity <= 0)
+                else if (parseInt(quantity) <= 0)
                 {
                     document.getElementById("error_negative_value").style.display = "";
                     setTimeout(() =>{

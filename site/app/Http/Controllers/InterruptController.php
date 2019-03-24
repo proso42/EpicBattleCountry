@@ -99,7 +99,10 @@
             $item = DB::table('waiting_items')
             ->where('city_id', '=', $city_id)
             ->first();
-            $res_refund = explode(";", $item->price);
+            $price = DB::table('forge')
+            ->where('id', '=', $item->item_id)
+            ->value('price');
+            $res_refund = explode(";", $price);
             $food_refund = 0;
             $wood_refund = 0;
             $rock_refund = 0;

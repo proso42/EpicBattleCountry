@@ -89,7 +89,7 @@
                     $cancel_button = document.getElementById("interrupt_item_button");
                     $cancel_button.className = "forge-button";
                     $cancel_button.value = "Ok";
-                    $cancel_button.onclick = "window.location.reload()";
+                    $cancel_button.onclick = function(){window.location.reload();};
                 }
                 else
                 {

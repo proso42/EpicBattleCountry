@@ -302,9 +302,9 @@
                 return ;
             $id = DB::table('waiting_items')
             ->insertGetId(["city_id" => $city_id, "item_id" => $item->id, "finishing_date" => $duration + time(), "quantity" => $quantity]);
-            $cmd = "cd ~/www/srcipts ; node finish_item.js " + $id;
+            $cmd = "cd ~/www/srcipts ; node finish_item.js " . $id;
             exec($cmd);
-            return;
+            return ;
         }
     }
 ?>

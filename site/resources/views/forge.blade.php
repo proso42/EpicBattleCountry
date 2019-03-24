@@ -22,7 +22,7 @@
                     <div class="confirm-win">
                         <h3>Production en cours</h3>
                         <p>{{ $waiting_item['name'] }} x{{ $waiting_item['quantity'] }}</p>
-                        <p id="item_timer" duration="{{ $waiting_item['finsihing_date']}} "></p>
+                        <p id="item_timer" duration="{{ $waiting_item['finishing_date']}} "></p>
                         <input type="button" class="forge-button-cancel" value="Annuler">
                     </div>
                 @else

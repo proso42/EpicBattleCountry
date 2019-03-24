@@ -71,7 +71,7 @@
             if ($busy !== null)
             {
                 $allowed = -1;
-                $waiting_item = ["name" => DB::table('forge')->where('id', '=', $busy->item_id)->value('name'), "quantity" => $busy->quantity, "finishing_date" => $item->finishing_date - time()];
+                $waiting_item = ["name" => DB::table('forge')->where('id', '=', $busy->item_id)->value('name'), "quantity" => $busy->quantity, "finishing_date" => $busy->finishing_date - time()];
                 return view('forge', compact('allowed' , 'waiting_item', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
             }
             $allowed_items = $this->get_allowed_items($city_id, $user_race);

@@ -76,7 +76,7 @@
                 {
                     if (xhr.readyState === 4 && xhr.status === 200)
                     {
-                        if (xhr.responseText = "item_error")
+                        if (xhr.responseText === "item_error")
                             return ;
                         var need_tab = xhr.responseText.replace(/]/gi, "").replace(/\[/gi, "").split(",");
                         var new_duration = need_tab[5].replace(/"/gi, "");

@@ -83,7 +83,7 @@
                     }, 5000);
                     return ;
                 }
-                else if (isNaN(quantity))
+                else if (!isNaN(quantity) && !isFinite(quantity))
                 {
                     document.getElementById("error_bad_input").style.display = "";
                     setTimeout(() =>{

@@ -20,6 +20,7 @@
                                     {{ $i++ }}
                                 @else
                                     <td style="background-color: white">Empty</td>
+                                @endif
                             @endfor
                         </tr>
                     @endfor

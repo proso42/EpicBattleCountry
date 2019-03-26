@@ -24,6 +24,9 @@
                             @endfor
                         </tr>
                     @endfor
+                    @foreach($visible_cells as $cell)
+                        <p>x_pos = {{ $cell['x_pos'] }} y_pos = {{ $cell['y_pos'] }} type = {{ $cell['class'] }}</p>
+                    @endforeach
                 </table>
             </div>
         </div>

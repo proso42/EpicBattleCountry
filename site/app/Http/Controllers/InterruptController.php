@@ -16,7 +16,7 @@
             $city_id = session()->get('city_id');
             if ($type_canceled == "building")
                 $table = "waiting_buildings";
-            else if ($type_canceled == "techs")
+            else if ($type_canceled == "tech")
                 $table = "waiting_techs";
             else
                 return $this->interrupt_item($city_id);
@@ -35,7 +35,7 @@
                 $basic_price = $build_info->basic_price;
                 $levelup_price = $build_info->levelup_price;
             }
-            else
+            else if ($type_canceled == "tech")
             {
                 $tech_info = DB::table("techs")
                 ->where('id', '=', $elem_canceled->tech_id)

@@ -66,7 +66,7 @@
             $cartographer = DB::table('cities_buildings')
             ->where('city_id', '=', $city_id)
             ->value('Cartographe');
-            if ($allowed == 0)
+            if ($cartographer == 0)
                 return view('map', compact('cartographer', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
             $all_cells = DB::table('map')
             ->where('x_pos' ,'>=', $city->x_pos - $cartographer)

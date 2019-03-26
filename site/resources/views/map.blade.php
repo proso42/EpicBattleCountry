@@ -19,7 +19,7 @@
                                     <td class="map-cell" style="background-color: {{ $visible_cells[$i]['background-color'] }}"><i class="fas {{ $visible_cells[$i]['class'] }}"></i></td>
                                     <?php $i++; ?>
                                 @else
-                                    <td class="map-empty-cell"><i class="fas fa-road" style="color: white"></i></td>
+                                    <td class="map-empty-cell"><i class="fas fa-road"></i></td>
                                 @endif
                             @endfor
                         </tr>

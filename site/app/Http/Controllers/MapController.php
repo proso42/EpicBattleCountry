@@ -73,7 +73,8 @@
             ->where('x_pos', '<=', $city->x_pos + $cartographer)
             ->where('y_pos', '>=', $city->y_pos - $cartographer)
             ->where('y_pos', '<=', $city->y_pos + $cartographer)
-            ->orderBy('x_pos', 'asc', 'y_pos', 'desc');
+            ->orderBy('x_pos', 'asc', 'y_pos', 'desc')
+            ->get();
             $visible_cells = [];
             $x_pos = $city->x_pos;
             $y_pos = $city->y_pos;

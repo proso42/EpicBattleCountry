@@ -16,7 +16,7 @@
                         <tr>
                             @for ($x = $x_pos - $cartographer; $x <= $x_pos + $cartographer; $x++)
                                 @if ($x == $visible_cells[$i]['x_pos'] && $y == $visible_cells[$i]['y_pos'])
-                                    <td style="background-color: {{ $visible_cells[$i]['background-color'] }}"><i class="fas {{ $visible_cells[$i]['class'] }}"></i></td>
+                                    <td style="background-color: {{ $visible_cells[$i]['background-color'] }};width: 20px;height: 20px;"><i class="fas {{ $visible_cells[$i]['class'] }}"></i></td>
                                     <?php $i++; ?>
                                 @else
                                     <td style="background-color: white">Empty</td>
@@ -24,9 +24,6 @@
                             @endfor
                         </tr>
                     @endfor
-                    @foreach($visible_cells as $cell)
-                        <p>x_pos = {{ $cell['x_pos'] }} y_pos = {{ $cell['y_pos'] }} type = {{ $cell['class'] }}</p>
-                    @endforeach
                 </table>
             </div>
         </div>

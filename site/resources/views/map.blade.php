@@ -15,8 +15,8 @@
                     @for ($y = $y_pos + $cartographer; $y >= $y_pos + $cartographer; $y--)
                         <tr>
                             @for ($x = $x_pos - $cartographer; $x <= $x_pos + $cartographer; $x++)
-                                @if ($x == $visible_cells[$i]->x_pos && $y == $visible_cells[$i]->y_pos)
-                                    <td style="background-color: {{ $visible_cells[$i]->background-color }}"><i class="fas {{ $visible_cells[$i]->class }}"></i></td>
+                                @if ($x == $visible_cells[$i][x_pos] && $y == $visible_cells[$i][y_pos])
+                                    <td style="background-color: {{ $visible_cells[$i][background-color] }}"><i class="fas {{ $visible_cells[$i][class] }}"></i></td>
                                     {{ $i++ }}
                                 @else
                                     <td style="background-color: white">Empty</td>

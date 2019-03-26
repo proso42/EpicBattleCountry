@@ -91,7 +91,7 @@
                     ->where('x_pos', '=', $cell->x_pos)
                     ->where('y_pos', '=', $cell->y_pos)
                     ->value('name');
-                    array_push($visible_cells, ["x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "steelblue", "class" => $cell->icon, "title" => $title]);
+                    array_push($visible_cells, ["x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "class" => $cell->icon, "title" => $title]);
                 }
                 else
                     array_push($visible_cells, ["x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "class" => $cell->icon, "title" => $cell->type]); 

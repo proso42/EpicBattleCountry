@@ -63,7 +63,31 @@
                 $compact_steel = substr($steel, 0, 5) . '...';
             if ($gold > 999999)
                 $compact_gold = substr($gold, 0, 5) . '...';
-            return view('map', compact('food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
+            $cartographer = DB::table('cities_buildings')
+            ->where('city_id', '=', $city_id)
+            ->value('Cartographe');
+            if ($allowed == 0)
+                return view('map', compact('cartographer', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
+            $all_cells = DB::table('map')
+            ->where('x_pos' ,'>=', $city->x_pos - $cartographer)
+            ->where('x_pos', '<=', $city->x_pos + $cartographer)
+            ->where('y_pos', '>=', $city->y_pos - $cartographer)
+            ->where('y_pos', '<=', $city->y_pos + $cartographer)
+            ->orderBy('x_pos', 'asc', 'y_pos', 'desc');
+            $visible_cells = [];
+            $x_pos = $city->x_pos;
+            $y_pos = $city->y_pos;
+            foreach ($all_cells as $cell)
+            {
+                if ($cell->x_pos == $x_pos && $cell->y_pos == $y_pos)
+                    array_push($visible_cells, ["background-color" => "lemonchiffon", "class" => "fa-star"]);
+                else if ($cell->type == "water")
+                    array_push($visible_cells, ["background-color" => "steelblue", "class" => $cell->icon]);
+                else
+                    array_push($visible_cells, ["background-color" => "lemonchiffon", "class" => $cell->icon]); 
+
+            }
+            return view('map', compact('cartographer', 'visible_cells', 'x_pos', 'y_pos', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
         }
     }
 

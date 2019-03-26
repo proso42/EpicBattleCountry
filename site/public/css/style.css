@@ -874,3 +874,11 @@ input::placeholder
     margin-right: auto;
     margin-top: 25px;
 }
+
+.map-table
+{
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: separate;
+    border-spacing: 15px 0px;
+}

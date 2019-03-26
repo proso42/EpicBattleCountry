@@ -81,11 +81,11 @@
             foreach ($all_cells as $cell)
             {
                 if ($cell->x_pos == $x_pos && $cell->y_pos == $y_pos)
-                    array_push($visible_cells, ["background-color" => "lemonchiffon", "class" => "fa-star"]);
+                    array_push($visible_cells, ["x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "class" => "fa-star"]);
                 else if ($cell->type == "water")
-                    array_push($visible_cells, ["background-color" => "steelblue", "class" => $cell->icon]);
+                    array_push($visible_cells, ["x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "steelblue", "class" => $cell->icon]);
                 else
-                    array_push($visible_cells, ["background-color" => "lemonchiffon", "class" => $cell->icon]); 
+                    array_push($visible_cells, ["x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "class" => $cell->icon]); 
 
             }
             return view('map', compact('cartographer', 'visible_cells', 'x_pos', 'y_pos', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));

@@ -13,6 +13,7 @@
                 <table style="map-table">
                     <?php $i=0; ?>
                     @for ($y = $y_pos + $cartographer; $y >= $y_pos + $cartographer; $y--)
+                        <p>scdjk</p>
                         <tr>
                             @for ($x = $x_pos - $cartographer; $x <= $x_pos + $cartographer; $x++)
                                 @if ($x == $visible_cells[$i]['x_pos'] && $y == $visible_cells[$i]['y_pos'])

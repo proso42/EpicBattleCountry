@@ -19,7 +19,7 @@
                                     <td style="background-color: {{ $visible_cells[$i]['background-color'] }};width: 50px;height: 50px;"><i class="fas {{ $visible_cells[$i]['class'] }}"></i></td>
                                     <?php $i++; ?>
                                 @else
-                                    <td style="background-color: white"><i class="fas fa-road" style="color: white"></i></td>
+                                    <td style="background-color: white ;width: 50px;height: 50px;"><i class="fas fa-road" style="color: white"></i></td>
                                 @endif
                             @endfor
                         </tr>

@@ -96,7 +96,7 @@
             $visible_cells = [];
             foreach ($all_cells as $cell)
             {
-                if ($cell->x_pos == $x_pos && $cell->y_pos == $y_pos)
+                if ($cell->x_pos == $city_x && $cell->y_pos == $city_y)
                     array_push($visible_cells, ["x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "class" => "fa-star", "title" => "Your city : " . $city->name]);
                 else if ($cell->type == "water")
                     array_push($visible_cells, ["x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "steelblue", "class" => $cell->icon, "title" => $cell->type]);

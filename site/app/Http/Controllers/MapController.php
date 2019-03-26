@@ -82,9 +82,17 @@
             foreach ($all_cells as $cell)
             {
                 if ($cell->x_pos == $x_pos && $cell->y_pos == $y_pos)
-                    array_push($visible_cells, ["x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "class" => "fa-star", "title" => $city->name]);
+                    array_push($visible_cells, ["x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "class" => "fa-star", "title" => "Your city : " . $city->name]);
                 else if ($cell->type == "water")
                     array_push($visible_cells, ["x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "steelblue", "class" => $cell->icon, "title" => $cell->type]);
+                else if ($cell->type == "city")
+                {
+                    $title = DB::table('cities')
+                    ->where('x_pos', '=', $cell->x_pos)
+                    ->where('y_pos', '=', $cell->y_pos)
+                    ->value('name');
+                    array_push($visible_cells, ["x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "steelblue", "class" => $cell->icon, "title" => $title]);
+                }
                 else
                     array_push($visible_cells, ["x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "class" => $cell->icon, "title" => $cell->type]); 
 

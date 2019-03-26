@@ -10,7 +10,7 @@
     <body>
         @include('default')
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding-right: 10px;">
-                <i class="fas fa-arrow-circle-up" style="cursor: pointer" onclick="up_map()"></i>
+                <i class="fas fa-arrow-circle-up" style="cursor: pointer" onclick="up_map({{ $city_x - $x_pos}}, {{ $city_y - $y_pos + 1 }})"></i>
                 <br/>
                 <div style="display: inline-block">
                     <i class="fas fa-arrow-circle-left" style="cursor: pointer" onclick="window.location.href='/map?x_offset=-1&y_offset=0'"></i>
@@ -44,9 +44,9 @@
             </div>
         </div>
         <script>
-            function up_map()
+            function move_map(x_offset, y_offset)
             {
-                window.location.href = '/map?x_offset=0&y_offset=1';
+                window.location.href = '/map?x_offset=' + x_offset + '&y_offset=' + y_offset;
             }
         </script>
     </body>

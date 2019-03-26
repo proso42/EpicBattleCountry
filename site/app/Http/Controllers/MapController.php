@@ -53,6 +53,8 @@
             $gold = $city->gold;
             $compact_gold = $gold;
             $max_gold = $city->max_gold;
+            $city_x = $city->x_pos;
+            $city_y = $city->y_pos;
             if ($food > 999999)
                 $compact_food = substr($food, 0, 5) . '...';
             if ($wood > 999999)
@@ -110,7 +112,7 @@
                     array_push($visible_cells, ["x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "class" => $cell->icon, "title" => $cell->type]); 
 
             }
-            return view('map', compact('move_map' ,'cartographer', 'visible_cells', 'x_pos', 'y_pos', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
+            return view('map', compact('move_map' ,'cartographer', 'visible_cells', 'x_pos', 'city_x', 'y_pos', 'city_y', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
         }
     }
 

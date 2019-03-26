@@ -879,7 +879,21 @@ input::placeholder
 {
     margin-left: auto;
     margin-right: auto;
+    border: 1px black solid;
+}
+
+.map-cell
+{
+    width: 50px;
+    height: 50px;
+    color: black;
     border: 1px sienna dotted;
-    /*border-collapse: separate;
-    border-spacing: 15px 0px;*/
+}
+.map-cell
+{
+    width: 50px;
+    height: 50px;
+    color: lemonchiffon;
+    background-color: lemonchiffon;
+    border: 1px sienna dotted;
 }

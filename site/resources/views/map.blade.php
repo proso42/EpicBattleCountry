@@ -26,10 +26,10 @@
                     @endfor
                 </table>
                 <hr class="signin-footer">
-                <ul>
+                <ul style="text-align: left">
                     <li><i class="fas fa-star"></i> Votre ville</li>
                     <li><i class="fas fa-city"></i> Autre ville</li>
-                    <li><i class="fas fa-dunegon"></i> Ruine</li>
+                    <li><i class="fas fa-dungeon"></i> Ruine</li>
                     <li><i class="fas fa-dragon"></i> Tannière d'un dragon</li>
                     <li><i class="fas fa-water"></i> Fleuve / Lac</li>
                 </ul>

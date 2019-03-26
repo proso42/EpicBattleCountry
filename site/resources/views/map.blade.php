@@ -16,10 +16,10 @@
                         <tr>
                             @for ($x = $x_pos - $cartographer; $x <= $x_pos + $cartographer; $x++)
                                 @if ($i < count($visible_cells) && $x == $visible_cells[$i]['x_pos'] && $y == $visible_cells[$i]['y_pos'])
-                                    <td title="{{ $cell[$i]['x_pos'] }}/{{ $cell[$i]['y_pos'] }} {{ $cell[$i]['title'] }}" class="map-cell" style="background-color: {{ $visible_cells[$i]['background-color'] }}"><i class="fas {{ $visible_cells[$i]['class'] }}"></i></td>
+                                    <td title="{{ $visible_cells[$i]['x_pos'] }}/{{ $visible_cells[$i]['y_pos'] }} {{ $visible_cells[$i]['title'] }}" class="map-cell" style="background-color: {{ $visible_cells[$i]['background-color'] }}"><i class="fas {{ $visible_cells[$i]['class'] }}"></i></td>
                                     <?php $i++; ?>
                                 @else
-                                    <td title="{{ $cell[$i]['x_pos'] }}/{{ $cell[$i]['y_pos'] }}" class="map-empty-cell"><i class="fas fa-road"></i></td>
+                                    <td title="{{ $visible_cells[$i]['x_pos'] }}/{{ $visible_cells[$i]['y_pos'] }}" class="map-empty-cell"><i class="fas fa-road"></i></td>
                                 @endif
                             @endfor
                         </tr>

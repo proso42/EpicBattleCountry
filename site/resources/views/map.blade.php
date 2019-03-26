@@ -10,16 +10,16 @@
     <body>
         @include('default')
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding-right: 10px;">
-                <table style="map-table">
+                <table class="map-table">
                     <?php $i=0; ?>
                     @for ($y = $y_pos + $cartographer; $y >= $y_pos - $cartographer; $y--)
                         <tr>
                             @for ($x = $x_pos - $cartographer; $x <= $x_pos + $cartographer; $x++)
                                 @if ($i < count($visible_cells) && $x == $visible_cells[$i]['x_pos'] && $y == $visible_cells[$i]['y_pos'])
-                                    <td style="background-color: {{ $visible_cells[$i]['background-color'] }};width: 20px;height: 20px;"><i class="fas {{ $visible_cells[$i]['class'] }}"></i></td>
+                                    <td style="background-color: {{ $visible_cells[$i]['background-color'] }};width: 50px;height: 50px;"><i class="fas {{ $visible_cells[$i]['class'] }}"></i></td>
                                     <?php $i++; ?>
                                 @else
-                                    <td style="background-color: white">Empty</td>
+                                    <td style="background-color: white"></td>
                                 @endif
                             @endfor
                         </tr>

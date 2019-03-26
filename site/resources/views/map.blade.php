@@ -10,21 +10,29 @@
     <body>
         @include('default')
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding-right: 10px;">
-                <table class="map-table">
-                    <?php $i=0; ?>
-                    @for ($y = $y_pos + $cartographer; $y >= $y_pos - $cartographer; $y--)
-                        <tr>
-                            @for ($x = $x_pos - $cartographer; $x <= $x_pos + $cartographer; $x++)
-                                @if ($i < count($visible_cells) && $x == $visible_cells[$i]['x_pos'] && $y == $visible_cells[$i]['y_pos'])
-                                    <td title="{{ $visible_cells[$i]['x_pos'] }}/{{ $visible_cells[$i]['y_pos'] }} {{ $visible_cells[$i]['title'] }}" class="map-cell" style="background-color: {{ $visible_cells[$i]['background-color'] }}"><i class="fas {{ $visible_cells[$i]['class'] }}"></i></td>
-                                    <?php $i++; ?>
-                                @else
-                                    <td title="{{ $x }}/{{ $y }}" class="map-empty-cell"><i class="fas fa-road"></i></td>
-                                @endif
-                            @endfor
-                        </tr>
-                    @endfor
-                </table>
+                <i class="fas fa-arrow-circle-up" onclick="window.location.href='htpp://www.epicbatllecorp.fr/map?x_offset=0&y_offset=1'"></i>
+                <br/>
+                <div>
+                    <i class="fas fa-arrow-circle-left" onclick="window.location.href='htpp://www.epicbatllecorp.fr/map?x_offset=-1&y_offset=0'"></i>
+                    <table class="map-table">
+                        <?php $i=0; ?>
+                        @for ($y = $y_pos + $cartographer; $y >= $y_pos - $cartographer; $y--)
+                            <tr>
+                                @for ($x = $x_pos - $cartographer; $x <= $x_pos + $cartographer; $x++)
+                                    @if ($i < count($visible_cells) && $x == $visible_cells[$i]['x_pos'] && $y == $visible_cells[$i]['y_pos'])
+                                        <td title="{{ $visible_cells[$i]['x_pos'] }}/{{ $visible_cells[$i]['y_pos'] }} {{ $visible_cells[$i]['title'] }}" class="map-cell" style="background-color: {{ $visible_cells[$i]['background-color'] }}"><i class="fas {{ $visible_cells[$i]['class'] }}"></i></td>
+                                        <?php $i++; ?>
+                                    @else
+                                        <td title="{{ $x }}/{{ $y }}" class="map-empty-cell"><i class="fas fa-road"></i></td>
+                                    @endif
+                                @endfor
+                            </tr>
+                        @endfor
+                    </table>
+                    <i class="fas fa-arrow-circle-right" onclick="window.location.href='htpp://www.epicbatllecorp.fr/map?x_offset=1&y_offset=0'"></i>
+                </div>
+                <br/>
+                <i class="fas fa-arrow-circle-down" onclick="window.location.href='htpp://www.epicbatllecorp.fr/map?x_offset=0&y_offset=-1'"></i>
                 <hr class="signin-footer">
                 <ul style="text-align: left">
                     <li><i class="fas fa-star"></i> Votre ville</li>

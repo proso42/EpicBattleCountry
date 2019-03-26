@@ -10,10 +10,10 @@
     <body>
         @include('default')
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding-right: 10px;">
-                <i class="fas fa-arrow-circle-up" style="cursor: pointer" onclick="window.location.href='htpp://www.epicbatllecorp.fr/map?x_offset=0&y_offset=1'"></i>
+                <i class="fas fa-arrow-circle-up" style="cursor: pointer" onclick="function(){window.location.href='htpp://www.epicbatllecorp.fr/map?x_offset=0&y_offset=1'}"></i>
                 <br/>
                 <div style="display: inline-block">
-                    <i class="fas fa-arrow-circle-left" style="cursor: pointer" onclick="window.location.href='htpp://www.epicbatllecorp.fr/map?x_offset=-1&y_offset=0'"></i>
+                    <i class="fas fa-arrow-circle-left" style="cursor: pointer" onclick="function(){window.location.href='htpp://www.epicbatllecorp.fr/map?x_offset=-1&y_offset=0'}"></i>
                     <table class="map-table">
                         <?php $i=0; ?>
                         @for ($y = $y_pos + $cartographer; $y >= $y_pos - $cartographer; $y--)
@@ -29,10 +29,10 @@
                             </tr>
                         @endfor
                     </table>
-                    <i class="fas fa-arrow-circle-right" style="cursor: pointer" onclick="window.location.href='htpp://www.epicbatllecorp.fr/map?x_offset=1&y_offset=0'"></i>
+                    <i class="fas fa-arrow-circle-right" style="cursor: pointer" onclick="function(){window.location.href='htpp://www.epicbatllecorp.fr/map?x_offset=1&y_offset=0'}"></i>
                 </div>
                 <br/>
-                <i class="fas fa-arrow-circle-down" style="cursor: pointer" onclick="window.location.href='htpp://www.epicbatllecorp.fr/map?x_offset=0&y_offset=-1'"></i>
+                <i class="fas fa-arrow-circle-down" style="cursor: pointer" onclick="function(){window.location.href='htpp://www.epicbatllecorp.fr/map?x_offset=0&y_offset=-1'}"></i>
                 <hr class="signin-footer">
                 <ul style="text-align: left">
                     <li><i class="fas fa-star"></i> Votre ville</li>

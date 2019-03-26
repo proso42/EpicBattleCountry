@@ -68,6 +68,21 @@
             ->value('Cartographe');
             if ($cartographer == 0)
                 return view('map', compact('cartographer', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
+            if (isset($_GET['x_offset']) && $cartographer > 11 && abs($_GET['x_offset']) <= $cartographer - 11)
+                $x_pos = $city->x_pos + $_GET['x_offset'];
+            else
+                $x_pos = $city->x_pos;
+            if (isset($_GET['y_offset']) && $cartographer > 11 && abs($_GET['y_offset']) <= $cartographer - 11)
+                $y_pos = $city->y_pos + $_GET['y_offset'];
+            else
+                $y_pos = $city->y_pos;
+            if ($cartographer > 11)
+            {
+                $move_map = 1;
+                $cartographer = 11;
+            }
+            else
+                $move_map = 0;
             $all_cells = DB::table('map')
             ->where('x_pos' ,'>=', $city->x_pos - $cartographer)
             ->where('x_pos', '<=', $city->x_pos + $cartographer)
@@ -77,8 +92,6 @@
             ->orderBy('x_pos', 'asc')
             ->get();
             $visible_cells = [];
-            $x_pos = $city->x_pos;
-            $y_pos = $city->y_pos;
             foreach ($all_cells as $cell)
             {
                 if ($cell->x_pos == $x_pos && $cell->y_pos == $y_pos)
@@ -97,7 +110,7 @@
                     array_push($visible_cells, ["x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "class" => $cell->icon, "title" => $cell->type]); 
 
             }
-            return view('map', compact('cartographer', 'visible_cells', 'x_pos', 'y_pos', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
+            return view('map', compact('move_map' ,'cartographer', 'visible_cells', 'x_pos', 'y_pos', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
         }
     }
 

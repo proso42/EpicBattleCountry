@@ -82,9 +82,9 @@
             foreach ($all_cells as $cell)
             {
                 if ($cell->x_pos == $x_pos && $cell->y_pos == $y_pos)
-                    array_push($visible_cells, ["x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "class" => "fa-star"]);
+                    array_push($visible_cells, ["x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "class" => "fa-star", "title" => "Your city"]);
                 else if ($cell->type == "water")
-                    array_push($visible_cells, ["x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "steelblue", "class" => $cell->icon]);
+                    array_push($visible_cells, ["x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "steelblue", "class" => $cell->icon, "title" => $cell->type]);
                 else
                     array_push($visible_cells, ["x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "class" => $cell->icon]); 
 

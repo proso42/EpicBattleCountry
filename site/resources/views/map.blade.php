@@ -12,8 +12,7 @@
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding-right: 10px;">
                 <table style="map-table">
                     <?php $i=0; ?>
-                    @for ($y = $y_pos + $cartographer; $y >= $y_pos + $cartographer; $y--)
-                        <p>scdjk</p>
+                    @for ($y = $y_pos + $cartographer; $y >= $y_pos - $cartographer; $y--)
                         <tr>
                             @for ($x = $x_pos - $cartographer; $x <= $x_pos + $cartographer; $x++)
                                 @if ($x == $visible_cells[$i]['x_pos'] && $y == $visible_cells[$i]['y_pos'])

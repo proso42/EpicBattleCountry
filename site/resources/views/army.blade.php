@@ -213,7 +213,7 @@
                             let value = e_split[1];
                             if (type == "item")
                             {
-                                document.getElementById("list" + i + 6).style.display = "";
+                                document.getElementById("list" + (i + 6)).style.display = "";
                                 document.getElementById("item_list" + i).textContent = value + " x" + quantity;
                             }
                             else

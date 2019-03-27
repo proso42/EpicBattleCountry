@@ -17,7 +17,7 @@
                         @foreach ($allowed_units as $unit)
                             <div id="id_{{ $unit['name'] }}" class="row" style="align-items: baseline;line-height: 31px;">
                                 <div class="army-unit offset-lg-2 offset-md-2 offset-sm-2 offset-2 col-lg-2 col-md-2 col-sm-2 col-2" style="text-align:center">
-                                    {{ $unit['name'] }}
+                                    <span>{{ $unit['name'] }}</span>
                                     <div class="army-info-unit">
                                         <ul>
                                             <li>Life : {{ $unit['life'] }} <i class="fas fa-heartbeat"></i></li>

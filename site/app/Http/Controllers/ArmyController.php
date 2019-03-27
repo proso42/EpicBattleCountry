@@ -213,7 +213,6 @@
                 foreach ($items_required as $item => $val)
                 {
                 $item_name = $all_items[$val]->name;
-                //$item_name = DB::table('forge')->where('id', '=', $val)->value('name');
                 $item_name_format = preg_replace('/\s/', "_", $item_name);
                 if ($city_res->$item_name_format < $quantity)
                 {
@@ -224,8 +223,7 @@
                     array_push($items_owned, ["name" => $item_name, "need" => $quantity, "enough" => "fas fa-check icon-color-green"]);
                 }
             }            
-            return ("OK final");
-            /*foreach ($res_required as $res => $amount)
+            foreach ($res_required as $res => $amount)
             {
                 if ($amount[-1] == "F")
                     $food_required = intval(substr($amount, 0, -1)) * $quantity;
@@ -263,7 +261,7 @@
                 $enough_gold = "fas fa-times icon-color-red";
                 $allowed = "KO";
             }
-            return ([$allowed, $food_required, $enough_food, $wood_required, $enough_wood, $rock_required, $enough_rock, $steel_required, $enough_steel, $gold_required, $enough_gold, $mount_required, $enough_mount, $duration, $items_owned]);*/
+            return ([$allowed, $food_required, $enough_food, $wood_required, $enough_wood, $rock_required, $enough_rock, $steel_required, $enough_steel, $gold_required, $enough_gold, $mount_required, $enough_mount, $duration, $items_owned]);
         }
     }
 

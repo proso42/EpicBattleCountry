@@ -261,7 +261,7 @@
                 $enough_gold = "fas fa-times icon-color-red";
                 $allowed = "KO";
             }
-            return ([$allowed, $food_required, $enough_food, $wood_required, $enough_wood, $rock_required, $enough_rock, $steel_required, $enough_steel, $gold_required, $enough_gold, $mount_required, $enough_mount, $duration, $items_owned]);
+            return (json_encode([$allowed, $food_required, $enough_food, $wood_required, $enough_wood, $rock_required, $enough_rock, $steel_required, $enough_steel, $gold_required, $enough_gold, $mount_required, $enough_mount, $duration, $items_owned]));
         }
     }
 

@@ -32,7 +32,21 @@
                                 <span>Ressources Items</span>
                                 <div class="army-ressources-details">
                                     <ul>
-                                        
+                                        @if ($unit['food'] > 0)
+                                            <li>Food : {{ $unit['food'] }}</li>
+                                        @endif
+                                        @if ($unit['wood'] > 0)
+                                            <li>Wood : {{ $unit['wood'] }}</li>
+                                        @endif
+                                        @if ($unit['rock'] > 0)
+                                            <li>Rock : {{ $unit['rock'] }}</li>
+                                        @endif
+                                        @if ($unit['steel'] > 0)
+                                            <li>Steel : {{ $unit['steel'] }}</li>
+                                        @endif
+                                        @if ($unit['gold'] > 0)
+                                            <li>Gold : {{ $unit['gold'] }}</li>
+                                        @endif
                                         @if ($unit['items'] !== null)
                                             @foreach ($unit['items'] as $item)
                                                 <li>{{ $item['name'] }}</li>

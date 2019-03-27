@@ -126,7 +126,7 @@
                     $items_needed = explode(";", $unit->item_needed);
                     foreach ($items_needed as $item => $val)
                     {
-                        $item_name = DB::table('forge')->where('id', '=', $val);
+                        $item_name = DB::table('forge')->where('id', '=', $val)->value('name');
                         array_push($items_required, ["name" => $item_name]);
                     }
                 }

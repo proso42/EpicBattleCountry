@@ -129,7 +129,7 @@
                     }
                 }
                 else
-                    $item = null;
+                    $items_required = null;
                 if ($unit->mount > 0)
                     $mount = DB::table('mounts')->where('id', '=', $unit->mount)->value('mount_name');
                 else

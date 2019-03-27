@@ -10,6 +10,15 @@
     <body>
         @include('default')
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding-right: 10px;">
+                <div id="error_empty_input" class="forge-input-error" style="display: none;">
+                    <p>Merci de remplir le champs !</p>
+                </div>
+                <div id="error_bad_input" class="forge-input-error" style="display: none;">
+                    <p>Merci de remplir correctement le champs !</p>
+                </div>
+                <div id="error_negative_value" class="forge-input-error" style="display: none;">
+                    <p>Merci de renseigner une valeur supérieur à zéro !</p>
+                </div>
                 @if ($allowed == 0)
                     <p>Vous devez construire une caserne avant de pouvoir former des unitées !</p>
                 @else
@@ -58,13 +67,83 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <input type="button" class="army-button col-lg-2 col-md-2 col-sm-2 col-2" value="Entrainer">
+                                <input onclick="train('{{ $unit['name'] }}')" type="button" class="army-button col-lg-2 col-md-2 col-sm-2 col-2" value="Entrainer">
                             </div>
                         @endforeach
+                    </div>
+                    <div id="confirm_win" class="confirm-win" style="display: none">
+                        <h3 id="confirm-title" style="margin-top: 25px"></h3>
+                        <ul style="text-align:left;margin-top: 25px;">
+                            <li id="list1"><span style="margin-right:5px" id="food_list"></span><i id="food_icon" class=""></i></li>
+                            <li id="list2"><span style="margin-right:5px" id="wood_list"></span><i id="wood_icon" class=""></i></li>
+                            <li id="list3"><span style="margin-right:5px" id="rock_list"></span><i id="rock_icon" class=""></i></li>
+                            <li id="list4"><span style="margin-right:5px" id="steel_list"></span><i id="steel_icon" class=""></i></li>
+                            <li id="list5"><span style="margin-right:5px" id="gold_list"></span><i id="gold_icon" class=""></i></li>
+                            @for ($i = 0; $i < 10; $i++)
+                                <li id="list_{{ $i + 5}}"><span style="margin-right: 5px;" id="item_list{{ $i }}"></span><i id="item_{{ $i }}_icon" class="fas fa-cog icon"></i></li>
+                            @endfor
+                            <li id="list_last"><span style="margin-right:5px" id="mount_list"></span><i id="mount_icon" class="fas fa-paw"></i></li>
+                            <li><span style="margin-right:5px" id="time_list"></span><i class="fas fa-clock"></i></li>
+                        </ul>
+                        <input onclick="confirm()" id="confirm-button" type="button" class="army-button" value="Confirmer">
+                        <input onclick="cancel()" type="button" class="forge-button-cancel" value="Annuler">
                     </div>
                 @endif
             </div>
         </div>
         <input id="_token" name="_token" type="hidden" value="{{csrf_token()}}">
+        <script>
+
+            var g_name = "";
+
+            function train(name)
+            {
+                g_name = name;
+                var _token = document.getElementById("_token").value;
+                var quantity = document.getElementById("input_" + name).value;
+                if (quantity == "")
+                {
+                    document.getElementById("error_empty_input").style.display = "";
+                    setTimeout(() =>{
+                        document.getElementById("error_empty_input").style.display = 'none';
+                    }, 5000);
+                    return ;
+                }
+                else if (!(!isNaN(parseFloat(quantity)) && isFinite(quantity)))
+                {
+                    document.getElementById("error_bad_input").style.display = "";
+                    setTimeout(() =>{
+                        document.getElementById("error_bad_input").style.display = 'none';
+                    }, 5000);
+                    return ;
+                }
+                else if (parseInt(quantity) <= 0)
+                {
+                    document.getElementById("error_negative_value").style.display = "";
+                    setTimeout(() =>{
+                        document.getElementById("error_negative_value").style.display = 'none';
+                    }, 5000);
+                    return ;
+                }
+                quantity = parseInt(quantity);
+                var name_format = name.replace(/\s/gi, "_");
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'http://www.epicbattlecorp.fr/calculate_training_price');
+                xhr.onreadystatechange =  function()
+                {
+                    if (xhr.readyState === 4 && xhr.status === 200)
+                    {
+                        if (xhr.responseText === "unit_error")
+                        {
+                            console.log('unit_error');
+                            return ;
+                        }
+                        console.log(xhr.responseText);
+                    }
+                }
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.send('_token=' + _token + '&name=' + name_format + "&quantity=" + quantity);
+            }
+        </script>
     </body>
 </html>

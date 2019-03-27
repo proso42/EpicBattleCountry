@@ -165,6 +165,101 @@
             else
                 return ($duration . " j");
         }
+
+        public function calculate_training_price(Request $request)
+        {
+            $unit_name = preg_replace("/_/", " ", $request['name']);
+            $quantity = $request['quantity'];
+            $city_id = session()->get('city_id');
+            $unit = DB::table('units')
+            ->where('name', '=', $unit_name)
+            ->first();
+            if ($unit === null)
+                return ("unit_error");
+            $city_res = DB::table('cities')
+            ->where('id', '=', $city_id)
+            ->first();
+            $all_items = DB::table('forge')->select('name')->get();
+            $duration = $this->sec_to_date($unit->duration * $quantity);
+            $food_required = 0;
+            $enough_food = "fas fa-check icon-color-green";
+            $wood_required = 0;
+            $enough_wood = "fas fa-check icon-color-green";
+            $rock_required = 0;
+            $enough_rock = "fas fa-check icon-color-green";
+            $gold_required = 0;
+            $enough_steel = "fas fa-check icon-color-green";
+            $steel_required = 0;
+            $enough_gold = "fas fa-check icon-color-green";
+            $enough_mount = "fas fa-check icon-color-green";
+            $allowed = "OK";
+            $res_required = explode(";", $unit->basic_price);
+            if ($unit->mount == 0)
+                $mount_required = 0;
+            else
+            {
+                $mount_required = DB::table('mount')->where('id', '=', $unit->mount)->value('mount_name');
+                $mount_name_format = preg_replace('/\s/', "_", $mount_required);
+                if ($city_res->$mount_name_format < $quantity)
+                {
+                    $enough_mount = "fas fa-times icon-color-red";
+                    $allowed = "KO";
+                }
+            }
+            $items_required = explode(";", $unit->item_needed);
+            $items_owned = [];
+            foreach ($items_required as $item => $val)
+            {
+                $item_name = $all_items[$val]->name;
+                $item_name_format = preg_replace('/\s/', "_", $item_name);
+                if ($city_res->$item_name_format < $quantity)
+                {
+                    array_push($items_owned, ["name" => $item_name, "need" => $quantity, "enough" => "fas fa-times icon-color-red"]);
+                    $allowed = "KO";
+                }
+                else
+                    array_push($items_owned, ["name" => $item_name, "need" => $quantity, "enough" => "fas fa-check icon-color-green"]);
+            }
+            foreach ($res_required as $res => $amount)
+            {
+                if ($amount[-1] == "F")
+                    $food_required = intval(substr($amount, 0, -1)) * $quantity;
+                else if ($amount[-1] == "W")
+                    $wood_required = intval(substr($amount, 0, -1)) * $quantity;
+                else if ($amount[-1] == "R")
+                    $rock_required = intval(substr($amount, 0, -1)) * $quantity;
+                else if ($amount[-1] == "S")
+                    $steel_required = intval(substr($amount, 0, -1)) * $quantity;
+                else
+                    $gold_required = intval(substr($amount, 0, -1)) * $quantity;
+            }
+            if ($food_required > $city_res->food)
+            {
+                $enough_food = "fas fa-times icon-color-red";
+                $allowed = "KO";
+            }
+            if ($wood_required > $city_res->wood)
+            {
+                $enough_wood = "fas fa-times icon-color-red";
+                $allowed = "KO";
+            }
+            if ($rock_required > $city_res->rock)
+            {
+                $enough_rock = "fas fa-times icon-color-red";
+                $allowed = "KO";
+            }
+            if ($steel_required > $city_res->steel)
+            {
+                $enough_steel = "fas fa-times icon-color-red";
+                $allowed = "KO";
+            }
+            if ($gold_required > $city_res->gold)
+            {
+                $enough_gold = "fas fa-times icon-color-red";
+                $allowed = "KO";
+            }
+            return ([$allowed, $food_required, $enough_food, $wood_required, $enough_wood, $rock_required, $enough_rock, $steel_required, $enough_steel, $gold_required, $enough_gold, $mount_required, $enough_mount, $duration, $items_owned]);
+        }
     }
 
 ?>

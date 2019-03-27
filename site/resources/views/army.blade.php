@@ -58,8 +58,8 @@
                                         </ul>
                                     </div>
                                 </div>
+                                <input type="button" class="army-button col-lg-2 col-md-2 col-sm-2 col-2" value="Entrainer">
                             </div>
-                            <input type="button" class="army-button col-lg-2 col-md-2 col-sm-2 col-2" value="Entrainer">
                         @endforeach
                     </div>
                 @endif

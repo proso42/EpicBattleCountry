@@ -218,7 +218,7 @@
                             }
                             else
                             {
-                                document.getElementById("iten_" + i + "_icon").className = value;
+                                document.getElementById("item_" + i + "_icon").className = value;
                             }
                             i++;
                         });

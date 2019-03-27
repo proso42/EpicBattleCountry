@@ -33,6 +33,9 @@
                                 <div class="army-ressources-details">
                                     <ul>
                                         
+                                        @if ($unit['mount'] !== null)
+                                            <li>{{ $unit['mount'] }}</li>
+                                        @endif
                                         <li>Time : {{ $unit['duration'] }} <i class="fas fa-clock"></i></li>
                                     </ul>
                                 </div>

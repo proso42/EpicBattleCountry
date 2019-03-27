@@ -15,7 +15,18 @@
                 @else
                     <div id="unit_list">
                         @foreach ($allowed_units as $unit)
-                            <input id="input_{{ $unit['name'] }}" type="text" placeholder="Quantité" class="army-input col-lg-2 col-md-2 col-sm-2 col-2">
+                            <div id="id_{{ $unit['name'] }}" class="row" style="align-items: baseline;line-height: 31px;">
+                                <div class="army-unit offset-lg-2 offset-md-2 offset-sm-2 offset-2 col-lg-2 col-md-2 col-sm-2 col-2" style="text-align:center">
+                                    <span>{{ $unit['name'] }}</span>
+                                    <div class="army-info-unit">
+                                        <ul>
+                                            <li>Life : {{ $unit['life'] }} <i class="fas fa-heartbeat"></i></li>
+                                            <li>Speed : {{ $unit['speed'] }} <i class="fas fa-tachometer-alt"></i></li>
+                                            <li>Power : {{ $unit['power'] }} <i class="fas fa-fist-raised"></i></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="army-ressources col-lg-2 col-md-2 col-sm-2 col-2">
                                 Ressources Items
                                 <div class="army-ressources-details">

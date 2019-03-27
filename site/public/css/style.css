@@ -912,6 +912,7 @@ input::placeholder
 {
     background-color: honeydew;
     font-weight: bold;
+    height: 100%;
 }
 
 .army-info-unit
@@ -955,6 +956,7 @@ input::placeholder
 {
     color: white;
     font-weight: bold;
+    height: 100%;
 }
 
 .army-ressources-details

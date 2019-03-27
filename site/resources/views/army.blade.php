@@ -222,6 +222,8 @@
                             }
                             i++;
                         });
+                        document.getElementById("unit_list").style.display = "none";
+                        document.getElementById("confirm_win").style.display = "";
                     }
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

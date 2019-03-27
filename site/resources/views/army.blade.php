@@ -80,13 +80,13 @@
                             <li id="list4"><span style="margin-right:5px" id="steel_list"></span><i id="steel_icon" class=""></i></li>
                             <li id="list5"><span style="margin-right:5px" id="gold_list"></span><i id="gold_icon" class=""></i></li>
                             @for ($i = 0; $i < 10; $i++)
-                                <li id="list_{{ $i + 5}}"><span style="margin-right: 5px;" id="item_list{{ $i }}"></span><i id="item_{{ $i }}_icon" class="fas fa-cog icon"></i></li>
+                                <li id="list{{ $i + 6}}"><span style="margin-right: 5px;" id="item_list{{ $i }}"></span><i id="item_{{ $i }}_icon" class="fas fa-cog icon"></i></li>
                             @endfor
                             <li id="list_last"><span style="margin-right:5px" id="mount_list"></span><i id="mount_icon" class="fas fa-paw"></i></li>
                             <li><span style="margin-right:5px" id="time_list"></span><i class="fas fa-clock"></i></li>
                         </ul>
-                        <input onclick="confirm()" id="confirm-button" type="button" class="army-button" value="Confirmer">
-                        <input onclick="cancel()" type="button" class="forge-button-cancel" value="Annuler">
+                        <input id="confirm-button" type="button" class="army-button" value="Confirmer">
+                        <input type="button" class="army-button-cancel" value="Annuler">
                     </div>
                 @endif
             </div>
@@ -138,7 +138,88 @@
                             console.log('unit_error');
                             return ;
                         }
-                        console.log(xhr.responseText);
+                        //console.log(xhr.responseText);
+                        for (let i = 6; i < 16; i++)
+                            document.getElementById("list" + i).style.display = "none";
+                        var ressources_need = xhr.responseText.split("[");
+                        var basic = ressources_need[1].replace(/"/gi, "").split(",");
+                        var items = ressources_need[2].replace(/[{}"\]]/gm, "").split(",");
+                        if (basic[0] == "OK")
+                        {
+                            document.getElementById("confirm-button").style.display = "none";
+                            document.getElementById("confirm-button").disabled = "true";
+                        }
+                        else
+                        {
+                            document.getElementById("confirm-button").style.display = "";
+                            document.getElementById("confirm-button").disabled = "";  
+                        }
+                        document.getElementById("confirm-title").textContent = "Entrainer " + quantity + " " + name + " ?";
+                        if (basic[1] > 0)
+                        {
+                            document.getElementById("food_list").textContent = "Food : " +  basic[1];
+                            document.getElementById("food_icon").className = basic[2];
+                            document.getElementById("list1").style.display = "";
+                        }
+                        else
+                            document.getElementById("list1").style.display = "none";
+                        if (basic[3] > 0)
+                        {
+                            document.getElementById("wood_list").textContent = "Wood : " +  basic[3];
+                            document.getElementById("wood_icon").className = basic[4];
+                            document.getElementById("list2").style.display = "";
+                        }
+                        else
+                            document.getElementById("list2").style.display = "none";
+                        if (basic[5] > 0)
+                        {
+                            document.getElementById("rock_list").textContent = "Rock : " +  basic[5];
+                            document.getElementById("rock_icon").className = basic[6];
+                            document.getElementById("list3").style.display = "";
+                        }
+                        else
+                            document.getElementById("list3").style.display = "none";
+                        if (basic[7] > 0)
+                        {
+                            document.getElementById("steel_list").textContent = "Steel : " +  basic[7];
+                            document.getElementById("steel_icon").className = basic[8];
+                            document.getElementById("list4").style.display = "";
+                        }
+                        else
+                            document.getElementById("list4").style.display = "none";
+                        if (basic[9] > 0)
+                        {
+                            document.getElementById("gold_list").textContent = "Gold : " +  basic[9];
+                            document.getElementById("gold_icon").className = basic[10];
+                            document.getElementById("list5").style.display = "";
+                        }
+                        else
+                            document.getElementById("list5").style.display = "none";
+                        if (basic[11] == 0)
+                            document.getElementById("list_last").style.display = "none";
+                        else
+                        {
+                            document.getElementById("mount_list").textContent = "Mount : " +  basic[11] + "x" + quantity;
+                            document.getElementById("mount_icon").className = basic[12];
+                            document.getElementById("list_last").style.display = "";
+                        }
+                        document.getElementById("time_list").textContent = "Time : " +  basic[13] + " ";
+                        var i = 0;
+                        items.forEach(function(e){
+                            let e_split = e.split(":");
+                            let type = e_split[0];
+                            let value = e_split[1];
+                            if (type == "item")
+                            {
+                                document.getElementById("list" + i + 6).style.display = "";
+                                document.getElementById("item_list" + i).textContent = value + " x" + quantity;
+                            }
+                            else
+                            {
+                                document.getElementById("iten_" + i + "_icon").className = value;
+                            }
+                            i++;
+                        });
                     }
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

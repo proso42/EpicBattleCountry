@@ -27,37 +27,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="army-ressources col-lg-2 col-md-2 col-sm-2 col-2">
-                                Ressources Items
-                                <div class="army-ressources-details">
-                                    <ul>
-                                        @if ($unit['food'] > 0)
-                                            <li>Food : {{ $unit['food'] }}</li>
-                                        @endif
-                                        @if ($unit['wood'] > 0)
-                                            <li>Wood : {{ $unit['wood'] }}</li>
-                                        @endif
-                                        @if ($unit['rock'] > 0)
-                                            <li>Rock : {{ $unit['rock'] }}</li>
-                                        @endif
-                                        @if ($unit['steel'] > 0)
-                                            <li>Steel : {{ $unit['steel'] }}</li>
-                                        @endif
-                                        @if ($unit['gold'] > 0)
-                                            <li>Gold : {{ $unit['gold'] }}</li>
-                                        @endif
-                                        @if ($unit['items'] !== null)
-                                            @foreach ($unit['items'] as $item)
-                                                <li>{{ $item['name'] }}</li>
-                                            @endforeach
-                                        @endif
-                                        @if ($unit['mount'] !== null)
-                                            <li>{{ $unit['mount'] }}</li>
-                                        @endif
-                                        <li>Time : {{ $unit['duration'] }} <i class="fas fa-clock"></i></li>
-                                    </ul>
-                                </div>
-                            </div>
+                            <input id="input_{{ $unit['name'] }}" type="text" placeholder="Quantité" class="army-input col-lg-2 col-md-2 col-sm-2 col-2">
                             <input type="button" class="army-button col-lg-2 col-md-2 col-sm-2 col-2" value="Entrainer">
                         @endforeach
                     </div>

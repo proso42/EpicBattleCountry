@@ -85,19 +85,11 @@
             }
             else
                 $move_map = 0;
-            if (isset($_GET['x_offset']))
-                $verif_x = $_GET['x_offset'];
-            else
-                $verif_x = "NONE";
-                if (isset($_GET['y_offset']))
-                $verif_y = $_GET['y_offset'];
-            else
-                $verif_y = "NONE";
             $all_cells = DB::table('map')
-            ->where('x_pos' ,'>=', $city->x_pos - $cartographer)
-            ->where('x_pos', '<=', $city->x_pos + $cartographer)
-            ->where('y_pos', '>=', $city->y_pos - $cartographer)
-            ->where('y_pos', '<=', $city->y_pos + $cartographer)
+            ->where('x_pos' ,'>=', $x_pos - $cartographer)
+            ->where('x_pos', '<=', $x_pos + $cartographer)
+            ->where('y_pos', '>=', $y_pos - $cartographer)
+            ->where('y_pos', '<=', $y_pos + $cartographer)
             ->orderBy('y_pos', 'desc')
             ->orderBy('x_pos', 'asc')
             ->get();
@@ -120,7 +112,7 @@
                     array_push($visible_cells, ["x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "class" => $cell->icon, "title" => $cell->type]); 
 
             }
-            return view('map', compact('verif_y', 'verif_x', 'move_map' ,'cartographer', 'visible_cells', 'x_pos', 'city_x', 'y_pos', 'city_y', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
+            return view('map', compact('move_map' ,'cartographer', 'visible_cells', 'x_pos', 'city_x', 'y_pos', 'city_y', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
         }
     }
 

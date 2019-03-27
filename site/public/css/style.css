@@ -897,3 +897,116 @@ input::placeholder
     background-color: lemonchiffon;
     border: 1px sienna dotted;
 }
+
+.army-unit
+{
+    text-align: center;
+    background-color: floralwhite;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin-right: 20px;
+    height: 32px;
+}
+
+.army-unit:hover
+{
+    background-color: honeydew;
+    font-weight: bold;
+}
+
+.army-info-unit
+{
+    text-align: left;
+    display: none;
+}
+
+.army-unit:hover .army-info-unit
+{
+    display: block;
+}
+
+.army-input
+{
+    margin-top: 25px;
+    background-color: tan;
+    color: black;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    height: 32px;
+    width: 204px;
+}
+
+.army-ressources
+{
+    margin-top: 25px;
+    margin-right: 20px;
+    margin-left: 20px;
+    background-color: rgba(105, 105, 105, 0.9);
+    color: black;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    height: 32px;
+    width: 204px;
+}
+
+.army-ressources:hover
+{
+    color: white;
+    font-weight: bold;
+}
+
+.army-ressources-details
+{
+    text-align: left;
+    display: none;
+}
+
+.army-ressources:hover .army-ressources-details
+{
+    display: block;
+}
+
+.army-button
+{
+    margin-top: 26px;
+    line-height: 0;
+    background-color: aquamarine;
+    color: black;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 32px;
+    width: 204px;
+}
+
+.army-button:hover
+{
+    background-color: darkcyan;
+    font-weight: bold;
+    color: white;
+}
+
+.army-button-cancel
+{
+    margin-top: 26px;
+    margin-bottom: 20px;
+    line-height: 0;
+    background-color: lightpink;
+    color: black;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 32px;
+    width: 204px;
+}
+
+.army-button-cancel:hover
+{
+    background-color: crimson;
+    font-weight: bold;
+    color: white;
+}

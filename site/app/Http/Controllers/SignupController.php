@@ -109,26 +109,21 @@
                         'owner' => $user_id,
                         'x_pos' => $city_x_pos,
                         'y_pos' => $city_y_pos,
-                        'is_capital' => 1,
-                        'food' => 500,
-                        'max_food' => 10000,
-                        'wood' => 350,
-                        'max_wood' => 10000,
-                        'rock' => 350,
-                        'max_rock' => 10000,
-                        'steel' => 100,
-                        'max_steel' => 10000,
-                        'gold' => 25,
-                        'max_gold' => 10000,
-                        'Douves_de_lave' => -1,
-                        "Fosse_cachée" => -1,
-                        "Temple_de_la_Vie" => -1,
-                        "Temple_de_la_Montagne" => -1,
-                        "Temple_de_la_Mort" => -1,
-                        "Arbre_de_la_Vie" => -1,
-                        "Statue_du_Dieu_Nain" => -1,
-                        "Statue_engloutie_de_la_Mort" => -1)   
+                        'is_capital' => 1)   
                 );
+                DB::table('cities_buildings')
+                ->insert(array(
+                    'city_id' => $city_id,
+                    'owner' => $user_id,
+                    'Douves_de_lave' => -1,
+                    "Fosse_cachée" => -1,
+                    "Temple_de_la_Vie" => -1,
+                    "Temple_de_la_Montagne" => -1,
+                    "Temple_de_la_Mort" => -1,
+                    "Arbre_de_la_Vie" => -1,
+                    "Statue_du_Dieu_Nain" => -1,
+                    "Statue_engloutie_de_la_Mort" => -1
+                ));
                 DB::table('cities_techs')
                 ->insert(array(
                     'city_id' => $city_id,
@@ -144,26 +139,21 @@
                         'owner' => $user_id,
                         'x_pos' => $city_x_pos,
                         'y_pos' => $city_y_pos,
-                        'is_capital' => 1,
-                        'food' => 500,
-                        'max_food' => 2500,
-                        'wood' => 350,
-                        'max_wood' => 2500,
-                        'rock' => 350,
-                        'max_rock' => 2500,
-                        'steel' => 100,
-                        'max_steel' => 2500,
-                        'gold' => 25,
-                        'max_gold' => 2500,
-                        'Douves_de_lave' => -1,
-                        "Temple_de_la_Guerre" => -1,
-                        "Temple_de_la_Montagne" => -1,
-                        "Temple_de_la_Mort" => -1,
-                        "Statue_de_la_Guerre" => -1,
-                        "Statue_du_Dieu_Nain" => -1,
-                        "Statue_engloutie_de_la_Mort" => -1,
-                        "Sanctuaire" => -1)
+                        'is_capital' => 1)
                 );
+                DB::table('cities_buildings')
+                ->insert(array(
+                    'city_id' => $city_id,
+                    'owner' => $user_id,
+                    'Douves_de_lave' => -1,
+                    "Temple_de_la_Guerre" => -1,
+                    "Temple_de_la_Montagne" => -1,
+                    "Temple_de_la_Mort" => -1,
+                    "Statue_de_la_Guerre" => -1,
+                    "Statue_du_Dieu_Nain" => -1,
+                    "Statue_engloutie_de_la_Mort" => -1,
+                    "Sanctuaire" => -1
+                ));
                 DB::table('cities_techs')
                 ->insert(array(
                     'city_id' => $city_id,
@@ -179,28 +169,23 @@
                         'owner' => $user_id,
                         'x_pos' => $city_x_pos,
                         'y_pos' => $city_y_pos,
-                        'is_capital' => 1,
-                        'food' => 500,
-                        'max_food' => 2500,
-                        'wood' => 350,
-                        'max_wood' => 2500,
-                        'rock' => 350,
-                        'max_rock' => 2500,
-                        'steel' => 100,
-                        'max_steel' => 2500,
-                        'gold' => 25,
-                        'max_gold' => 2500,
-                        "Champs" => -1,
-                        'Douves_de_lave' => -1,
-                        "Fosse_cachée" => -1,
-                        "Temple_de_la_Guerre" => -1,
-                        "Temple_de_la_Vie" => -1,
-                        "Temple_de_la_Mort" => -1,
-                        "Arbre_de_la_Vie" => -1,
-                        "Statue_de_la_Guerre" => -1,
-                        "Statue_engloutie_de_la_Mort" => -1,
-                        "Sanctuaire" => -1)
+                        'is_capital' => 1)
                 );
+                DB::table('cities_buildings')
+                ->insert(array(
+                    'city_id' => $city_id,
+                    'owner' => $user_id,
+                    "Champs" => -1,
+                    'Douves_de_lave' => -1,
+                    "Fosse_cachée" => -1,
+                    "Temple_de_la_Guerre" => -1,
+                    "Temple_de_la_Vie" => -1,
+                    "Temple_de_la_Mort" => -1,
+                    "Arbre_de_la_Vie" => -1,
+                    "Statue_de_la_Guerre" => -1,
+                    "Statue_engloutie_de_la_Mort" => -1,
+                    "Sanctuaire" => -1
+                ));
                 DB::table('cities_techs')
                 ->insert(array(
                     'city_id' => $city_id,
@@ -216,28 +201,23 @@
                         'owner' => $user_id,
                         'x_pos' => $city_x_pos,
                         'y_pos' => $city_y_pos,
-                        'is_capital' => 1,
-                        'food' => 500,
-                        'max_food' => 2500,
-                        'wood' => 350,
-                        'max_wood' => 2500,
-                        'rock' => 350,
-                        'max_rock' => 2500,
-                        'steel' => 100,
-                        'max_steel' => 2500,
-                        'gold' => 25,
-                        'max_gold' => 2500,
-                        "Champs" => -1,
-                        "Mur_basique" => -1,
-                        "Fosse_cachée" => -1,
-                        "Temple_de_la_Guerre" => -1,
-                        "Temple_de_la_Vie" => -1,
-                        "Temple_de_la_Montagne" => -1,
-                        "Arbre_de_la_Vie" => -1,
-                        "Statue_de_la_Guerre" => -1,
-                        "Statue_du_Dieu_Nain" => -1,
-                        "Sanctuaire" => -1)
+                        'is_capital' => 1)
                 );
+                DB::table('cities_buildings')
+                ->insert(array(
+                    'city_id' => $city_id,
+                    'owner' => $user_id,
+                    "Champs" => -1,
+                    "Mur_basique" => -1,
+                    "Fosse_cachée" => -1,
+                    "Temple_de_la_Guerre" => -1,
+                    "Temple_de_la_Vie" => -1,
+                    "Temple_de_la_Montagne" => -1,
+                    "Arbre_de_la_Vie" => -1,
+                    "Statue_de_la_Guerre" => -1,
+                    "Statue_du_Dieu_Nain" => -1,
+                    "Sanctuaire" => -1
+                ));
                 DB::table('cities_techs')
                 ->insert(array(
                     'city_id' => $city_id,

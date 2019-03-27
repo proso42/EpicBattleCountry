@@ -144,8 +144,8 @@
                         var ressources_need = xhr.responseText.split("[");
                         var basic = ressources_need[1].replace(/"/gi, "").split(",");
                         console.log("BASIC : " + basic);
-                        console.log("ITEMS : " + items);
                         var items = ressources_need[2].replace(/[{}"\]]/gm, "").split(",");
+                        console.log("ITEMS : " + items);
                         if (basic[0] == "OK")
                         {
                             document.getElementById("confirm-button").style.display = "none";

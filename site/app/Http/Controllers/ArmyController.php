@@ -206,7 +206,8 @@
                     $allowed = "KO";
                 }
             }
-            $items_required = explode(";", $unit->item_needed);
+            return ("OK");
+            /*$items_required = explode(";", $unit->item_needed);
             $items_owned = [];
             foreach ($items_required as $item => $val)
             {
@@ -259,7 +260,7 @@
                 $allowed = "KO";
             }
             return ([$allowed, $food_required, $enough_food, $wood_required, $enough_wood, $rock_required, $enough_rock, $steel_required, $enough_steel, $gold_required, $enough_gold, $mount_required, $enough_mount, $duration, $items_owned]);
-        }
+        }*/
     }
 
 ?>

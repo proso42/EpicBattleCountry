@@ -29,7 +29,7 @@
                             </div>
                             <input id="input_{{ $unit['name'] }}" type="text" placeholder="Quantité" class="army-input col-lg-2 col-md-2 col-sm-2 col-2">
                             <div class="army-ressources col-lg-2 col-md-2 col-sm-2 col-2">
-                                Ressources & Items
+                                Ressources - Items
                                 <div class="army-ressources-details">
                                     <ul>
                                         @if ($unit['food'] > 0)

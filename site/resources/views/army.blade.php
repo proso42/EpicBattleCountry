@@ -14,6 +14,7 @@
                     <p>Vous devez construire une caserne avant de pouvoir former des unitées !</p>
                 @else
                     <div id="unit_list">
+                        <!--
                         @foreach ($allowed_units as $unit)
                             <div id="id_{{ $unit['name'] }}" class="row" style="align-items: baseline;line-height: 31px;">
                                 <div class="army-unit offset-lg-2 offset-md-2 offset-sm-2 offset-2 col-lg-2 col-md-2 col-sm-2 col-2" style="text-align:center">
@@ -61,6 +62,7 @@
                             </div>
                             <input type="button" class="army-button col-lg-2 col-md-2 col-sm-2 col-2" value="Entrainer">
                         @endforeach
+                        -->
                     </div>
                 @endif
             </div>

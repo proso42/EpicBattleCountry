@@ -89,7 +89,7 @@
                     $building_required = explode(';', $unit->building_required);
                     $building_name = DB::table('army_buildings')->where('id', '=', $building_required[0])->value('name');
                     $building_name_format = preg_replace('/\s/', '_', $building_name);
-                    $building_niv = $city_builds->building_name_format;
+                    $building_niv = $city_builds->$building_name_format;
                     if ($building_required[1] > $building_niv)
                         continue;
                 }
@@ -97,7 +97,7 @@
                 {
                     $tech_name = DB::table('techs')->where('id', '=', $unit->tech_required)->value('name');
                     $tech_name_format = preg_replace('/\s/', '_', $tech_name);
-                    $tech_niv = $city_techs->tech_name_format;
+                    $tech_niv = $city_techs->$tech_name_format;
                     if ($tech_niv <= 0)
                         continue ;
                 }

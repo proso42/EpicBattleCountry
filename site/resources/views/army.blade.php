@@ -33,6 +33,11 @@
                                 <div class="army-ressources-details">
                                     <ul>
                                         
+                                        @if ($unit['items'] !== null)
+                                            @foreach ($unit['items'] as $item)
+                                                <li>{{ $item['name'] }}</li>
+                                            @endforeach
+                                        @endif
                                         @if ($unit['mount'] !== null)
                                             <li>{{ $unit['mount'] }}</li>
                                         @endif

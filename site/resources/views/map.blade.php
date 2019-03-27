@@ -10,11 +10,17 @@
     <body>
         @include('default')
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding-right: 10px;">
+                @if ($verif_x !== 'NONE')
+                    <span>x : {{ $verif_x }}</span>
+                @endif
+                @if ($verif_y !== 'NONE')
+                    <span>y : {{ $verif_y }}</span>
+                @endif
                 @if ($move_map == 1)
-                    <i class="fas fa-arrow-circle-left" style="cursor: pointer" onclick="move_map({{ $x_pos - $city_x - 1}}, {{ $y_pos - $city_y}})"></i>
+                    <i class="fas fa-arrow-circle-left" style="cursor: pointer" onclick="move_map({{ $x_pos - $city_x + 1}}, {{ $y_pos - $city_y}})"></i>
                     <i class="fas fa-arrow-circle-up" style="cursor: pointer" onclick="move_map({{ $x_pos - $city_x}}, {{ $y_pos - $city_y + 1 }})"></i>
                     <i class="fas fa-arrow-circle-down" style="cursor: pointer" onclick="move_map({{ $x_pos - $city_x}}, {{ $y_pos - $city_y - 1 }})"></i>
-                    <i class="fas fa-arrow-circle-right" style="cursor: pointer" onclick="move_map({{ $x_pos - $city_x + 1}}, {{ $y_pos - $city_y}})"></i>
+                    <i class="fas fa-arrow-circle-right" style="cursor: pointer" onclick="move_map({{ $x_pos - $city_x - 1}}, {{ $y_pos - $city_y}})"></i>
                 @endif
                 <br/>
                 <div style="display: inline-block">

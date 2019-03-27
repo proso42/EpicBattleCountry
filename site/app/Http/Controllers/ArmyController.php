@@ -208,12 +208,12 @@
             }
             $items_required = explode(";", $unit->item_needed);
             $items_owned = [];
-            $i = 0;
-            foreach ($items_required as $item => $val)
+            if ($unit->item_needed !== "NONE")
             {
-                //$item_name = $all_items[$val]->name;
-                $item_name = DB::table('forge')->where('id', '=', $val)->value('name');
-                return ("OK boucle");
+                foreach ($items_required as $item => $val)
+                {
+                $item_name = $all_items[$val]->name;
+                //$item_name = DB::table('forge')->where('id', '=', $val)->value('name');
                 $item_name_format = preg_replace('/\s/', "_", $item_name);
                 if ($city_res->$item_name_format < $quantity)
                 {
@@ -222,9 +222,9 @@
                 }
                 else
                     array_push($items_owned, ["name" => $item_name, "need" => $quantity, "enough" => "fas fa-check icon-color-green"]);
-                $i++;
-            }
-            return ("OK final : " . $i);
+                }
+            }            
+            return ("OK final");
             /*foreach ($res_required as $res => $amount)
             {
                 if ($amount[-1] == "F")

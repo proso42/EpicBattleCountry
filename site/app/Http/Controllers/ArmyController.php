@@ -206,8 +206,7 @@
                     $allowed = "KO";
                 }
             }
-            return ("OK");
-            /*$items_required = explode(";", $unit->item_needed);
+            $items_required = explode(";", $unit->item_needed);
             $items_owned = [];
             foreach ($items_required as $item => $val)
             {
@@ -221,7 +220,7 @@
                 else
                     array_push($items_owned, ["name" => $item_name, "need" => $quantity, "enough" => "fas fa-check icon-color-green"]);
             }
-            foreach ($res_required as $res => $amount)
+            /*foreach ($res_required as $res => $amount)
             {
                 if ($amount[-1] == "F")
                     $food_required = intval(substr($amount, 0, -1)) * $quantity;

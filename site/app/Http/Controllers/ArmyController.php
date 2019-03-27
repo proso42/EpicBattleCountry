@@ -134,7 +134,7 @@
                     $mount = DB::table('mounts')->where('id', '=', $unit->mount)->value('mount_name');
                 else
                     $mount = null;
-                $duration = $this->set_to_date($unit->duration);
+                $duration = $this->sec_to_date($unit->duration);
                 array_push($allowed_units, ["name" => $unit->name, "food" => $food_required,  "wood" => $wood_required, "rock" => $rock_required, "steel" => $steel_required, "gold" => $gold_required, "duration" => $duration, "items" => $items_required, "mount" => $mount, "life" => $unit->life, "speed" => $unit->speed, "power" => $unit->power]);
             }
         }

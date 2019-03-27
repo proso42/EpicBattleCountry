@@ -211,7 +211,8 @@
             $i = 0;
             foreach ($items_required as $item => $val)
             {
-                $item_name = $all_items[$val]->name;
+                //$item_name = $all_items[$val]->name;
+                $item_name = DB::table('forge')->where('id', '=', $val)->value('name');
                 return ("OK boucle");
                 $item_name_format = preg_replace('/\s/', "_", $item_name);
                 if ($city_res->$item_name_format < $quantity)

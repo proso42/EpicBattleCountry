@@ -57,11 +57,11 @@
                                             @endif
                                             @if ($unit['items'] !== null)
                                                 @foreach ($unit['items'] as $item)
-                                                    <li>{{ $item['name'] }}</li>
+                                                    <li>{{ $item['name'] }} <i class="fas fa-cog icon"></i></li>
                                                 @endforeach
                                             @endif
                                             @if ($unit['mount'] !== null)
-                                                <li>{{ $unit['mount'] }}</li>
+                                                <li>Monture : {{ $unit['mount'] }} <i class="fas fa-paw"></i></li>
                                             @endif
                                             <li>Time : {{ $unit['duration'] }} <i class="fas fa-clock"></i></li>
                                         </ul>

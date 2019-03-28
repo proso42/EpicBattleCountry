@@ -277,12 +277,14 @@
             $city_id = session()->get('city_id');
             $unit_name = preg_replace("/_/", " ", $request['name']);
             $quantity = $request['quantity'];
-            /*$unit = DB::table('units')
+            $unit = DB::table('units')
             ->where('name', '=', $unit_name)
             ->first();
             if ($unit === null)
                 return ("unit_error");
-            $city_res = DB::table('cities')
+            else
+                return ("OK");
+            /*$city_res = DB::table('cities')
             ->where('id', '=', $city_id)
             ->first();
             $finishing_date = ($unit->duration * $quantity) + time();

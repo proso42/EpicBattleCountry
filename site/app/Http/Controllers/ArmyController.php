@@ -319,10 +319,9 @@
                     $ressources_tab[$mount_name] = $city_res->$mount_name - $quantity;
             }
             $item_needed = explode(";", $unit->item_needed);
-            $all_items = DB::table('forge')->get();
+            $all_items = DB::table('forge')->select('name')->get();
             foreach ($item_needed as $item => $item_id)
             {
-                return ($all_items);
                 $item_name = preg_replace('/\s/', "_" , $all_items[$item_id]->name);
                 if ($city_res->$item_name < $quantity)
                     return ("not enough items");

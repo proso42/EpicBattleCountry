@@ -324,16 +324,9 @@
                 $all_items = DB::table('forge')->select('name')->get();
                 foreach ($item_needed as $item => $item_id)
                 {
-                    try
-                    {
-                        $item_name = $all_items[$item_id - 1]->name;
-                    }
-                    catch(Exception $e)
-                    {
-                        return ($e->getMessage());
-                    }
-                    return ("ok");
+                    $item_name = $all_items[$item_id - 1]->name;
                     $item_name_format = preg_replace('/\s/', "_", $item_name);
+                    return ("ok");
                     if ($city_res->$item_name_format < $quantity)
                         return ("not enough items");
                     else

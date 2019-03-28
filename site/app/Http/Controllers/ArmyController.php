@@ -326,7 +326,6 @@
                 {
                     $item_name = $all_items[$item_id - 1]->name;
                     $item_name_format = preg_replace('/\s/', "_", $item_name);
-                    return ("ok");
                     if ($city_res->$item_name_format < $quantity)
                         return ("not enough items");
                     else

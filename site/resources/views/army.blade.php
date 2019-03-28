@@ -24,8 +24,8 @@
                 @elseif ($allowed == -1)
                     <div class="confirm-win">
                         <h3>Entraimenemt en cours</h3>
-                        <p>{{ $waiting_unit['name'] }} x{{ $waiting_unit['quantity'] }}</p>
-                        <p id="unit_timer" duration="{{ $waiting_unit['finishing_date']}} "></p>
+                        <p>{{ $waiting_units['name'] }} x{{ $waiting_units['quantity'] }}</p>
+                        <p id="unit_timer" duration="{{ $waiting_units['finishing_date']}} "></p>
                         <input id="interrupt_unit_button" onclick="interrupt_unit()" type="button" class="army-button-cancel" value="Annuler">
                     </div>
                 @else

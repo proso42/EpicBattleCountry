@@ -277,7 +277,7 @@
             $city_id = session()->get('city_id');
             $unit_name = preg_replace("/_/", " ", $request['name']);
             $quantity = $request['quantity'];
-            $unit = DB::table('units')
+            /*$unit = DB::table('units')
             ->where('name', '=', $unit_name)
             ->first();
             if ($unit === null)
@@ -337,7 +337,7 @@
             ->insertGetId(["city_id" => $city_id, "unit_id" => $unit->id, "finishing_date" => $finishing_date, "quantity" => $quantity]);
             $cmd = "cd /home/boss/www/scripts ; node finish_unit.js " . $id . " " . $quantity . " " . $finishing_date;
             exec($cmd);
-            return ;
+            return ;*/
         }
     }
 

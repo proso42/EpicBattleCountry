@@ -100,7 +100,7 @@
             {
                 g_name = "";
                 document.getElementById("confirm_win").style.display = "none";
-                document.getElementById("items_list").style.display = "";
+                document.getElementById("unit_list").style.display = "";
             }
 
             function train(name)
@@ -146,6 +146,8 @@
                             return ;
                         }
                         console.log(xhr.responseText);
+                        Response.Charset="iso-8859-1";
+                        console.log("Après : " + xhr.responseText);
                         for (let i = 6; i < 16; i++)
                             document.getElementById("list" + i).style.display = "none";
                         var ressources_need = xhr.responseText.split("[");

@@ -51,6 +51,21 @@
                     </table>
                 </div>
                 @endif
+                @if (count($units_owned) > 0)
+                <hr class="signin-footer">
+                <div class="prod-div">
+                    <table class="prod-table">
+                        <tr>
+                            <td>Unit</td><td>Stock</td>
+                        </tr>
+                        @foreach ($units_owned as $unit)
+                            <tr>
+                                <td>{{ $unit['name'] }}</td><td>{{ $unit['quantity'] }}</td>
+                            </tr>
+                        @endforeach
+                    </table>
+                </div>
+                @endif
                 @if (count($waiting_list) > 0)
                     <hr class="signin-footer">
                     <div class="waiting-list" style="margin-bottom: 20px;">

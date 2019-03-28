@@ -309,8 +309,7 @@
                 return ("not enough basic ressources");
             else
                 $ressources_tab = ['food' => $city_res->food - $food_required, 'wood' => $city_res->wood - $wood_required, 'rock' => $city_res->rock - $rock_required, 'steel' => $city_res->steel - $steel_required, 'gold' => $city_res->gold - $gold_required];
-            return ("OK");            
-            /*$mount_required = $unit->mount;
+            $mount_required = $unit->mount;
             if ($mount_required > 0)
             {
                 $mount_name = preg_replace('/\s/', "_", DB::table('mounts')->where('id', '=', $mount_required)->value('mount_name'));
@@ -319,7 +318,8 @@
                 else
                     $ressources_tab[$mount_name] = $city_res->$mount_name - $quantity;
             }
-            $item_needed = explode(";", $unit->item_needed);
+            return ("OK");
+            /*$item_needed = explode(";", $unit->item_needed);
             $all_items = DB::table('forge')->get();
             foreach ($item_needed as $item => $item_id)
             {

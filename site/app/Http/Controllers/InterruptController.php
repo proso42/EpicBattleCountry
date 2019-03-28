@@ -160,10 +160,10 @@
             $unit = DB::table('waiting_units')
             ->where('city_id', '=', $city_id)
             ->first();
-            $units_price = DB::table('units')
+            $unit_price = DB::table('units')
             ->where('id', '=', $unit->unit_id)
             ->first();
-            $res_refund = explode(";", $price);
+            $res_refund = explode(";", $unit_price->basic_price);
             $food_refund = 0;
             $wood_refund = 0;
             $rock_refund = 0;
@@ -182,7 +182,7 @@
                 else
                     $gold_refund = intval(substr($amount, 0, -1)) * $unit->quantity;
             }
-            if ($unit->mount > 0)
+            if ($unit_price->mount > 0)
                 $mount_name = preg_replace('/\s/', "_", DB::table('mounts')->where('id', '=', $unit->mount)->value('mount_name'));
             $city_infos = DB::table('cities')
             ->where('id', '=', $city_id)
@@ -210,7 +210,7 @@
             $refound_tab = ['food' => $food_refund, 'wood' => $wood_refund, 'rock' => $rock_refund, 'steel' => $steel_refund, 'gold' => $gold_refund];
             if ($unit->mount > 0)
                 $refound_tab[$mount_name] = $city_infos->$mount_name + $quantity;
-            if ($unit->item_needed !== "NONE")
+            if ($unit_price->item_needed !== "NONE")
             {
                 $all_items = DB::table('forge')->get();
                 $items = explode(";", $unit->item_needed);

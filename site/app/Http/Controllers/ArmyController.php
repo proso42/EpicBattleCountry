@@ -318,17 +318,20 @@
                 else
                     $ressources_tab[$mount_name] = $city_res->$mount_name - $quantity;
             }
-            $item_needed = explode(";", $unit->item_needed);
-            $all_items = DB::table('forge')->select('name')->get();
-            foreach ($item_needed as $item => $item_id)
+            if ($unit->item_needed !== "NONE")
             {
-                $item_name = $all_items[$item_id - 1]->name;
-                $item_name_format = preg_replace('/\s/', "_", $item_name);
-                if ($city_res->$item_name_format < $quantity)
-                    return ("not enough items");
-                else
+                $item_needed = explode(";", $unit->item_needed);
+                $all_items = DB::table('forge')->select('name')->get();
+                foreach ($item_needed as $item => $item_id)
                 {
-                    $ressources_tab[$item_name] = $city_res->$item_name - $quantity;
+                    $item_name = $all_items[$item_id - 1]->name;
+                    $item_name_format = preg_replace('/\s/', "_", $item_name);
+                    if ($city_res->$item_name_format < $quantity)
+                        return ("not enough items");
+                    else
+                    {
+                        $ressources_tab[$item_name] = $city_res->$item_name - $quantity;
+                    }
                 }
             }
             DB::table('cities')

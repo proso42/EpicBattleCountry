@@ -85,7 +85,7 @@
             foreach ($all_units as $unit)
             {
                 $unit_format = preg_replace('/\s/', '_', $unit->name);
-                $iunit_quantity = $city_units->$unit_format;
+                $unit_quantity = $city_units->$unit_format;
                 if ($unit_quantity > 0)
                     array_push($units_owned, ["name" => $unit->name, "quantity" => $unit_quantity]);
             }

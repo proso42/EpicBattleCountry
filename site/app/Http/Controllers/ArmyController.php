@@ -64,13 +64,21 @@
                 $compact_steel = substr($steel, 0, 5) . '...';
             if ($gold > 999999)
                 $compact_gold = substr($gold, 0, 5) . '...';
+            $allowed = 1;
             if ($city_builds->Caserne == 0)
             {
                 $allowed = 0;
                 return view('army', compact('allowed', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
             }
-            else
-                $allowed = 1;
+            $busy = DB::table('waiting_units')
+            ->where('city_id', '=', $city_id)
+            ->first();
+            if ($busy !== null)
+            {
+                $allowed = -1;
+                $waiting_units = ["name" => DB::table('units')->where('id', '=', $busy->unit_id)->value('name'), "quantity" => $busy->quantity, "finishing_date" => $busy->finishing_date - time()];
+                return view('army', compact('allowed' , 'waiting_unit', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
+            }
             $allowed_units = $this->get_allowed_units($city_id, $user_race, $city_builds, $city_techs);
             return view('army', compact('allowed', 'allowed_units','food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
         }
@@ -262,6 +270,74 @@
                 $allowed = "KO";
             }
             return ([$allowed, $food_required, $enough_food, $wood_required, $enough_wood, $rock_required, $enough_rock, $steel_required, $enough_steel, $gold_required, $enough_gold, $mount_required, $enough_mount, $duration, $items_owned]);
+        }
+
+        public function train_unit(Request $request)
+        {
+            $city_id = session()->get('city_id');
+            $unit_name = preg_replace("/_/", " ", $request['name']);
+            $quantity = $request['quantity'];
+            $unit = DB::table('units')
+            ->where('name', '=', $unit_name)
+            ->first();
+            if ($unit === null)
+                return ("unit_error");
+            $city_res = DB::table('cities')
+            ->where('id', '=', $city_id)
+            ->first();
+            $finishing_date = ($unit->duration * $quantity) + time();
+            $food_required = 0;
+            $wood_required = 0;
+            $rock_required = 0;
+            $gold_required = 0;
+            $steel_required = 0;
+            $res_required = explode(";", $unit->basic_price);
+            foreach ($res_required as $res => $amount)
+            {
+                if ($amount[-1] == "F")
+                    $food_required = intval(substr($amount, 0, -1)) * $quantity;
+                else if ($amount[-1] == "W")
+                    $wood_required = intval(substr($amount, 0, -1)) * $quantity;
+                else if ($amount[-1] == "R")
+                    $rock_required = intval(substr($amount, 0, -1)) * $quantity;
+                else if ($amount[-1] == "S")
+                    $steel_required = intval(substr($amount, 0, -1)) * $quantity;
+                else
+                    $gold_required = intval(substr($amount, 0, -1)) * $quantity;
+            }
+            if ($food_required > $city_res->food || $wood_required > $city_res->wood || $rock_required > $city_res->rock || $steel_required > $city_res->steel || $gold_required > $city_res->gold)
+                return ;
+            else
+                $ressources_tab = ['food' => $city_res->food - $food_required, 'wood' => $city_res->wood - $wood_required, 'rock' => $city_res->rock - $rock_required, 'steel' => $city_res->steel - $steel_required, 'gold' => $city_res->gold - $gold_required];
+            $mount_required = $unit->mount;
+            if ($mount_required > 0)
+            {
+                $mount_name = preg_replace('/\s/', "_", DB::table('mounts')->where('id', '=', $mount_required)->value('mount_name'));
+                if ($city_res->$mount_name < $quantity)
+                    return ;
+                else
+                    $ressources_tab[$mount_name] = $city_res->$mount_name - $quantity;
+            }
+            $item_needed = explode(";", $unit->item_needed);
+            $all_items = DB::table('forge')->get();
+            foreach ($item_needed as $item => $item_id)
+            {
+                $item_name = preg_replace('/\s/', "_" , $all_items[$item_id]->name);
+                if ($city_res->$item_name < $quantity)
+                    return ;
+                else
+                {
+                    $ressources_tab[$item_name] = $city_res->$item_name - $quantity;
+                }
+            }
+            DB::table('cities')
+            ->where('id', '=', $city_id)
+            ->update($ressources_tab);
+            $id = DB::table('waiting_units')
+            ->insertGetId(["city_id" => $city_id, "unit_id" => $unit->id, "finishing_date" => $finishing_date, "quantity" => $quantity]);
+            $cmd = "cd /home/boss/www/scripts ; node finish_unit.js " . $id . " " . $quantity . " " . $finishing_date;
+            exec($cmd);
+            return ;
         }
     }
 

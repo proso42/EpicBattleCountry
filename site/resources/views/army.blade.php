@@ -21,6 +21,13 @@
                 </div>
                 @if ($allowed == 0)
                     <p>Vous devez construire une caserne avant de pouvoir former des unitées !</p>
+                @elseif ($allowed == -1)
+                    <div class="confirm-win">
+                        <h3>Entraimenemt en cours</h3>
+                        <p>{{ $waiting_unit['name'] }} x{{ $waiting_unit['quantity'] }}</p>
+                        <p id="unit_timer" duration="{{ $waiting_unit['finishing_date']}} "></p>
+                        <input id="interrupt_unit_button" onclick="interrupt_unit()" type="button" class="army-button-cancel" value="Annuler">
+                    </div>
                 @else
                     <div id="unit_list">
                         @foreach ($allowed_units as $unit)
@@ -85,7 +92,7 @@
                             <li id="list_last"><span style="margin-right:5px" id="mount_list"></span><i id="mount_icon" class=""></i></li>
                             <li><span style="margin-right:5px" id="time_list"></span><i class="fas fa-clock"></i></li>
                         </ul>
-                        <input id="confirm-button" type="button" class="army-button" value="Confirmer">
+                        <input onclick="confirm()" id="confirm-button" type="button" class="army-button" value="Confirmer">
                         <input onclick="cancel()" type="button" class="army-button-cancel" value="Annuler">
                     </div>
                 @endif
@@ -95,6 +102,117 @@
         <script>
 
             var g_name = "";
+            var unit_timing = document.getElementById('unit_timer');
+            if (unit_timing !== null)
+                timer('unit_timer', unit_timing.getAttribute("duration"));
+
+            function timer(id, duration)
+            {
+                var compteur=document.getElementById(id);
+                var s=duration;
+                var m=0;
+                var h=0;
+                if(s<=0)
+                {
+                    compteur.textContent = "Terminé";
+                    $cancel_button = document.getElementById("interrupt_unit_button");
+                    $cancel_button.className = "army-button";
+                    $cancel_button.value = "Ok";
+                    $cancel_button.onclick = function(){window.location.reload();};
+                }
+                else
+                {
+                    let new_time = "";
+                    if(s>59)
+                    {
+                        m=Math.floor(s/60);
+                        s=s - m * 60;
+                    }
+                    if(m>59)
+                    {
+                        h=Math.floor(m/60);
+                        m= m - h * 60;
+                    }
+                    if(s<10 && s > 0)
+                    {
+                        s= "0" + s + " s";
+                    }
+                    else if (s == 0)
+                    {
+                        s = "";
+                    }
+                    else
+                    {
+                        s += " s";
+                    }
+                    if(m<10 && m > 0)
+                    {
+                        m= "0" + m + " m ";
+                    }
+                    else if (m == 0)
+                    {
+                        m = "";
+                    }
+                    else
+                    {
+                        m += " m ";
+                    }
+                    if (h < 10 && h > 0)
+                    {
+                        h= "0" + h + " h ";
+                    }
+                    else if (h == 0)
+                    {
+                        h = "";
+                    }
+                    else
+                    {
+                        h += " h ";
+                    }
+                    compteur.textContent= "In Progress : " + h+" "+m+" "+s;
+                    setTimeout(function(same_id=id, new_duration=duration-1){
+                        timer(same_id, new_duration);
+                    },1000);
+                }
+            }
+
+            function interrupt_unit()
+            {
+                var _token = document.getElementById("_token").value;
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'http://www.epicbattlecorp.fr/interrupt');
+                xhr.onreadystatechange =  function()
+                {
+                    if (xhr.readyState === 4 && xhr.status === 200)
+                    {
+                        window.location.reload();
+                    }
+                }
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.send('_token=' + _token + '&type=unit');
+            }
+
+            function confirm()
+            {
+                var _token = document.getElementById("_token").value;
+                var name = g_name;
+                var name_format = name.replace(/\s/gi, "_");
+                var quantity = document.getElementById("input_" + name).value;
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'http://www.epicbattlecorp.fr/train_unit');
+                xhr.onreadystatechange =  function()
+                {
+                    if (xhr.readyState === 4 && xhr.status === 200)
+                    {
+                        window.location.reload();
+                    }
+                }
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.send('_token=' + _token + '&name=' + name_format + "&quantity=" + quantity);
+                setTimeout(() => {
+                    window.location.reload();
+                }, 300);
+            }
 
             function cancel()
             {

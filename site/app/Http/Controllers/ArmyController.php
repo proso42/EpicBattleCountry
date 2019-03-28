@@ -331,10 +331,10 @@
                     else
                     {
                         $ressources_tab[$item_name] = $city_res->$item_name_format - $quantity;
-                        return ("ok");
                     }
                 }
             }
+            return ("ok");
             DB::table('cities')
             ->where('id', '=', $city_id)
             ->update($ressources_tab);

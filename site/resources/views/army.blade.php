@@ -198,20 +198,21 @@
                 var name = g_name;
                 var name_format = name.replace(/\s/gi, "_");
                 var quantity = document.getElementById("input_" + name).value;
-                var xhr = new XMLHttpRequest();
-                xhr.open('POST', 'http://www.epicbattlecorp.fr/train_unit');
-                xhr.onreadystatechange =  function()
+                var xhr2 = new XMLHttpRequest();
+                xhr2.open('POST', 'http://www.epicbattlecorp.fr/train_unit');
+                xhr2.onreadystatechange =  function()
                 {
-                    if (xhr.readyState === 4 && xhr.status === 200)
+                    if (xhr2.readyState === 4 && xhr2.status === 200)
                     {
-                        window.location.reload();
+                        /*window.location.reload();*/
+                        console.log(xhr2.responseText);
                     }
                 }
-                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                xhr.send('_token=' + _token + '&name=' + name_format + "&quantity=" + quantity);
-                setTimeout(() => {
+                xhr2.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr2.send('_token=' + _token + '&name=' + name_format + "&quantity=" + quantity);
+                /*setTimeout(() => {
                     window.location.reload();
-                }, 300);
+                }, 300);*/
             }
 
             function cancel()

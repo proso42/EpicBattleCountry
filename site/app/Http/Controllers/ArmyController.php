@@ -306,7 +306,7 @@
                     $gold_required = intval(substr($amount, 0, -1)) * $quantity;
             }
             if ($food_required > $city_res->food || $wood_required > $city_res->wood || $rock_required > $city_res->rock || $steel_required > $city_res->steel || $gold_required > $city_res->gold)
-                return ;
+                return ("not enough basic ressources");
             else
                 $ressources_tab = ['food' => $city_res->food - $food_required, 'wood' => $city_res->wood - $wood_required, 'rock' => $city_res->rock - $rock_required, 'steel' => $city_res->steel - $steel_required, 'gold' => $city_res->gold - $gold_required];
             $mount_required = $unit->mount;
@@ -314,7 +314,7 @@
             {
                 $mount_name = preg_replace('/\s/', "_", DB::table('mounts')->where('id', '=', $mount_required)->value('mount_name'));
                 if ($city_res->$mount_name < $quantity)
-                    return ;
+                    return ("not enough mount");
                 else
                     $ressources_tab[$mount_name] = $city_res->$mount_name - $quantity;
             }
@@ -324,7 +324,7 @@
             {
                 $item_name = preg_replace('/\s/', "_" , $all_items[$item_id]->name);
                 if ($city_res->$item_name < $quantity)
-                    return ;
+                    return ("not enough items");
                 else
                 {
                     $ressources_tab[$item_name] = $city_res->$item_name - $quantity;

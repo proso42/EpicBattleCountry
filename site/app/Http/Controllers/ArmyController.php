@@ -331,6 +331,7 @@
                     else
                     {
                         $ressources_tab[$item_name] = $city_res->$item_name_format - $quantity;
+                        return ("ok");
                     }
                 }
             }

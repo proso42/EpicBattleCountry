@@ -190,6 +190,9 @@
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhr.send('_token=' + _token + '&type=unit');
+                setTimeout(() => {
+                    window.location.reload();
+                }, 300);
             }
 
             function confirm()
@@ -264,16 +267,16 @@
                             console.log('unit_error');
                             return ;
                         }
-                        console.log(xhr.responseText);
+                        //console.log(xhr.responseText);
                         Response.Charset="iso-8859-1";
-                        console.log("Après : " + xhr.responseText);
+                        //console.log("Après : " + xhr.responseText);
                         for (let i = 6; i < 16; i++)
                             document.getElementById("list" + i).style.display = "none";
                         var ressources_need = xhr.responseText.split("[");
                         var basic = ressources_need[1].replace(/"/gi, "").split(",");
-                        console.log(basic);
+                        //console.log(basic);
                         var items = ressources_need[2].replace(/[{}"\]]/gm, "").split(",");
-                        console.log(items);
+                        //console.log(items);
                         if (basic[0] == "KO")
                         {
                             document.getElementById("confirm-button").style.display = "none";
@@ -339,8 +342,8 @@
                             let e_split = e.split(":");
                             let type = e_split[0];
                             let value = unescape(e_split[1]);
-                            console.log("Type : " + type);
-                            console.log("Value : " + value);
+                            //console.log("Type : " + type);
+                            //console.log("Value : " + value);
                             if (type == "item")
                             {
                                 document.getElementById("list" + (i + 6)).style.display = "";

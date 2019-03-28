@@ -18,8 +18,10 @@
                 $table = "waiting_buildings";
             else if ($type_canceled == "tech")
                 $table = "waiting_techs";
-            else
+            else if ($type_canceled == "item")
                 return $this->interrupt_item($city_id);
+            else
+                return $this->interrupt_unit($city_id);            
             $wait_id = $request['wait_id'];
             $elem_canceled = DB::table($table)
             ->where('id', '=', $wait_id)
@@ -150,6 +152,79 @@
             ->update(['food' => $food_refund, 'wood' => $wood_refund, 'rock' => $rock_refund, 'steel' => $steel_refund, 'gold' => $gold_refund]);
             DB::table('waiting_items')
             ->where('id', '=', $item->id)
+            ->delete();
+        }
+
+        private function interrupt_unit($city_id)
+        {
+            $unit = DB::table('waiting_units')
+            ->where('city_id', '=', $city_id)
+            ->first();
+            $units_price = DB::table('units')
+            ->where('id', '=', $unit->unit_id)
+            ->first();
+            $res_refund = explode(";", $price);
+            $food_refund = 0;
+            $wood_refund = 0;
+            $rock_refund = 0;
+            $steel_refund = 0;
+            $gold_refund = 0;
+            foreach ($res_refund as $res => $amount)
+            {
+                if ($amount[-1] == "F")
+                    $food_refund = intval(substr($amount, 0, -1)) * $unit->quantity;
+                else if ($amount[-1] == "W")
+                    $wood_refund = intval(substr($amount, 0, -1)) * $unit->quantity;
+                else if ($amount[-1] == "R")
+                    $rock_refund = intval(substr($amount, 0, -1)) * $unit->quantity;
+                else if ($amount[-1] == "S")
+                    $steel_refund = intval(substr($amount, 0, -1)) * $unit->quantity;
+                else
+                    $gold_refund = intval(substr($amount, 0, -1)) * $unit->quantity;
+            }
+            if ($unit->mount > 0)
+                $mount_name = preg_replace('/\s/', "_", DB::table('mounts')->where('id', '=', $unit->mount)->value('mount_name'));
+            $city_infos = DB::table('cities')
+            ->where('id', '=', $city_id)
+            ->first();
+            if ($food_refund + $city_infos->food > $city_infos->max_food)
+                $food_refund = $city_infos->max_food;
+            else
+                $food_refund += $city_infos->food;
+            if ($wood_refund + $city_infos->wood > $city_infos->max_wood)
+                $wood_refund = $city_infos->max_wood;
+            else
+                $wood_refund += $city_infos->wood;
+            if ($rock_refund + $city_infos->rock > $city_infos->max_rock)
+                $rock_refund = $city_infos->max_rock;
+            else
+                $rock_refund += $city_infos->rock;
+            if ($steel_refund + $city_infos->steel > $city_infos->max_steel)
+                $steel_refund = $city_infos->max_steel;
+            else
+                $steel_refund += $city_infos->steel;
+            if ($gold_refund + $city_infos->gold > $city_infos->max_gold)
+                $gold_refund = $city_infos->max_gold;
+            else
+                $gold_refund += $city_infos->gold;
+            $refound_tab = ['food' => $food_refund, 'wood' => $wood_refund, 'rock' => $rock_refund, 'steel' => $steel_refund, 'gold' => $gold_refund];
+            if ($unit->mount > 0)
+                $refound_tab[$mount_name] = $city_infos->$mount_name + $quantity;
+            if ($unit->item_needed !== "NONE")
+            {
+                $all_items = DB::table('forge')->get();
+                $items = explode(";", $unit->item_needed);
+                foreach ($items as $item => $item_id)
+                {
+                    $item_name = preg_replace('/\s/', "_", $all_items[$item_id - 1]->name);
+                    $refound_tab[$item_name] = $city_infos->$item_name + $quantity;
+                }
+            }
+            DB::table('cities')
+            ->where('id', '=', $city_id)
+            ->update($refound_tab);
+            DB::table('waiting_units')
+            ->where('id', '=', $unit->id)
             ->delete();
         }
 

@@ -209,7 +209,7 @@
                 $gold_refund += $city_infos->gold;
             $refound_tab = ['food' => $food_refund, 'wood' => $wood_refund, 'rock' => $rock_refund, 'steel' => $steel_refund, 'gold' => $gold_refund];
             if ($unit_price->mount > 0)
-                $refound_tab[$mount_name] = $city_infos->$mount_name + $quantity;
+                $refound_tab[$mount_name] = $city_infos->$mount_name + $unit->quantity;
             if ($unit_price->item_needed !== "NONE")
             {
                 $all_items = DB::table('forge')->get();
@@ -217,7 +217,7 @@
                 foreach ($items as $item => $item_id)
                 {
                     $item_name = preg_replace('/\s/', "_", $all_items[$item_id - 1]->name);
-                    $refound_tab[$item_name] = $city_infos->$item_name + $quantity;
+                    $refound_tab[$item_name] = $city_infos->$item_name + $unit->quantity;
                 }
             }
             DB::table('cities')

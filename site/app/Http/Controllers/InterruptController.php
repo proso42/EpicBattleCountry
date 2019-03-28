@@ -208,7 +208,7 @@
             else
                 $gold_refund += $city_infos->gold;
             $refound_tab = ['food' => $food_refund, 'wood' => $wood_refund, 'rock' => $rock_refund, 'steel' => $steel_refund, 'gold' => $gold_refund];
-            if ($unit->mount > 0)
+            if ($unit_price->mount > 0)
                 $refound_tab[$mount_name] = $city_infos->$mount_name + $quantity;
             if ($unit_price->item_needed !== "NONE")
             {

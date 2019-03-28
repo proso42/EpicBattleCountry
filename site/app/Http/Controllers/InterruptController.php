@@ -183,7 +183,7 @@
                     $gold_refund = intval(substr($amount, 0, -1)) * $unit->quantity;
             }
             if ($unit_price->mount > 0)
-                $mount_name = preg_replace('/\s/', "_", DB::table('mounts')->where('id', '=', $unit->mount)->value('mount_name'));
+                $mount_name = preg_replace('/\s/', "_", DB::table('mounts')->where('id', '=', $unit_price->mount)->value('mount_name'));
             $city_infos = DB::table('cities')
             ->where('id', '=', $city_id)
             ->first();

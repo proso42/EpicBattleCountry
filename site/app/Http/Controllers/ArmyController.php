@@ -330,8 +330,8 @@
                         return ("not enough items");
                     else
                     {
-                        return ("ok");
                         $ressources_tab[$item_name] = $city_res->$item_name - $quantity;
+                        return ("ok");
                     }
                 }
             }

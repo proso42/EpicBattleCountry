@@ -148,7 +148,7 @@
                         console.log(xhr.responseText);
                         for (let i = 6; i < 16; i++)
                             document.getElementById("list" + i).style.display = "none";
-                        var ressources_need = xhr.responseText..split("[");
+                        var ressources_need = xhr.responseText.split("[");
                         var basic = ressources_need[1].replace(/"/gi, "").split(",");
                         console.log(basic);
                         var items = ressources_need[2].replace(/[{}"\]]/gm, "").split(",");

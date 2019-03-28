@@ -213,7 +213,7 @@
             if ($unit_price->item_needed !== "NONE")
             {
                 $all_items = DB::table('forge')->get();
-                $items = explode(";", $unit->item_needed);
+                $items = explode(";", $unit_price->item_needed);
                 foreach ($items as $item => $item_id)
                 {
                     $item_name = preg_replace('/\s/', "_", $all_items[$item_id - 1]->name);

@@ -226,8 +226,8 @@
                             else
                             {
                                 document.getElementById("item_" + i + "_icon").className = value;
+                                i++;
                             }
-                            i++;
                         });
                         document.getElementById("unit_list").style.display = "none";
                         document.getElementById("confirm_win").style.display = "";

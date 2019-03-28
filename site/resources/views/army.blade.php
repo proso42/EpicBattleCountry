@@ -204,15 +204,15 @@
                 {
                     if (xhr2.readyState === 4 && xhr2.status === 200)
                     {
-                        /*window.location.reload();*/
+                        window.location.reload();
                         console.log(xhr2.responseText);
                     }
                 }
                 xhr2.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhr2.send('_token=' + _token + '&name=' + name_format + "&quantity=" + quantity);
-                /*setTimeout(() => {
+                setTimeout(() => {
                     window.location.reload();
-                }, 300);*/
+                }, 300);
             }
 
             function cancel()

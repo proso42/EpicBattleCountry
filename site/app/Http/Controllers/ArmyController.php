@@ -282,9 +282,7 @@
             ->first();
             if ($unit === null)
                 return ("unit_error");
-            else
-                return ("OK");
-            /*$city_res = DB::table('cities')
+            $city_res = DB::table('cities')
             ->where('id', '=', $city_id)
             ->first();
             $finishing_date = ($unit->duration * $quantity) + time();
@@ -311,7 +309,8 @@
                 return ("not enough basic ressources");
             else
                 $ressources_tab = ['food' => $city_res->food - $food_required, 'wood' => $city_res->wood - $wood_required, 'rock' => $city_res->rock - $rock_required, 'steel' => $city_res->steel - $steel_required, 'gold' => $city_res->gold - $gold_required];
-            $mount_required = $unit->mount;
+            return ("OK");            
+            /*$mount_required = $unit->mount;
             if ($mount_required > 0)
             {
                 $mount_name = preg_replace('/\s/', "_", DB::table('mounts')->where('id', '=', $mount_required)->value('mount_name'));

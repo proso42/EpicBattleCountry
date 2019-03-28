@@ -217,13 +217,13 @@
                         items.forEach(function(e){
                             let e_split = e.split(":");
                             let type = e_split[0];
-                            let value = e_split[1];
+                            let value = e_split[1].toString();
                             console.log("Type : " + type);
                             console.log("Value : " + value);
                             if (type == "item")
                             {
                                 document.getElementById("list" + (i + 6)).style.display = "";
-                                document.getElementById("item_list" + i).textContent = value.toString() + " x" + quantity;
+                                document.getElementById("item_list" + i).textContent = value + " x" + quantity;
                             }
                             else
                             {

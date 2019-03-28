@@ -148,7 +148,7 @@
                         console.log(xhr.responseText);
                         for (let i = 6; i < 16; i++)
                             document.getElementById("list" + i).style.display = "none";
-                        var ressources_need = xhr.responseText.split("[");
+                        var ressources_need = xhr.responseText..split("[");
                         var basic = ressources_need[1].replace(/"/gi, "").split(",");
                         console.log(basic);
                         var items = ressources_need[2].replace(/[{}"\]]/gm, "").split(",");
@@ -217,7 +217,7 @@
                         items.forEach(function(e){
                             let e_split = e.split(":");
                             let type = e_split[0];
-                            let value = e_split[1].toString();
+                            let value = e_split[1];
                             console.log("Type : " + type);
                             console.log("Value : " + value);
                             if (type == "item")

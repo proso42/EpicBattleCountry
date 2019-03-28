@@ -216,11 +216,11 @@
                 $item_name_format = preg_replace('/\s/', "_", $item_name);
                 if ($city_res->$item_name_format < $quantity)
                 {
-                    array_push($items_owned, ["item" => $item_name, "icon" => "fas fa-times icon-color-red"]);
+                    array_push($items_owned, ["item" => utf8_encode($item_name), "icon" => "fas fa-times icon-color-red"]);
                     $allowed = "KO";
                 }
                 else
-                    array_push($items_owned, ["item" => $item_name, "icon" => "fas fa-check icon-color-green"]);
+                    array_push($items_owned, ["item" => utf8_encode($item_name), "icon" => "fas fa-check icon-color-green"]);
                 }
             }            
             foreach ($res_required as $res => $amount)

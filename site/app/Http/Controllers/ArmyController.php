@@ -318,8 +318,7 @@
                 else
                     $ressources_tab[$mount_name] = $city_res->$mount_name - $quantity;
             }
-            return ("OK");
-            /*$item_needed = explode(";", $unit->item_needed);
+            $item_needed = explode(";", $unit->item_needed);
             $all_items = DB::table('forge')->get();
             foreach ($item_needed as $item => $item_id)
             {
@@ -331,7 +330,8 @@
                     $ressources_tab[$item_name] = $city_res->$item_name - $quantity;
                 }
             }
-            DB::table('cities')
+            return ("OK");
+            /*DB::table('cities')
             ->where('id', '=', $city_id)
             ->update($ressources_tab);
             $id = DB::table('waiting_units')

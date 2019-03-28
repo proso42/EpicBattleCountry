@@ -330,14 +330,13 @@
                         return ("not enough items");
                     else
                     {
-                        $ressources_tab[$item_name] = $city_res->$item_name_format - $quantity;
+                        $ressources_tab[$item_name_format] = $city_res->$item_name_format - $quantity;
                     }
                 }
             }
             DB::table('cities')
             ->where('id', '=', $city_id)
             ->update($ressources_tab);
-            return ("ok");
             $id = DB::table('waiting_units')
             ->insertGetId(["city_id" => $city_id, "unit_id" => $unit->id, "finishing_date" => $finishing_date, "quantity" => $quantity]);
             $cmd = "cd /home/boss/www/scripts ; node finish_unit.js " . $id . " " . $quantity . " " . $finishing_date;

@@ -77,7 +77,7 @@
             {
                 $allowed = -1;
                 $waiting_units = ["name" => DB::table('units')->where('id', '=', $busy->unit_id)->value('name'), "quantity" => $busy->quantity, "finishing_date" => $busy->finishing_date - time()];
-                return view('army', compact('allowed' , 'waiting_unit', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
+                return view('army', compact('allowed' , 'waiting_units', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
             }
             $allowed_units = $this->get_allowed_units($city_id, $user_race, $city_builds, $city_techs);
             return view('army', compact('allowed', 'allowed_units','food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));

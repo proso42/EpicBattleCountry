@@ -23,7 +23,7 @@
                     <p>Vous devez construire une caserne avant de pouvoir former des unitées !</p>
                 @elseif ($allowed == -1)
                     <div class="confirm-win">
-                        <h3>Entraimenemt en cours</h3>
+                        <h3>Entrainement en cours</h3>
                         <p>{{ $waiting_units['name'] }} x{{ $waiting_units['quantity'] }}</p>
                         <p id="unit_timer" duration="{{ $waiting_units['finishing_date']}} "></p>
                         <input id="interrupt_unit_button" onclick="interrupt_unit()" type="button" class="army-button-cancel" value="Annuler">
@@ -44,7 +44,7 @@
                                 </div>
                                 <input id="input_{{ $unit['name'] }}" type="text" placeholder="Quantité" class="army-input col-lg-2 col-md-2 col-sm-2 col-2">
                                 <div class="army-ressources col-lg-2 col-md-2 col-sm-2 col-2">
-                                    <span>Ressources Items</span>
+                                    <span>Prix</span>
                                     <div class="army-ressources-details">
                                         <ul>
                                             @if ($unit['food'] > 0)

@@ -223,7 +223,7 @@
                             if (type == "item")
                             {
                                 document.getElementById("list" + (i + 6)).style.display = "";
-                                document.getElementById("item_list" + i).textContent = "" + value + " x" + quantity;
+                                document.getElementById("item_list" + i).textContent = value.toString() + " x" + quantity;
                             }
                             else
                             {

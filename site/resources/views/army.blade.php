@@ -217,7 +217,7 @@
                         items.forEach(function(e){
                             let e_split = e.split(":");
                             let type = e_split[0];
-                            let value = e_split[1];
+                            let value = unescape(e_split[1]);
                             console.log("Type : " + type);
                             console.log("Value : " + value);
                             if (type == "item")

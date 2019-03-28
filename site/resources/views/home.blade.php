@@ -61,8 +61,10 @@
                                         <i class="fas fa-hammer icon"></i>
                                     @elseif ($elem['type'] == "tech")
                                         <i class="fas fa-flask icon"></i>
-                                    @else
+                                    @else if ($elem['type'] == "item")
                                         <i class="fas fa-cog icon"></i>
+                                    @else
+                                        <i class="fas fa-chess-rook icon"></i>
                                     @endif
                                 </div>
                                 <div id="compteur_{{ $elem['name'] }}" duration="{{ $elem['duration'] }}" name="{{ $elem['name'] }}" @if($elem['type'] == 'item') quantity="x{{ $elem['quantity'] }}" @endif class="col-lg-8 col-md-8 col-sm-8 col-8 infos-building-wip"></div>

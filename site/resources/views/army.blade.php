@@ -273,7 +273,7 @@
                         console.log(basic);
                         var items = ressources_need[2].replace(/[{}"\]]/gm, "").split(",");
                         console.log(items);
-                        if (basic[0] == "OK")
+                        if (basic[0] == "KO")
                         {
                             document.getElementById("confirm-button").style.display = "none";
                             document.getElementById("confirm-button").disabled = "true";

@@ -80,13 +80,13 @@
                             <li id="list4"><span style="margin-right:5px" id="steel_list"></span><i id="steel_icon" class=""></i></li>
                             <li id="list5"><span style="margin-right:5px" id="gold_list"></span><i id="gold_icon" class=""></i></li>
                             @for ($i = 0; $i < 10; $i++)
-                                <li id="list{{ $i + 6}}"><span style="margin-right: 5px;" id="item_list{{ $i }}"></span><i id="item_{{ $i }}_icon" class="fas fa-cog icon"></i></li>
+                                <li id="list{{ $i + 6}}"><span style="margin-right: 5px;" id="item_list{{ $i }}"></span><i id="item_{{ $i }}_icon" class=""></i></li>
                             @endfor
-                            <li id="list_last"><span style="margin-right:5px" id="mount_list"></span><i id="mount_icon" class="fas fa-paw"></i></li>
+                            <li id="list_last"><span style="margin-right:5px" id="mount_list"></span><i id="mount_icon" class=""></i></li>
                             <li><span style="margin-right:5px" id="time_list"></span><i class="fas fa-clock"></i></li>
                         </ul>
                         <input id="confirm-button" type="button" class="army-button" value="Confirmer">
-                        <input type="button" class="army-button-cancel" value="Annuler">
+                        <input onclick="cancel()" type="button" class="army-button-cancel" value="Annuler">
                     </div>
                 @endif
             </div>
@@ -95,6 +95,13 @@
         <script>
 
             var g_name = "";
+
+            function cancel()
+            {
+                g_name = "";
+                document.getElementById("confirm_win").style.display = "none";
+                document.getElementById("items_list").style.display = "";
+            }
 
             function train(name)
             {
@@ -201,7 +208,7 @@
                             document.getElementById("list_last").style.display = "none";
                         else
                         {
-                            document.getElementById("mount_list").textContent = "Mount : " +  basic[11] + "x" + quantity;
+                            document.getElementById("mount_list").textContent = "Mount : " +  basic[11] + " x" + quantity;
                             document.getElementById("mount_icon").className = basic[12];
                             document.getElementById("list_last").style.display = "";
                         }

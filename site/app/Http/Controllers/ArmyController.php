@@ -212,7 +212,7 @@
             {
                 foreach ($items_required as $item => $val)
                 {
-                $item_name = $all_items[$val]->name;
+                $item_name = $all_items[$val - 1]->name;
                 $item_name_format = preg_replace('/\s/', "_", $item_name);
                 if ($city_res->$item_name_format < $quantity)
                 {

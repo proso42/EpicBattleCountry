@@ -196,13 +196,13 @@
             function switch_part(id)
             {
                 let eye = document.getElementById(id + "_eye")
-                let val = 0;
+                let val = 1;
                 let section = id.replace(/_table/, "")
                 if (eye.className == "fas fa-eye-slash icon-eye")
                 {
                     document.getElementById(id).style.display = "none"
                     eye.className = "fas fa-eye icon-eye"
-                    val = 1
+                    val = 0
                 }
                 else
                 {

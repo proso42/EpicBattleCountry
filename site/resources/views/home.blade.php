@@ -197,7 +197,7 @@
             {
                 let eye = document.getElementById(id + "_eye")
                 let val = 0;
-                let section = id.relace(/_table/, "")
+                let section = id.replace(/_table/, "")
                 if (eye.className == "fas fa-eye-slash icon-eye")
                 {
                     document.getElementById(id).style.display = "none"

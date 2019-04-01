@@ -148,7 +148,7 @@
             $val = $request['val'];
             if (($section !== 'prod' && $section !== 'item' && $section !== 'unit') || ($val !== 0 && $val !== 1))
                 return ;
-            session()->put([$section + "_table_status" => $val]);
+            session()->put([$section . "_table_status" => $val]);
             return ;
         }
     }

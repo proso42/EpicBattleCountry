@@ -146,7 +146,7 @@
         {
             $section = $request['section'];
             $val = $request['val'];
-            if (($section !== 'prod' && $section !== 'item' && $section !== 'unit') || ($val !== 0 && $val !== 1))
+            if (($section != 'prod' && $section != 'item' && $section != 'unit') || ($val < 0 || $val > 1))
                 return 1;
             session()->put([$section . "_table_status" => $val]);
             return 0;

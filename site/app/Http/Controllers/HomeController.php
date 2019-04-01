@@ -142,7 +142,7 @@
             return view('home', compact('food', 'compact_food', 'max_food', 'food_prod', 'wood', 'compact_wood' ,'max_wood', 'wood_prod', 'rock', 'compact_rock', 'max_rock', 'rock_prod', 'steel', 'compact_steel', 'max_steel', 'steel_prod', 'gold', 'compact_gold', 'max_gold', 'gold_prod', 'city_name', 'waiting_list', 'items_owned', 'units_owned', 'tables_class'));
         }
 
-        private function save_choice(Request $request)
+        public function save_choice(Request $request)
         {
             $section = $request['section'];
             $val = $request['val'];

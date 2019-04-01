@@ -238,6 +238,7 @@ body
 .icon-eye
 {
     cursor: pointer;
+    font-size: 25px
 }
 
 .icon-eye:hover
@@ -1021,4 +1022,10 @@ input::placeholder
     background-color: crimson;
     font-weight: bold;
     color: white;
+}
+
+.home-title-table
+{
+    margin-top: 10px;
+    margin-right: 10px;
 }

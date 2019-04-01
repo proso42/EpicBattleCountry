@@ -15,7 +15,7 @@
                 </div>
                 <hr class="signin-footer">
                 <div class="prod-div">
-                    <h3>Production <i id="prod_table_eye" onclick="switch_part('prod_table')" class="fas fa-eye-slash icon-eye"></i></h3>
+                    <h3 class="home-title-table">Production <i id="prod_table_eye" onclick="switch_part('prod_table')" class="fas fa-eye-slash icon-eye"></i></h3>
                     <table id="prod_table" class="prod-table">
                         <tr>
                             <td>Ressources</td><td>Prod par heure</td><td>Stockage Max</td>
@@ -40,7 +40,7 @@
                 @if (count($items_owned) > 0)
                 <hr class="signin-footer">
                 <div class="prod-div">
-                    <h3>Items disponibles <i id="item_table_eye" onclick="switch_part('item_table')" class="fas fa-eye-slash icon-eye"></i></h3>
+                    <h3 class="home-title-table">Items disponibles <i id="item_table_eye" onclick="switch_part('item_table')" class="fas fa-eye-slash icon-eye"></i></h3>
                     <table id="item_table" class="prod-table">
                         <tr>
                             <td>Item</td><td>Stock</td>
@@ -56,7 +56,7 @@
                 @if (count($units_owned) > 0)
                 <hr class="signin-footer">
                 <div class="prod-div">
-                    <h3>Unitées disponibles <i id="unit_table_eye" onclick="switch_part('unit_table')" class="fas fa-eye-slash icon-eye"></i></h3>
+                    <h3 class="home-title-table">Unitées disponibles <i id="unit_table_eye" onclick="switch_part('unit_table')" class="fas fa-eye-slash icon-eye"></i></h3>
                     <table id="unit_table" class="prod-table">
                         <tr>
                             <td>Unit</td><td>Stock</td>

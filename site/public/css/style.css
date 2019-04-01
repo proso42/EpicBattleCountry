@@ -235,6 +235,16 @@ body
     color: greenyellow;
 }
 
+.icon-eye
+{
+    cursor: pointer;
+}
+
+.icon-eye:hover
+{
+    color: floralwhite;
+}
+
 input::placeholder
 {
     color: #8C5D53;

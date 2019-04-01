@@ -15,7 +15,8 @@
                 </div>
                 <hr class="signin-footer">
                 <div class="prod-div">
-                    <table class="prod-table">
+                    <h3>Production <i id="prod_table_eye" onclick="switch_part('prod_table')" class="fas fa-eye-slash icon-eye"></i></h3>
+                    <table id="prod_table" class="prod-table">
                         <tr>
                             <td>Ressources</td><td>Prod par heure</td><td>Stockage Max</td>
                         </tr>
@@ -39,7 +40,8 @@
                 @if (count($items_owned) > 0)
                 <hr class="signin-footer">
                 <div class="prod-div">
-                    <table class="prod-table">
+                    <h3>Items disponibles <i id="item_table_eye" onclick="switch_part('item_table')" class="fas fa-eye-slash icon-eye"></i></h3>
+                    <table id="item_table" class="prod-table">
                         <tr>
                             <td>Item</td><td>Stock</td>
                         </tr>
@@ -54,7 +56,8 @@
                 @if (count($units_owned) > 0)
                 <hr class="signin-footer">
                 <div class="prod-div">
-                    <table class="prod-table">
+                    <h3>Unitées disponibles <i id="unit_table_eye" onclick="switch_part('unit_table')" class="fas fa-eye-slash icon-eye"></i></h3>
+                    <table id="unit_table" class="prod-table">
                         <tr>
                             <td>Unit</td><td>Stock</td>
                         </tr>
@@ -189,6 +192,22 @@
                     },1000);
                 }
             }
+
+            function switch_part(id)
+            {
+                let eye = document.getElementById(id + "_eye")
+                if (eye.className == "fas fa-eye-slash icon-eye")
+                {
+                    document.getElementById(id).style.display = "none"
+                    eye.className = "fas fa-eye icon-eye"
+                }
+                else
+                {
+                    document.getElementById(id).style.display = ""
+                    eye.className = "fas fa-eye-slash icon-eye"
+                }
+            }
+
             var screen_width = window.innerWidth;
             if (screen_width <= 563)
             {

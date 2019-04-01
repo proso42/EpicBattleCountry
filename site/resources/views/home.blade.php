@@ -209,6 +209,8 @@
                     document.getElementById(id).style.display = ""
                     eye.className = "fas fa-eye-slash icon-eye"
                 }
+                console.log('section : ' + section)
+                console.log('val : ' + val)
                 var _token = document.getElementById("_token").value;
                 var xhr_switch = new XMLHttpRequest();
                 xhr_switch.open('POST', 'http://www.epicbattlecorp.fr/save_choice');
@@ -216,6 +218,7 @@
                 {
                     if (xhr_switch.readyState === 4 && xhr_switch.status === 200)
                     {
+                        console.log(xhr_switch.responseText)
                         console.log('choice saved !');
                     }
                 }

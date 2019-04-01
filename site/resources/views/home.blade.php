@@ -15,8 +15,8 @@
                 </div>
                 <hr class="signin-footer">
                 <div class="prod-div">
-                    <h3 class="home-title-table">Production <i id="prod_table_eye" onclick="switch_part('prod_table')" class="fas fa-eye-slash icon-eye"></i></h3>
-                    <table id="prod_table" class="prod-table">
+                    <h3 class="home-title-table">Production <i id="prod_table_eye" onclick="switch_part('prod_table')" @if($tables_class['prod'] == 0) class="fas fa-eye icon-eye" @else class="fas fa-eye-slash icon-eye" @endif></i></h3>
+                    <table id="prod_table" class="prod-table" @if($tables_class['prod'] == 0) style="display: none" @endif>
                         <tr>
                             <td>Ressources</td><td>Prod par heure</td><td>Stockage Max</td>
                         </tr>
@@ -40,8 +40,8 @@
                 @if (count($items_owned) > 0)
                 <hr class="signin-footer">
                 <div class="prod-div">
-                    <h3 class="home-title-table">Items disponibles <i id="item_table_eye" onclick="switch_part('item_table')" class="fas fa-eye-slash icon-eye"></i></h3>
-                    <table id="item_table" class="prod-table">
+                    <h3 class="home-title-table">Items disponibles <i id="item_table_eye" onclick="switch_part('item_table')" @if($tables_class['item'] == 0) class="fas fa-eye icon-eye" @else class="fas fa-eye-slash icon-eye" @endif></i></h3>
+                    <table id="item_table" class="prod-table" @if($tables_class['item'] == 0) style="display: none" @endif>
                         <tr>
                             <td>Item</td><td>Stock</td>
                         </tr>
@@ -56,8 +56,8 @@
                 @if (count($units_owned) > 0)
                 <hr class="signin-footer">
                 <div class="prod-div">
-                    <h3 class="home-title-table">Unitées disponibles <i id="unit_table_eye" onclick="switch_part('unit_table')" class="fas fa-eye-slash icon-eye"></i></h3>
-                    <table id="unit_table" class="prod-table">
+                    <h3 class="home-title-table">Unitées disponibles <i id="unit_table_eye" onclick="switch_part('unit_table')" @if($tables_class['unit'] == 0) class="fas fa-eye icon-eye" @else class="fas fa-eye-slash icon-eye" @endif></i></h3>
+                    <table id="unit_table" class="prod-table" @if($tables_class['unit'] == 0) style="display: none" @endif>
                         <tr>
                             <td>Unit</td><td>Stock</td>
                         </tr>
@@ -196,16 +196,31 @@
             function switch_part(id)
             {
                 let eye = document.getElementById(id + "_eye")
+                let val = 0;
+                let section = id.relace(/_table/, "")
                 if (eye.className == "fas fa-eye-slash icon-eye")
                 {
                     document.getElementById(id).style.display = "none"
                     eye.className = "fas fa-eye icon-eye"
+                    val = 1
                 }
                 else
                 {
                     document.getElementById(id).style.display = ""
                     eye.className = "fas fa-eye-slash icon-eye"
                 }
+                var _token = document.getElementById("_token").value;
+                var xhr_switch = new XMLHttpRequest();
+                xhr_switch.open('POST', 'http://www.epicbattlecorp.fr/save_choice');
+                xhr_switch.onreadystatechange =  function()
+                {
+                    if (xhr_switch.readyState === 4 && xhr_switch.status === 200)
+                    {
+                        console.log('choice saved !');
+                    }
+                }
+                xhr_switch.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr_switch.send('_token=' + _token + '&section=' + section + "&val=" + val);
             }
 
             var screen_width = window.innerWidth;

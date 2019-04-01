@@ -35,6 +35,7 @@ Route::group(['middleware' => 'guest'], function(){
 Route::group(['middleware' => 'logged'], function(){
     Route::get('/logout', 'LogoutController@logout');
     Route::get('/home', 'HomeController@index');
+    Route::post('/save_choice', 'HomeController@save_choice');
     Route::get('/', 'HomeController@index');
     Route::get('/settings', 'SettingsController@index');
     Route::post('/reset_login', 'SettingsController@reset_login');

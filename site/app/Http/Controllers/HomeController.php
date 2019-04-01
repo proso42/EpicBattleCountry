@@ -38,6 +38,25 @@
             ->where('owner', '=', $user_id)
             ->where('id', '=', $city_id)
             ->first();
+            $prod_table_class = session()->get('prod_table_status');
+            if ($prod_table_class == null)
+            {
+                session()->put(["prod_table_status" => 1]);
+                $prod_table_class = 1;
+            }
+            $item_table_class = session()->get('item_table_status');
+            if ($item_table_class == null)
+            {
+                session()->put(["item_table_status" => 1]);
+                $item_table_class = 1;
+            }
+            $unit_table_class = session()->get('unit_table_status');
+            if ($unit_table_class == null)
+            {
+                session()->put(["unit_table_status" => 1]);
+                $unit_table_class = 1;
+            }
+            $tables_class = ["prod" => $prod_table_class, "item" => $item_table_class, "unit" => $unit_table_class];
             $city_name = $city->name;
             $food = $city->food;
             $compact_food = $food;
@@ -120,7 +139,17 @@
                 array_push($waiting_list, ["wait_id" => $waiting_item->id, "type" => "item", "name" => DB::table('forge')->where('id', '=', $waiting_item->item_id)->value('name'), "duration" => $waiting_item->finishing_date - time(), "quantity" => $waiting_item->quantity]);
             if ($waiting_unit !== null)
                 array_push($waiting_list, ["wait_id" => $waiting_unit->id, "type" => "unit", "name" => DB::table('units')->where('id', '=', $waiting_unit->unit_id)->value('name'), "duration" => $waiting_unit->finishing_date - time(), "quantity" => $waiting_unit->quantity]);
-            return view('home', compact('food', 'compact_food', 'max_food', 'food_prod', 'wood', 'compact_wood' ,'max_wood', 'wood_prod', 'rock', 'compact_rock', 'max_rock', 'rock_prod', 'steel', 'compact_steel', 'max_steel', 'steel_prod', 'gold', 'compact_gold', 'max_gold', 'gold_prod', 'city_name', 'waiting_list', 'items_owned', 'units_owned'));
+            return view('home', compact('food', 'compact_food', 'max_food', 'food_prod', 'wood', 'compact_wood' ,'max_wood', 'wood_prod', 'rock', 'compact_rock', 'max_rock', 'rock_prod', 'steel', 'compact_steel', 'max_steel', 'steel_prod', 'gold', 'compact_gold', 'max_gold', 'gold_prod', 'city_name', 'waiting_list', 'items_owned', 'units_owned', 'tables_class'));
+        }
+
+        private function save_choice(Request $request)
+        {
+            $section = $request['section'];
+            $val = $request['val'];
+            if (($section !== 'prod' && $section !== 'item' && $section !== 'unit') || ($val !== 0 && $val !== 1))
+                return ;
+            session()->put([$section + "_table_status" => $val]);
+            return ;
         }
     }
 

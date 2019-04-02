@@ -16,7 +16,7 @@
                         <img class="explo" style="width:250px;height: 250px;" src="{{ $explo[0]['illustration'] }}">
                         <div @if ($unit_avaible == 0 || $explo[0]['food_required'] > $food || $explo[0]['wood_required'] > $wood || $explo[0]['rock_required'] > $rock || $explo[0]['steel_required'] > $steel || $explo[0]['gold_required'] > $gold) class="explo-button-impossible" @else class="explo-button" onclick="choice(1)"@endif>                                
                             Choisir <i class="fas fa-map-marked-alt"></i>
-                            <div class="unit-needed">
+                            <div class="explo-needed">
                                 <ul>
                                     <li>{{ $explo_unit_name }} : {{ $explo[0]['unit_required'] }} @if ($explo[0]['unit_required'] > $unit_avaible) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
                                     @if ($explo[0]['food_required'] > 0)
@@ -43,7 +43,7 @@
                         <img class="explo" style="width:250px;height: 250px;" src="{{ $explo[1]['illustration'] }}">
                         <div @if ($unit_avaible == 0 || $explo[1]['food_required'] > $food || $explo[1]['wood_required'] > $wood || $explo[1]['rock_required'] > $rock || $explo[1]['steel_required'] > $steel || $explo[1]['gold_required'] > $gold) class="explo-button-impossible" @else class="explo-button" onclick="choice(2)"@endif>                                
                             Choisir <i class="fas fa-map-marked-alt"></i>
-                            <div class="unit-needed">
+                            <div class="explo-needed">
                                 <ul>
                                     <li>{{ $explo_unit_name }} : {{ $explo[1]['unit_required'] }} @if ($explo[1]['unit_required'] > $unit_avaible) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
                                     @if ($explo[1]['food_required'] > 0)
@@ -70,7 +70,7 @@
                         <img class="explo" style="width:250px;height: 250px;" src="{{ $explo[2]['illustration'] }}">
                         <div @if ($unit_avaible == 0 || $explo[2]['food_required'] > $food || $explo[2]['wood_required'] > $wood || $explo[2]['rock_required'] > $rock || $explo[2]['steel_required'] > $steel || $explo[2]['gold_required'] > $gold) class="explo-button-impossible" @else class="explo-button" onclick="choice(3)"@endif>                                
                             Choisir <i class="fas fa-map-marked-alt"></i>
-                            <div class="unit-needed">
+                            <div class="explo-needed">
                                 <ul>
                                     <li>{{ $explo_unit_name }} : {{ $explo[2]['unit_required'] }} @if ($explo[2]['unit_required'] > $unit_avaible) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
                                     @if ($explo[2]['food_required'] > 0)
@@ -97,7 +97,7 @@
                         <img class="explo" style="width:250px;height: 250px;" src="{{ $explo[3]['illustration'] }}">
                         <div @if ($unit_avaible == 0 || $explo[3]['food_required'] > $food || $explo[3]['wood_required'] > $wood || $explo[3]['rock_required'] > $rock || $explo[3]['steel_required'] > $steel || $explo[3]['gold_required'] > $gold) class="explo-button-impossible" @else class="explo-button" onclick="choice(4)"@endif>                                
                             Choisir <i class="fas fa-map-marked-alt"></i>
-                            <div class="unit-needed">
+                            <div class="explo-needed">
                                 <ul>
                                     <li>{{ $explo_unit_name }} : {{ $explo[3]['unit_required'] }} @if ($explo[3]['unit_required'] > $unit_avaible) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
                                     @if ($explo[3]['food_required'] > 0)

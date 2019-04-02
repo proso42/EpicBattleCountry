@@ -88,7 +88,7 @@
             <div class="col-lg-3 col-md-3 col-sm-3 col-3">Acceuil</div>
         </div>
         <div class="row menu-left">
-            <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-ankh"></i></div>
+            <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-praying-hands"></i></div>
             <div class="col-lg-3 col-md-3 col-sm-3 col-3">Divinité</div>
         </div>
         <div onclick="document.location.href='/buildings'" class="row menu-left">

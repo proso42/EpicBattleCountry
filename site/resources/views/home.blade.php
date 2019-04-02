@@ -128,6 +128,7 @@
                 var s=duration;
                 var m=0;
                 var h=0;
+                var j = 0;
                 if(s<=0)
                 {
                     let id_to_hide = id.replace(/compteur/gi, "interrupt");
@@ -146,6 +147,11 @@
                     {
                         h=Math.floor(m/60);
                         m= m - h * 60;
+                    }
+                    if (h > 24)
+                    {
+                        j=Math.floor(h/24);
+                        h = h - j * 24;
                     }
                     if(s<10 && s > 0)
                     {
@@ -183,8 +189,20 @@
                     {
                         h += " h ";
                     }
+                    if (j < 10 && j > 0)
+                    {
+                        j = "0" + j + " j ";
+                    }
+                    else if (j == 0)
+                    {
+                        j = "";
+                    }
+                    else
+                    {
+                        j += " j " 
+                    }
                     if (compteur.hasAttribute('quantity'))
-                        compteur.textContent = name + " " + compteur.getAttribute('quantity') + " " + h+" "+m+" "+s;
+                        compteur.textContent = name + " " + compteur.getAttribute('quantity') + " " + j + " " + h + " " + m + " " + s;
                     else
                         compteur.textContent= name + " " + h+" "+m+" "+s;
                     setTimeout(function(same_id=id, new_duration=duration-1, same_name=name){

@@ -68,7 +68,7 @@
                 });
             }
 
-            function timer(id, duration, name)
+            function timer(id, duration)
             {
                 var compteur=document.getElementById(id);
                 var s=duration;
@@ -76,11 +76,7 @@
                 var h=0;
                 var j = 0;
                 if(s<=0)
-                {
-                    let id_to_hide = id.replace(/compteur/gi, "interrupt");
-                    document.getElementById(id_to_hide).remove();
-                    compteur.textContent = name + " Terminé";
-                }
+                    compteur.textContent = "Terminé";
                 else
                 {
                     let new_time = "";
@@ -96,7 +92,7 @@
                     }
                     if (h >= 24)
                     {
-                        j=Math.floor(h/24);
+                        j = Math.floor(h/24);
                         h = h - j * 24;
                     }
                     if(s<10 && s > 0)
@@ -137,22 +133,19 @@
                     }
                     if (j < 10 && j > 0)
                     {
-                        j = "0" + j + " j ";
+                        j = "0" + j + " ";
                     }
                     else if (j == 0)
                     {
-                        j = "";
+                        j = ""
                     }
                     else
                     {
-                        j += " j " 
+                        j += " j "
                     }
-                    if (compteur.hasAttribute('quantity'))
-                        compteur.textContent = name + " " + compteur.getAttribute('quantity') + " " + j + " " + h + " " + m + " " + s;
-                    else
-                        compteur.textContent= name + " " + j + " " + h + " " + m + " " + s;
-                    setTimeout(function(same_id=id, new_duration=duration-1, same_name=name){
-                        timer(same_id, new_duration,same_name);
+                    compteur.textContent= "In Progress : " + j + " " + h+" "+m+" "+s;
+                    setTimeout(function(same_id=id, new_duration=duration-1){
+                        timer(same_id, new_duration);
                     },1000);
                 }
             }

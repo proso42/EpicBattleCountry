@@ -148,7 +148,7 @@
                         h=Math.floor(m/60);
                         m= m - h * 60;
                     }
-                    if (h > 24)
+                    if (h >= 24)
                     {
                         j=Math.floor(h/24);
                         h = h - j * 24;
@@ -204,7 +204,7 @@
                     if (compteur.hasAttribute('quantity'))
                         compteur.textContent = name + " " + compteur.getAttribute('quantity') + " " + j + " " + h + " " + m + " " + s;
                     else
-                        compteur.textContent= name + " " + h+" "+m+" "+s;
+                        compteur.textContent= name + " " + j + " " + h + " " + m + " " + s;
                     setTimeout(function(same_id=id, new_duration=duration-1, same_name=name){
                         timer(same_id, new_duration,same_name);
                     },1000);

@@ -106,19 +106,18 @@
             if (unit_timing !== null)
                 timer('unit_timer', unit_timing.getAttribute("duration"));
 
-            function timer(id, duration)
+            function timer(id, duration, name)
             {
                 var compteur=document.getElementById(id);
                 var s=duration;
                 var m=0;
                 var h=0;
+                var j = 0;
                 if(s<=0)
                 {
-                    compteur.textContent = "Terminé";
-                    $cancel_button = document.getElementById("interrupt_unit_button");
-                    $cancel_button.className = "army-button";
-                    $cancel_button.value = "Ok";
-                    $cancel_button.onclick = function(){window.location.reload();};
+                    let id_to_hide = id.replace(/compteur/gi, "interrupt");
+                    document.getElementById(id_to_hide).remove();
+                    compteur.textContent = name + " Terminé";
                 }
                 else
                 {
@@ -132,6 +131,11 @@
                     {
                         h=Math.floor(m/60);
                         m= m - h * 60;
+                    }
+                    if (h >= 24)
+                    {
+                        j=Math.floor(h/24);
+                        h = h - j * 24;
                     }
                     if(s<10 && s > 0)
                     {
@@ -169,9 +173,24 @@
                     {
                         h += " h ";
                     }
-                    compteur.textContent= "In Progress : " + h+" "+m+" "+s;
-                    setTimeout(function(same_id=id, new_duration=duration-1){
-                        timer(same_id, new_duration);
+                    if (j < 10 && j > 0)
+                    {
+                        j = "0" + j + " j ";
+                    }
+                    else if (j == 0)
+                    {
+                        j = "";
+                    }
+                    else
+                    {
+                        j += " j " 
+                    }
+                    if (compteur.hasAttribute('quantity'))
+                        compteur.textContent = name + " " + compteur.getAttribute('quantity') + " " + j + " " + h + " " + m + " " + s;
+                    else
+                        compteur.textContent= name + " " + j + " " + h + " " + m + " " + s;
+                    setTimeout(function(same_id=id, new_duration=duration-1, same_name=name){
+                        timer(same_id, new_duration,same_name);
                     },1000);
                 }
             }

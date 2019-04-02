@@ -18,7 +18,7 @@
                             Choisir <i class="fas fa-map-marked-alt"></i>
                             <div class="unit-needed">
                                 <ul>
-                                    <li>{{ $explo_unit_name }} : {{ explo[0]['unit_required'] }} @if ($explo[0]['unit_required'] > $unit_avaible) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                    <li>{{ $explo_unit_name }} : {{ $explo[0]['unit_required'] }} @if ($explo[0]['unit_required'] > $unit_avaible) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
                                     @if ($explo[0]['food_required'] > 0)
                                         <li>Food : {{ $explo[0]['food_required'] }} @if ($explo[0]['food_required'] > $food) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
                                     @endif
@@ -45,7 +45,7 @@
                             Choisir <i class="fas fa-map-marked-alt"></i>
                             <div class="unit-needed">
                                 <ul>
-                                    <li>{{ $explo_unit_name }} : {{ explo[1]['unit_required'] }} @if ($explo[1]['unit_required'] > $unit_avaible) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                    <li>{{ $explo_unit_name }} : {{ $explo[1]['unit_required'] }} @if ($explo[1]['unit_required'] > $unit_avaible) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
                                     @if ($explo[1]['food_required'] > 0)
                                         <li>Food : {{ $explo[1]['food_required'] }} @if ($explo[1]['food_required'] > $food) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
                                     @endif
@@ -72,7 +72,7 @@
                             Choisir <i class="fas fa-map-marked-alt"></i>
                             <div class="unit-needed">
                                 <ul>
-                                    <li>{{ $explo_unit_name }} : {{ explo[2]['unit_required'] }} @if ($explo[2]['unit_required'] > $unit_avaible) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                    <li>{{ $explo_unit_name }} : {{ $explo[2]['unit_required'] }} @if ($explo[2]['unit_required'] > $unit_avaible) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
                                     @if ($explo[2]['food_required'] > 0)
                                         <li>Food : {{ $explo[2]['food_required'] }} @if ($explo[2]['food_required'] > $food) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
                                     @endif
@@ -99,7 +99,7 @@
                             Choisir <i class="fas fa-map-marked-alt"></i>
                             <div class="unit-needed">
                                 <ul>
-                                    <li>{{ $explo_unit_name }} : {{ explo[3]['unit_required'] }} @if ($explo[3]['unit_required'] > $unit_avaible) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                    <li>{{ $explo_unit_name }} : {{ $explo[3]['unit_required'] }} @if ($explo[3]['unit_required'] > $unit_avaible) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
                                     @if ($explo[3]['food_required'] > 0)
                                         <li>Food : {{ $explo[3]['food_required'] }} @if ($explo[3]['food_required'] > $food) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
                                     @endif

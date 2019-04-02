@@ -28,7 +28,7 @@
                                     @for ($x = $x_pos - $cartographer; $x <= $x_pos + $cartographer; $x++)
                                         @if ($i < count($visible_cells) && $x == $visible_cells[$i]['x_pos'] && $y == $visible_cells[$i]['y_pos'])
                                             <td title="{{ $visible_cells[$i]['x_pos'] }}/{{ $visible_cells[$i]['y_pos'] }} {{ $visible_cells[$i]['title'] }}" class="map-cell" style="background-color: {{ $visible_cells[$i]['background-color'] }}">
-                                                <i class="fas {{ $visible_cells[$i]['class'] }}"></i>
+                                                <i class="fas {{ $visible_cells[$i]['class'] }} "></i>
                                                 <div class="map-cell-details">
                                                     <p>{{ $visible_cells[$i]['x_pos'] }}/{{ $visible_cells[$i]['y_pos'] }}</p>
                                                     <i class="fas {{ $visible_cells[$i]['class'] }}"></i>
@@ -52,6 +52,8 @@
                         <li><i class="fas fa-dungeon"></i> Ruine</li>
                         <li><i class="fas fa-dragon"></i> Tannière d'un dragon</li>
                         <li><i class="fas fa-water"></i> Fleuve / Lac</li>
+                        <li><i class="fas fa-mountain"></i> Montagne</li>
+                        <li><i class="fas fa-tree"></i> Fôret</li>
                     </ul>
                 @endif
             </div>

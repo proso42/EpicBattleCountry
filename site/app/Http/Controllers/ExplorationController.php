@@ -141,15 +141,7 @@
                 $steel_required = 2500;
                 $gold_required = 1000;
             }
-            try
-            {
-                if (1 < 2)
-                    echo "WTF";
-            }
-            catch (Exception $e)
-            {
-                return ($e->getMessage());
-            }
+            return ("food_required : " . $food_required);
             /*if ($unit_avaible < $unit_required || $food_required > $city_res->food || $wood_required > $city_res->wood || $rock_required > $city_res->rock || $steel_required > $city_res->steel || $gold_required > $city_res->gold)
                 return 1;*/
             $speed = 3600 / (DB::table('unit')->where('name', '=', $unit)->value('speed'));

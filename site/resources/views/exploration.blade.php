@@ -139,7 +139,7 @@
                     <h3 id="title_choice_2" style="display:none">Fouiller un donjon</h3>
                     <h3 id="title_choice_3" style="display:none">Piller un champs de bataille</h3>
                     <h3 id="title_choice_4" style="display:none">Coloniser un nouvel endroit</h3>
-                    <div id="warning" style="color: crimson;display: none"><i class="fas fa-exclamation-triangle"></i> Cible inconnue <i class="fas fa-exclamation-triangle"></i></div>
+                    <div id="warning" style="color: crimson;display: none"><i class="fas fa-exclamation-triangle icon-color-orange"></i><span class="explo-warning-text">Cible inconnue<span><i class="fas fa-exclamation-triangle icon-color-orange"></i></div>
                     <p>Temps requis pour faire le trajet : <span id="finishing_time"></span><i class="fas fa-clock"></i></p>
                     <input onclick="confirm()" id="confirm-button" type="button" class="explo-button-confirm" value="Confirmer">
                     <input onclick="cancel()" type="button" class="explo-button-cancel" value="Annuler">
@@ -148,6 +148,19 @@
         </div>
         <input id="_token" name="_token" type="hidden" value="{{csrf_token()}}">
         <script>
+
+            function cancel()
+            {
+                document.getElementById("warning").style.display = "none";
+                document.getElementById("finishing_time").textContent = "";
+                document.getElementById("explo-confirm").style.display = "none";
+                for (let i = 1; i < 5; i++)
+                    document.getElementById("title_choice_" + i).style.display = "none";
+                document.getElementById("dest_x").value = "";
+                document.getElementById("dest_y").value = "";
+                document.getElementById("explo-choice").style.display = "";
+                document.getElementById("explo-dest").style.display = "";
+            }
 
             function check_coord(n)
             {

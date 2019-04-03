@@ -235,6 +235,11 @@ body
     color: greenyellow;
 }
 
+.icon-color-orange
+{
+    color: orange;
+}
+
 .icon-eye
 {
     cursor: pointer;
@@ -1210,4 +1215,13 @@ input::placeholder
     margin-left: auto;
     margin-right: auto;
     margin-top: 25px;
+}
+
+.explo-warning-text
+{
+    margin-left: 15px;
+    margin-right: 15px;
+    text-decoration: underline;
+    font-weight: bold;
+    color: darkred;
 }

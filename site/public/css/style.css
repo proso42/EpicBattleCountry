@@ -1128,3 +1128,15 @@ input::placeholder
     text-align: left;
     display: none;
 }
+
+.explo-input
+{
+    margin-top: 25px;
+    background-color: tan;
+    color: black;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    height: 32px;
+    width: 204px;
+}

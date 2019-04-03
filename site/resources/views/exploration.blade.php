@@ -120,6 +120,11 @@
                         </div>
                     </div>
                 </div>
+                <div class="explo-block">
+                    <h2>Destination</h2>
+                    <input id="dest_x" type="text" class="explo-input" placeholder="X">
+                    <input id="dest_y" type="text" class="explo-input" placeholder="Y">
+                </div>
             </div>
         </div>
         <input id="_token" name="_token" type="hidden" value="{{csrf_token()}}">

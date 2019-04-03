@@ -134,14 +134,14 @@
                     <input id="dest_x" type="text" class="explo-input" placeholder="X">
                     <input id="dest_y" type="text" class="explo-input" placeholder="Y">
                 </div>
-                <div id="explo_confirm" class="confirm_win">
+                <div id="explo_confirm" class="confirm_win" style="display:none">
                     <h3 id="title_choice_1" style="display:none">Faire une reconnaisance</h3>
                     <h3 id="title_choice_2" style="display:none">Fouiller un donjon</h3>
                     <h3 id="title_choice_3" style="display:none">Piller un champs de bataille</h3>
                     <h3 id="title_choice_4" style="display:none">Coloniser un nouvel endroit</h3>
                     <div id="warning" style="color: crimson;display: none"><i class="fas fa-exclamation-triangle"></i> Cible inconnue <i class="fas fa-exclamation-triangle"></i></div>
                     <p>Temps requis pour faire le trajet : <span id="finishing_time"></span><i class="fas fa-clock"></i></p>
-                    <input onclick="confirm()" id="confirm-button" type="button" class="explo-button" value="Confirmer">
+                    <input onclick="confirm()" id="confirm-button" type="button" class="explo-button-confirm" value="Confirmer">
                     <input onclick="cancel()" type="button" class="explo-button-cancel" value="Annuler">
                 </div>
             </div>

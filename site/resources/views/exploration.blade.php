@@ -10,6 +10,15 @@
     <body>
         @include('default')
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding-right: 10px;">
+                <div id="error_empty_input" class="explo-input-error" style="display: none;">
+                    <p>Merci de remplir le(s) champs !</p>
+                </div>
+                <div id="error_bad_input" class="explo-input-error" style="display: none;">
+                    <p>Merci de remplir correctement le(s) champs !</p>
+                </div>
+                <div id="error_limit_value" class="explo-input-error" style="display: none;">
+                    <p>Merci de renseigner des coordonnées compris entre -2000 et 2000 !</p>
+                </div>
                 <div id="explo-choice" class="row" style="margin-top: 30px">
                     <div class="explo-block">
                         <div class="explo-name">Reconnaissance</div>
@@ -128,5 +137,46 @@
             </div>
         </div>
         <input id="_token" name="_token" type="hidden" value="{{csrf_token()}}">
+        <script>
+
+            function check_coord(n)
+            {
+                if (n == "")
+                {
+                    document.getElementById("error_empty_input").style.display = "";
+                    setTimeout(() =>{
+                        document.getElementById("error_empty_input").style.display = 'none';
+                    }, 5000);
+                    return 0;
+                }
+                else if (!(!isNaN(parseFloat(n)) && isFinite(n)))
+                {
+                    document.getElementById("error_bad_input").style.display = "";
+                    setTimeout(() =>{
+                        document.getElementById("error_bad_input").style.display = 'none';
+                    }, 5000);
+                    return 0;
+                }
+                else if (parseInt(n) < -2000 || parseInt(n) > 2000)
+                {
+                    document.getElementById("error_limit_value").style.display = "";
+                    setTimeout(() =>{
+                        document.getElementById("error_limit_value").style.display = 'none';
+                    }, 5000);
+                    return 0;
+                }
+                return 1;
+            }
+
+            function choice(type)
+            {
+                var dest_x = document.getElementById("dest_x").value;
+                var dest_y = document.getElementById("dest_y").value;
+                if (check_coord(dest_x) == 0 || check_coord(dest_y) == 0)
+                    return ;
+                dest_x = parseInt(dest_x);
+                dest_y = parseInt(dest_y);
+            }
+        </script>
     </body>
 </html>

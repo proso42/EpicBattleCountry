@@ -106,7 +106,7 @@
             $dest_x = $request['dest_x'];
             $dest_y = $request['dest_y'];
             $choice = $request['choice'];
-            /*if ($dest_x < -2000 || $dest_x > 2000 || $dest_y < -2000 || $dest_y > 2000 || $choice < 1 || $choice > 4 || !is_numeric($dest_x) || !is_numeric($dest_y) || !is_numeric($choice))
+            if ($dest_x < -2000 || $dest_x > 2000 || $dest_y < -2000 || $dest_y > 2000 || $choice < 1 || $choice > 4 || !is_numeric($dest_x) || !is_numeric($dest_y) || !is_numeric($choice))
                 return 1;
             $user_race = session()->get('user_race');
             $city_id = session()->get("city_id");
@@ -133,7 +133,7 @@
             $rock_required = 0;
             $steel_required = 0;
             $gold_required = 0;
-            if ($choice == 4)
+            /*if ($choice == 4)
             {
                 $unit_required = 5;
                 $wood_required = 10000;

@@ -104,9 +104,9 @@
         public function time_explo(Resquest $request)
         {
             $dest_x = $request['dest_x'];
-            $dest_y = $request['dest_y'];
+            /*$dest_y = $request['dest_y'];
             $choice = $request['choice'];
-            /*if ($dest_x < -2000 || $dest_x > 2000 || $dest_y < -2000 || $dest_y > 2000 || $choice < 1 || $choice > 4 || !is_numeric($dest_x) || !is_numeric($dest_y) || !is_numeric($choice))
+            if ($dest_x < -2000 || $dest_x > 2000 || $dest_y < -2000 || $dest_y > 2000 || $choice < 1 || $choice > 4 || !is_numeric($dest_x) || !is_numeric($dest_y) || !is_numeric($choice))
                 return 1;
             $user_race = session()->get('user_race');
             $city_id = session()->get("city_id");

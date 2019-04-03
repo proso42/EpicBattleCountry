@@ -101,10 +101,10 @@
                 return ($duration . " j");
         }
 
-        public function time_explo(Resquest $request)
+        public function time_explo(Request $request)
         {
             $dest_x = $request['dest_x'];
-            /*$dest_y = $request['dest_y'];
+            $dest_y = $request['dest_y'];
             $choice = $request['choice'];
             if ($dest_x < -2000 || $dest_x > 2000 || $dest_y < -2000 || $dest_y > 2000 || $choice < 1 || $choice > 4 || !is_numeric($dest_x) || !is_numeric($dest_y) || !is_numeric($choice))
                 return 1;
@@ -153,7 +153,7 @@
             if ($dest_x < $x_min || $dest_x > $x_max || $dest_y < $y_min || $dest_y > $y_max)
                 return ($finishing_date . ";warning");
             else
-                return ($finishing_date . ";easy");*/
+                return ($finishing_date . ";easy");
         }
     }
 ?>

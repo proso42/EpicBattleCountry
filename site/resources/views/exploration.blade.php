@@ -120,7 +120,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="explo-block">
+                <div class="explo-dest">
                     <h2>Destination</h2>
                     <input id="dest_x" type="text" class="explo-input" placeholder="X">
                     <input id="dest_y" type="text" class="explo-input" placeholder="Y">

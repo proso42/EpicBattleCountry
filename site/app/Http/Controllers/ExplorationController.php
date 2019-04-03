@@ -145,7 +145,6 @@
                 return 1;
             $speed = 3600 / (DB::table('units')->where('name', '=', $unit)->value('speed'));
             $total_time = (abs($city_res->x_pos - $dest_x) + abs($city_res->y_pos - $dest_y) * $speed);
-            return $total_time;
             $finishing_date = sec_to_date($total_time);
             /*$cartographe = DB::table('cities_buildings')->where('city_id', '=', $city_id)->value('Cartographe');
             $x_min = $city_res->x_pos - $cartographe;

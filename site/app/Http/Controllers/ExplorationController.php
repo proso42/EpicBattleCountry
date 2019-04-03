@@ -127,6 +127,8 @@
                 $unit = "Eclaireur";
             $unit_avaible = DB::table('cities_units')->where('city_id', '=', $city_id)->value($unit);
             $city_res = DB::table('cities')->select('food', 'wood', 'rock', 'steel', 'gold', 'x_pos', 'y_pos')->where('id', '=', $city_id)->first();
+            if ($city_res->x_pos == $dest_x && $city_res->y_pos == $dest_y)
+                return ("no_move");
             $unit_required = 1;
             $food_required = 100;
             $wood_required = 0;

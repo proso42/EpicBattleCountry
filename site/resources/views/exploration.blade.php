@@ -19,6 +19,9 @@
                 <div id="error_limit_value" class="explo-input-error" style="display: none;">
                     <p>Merci de renseigner des coordonnées compris entre -2000 et 2000 !</p>
                 </div>
+                <div id="error_no_move" class="explo-input-error" style="display: none;">
+                    <p>Votre expédition ne va pas bouger !</p>
+                </div>
                 <div id="explo_choice" class="row" style="margin-top: 30px">
                     <div class="explo-block">
                         <div class="explo-name">Reconnaissance</div>
@@ -139,7 +142,7 @@
                     <h3 id="title_choice_2" style="display:none">Fouiller un donjon</h3>
                     <h3 id="title_choice_3" style="display:none">Piller un champs de bataille</h3>
                     <h3 id="title_choice_4" style="display:none">Coloniser un nouvel endroit</h3>
-                    <div id="warning" style="color: crimson;display: none"><i class="fas fa-exclamation-triangle icon-color-orange"></i><span class="explo-warning-text">Cible inconnue<span><i class="fas fa-exclamation-triangle icon-color-orange"></i></div>
+                    <div id="warning" style="color: crimson;display: none"><i class="fas fa-exclamation-triangle icon-color-orange" style="margin-right: 15px"></i><span class="explo-warning-text">Cible inconnue<span><i class="fas fa-exclamation-triangle icon-color-orange" style="margin-left: 15px"></i></div>
                     <p>Temps requis pour faire le trajet : <span id="finishing_time"></span><i class="fas fa-clock"></i></p>
                     <input onclick="confirm()" id="confirm-button" type="button" class="explo-button-confirm" value="Confirmer">
                     <input onclick="cancel()" type="button" class="explo-button-cancel" value="Annuler">
@@ -212,6 +215,14 @@
                             document.getElementById("ajax_error").style.display = "";
                             setTimeout(() =>{
                                 document.getElementById("ajax_error").style.display = 'none';
+                            }, 5000);
+                            return 0;
+                        }
+                        else if (xhr.responseText == "no_move")
+                        {
+                            document.getElementById("error_no_move").style.display = "";
+                            setTimeout(() =>{
+                                document.getElementById("error_no_move").style.display = 'none';
                             }, 5000);
                             return 0;
                         }

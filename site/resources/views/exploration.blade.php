@@ -233,7 +233,7 @@
                             document.getElementById("explo_dest").style.display = "none";
                             document.getElementById("explo_confirm").style.display = "";
                             document.getElementById("title_choice_" + type).style.display = "";
-                            document.getElementById("finishing_time").textContent = response[0];
+                            document.getElementById("finishing_time").textContent = response[0] + " ";
                             if (response[1] == "warning")
                                 document.getElementById("warning").style.display = "";
                         }

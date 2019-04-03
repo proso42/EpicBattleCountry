@@ -133,7 +133,7 @@
             $rock_required = 0;
             $steel_required = 0;
             $gold_required = 0;
-            /*if ($choice == 4)
+            if ($choice == 4)
             {
                 $unit_required = 5;
                 $wood_required = 10000;
@@ -144,7 +144,7 @@
             if ($unit_avaible < $unit_required || $food_required > $city_res->food || $wood_required > $city_res->wood || $rock_required > $city_res->rock || $steel_required > $city_res->steel || $gold_required > $city_res->gold)
                 return 1;
             $speed = 3600 / (DB::table('unit')->where('name', '=', $unit)->value('speed'));
-            $finishing_date = sec_to_date((abs($city_res->x_pos - $dest_x) + abs($city_res->y_pos - $dest_y)) * $speed);
+            /*$finishing_date = sec_to_date((abs($city_res->x_pos - $dest_x) + abs($city_res->y_pos - $dest_y)) * $speed);
             $cartographe = DB::table('cities_buildings')->where('city_id', '=', $city_id)->value('Cartographe');
             $x_min = $city_res->x_pos - $cartographe;
             $x_max = $city_res->x_pos + $cartographe;

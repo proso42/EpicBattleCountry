@@ -134,7 +134,7 @@
                     <input id="dest_x" type="text" class="explo-input" placeholder="X">
                     <input id="dest_y" type="text" class="explo-input" placeholder="Y">
                 </div>
-                <div id="explo_confirm" class="confirm_win" style="display:none">
+                <div id="explo_confirm" class="confirm-win" style="display:none">
                     <h3 id="title_choice_1" style="display:none">Faire une reconnaisance</h3>
                     <h3 id="title_choice_2" style="display:none">Fouiller un donjon</h3>
                     <h3 id="title_choice_3" style="display:none">Piller un champs de bataille</h3>

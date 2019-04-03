@@ -75,6 +75,85 @@
             $explo[2] = ["unit_required" => 1, "food_required" => 100, "wood_required" => 0, "rock_required" => 0, "steel_required" => 0, "gold_required" => 0, 'illustration' => "images/explo_battlefield.jpg"]; //Champs de battaille
             $explo[3] = ["unit_required" => 5, "food_required" => 100, "wood_required" => 10000, "rock_required" => 5000, "steel_required" => 2500, "gold_required" => 1000, 'illustration' => "images/explo_colonize.jpg"]; //Nouvelle ville
             return view('exploration', compact('food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold', 'explo_unit_name', 'unit_avaible', 'explo'));
-        }  
+        }
+
+        private function sec_to_date($duration)
+        {
+            $new_duration = "";
+            if ($duration < 60)
+                return ($duration . " s");
+            if ($duration % 60 > 0)
+                $new_duration = ($duration % 60) . " s";
+            $duration = floor($duration / 60);
+            if ($duration < 60)
+                return ($duration . " m " . $new_duration);
+            if ($duration % 60 > 0)
+                $new_duration = ($duration % 60) . " m " . $new_duration;
+            $duration = floor($duration / 60);
+            if ($duration < 60)
+                return ($duration . " h " . $new_duration);
+            if ($duration % 60 > 0)
+                $new_duration = ($duration % 60) . " h " . $new_duration;
+            $duration = floor($duration / 24);
+            if ($new_duration !== "")
+                return ($duration . " j " . $new_duration);
+            else
+                return ($duration . " j");
+        }
+
+        public function time_explo(Resquest $request)
+        {
+            $dest_x = $request['dest_x'];
+            $dest_y = $request['dest_y'];
+            $choice = $request['choice'];
+            if ($dest_x < -2000 || $dest_x > 2000 || $dest_y < -2000 || $dest_y > 2000 || $choice < 1 || $choice > 4 || !is_numeric($dest_x) || !is_numeric($dest_y) || !is_numeric($choice))
+                return 1;
+            $user_race = session()->get('user_race');
+            $city_id = session()->get("city_id");
+            if ($user_race === null)
+            {
+                $user_race = DB::table('users')
+                ->where('id', '=', $user_id)
+                ->value('race');
+                session()->put(['user_race' => $user_race]);
+            }
+            if ($user_race == 1)
+                $unit = "Explorateur";
+            else if ($user_race == 2)
+                $unit = "Ranger";
+            else if ($user_race == 3)
+                $unit = "Fouineur";
+            else
+                $unit = "Eclaireur";
+            $unit_avaible = DB::table('cities_units')->where('city_id', '=', $city_id)->value($unit);
+            $city_res = DB::table('cities')->select('food', 'wood', 'rock', 'steel', 'gold', 'x_pos', 'y_pos')->where('id', '=', $city_id)->get();
+            $unit_required = 1;
+            $food_required = 100;
+            $wood_required = 0;
+            $rock_required = 0;
+            $steel_required = 0;
+            $gold_required = 0;
+            if ($choice == 4)
+            {
+                $unit_required = 5;
+                $wood_required = 10000;
+                $rock_required = 5000;
+                $steel_required = 2500;
+                $gold_required = 1000;
+            }
+            if ($unit_avaible < $unit_required || $food_required > $city_res->food || $wood_required > $city_res->wood || $rock_required > $city_res->rock || $steel_required > $city_res->steel || $gold_required > $city_res->gold)
+                return 1;
+            $speed = 3600 / (DB::table('unit')->where('name', '=', $unit)->value('speed'));
+            $finishing_date = sec_to_date((abs($city_res->x_pos - $dest_x) + abs($city_res->y_pos - $dest_y)) * $speed);
+            $cartographe = DB::table('cities_buildings')->where('city_id', '=', $city_id)->value('Cartographe');
+            $x_min = $city_res->x_pos - $cartographe;
+            $x_max = $city_res->x_pos + $cartographe;
+            $y_min = $city_res->y_pos - $cartographe;
+            $y_max = $city_res->y_pos + $cartographe;
+            if ($dest_x < $x_min || $dest_x > $x_max || $dest_y < $y_min || $dest_y > $y_max)
+                return ($finishing_date . ";warning");
+            else
+                return ($finishing_date . ";easy");
+        }
     }
 ?>

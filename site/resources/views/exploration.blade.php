@@ -19,7 +19,7 @@
                 <div id="error_limit_value" class="explo-input-error" style="display: none;">
                     <p>Merci de renseigner des coordonnées compris entre -2000 et 2000 !</p>
                 </div>
-                <div id="explo-choice" class="row" style="margin-top: 30px">
+                <div id="explo_choice" class="row" style="margin-top: 30px">
                     <div class="explo-block">
                         <div class="explo-name">Reconnaissance</div>
                         <img class="explo" style="width:250px;height: 250px;" src="{{ $explo[0]['illustration'] }}">
@@ -129,10 +129,20 @@
                         </div>
                     </div>
                 </div>
-                <div class="explo-dest">
+                <div id="explo_dest" class="explo-dest">
                     <h2>Destination</h2>
                     <input id="dest_x" type="text" class="explo-input" placeholder="X">
                     <input id="dest_y" type="text" class="explo-input" placeholder="Y">
+                </div>
+                <div id="explo_confirm" class="confirm_win">
+                    <h3 id="title_choice_1" style="display:none">Faire une reconnaisance</h3>
+                    <h3 id="title_choice_2" style="display:none">Fouiller un donjon</h3>
+                    <h3 id="title_choice_3" style="display:none">Piller un champs de bataille</h3>
+                    <h3 id="title_choice_4" style="display:none">Coloniser un nouvel endroit</h3>
+                    <div id="warning" style="color: crimson;display: none"><i class="fas fa-exclamation-triangle"></i> Cible inconnue <i class="fas fa-exclamation-triangle"></i></div>
+                    <p>Temps requis pour faire le trajet : <span id="finishing_time"></span><i class="fas fa-clock"></i></p>
+                    <input onclick="confirm()" id="confirm-button" type="button" class="explo-button" value="Confirmer">
+                    <input onclick="cancel()" type="button" class="explo-button-cancel" value="Annuler">
                 </div>
             </div>
         </div>
@@ -176,6 +186,37 @@
                     return ;
                 dest_x = parseInt(dest_x);
                 dest_y = parseInt(dest_y);
+                var _token = document.getElementById("_token").value;
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'http://www.epicbattlecorp.fr/time_explo');
+                xhr.onreadystatechange =  function()
+                {
+                    if (xhr.readyState === 4 && xhr.status === 200)
+                    {
+                        console.log(xhr.responseText)
+                        if (xhr.responseText == 1)
+                        {
+                            document.getElementById("ajax_error").style.display = "";
+                            setTimeout(() =>{
+                                document.getElementById("ajax_error").style.display = 'none';
+                            }, 5000);
+                            return 0;
+                        }
+                        else
+                        {
+                            let response = xhr.responseText.split(";");
+                            document.getElementById("explo_choice").style.display = "none";
+                            document.getElementById("explo_choice").style.display = "none";
+                            document.getElementById("explo_confirm").style.display = "";
+                            document.getElementById("title_choice_" + type).style.display = "";
+                            document.getElementById("finishing_time").textContent = response[0];
+                            if (response[1] == "warning")
+                                document.getElementById("warning").style.display = "";
+                        }
+                    }
+                }
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.send('_token=' + _token + '&dest_x=' + dest_x + '&dest_y=' + dest_y + "&choice=" + type);
             }
         </script>
     </body>

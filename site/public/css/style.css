@@ -1102,6 +1102,28 @@ input::placeholder
     font-weight: bold;
 }
 
+.explo-button-cancel
+{
+    margin-top: 26px;
+    margin-bottom: 20px;
+    line-height: 0;
+    background-color: lightpink;
+    color: black;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 32px;
+    width: 204px;
+}
+
+.explo-button-cancel:hover
+{
+    background-color: crimson;
+    font-weight: bold;
+    color: white;
+}
+
 .explo-name
 {
     background-color: rgba(105, 105, 105, 0.9);

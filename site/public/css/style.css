@@ -1136,15 +1136,14 @@ input::placeholder
     margin-right: auto;
     margin-top: 40px;
     margin-bottom: 20px;
-    background-color: 
+    background-color: rgba(105, 105, 105, 0.9);
+    border: solid 1px lightblue;
+    border-radius: 4px;
 }
 
 .explo-input
 {
     margin-top: 25px;
-    background-color: rgba(105, 105, 105, 0.9);
-    border: solid 1px lightblue;
-    border-radius: 4px;
     color: black;
     text-align: center;
     border: 1px solid black;

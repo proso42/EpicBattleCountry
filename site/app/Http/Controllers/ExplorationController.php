@@ -141,7 +141,7 @@
                 $steel_required = 2500;
                 $gold_required = 1000;
             }
-            if ($unit_avaible < $unit_required)
+            if ($food_required > $city_res->food || $wood_required > $city_res->wood || $rock_required > $city_res->rock || $steel_required > $city_res->steel || $gold_required > $city_res->gold)
                 return 1;
             $speed = 3600 / (DB::table('unit')->where('name', '=', $unit)->value('speed'));
             $finishing_date = sec_to_date((abs($city_res->x_pos - $dest_x) + abs($city_res->y_pos - $dest_y)) * $speed);

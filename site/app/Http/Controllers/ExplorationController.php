@@ -143,7 +143,7 @@
             }
             try
             {
-                if ($unit_avaible < 2)
+                if (1 < 2)
                     echo "WTF";
             }
             catch (Exception $e)

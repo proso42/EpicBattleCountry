@@ -153,13 +153,13 @@
             {
                 document.getElementById("warning").style.display = "none";
                 document.getElementById("finishing_time").textContent = "";
-                document.getElementById("explo-confirm").style.display = "none";
+                document.getElementById("explo_confirm").style.display = "none";
                 for (let i = 1; i < 5; i++)
                     document.getElementById("title_choice_" + i).style.display = "none";
                 document.getElementById("dest_x").value = "";
                 document.getElementById("dest_y").value = "";
-                document.getElementById("explo-choice").style.display = "";
-                document.getElementById("explo-dest").style.display = "";
+                document.getElementById("explo_choice").style.display = "";
+                document.getElementById("explo_dest").style.display = "";
             }
 
             function check_coord(n)

@@ -240,6 +240,7 @@
                 "starting_point" => $city_res->x_pos . "/" . $city_res->y_pos,
                 "ending_point" => $dest_x . "/" . $dest_y,
                 "units" => $unit_avaible->id . ":" . $unit_required,
+                "traveling_duration" => ((abs($city_res->x_pos - $dest_x) + abs($city_res->y_pos - $dest_y)) * $speed),
                 "finishing_date" => $finishing_date,
                 "mission" => $choice
             ]);

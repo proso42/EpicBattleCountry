@@ -159,7 +159,7 @@
         <input id="_token" name="_token" type="hidden" value="{{csrf_token()}}">
         <script>
 
-            var choice = -1;
+            var g_choice = -1;
             setTimeout(() =>{
                         document.getElementById("sending_failed").style.display = "none";
                         document.getElementById("sending_success").style.display = "none";
@@ -200,7 +200,7 @@
                     }
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                xhr.send('_token=' + _token + '&choice=' + choice + "&dest_x=" + dest_x + "&dest_y=" + dest_y);
+                xhr.send('_token=' + _token + '&choice=' + g_choice + "&dest_x=" + dest_x + "&dest_y=" + dest_y);
                 setTimeout(() =>{
                         window.location.href = "http://www.epicbatllecorp.fr/exploration?sending=success";
                 }, 3000);
@@ -241,7 +241,7 @@
                 var dest_y = document.getElementById("dest_y").value;
                 if (check_coord(dest_x) == 0 || check_coord(dest_y) == 0 || type < 1 || type > 4)
                     return ;
-                choice = type;
+                g_choice = type;
                 dest_x = parseInt(dest_x);
                 dest_y = parseInt(dest_y);
                 var _token = document.getElementById("_token").value;

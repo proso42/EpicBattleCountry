@@ -1223,3 +1223,16 @@ input::placeholder
     font-weight: bold;
     color: darkred;
 }
+
+.explo-input-success
+{
+    color: green;
+    background-color: lightgreen;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding-top: 10px;
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}

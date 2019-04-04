@@ -57,6 +57,7 @@ Route::group(['middleware' => 'logged'], function(){
     Route::get('/map', 'MapController@index');
     Route::get('/exploration', 'ExplorationController@index');
     Route::post('/time_explo', 'ExplorationController@time_explo');
+    Route::post('send_expedition', 'ExplorationController@send_expedition');
 });
 
 

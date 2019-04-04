@@ -10,6 +10,12 @@
     <body>
         @include('default')
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding-right: 10px;">
+                <div id="sending_failed" class="explo-input-error" @if ($display_sending_false == 0) style="display: none;" @endif>
+                    <p>Une erreur est survenue !</p>
+                </div>
+                <div id="sending_success" class="explo-input-success" @if ($display_sending_success == 0) style="display: none;" @endif>
+                    <p>Votre expedition a été envoyé !</p>
+                </div>
                 <div id="error_empty_input" class="explo-input-error" style="display: none;">
                     <p>Merci de remplir le(s) champs !</p>
                 </div>
@@ -145,12 +151,20 @@
                     <div id="warning" style="color: crimson;display: none"><i class="fas fa-exclamation-triangle icon-color-orange" style="margin-right: 15px"></i><span class="explo-warning-text">Cible inconnue<span><i class="fas fa-exclamation-triangle icon-color-orange" style="margin-left: 15px"></i></div>
                     <p>Temps requis pour faire le trajet : <span id="finishing_time"></span><i class="fas fa-clock"></i></p>
                     <input onclick="confirm()" id="confirm-button" type="button" class="explo-button-confirm" value="Confirmer">
-                    <input onclick="cancel()" type="button" class="explo-button-cancel" value="Annuler">
+                    <input onclick="cancel()" id="cancel-button" type="button" class="explo-button-cancel" value="Annuler">
+                    <img id="spin" class="settings-spin" style="display: none" src="images/loader.gif">
                 </div>
             </div>
         </div>
         <input id="_token" name="_token" type="hidden" value="{{csrf_token()}}">
         <script>
+
+            var choice = -1;
+            setTimeout(() =>{
+                        document.getElementById("sending_failed").style.display = "none";
+                        document.getElementById("sending_success").style.display = "none";
+            }, 5000);
+
 
             function cancel()
             {
@@ -163,6 +177,33 @@
                 document.getElementById("dest_y").value = "";
                 document.getElementById("explo_choice").style.display = "";
                 document.getElementById("explo_dest").style.display = "";
+            }
+
+            function confirm()
+            {
+                var _token = document.getElementById("_token").value;
+                var dest_x = document.getElementById("dest_x").value;
+                var dest_y = document.getElementById("dest_y").value;
+                document.getElementById("confirm-button").style.display = "none";
+                document.getElementById("confirm-button").disabled = "true";
+                document.getElementById("cancel-button").style.display = "none";
+                document.getElementById("confirm-button").disabled = "true";
+                document.getElementById("spin").style.display = "";
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'http://www.epicbattlecorp.fr/send_expedition');
+                xhr.onreadystatechange =  function()
+                {
+                    if (xhr.readyState === 4 && xhr.status === 200)
+                    {
+                        if (xhr.responseText == 1)
+                            window.location.href = "http://www.epicbatllecorp.fr/exploration?sending=failed";
+                    }
+                }
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.send('_token=' + _token + '&choice=' + choice + "&dest_x=" + dest_x + "&dest_y=" + dest_y);
+                setTimeout(() =>{
+                        window.location.href = "http://www.epicbatllecorp.fr/exploration?sending=success";
+                }, 3000);
             }
 
             function check_coord(n)
@@ -198,8 +239,9 @@
             {
                 var dest_x = document.getElementById("dest_x").value;
                 var dest_y = document.getElementById("dest_y").value;
-                if (check_coord(dest_x) == 0 || check_coord(dest_y) == 0)
+                if (check_coord(dest_x) == 0 || check_coord(dest_y) == 0 || type < 1 || type > 4)
                     return ;
+                choice = type;
                 dest_x = parseInt(dest_x);
                 dest_y = parseInt(dest_y);
                 var _token = document.getElementById("_token").value;

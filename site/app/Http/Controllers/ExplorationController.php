@@ -244,7 +244,7 @@
                 "mission" => $choice
             ]);
             session()->put(["sending_success" => 1]);
-            $cmd = "cd /home/boss/www/scripts ; node send_expedition.js " . $traveling_id;
+            $cmd = "cd /home/boss/www/scripts ; node send_expedition.js " . $finishing_date . " " . $traveling_id;
             exec($cmd);
             return 0;
         }

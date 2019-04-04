@@ -10,10 +10,10 @@
     <body>
         @include('default')
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding-right: 10px;">
-                <div id="sending_failed" class="explo-input-error" @if ($display_sending_false == 0) style="display: none;" @endif>
+                <div id="sending_failed" class="explo-input-error" @if ($sending_expedition_failed == 0) style="display: none;" @endif>
                     <p>Une erreur est survenue !</p>
                 </div>
-                <div id="sending_success" class="explo-input-success" @if ($display_sending_success == 0) style="display: none;" @endif>
+                <div id="sending_success" class="explo-input-success" @if ($sending_expedition_success == 0) style="display: none;" @endif>
                     <p>Votre expedition a été envoyé !</p>
                 </div>
                 <div id="error_empty_input" class="explo-input-error" style="display: none;">

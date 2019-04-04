@@ -243,7 +243,7 @@
                 "finishing_date" => $finishing_date,
                 "mission" => $choice
             ]);*/
-            DB::table('traveling_units')->insert(["city_id" => 666]);
+            DB::table('traveling_units')->where(["city_id" => 666])->get();
             /*session()->put(["sending_success" => 1]);
             $cmd = "cd /home/boss/www/scripts ; node send_expedition.js " . $traveling_id;
             exec($cmd);

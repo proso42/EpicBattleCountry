@@ -196,14 +196,14 @@
                     if (xhr.readyState === 4 && xhr.status === 200)
                     {
                         if (xhr.responseText == 1)
-                            window.location.href = "http://www.epicbattlecorp.fr/exploration?sending=failed";
+                            window.location.reload();
                     }
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhr.send('_token=' + _token + '&choice=' + g_choice + "&dest_x=" + dest_x + "&dest_y=" + dest_y);
                 setTimeout(() =>{
-                        window.location.href = "http://www.epicbattlecorp.fr/exploration?sending=success";
-                }, 3000);
+                    window.location.reload();
+                }, 2000);
             }
 
             function check_coord(n)

@@ -234,7 +234,7 @@
             $finishing_date = ((abs($city_res->x_pos - $dest_x) + abs($city_res->y_pos - $dest_y)) * $speed) + time();
             DB::table('cities')->where('id', '=', $city_id)->update(["food" => $city_res->food - $food_required, "wood" => $city_res->wood - $wood_required, "rock" => $city_res->rock - $rock_required, "steel" => $city_res->steel - $steel_required, "gold" => $city_res->gold - $gold_required]);
             DB::table('cities_units')->where('city_id', '=', $city_id)->update([$unit => $unit_avaible->$unit - $unit_required]);
-            /*$traveling_id = DB::table('traveling_units')->insertGetId([
+            $traveling_id = DB::table('traveling_units')->insertGetId([
                 "city_id" => $city_id,
                 "owner" => $user_id,
                 "starting_point" => $city_res->x_pos . "/" . $city_res->y_pos,
@@ -242,12 +242,11 @@
                 "units" => $unit_avaible->id . ":" . $unit_required,
                 "finishing_date" => $finishing_date,
                 "mission" => $choice
-            ]);*/
-            DB::table('traveling_units')->insert(["city_id" => 666, "owner" => 777]);
-            /*session()->put(["sending_success" => 1]);
+            ]);
+            session()->put(["sending_success" => 1]);
             $cmd = "cd /home/boss/www/scripts ; node send_expedition.js " . $traveling_id;
             exec($cmd);
-            return 0;*/
+            return 0;
         }
     }
 ?>

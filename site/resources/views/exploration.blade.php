@@ -152,7 +152,7 @@
                     <p>Temps requis pour faire le trajet : <span id="finishing_time"></span><i class="fas fa-clock"></i></p>
                     <input onclick="confirm()" id="confirm-button" type="button" class="explo-button-confirm" value="Confirmer">
                     <input onclick="cancel()" id="cancel-button" type="button" class="explo-button-cancel" value="Annuler">
-                    <img id="spin" class="settings-spin" style="display: none" src="images/loader.gif">
+                    <img id="spin" class="explo-spin" style="display: none" src="images/loader.gif">
                 </div>
             </div>
         </div>

@@ -1236,3 +1236,11 @@ input::placeholder
     margin-right: auto;
     margin-bottom: 20px;
 }
+
+.signin-spin
+{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 25px;
+    height: 25px;
+}

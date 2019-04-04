@@ -200,7 +200,7 @@
             else
                 $unit = "Eclaireur";
             $unit_avaible = DB::table('cities_units')->select('id', $unit)->where('city_id', '=', $city_id)->first();
-            /*$city_res = DB::table('cities')->select('food', 'wood', 'rock', 'steel', 'gold', 'x_pos', 'y_pos')->where('id', '=', $city_id)->first();
+            $city_res = DB::table('cities')->select('food', 'wood', 'rock', 'steel', 'gold', 'x_pos', 'y_pos')->where('id', '=', $city_id)->first();
             if ($city_res->x_pos == $dest_x && $city_res->y_pos == $dest_y)
                 return ("no_move");
             $unit_required = 1;
@@ -217,7 +217,7 @@
                 $steel_required = 2500;
                 $gold_required = 1000;
             }
-            if ($unit_avaible->$unit < $unit_required || $food_required > $city_res->food || $wood_required > $city_res->wood || $rock_required > $city_res->rock || $steel_required > $city_res->steel || $gold_required > $city_res->gold)
+            /*if ($unit_avaible->$unit < $unit_required || $food_required > $city_res->food || $wood_required > $city_res->wood || $rock_required > $city_res->rock || $steel_required > $city_res->steel || $gold_required > $city_res->gold)
                 return 1;
             $speed = 3600 / (DB::table('units')->where('name', '=', $unit)->value('speed'));
             $finishing_date = ((abs($city_res->x_pos - $dest_x) + abs($city_res->y_pos - $dest_y)) * $speed) + time();

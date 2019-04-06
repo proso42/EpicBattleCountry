@@ -82,14 +82,16 @@
                 if ($msg->sender == "notification")
                 {
                     array_push($notifications, ["id" => $msg->id, "seen" => $msg->seen, "sender" => "Notification", "title" => $msg->title, "content" => $msg->content, "date" => $msg->sending_date]);
-                    $notif_alert++;
+                    if ($msg->seen == 1)
+                        $notif_alert++;
                 }
                 else if ($msg->sender == $user_id)
                     array_push($msg_sended, ["id" => $msg->id, "seen" => $msg->seen, "sender" => $all_users[$msg->sender]->login, "title" => $msg->title, "content" => $msg->content, "date" => $msg->sending_date]);
                 else if ($msg->target == $user_id)
                 {
                     array_push($msg_received, ["id" => $msg->id, "seen" => $msg->seen, "target" => $all_users[$msg->target]->login, "title" => $msg->title, "content" => $msg->content, "date" => $msg->sending_date]);
-                    $msg_received_alert++;
+                    if ($msg->seen == 1)
+                        $msg_received_alert++;
                 }
             }
             $users_blocked = [];

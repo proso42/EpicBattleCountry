@@ -27,7 +27,7 @@
                 <div id="notif" style="margin-top: 30px;display: none">
                     @if (count($notifications) > 0)
                         @foreach ($notifications as $notif)
-                            <div id="{{ $notif['id'] }}" class="row" style="align-items: baseline;line-height: 32px;">
+                            <div id="{{ $notif['id'] }}" class="msg-line row">
                                 <i id="seen_{{ $notif['id'] }}" @if ($notif['seen'] == 0) class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-envelope icon-color-red" @else class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-envelope-open-text icon-color-yellow" @endif></i>
                                 <span class="col-lg-3 col-md-3 col-sm-3 col-3">{{ $notif['title'] }}</span>
                                 <i onclick="hide_show_msg('{{ $notif['id'] }}', 'notif')" id="eye_{{ $notif['id'] }}" class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-eye" style="cursor: pointer; margin-right: 10px"></i>
@@ -43,7 +43,7 @@
                 <div id="sended" style="margin-top: 30px;display: none">
                     @if (count($msg_sended) > 0)
                         @foreach ($msg_sended as $msg)
-                            <div id="{{ $msg['id'] }}" class="row" style="align-items: baseline;line-height: 32px;">
+                            <div id="{{ $msg['id'] }}" class="msg-line row">
                                 <i class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-paper-plane"></i>
                                 <span class="col-lg-3 col-md-3 col-sm-3 col-3">{{ $msg['title'] }}</span>
                                 <i onclick="hide_show_msg('{{ $msg['id'] }}', 'msg_sended')" id="eye_{{ $msg['id'] }}" class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-eye" style="cursor: pointer; margin-right: 10px"></i>
@@ -59,7 +59,7 @@
                 <div id="received" style="margin-top: 30px;display: none">
                     @if (count($msg_received) > 0)
                         @foreach ($msg_received as $msg)
-                            <div id="{{ $msg['id'] }}" class="row" style="align-items: baseline;line-height: 32px;">
+                            <div id="{{ $msg['id'] }}" class="msg-line row">
                                 <i class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-paper-plane"></i>
                                 <span class="col-lg-3 col-md-3 col-sm-3 col-3">{{ $msg['title'] }}</span>
                                 <i onclick="hide_show_msg('{{ $msg['id'] }}', 'msg_received')" id="eye_{{ $msg['id'] }}" class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-eye" style="cursor: pointer; margin-right: 10px"></i>
@@ -75,7 +75,7 @@
                     @if (count($users_blocked) > 0)
                         <?php $i = 0;?>
                         @foreach ($users_blocked as $user)
-                            <div id="user_locked_{{ $i}}" class="row" style="align-items: baseline;line-height: 32px;">
+                            <div id="user_locked_{{ $i}}" class="msg-line row">
                                 <i class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-user"></i>
                                 <span class="col-lg-3 col-md-3 col-sm-3 col-3">{{ $user['login'] }}</span>
                                 <i onclick="unlock_user('{{ $user['login'] }}', 'user_locked_{{ $i}}')" class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-times icon-color-red" style="cursor: pointer"></i>

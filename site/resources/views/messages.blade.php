@@ -11,25 +11,87 @@
         @include('default')
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding-right: 10px;">
                 <div class="row">
-                    <div id="notif-tab" class="col-lg-3 col-md-3 col-sm-3 col-3 generique-tab" onclick="switchTab('notif')">
-                        @if ($notif_alert > 0)<i id="notif_alert" class="fas fa-exclamation-circle icon-color-red"></i> @endif Notifications (<span id="nb_notif" @if($notif_alert == 0) style="color: ligthyellow" @else style="color: crimson">{{ $notif_alert }}</span>)
-                    </div>
-                    <div id="sended-tab" class="col-lg-3 col-md-3 col-sm-3 col-3 generique-tab" onclick="switchTab('sended')">
-                        Messages envoyés                        
-                    </div>
-                    <div id="received-tab" class="col-lg-3 col-md-3 col-sm-3 col-3 generique-tab" onclick="switchTab('received')">
-                        @if ($msg_received_alert > 0)<i id="msg_received_alert" class="fas fa-exclamation-circle icon-color-red"></i> @endif Messages reçus (<span id="nb_msg_received" @if($msg_received_alert == 0) style="color: ligthyellow" @else style="color: crimson">{{ $msg_received_alert }}</span>)                     
-                    </div>
-                    <div id="blocked-tab" class="col-lg-3 col-md-3 col-sm-3 col-3 generique-tab" onclick="switchTab('blocked')">
-                        Joueurs bloqués       
-                    </div>
+                        <div id="notif-tab" class="col-lg-3 col-md-3 col-sm-3 col-3 generique-tab" onclick="switchTab('notif')">
+                            @if ($notif_alert > 0)<i id="notif_alert" class="fas fa-exclamation-circle icon-color-red"></i> @endif Notifications (<span id="nb_notif" @if($notif_alert == 0) style="color: ligthyellow" @else style="color: crimson" @endif>{{ $notif_alert }}</span>)
+                        </div>
+                        <div id="sended-tab" class="col-lg-3 col-md-3 col-sm-3 col-3 generique-tab" onclick="switchTab('sended')">
+                            Messages envoyés                        
+                        </div>
+                        <div id="received-tab" class="col-lg-3 col-md-3 col-sm-3 col-3 generique-tab" onclick="switchTab('received')">
+                            @if ($msg_received_alert > 0)<i id="msg_received_alert" class="fas fa-exclamation-circle icon-color-red"></i> @endif Messages reçus (<span id="nb_msg_received" @if($msg_received_alert == 0) style="color: ligthyellow" @else style="color: crimson" @endif>{{ $msg_received_alert }}</span>)                     
+                        </div>
+                        <div id="blocked-tab" class="col-lg-3 col-md-3 col-sm-3 col-3 generique-tab" onclick="switchTab('blocked')">
+                            Joueurs bloqués       
+                        </div>
                 </div>
+                <div id="notifications" class="row" style="margin-top: 30px">
+                    @if (count($notifications) > 0)
+                        @foreach ($notifications as $notif)
+                            <div id="{{ $notif['id'] }}" class="row" style="align-items: baseline;line-height: 32px;">
+                                <i id="seen_{{ $notif['id'] }}" @if ($notif['seen'] == 0) class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-envelope icon-color-red" @else class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-envelope-open-text icon-color-yellow" @endif></i>
+                                <span class="col-lg-3 col-md-3 col-sm-3 col-3">{{ $notif['title'] }}</span>
+                                <i onclick="hide_show_msg('{{ $notif['id'] }}', 'notif')" id="eye_{{ $notif['id'] }}" class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-eye" style="cursor: pointer"></i>
+                                <i onclick="remove_msg('{{ $notif['id'] }}', 'notif')" class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-times icon-color-red" style="cursor: pointer"></i>
+                                <p id="content_{{ $notif['id'] }}" class="col-lg-8 col-md-8 col-sm-8 col-8" style="display:none">{{ $notif['content'] }}</p>
+                            </div>
+                        @endforeach
+                    @else
+                        <p>Vous n'avez aucune notification.</p>
+                    @endif
+                </div>
+                <div id="msg_sended" class="row" style="margin-top: 30px">
+                    @if (count($msg_sended) > 0)
+                        @foreach ($msg_sended as $msg)
+                            <div id="{{ $msg['id'] }}" class="row" style="align-items: baseline;line-height: 32px;">
+                                <i class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-paper-plane"></i>
+                                <span class="col-lg-3 col-md-3 col-sm-3 col-3">{{ $msg['title'] }}</span>
+                                <i onclick="hide_show_msg('{{ $msg['id'] }}', 'msg_sended')" id="eye_{{ $msg['id'] }}" class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-eye" style="cursor: pointer"></i>
+                                <i onclick="remove_msg('{{ $msg['id'] }}', 'msg_sended')" class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-times icon-color-red" style="cursor: pointer"></i>
+                                <p id="content_{{ $msg['id'] }}" class="col-lg-8 col-md-8 col-sm-8 col-8" style="display:none">{{ $msg['content'] }}</p>
+                            </div>
+                        @endforeach
+                    @else
+                        <p>Vous n'avez aucun message envoyé.</p>
+                    @endif
+
+                </div>
+                <div id="msg_received" class="row" style="margin-top: 30px">
+                    @if (count($msg_received) > 0)
+                        @foreach ($msg_received as $msg)
+                            <div id="{{ $msg['id'] }}" class="row" style="align-items: baseline;line-height: 32px;">
+                                <i class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-paper-plane"></i>
+                                <span class="col-lg-3 col-md-3 col-sm-3 col-3">{{ $msg['title'] }}</span>
+                                <i onclick="hide_show_msg('{{ $msg['id'] }}', 'msg_received')" id="eye_{{ $msg['id'] }}" class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-eye" style="cursor: pointer"></i>
+                                <i onclick="remove_msg('{{ $msg['id'] }}', 'msg_received')" class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-times icon-color-red" style="cursor: pointer"></i>
+                                <p id="content_{{ $msg['id'] }}" class="col-lg-8 col-md-8 col-sm-8 col-8" style="display:none">{{ $msg['content'] }}</p>
+                            </div>
+                        @endforeach
+                    @else
+                        <p>Vous n'avez aucun message reçu.</p>
+                    @endif
+                </div>
+                <div id="users_blocked" class="row" style="margin-top: 30px">
+                    @if (count($users_blocked) > 0)
+                        <?php $i = 0;?>
+                        @foreach ($users_blocked as $user)
+                            <div id="user_locked_{{ $i}}" class="row" style="align-items: baseline;line-height: 32px;">
+                                <i class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-user"></i>
+                                <span class="col-lg-3 col-md-3 col-sm-3 col-3">{{ $user['login'] }}</span>
+                                <i onclick="unlock_user('{{ $user['login'] }}', 'user_locked_{{ $i}}')" class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-times icon-color-red" style="cursor: pointer"></i>
+                            </div>
+                            <?php $i++;?>
+                        @endforeach
+                    @else
+                        <p>Vous n'avez bloqué acun joueur.</p>
+                    @endif
+                </div>
+                
             </div>
         </div>
         <input id="_token" name="_token" type="hidden" value="{{csrf_token()}}">
         <div id="fat" style="display: none" first_active_tab="{{ $first_active_tab }}" ></div>
         <script>
-            
+
             var activeTab = document.getElementById("fat").getAttribute("first_active_tab") + "-tab";
             var activeMsg = document.getElementById("fat").getAttribute("first_active_tab");
             document.getElementById(activeTab).className = "col-lg-3 col-md-3 col-sm-3 col-3 generique-tab-active";

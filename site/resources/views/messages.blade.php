@@ -73,14 +73,14 @@
                 </div>
                 <div id="users_blocked" class="row" style="margin-top: 30px">
                     @if (count($users_blocked) > 0)
-                        <?php $i = 0;?>
+                        <?php //$i = 0;?>
                         @foreach ($users_blocked as $user)
                             <div id="user_locked_{{ $i}}" class="row" style="align-items: baseline;line-height: 32px;">
                                 <i class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-user"></i>
                                 <span class="col-lg-3 col-md-3 col-sm-3 col-3">{{ $user['login'] }}</span>
                                 <i onclick="unlock_user('{{ $user['login'] }}', 'user_locked_{{ $i}}')" class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-times icon-color-red" style="cursor: pointer"></i>
                             </div>
-                            <?php $i++;?>
+                            <?php //$i++;?>
                         @endforeach
                     @else
                         <p>Vous n'avez bloqué acun joueur.</p>
@@ -93,7 +93,7 @@
         <div id="fat" style="display: none" first_active_tab="{{ $first_active_tab }}" ></div>
         -->
         <script>
-
+            /*
             var activeTab = document.getElementById("fat").getAttribute("first_active_tab") + "-tab";
             var activeMsg = document.getElementById("fat").getAttribute("first_active_tab");
             document.getElementById(activeTab).className = "col-lg-3 col-md-3 col-sm-3 col-3 generique-tab-active";
@@ -200,7 +200,7 @@
                     nbSpan.style.color = "lightyellow";
                     document.getElementById(type + '_alert').remove();
                 }
-            }
+            }*/
         </script>
     </body>
 </html>

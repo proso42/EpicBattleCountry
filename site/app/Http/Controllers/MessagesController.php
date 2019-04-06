@@ -12,7 +12,7 @@
     {
         public function index()
         {
-            if (!isset($_GET['activeTab']) || ($_GET['activeTab'] !== "notif" && $_GET['activeTab'] !== "msg_sended" && $_GET['activeTab'] !== "msg_received" && $_GET['activeTab'] !== "users_blocked"))
+            if (!isset($_GET['activeTab']) || ($_GET['activeTab'] !== "notif" && $_GET['activeTab'] !== "sended" && $_GET['activeTab'] !== "received" && $_GET['activeTab'] !== "blocked"))
                 $first_active_tab = "notif";
             else
                 $first_active_tab = $_GET['activeTab'];

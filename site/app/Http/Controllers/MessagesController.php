@@ -12,6 +12,10 @@
     {
         public function index()
         {
+            if (!isset($_GET['activeTab']) || ($_GET['activeTab'] !== "notifications" && $_GET['activeTab'] !== "msg_sended" && $_GET['activeTab'] !== "msg_received" && $_GET['activeTab'] !== "users_blocked"))
+                $first_active_tab = "notifications";
+            else
+                $first_active_tab = $_GET['activeTab'];
             $user_id = session()->get('user_id');
             $user_race = session()->get('user_race');
             if ($user_race === null)
@@ -65,7 +69,58 @@
                 $compact_steel = substr($steel, 0, 5) . '...';
             if ($gold > 999999)
                 $compact_gold = substr($gold, 0, 5) . '...';
-            return view('messages', compact('food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
+            $notifications = [];
+            $msg_sended = [];
+            $msg_received = [];
+            $all_user_msgs = DB::table('messages')->where('target', '=', $user_id)->where('sender', '=', $user_id)->get();
+            $all_users = DB::table('users')->get();
+            $notif_alert = 0;
+            $msg_received_alert = 0;
+            foreach ($all_user_msgs as $msg)
+            {
+                if ($msg->sender == "notification")
+                {
+                    array_push($notifications, ["id" => $msg->id, "seen" => $msg->seen, "sender" => "Notification", "title" => $msg->title, "content" => $msg->content, "date" => $msg->sending_date]);
+                    $notif_alert++;
+                }
+                else if ($msg->sender == $user_id)
+                    array_push($msg_sended, ["id" => $msg->id, "seen" => $msg->seen, "sender" => $all_users[$msg->sender]->login, "title" => $msg->title, "content" => $msg->content, "date" => $msg->sending_date]);
+                else if ($msg->target == $user_id)
+                {
+                    array_push($msg_received, ["id" => $msg->id, "seen" => $msg->seen, "target" => $all_users[$msg->target]->login, "title" => $msg->title, "content" => $msg->content, "date" => $msg->sending_date]);
+                    $msg_received_alert++;
+                }
+            }
+            $users_blocked = [];
+            $all_users_blocked = DB::table('user_msg_blocked')->where('user_id', '=', $user_id)->get();
+            foreach ($all_users_blocked as $blocked)
+                array_push($users_blocked, $all_users[$blocked->user_blocked]['login']);
+            return view('messages', compact('first_active_tab', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold', 'notifications', 'msg_sended', 'msg_received', 'users_blocked', 'notif_alert', 'msg_received_alert'));
+        }
+
+        public function seen(Request $request)
+        {
+            $msg_id = $request['id'];
+            DB::table('messages')->where("id", '=', $msg_id)->update(["seen" => 1]);
+            return 0;
+        }
+
+        public function unlock_user(Request $request)
+        {
+            $login = $request['login'];
+            $user_blocked_id = DB::table('users')->where('login', '=', $login)->value('id');
+            DB::table('user_msg_blocked')->where('user_blocked', '=', $user_blocked_id)->where('user_id', '=', session()->get('user_id'))->delete();
+            return 0;
+        }
+
+        public function block_user(Request $request)
+        {
+            $login = $request['login'];
+            $user_to_block = DB::table('users')->where('login', '=', $login)->value('id');
+            if ($user_to_block === null)
+                return 1;
+            DB::table('user_msg_blocked')->insert(["user_blocked" => $user_to_block, "user_id" => session()->get('user_id')]);
+            return 0;
         }
     }
 

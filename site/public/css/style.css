@@ -240,6 +240,11 @@ body
     color: orange;
 }
 
+.icon-color-yellow
+{
+    color: lightyellow;
+}
+
 .icon-eye
 {
     cursor: pointer;

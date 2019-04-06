@@ -10,7 +10,7 @@
     <body>
         @include('default')
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding-right: 10px;">
-                <div class="row">
+                <!-- <div class="row">
                         <div id="notif-tab" class="col-lg-3 col-md-3 col-sm-3 col-3 generique-tab" onclick="switchTab('notif')">
                             @if ($notif_alert > 0)<i id="notif_alert" class="fas fa-exclamation-circle icon-color-red"></i> @endif Notifications (<span id="nb_notif" @if($notif_alert == 0) style="color: ligthyellow" @else style="color: crimson">{{ $notif_alert }}</span>)
                         </div>
@@ -85,13 +85,14 @@
                         <p>Vous n'avez bloqué acun joueur.</p>
                     @endif
                 </div>
+                -->
             </div>
         </div>
         <input id="_token" name="_token" type="hidden" value="{{csrf_token()}}">
         <div id="fat" style="display: none" first_active_tab="{{ $first_active_tab }}" ></div>
         <script>
 
-            /*var activeTab = document.getElementById("fat").getAttribute("first_active_tab") + "-tab";
+            var activeTab = document.getElementById("fat").getAttribute("first_active_tab") + "-tab";
             var activeMsg = document.getElementById("fat").getAttribute("first_active_tab");
             document.getElementById(activeTab).className = "col-lg-3 col-md-3 col-sm-3 col-3 generique-tab-active";
             document.getElementById(activeBuildings).style.display = '';
@@ -197,7 +198,7 @@
                     nbSpan.style.color = "lightyellow";
                     document.getElementById(type + '_alert').remove();
                 }
-            }*/
+            }
         </script>
     </body>
 </html>

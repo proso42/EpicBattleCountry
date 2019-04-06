@@ -82,7 +82,7 @@
                 if ($msg->sender == "notification")
                 {
                     array_push($notifications, ["id" => $msg->id, "seen" => $msg->seen, "sender" => "Notification", "title" => $msg->title, "content" => $msg->content, "date" => $msg->sending_date]);
-                    if ($msg->seen == 1)
+                    if ($msg->seen == 0)
                         $notif_alert++;
                 }
                 else if ($msg->sender == $user_id)
@@ -90,7 +90,7 @@
                 else if ($msg->target == $user_id)
                 {
                     array_push($msg_received, ["id" => $msg->id, "seen" => $msg->seen, "target" => $all_users[$msg->target]->login, "title" => $msg->title, "content" => $msg->content, "date" => $msg->sending_date]);
-                    if ($msg->seen == 1)
+                    if ($msg->seen == 0)
                         $msg_received_alert++;
                 }
             }

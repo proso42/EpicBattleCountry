@@ -73,6 +73,7 @@
             $msg_sended = [];
             $msg_received = [];
             $all_user_msgs = DB::table('messages')->where('target', '=', $user_id)->where('sender', '=', $user_id)->get();
+            dd($all_user_msgs);
             $all_users = DB::table('users')->get();
             $notif_alert = 0;
             $msg_received_alert = 0;

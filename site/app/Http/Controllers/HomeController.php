@@ -145,7 +145,7 @@
             foreach ($traveling_units as $travel)
             {
                 $mission_name = DB::table('traveling_missions')->where('id', '=', $travel->mission)->value('mission');
-                array_push($waiting_list, ["wait_id" => $travel->id, "type" => "explo", "name" => $mission_name, "duration" => $travel->finishing_date - timr()]);
+                array_push($waiting_list, ["wait_id" => $travel->id, "type" => "explo", "name" => $mission_name, "duration" => $travel->finishing_date - time()]);
             }
             return view('home', compact('food', 'compact_food', 'max_food', 'food_prod', 'wood', 'compact_wood' ,'max_wood', 'wood_prod', 'rock', 'compact_rock', 'max_rock', 'rock_prod', 'steel', 'compact_steel', 'max_steel', 'steel_prod', 'gold', 'compact_gold', 'max_gold', 'gold_prod', 'city_name', 'waiting_list', 'items_owned', 'units_owned', 'tables_class'));
         }

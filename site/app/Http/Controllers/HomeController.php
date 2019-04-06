@@ -120,6 +120,9 @@
             $waiting_unit = DB::table('waiting_units')
             ->where('city_id', '=', $city_id)
             ->first();
+            $traveling_units = DB::table('traveling_units')
+            ->where('city_id', '=', $city_id)
+            ->get();
             $waiting_list = array();
             foreach ($waiting_buildings as $build)
             {
@@ -139,6 +142,11 @@
                 array_push($waiting_list, ["wait_id" => $waiting_item->id, "type" => "item", "name" => DB::table('forge')->where('id', '=', $waiting_item->item_id)->value('name'), "duration" => $waiting_item->finishing_date - time(), "quantity" => $waiting_item->quantity]);
             if ($waiting_unit !== null)
                 array_push($waiting_list, ["wait_id" => $waiting_unit->id, "type" => "unit", "name" => DB::table('units')->where('id', '=', $waiting_unit->unit_id)->value('name'), "duration" => $waiting_unit->finishing_date - time(), "quantity" => $waiting_unit->quantity]);
+            foreach ($traveling_units as $travel)
+            {
+                $mission_name = DB::table('traveling_missions')->where('id', '=', $travel->mission)->value('mission');
+                array_push($waiting_list, ["wait_id" => $travel->id, "type" => "explo", "name" => $mission_name, "duration" => $travel->finishing_date - timr()]);
+            }
             return view('home', compact('food', 'compact_food', 'max_food', 'food_prod', 'wood', 'compact_wood' ,'max_wood', 'wood_prod', 'rock', 'compact_rock', 'max_rock', 'rock_prod', 'steel', 'compact_steel', 'max_steel', 'steel_prod', 'gold', 'compact_gold', 'max_gold', 'gold_prod', 'city_name', 'waiting_list', 'items_owned', 'units_owned', 'tables_class'));
         }
 

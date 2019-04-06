@@ -81,8 +81,10 @@
                                         <i class="fas fa-flask icon"></i>
                                     @elseif ($elem['type'] == "item")
                                         <i class="fas fa-cog icon"></i>
-                                    @else
+                                    @else if ($elem['type'] == "unit")
                                         <i class="fas fa-chess-rook icon"></i>
+                                    @else
+                                        <i class="fas fa-map-marked-alt"></i>
                                     @endif
                                 </div>
                                 <div id="compteur_{{ $elem['name'] }}" duration="{{ $elem['duration'] }}" name="{{ $elem['name'] }}" @if($elem['type'] == 'item' || $elem['type'] == 'unit') quantity="x{{ $elem['quantity'] }}" @endif class="col-lg-8 col-md-8 col-sm-8 col-8 infos-building-wip"></div>

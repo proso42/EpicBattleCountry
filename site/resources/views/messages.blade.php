@@ -12,19 +12,19 @@
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding-right: 10px;">
                 <div class="row">
                         <div id="notif-tab" class="col-lg-3 col-md-3 col-sm-3 col-3 generique-tab" onclick="switchTab('notif')">
-                            @if ($notif_alert > 0)<i id="notif_alert" class="fas fa-exclamation-circle icon-color-red"></i> @endif Notifications (<span id="nb_notif" @if($notif_alert == 0) style="color: ligthyellow" @else style="color: crimson" @endif>{{ $notif_alert }}</span>)
+                            @if ($notif_alert > 0)<i id="notif_alert" class="fas fa-exclamation-circle icon-color-red"></i> @endif Notifications (<span id="nb_notif" @if($notif_alert == 0) style="color: lightyellow" @else style="color: crimson" @endif>{{ $notif_alert }}</span>)
                         </div>
                         <div id="sended-tab" class="col-lg-3 col-md-3 col-sm-3 col-3 generique-tab" onclick="switchTab('sended')">
                             Messages envoyés                        
                         </div>
                         <div id="received-tab" class="col-lg-3 col-md-3 col-sm-3 col-3 generique-tab" onclick="switchTab('received')">
-                            @if ($msg_received_alert > 0)<i id="msg_received_alert" class="fas fa-exclamation-circle icon-color-red"></i> @endif Messages reçus (<span id="nb_msg_received" @if($msg_received_alert == 0) style="color: ligthyellow" @else style="color: crimson" @endif>{{ $msg_received_alert }}</span>)                     
+                            @if ($msg_received_alert > 0)<i id="msg_received_alert" class="fas fa-exclamation-circle icon-color-red"></i> @endif Messages reçus (<span id="nb_msg_received" @if($msg_received_alert == 0) style="color: lightyellow" @else style="color: crimson" @endif>{{ $msg_received_alert }}</span>)                     
                         </div>
                         <div id="blocked-tab" class="col-lg-3 col-md-3 col-sm-3 col-3 generique-tab" onclick="switchTab('blocked')">
                             Joueurs bloqués       
                         </div>
                 </div>
-                <div id="notifications" class="row" style="margin-top: 30px">
+                <div id="notifications" class="row" style="margin-top: 30px;display: none">
                     @if (count($notifications) > 0)
                         @foreach ($notifications as $notif)
                             <div id="{{ $notif['id'] }}" class="row" style="align-items: baseline;line-height: 32px;">
@@ -39,7 +39,7 @@
                         <p>Vous n'avez aucune notification.</p>
                     @endif
                 </div>
-                <div id="msg_sended" class="row" style="margin-top: 30px">
+                <div id="msg_sended" class="row" style="margin-top: 30px;display: none">
                     @if (count($msg_sended) > 0)
                         @foreach ($msg_sended as $msg)
                             <div id="{{ $msg['id'] }}" class="row" style="align-items: baseline;line-height: 32px;">
@@ -55,7 +55,7 @@
                     @endif
 
                 </div>
-                <div id="msg_received" class="row" style="margin-top: 30px">
+                <div id="msg_received" class="row" style="margin-top: 30px;display: none">
                     @if (count($msg_received) > 0)
                         @foreach ($msg_received as $msg)
                             <div id="{{ $msg['id'] }}" class="row" style="align-items: baseline;line-height: 32px;">
@@ -70,7 +70,7 @@
                         <p>Vous n'avez aucun message reçu.</p>
                     @endif
                 </div>
-                <div id="users_blocked" class="row" style="margin-top: 30px">
+                <div id="users_blocked" class="row" style="margin-top: 30px;display: none">
                     @if (count($users_blocked) > 0)
                         <?php $i = 0;?>
                         @foreach ($users_blocked as $user)

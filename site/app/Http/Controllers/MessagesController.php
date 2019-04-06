@@ -12,8 +12,8 @@
     {
         public function index()
         {
-            if (!isset($_GET['activeTab']) || ($_GET['activeTab'] !== "notifications" && $_GET['activeTab'] !== "msg_sended" && $_GET['activeTab'] !== "msg_received" && $_GET['activeTab'] !== "users_blocked"))
-                $first_active_tab = "notifications";
+            if (!isset($_GET['activeTab']) || ($_GET['activeTab'] !== "notif" && $_GET['activeTab'] !== "msg_sended" && $_GET['activeTab'] !== "msg_received" && $_GET['activeTab'] !== "users_blocked"))
+                $first_active_tab = "notif";
             else
                 $first_active_tab = $_GET['activeTab'];
             $user_id = session()->get('user_id');

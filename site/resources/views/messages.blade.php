@@ -8,6 +8,10 @@
         <link rel="stylesheet" type="text/css" href="css/style.css"/>
     </head>
     <body>
+        @include('default')
+            <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding-right: 10px;">
+            </div>
+        </div>
         <script>
             
             var activeTab = document.getElementById("fat").getAttribute("first_active_tab") + "-tab";

@@ -95,7 +95,7 @@
             var activeTab = document.getElementById("fat").getAttribute("first_active_tab") + "-tab";
             var activeMsg = document.getElementById("fat").getAttribute("first_active_tab");
             document.getElementById(activeTab).className = "col-lg-3 col-md-3 col-sm-3 col-3 generique-tab-active";
-            document.getElementById(activeBuildings).style.display = '';
+            document.getElementById(activeMsg).style.display = '';
 
             function switchTab(activeId)
             {

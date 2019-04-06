@@ -81,7 +81,7 @@
                                         <i class="fas fa-flask icon"></i>
                                     @elseif ($elem['type'] == "item")
                                         <i class="fas fa-cog icon"></i>
-                                    @else if ($elem['type'] == "unit")
+                                    @elseif ($elem['type'] == "unit")
                                         <i class="fas fa-chess-rook icon"></i>
                                     @else
                                         <i class="fas fa-map-marked-alt"></i>

@@ -24,7 +24,7 @@
                             Joueurs bloqués       
                         </div>
                 </div>
-                <div id="notif" class="row" style="margin-top: 30px;display: none">
+                <div id="notif" style="margin-top: 30px;display: none">
                     @if (count($notifications) > 0)
                         @foreach ($notifications as $notif)
                             <div id="{{ $notif['id'] }}" class="row" style="align-items: baseline;line-height: 32px;">
@@ -40,7 +40,7 @@
                         <p>Vous n'avez aucune notification.</p>
                     @endif
                 </div>
-                <div id="sended" class="row" style="margin-top: 30px;display: none">
+                <div id="sended" style="margin-top: 30px;display: none">
                     @if (count($msg_sended) > 0)
                         @foreach ($msg_sended as $msg)
                             <div id="{{ $msg['id'] }}" class="row" style="align-items: baseline;line-height: 32px;">
@@ -56,7 +56,7 @@
                     @endif
 
                 </div>
-                <div id="received" class="row" style="margin-top: 30px;display: none">
+                <div id="received" style="margin-top: 30px;display: none">
                     @if (count($msg_received) > 0)
                         @foreach ($msg_received as $msg)
                             <div id="{{ $msg['id'] }}" class="row" style="align-items: baseline;line-height: 32px;">
@@ -71,7 +71,7 @@
                         <p>Vous n'avez aucun message reçu.</p>
                     @endif
                 </div>
-                <div id="blocked" class="row" style="margin-top: 30px;display: none">
+                <div id="blocked" style="margin-top: 30px;display: none">
                     @if (count($users_blocked) > 0)
                         <?php $i = 0;?>
                         @foreach ($users_blocked as $user)

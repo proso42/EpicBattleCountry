@@ -58,6 +58,7 @@ Route::group(['middleware' => 'logged'], function(){
     Route::get('/exploration', 'ExplorationController@index');
     Route::post('/time_explo', 'ExplorationController@time_explo');
     Route::post('send_expedition', 'ExplorationController@send_expedition');
+    Route::get('/messages', 'MessagesController@index');
 });
 
 

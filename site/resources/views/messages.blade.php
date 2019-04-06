@@ -28,10 +28,10 @@
                     @if (count($notifications) > 0)
                         @foreach ($notifications as $notif)
                             <div id="{{ $notif['id'] }}" class="row" style="align-items: baseline;line-height: 32px;">
-                                <i id="seen_{{ $notif['id'] }}" @if ($notif['seen'] == 0) class="col-lg-2 col-md-2 col-sm-2 col-2 fas fa-envelope icon-color-red" @else class="col-lg-2 col-md-2 col-sm-2 col-2 fas fa-envelope-open-text icon-color-yellow" @endif></i>
+                                <i id="seen_{{ $notif['id'] }}" @if ($notif['seen'] == 0) class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-envelope icon-color-red" @else class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-envelope-open-text icon-color-yellow" @endif></i>
                                 <span class="col-lg-3 col-md-3 col-sm-3 col-3">{{ $notif['title'] }}</span>
-                                <i onclick="hide_show_msg('{{ $notif['id'] }}', 'notif')" id="eye_{{ $notif['id'] }}" class="col-lg-2 col-md-2 col-sm-2 col-2 fas fa-eye" style="cursor: pointer"></i>
-                                <i onclick="remove_msg('{{ $notif['id'] }}', 'notif')" class="col-lg-2 col-md-2 col-sm-2 col-2 fas fa-times icon-color-red" style="cursor: pointer"></i>
+                                <i onclick="hide_show_msg('{{ $notif['id'] }}', 'notif')" id="eye_{{ $notif['id'] }}" class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-eye" style="cursor: pointer; margin-right: 10px"></i>
+                                <i onclick="remove_msg('{{ $notif['id'] }}', 'notif')" class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-times icon-color-red" style="cursor: pointer"></i>
                                 <p id="content_{{ $notif['id'] }}" class="col-lg-8 col-md-8 col-sm-8 col-8" style="display:none">{{ $notif['content'] }}</p>
                             </div>
                             <br/>
@@ -44,10 +44,10 @@
                     @if (count($msg_sended) > 0)
                         @foreach ($msg_sended as $msg)
                             <div id="{{ $msg['id'] }}" class="row" style="align-items: baseline;line-height: 32px;">
-                                <i class="col-lg-2 col-md-2 col-sm-2 col-2 fas fa-paper-plane"></i>
+                                <i class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-paper-plane"></i>
                                 <span class="col-lg-3 col-md-3 col-sm-3 col-3">{{ $msg['title'] }}</span>
-                                <i onclick="hide_show_msg('{{ $msg['id'] }}', 'msg_sended')" id="eye_{{ $msg['id'] }}" class="col-lg-2 col-md-2 col-sm-2 col-2 fas fa-eye" style="cursor: pointer"></i>
-                                <i onclick="remove_msg('{{ $msg['id'] }}', 'msg_sended')" class="col-lg-2 col-md-2 col-sm-2 col-2 fas fa-times icon-color-red" style="cursor: pointer"></i>
+                                <i onclick="hide_show_msg('{{ $msg['id'] }}', 'msg_sended')" id="eye_{{ $msg['id'] }}" class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-eye" style="cursor: pointer; margin-right: 10px"></i>
+                                <i onclick="remove_msg('{{ $msg['id'] }}', 'msg_sended')" class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-times icon-color-red" style="cursor: pointer"></i>
                                 <p id="content_{{ $msg['id'] }}" class="col-lg-8 col-md-8 col-sm-8 col-8" style="display:none">{{ $msg['content'] }}</p>
                             </div>
                         @endforeach
@@ -60,10 +60,10 @@
                     @if (count($msg_received) > 0)
                         @foreach ($msg_received as $msg)
                             <div id="{{ $msg['id'] }}" class="row" style="align-items: baseline;line-height: 32px;">
-                                <i class="col-lg-2 col-md-2 col-sm-2 col-2 fas fa-paper-plane"></i>
+                                <i class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-paper-plane"></i>
                                 <span class="col-lg-3 col-md-3 col-sm-3 col-3">{{ $msg['title'] }}</span>
-                                <i onclick="hide_show_msg('{{ $msg['id'] }}', 'msg_received')" id="eye_{{ $msg['id'] }}" class="col-lg-2 col-md-2 col-sm-2 col-2 fas fa-eye" style="cursor: pointer"></i>
-                                <i onclick="remove_msg('{{ $msg['id'] }}', 'msg_received')" class="col-lg-2 col-md-2 col-sm-2 col-2 fas fa-times icon-color-red" style="cursor: pointer"></i>
+                                <i onclick="hide_show_msg('{{ $msg['id'] }}', 'msg_received')" id="eye_{{ $msg['id'] }}" class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-eye" style="cursor: pointer; margin-right: 10px"></i>
+                                <i onclick="remove_msg('{{ $msg['id'] }}', 'msg_received')" class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-times icon-color-red" style="cursor: pointer"></i>
                                 <p id="content_{{ $msg['id'] }}" class="col-lg-8 col-md-8 col-sm-8 col-8" style="display:none">{{ $msg['content'] }}</p>
                             </div>
                         @endforeach
@@ -76,9 +76,9 @@
                         <?php $i = 0;?>
                         @foreach ($users_blocked as $user)
                             <div id="user_locked_{{ $i}}" class="row" style="align-items: baseline;line-height: 32px;">
-                                <i class="col-lg-2 col-md-2 col-sm-2 col-2 fas fa-user"></i>
+                                <i class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-user"></i>
                                 <span class="col-lg-3 col-md-3 col-sm-3 col-3">{{ $user['login'] }}</span>
-                                <i onclick="unlock_user('{{ $user['login'] }}', 'user_locked_{{ $i}}')" class="col-lg-2 col-md-2 col-sm-2 col-2 fas fa-times icon-color-red" style="cursor: pointer"></i>
+                                <i onclick="unlock_user('{{ $user['login'] }}', 'user_locked_{{ $i}}')" class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-times icon-color-red" style="cursor: pointer"></i>
                             </div>
                             <?php $i++;?>
                         @endforeach
@@ -131,15 +131,15 @@
             function hide_show_msg(id, type)
             {
                 let eye = document.getElementById('eye_' + id);
-                if (eye.className == "col-lg-2 col-md-2 col-sm-2 col-2 fas fa-eye")
+                if (eye.className == "col-lg-1 col-md-1 col-sm-1 col-1 fas fa-eye")
                 {
                     //showing part
                     document.getElementById('content_' + id).style.display = "";
-                    eye.className = "col-lg-2 col-md-2 col-sm-2 col-2 fas fa-eye-slash";
+                    eye.className = "col-lg-1 col-md-1 col-sm-1 col-1 fas fa-eye-slash";
                     icon_envelope = document.getElementById('seen_' + id);
-                    if (icon_envelope.className = "col-lg-2 col-md-2 col-sm-2 col-2 fas fa-envelope icon-color-red")
+                    if (icon_envelope.className = "col-lg-1 col-md-1 col-sm-1 col-1 fas fa-envelope icon-color-red")
                     {
-                        icon_envelope.className = "col-lg-2 col-md-2 col-sm-2 col-2 fas fa-envelope-open-text icon-color-yellow";
+                        icon_envelope.className = "col-lg-1 col-md-1 col-sm-1 col-1 fas fa-envelope-open-text icon-color-yellow";
                         var _token = document.getElementById("_token").value;
                         var xhr = new XMLHttpRequest();
                         xhr.open('POST', 'http://www.epicbattlecorp.fr/seen_msg');
@@ -159,7 +159,7 @@
                 {
                     //hiding part
                     document.getElementById('content_' + id).style.display = "none";
-                    eye.className = "col-lg-2 col-md-2 col-sm-2 col-2 fas fa-eye";
+                    eye.className = "col-lg-1 col-md-1 col-sm-1 col-1 fas fa-eye";
                 }
             }
 

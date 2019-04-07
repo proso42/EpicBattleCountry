@@ -109,6 +109,14 @@
             return 0;
         }
 
+        public function delete_msg(Request $request)
+        {
+            $user_id = session()->get('user_id');
+            $msg_id = $request['msg_id'];
+            DB::table('messages')->where('id', '=', $msg_id)->where('target', '=', $user_id)->orWhere("sender", '=', $user_id)->delete();
+            return (0);
+        }
+
         public function unlock_user(Request $request)
         {
             $login = $request['login'];

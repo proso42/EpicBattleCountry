@@ -60,6 +60,7 @@ Route::group(['middleware' => 'logged'], function(){
     Route::post('/send_expedition', 'ExplorationController@send_expedition');
     Route::get('/messages', 'MessagesController@index');
     Route::post('/seen_msg', 'MessagesController@seen');
+    Route::post('delete_msg', 'MessagesController@delete_msg');
     Route::post('/unlock_user', 'MessagesController@unlock_user');
 });
 

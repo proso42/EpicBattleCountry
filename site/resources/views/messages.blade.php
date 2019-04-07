@@ -137,7 +137,7 @@
                     document.getElementById('content_' + id).style.display = "";
                     eye.className = "offset-lg-1 offset-md-1 offset-sm-1 offset-1 col-lg-1 col-md-1 col-sm-1 col-1 fas fa-eye-slash";
                     icon_envelope = document.getElementById('seen_' + id);
-                    if (icon_envelope.className = "col-lg-1 col-md-1 col-sm-1 col-1 fas fa-envelope icon-color-red")
+                    if (icon_envelope.className == "col-lg-1 col-md-1 col-sm-1 col-1 fas fa-envelope icon-color-red")
                     {
                         icon_envelope.className = "col-lg-1 col-md-1 col-sm-1 col-1 fas fa-envelope-open-text icon-color-yellow";
                         var _token = document.getElementById("_token").value;

@@ -147,8 +147,8 @@
                         {
                             if (xhr.readyState === 4 && xhr.status === 200)
                             {
-                                console.log('ok !');
-                                    decrease(type);
+                                console.log("Retour : " + xhr.responseText);
+                                decrease(type);
                             }
                         }
                         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

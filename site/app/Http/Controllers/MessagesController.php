@@ -104,8 +104,8 @@
         public function seen(Request $request)
         {
             $msg_id = $request['id'];
-            DB::table('messages')->where("id", '=', $msg_id)->update(["seen" => 1]);
-            return 0;
+            $ret = DB::table('messages')->where("id", '=', $msg_id)->update(["seen" => 1]);
+            return $ret;
         }
 
         public function unlock_user(Request $request)

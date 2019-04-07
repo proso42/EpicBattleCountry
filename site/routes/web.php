@@ -57,10 +57,10 @@ Route::group(['middleware' => 'logged'], function(){
     Route::get('/map', 'MapController@index');
     Route::get('/exploration', 'ExplorationController@index');
     Route::post('/time_explo', 'ExplorationController@time_explo');
-    Route::post('send_expedition', 'ExplorationController@send_expedition');
+    Route::post('/send_expedition', 'ExplorationController@send_expedition');
     Route::get('/messages', 'MessagesController@index');
-    Route::post('seen_msg', 'MessagesController@seen');
-    Route::post('unlock_user', 'MessagesController@unlock_user');
+    Route::post('/seen_msg', 'MessagesController@seen');
+    Route::post('/unlock_user', 'MessagesController@unlock_user');
 });
 
 

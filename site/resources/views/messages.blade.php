@@ -147,7 +147,7 @@
                         {
                             if (xhr.readyState === 4 && xhr.status === 200)
                             {
-                                console.log("Retour : " + xhr.responseText);
+                                console.log("msg_id : " + xhr.responseText);
                                 decrease(type);
                             }
                         }

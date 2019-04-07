@@ -103,8 +103,9 @@
 
         public function seen(Request $request)
         {
+            $user_id = session()->get('user_id');
             $msg_id = $request['msg_id'];
-            DB::table('messages')->where("id", '=', $msg_id)->update(["seen" => 1]);
+            DB::table('messages')->where("id", '=', $msg_id)->where("target", '=', $user_id)->update(["seen" => 1]);
             return 0;
         }
 

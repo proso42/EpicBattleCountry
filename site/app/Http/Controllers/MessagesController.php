@@ -78,7 +78,7 @@
             $msg_received_alert = 0;
             foreach ($all_user_msgs as $msg)
             {
-                if ($msg->sender == "notification" && $msg->target_city == $city_id)
+                if ($msg->sender == "notification"/* && $msg->target_city == $city_id*/)
                 {
                     array_push($notifications, ["id" => $msg->id, "seen" => $msg->seen, "sender" => "Notification", "title" => $msg->title, "content" => $msg->content, "date" => $msg->sending_date]);
                     if ($msg->seen == 0)

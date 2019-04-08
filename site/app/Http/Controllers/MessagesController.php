@@ -76,7 +76,6 @@
             $all_users = DB::table('users')->get();
             $notif_alert = 0;
             $msg_received_alert = 0;
-            dd($all_user_msgs);
             foreach ($all_user_msgs as $msg)
             {
                 if ($msg->sender == "notification" && $msg->target_city == $city_id)
@@ -94,6 +93,7 @@
                         $msg_received_alert++;
                 }
             }
+            dd($notifications);
             $users_blocked = [];
             $all_users_blocked = DB::table('user_msg_blocked')->where('user_id', '=', $user_id)->get();
             foreach ($all_users_blocked as $blocked)

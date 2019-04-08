@@ -85,15 +85,14 @@
                         $notif_alert++;
                 }
                 else if ($msg->sender == $user_id)
-                    array_push($msg_sended, ["id" => $msg->id, "seen" => $msg->seen, "sender" => $all_users[$msg->sender]->login, "title" => $msg->title, "content" => $msg->content, "date" => $msg->sending_date]);
+                    array_push($msg_sended, ["id" => $msg->id, "seen" => $msg->seen, "sender" => $all_users[$msg->sender - 1]->login, "title" => $msg->title, "content" => $msg->content, "date" => $msg->sending_date]);
                 else if ($msg->target == $user_id)
                 {
-                    array_push($msg_received, ["id" => $msg->id, "seen" => $msg->seen, "target" => $all_users[$msg->target]->login, "title" => $msg->title, "content" => $msg->content, "date" => $msg->sending_date]);
+                    array_push($msg_received, ["id" => $msg->id, "seen" => $msg->seen, "target" => $all_users[$msg->target - 1]->login, "title" => $msg->title, "content" => $msg->content, "date" => $msg->sending_date]);
                     if ($msg->seen == 0)
                         $msg_received_alert++;
                 }
             }
-            dd($notifications);
             $users_blocked = [];
             $all_users_blocked = DB::table('user_msg_blocked')->where('user_id', '=', $user_id)->get();
             foreach ($all_users_blocked as $blocked)

@@ -164,7 +164,7 @@
             if ($new_city_id == $city_id_db)
             {
                 session(['city_id' => $city_id_db]);
-                return 1;
+                return 0;
             }
             else
                 return 1;

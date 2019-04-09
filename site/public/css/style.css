@@ -677,6 +677,25 @@ input::placeholder
     z-index: 2;
 }
 
+.city-li
+{
+    text-align: left;
+    cursor: pointer;
+    color: black;
+}
+
+.city-li:hover, .city-li-selected:hover
+{
+    background-color: floralwhite;
+}
+
+.city-li-selected
+{
+    background-color: lightgreen;
+    color: green;
+    cursor: pointer;
+}
+
 .home-input-error
 {
     color: crimson;

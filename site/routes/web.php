@@ -39,6 +39,7 @@ Route::group(['middleware' => 'logged'], function(){
     Route::post('/save_choice', 'HomeController@save_choice');
     Route::post('/rename_city', 'HomeController@rename_city');
     Route::get('/', 'HomeController@index');
+    Route::post('/switch_city', 'HomeController@switch_city');
     // Settings endpoints
     Route::get('/settings', 'SettingsController@index');
     Route::post('/reset_login', 'SettingsController@reset_login');

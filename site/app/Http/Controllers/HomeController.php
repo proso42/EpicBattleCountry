@@ -123,6 +123,11 @@
             $traveling_units = DB::table('traveling_units')
             ->where('city_id', '=', $city_id)
             ->get();
+            $user_cities = DB::table('cities')
+            ->select('id', 'name')
+            ->where('owner', '=', $user_id)
+            ->where('id', '!=', $city_id)
+            ->get();
             $waiting_list = array();
             foreach ($waiting_buildings as $build)
             {
@@ -147,7 +152,22 @@
                 $mission_name = preg_replace('/_/', " ", DB::table('traveling_missions')->where('id', '=', $travel->mission)->value('mission'));
                 array_push($waiting_list, ["wait_id" => $travel->id, "type" => "explo", "name" => $mission_name, "duration" => $travel->finishing_date - time()]);
             }
-            return view('home', compact('food', 'compact_food', 'max_food', 'food_prod', 'wood', 'compact_wood' ,'max_wood', 'wood_prod', 'rock', 'compact_rock', 'max_rock', 'rock_prod', 'steel', 'compact_steel', 'max_steel', 'steel_prod', 'gold', 'compact_gold', 'max_gold', 'gold_prod', 'city_name', 'waiting_list', 'items_owned', 'units_owned', 'tables_class'));
+
+            return view('home', compact('food', 'compact_food', 'max_food', 'food_prod', 'wood', 'compact_wood' ,'max_wood', 'wood_prod', 'rock', 'compact_rock', 'max_rock', 'rock_prod', 'steel', 'compact_steel', 'max_steel', 'steel_prod', 'gold', 'compact_gold', 'max_gold', 'gold_prod', 'city_name', 'waiting_list', 'items_owned', 'units_owned', 'tables_class', 'user_cities'));
+        }
+
+        public function switch_city(Request $request)
+        {
+            $user_id = session()->get('user_id');
+            $new_city_id = $request['new_city_id'];
+            $city_id_db = DB::table('cities')->where('id', '=', $new_city_id)->where('owner', '=', $user_id)->value('id');
+            if ($new_city_id == $city_id_db)
+            {
+                session(['city_id' => $city_id_db]);
+                return 1;
+            }
+            else
+                return 1;
         }
 
         public function save_choice(Request $request)

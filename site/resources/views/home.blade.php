@@ -11,29 +11,40 @@
         <div id="overlay" class="home-overlay" style="display: none">
         </div>
         <div id="block_edit" class="edit-city-name-block" style="display: none">
-                <div id="error_empty_input" class="home-input-error" style="display: none;">
-                    <p>Merci de remplir le champs !</p>
-                </div>
-                <div id="error_invalid_input" class="home-input-error" style="display: none;">
-                    <p>Nom invalide !</p>
-                </div>
-                <div id="error_already_taken" class="home-input-error" style="display: none;">
-                    <p>Ce nom est déjà pris !</p>
-                </div>
-                <div id="name_changed" class="home-input-success" style="display: none;">
-                    <p>Le nom a été changé !</p>
-                </div>
-                <h3>Changer le nom de la ville</h3>
-                <input id="new_name" type="text" class="edit-city-name-input" placeholder="Nouveau nom">
-                <br/>
-                <input onclick="rename()" id="rename_button" type="button" class="home-button" value="Renommer">
-                <input onclick="cancel_rename()" id="cancel_button" type="button" class="home-button-cancel" value="Annuler">
-                <img id="spin" class="explo-spin" style="display: none" src="images/loader.gif">
+            <div id="error_empty_input" class="home-input-error" style="display: none;">
+                <p>Merci de remplir le champs !</p>
             </div>
+            <div id="error_invalid_input" class="home-input-error" style="display: none;">
+                <p>Nom invalide !</p>
+            </div>
+            <div id="error_already_taken" class="home-input-error" style="display: none;">
+                <p>Ce nom est déjà pris !</p>
+            </div>
+            <div id="name_changed" class="home-input-success" style="display: none;">
+                <p>Le nom a été changé !</p>
+            </div>
+            <h3>Changer le nom de la ville</h3>
+            <input id="new_name" type="text" class="edit-city-name-input" placeholder="Nouveau nom">
+            <br/>
+            <input onclick="rename()" id="rename_button" type="button" class="home-button" value="Renommer">
+            <input onclick="cancel_rename()" id="cancel_button" type="button" class="home-button-cancel" value="Annuler">
+            <img id="spin" class="explo-spin" style="display: none" src="images/loader.gif">
+        </div>
+        @if (count($user_cities) > 0)
+            <div id="block_change_city" class="edit-city-name-block" style="display: none">
+                <div id="city_list">
+                    <ul>
+                        @foreach ($user_cities as $city)
+                            <li onclick="choice_city('{{ $city->id }}')" id="city_{{ $city->id }}" class="city-li">{{ $city->name }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        @endif
         @include('default')
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding-right: 10px;">
                 <div style="text-align:center;display: inline-block">
-                    <h2 id="city_name">{{ $city_name }} <i onclick="show_edit_block()" class="fas fa-edit" style="cursor:pointer;margin-left: 25px;font-size: 15px"></i></h2> 
+                    <h2 id="city_name">{{ $city_name }} <i onclick="show_edit_block()" class="fas fa-edit" style="cursor:pointer;margin-left: 25px;font-size: 15px"></i> @if (count($user_cities) > 0) <i onclick="show_switch_block()" class="fas fa-sync-alt" style="cursor:pointer;margin-left: 25px;font-size: 15px"></i>@endif</h2> 
                 </div>
                 <hr class="signin-footer">
                 <div class="prod-div">
@@ -121,6 +132,7 @@
             <input id="_token" name="_token" type="hidden" value="{{csrf_token()}}">
         </div>
         <script>
+            var g_choice = "";
             setTimeout(() =>{
                 let body_height = document.body.scrollHeight + 20;
                 let win_height = window.innerHeight;
@@ -130,6 +142,39 @@
                     document.getElementById("overlay").style.height = win_height + "px";
                 }, 1000);
             launch_all_timers();
+
+            function choice_city(id)
+            {
+                document.getElementById("city_" + g_choice).className = "city-li";
+                if (g_choice !== id)
+                {   
+                    g_choice = id;
+                    document.getElementById("city_" + id).className = "city-li-selected";
+                }
+                else
+                    g_choice = "";
+            }
+
+            function switch_city()
+            {
+                var _token = document.getElementById("_token").value;
+                var xhr_switch = new XMLHttpRequest();
+                xhr_switch.open('POST', 'http://www.epicbattlecorp.fr/switch_city');
+                xhr_switch.onreadystatechange =  function()
+                {
+                    if (xhr_switch.readyState === 4 && xhr_switch.status === 200)
+                    {
+                        let ret = xhr_switch.responseText;
+                        console.log(ret)
+                        if (ret == 0)
+                            window.location.reload();
+                        else
+                            console.log("error");
+                    }
+                }
+                xhr_switch.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr_switch.send('_token=' + _token + '&new_city_id=' + g_choice);
+            }
 
             function show_edit_block()
             {

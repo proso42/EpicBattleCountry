@@ -9,7 +9,8 @@
     </head>
     <body>
         <div id="overlay" class="home-overlay" style="display: none">
-            <div class="edit-city-name-block">
+        </div>
+        <div id="block_edit" class="edit-city-name-block" style="display: none">
                 <div id="error_empty_input" class="home-input-error" style="display: none;">
                     <p>Merci de remplir le champs !</p>
                 </div>
@@ -28,11 +29,10 @@
                 <input onclick="cancel_rename()" id="cancel_button" type="button" class="home-button-cancel" value="Annuler">
                 <img id="spin" class="explo-spin" style="display: none" src="images/loader.gif">
             </div>
-        </div>
         @include('default')
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding-right: 10px;">
                 <div style="text-align:center;display: inline-block">
-                    <h2 id="city_name">{{ $city_name }}</h2> <i onclick="document.getElementById('overlay').style.display = '';" class="fas fa-edit" style="cursor:pointer"></i>
+                    <h2 id="city_name">{{ $city_name }}</h2> <i onclick="show_edit_block()" class="fas fa-edit" style="cursor:pointer"></i>
                 </div>
                 <hr class="signin-footer">
                 <div class="prod-div">
@@ -123,10 +123,17 @@
             document.getElementById("overlay").style.height = document.body.scrollHeight + 20 + "px";
             launch_all_timers();
 
+            function show_edit_block()
+            {
+                document.getElementById("overlay").style.display = "";
+                document.getElementById("block_edit").style.display = "";
+            }
+
             function cancel_rename()
             {
                 document.getElementById("new_name").value = "";
                 document.getElementById("overlay").style.display = "none";
+                document.getElementById("block_edit").style.display = "none";
             }
 
             function rename()

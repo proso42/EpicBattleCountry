@@ -161,7 +161,7 @@
                     document.getElementById("city_" + id).className = "city-li-selected";
                     g_choice = id;
                 }
-                if (g_choice !== id)
+                else if (g_choice !== id)
                 {   
                     console.log("2");
                     document.getElementById("city_" + g_choice).className = "city-li";

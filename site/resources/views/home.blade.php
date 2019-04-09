@@ -120,7 +120,7 @@
             <input id="_token" name="_token" type="hidden" value="{{csrf_token()}}">
         </div>
         <script>
-            document.getElementById("edit_city_name").style.height = document.body.scrollHeight + 20;
+            document.getElementById("overlay").style.height = document.body.scrollHeight + 20;
             launch_all_timers();
 
             function cancel_rename()

@@ -157,17 +157,20 @@
             {
                 if (g_choice == "")
                 {
+                    console.log("1");
                     document.getElementById("city_" + id).className = "city-li-selected";
                     g_choice = id;
                 }
                 if (g_choice !== id)
                 {   
+                    console.log("2");
                     document.getElementById("city_" + g_choice).className = "city-li";
                     g_choice = id;
                     document.getElementById("city_" + id).className = "city-li-selected";
                 }
                 else
                 {
+                    console.log("3");
                     document.getElementById("city_" + g_choice).className = "city-li";
                     g_choice = "";
                 }

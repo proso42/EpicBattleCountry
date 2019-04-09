@@ -148,9 +148,9 @@
                         document.getElementById("error_empty_input").style.display = 'none';
                     }, 5000);
                 }
-                document.getElementByd("rename_button").style.display = "none";
-                document.getElementByd("cancel_button").style.display = "none";
-                document.getElementByd("spin").style.display = "";
+                document.getElementById("rename_button").style.display = "none";
+                document.getElementById("cancel_button").style.display = "none";
+                document.getElementById("spin").style.display = "";
                 var xhr = new XMLHttpRequest();
                 xhr.open('POST', 'http://www.epicbattlecorp.fr/rename_city');
                 xhr.onreadystatechange =  function()
@@ -166,18 +166,18 @@
                             setTimeout(() =>{
                                 document.getElementById("name_changed").style.display = 'none';
                                 document.getElementById("city_name").textContent = document.getElementById("new_name").value;
-                                document.getElementByd("overlay").style.display = "none";
-                                document.getElementByd("rename_button").style.display = "";
-                                document.getElementByd("cancel_button").style.display = "";
-                                document.getElementByd("spin").style.display = "none";
-                                document.getElementByd("new_name").value = "";
+                                document.getElementById("overlay").style.display = "none";
+                                document.getElementById("rename_button").style.display = "";
+                                document.getElementById("cancel_button").style.display = "";
+                                document.getElementById("spin").style.display = "none";
+                                document.getElementById("new_name").value = "";
                             }, 3000);
                         }
                         else if (ret == 1)
                         {
-                            document.getElementByd("rename_button").style.display = "";
-                            document.getElementByd("cancel_button").style.display = "";
-                            document.getElementByd("spin").style.display = "none";
+                            document.getElementById("rename_button").style.display = "";
+                            document.getElementById("cancel_button").style.display = "";
+                            document.getElementById("spin").style.display = "none";
                             document.getElementById("erro_invalid_input").style.display = "";
                             setTimeout(() =>{
                                 document.getElementById("erro_invalid_input").style.display = 'none';
@@ -185,9 +185,9 @@
                         }
                         else if (ret == 2)
                         {
-                            document.getElementByd("rename_button").style.display = "";
-                            document.getElementByd("cancel_button").style.display = "";
-                            document.getElementByd("spin").style.display = "none";
+                            document.getElementById("rename_button").style.display = "";
+                            document.getElementById("cancel_button").style.display = "";
+                            document.getElementById("spin").style.display = "none";
                             document.getElementById("error_already_taken").style.display = "";
                             setTimeout(() =>{
                                 document.getElementById("error_already_taken").style.display = 'none';

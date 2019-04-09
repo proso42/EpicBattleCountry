@@ -275,6 +275,9 @@
         public function train_unit(Request $request)
         {
             $city_id = session()->get('city_id');
+            $already_training = DB::table('waiting_units')->where('city_id', '=', $city_id)->value('id');
+            if ($already_training !== null)
+                return ("hackeur !");
             $unit_name = preg_replace("/_/", " ", $request['name']);
             $quantity = $request['quantity'];
             $unit = DB::table('units')

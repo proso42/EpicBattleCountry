@@ -33,7 +33,7 @@
         @include('default')
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding-right: 10px;">
                 <div style="text-align:center;display: inline-block">
-                    <h2 id="city_name">{{ $city_name }}</h2> <i onclick="show_edit_block()" class="fas fa-edit" style="cursor:pointer"></i>
+                    <h2 id="city_name">{{ $city_name }} <i onclick="show_edit_block()" class="fas fa-edit" style="cursor:pointer"></i></h2> 
                 </div>
                 <hr class="signin-footer">
                 <div class="prod-div">

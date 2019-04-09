@@ -174,10 +174,10 @@
                 if (($new_name[$i] >= 'a' && $new_name[$i] <= 'z') || ($new_name[$i] >= 'A' && $new_name[$i] <= 'Z'))
                     $alpha++;
             }
-            /*if ($alpha == 0)
+            if ($alpha == 0)
                 return 1;
             $already_taken = DB::table('cities')->where('name', '=', $new_name)->first();
-            if ($already_taken !== null)
+            /*if ($already_taken !== null)
             {
                 $city_id = sesion()->get('city_id');
                 $user_id = sesion()->get('user_id');

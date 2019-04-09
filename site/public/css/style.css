@@ -663,6 +663,110 @@ input::placeholder
     color: floralwhite;
 }
 
+.edit-city-name-block
+{
+    margin-top: 50px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 400px;
+    height: 250px;
+    background-color: rgba(105, 105, 105, 0.9);
+    border: solid 1px lightblue;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.home-input-error
+{
+    color: crimson;
+    background-color: lightpink;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding-top: 10px;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
+
+.home-input-success
+{
+    color: green;
+    background-color: lightgreen;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding-top: 10px;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+
+.home-overlay
+{
+    margin-top: -20px;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    background-color: black;
+    opacity: 0.5;
+}
+
+.edit-city-name-input
+{
+    margin-top: 10px;
+    background-color: tan;
+    color: black;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    height: 28px;
+    width: 204px;
+}
+
+.home-button
+{
+    margin-top: 10px;
+    line-height: 0;
+    background-color: aquamarine;
+    color: black;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 32px;
+    width: 204px;
+}
+
+.home-button:hover
+{
+    background-color: darkcyan;
+    font-weight: bold;
+    color: white;
+}
+
+.home-button-cancel
+{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    line-height: 0;
+    background-color: lightpink;
+    color: black;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 32px;
+    width: 204px;
+}
+
+.home-button-cancel:hover
+{
+    background-color: crimson;
+    font-weight: bold;
+    color: white;
+}
+
 .prod-div
 {
     border: solid 1px lightblue;

@@ -159,6 +159,34 @@
             session()->put([$section . "_table_status" => $val]);
             return 0;
         }
+
+        public function rename_city(Request $request)
+        {
+            if (!isset($request['new_name']))
+                return 1;
+            $new_name = trim($request['new_name']);
+            $size = strlen($new_name);
+            if ($size < 4 || $size > 20)
+                return 1;
+            $alpha = 0;
+            for ($i = 0; $i < $size; $i++)
+            {
+                if (($new_name[$i] >= 'a' && $new_name[$i] <= 'z') || ($new_name[$i] >= 'A' && $new_name[$i] <= 'Z'))
+                    $alpha++;
+            }
+            if ($alpha == 0)
+                return 1;
+            $already_taken = DB::table('cities')->where('name', '=', $new_name)->first();
+            if ($already_taken !== null)
+            {
+                $city_id = sesion()->get('city_id');
+                $user_id = sesion()->get('user_id');
+                DB::table('cities')->where('id', '=', $city_id)->where('owner', '=', $user_id)->update(['name' => $new_name]);
+                return (0);
+            }
+            else
+                return 2;
+        }
     }
 
 ?>

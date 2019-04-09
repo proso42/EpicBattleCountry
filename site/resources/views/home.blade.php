@@ -8,10 +8,31 @@
         <link rel="stylesheet" type="text/css" href="css/style.css"/>
     </head>
     <body>
+        <div id="overlay" class="home-overlay" style="display: none">
+            <div class="edit-city-name-block">
+                <div id="error_empty_input" class="home-input-error" style="display: none;">
+                    <p>Merci de remplir le champs !</p>
+                </div>
+                <div id="error_invalid_input" class="home-input-error" style="display: none;">
+                    <p>Nom invalide !</p>
+                </div>
+                <div id="error_already_taken" class="home-input-error" style="display: none;">
+                    <p>Ce nom est déjà pris !</p>
+                </div>
+                <div id="name_changed" class="home-input-success" style="display: none;">
+                    <p>Le nom a été changé !</p>
+                </div>
+                <input id="new_name" type="text" class="edit-city-name-input" placeholder="Nouveau nom">
+                <br/>
+                <input onclick="rename()" id="rename_button" type="button" class="home-button" value="Renommer">
+                <input onclick="cancel_rename()" id="cancel_button" type="button" class="home-button-cancel" value="Annuler">
+                <img id="spin" class="explo-spin" style="display: none" src="images/loader.gif">
+            </div>
+        </div>
         @include('default')
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding-right: 10px;">
-                <div style="text-align:center">
-                    <h2>{{ $city_name }}</h2>
+                <div style="text-align:center;display: inline-block">
+                    <h2 id="city_name">{{ $city_name }}</h2> <i onclick="document.getElementById('overlay').style.display = '';" class="fas fa-edit" style="cursor:pointer"></i>
                 </div>
                 <hr class="signin-footer">
                 <div class="prod-div">
@@ -99,7 +120,66 @@
             <input id="_token" name="_token" type="hidden" value="{{csrf_token()}}">
         </div>
         <script>
+            document.getElementById("edit_city_name").style.height = document.body.scrollHeight + 20;
             launch_all_timers();
+
+            function cancel_rename()
+            {
+                document.getElementById("new_name").value = "";
+                document.getElementById("overlay").style.display = "none";
+            }
+
+            function rename()
+            {
+                var _token = document.getElementById("_token").value;
+                var new_name = document.getElementById("new_name").value;
+                if (new_name.length == 0)
+                {
+                    document.getElementById("error_empty_input").style.display = "";
+                    setTimeout(() =>{
+                        document.getElementById("error_empty_input").style.display = 'none';
+                    }, 5000);
+                }
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'http://www.epicbattlecorp.fr/rename_city');
+                xhr.onreadystatechange =  function()
+                {
+                    if (xhr.readyState === 4 && xhr.status === 200)
+                    {
+                        ret = xhr.responseText;
+                        if (ret == 0)
+                        {
+                            document.getElementById("name_changed").style.display = "";
+                            setTimeout(() =>{
+                                document.getElementById("name_changed").style.display = 'none';
+                                document.getElementById("city_name").textContent = document.getElementById("new_name").value;
+                                document.getElementByd("overlay").style.display = "none";
+                                document.getElementByd("rename_button").style.display = "";
+                                document.getElementByd("cancel_button").style.display = "";
+                                document.getElementByd("spin").style.display = "none";
+                                document.getElementByd("new_name").value = "";
+                            }, 3000);
+                        }
+                        else if (ret == 1)
+                        {
+                            document.getElementById("erro_invalid_input").style.display = "";
+                            setTimeout(() =>{
+                                document.getElementById("erro_invalid_input").style.display = 'none';
+                            }, 5000);
+                        }
+                        else if (ret == 2)
+                        {
+                            document.getElementById("error_already_taken").style.display = "";
+                            setTimeout(() =>{
+                                document.getElementById("error_already_taken").style.display = 'none';
+                            }, 5000);
+                        }
+                    }
+                }
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.send('_token=' + _token + '&new_name=' + new_name);
+            }
+
             function interrupt(wait_id, type, id)
             {
                 var _token = document.getElementById("_token").value;

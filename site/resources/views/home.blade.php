@@ -31,12 +31,16 @@
             <img id="spin" class="explo-spin" style="display: none" src="images/loader.gif">
         </div>
         @if (count($user_cities) > 0)
+            <div id="error_empty_input2" class="home-input-error" style="display: none;">
+                <p>Merci de remplir le champs !</p>
+            </div>
             <div id="block_change_city" class="edit-city-name-block" style="display: none">
                 <div id="city_list">
                     <ul>
                         @foreach ($user_cities as $city)
                             <li onclick="choice_city('{{ $city->id }}')" id="city_{{ $city->id }}" class="city-li">{{ $city->name }}</li>
                         @endforeach
+                        <input onclick="switch_city()" id="switch_button" type="button" class="home-button" value="Changer">
                     </ul>
                 </div>
             </div>
@@ -143,6 +147,12 @@
                 }, 1000);
             launch_all_timers();
 
+            function show_switch_block()
+            {
+                document.getElementById("overlay").style.display = "";
+                document.getElementById("block_change_city").style.display = "";
+            }
+
             function choice_city(id)
             {
                 document.getElementById("city_" + g_choice).className = "city-li";
@@ -157,6 +167,14 @@
 
             function switch_city()
             {
+                if (g_choice == "")
+                {
+                    document.getElementById("error_empty_input2").style.display = "";
+                    setTimeout(() =>{
+                        document.getElementById("error_empty_input2").style.display = 'none';
+                    }, 5000);
+                    return ;
+                }
                 var _token = document.getElementById("_token").value;
                 var xhr_switch = new XMLHttpRequest();
                 xhr_switch.open('POST', 'http://www.epicbattlecorp.fr/switch_city');

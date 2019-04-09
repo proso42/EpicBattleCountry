@@ -141,7 +141,7 @@
             {
                 var _token = document.getElementById("_token").value;
                 var new_name = document.getElementById("new_name").value;
-                if (new_name.length == 0)
+                if (new_name.length == "")
                 {
                     document.getElementById("error_empty_input").style.display = "";
                     setTimeout(() =>{

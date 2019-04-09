@@ -155,14 +155,22 @@
 
             function choice_city(id)
             {
-                document.getElementById("city_" + g_choice).className = "city-li";
+                if (g_choice == "")
+                {
+                    document.getElementById("city_" + id).className = "city-li-selected";
+                    g_choice = id;
+                }
                 if (g_choice !== id)
                 {   
+                    document.getElementById("city_" + g_choice).className = "city-li";
                     g_choice = id;
                     document.getElementById("city_" + id).className = "city-li-selected";
                 }
                 else
+                {
+                    document.getElementById("city_" + g_choice).className = "city-li";
                     g_choice = "";
+                }
             }
 
             function switch_city()

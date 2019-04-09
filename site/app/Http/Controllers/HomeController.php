@@ -179,10 +179,10 @@
             $already_taken = DB::table('cities')->where('name', '=', $new_name)->first();
             if ($already_taken !== null)
             {
-                /*$city_id = sesion()->get('city_id');
-                $user_id = sesion()->get('user_id');
+                $city_id = session()->get('city_id');
+                $user_id = session()->get('user_id');
                 DB::table('cities')->where('id', '=', $city_id)->where('owner', '=', $user_id)->update(['name' => $new_name]);
-                return 0;*/
+                return 0;
             }
             else
                 return 2;

@@ -160,7 +160,6 @@
                     {
                         ret = xhr.responseText;
                         console.log(ret);
-                        return ;
                         if (ret == 0)
                         {
                             document.getElementById("name_changed").style.display = "";

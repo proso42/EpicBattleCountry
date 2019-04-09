@@ -268,6 +268,9 @@
         public function craft_item(Request $request)
         {
             $city_id = session()->get('city_id');
+            $already_crafting = DB::table('waiting_items')->where('city_id', '=', $city_id)->value('id');
+            if ($already_crafting !== null)
+                return "Greg le Hackeur";
             $item_name = preg_replace("/_/", " ", $request['name']);
             $quantity = $request['quantity'];
             $item = DB::table('forge')

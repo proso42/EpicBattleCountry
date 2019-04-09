@@ -23,6 +23,7 @@
                 <div id="name_changed" class="home-input-success" style="display: none;">
                     <p>Le nom a été changé !</p>
                 </div>
+                <h3>Changer le nom de la ville</h3>
                 <input id="new_name" type="text" class="edit-city-name-input" placeholder="Nouveau nom">
                 <br/>
                 <input onclick="rename()" id="rename_button" type="button" class="home-button" value="Renommer">
@@ -147,6 +148,9 @@
                         document.getElementById("error_empty_input").style.display = 'none';
                     }, 5000);
                 }
+                document.getElementByd("rename_button").style.display = "none";
+                document.getElementByd("cancel_button").style.display = "none";
+                document.getElementByd("spin").style.display = "";
                 var xhr = new XMLHttpRequest();
                 xhr.open('POST', 'http://www.epicbattlecorp.fr/rename_city');
                 xhr.onreadystatechange =  function()
@@ -154,6 +158,8 @@
                     if (xhr.readyState === 4 && xhr.status === 200)
                     {
                         ret = xhr.responseText;
+                        console.log(ret);
+                        return ;
                         if (ret == 0)
                         {
                             document.getElementById("name_changed").style.display = "";
@@ -169,6 +175,9 @@
                         }
                         else if (ret == 1)
                         {
+                            document.getElementByd("rename_button").style.display = "";
+                            document.getElementByd("cancel_button").style.display = "";
+                            document.getElementByd("spin").style.display = "none";
                             document.getElementById("erro_invalid_input").style.display = "";
                             setTimeout(() =>{
                                 document.getElementById("erro_invalid_input").style.display = 'none';
@@ -176,6 +185,9 @@
                         }
                         else if (ret == 2)
                         {
+                            document.getElementByd("rename_button").style.display = "";
+                            document.getElementByd("cancel_button").style.display = "";
+                            document.getElementByd("spin").style.display = "none";
                             document.getElementById("error_already_taken").style.display = "";
                             setTimeout(() =>{
                                 document.getElementById("error_already_taken").style.display = 'none';

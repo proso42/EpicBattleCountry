@@ -177,7 +177,7 @@
             if ($alpha == 0)
                 return 1;
             $already_taken = DB::table('cities')->where('name', '=', $new_name)->first();
-            if ($already_taken !== null)
+            if ($already_taken == null)
             {
                 $city_id = session()->get('city_id');
                 $user_id = session()->get('user_id');

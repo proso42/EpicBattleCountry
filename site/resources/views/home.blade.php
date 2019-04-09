@@ -167,6 +167,7 @@
                                 document.getElementById("name_changed").style.display = 'none';
                                 document.getElementById("city_name").textContent = document.getElementById("new_name").value;
                                 document.getElementById("overlay").style.display = "none";
+                                document.getElementById("block_edit").style.display = "none";
                                 document.getElementById("rename_button").style.display = "";
                                 document.getElementById("cancel_button").style.display = "";
                                 document.getElementById("spin").style.display = "none";

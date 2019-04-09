@@ -121,7 +121,12 @@
             <input id="_token" name="_token" type="hidden" value="{{csrf_token()}}">
         </div>
         <script>
-            document.getElementById("overlay").style.height = document.body.scrollHeight + 20 + "px";
+            let body_height = document.body.scrollHeight + 20;
+            let win_height = window.innerHeight;
+            if (body_height > win_height)
+                document.getElementById("overlay").style.height = body_height + "px";
+            else
+                document.getElementById("overlay").style.height = win_height + "px";
             launch_all_timers();
 
             function show_edit_block()

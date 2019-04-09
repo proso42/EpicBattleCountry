@@ -694,6 +694,7 @@ input::placeholder
     background-color: lightgreen;
     color: green;
     cursor: pointer;
+    text-align: left
 }
 
 .home-input-error

@@ -147,6 +147,7 @@
                     setTimeout(() =>{
                         document.getElementById("error_empty_input").style.display = 'none';
                     }, 5000);
+                    return ;
                 }
                 document.getElementById("rename_button").style.display = "none";
                 document.getElementById("cancel_button").style.display = "none";

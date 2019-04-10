@@ -17,7 +17,7 @@ Route::get('/validate_email', 'ValidateEmailController@index');
 
 
 // GUEST ROUTES
-Route::group(['middleware' => 'guest'], function(){
+Route::group(['middleware' => ['guest', 'lang']], function(){
     Route::get('/signup', 'SignupController@index');
     Route::get('/check_infos', 'SignupController@check_infos');
     Route::post('/register', 'SignupController@register');
@@ -32,7 +32,7 @@ Route::group(['middleware' => 'guest'], function(){
 
 
 // LOGGED ROUTES
-Route::group(['middleware' => 'logged'], function(){
+Route::group(['middleware' => ['logged', 'lang']], function(){
     Route::get('/logout', 'LogoutController@logout');
     // Home endpoints
     Route::get('/home', 'HomeController@index');
@@ -74,6 +74,11 @@ Route::group(['middleware' => 'logged'], function(){
     Route::post('/seen_msg', 'MessagesController@seen');
     Route::post('delete_msg', 'MessagesController@delete_msg');
     Route::post('/unlock_user', 'MessagesController@unlock_user');
+});
+
+Route::group(['middleware' =>['logged', 'admin', 'lang']], function (){
+    Route::get('/lang/fr', 'LangController@switch_fr');
+    Route::get('/lang/en', 'LangController@switch_en');
 });
 
 

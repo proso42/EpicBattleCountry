@@ -97,7 +97,7 @@
             foreach ($all_cells as $cell)
             {
                 if ($cell->x_pos == $city_x && $cell->y_pos == $city_y)
-                    array_push($visible_cells, ["type" => "capital", "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "color" => "black", "class" => "fa-star", "name" =>  $city['name'], "diplomatie" => "owned"]);
+                    array_push($visible_cells, ["type" => "capital", "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "color" => "black", "class" => "fa-star", "name" =>  $city_info->name, "diplomatie" => "owned"]);
                 else if ($cell->type == "water")
                     array_push($visible_cells, ["type" => $cell->type, "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "color" => "black", "background-color" => "steelblue", "class" => $cell->icon]);
                 else if ($cell->type == "city")

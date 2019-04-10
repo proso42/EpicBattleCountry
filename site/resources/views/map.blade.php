@@ -43,7 +43,7 @@
                                             <td id="cell_{{ $i }}" onclick="display_cell_info('cell_{{ $i }}')" x_pos="{{ $visible_cells[$i]['x_pos'] }}" y_pos="{{ $visible_cells[$i]['y_pos'] }}" type="{{ $visible_cells[$i]['type'] }}" 
                                                 @if ($visible_cells[$i]['type'] == 'capital' || $visible_cells[$i]['type'] == 'city') name="{{ $visible_cells[$i]['name'] }}" diplomatie="{{ $visible_cells[$i]['diplomatie'] }}" @endif
                                                 title="{{ $visible_cells[$i]['x_pos'] }}/{{ $visible_cells[$i]['y_pos'] }}" class="map-cell" style="cursor: help;background-color: {{ $visible_cells[$i]['background-color'] }};color: {{ $visible_cells[$i]['color'] }}">
-                                                <i class="fas {{ $visible_cells[$i]['class'] }} "></i>
+                                                <i id="cell_{{ $i  }}_icon" class="fas {{ $visible_cells[$i]['class'] }} "></i>
                                             </td>
                                             <?php $i++; ?>
                                         @else
@@ -88,7 +88,7 @@
             function display_cell_info(id)
             {
                 let cell = document.getElementById(id);
-                let icon = cell.className + "large-icon";
+                let icon = document.getElementById(id + "_icon").className + " large-icon";
                 document.getElementById("cell_info_icon").className = icon;
                 let x_pos = cell.getAttribute("x_pos");
                 let y_pos = cell.getAttribute("y_pos");

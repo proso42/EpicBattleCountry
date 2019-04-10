@@ -21,6 +21,7 @@
                 ->value('race');
                 session()->put(['user_race' => $user_race]);
             }
+            $user_race_name = DB::table('races')->where('id', '=', $user_race)->value("race_name");
             $city_id = session()->get('city_id');
             if ($city_id === null)
             {
@@ -94,22 +95,37 @@
             ->orderBy('x_pos', 'asc')
             ->get();
             $visible_cells = [];
+            $capital = DB::table('cities')->select('x_pos', 'y_pos')->where('owner', '=', $user_id)->where('is_capital', '=', 1)->first();
             foreach ($all_cells as $cell)
             {
-                if ($cell->x_pos == $city_x && $cell->y_pos == $city_y)
-                    array_push($visible_cells, ["x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "class" => "fa-star", "title" => "Your city : " . $city->name]);
+                if ($cell->x_pos == $capital->x_pos && $cell->y_pos == $capital->y_pos)
+                    array_push($visible_cells, ["type" => "capital", "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "color" => "green", "class" => "fa-star", "name" =>  $city->name, "diplomatie" => "owned", "race" => $user_race_name]);
                 else if ($cell->type == "water")
-                    array_push($visible_cells, ["x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "steelblue", "class" => $cell->icon, "title" => $cell->type]);
+                    array_push($visible_cells, ["type" => $cell->type, "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "color" => "black", "background-color" => "steelblue", "class" => $cell->icon]);
                 else if ($cell->type == "city")
                 {
-                    $title = DB::table('cities')
+                    $city_info = DB::table('cities')
+                    ->select("name", 'owner')
                     ->where('x_pos', '=', $cell->x_pos)
                     ->where('y_pos', '=', $cell->y_pos)
-                    ->value('name');
-                    array_push($visible_cells, ["x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "class" => $cell->icon, "title" => $title]);
+                    ->first();
+                    if ($city_info->owner == $user_id)
+                    {
+                        $color = "green";
+                        $diplomatie = "owned";
+                        $city_race_name = $user_race_name;
+                    }
+                    else
+                    {
+                        $color = "black";
+                        $diplomatie = "neutre";
+                        $city_race = DB::table('users')->where('owner', '=', $city_info->owner)->value('race');
+                        $city_race_name = DB::table('races')->where('id', '=', $city_race)->value("race_name");
+                    }
+                    array_push($visible_cells, ["type" => "city", "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "color" => $color, "class" => $cell->icon, "name" => $city_info->name, "diplomatie" => $diplomatie, "race" => $city_race_name]);
                 }
                 else
-                    array_push($visible_cells, ["x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "class" => $cell->icon, "title" => $cell->type]); 
+                    array_push($visible_cells, ["type" => $cell->type, "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "color" => "black", "background-color" => "lemonchiffon", "class" => $cell->icon]); 
 
             }
             return view('map', compact('move_map' ,'cartographer', 'visible_cells', 'x_pos', 'city_x', 'y_pos', 'city_y', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));

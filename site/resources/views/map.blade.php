@@ -44,10 +44,6 @@
                                                 @if ($visible_cells[$i]['type'] == 'capial' || $visible_cells[$i]['type'] == 'city') name="{{ $visible_cells[$i]['name'] }}" diplomatie="{{ $visible_cells[$i]['diplomatie'] }}" @endif
                                                 title="{{ $visible_cells[$i]['x_pos'] }}/{{ $visible_cells[$i]['y_pos'] }}" class="map-cell" style="cursor: help;background-color: {{ $visible_cells[$i]['background-color'] }};color: {{ $visible_cells[$i]['color'] }}">
                                                 <i class="fas {{ $visible_cells[$i]['class'] }} "></i>
-                                                <div class="map-cell-details">
-                                                    <p>{{ $visible_cells[$i]['x_pos'] }}/{{ $visible_cells[$i]['y_pos'] }}</p>
-                                                    <i class="fas {{ $visible_cells[$i]['class'] }}"></i>
-                                                </div>
                                             </td>
                                             <?php $i++; ?>
                                         @else

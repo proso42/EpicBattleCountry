@@ -1075,24 +1075,12 @@ input::placeholder
     border: 1px sienna dotted;
 }
 
-.map-cell:hover
-{
-    width: 150px;
-    height: 150px;
-    color: lemonchiffon;
-}
-
 .map-cell-details
 {
     display: none;
     color: black;
     text-align: center;
     font-size: 20px; 
-}
-
-.map-cell:hover .map-cell-details
-{
-    display: block;
 }
 
 .army-unit

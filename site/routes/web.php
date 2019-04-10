@@ -33,6 +33,15 @@ Route::group(['middleware' => ['guest', 'lang']], function(){
 
 // LOGGED ROUTES
 Route::group(['middleware' => ['logged']], function(){
+    // Lang endpoints
+    Route::get('/lang/{lang}', function($locale)
+    {
+        App::setLocale($locale);
+        if (App::isLocale('fr'))
+            echo 'fr';
+        else
+            echo (App::getLocale());
+    });
     Route::get('/logout', 'LogoutController@logout');
     // Home endpoints
     Route::get('/home', 'HomeController@index');
@@ -74,17 +83,6 @@ Route::group(['middleware' => ['logged']], function(){
     Route::post('/seen_msg', 'MessagesController@seen');
     Route::post('delete_msg', 'MessagesController@delete_msg');
     Route::post('/unlock_user', 'MessagesController@unlock_user');
-});
-
-Route::group(['middleware' => ['logged']], function (){
-    Route::get('/lang/{lang}', function($locale)
-    {
-        App::setLocale($locale);
-        if (App::isLocale('fr'))
-            echo 'fr';
-        else
-            echo (App::getLocale());
-    });
 });
 
 

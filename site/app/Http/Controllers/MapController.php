@@ -119,7 +119,7 @@
                     {
                         $color = "black";
                         $diplomatie = "neutre";
-                        $city_race = DB::table('users')->where('owner', '=', $city_info->owner)->value('race');
+                        $city_race = DB::table('users')->where('id', '=', $city_info->owner)->value('race');
                         $city_race_name = DB::table('races')->where('id', '=', $city_race)->value("race_name");
                     }
                     array_push($visible_cells, ["type" => "city", "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "color" => $color, "class" => $cell->icon, "name" => $city_info->name, "diplomatie" => $diplomatie, "race" => $city_race_name]);

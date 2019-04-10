@@ -67,7 +67,7 @@
             }
             $user_id = DB::table('users')
             ->insertGetId(
-                array('login' => $login, 'email' => $email, 'password' => $crypted_password, 'remember_token' => $request['_token'], 'created_at' => time(), 'race' => $id_race->id)
+                array('lang' => 'fr', 'login' => $login, 'email' => $email, 'password' => $crypted_password, 'remember_token' => $request['_token'], 'created_at' => time(), 'race' => $id_race->id)
             );
             $city_id = $this->create_capital($city, $user_id, $city_x_pos, $city_y_pos, $id_race->id);
             $link = $this->gen_confirmation_email_link();

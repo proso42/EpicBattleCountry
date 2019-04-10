@@ -34,14 +34,8 @@ Route::group(['middleware' => ['guest', 'lang']], function(){
 // LOGGED ROUTES
 Route::group(['middleware' => ['logged']], function(){
     // Lang endpoints
-    Route::get('/lang/{lang}', function($locale)
-    {
-        if(session()->has('locale'))
-            app()->setLocale(session('locale'));
-        else
-            session()->put(['locale' => $locale]);
-        app()->setLocale(config(['app.locale' => $locale]));
-    });
+    Route::get('/lang/{lang}', ['uses' => 'LangController@switch_lang']);
+    // Logout endpoints
     Route::get('/logout', 'LogoutController@logout');
     // Home endpoints
     Route::get('/home', 'HomeController@index');

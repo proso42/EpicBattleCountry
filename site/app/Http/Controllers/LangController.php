@@ -13,7 +13,14 @@
     {
         public function switch_lang($lang)
         {
-            App::setLocale($lang);
+            if ($lang != 'fr' && $lang != 'en')
+                $lang = 'fr';
+            if (session()->has('lang'))
+                session(['lang' => $lang]);
+            else
+                session()->put(['lang' => $lang]);
+            if (session()->has('user_id'))
+                DB::table('users')->where('id', '=', session()->get('user_id')->update(['lang' => $lang]));
             return redirect('/settings');
         }
     }

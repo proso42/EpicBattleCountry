@@ -97,7 +97,7 @@
             foreach ($all_cells as $cell)
             {
                 if ($cell->x_pos == $city_x && $cell->y_pos == $city_y)
-                    array_push($visible_cells, ["type" => "capital", "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "color" => "black", "class" => "fa-star", "name" =>  $city->name, "diplomatie" => "owned"]);
+                    array_push($visible_cells, ["type" => "capital", "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "color" => "black", "class" => "fa-star", "name" =>  $city['name'], "diplomatie" => "owned"]);
                 else if ($cell->type == "water")
                     array_push($visible_cells, ["type" => $cell->type, "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "color" => "black", "background-color" => "steelblue", "class" => $cell->icon]);
                 else if ($cell->type == "city")
@@ -106,7 +106,7 @@
                     ->where('x_pos', '=', $cell->x_pos)
                     ->where('y_pos', '=', $cell->y_pos)
                     ->value('name', 'owner');
-                    if ($city_info->owner == $user_id)
+                    if ($city_info['owner'] == $user_id)
                     {
                         $color = "green";
                         $diplomatie = "owned";
@@ -116,7 +116,7 @@
                         $color = "black";
                         $diplomatie = "neutre";
                     }
-                    array_push($visible_cells, ["type" => "city", "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "color" => $color, "class" => $cell->icon, "name" => $city_info->name, "diplomatie" => $diplomatie]);
+                    array_push($visible_cells, ["type" => "city", "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "color" => $color, "class" => $cell->icon, "name" => $city_info['name'], "diplomatie" => $diplomatie]);
                 }
                 else
                     array_push($visible_cells, ["type" => $cell->type, "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "color" => "black", "background-color" => "lemonchiffon", "class" => $cell->icon]); 

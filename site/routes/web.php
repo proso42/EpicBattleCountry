@@ -77,8 +77,10 @@ Route::group(['middleware' => ['logged']], function(){
 });
 
 Route::group(['middleware' => ['logged']], function (){
-    Route::get('/lang/fr', 'LangController@switch_fr');
-    Route::get('/lang/en', 'LangController@switch_en');
+    Route::get('/lang/{lang}', function($locale)
+    {
+        App::setLocale($locale);
+    });
 });
 
 

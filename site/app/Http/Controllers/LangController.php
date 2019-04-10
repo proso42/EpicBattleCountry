@@ -11,17 +11,9 @@
 
     class LangController extends Controller
     {
-        public function switch_fr()
+        public function switch_lang($lang)
         {
-            App::setLocale('fr');
-            $app->getLocale();
-            return redirect('/settings');
-        }
-
-        public function switch_en()
-        {
-            App::setLocale('en');
-            $app->getLocale();
+            App::setLocale($lang);
             return redirect('/settings');
         }
     }

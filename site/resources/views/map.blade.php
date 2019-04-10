@@ -70,6 +70,16 @@
             </div>
         </div>
         <script>
+
+            setTimeout(() =>{
+                let body_height = document.body.scrollHeight + 20;
+                let win_height = window.innerHeight;
+                if (body_height > win_height)
+                    document.getElementById("overlay").style.height = body_height + "px";
+                else
+                    document.getElementById("overlay").style.height = win_height + "px";
+            }, 1000);
+
             function move_map(x_offset, y_offset)
             {
                 window.location.href = '/map?x_offset=' + x_offset + '&y_offset=' + y_offset;

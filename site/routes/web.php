@@ -36,11 +36,11 @@ Route::group(['middleware' => ['logged']], function(){
     // Lang endpoints
     Route::get('/lang/{lang}', function($locale)
     {
-        App::setLocale($locale);
-        if (App::isLocale('fr'))
-            echo 'fr';
+        if(session()->has('locale'))
+            app()->setLocale(session('locale'));
         else
-            echo (App::getLocale());
+            session()->put(['locale' => $locale]);
+        app()->setLocale(config('app.locale'));
     });
     Route::get('/logout', 'LogoutController@logout');
     // Home endpoints

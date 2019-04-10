@@ -78,7 +78,7 @@
             function display_cell_info(id)
             {
                 let cell = document.getElementById(id);
-                let icon = cell.className() + "large-icon";
+                let icon = cell.className + "large-icon";
                 document.getElementById("cell_info_icon").className = icon;
                 let x_pos = cell.getAttribute("x_pos");
                 let y_pos = cell.getAttribute("y_pos");

@@ -1054,7 +1054,7 @@ input::placeholder
 
 .map-cell-info-line
 {
-    border: solid 1px lightblue;
+    border-bottom: solid 1px lightblue;
 }
 
 .map-table

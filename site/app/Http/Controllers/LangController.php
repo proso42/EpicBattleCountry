@@ -14,13 +14,14 @@
         public function switch_fr()
         {
             App::setLocale('fr');
-            dd(App::getLocale());
+            $app->getLocale();
             return redirect('/settings');
         }
 
         public function switch_en()
         {
             App::setLocale('en');
+            $app->getLocale();
             return redirect('/settings');
         }
     }

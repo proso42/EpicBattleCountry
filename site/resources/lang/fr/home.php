@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Home Language Lines EN
+    | Home Language Lines FR
     |--------------------------------------------------------------------------
     |
     | The following language lines are used during authentication for various
@@ -13,5 +13,5 @@ return [
     |
     */
 
-    'thx_fill_field' => 'Thank you fill this fields !'
+    'thx_fill_field' => 'Merci de remplir ce champs !'
 ];

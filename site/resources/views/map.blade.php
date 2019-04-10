@@ -85,7 +85,7 @@
                 document.getElementById("cell_coord").textContent = x_pos + "/" + y_pos;
                 let type = cell.getAttribute("type");
                 document.getElementById("cell_type").textContent = type;
-                if (title == "city" || title == "capital")
+                if (type == "city" || type == "capital")
                 {
                     let name = cell.getAttribute("name");
                     let diplomatie = cell.getAttribute("diplomatie");

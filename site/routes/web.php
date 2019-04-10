@@ -80,6 +80,7 @@ Route::group(['middleware' => ['logged']], function (){
     Route::get('/lang/{lang}', function($locale)
     {
         App::setLocale($locale);
+        dd(App::getLocale());
     });
 });
 

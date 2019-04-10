@@ -40,7 +40,7 @@ Route::group(['middleware' => ['logged']], function(){
             app()->setLocale(session('locale'));
         else
             session()->put(['locale' => $locale]);
-        app()->setLocale(config('app.locale'));
+        app()->setLocale(config(['app.locale' => $locale]));
     });
     Route::get('/logout', 'LogoutController@logout');
     // Home endpoints

@@ -106,6 +106,7 @@
                     ->where('x_pos', '=', $cell->x_pos)
                     ->where('y_pos', '=', $cell->y_pos)
                     ->value('name', 'owner');
+                    dd($city_info);
                     if ($city_info['owner'] == $user_id)
                     {
                         $color = "green";

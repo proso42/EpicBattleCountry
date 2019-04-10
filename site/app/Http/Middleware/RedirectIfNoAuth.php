@@ -21,7 +21,7 @@ class RedirectIfNoAuth
     public function handle($request, Closure $next, $guard = null)
     {
         if (session()->has('user_id'))
-            $locale = DB::table('users')->where('id', '=', session()->get('user_id')->value('lang'));
+            $locale = DB::table('users')->where('id', '=', session()->get('user_id'))->value('lang');
         else if (session()->has('lang'))
             $locale = session()->get('lang');
         else

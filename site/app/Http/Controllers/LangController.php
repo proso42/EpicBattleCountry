@@ -20,7 +20,7 @@
             else
                 session()->put(['lang' => $lang]);
             if (session()->has('user_id'))
-                DB::table('users')->where('id', '=', session()->get('user_id')->update(['lang' => $lang]));
+                DB::table('users')->where('id', '=', session()->get('user_id'))->update(['lang' => $lang]);
             return redirect('/settings');
         }
     }

@@ -1021,6 +1021,37 @@ input::placeholder
     margin-top: 25px;
 }
 
+.large-icon
+{
+    text-align: center;
+    color: black;
+    font-size: 30px;
+}
+
+.map-overlay
+{
+    margin-top: -20px;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    background-color: black;
+    opacity: 0.5;
+}
+
+.map-cell-info
+{
+    margin-top: 50px;
+    margin-left: 33%;
+    width: 33%;
+    height: 250px;
+    background-color: rgb(105, 105, 105);
+    border: solid 1px lightblue;
+    border-radius: 4px;
+    text-align: center;
+    position: absolute;
+    z-index: 2;
+}
+
 .map-table
 {
     margin-left: auto;

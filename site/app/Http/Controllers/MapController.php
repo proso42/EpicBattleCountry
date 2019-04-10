@@ -97,19 +97,29 @@
             foreach ($all_cells as $cell)
             {
                 if ($cell->x_pos == $city_x && $cell->y_pos == $city_y)
-                    array_push($visible_cells, ["x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "class" => "fa-star", "title" => "Your city : " . $city->name]);
+                    array_push($visible_cells, ["type" => "capital", "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "color" => "black", "class" => "fa-star", "name" =>  $city->name, "diplomatie" => "owned"]);
                 else if ($cell->type == "water")
-                    array_push($visible_cells, ["x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "steelblue", "class" => $cell->icon, "title" => $cell->type]);
+                    array_push($visible_cells, ["type" => $cell->type, "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "color" => "black", "background-color" => "steelblue", "class" => $cell->icon]);
                 else if ($cell->type == "city")
                 {
-                    $title = DB::table('cities')
+                    $city_info = DB::table('cities')
                     ->where('x_pos', '=', $cell->x_pos)
                     ->where('y_pos', '=', $cell->y_pos)
-                    ->value('name');
-                    array_push($visible_cells, ["x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "class" => $cell->icon, "title" => $title]);
+                    ->value('name', 'owner');
+                    if ($city_info->owner == $user_id)
+                    {
+                        $color = "green";
+                        $diplomatie = "owned";
+                    }
+                    else
+                    {
+                        $color = "black";
+                        $diplomatie = "neutre";
+                    }
+                    array_push($visible_cells, ["type" => "city", "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "color" => $color, "class" => $cell->icon, "name" => $city_info->name, "diplomatie" => $diplomatie]);
                 }
                 else
-                    array_push($visible_cells, ["x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "class" => $cell->icon, "title" => $cell->type]); 
+                    array_push($visible_cells, ["type" => $cell->type, "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "color" => "black", "background-color" => "lemonchiffon", "class" => $cell->icon]); 
 
             }
             return view('map', compact('move_map' ,'cartographer', 'visible_cells', 'x_pos', 'city_x', 'y_pos', 'city_y', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));

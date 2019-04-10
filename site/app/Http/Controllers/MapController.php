@@ -94,7 +94,7 @@
             ->orderBy('x_pos', 'asc')
             ->get();
             $visible_cells = [];
-            $capital = DB::table('cities')->select('x_pos', 'y_pos')->where('owner', '=', $user_id)->where('is_captital', '=', 1)->first();
+            $capital = DB::table('cities')->select('x_pos', 'y_pos')->where('owner', '=', $user_id)->where('is_capital', '=', 1)->first();
             foreach ($all_cells as $cell)
             {
                 if ($cell->x_pos == $capital->x_pos && $cell->y_pos == $capital->y_pos)

@@ -32,7 +32,7 @@ Route::group(['middleware' => ['guest', 'lang']], function(){
 
 
 // LOGGED ROUTES
-Route::group(['middleware' => ['logged', 'lang']], function(){
+Route::group(['middleware' => ['logged']], function(){
     Route::get('/logout', 'LogoutController@logout');
     // Home endpoints
     Route::get('/home', 'HomeController@index');
@@ -76,7 +76,7 @@ Route::group(['middleware' => ['logged', 'lang']], function(){
     Route::post('/unlock_user', 'MessagesController@unlock_user');
 });
 
-Route::group(['middleware' => ['logged', 'lang']], function (){
+Route::group(['middleware' => ['logged']], function (){
     Route::get('/lang/fr', 'LangController@switch_fr');
     Route::get('/lang/en', 'LangController@switch_en');
 });

@@ -14,6 +14,7 @@
         public function switch_fr()
         {
             App::setLocale('fr');
+            dd(App::getLocale());
             return redirect('/settings');
         }
 

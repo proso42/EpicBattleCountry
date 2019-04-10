@@ -458,6 +458,11 @@ input::placeholder
     text-align: center;
 }
 
+.settings-country-flag
+{
+    width: 30px;
+}
+
 .settings-input
 {
     margin-top: 25px;

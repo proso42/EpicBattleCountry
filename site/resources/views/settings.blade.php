@@ -100,7 +100,7 @@
                         <p>Premium : {{ $is_premium }}</p>
                         <p>Race : {{ $user_race }}</p>
                         <p>
-                            Langue : @if ($user_lang == 'fr') <img class="settings-country-flag" src="images/flag_fr.png"> @else <img class="settings-country-flag" src="images/flag_en.png"> @endif {{ $user_lang }} <i class="fas fa-sync-alt" style="cursor: pointer" onclick="window.locaion.href='/lang/{{ $alt_lang }}'"></i>
+                            Langue : @if ($user_lang == 'fr') <img class="settings-country-flag" src="images/flag_fr.png"> @else <img class="settings-country-flag" src="images/flag_en.png"> @endif <i class="fas fa-sync-alt" style="cursor: pointer;margin-left: 20px" onclick="window.location.href='/lang/{{ $alt_lang }}'"></i>
                         </p>
                     </div>
                 </div>

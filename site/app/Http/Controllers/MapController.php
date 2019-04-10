@@ -21,6 +21,7 @@
                 ->value('race');
                 session()->put(['user_race' => $user_race]);
             }
+            $user_race_name = DB::table('races')->where('id', '=', $user_race)->value("race_name");
             $city_id = session()->get('city_id');
             if ($city_id === null)
             {
@@ -98,7 +99,7 @@
             foreach ($all_cells as $cell)
             {
                 if ($cell->x_pos == $capital->x_pos && $cell->y_pos == $capital->y_pos)
-                    array_push($visible_cells, ["type" => "capital", "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "color" => "green", "class" => "fa-star", "name" =>  $city->name, "diplomatie" => "owned"]);
+                    array_push($visible_cells, ["type" => "capital", "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "color" => "green", "class" => "fa-star", "name" =>  $city->name, "diplomatie" => "owned", "race" => $user_race_name]);
                 else if ($cell->type == "water")
                     array_push($visible_cells, ["type" => $cell->type, "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "color" => "black", "background-color" => "steelblue", "class" => $cell->icon]);
                 else if ($cell->type == "city")
@@ -112,13 +113,16 @@
                     {
                         $color = "green";
                         $diplomatie = "owned";
+                        $city_race_name = $user_race_name;
                     }
                     else
                     {
                         $color = "black";
                         $diplomatie = "neutre";
+                        $city_race = DB::table('users')->where('owner', '=', $city_info->owner)->value('race');
+                        $city_race_name = DB::table('races')->where('id', '=', $city_race)->value("race_name");
                     }
-                    array_push($visible_cells, ["type" => "city", "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "color" => $color, "class" => $cell->icon, "name" => $city_info->name, "diplomatie" => $diplomatie]);
+                    array_push($visible_cells, ["type" => "city", "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "color" => $color, "class" => $cell->icon, "name" => $city_info->name, "diplomatie" => $diplomatie, "race" => $city_race_name]);
                 }
                 else
                     array_push($visible_cells, ["type" => $cell->type, "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "color" => "black", "background-color" => "lemonchiffon", "class" => $cell->icon]); 

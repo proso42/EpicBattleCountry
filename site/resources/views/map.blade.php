@@ -17,6 +17,7 @@
             <ul style="text-align: left">
                 <li class="map-cell-info-line" id="cell_coord"></li>
                 <li class="map-cell-info-line" id="cell_type"></li>
+                <li class="map-cell-info-line" id="cell_owner_race"></li>
                 <li class="map-cell-info-line" id="cell_diplomatie"></li>
             </ul>
             <input onclick="hide_cell_info()" id="return_button" type="button" class="return-button" value="retour">            
@@ -41,7 +42,7 @@
                                     @for ($x = $x_pos - $cartographer; $x <= $x_pos + $cartographer; $x++)
                                         @if ($i < count($visible_cells) && $x == $visible_cells[$i]['x_pos'] && $y == $visible_cells[$i]['y_pos'])
                                             <td id="cell_{{ $i }}" onclick="display_cell_info('cell_{{ $i }}')" x_pos="{{ $visible_cells[$i]['x_pos'] }}" y_pos="{{ $visible_cells[$i]['y_pos'] }}" type="{{ $visible_cells[$i]['type'] }}" 
-                                                @if ($visible_cells[$i]['type'] == 'capital' || $visible_cells[$i]['type'] == 'city') name="{{ $visible_cells[$i]['name'] }}" diplomatie="{{ $visible_cells[$i]['diplomatie'] }}" @endif
+                                                @if ($visible_cells[$i]['type'] == 'capital' || $visible_cells[$i]['type'] == 'city') name="{{ $visible_cells[$i]['name'] }}" diplomatie="{{ $visible_cells[$i]['diplomatie'] }}" owner_race="{{ $visible_cells[$i]['race'] }}" @endif
                                                 title="{{ $visible_cells[$i]['x_pos'] }}/{{ $visible_cells[$i]['y_pos'] }}" class="map-cell" style="cursor: help;background-color: {{ $visible_cells[$i]['background-color'] }};color: {{ $visible_cells[$i]['color'] }}">
                                                 <i id="cell_{{ $i  }}_icon" class="fas {{ $visible_cells[$i]['class'] }} "></i>
                                             </td>
@@ -99,14 +100,18 @@
                 {
                     let name = cell.getAttribute("name");
                     let diplomatie = cell.getAttribute("diplomatie");
+                    let race = cell.getAttribute("owner_race");
                     document.getElementById("cell_diplomatie").textContent = diplomatie;
                     document.getElementById("city_name").textContent = name;
+                    document.getElementById("cell_owner_race").textContent = race;
                     document.getElementById("cell_diplomatie").style.display = "";
                     document.getElementById("city_name").style.display = "";
+                    document.getElementById("cell_owner_race").style.display = "";
                 }
                 else
                 {
                     document.getElementById("city_name").style.display = "none";
+                    document.getElementById("cell_owner_race").style.display = "";
                     document.getElementById("cell_diplomatie").style.display = "none";
                 }
                 document.getElementById("overlay").style.display = "";

@@ -76,7 +76,7 @@ Route::group(['middleware' => ['logged', 'lang']], function(){
     Route::post('/unlock_user', 'MessagesController@unlock_user');
 });
 
-Route::group(['middleware' =>['logged', 'admin', 'lang']], function (){
+Route::group(['middleware' => ['logged', 'lang']], function (){
     Route::get('/lang/fr', 'LangController@switch_fr');
     Route::get('/lang/en', 'LangController@switch_en');
 });

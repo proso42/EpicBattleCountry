@@ -111,7 +111,7 @@
                 else
                 {
                     document.getElementById("city_name").style.display = "none";
-                    document.getElementById("cell_owner_race").style.display = "";
+                    document.getElementById("cell_owner_race").style.display = "none";
                     document.getElementById("cell_diplomatie").style.display = "none";
                 }
                 document.getElementById("overlay").style.display = "";

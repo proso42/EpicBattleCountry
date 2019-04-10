@@ -1025,7 +1025,9 @@ input::placeholder
 {
     text-align: center;
     color: black;
-    font-size: 30px;
+    font-size: 50px;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .map-overlay
@@ -1043,7 +1045,6 @@ input::placeholder
     margin-top: 25%;
     margin-left: 33%;
     width: 33%;
-    height: 250px;
     background-color: rgb(105, 105, 105);
     border: solid 1px lightblue;
     border-radius: 4px;

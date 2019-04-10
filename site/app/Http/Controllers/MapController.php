@@ -103,11 +103,11 @@
                 else if ($cell->type == "city")
                 {
                     $city_info = DB::table('cities')
+                    ->select("name", 'owner')
                     ->where('x_pos', '=', $cell->x_pos)
                     ->where('y_pos', '=', $cell->y_pos)
-                    ->value('name', 'owner');
-                    dd($city_info);
-                    if ($city_info['owner'] == $user_id)
+                    ->first();
+                    if ($city_info->owner == $user_id)
                     {
                         $color = "green";
                         $diplomatie = "owned";
@@ -117,7 +117,7 @@
                         $color = "black";
                         $diplomatie = "neutre";
                     }
-                    array_push($visible_cells, ["type" => "city", "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "color" => $color, "class" => $cell->icon, "name" => $city_info['name'], "diplomatie" => $diplomatie]);
+                    array_push($visible_cells, ["type" => "city", "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "color" => $color, "class" => $cell->icon, "name" => $city_info->name, "diplomatie" => $diplomatie]);
                 }
                 else
                     array_push($visible_cells, ["type" => $cell->type, "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "color" => "black", "background-color" => "lemonchiffon", "class" => $cell->icon]); 

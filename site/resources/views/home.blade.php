@@ -12,7 +12,7 @@
         </div>
         <div id="block_edit" class="edit-city-name-block" style="display: none">
             <div id="error_empty_input" class="home-input-error" style="display: none;">
-                <p>{{ lang('home.thx_fill_field') }}</p>
+                <p>@lang('home.thx_fill_field')</p>
             </div>
             <div id="error_invalid_input" class="home-input-error" style="display: none;">
                 <p>Nom invalide !</p>

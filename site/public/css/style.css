@@ -1052,6 +1052,11 @@ input::placeholder
     z-index: 2;
 }
 
+.map-cell-info-line
+{
+    border: solid 1px lightblue;
+}
+
 .map-table
 {
     margin-left: auto;

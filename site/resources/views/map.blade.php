@@ -14,10 +14,10 @@
             <i id="cell_info_icon" class=""></i>
             <br/>
             <h3 id="city_name"></h3>
-            <ul>
-                <li id="cell_coord"></li>
-                <li id="cell_type"></li>
-                <li id="cell_diplomatie"></li>
+            <ul style="text-align: left">
+                <li class="map-cell-info-line" id="cell_coord"></li>
+                <li class="map-cell-info-line" id="cell_type"></li>
+                <li class="map-cell-info-line" id="cell_diplomatie"></li>
             </ul>
             <input onclick="hide_cell_info()" id="return_button" type="button" class="return-button" value="retour">            
         </div>
@@ -41,7 +41,7 @@
                                     @for ($x = $x_pos - $cartographer; $x <= $x_pos + $cartographer; $x++)
                                         @if ($i < count($visible_cells) && $x == $visible_cells[$i]['x_pos'] && $y == $visible_cells[$i]['y_pos'])
                                             <td id="cell_{{ $i }}" onclick="display_cell_info('cell_{{ $i }}')" x_pos="{{ $visible_cells[$i]['x_pos'] }}" y_pos="{{ $visible_cells[$i]['y_pos'] }}" type="{{ $visible_cells[$i]['type'] }}" 
-                                                @if ($visible_cells[$i]['type'] == 'capial' || $visible_cells[$i]['type'] == 'city') name="{{ $visible_cells[$i]['name'] }}" diplomatie="{{ $visible_cells[$i]['diplomatie'] }}" @endif
+                                                @if ($visible_cells[$i]['type'] == 'capital' || $visible_cells[$i]['type'] == 'city') name="{{ $visible_cells[$i]['name'] }}" diplomatie="{{ $visible_cells[$i]['diplomatie'] }}" @endif
                                                 title="{{ $visible_cells[$i]['x_pos'] }}/{{ $visible_cells[$i]['y_pos'] }}" class="map-cell" style="cursor: help;background-color: {{ $visible_cells[$i]['background-color'] }};color: {{ $visible_cells[$i]['color'] }}">
                                                 <i class="fas {{ $visible_cells[$i]['class'] }} "></i>
                                             </td>

@@ -135,7 +135,7 @@
                 $building_name = DB::table($build->type)
                 ->where('id', '=', $build->building_id)
                 ->value('name');
-                array_push($waiting_list, ["wait_id" => $build->id,"type" => "building", "name" => $building_name, "duration" => $build->finishing_date - time()]);
+                array_push($waiting_list, ["wait_id" => $build->id,"type" => "building", "name" => trans('building.' . preg_replace('/\s/', '_', $building_name)), "duration" => $build->finishing_date - time()]);
             }
             foreach ($waiting_techs as $tech)
             {

@@ -142,7 +142,7 @@
                 $tech_name = DB::table('techs')
                 ->where('id', '=', $tech->tech_id)
                 ->value('name');
-                array_push($waiting_list, ["wait_id" => $tech->id, "type" => "tech", "name" => $tech_name, "duration" => $tech->finishing_date - time()]);
+                array_push($waiting_list, ["wait_id" => $tech->id, "type" => "tech", "name" => trans('tech.' . preg_replace('/\s/', '_', $tech_name)), "duration" => $tech->finishing_date - time()]);
             }
             if ($waiting_item !== null)
                 array_push($waiting_list, ["wait_id" => $waiting_item->id, "type" => "item", "name" => trans('item.' . preg_replace('/\s/', '_', DB::table('forge')->where('id', '=', $waiting_item->item_id)->value('name'))), "duration" => $waiting_item->finishing_date - time(), "quantity" => $waiting_item->quantity]);

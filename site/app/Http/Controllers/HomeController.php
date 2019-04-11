@@ -97,7 +97,7 @@
                 $item_format = preg_replace('/\s/', '_', $item->name);
                 $item_quantity = $city->$item_format;
                 if ($item_quantity > 0)
-                    array_push($items_owned, ["name" => $item->name, "quantity" => $item_quantity]);
+                    array_push($items_owned, ["name" => trans('item.' . $item_format), "quantity" => $item_quantity]);
             }
             $all_units = DB::table('units')->get();
             $city_units = DB::table('cities_units')->where('city_id', '=', $city_id)->first();

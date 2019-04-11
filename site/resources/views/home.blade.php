@@ -12,7 +12,7 @@
         </div>
         <div id="block_edit" class="edit-city-name-block" style="display: none">
             <div id="error_empty_input" class="home-input-error" style="display: none;">
-                <p>{{ trans('home.thx_fill_field')}}</p>
+                <p>@lang('common.thx_fill_field')</p>
             </div>
             <div id="error_invalid_input" class="home-input-error" style="display: none;">
                 <p>@lang('home.invalid_name')</p>
@@ -24,15 +24,15 @@
                 <p>@lang('home.name_changed')</p>
             </div>
             <h3>@lang('home.change_city_name')</h3>
-            <input id="new_name" type="text" class="edit-city-name-input" placeholder="Nouveau nom">
+            <input id="new_name" type="text" class="edit-city-name-input" placeholder="@lang('home.new_name')">
             <br/>
-            <input onclick="rename()" id="rename_button" type="button" class="home-button" value="Renommer">
-            <input onclick="cancel_rename()" id="cancel_button" type="button" class="home-button-cancel" value="Annuler">
+            <input onclick="rename()" id="rename_button" type="button" class="home-button" value="@lang('common.rename')">
+            <input onclick="cancel_rename()" id="cancel_button" type="button" class="home-button-cancel" value="@lang('common.cancel')">
             <img id="spin" class="explo-spin" style="display: none" src="images/loader.gif">
         </div>
         @if (count($user_cities) > 0)
             <div id="error_empty_input2" class="home-input-error" style="display: none;">
-                <p>Merci de remplir le champs !</p>
+                <p>@lang('common.thx_fill_field')</p>
             </div>
             <div id="block_change_city" class="edit-city-name-block" style="display: none">
                 <div id="city_list">
@@ -40,7 +40,7 @@
                         @foreach ($user_cities as $city)
                             <li onclick="choice_city('{{ $city->id }}')" id="city_{{ $city->id }}" class="city-li">{{ $city->name }}</li>
                         @endforeach
-                        <input onclick="switch_city()" id="switch_button" type="button" class="home-button" value="Changer">
+                        <input onclick="switch_city()" id="switch_button" type="button" class="home-button" value="@lang('common.change')">
                     </ul>
                 </div>
             </div>
@@ -52,35 +52,35 @@
                 </div>
                 <hr class="signin-footer">
                 <div class="prod-div">
-                    <h3 class="home-title-table">Production <i id="prod_table_eye" onclick="switch_part('prod_table')" @if($tables_class['prod'] == 0) class="fas fa-eye icon-eye" @else class="fas fa-eye-slash icon-eye" @endif></i></h3>
+                    <h3 class="home-title-table">@lang('home.prod') <i id="prod_table_eye" onclick="switch_part('prod_table')" @if($tables_class['prod'] == 0) class="fas fa-eye icon-eye" @else class="fas fa-eye-slash icon-eye" @endif></i></h3>
                     <table id="prod_table" class="prod-table" @if($tables_class['prod'] == 0) style="display: none" @endif>
                         <tr>
-                            <td>Ressources</td><td>Prod par heure</td><td>Stockage Max</td>
+                            <td>@lang('home.res')</td><td>@lang('home.prod_per_h')</td><td>@lang('home.max_storage')</td>
                         </tr>
                         <tr>
-                            <td>Nourriture</td><td>{{ $food_prod * 60 }}</td><td>{{ $max_food }}</td>
+                            <td>@lang('common.food')</td><td>{{ $food_prod * 60 }}</td><td>{{ $max_food }}</td>
                         </tr>
                         <tr>
-                            <td>Bois</td><td>{{ $wood_prod * 60 }}</td><td>{{ $max_wood }}</td>
+                            <td>@lang('common.wood')</td><td>{{ $wood_prod * 60 }}</td><td>{{ $max_wood }}</td>
                         </tr>
                         <tr>
-                            <td>Pierre</td><td>{{ $rock_prod * 60 }}</td><td>{{ $max_rock }}</td>
+                            <td>@lang('common.rock')</td><td>{{ $rock_prod * 60 }}</td><td>{{ $max_rock }}</td>
                         </tr>
                         <tr>
-                            <td>Fer</td><td>{{ $steel_prod * 60 }}</td><td>{{ $max_steel }}</td>
+                            <td>@lang('common.steel')</td><td>{{ $steel_prod * 60 }}</td><td>{{ $max_steel }}</td>
                         </tr>
                         <tr>
-                            <td>Or</td><td>{{ $gold_prod * 60 }}</td><td>{{ $max_gold }}</td>
+                            <td>@lang('common.gold')</td><td>{{ $gold_prod * 60 }}</td><td>{{ $max_gold }}</td>
                         </tr>
                     </table>
                 </div>
                 @if (count($items_owned) > 0)
                 <hr class="signin-footer">
                 <div class="prod-div">
-                    <h3 class="home-title-table">Items disponibles <i id="item_table_eye" onclick="switch_part('item_table')" @if($tables_class['item'] == 0) class="fas fa-eye icon-eye" @else class="fas fa-eye-slash icon-eye" @endif></i></h3>
+                    <h3 class="home-title-table">@lang('home.available_items') <i id="item_table_eye" onclick="switch_part('item_table')" @if($tables_class['item'] == 0) class="fas fa-eye icon-eye" @else class="fas fa-eye-slash icon-eye" @endif></i></h3>
                     <table id="item_table" class="prod-table" @if($tables_class['item'] == 0) style="display: none" @endif>
                         <tr>
-                            <td>Item</td><td>Stock</td>
+                            <td>@lang('home.item')</td><td>@lang('home.quantity')</td>
                         </tr>
                         @foreach ($items_owned as $item)
                             <tr>
@@ -93,10 +93,10 @@
                 @if (count($units_owned) > 0)
                 <hr class="signin-footer">
                 <div class="prod-div">
-                    <h3 class="home-title-table">Unitées disponibles <i id="unit_table_eye" onclick="switch_part('unit_table')" @if($tables_class['unit'] == 0) class="fas fa-eye icon-eye" @else class="fas fa-eye-slash icon-eye" @endif></i></h3>
+                    <h3 class="home-title-table">@lang('home.available_units') <i id="unit_table_eye" onclick="switch_part('unit_table')" @if($tables_class['unit'] == 0) class="fas fa-eye icon-eye" @else class="fas fa-eye-slash icon-eye" @endif></i></h3>
                     <table id="unit_table" class="prod-table" @if($tables_class['unit'] == 0) style="display: none" @endif>
                         <tr>
-                            <td>Unit</td><td>Stock</td>
+                            <td>@lang('common.unit')</td><td>@lang('home.workforce')</td>
                         </tr>
                         @foreach ($units_owned as $unit)
                             <tr>

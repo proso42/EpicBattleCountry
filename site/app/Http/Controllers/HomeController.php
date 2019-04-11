@@ -145,7 +145,7 @@
                 array_push($waiting_list, ["wait_id" => $tech->id, "type" => "tech", "name" => $tech_name, "duration" => $tech->finishing_date - time()]);
             }
             if ($waiting_item !== null)
-                array_push($waiting_list, ["wait_id" => $waiting_item->id, "type" => "item", "name" => trans('item.' . DB::table('forge')->where('id', '=', $waiting_item->item_id)->value('name')), "duration" => $waiting_item->finishing_date - time(), "quantity" => $waiting_item->quantity]);
+                array_push($waiting_list, ["wait_id" => $waiting_item->id, "type" => "item", "name" => trans('item.' . preg_replace('/\s/', '_', DB::table('forge')->where('id', '=', $waiting_item->item_id)->value('name'))), "duration" => $waiting_item->finishing_date - time(), "quantity" => $waiting_item->quantity]);
             if ($waiting_unit !== null)
                 array_push($waiting_list, ["wait_id" => $waiting_unit->id, "type" => "unit", "name" => DB::table('units')->where('id', '=', $waiting_unit->unit_id)->value('name'), "duration" => $waiting_unit->finishing_date - time(), "quantity" => $waiting_unit->quantity]);
             foreach ($traveling_units as $travel)

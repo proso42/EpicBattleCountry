@@ -80,7 +80,7 @@
                     <h3 class="home-title-table">@lang('home.available_items') <i id="item_table_eye" onclick="switch_part('item_table')" @if($tables_class['item'] == 0) class="fas fa-eye icon-eye" @else class="fas fa-eye-slash icon-eye" @endif></i></h3>
                     <table id="item_table" class="prod-table" @if($tables_class['item'] == 0) style="display: none" @endif>
                         <tr>
-                            <td>@lang('home.item')</td><td>@lang('home.quantity')</td>
+                            <td>@lang('home.item')</td><td>@lang('common.quantity')</td>
                         </tr>
                         @foreach ($items_owned as $item)
                             <tr>

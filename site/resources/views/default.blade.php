@@ -85,70 +85,70 @@
     <div class="col-lg-2 col-md-2" style="margin-top: 50px;">
         <div onclick="document.location.href='/home'" class="row menu-left">
             <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-home icon"></i></div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-3">Acceuil</div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-3">@lang('default.home')</div>
         </div>
         <div class="row menu-left">
             <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-praying-hands"></i></div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-3">Divinité</div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-3">@lang('default.god')</div>
         </div>
         <div onclick="document.location.href='/buildings'" class="row menu-left">
             <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-hammer icon"></i></div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-3">Construction</div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-3">@lang('default.build')</div>
         </div>
         <div onclick="document.location.href='/techs'" class="row menu-left">
             <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-flask icon"></i></div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-3">Technologie</div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-3">@lang('default.tech')</div>
         </div>
         <div onclick="document.location.href='/forge'" class="row menu-left">
             <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-cog icon"></i></div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-3">Forge</div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-3">@lang('default.forge')</div>
         </div>
         <div onclick="document.location.href='/exploration'" class="row menu-left">
             <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-map-marked-alt icon"></i></div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-3">Exploration</div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-3">@lang('default.scout')</div>
         </div>
         <div onclick="document.location.href='/army'" class="row menu-left">
             <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-chess-rook icon"></i></div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-3">Armée</div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-3">@lang('default.army')</div>
         </div>
         <div class="row menu-left">
             <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-fist-raised icon"></i></div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-3">Invasion</div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-3">@lang('default.battle')</div>
         </div>
         <div class="row menu-left">
             <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-flag icon"></i></div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-3">Diplomatie</div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-3">@lang('default.diplomacy')</div>
         </div>
         <div class="row menu-left">
             <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-balance-scale icon"></i></div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-3">Commerce</div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-3">@lang('default.trade')</div>
         </div>
         <div class="row menu-left">
             <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-shield-alt icon"></i></div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-3">Alliance</div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-3">@lang('default.pacte')</div>
         </div>
         <div onclick="document.location.href='/map'" class="row menu-left">
             <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-globe-americas icon"></i></div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-3">Carte</div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-3">@lang('default.map')</div>
         </div>
         <div onclick="document.location.href='/messages'" class="row menu-left">
             <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-comment icon"></i></div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-3">Messages</div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-3">@lang('default.messages')</div>
         </div>
         <div class="row menu-left">
             <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-chart-line icon"></i></div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-3">Statistiques</div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-3">@lang('default.score')</div>
         </div>
         <div onclick="document.location.href='/settings'" class="row menu-left">
             <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-user-circle icon"></i></div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-3">Profile</div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-3">@lang('default.profile')</div>
         </div>
         <div class="row menu-left">
             <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-store-alt icon"></i></div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-3">Boutique</div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-3">@lang('default.shop')</div>
         </div>
         <div onclick="document.location.href='/logout'" class="row menu-left last-case">
             <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-sign-out-alt icon"></i></div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-3">Déconnexion</div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-3">@lang('default.logout')</div>
         </div>
     </div>

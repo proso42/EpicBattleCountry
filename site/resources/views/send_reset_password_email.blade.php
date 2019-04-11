@@ -9,9 +9,9 @@
     </head>
     <body>
         <div class="center-rect" style="margin-top: 270px">
-            Un email de réinisilisation de mot de passe a été envoyé à {{ $email }} !
+            @lang('common.reset_passwd_email_send') {{ $email }} !
             <br/>
-            <button class="return-button" onclick="window.location.href='/signin'">Retour</button>
+            <button class="return-button" onclick="window.location.href='/signin'">@lang('common.return')</button>
         </div>
     </body>
 </html>

@@ -19,6 +19,7 @@ return [
     'change' => 'Change',
     'return' => 'Return',
     'reset' => 'Reset',
+    'update' => 'Update',
     'food' => 'Food',
     'wood' => 'Wood',
     'rock' => 'Rock',
@@ -28,4 +29,5 @@ return [
     'quantity' => 'Quantity',
     'register_success' => 'Your account has been successfully created ! A confirmation email has been sent to',
     'passwd_reset' => 'Your password has been reinitialized !',
+    'reset_passwd_email_send' => 'A password reset email was sent to',
 ];

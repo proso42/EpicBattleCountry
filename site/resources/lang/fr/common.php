@@ -18,6 +18,7 @@ return [
     'cancel' => 'Annuler',
     'change' => 'Changer',
     'return' => 'Retour',
+    'update' => 'Modifier',
     'reset' => 'Réinitialiser',
     'food' => 'Nourriture',
     'wood' => 'Bois',
@@ -27,5 +28,7 @@ return [
     'unit' => 'Unitée',
     'quantity' => 'Quantité',
     'register_success' => 'Votre compte a été créer avec succès ! Un email de confirmation a été envoyé à',
-    'passwd_reset' => 'Votre mot de passe a été réinisialisé !'
+    'passwd_reset' => 'Votre mot de passe a été réinisialisé !',
+    'reset_passwd_email_send' => 'Un email de réinisilisation de mot de passe a été envoyé à',
+
 ];

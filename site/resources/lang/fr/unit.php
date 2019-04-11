@@ -13,6 +13,20 @@ return [
     |
     */
 
-    'thx_fill_field' => 'Merci de remplir ce champs !',
-    
+    'Explorateur' => 'Explorateur',
+    'Ranger' => 'Ranger',
+    'Fouineur' => 'Fouineur',
+    'Eclaireur' => 'Éclaireur',
+    'Guerrier' => 'Guérrier',
+    'Jeune_epeeiste' => 'Jeune épéeiste',
+    'Bastonneur' => 'Bastonneur',
+    'Eventreur' => 'Eventreur',
+    'Piquier' => 'Piquier',
+    'Lancier_elfique' => 'Lancier Elfique',
+    'Lancier_nain' => 'Lancier nain',
+    'Hallebardier_crasseux' => 'Hallebardier crasseux',
+    'Archer' => 'Archer',
+    'Archer_elfique' => 'Archer elfique',
+    'Archer_nain' => 'Archer nain',
+    'Archer sauvage' => 'Archer sauvage',
 ];

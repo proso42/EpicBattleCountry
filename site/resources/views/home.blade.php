@@ -15,15 +15,15 @@
                 <p>{{ trans('home.thx_fill_field')}}</p>
             </div>
             <div id="error_invalid_input" class="home-input-error" style="display: none;">
-                <p>Nom invalide !</p>
+                <p>@lang('home.invalid_name')</p>
             </div>
             <div id="error_already_taken" class="home-input-error" style="display: none;">
-                <p>Ce nom est déjà pris !</p>
+                <p>@lang('home.already_taken')</p>
             </div>
             <div id="name_changed" class="home-input-success" style="display: none;">
-                <p>Le nom a été changé !</p>
+                <p>@lang('home.name_changed')</p>
             </div>
-            <h3>Changer le nom de la ville</h3>
+            <h3>@lang('home.change_city_name')</h3>
             <input id="new_name" type="text" class="edit-city-name-input" placeholder="Nouveau nom">
             <br/>
             <input onclick="rename()" id="rename_button" type="button" class="home-button" value="Renommer">

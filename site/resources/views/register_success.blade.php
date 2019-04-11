@@ -9,9 +9,9 @@
     </head>
     <body>
         <div class="center-rect" style="margin-top: 270px">
-            Votre compte a été créer avec succès ! Un email de confirmation a été envoyé à {{ $email }}.
+            @lang('common.register_success') {{ $email }}.
             <br/>
-            <button class="return-button" onclick="window.location.href='/signin'">Retour</button>
+            <button class="return-button" onclick="window.location.href='/signin'">@lang('common.return')</button>
         </div>
     </body>
 </html>

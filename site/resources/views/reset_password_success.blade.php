@@ -9,9 +9,9 @@
     </head>
     <body>
         <div class="center-rect" style="margin-top: 270px">
-            Votre mot de passe a été réinisialisé !
+            @lang('common.passwd_reset')
             <br/>
-            <button class="return-button" onclick="window.location.href='/signin'">Retour</button>
+            <button class="return-button" onclick="window.location.href='/signin'">@lang('common.return')</button>
         </div>
     </body>
 </html>

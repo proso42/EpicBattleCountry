@@ -17,6 +17,8 @@ return [
     'rename' => 'Rename',
     'cancel' => 'Cancel',
     'change' => 'Change',
+    'return' => 'Return',
+    'reset' => 'Reset',
     'food' => 'Food',
     'wood' => 'Wood',
     'rock' => 'Rock',
@@ -24,4 +26,6 @@ return [
     'gold' => 'Gold',
     'unit' => 'Unit',
     'quantity' => 'Quantity',
+    'register_success' => 'Your account has been successfully created ! A confirmation email has been sent to',
+    'passwd_reset' => 'Your password has been reinitialized !',
 ];

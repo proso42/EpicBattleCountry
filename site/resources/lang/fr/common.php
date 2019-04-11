@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Unit Language Lines EN
+    | Common Language Lines FR
     |--------------------------------------------------------------------------
     |
     | The following language lines are used during authentication for various
@@ -17,6 +17,8 @@ return [
     'rename' => 'Renomer',
     'cancel' => 'Annuler',
     'change' => 'Changer',
+    'return' => 'Retour',
+    'reset' => 'Réinitialiser',
     'food' => 'Nourriture',
     'wood' => 'Bois',
     'rock' => 'Pierre',
@@ -24,4 +26,6 @@ return [
     'gold' => 'Or',
     'unit' => 'Unitée',
     'quantity' => 'Quantité',
+    'register_success' => 'Votre compte a été créer avec succès ! Un email de confirmation a été envoyé à',
+    'passwd_reset' => 'Votre mot de passe a été réinisialisé !'
 ];

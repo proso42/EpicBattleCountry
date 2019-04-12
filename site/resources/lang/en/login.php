@@ -20,7 +20,7 @@ return [
     'passwd_update' => 'Change password',
     'passwd_changed' => 'Your password has been successfully changed !',
     'error_bad_current_passwd' => 'The current password is not good !',
-    'error_same_current_and)new_passwd' => 'The new password can not be the current password !',
+    'error_same_current_and_new_passwd' => 'The new password can not be the current password !',
     'current_passwd' => 'Current password',
     'confirm_new_passwd' => 'Confirm new password',
 

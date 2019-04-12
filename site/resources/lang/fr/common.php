@@ -36,5 +36,6 @@ return [
     'human' => 'Humain',
     'elf' => 'Elfe',
     'dwarf' => 'Nain',
-    'orc' => 'Orc'
+    'orc' => 'Orc',
+    'ok' => 'Ok',
 ];

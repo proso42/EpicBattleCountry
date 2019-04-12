@@ -9,37 +9,37 @@
     </head>
     <body>
         <div id="main" class="signin-rect">
-            <h2>Connexion</h2>
+            <h2>@lang('signin.connection')</h2>
             <div id="connection_failed" class="signin-err-connexion" style="display: none;">
-                <p>Identifiant et/ou mot de passe incorrect</p>
+                <p>@lang('signin.err_connection')</p>
             </div>
             <div id="email_not_validated" class="signin-err-connexion" style="display: none;">
-                <p>Vous devez valider votre email avant de vous connecter</p>
+                <p>@lang('signin.email_not_validated')</p>
             </div>
             <form method="POST" action="/login" id="signin_form">
-                <input id="account" type="text" class="signin-input" placeholder="Login ou email" required>
+                <input id="account" type="text" class="signin-input" placeholder="@lang('signin.login_or_email')" required>
                 <br/>
-                <input id="password" type="password" class="signin-input" placeholder="Mot de passe" required>
+                <input id="password" type="password" class="signin-input" placeholder="@lang('login.passwd')" required>
                 <br/>
                 <div id="connexion">
-                    <input type="submit" class="signin-button" value="Se connecter">
+                    <input type="submit" class="signin-button" value="@lang('settings.log_in')">
                 </div>
                 <div id="spin" style="display: none;">
                     <img class="signin-spin" src="images/loader.gif">
                 </div>
                 <hr class="signin-footer"/>
                 <div id="forgot" class="signin-forgot">
-                    <a href="/forgot_password" class="signin-forgot-link">Mot de passe oublié ?</a>
+                    <a href="/forgot_password" class="signin-forgot-link">@lang('signin.forgot_passwd')</a>
                 </div>
                 <div id="link_no_account" class="signin-forgot">
-                    <a href="/signup" class="signin-forgot-link">Pas encore de compte ?</a>
+                    <a href="/signup" class="signin-forgot-link">@lang('signin.no_account')</a>
                 </div>
                 {{csrf_field()}}
             </form>
         </div>
         <div id="second" class="signin-rect-lg">
-            <p style="margin-top: 10px; margin-left: 5px;margin-right: 5px;">Nous avons envoyé un lien de réinitialisation de mot de passe à ton adresse mail.</p>
-            <button class="signin-button" style="margin-top: 10px;margin-bottom: 10px;" onclick="hide_second()">Ok</button>
+            <p style="margin-top: 10px; margin-left: 5px;margin-right: 5px;">@lang('signin.link_reset_email')</p>
+            <button class="signin-button" style="margin-top: 10px;margin-bottom: 10px;" onclick="hide_second()">@lang('common.ok')</button>
         </div>
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         <script>

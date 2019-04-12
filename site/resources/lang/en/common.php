@@ -33,5 +33,9 @@ return [
     'login' => 'Login',
     'email' => 'Email',
     'race' => 'Race',
+    'human' => 'Human',
+    'elf' => 'Elf',
+    'dwarf' => 'Dwarf',
+    'orc' => 'Orc'
 
 ];

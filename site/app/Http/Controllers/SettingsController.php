@@ -31,9 +31,9 @@
                 $user_login = substr($complete_login, 0, 14) . "...";
             else
                 $user_login = $complete_login;
-            $user_race = DB::table('races')
+            $user_race = trans(DB::table('races')
             ->where('id', '=', $user_infos->race)
-            ->value('race_name');
+            ->value('race_name'));
             if ($user_infos->is_premium)
                 $is_premium = "Oui";
             else

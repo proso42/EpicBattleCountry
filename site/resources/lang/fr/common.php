@@ -33,4 +33,8 @@ return [
     'login' => 'Pseudo',
     'email' => 'Email',
     'race' => 'Race',
+    'human' => 'Humain',
+    'elf' => 'Elfe',
+    'dwarf' => 'Nain',
+    'orc' => 'Orc'
 ];

@@ -25,6 +25,6 @@ return [
     'new_login' => 'Nouveau pseudo',
     'new_email' => 'Nouvel email',
     'new_passwd' => 'Nouveau mot de passe',
-    'update_paswd' => 'Modifier le mot de passe',
+    'update_passwd' => 'Modifier le mot de passe',
     'lang' => 'Langue',
 ];

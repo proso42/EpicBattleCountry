@@ -25,6 +25,6 @@ return [
     'new_login' => 'New login',
     'new_email' => 'New email',
     'new_passwd' => 'New password',
-    'update_paswd' => 'Update password',
+    'update_passwd' => 'Update password',
     'lang' => 'Language',
 ];

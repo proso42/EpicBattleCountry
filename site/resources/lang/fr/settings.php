@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Settings Language Lines EN
+    | Settings Language Lines FR
     |--------------------------------------------------------------------------
     |
     | The following language lines are used during authentication for various
@@ -13,14 +13,17 @@ return [
     |
     */
 
-    'reseting_passwd' => 'Reinitialization of password',
-    'error_not_same_passwd' => 'The two passwords are not identical !',
-    'passwd' => 'Password',
-    'confirm_passwd' => 'Confirm password',
-    'passwd_update' => 'Change password',
-    'passwd_changed' => 'Your password has been successfully changed !',
-    'error_bad_current_passwd' => 'The current password is not good !',
-    'error_same_current_and)new_passwd' => 'The new password can not be the current password !',
-    'current_passwd' => 'Current password',
-    'confirm_new_passwd' => 'Confirm new password',
+    'login_already_taken' => 'Ce pseudo est déjà utilisé.',
+    'profile' => 'Profile',
+    'thx_fill_login' => 'Merci de renseigner un pseudo !',
+    'email_already_taken' => 'Cet email est déjà utilisé.',
+    'thx_fill_email' => 'Merci de renseigner un email !',
+    'thx_fill_passwd' => 'Merci de renseigner un mot de passe !',
+    'new_passwd_not_be_same_current' => 'Votre nouveau mot de passe ne peut pas être votre mot de passe actuel !',
+    'login_updated' => 'Votre pseudo a été modifié avec success !',
+    'confirm_email_send' => 'Un email de confirmation a été envoyé à votre nouvelle adresse email !',
+    'new_email' => 'Nouvel email',
+    'new_passwd' => 'Nouveau mot de passe',
+    'update_paswd' => 'Modifier le mot de passe',
+    'lang' => 'Langue',
 ];

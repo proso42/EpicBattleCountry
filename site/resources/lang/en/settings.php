@@ -13,14 +13,17 @@ return [
     |
     */
 
-    'reseting_passwd' => 'Reinitialization of password',
-    'error_not_same_passwd' => 'The two passwords are not identical !',
-    'passwd' => 'Password',
-    'confirm_passwd' => 'Confirm password',
-    'passwd_update' => 'Change password',
-    'passwd_changed' => 'Your password has been successfully changed !',
-    'error_bad_current_passwd' => 'The current password is not good !',
-    'error_same_current_and)new_passwd' => 'The new password can not be the current password !',
-    'current_passwd' => 'Current password',
-    'confirm_new_passwd' => 'Confirm new password',
+    'login_already_taken' => 'This login is already taken.',
+    'profile' => 'Profile',
+    'thx_fill_login' => 'Please fill in a login !',
+    'emai_already_taken' => 'This email is already taken.',
+    'thx_fill_email' => 'Please fill in an email !',
+    'thx_fill_passwd' => 'Please fill in a password !',
+    'new_passwd_not_be_same_current' => 'Your new password can not be your current password !',
+    'login_updated' => 'Your login has been changed with success !',
+    'confirm_email_send' => 'A confirmation email has been sent to your new email address !',
+    'new_email' => 'New email',
+    'new_passwd' => 'New password',
+    'update_paswd' => 'Update password',
+    'lang' => 'Language',
 ];

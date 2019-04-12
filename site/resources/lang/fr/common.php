@@ -30,5 +30,7 @@ return [
     'register_success' => 'Votre compte a été créer avec succès ! Un email de confirmation a été envoyé à',
     'passwd_reset' => 'Votre mot de passe a été réinisialisé !',
     'reset_passwd_email_send' => 'Un email de réinisilisation de mot de passe a été envoyé à',
-
+    'login' => 'Pseudo',
+    'email' => 'Email',
+    'race' => 'Race',
 ];

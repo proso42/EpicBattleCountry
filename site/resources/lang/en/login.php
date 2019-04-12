@@ -23,6 +23,8 @@ return [
     'error_same_current_and_new_passwd' => 'The new password can not be the current password !',
     'current_passwd' => 'Current password',
     'confirm_new_passwd' => 'Confirm new password',
-
+    'validate_error' => 'An error occurred while validating your email. Check that you have followed the correct link. If the problem persists please contact our support at the following address',
+    'your_email' => 'Your email',
+    'validated' => 'has been successfully validated',
 
 ];

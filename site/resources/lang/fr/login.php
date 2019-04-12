@@ -23,4 +23,7 @@ return [
     'error_same_current_and)new_passwd' => 'Le nouveau mot de passe ne peut pas être le mot de passe actuel !',
     'current_passwd' => 'Mot de passe actuel',
     'confirm_new_passwd' => 'Confirmer nouveau mot de passe',
+    'validate_error' => 'Une erreur est survenue lors de la validation de votre email. Vérifier que vous avez suivis le bon lien. Si le problème persiste merci de contacter notre support à l\'addresse suivante',
+    'your_email' => 'Votre adresse mail',
+    'validated' => 'a été validé avec succès ',
 ];

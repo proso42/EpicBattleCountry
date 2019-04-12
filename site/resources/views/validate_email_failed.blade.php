@@ -9,9 +9,9 @@
     </head>
     <body>
         <div class="center-rect-red" style="margin-top: 270px">
-            Une erreur est survenue lors de la validation de votre email. Vérifier que vous avez suivis le bon lien. Si le problème persiste merci de contacter notre support à l'addresse suivante : support@epicbattlecorp.fr            
+            @lang('login.validate_error') : support@epicbattlecorp.fr            
             <br/>            
-            <button class="return-button" onclick="window.location.href='/signin'">Retour</button>
+            <button class="return-button" onclick="window.location.href='/signin'">@lang('common.return')</button>
         </div>
     </body>
 </html>

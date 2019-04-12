@@ -9,9 +9,9 @@
     </head>
     <body>
         <div class="center-rect" style="margin-top: 270px">
-            Votre adresse mail : {{ $user_email }} a été validé avec succès !
+            @lang('login.your_email') : {{ $user_email }} @lang('login.validated')!
             <br/>
-            <button class="return-button" onclick="window.location.href='/signin'">Retour</button>
+            <button class="return-button" onclick="window.location.href='/signin'">@lang('common.return')</button>
         </div>
     </body>
 </html>

@@ -9,66 +9,66 @@
     </head>
     <body>
         <div class="center-rect">
-            <h2>Inscription</h2>
+            <h2>@lang('signup.register')</h2>
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-2 col-2"></div>
                 <div id="err_password" class="col-lg-6 col-md-6 col-sm-8 col-8 signup-err-password" style="display: none">
-                    <p>Les deux mots de passe ne sont pas identiques !</p>
+                    <p>@lang('signup.passwds_not_same')</p>
                 </div>
                 <div id="err_login" class="col-lg-6 col-md-6 col-sm-8 col-8 signup-err-password" style="display: none">
-                    <p>Ce login est déjà utilisé !</p>
+                    <p>@lang('settings.login_alreay_taken')</p>
                 </div>
                 <div id="err_city" class="col-lg-6 col-md-6 col-sm-8 col-8 signup-err-password" style="display: none">
-                    <p>Ce nom de cité est déjà utilisé</p>
+                    <p>@lang('home.already_taken')</p>
                 </div>
                 <div id="err_email" class="col-lg-6 col-md-6 col-sm-8 col-8 signup-err-password" style="display: none">
-                    <p>Cet email est déjà utilisé</p>
+                    <p>@lang('settings.email_already_taken')</p>
                 </div>
                 <div id="err_sponsor" class="col-lg-6 col-md-6 col-sm-8 col-8 signup-err-password" style="display: none">
-                    <p>Ce parrain n'existe pas !</p>
+                    <p>@lang('signup.no_godfather')</p>
                 </div>
             </div>
             <form method="POST" id="signup_form" action="/register">
-                <input id="login" name="login" class="signup-input" placeholder="Login *" type="text" pattern="[a-zA-Z]{3,20}" required>
+                <input id="login" name="login" class="signup-input" placeholder="@lang('common.login') *" type="text" pattern="[a-zA-Z]{3,20}" required>
                 <br/>
-                <input id="city" name="city" class="signup-input" placeholder="Cité de départ *" type="text" pattern="^(?=.*[a-zA-Z]{3})[-a-zA-Z ]{3,20}$" required>
+                <input id="city" name="city" class="signup-input" placeholder="@lang('signup.first_city') *" type="text" pattern="^(?=.*[a-zA-Z]{3})[-a-zA-Z ]{3,20}$" required>
                 <br/>
                 <select id="race" name="race" class="signup-select-race" required>
-                    <optgroup style="background-color: white" label="Races disponibles">
-                            <option selected class="signup-option-race">Humain</option>
-                            <option class="signup-option-race">Elfe</option>
-                            <option class="signup-option-race">Orc</option>
-                            <option class="signup-option-race">Nain</option>
+                    <optgroup style="background-color: white" label="@lang('signup.races')">
+                            <option selected class="signup-option-race">@lang('common.human')</option>
+                            <option class="signup-option-race">@lang('common.elf')</option>
+                            <option class="signup-option-race">@lang('common.dwarf')</option>
+                            <option class="signup-option-race">@lang('common.orc')</option>
                     </optgroup>
                 </select>
                 <br/>
-                <input id="email" name="email" class="signup-input" placeholder="Email *" type="email" required>
+                <input id="email" name="email" class="signup-input" placeholder="@lang('common.email') *" type="email" required>
                 <br/>
                 <!--
                 <input id="password" name="password" class="signup-input" placeholder="Mot de passe *" type="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[\da-zA-Z!-/:-@[-`{-~]{12,20}$" required>
                 </br>
                 <input id="password2" name="password2" class="signup-input" placeholder="Confirmer mot de passe *" type="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[\da-zA-Z!-/:-@[-`{-~]{12,20}$" required>
                 </br> -->
-                <input id="password" name="password" class="signup-input" placeholder="Mot de passe *" type="password" required>
+                <input id="password" name="password" class="signup-input" placeholder="@lang('login.passwd') *" type="password" required>
                 <br/>
-                <input id="password2" name="password2" class="signup-input" placeholder="Confirmer mot de passe *" type="password" required>
+                <input id="password2" name="password2" class="signup-input" placeholder="@lang('login.confirm_passwd') *" type="password" required>
                 <br/>
-                <input id="sponsor" name="sponsor" class="signup-input" placeholder="Parrain" type="text">
+                <input id="sponsor" name="sponsor" class="signup-input" placeholder="@lang('signup.sponsor')" type="text">
                 <br/>
                 {{csrf_field()}}
                 <div id="spin" style="display: none;">
                     <img class="signin-spin" src="images/loader.gif">
                 </div>
-                <input id="fuck" class="signup-button" type="submit" value="S'inscrire">      
+                <input id="fuck" class="signup-button" type="submit" value="@lang('signup.subscribe')">      
             </form>
             <hr class="signup-footer"/>
             <div class="signup-conditions">
                 <p style="font-size: 12px;">
-                    Votre mot de passe doit être composé de 12 à 20 caractères non accentué, comprenant au moins une minuscule, une majuscule et un chiffre.
+                    @lang('signup.passwd_format')
                     <br/>
-                    Votre login doit être composé de 3 à 20 lettres, minuscule et/ou majuscule.
+                    @lang('signup.login_format')
                     <br/>
-                    Le nom de votre cité de départ doit être composé de 3 à 20 lettres, minuscule et/ou majuscule. Vous pouvez aussi utiliser des espaces et des tirets.
+                    @lang('signup.city_format')
                 </p>
             </div>
         </div>

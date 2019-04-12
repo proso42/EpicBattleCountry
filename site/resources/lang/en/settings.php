@@ -16,7 +16,7 @@ return [
     'login_already_taken' => 'This login is already taken.',
     'profile' => 'Profile',
     'thx_fill_login' => 'Please fill in a login !',
-    'emai_already_taken' => 'This email is already taken.',
+    'email_already_taken' => 'This email is already taken.',
     'thx_fill_email' => 'Please fill in an email !',
     'thx_fill_passwd' => 'Please fill in a password !',
     'new_passwd_not_be_same_current' => 'Your new password can not be your current password !',

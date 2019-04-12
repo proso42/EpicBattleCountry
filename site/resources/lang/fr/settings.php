@@ -22,6 +22,7 @@ return [
     'new_passwd_not_be_same_current' => 'Votre nouveau mot de passe ne peut pas être votre mot de passe actuel !',
     'login_updated' => 'Votre pseudo a été modifié avec success !',
     'confirm_email_send' => 'Un email de confirmation a été envoyé à votre nouvelle adresse email !',
+    'new_login' => 'Nouveau pseudo',
     'new_email' => 'Nouvel email',
     'new_passwd' => 'Nouveau mot de passe',
     'update_paswd' => 'Modifier le mot de passe',

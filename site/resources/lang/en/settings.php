@@ -22,6 +22,7 @@ return [
     'new_passwd_not_be_same_current' => 'Your new password can not be your current password !',
     'login_updated' => 'Your login has been changed with success !',
     'confirm_email_send' => 'A confirmation email has been sent to your new email address !',
+    'new_login' => 'New login',
     'new_email' => 'New email',
     'new_passwd' => 'New password',
     'update_paswd' => 'Update password',

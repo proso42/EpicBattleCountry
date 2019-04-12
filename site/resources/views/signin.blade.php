@@ -22,7 +22,7 @@
                 <input id="password" type="password" class="signin-input" placeholder="@lang('login.passwd')" required>
                 <br/>
                 <div id="connexion">
-                    <input type="submit" class="signin-button" value="@lang('settings.log_in')">
+                    <input type="submit" class="signin-button" value="@lang('signin.log_in')">
                 </div>
                 <div id="spin" style="display: none;">
                     <img class="signin-spin" src="images/loader.gif">

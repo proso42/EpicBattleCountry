@@ -112,7 +112,7 @@
                     <hr class="signin-footer"/>
                     <div>
                         <p>Premium : {{ $is_premium }}</p>
-                        <p>@lan('common.race') : {{ $user_race }}</p>
+                        <p>@lang('common.race') : {{ $user_race }}</p>
                         <p>
                             @lang('settings.lang') : @if ($user_lang == 'fr') <img class="settings-country-flag" src="images/flag_fr.png"> @else <img class="settings-country-flag" src="images/flag_en.png"> @endif <i class="fas fa-sync-alt" style="cursor: pointer;margin-left: 20px" onclick="window.location.href='/lang/{{ $alt_lang }}'"></i>
                         </p>

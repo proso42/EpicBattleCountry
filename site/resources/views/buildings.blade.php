@@ -31,7 +31,7 @@
                             <img class="building" style="width:250px;height: 250px;" src="{{ $build['illustration'] }}">
                             @if ($build['status'] == "OK")
                                 <div @if ($build['food_required'] > $food || $build['wood_required'] > $wood || $build['rock_required'] > $rock || $build['steel_required'] > $steel || $build['gold_required'] > $gold) class="building-button-impossible" @else class="building-button"
-                                onclick="update_building('{{ $build['name'] }}')"@endif>                                
+                                onclick="update_building('{{ $build['id'] }}')"@endif>                                
                                     @if ($build["niv"] == 0)
                                         @lang('building.build') <i class="fas fa-hammer icon"></i>
                                     @else
@@ -71,7 +71,7 @@
                         <img class="building" style="width:250px;height: 250px;" src="{{ $build['illustration'] }}">
                         @if ($build['status'] == "OK")
                             <div @if ($build['food_required'] > $food || $build['wood_required'] > $wood || $build['rock_required'] > $rock || $build['steel_required'] > $steel || $build['gold_required'] > $gold) class="building-button-impossible" @else class="building-button"
-                            onclick="update_building('{{ $build['name'] }}')"@endif>                                
+                            onclick="update_building('{{ $build['id'] }}')"@endif>                                
                                 @if ($build["niv"] == 0)
                                     @lang('building.build') <i class="fas fa-hammer icon"></i>
                                 @else
@@ -111,7 +111,7 @@
                         <img class="building" style="width:250px;height: 250px;" src="{{ $build['illustration'] }}">
                         @if ($build['status'] == "OK")
                             <div @if ($build['food_required'] > $food || $build['wood_required'] > $wood || $build['rock_required'] > $rock || $build['steel_required'] > $steel || $build['gold_required'] > $gold) class="building-button-impossible" @else class="building-button"
-                            onclick="update_building('{{ $build['name'] }}')"@endif>                                
+                            onclick="update_building('{{ $build['id'] }}')"@endif>                                
                                 @if ($build["niv"] == 0)
                                     @lang('building.build') <i class="fas fa-hammer icon"></i>
                                 @else
@@ -151,7 +151,7 @@
                         <img class="building" style="width:250px;height: 250px;" src="{{ $build['illustration'] }}">
                         @if ($build['status'] == "OK")
                             <div @if ($build['food_required'] > $food || $build['wood_required'] > $wood || $build['rock_required'] > $rock || $build['steel_required'] > $steel || $build['gold_required'] > $gold) class="building-button-impossible" @else class="building-button"
-                            onclick="update_building('{{ $build['name'] }}')"@endif>                                
+                            onclick="update_building('{{ $build['id'] }}')"@endif>                                
                                 @if ($build["niv"] == 0)
                                     @lang('building.build') <i class="fas fa-hammer icon"></i>
                                 @else
@@ -298,7 +298,7 @@
                 }
             }
 
-            function update_building(name)
+            function update_building(id)
             {
                 var _token = document.getElementById('_token').value;
                 var building_type = activeBuildings.replace(/-/gi, '_');
@@ -313,7 +313,7 @@
                     }
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                xhr.send('_token=' + _token + '&name=' + name);
+                xhr.send('_token=' + _token + '&id=' + id + '&type=' + building_type);
                 setTimeout(() => {
                     window.location.href="http://www.epicbattlecorp.fr/buildings?activeTab=" + (activeTab.split('-'))[0];
                 }, 300);

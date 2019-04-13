@@ -235,29 +235,14 @@
         public function update(Request $request)
         {
             $city_id = session()->get('city_id');
-            $building_name = $request['name'];
-            $building_name_format = preg_replace('/\s/',"_", $building_name);
-            $niv = DB::table('cities_buildings')
-            ->where('city_id', '=', $city_id)
-            ->value($building_name_format);
-            $types = ["eco_buildings", "army_buildings", "religious_buildings", "tech_buildings"];
-            $building_type = "none";
-            for ($i = 0; $i < 4; $i++)
-            {
-                $search = DB::table($types[$i])
-                ->where('name', '=', $building_name)
-                ->value('id');
-                if ($search !== null && $search > 0)
-                {
-                    $building_type = $types[$i];
-                    break;
-                }
-            }
-            if ($building_type == "none")
+            $building_id = $request['id'];
+            $building_type = preg_replace('/tab/', "buildings", $request['type']);
+            if ($building_type !== "eco_buildings" && $building_type !== "army_buildings" && $building_type !== "religious_buildings" && $building_type !== "tech_buildings")
                 return ("bad buildings type");
-            $building_id = DB::table($building_type)
-            ->where('name', '=', $building_name)
-            ->value('id');
+            $building_name = DB::table($building_type)->where('id', '=', $building_id)->value('name');
+            if ($building_name === null)
+                return ("bad id of building");
+            $niv = DB::table('cities_buildings')->where('city_id', '=', $city_id)->value(preg_replace('/\s/', "_", $building_name));
             $alreday_waiting = DB::table('waiting_buildings')
             ->where('city_id', '=', $city_id)
             ->where('type', '=', $building_type)

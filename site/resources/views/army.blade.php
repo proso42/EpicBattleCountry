@@ -305,7 +305,7 @@
                             document.getElementById("confirm-button").style.display = "";
                             document.getElementById("confirm-button").disabled = "";  
                         }
-                        document.getElementById("confirm-title").textContent = "Entrainer " + quantity + " " + name + " ?";
+                        document.getElementById("confirm-title").textContent = "@lang('army.train') " + quantity + " " + name + " ?";
                         if (basic[1] > 0)
                         {
                             document.getElementById("food_list").textContent = "@lang('common.food') : " +  basic[1];
@@ -316,7 +316,7 @@
                             document.getElementById("list1").style.display = "none";
                         if (basic[3] > 0)
                         {
-                            document.getElementById("wood_list").textContent = "Wood : " +  basic[3];
+                            document.getElementById("wood_list").textContent = "@lang('common.wood') : " +  basic[3];
                             document.getElementById("wood_icon").className = basic[4];
                             document.getElementById("list2").style.display = "";
                         }
@@ -324,7 +324,7 @@
                             document.getElementById("list2").style.display = "none";
                         if (basic[5] > 0)
                         {
-                            document.getElementById("rock_list").textContent = "Rock : " +  basic[5];
+                            document.getElementById("rock_list").textContent = "@lang('common.rock') : " +  basic[5];
                             document.getElementById("rock_icon").className = basic[6];
                             document.getElementById("list3").style.display = "";
                         }
@@ -332,7 +332,7 @@
                             document.getElementById("list3").style.display = "none";
                         if (basic[7] > 0)
                         {
-                            document.getElementById("steel_list").textContent = "Steel : " +  basic[7];
+                            document.getElementById("steel_list").textContent = "@lang('common.steel') : " +  basic[7];
                             document.getElementById("steel_icon").className = basic[8];
                             document.getElementById("list4").style.display = "";
                         }
@@ -340,7 +340,7 @@
                             document.getElementById("list4").style.display = "none";
                         if (basic[9] > 0)
                         {
-                            document.getElementById("gold_list").textContent = "Gold : " +  basic[9];
+                            document.getElementById("gold_list").textContent = "@lang('common.gold') : " +  basic[9];
                             document.getElementById("gold_icon").className = basic[10];
                             document.getElementById("list5").style.display = "";
                         }
@@ -350,11 +350,11 @@
                             document.getElementById("list_last").style.display = "none";
                         else
                         {
-                            document.getElementById("mount_list").textContent = "Mount : " +  basic[11] + " x" + quantity;
+                            document.getElementById("mount_list").textContent = "@lang('army.mount') : " +  basic[11] + " x" + quantity;
                             document.getElementById("mount_icon").className = basic[12];
                             document.getElementById("list_last").style.display = "";
                         }
-                        document.getElementById("time_list").textContent = "Time : " +  basic[13] + " ";
+                        document.getElementById("time_list").textContent = "@lang('common.time') : " +  basic[13] + " ";
                         var i = 0;
                         items.forEach(function(e){
                             let e_split = e.split(":");

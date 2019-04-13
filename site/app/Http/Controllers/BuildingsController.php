@@ -157,7 +157,7 @@
                         $duration = $this->sec_to_date($niv, $val->duration, $val->levelup_price);
                     else
                         $duration = $is_wip - time();
-                    array_push($allowed_type_buildings, ["status" => $status, "name" => trans('building.' . preg_replace('/\s/', '_', $val->name)), "niv" => $niv, "illustration" => $illustration, "duration" => $duration, "food_required" => $food_required, "wood_required" => $wood_required, "rock_required" => $rock_required, "steel_required" => $steel_required, "gold_required" => $gold_required]);
+                    array_push($allowed_type_buildings, ["status" => $status, "id" => $val->id, "name" => trans('building.' . preg_replace('/\s/', '_', $val->name)), "niv" => $niv, "illustration" => $illustration, "duration" => $duration, "food_required" => $food_required, "wood_required" => $wood_required, "rock_required" => $rock_required, "steel_required" => $steel_required, "gold_required" => $gold_required]);
                 }
                 else
                     continue;

@@ -28,5 +28,5 @@ return [
     'Archer' => 'Archer',
     'Archer_elfique' => 'Archer elfique',
     'Archer_nain' => 'Archer nain',
-    'Archer sauvage' => 'Archer sauvage',
+    'Archer_sauvage' => 'Archer sauvage',
 ];

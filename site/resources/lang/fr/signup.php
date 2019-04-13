@@ -14,8 +14,6 @@ return [
     */
 
     'register' => 'Inscription',
-    'passwds_not_same' => 'Les deux mots de passe ne sont pas identiques !',
-    'no_godfather' => 'Ce parrain n\'existe pas !',
     'first_city' => 'Cité de départ',
     'races' => 'Races disponibles',
     'sponsor' => 'Parrain',

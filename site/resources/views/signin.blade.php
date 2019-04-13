@@ -11,10 +11,10 @@
         <div id="main" class="signin-rect">
             <h2>@lang('signin.connection')</h2>
             <div id="connection_failed" class="signin-err-connexion" style="display: none;">
-                <p>@lang('signin.err_connection')</p>
+                <p>@lang('error.err_connection')</p>
             </div>
             <div id="email_not_validated" class="signin-err-connexion" style="display: none;">
-                <p>@lang('signin.email_not_validated')</p>
+                <p>@lang('error.email_not_validated')</p>
             </div>
             <form method="POST" action="/login" id="signin_form">
                 <input id="account" type="text" class="signin-input" placeholder="@lang('signin.login_or_email')" required>

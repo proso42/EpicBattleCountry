@@ -14,8 +14,6 @@ return [
     */
 
     'connection' => 'Connexion',
-    'err_connection' => 'Pseudo et/ou mot de passe incorrect',
-    'email_not_validated' => 'Vous devez valider votre email avant de vous connecter',
     'login_or_email' => 'Pseudo ou email',
     'log_in' => 'Se connecter',
     'forgot_passwd' => 'Mot de passe oublié ?',

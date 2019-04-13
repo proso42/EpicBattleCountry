@@ -13,19 +13,19 @@
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-2 col-2"></div>
                 <div id="err_password" class="col-lg-6 col-md-6 col-sm-8 col-8 signup-err-password" style="display: none">
-                    <p>@lang('signup.passwds_not_same')</p>
+                    <p>@lang('error.passwds_not_same')</p>
                 </div>
                 <div id="err_login" class="col-lg-6 col-md-6 col-sm-8 col-8 signup-err-password" style="display: none">
                     <p>@lang('settings.login_alreay_taken')</p>
                 </div>
                 <div id="err_city" class="col-lg-6 col-md-6 col-sm-8 col-8 signup-err-password" style="display: none">
-                    <p>@lang('home.already_taken')</p>
+                    <p>@lang('error.already_taken')</p>
                 </div>
                 <div id="err_email" class="col-lg-6 col-md-6 col-sm-8 col-8 signup-err-password" style="display: none">
-                    <p>@lang('settings.email_already_taken')</p>
+                    <p>@lang('error.email_already_taken')</p>
                 </div>
                 <div id="err_sponsor" class="col-lg-6 col-md-6 col-sm-8 col-8 signup-err-password" style="display: none">
-                    <p>@lang('signup.no_godfather')</p>
+                    <p>@lang('error.no_godfather')</p>
                 </div>
             </div>
             <form method="POST" id="signup_form" action="/register">

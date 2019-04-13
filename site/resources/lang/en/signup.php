@@ -14,8 +14,6 @@ return [
     */
 
     'register' => 'Registration',
-    'passwds_not_same' => 'The two passwords are not identical !',
-    'no_godfather' => 'This godfather does not exist !',
     'first_city' => 'Starting city',
     'races' => 'Available races',
     'sponsor' => 'Godfather',

@@ -16,13 +16,13 @@
             </div>
             <form method="POST" id="new_password_form">
                 <div id="err_password" class="col-lg-6 offset-lg-3 col-md-6 offset-md-3 col-sm-8 offset-sm-2 col-8 offset-2 signup-err-password" style="display: none">
-                    <p>@lang('login.error_not_same_passwd')</p>
+                    <p>@lang('error.error_not_same_passwd')</p>
                 </div>
                 <div id="err_current_password" class="col-lg-6 offset-lg-3 col-md-6 offset-md-3 col-sm-8 offset-sm-2 col-8 offset-2 signup-err-password" style="display: none">
-                    <p>@lang('login_error_bad_current_passwd')</p>
+                    <p>@lang('error.error_bad_current_passwd')</p>
                 </div>
                 <div id="err_same_password" class="col-lg-6 offset-lg-3 col-md-6 offset-md-3 col-sm-8 offset-sm-2 col-8 offset-2 signup-err-password" style="display: none">
-                    <p>@lang('login.error_same_current_and_new_passwd')</p>
+                    <p>@lang('error.error_same_current_and_new_passwd')</p>
                 </div>
                 <!--<input id="password" name="password" class="signup-input" placeholder="Mot de passe *" type="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[\da-zA-Z!-/:-@[-`{-~]{12,20}$" required>
                 <br/>

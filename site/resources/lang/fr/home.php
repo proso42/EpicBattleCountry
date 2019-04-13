@@ -13,8 +13,6 @@ return [
     |
     */
 
-    'invalid_name' => 'Ce nom n\'est pas permis !',
-    'already_taken' => 'Ce nom est déjà pris',
     'name_changed' => 'Le nom a été changé !',
     'change_city_name' => 'Changer le nom de la ville',
     'new_name' => 'Nouveau nom',

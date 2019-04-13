@@ -76,7 +76,7 @@
             if ($busy !== null)
             {
                 $allowed = -1;
-                $waiting_units = ["name" => DB::table('units')->where('id', '=', $busy->unit_id)->value('name'), "quantity" => $busy->quantity, "finishing_date" => $busy->finishing_date - time()];
+                $waiting_units = ["name" => trans('unit.' . preg_replace('/\s/', "_", (DB::table('units')->where('id', '=', $busy->unit_id)->value('name')))), "quantity" => $busy->quantity, "finishing_date" => $busy->finishing_date - time()];
                 return view('army', compact('allowed' , 'waiting_units', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
             }
             $allowed_units = $this->get_allowed_units($city_id, $user_race, $city_builds, $city_techs);
@@ -135,17 +135,17 @@
                     foreach ($items_needed as $item => $val)
                     {
                         $item_name = DB::table('forge')->where('id', '=', $val)->value('name');
-                        array_push($items_required, ["name" => $item_name]);
+                        array_push($items_required, ["name" => trans('item.' . preg_replace('/\s/', '_', $item_name))]);
                     }
                 }
                 else
                     $items_required = null;
                 if ($unit->mount > 0)
-                    $mount = DB::table('mounts')->where('id', '=', $unit->mount)->value('mount_name');
+                    $mount = trans('mount.' . preg_replace('/\s/', "_", DB::table('mounts')->where('id', '=', $unit->mount)->value('mount_name')));
                 else
                     $mount = null;
                 $duration = $this->sec_to_date($unit->duration);
-                array_push($allowed_units, ["name" => $unit->name, "food" => $food_required,  "wood" => $wood_required, "rock" => $rock_required, "steel" => $steel_required, "gold" => $gold_required, "duration" => $duration, "items" => $items_required, "mount" => $mount, "life" => $unit->life, "speed" => $unit->speed, "power" => $unit->power]);
+                array_push($allowed_units, ["name" => trans('unit.' . preg_replace('/\s/', "_", $unit->name)), "food" => $food_required,  "wood" => $wood_required, "rock" => $rock_required, "steel" => $steel_required, "gold" => $gold_required, "duration" => $duration, "items" => $items_required, "mount" => $mount, "life" => $unit->life, "speed" => $unit->speed, "power" => $unit->power]);
             }
             return $allowed_units;
         }
@@ -208,6 +208,7 @@
             {
                 $mount_required = DB::table('mounts')->where('id', '=', $unit->mount)->value('mount_name');
                 $mount_name_format = preg_replace('/\s/', "_", $mount_required);
+                $mount_required = trans('mount.' . $mount_name_format);
                 if ($city_res->$mount_name_format < $quantity)
                 {
                     $enough_mount = "fas fa-times icon-color-red";
@@ -224,11 +225,11 @@
                 $item_name_format = preg_replace('/\s/', "_", $item_name);
                 if ($city_res->$item_name_format < $quantity)
                 {
-                    array_push($items_owned, ["item" => $item_name, "icon" => "fas fa-times icon-color-red"]);
+                    array_push($items_owned, ["item" => trans('item.' . $item_name), "icon" => "fas fa-times icon-color-red"]);
                     $allowed = "KO";
                 }
                 else
-                    array_push($items_owned, ["item" => $item_name, "icon" => "fas fa-check icon-color-green"]);
+                    array_push($items_owned, ["item" => trans('item.' . $item_name), "icon" => "fas fa-check icon-color-green"]);
                 }
             }            
             foreach ($res_required as $res => $amount)

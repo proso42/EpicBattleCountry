@@ -12,13 +12,13 @@
         </div>
         <div id="block_edit" class="edit-city-name-block" style="display: none">
             <div id="error_empty_input" class="home-input-error" style="display: none;">
-                <p>@lang('common.thx_fill_field')</p>
+                <p>@lang('error.thx_fill_field')</p>
             </div>
             <div id="error_invalid_input" class="home-input-error" style="display: none;">
-                <p>@lang('home.invalid_name')</p>
+                <p>@lang('error.invalid_name')</p>
             </div>
             <div id="error_already_taken" class="home-input-error" style="display: none;">
-                <p>@lang('home.already_taken')</p>
+                <p>@lang('error.already_taken')</p>
             </div>
             <div id="name_changed" class="home-input-success" style="display: none;">
                 <p>@lang('home.name_changed')</p>
@@ -32,7 +32,7 @@
         </div>
         @if (count($user_cities) > 0)
             <div id="error_empty_input2" class="home-input-error" style="display: none;">
-                <p>@lang('common.thx_fill_field')</p>
+                <p>@lang('error.thx_fill_field')</p>
             </div>
             <div id="block_change_city" class="edit-city-name-block" style="display: none">
                 <div id="city_list">

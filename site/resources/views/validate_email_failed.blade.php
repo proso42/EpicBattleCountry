@@ -9,7 +9,7 @@
     </head>
     <body>
         <div class="center-rect-red" style="margin-top: 270px">
-            @lang('login.validate_error') : support@epicbattlecorp.fr            
+            @lang('error.validate_error') : support@epicbattlecorp.fr            
             <br/>            
             <button class="return-button" onclick="window.location.href='/signin'">@lang('common.return')</button>
         </div>

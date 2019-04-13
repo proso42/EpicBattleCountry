@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Signin Language Lines EN
+    | Army Language Lines FR
     |--------------------------------------------------------------------------
     |
     | The following language lines are used during authentication for various
@@ -13,10 +13,12 @@ return [
     |
     */
 
-    'connection' => 'Connection',
-    'login_or_email' => 'Login or email',
-    'log_in' => 'Log in',
-    'forgot_passwd' => 'Forgot password ?',
-    'no_account' => 'No account yet',
-    'link_reset_email' => 'We sent a password reset link to your email address.',
+    'need_barrack' => 'Vous devez construire une caserne avant de pouvoir former des unitées !',
+    'training' => 'Entrainement en cours',
+    'life' => 'Vie',
+    'speed' => 'Vitesse',
+    'power' => 'Puissance',
+    'mount' => 'Monture',
+    'train' => 'Entrainer',
+
 ];

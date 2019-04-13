@@ -12,22 +12,22 @@
             <div class="col-lg-9 col-md-8 center-win">
                 <h2>@lang('settings.profile')</h2>
                 <div id="err_login" class="signup-err-password" style="display: none">
-                    <p>@lang('settings.login_already_taken')</p>
+                    <p>@lang('error.login_already_taken')</p>
                 </div>
                 <div id="empty_login" class="signup-err-password" style="display: none">
-                    <p>@lang('settings.thx_fill_login')</p>
+                    <p>@lang('error.thx_fill_login')</p>
                 </div>
                 <div id="err_email" class="signup-err-password" style="display: none">
-                    <p>@lang('settings.email_already_taken')</p>
+                    <p>@lang('error.email_already_taken')</p>
                 </div>
                 <div id="empty_email" class="signup-err-password" style="display: none">
-                    <p>@lang('settings.thx_fill_email')</p>
+                    <p>@lang('error.thx_fill_email')</p>
                 </div>
                 <div id="empty_mdp" class="signup-err-password" style="display: none">
-                    <p>@lang('settings.thx_fill_passwd')</p>
+                    <p>@lang('error.thx_fill_passwd')</p>
                 </div>
                 <div id="err_same_mdp" class="signup-err-password" style="display: none">
-                    <p>@lang('settings.new_passwd_not_be_same_current')</p>
+                    <p>@lang('error.new_passwd_not_be_same_current')</p>
                 </div>
                 <div id="login_updated" class="settings-update-success" style="display: none">
                     <p>@lang('settings.login_updated') </p>

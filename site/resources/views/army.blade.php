@@ -11,22 +11,22 @@
         @include('default')
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding-right: 10px;">
                 <div id="error_empty_input" class="forge-input-error" style="display: none;">
-                    <p>Merci de remplir le champs !</p>
+                    <p>@lang('error.thx_fill_field')</p>
                 </div>
                 <div id="error_bad_input" class="forge-input-error" style="display: none;">
-                    <p>Merci de remplir correctement le champs !</p>
+                    <p>@lang('error.thx_corrctly_fill_field')</p>
                 </div>
                 <div id="error_negative_value" class="forge-input-error" style="display: none;">
-                    <p>Merci de renseigner une valeur supérieur à zéro !</p>
+                    <p>@lang('error.give_val_pos')</p>
                 </div>
                 @if ($allowed == 0)
-                    <p>Vous devez construire une caserne avant de pouvoir former des unitées !</p>
+                    <p>@lang('army.need_barrack')</p>
                 @elseif ($allowed == -1)
                     <div class="confirm-win">
-                        <h3>Entrainement en cours</h3>
+                        <h3>@lang('army.training')</h3>
                         <p>{{ $waiting_units['name'] }} x{{ $waiting_units['quantity'] }}</p>
                         <p id="unit_timer" duration="{{ $waiting_units['finishing_date']}} "></p>
-                        <input id="interrupt_unit_button" onclick="interrupt_unit()" type="button" class="army-button-cancel" value="Annuler">
+                        <input id="interrupt_unit_button" onclick="interrupt_unit()" type="button" class="army-button-cancel" value="@lang('common.cancel')">
                     </div>
                 @else
                     <div id="unit_list">
@@ -36,31 +36,31 @@
                                     <span>{{ $unit['name'] }}</span>
                                     <div class="army-info-unit">
                                         <ul>
-                                            <li>Life : {{ $unit['life'] }} <i class="fas fa-heartbeat"></i></li>
-                                            <li>Speed : {{ $unit['speed'] }} <i class="fas fa-tachometer-alt"></i></li>
-                                            <li>Power : {{ $unit['power'] }} <i class="fas fa-fist-raised"></i></li>
+                                            <li>@lang('army.life') : {{ $unit['life'] }} <i class="fas fa-heartbeat"></i></li>
+                                            <li>@lang('army.speed') : {{ $unit['speed'] }} <i class="fas fa-tachometer-alt"></i></li>
+                                            <li>@lang('army.power') : {{ $unit['power'] }} <i class="fas fa-fist-raised"></i></li>
                                         </ul>
                                     </div>
                                 </div>
-                                <input id="input_{{ $unit['name'] }}" type="text" placeholder="Quantité" class="army-input col-lg-2 col-md-2 col-sm-2 col-2">
+                                <input id="input_{{ $unit['name'] }}" type="text" placeholder="@lang('common.quantity')" class="army-input col-lg-2 col-md-2 col-sm-2 col-2">
                                 <div class="army-ressources col-lg-2 col-md-2 col-sm-2 col-2">
-                                    <span>Prix</span>
+                                    <span>@lang('common.price')</span>
                                     <div class="army-ressources-details">
                                         <ul>
                                             @if ($unit['food'] > 0)
-                                                <li>Food : {{ $unit['food'] }}</li>
+                                                <li>@lang('common.food') : {{ $unit['food'] }}</li>
                                             @endif
                                             @if ($unit['wood'] > 0)
-                                                <li>Wood : {{ $unit['wood'] }}</li>
+                                                <li>@lang('common.wood') : {{ $unit['wood'] }}</li>
                                             @endif
                                             @if ($unit['rock'] > 0)
-                                                <li>Rock : {{ $unit['rock'] }}</li>
+                                                <li>@lang('common.rock') : {{ $unit['rock'] }}</li>
                                             @endif
                                             @if ($unit['steel'] > 0)
-                                                <li>Steel : {{ $unit['steel'] }}</li>
+                                                <li>@lang('common.steel') : {{ $unit['steel'] }}</li>
                                             @endif
                                             @if ($unit['gold'] > 0)
-                                                <li>Gold : {{ $unit['gold'] }}</li>
+                                                <li>@lang('common.gold') : {{ $unit['gold'] }}</li>
                                             @endif
                                             @if ($unit['items'] !== null)
                                                 @foreach ($unit['items'] as $item)
@@ -68,13 +68,13 @@
                                                 @endforeach
                                             @endif
                                             @if ($unit['mount'] !== null)
-                                                <li>Monture : {{ $unit['mount'] }} <i class="fas fa-paw"></i></li>
+                                                <li>@lang('army.mount') : {{ $unit['mount'] }} <i class="fas fa-paw"></i></li>
                                             @endif
-                                            <li>Time : {{ $unit['duration'] }} <i class="fas fa-clock"></i></li>
+                                            <li>@lang('common.time') : {{ $unit['duration'] }} <i class="fas fa-clock"></i></li>
                                         </ul>
                                     </div>
                                 </div>
-                                <input onclick="train('{{ $unit['name'] }}')" type="button" class="army-button col-lg-2 col-md-2 col-sm-2 col-2" value="Entrainer">
+                                <input onclick="train('{{ $unit['name'] }}')" type="button" class="army-button col-lg-2 col-md-2 col-sm-2 col-2" value="@lang('army.train')">
                             </div>
                         @endforeach
                     </div>
@@ -92,8 +92,8 @@
                             <li id="list_last"><span style="margin-right:5px" id="mount_list"></span><i id="mount_icon" class=""></i></li>
                             <li><span style="margin-right:5px" id="time_list"></span><i class="fas fa-clock"></i></li>
                         </ul>
-                        <input onclick="confirm()" id="confirm-button" type="button" class="army-button" value="Confirmer">
-                        <input onclick="cancel()" type="button" class="army-button-cancel" value="Annuler">
+                        <input onclick="confirm()" id="confirm-button" type="button" class="army-button" value="@lang('common.confirm')">
+                        <input onclick="cancel()" type="button" class="army-button-cancel" value="@lang('common.cancel')">
                     </div>
                 @endif
             </div>

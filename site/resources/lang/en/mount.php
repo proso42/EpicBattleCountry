@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Signin Language Lines EN
+    | Mount Language Lines EN
     |--------------------------------------------------------------------------
     |
     | The following language lines are used during authentication for various
@@ -13,10 +13,10 @@ return [
     |
     */
 
-    'connection' => 'Connection',
-    'login_or_email' => 'Login or email',
-    'log_in' => 'Log in',
-    'forgot_passwd' => 'Forgot password ?',
-    'no_account' => 'No account yet',
-    'link_reset_email' => 'We sent a password reset link to your email address.',
+    'Cheval' => 'Horse',
+    'Likonre' => 'Unicorn',
+    'Bouc_de_guerre' => 'War goat',
+    'Warg' => 'Warg',
+    'Dragon' => 'Dragon',
+
 ];

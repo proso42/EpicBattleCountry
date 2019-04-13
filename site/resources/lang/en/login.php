@@ -14,16 +14,12 @@ return [
     */
 
     'reseting_passwd' => 'Reinitialization of password',
-    'error_not_same_passwd' => 'The two passwords are not identical !',
     'passwd' => 'Password',
     'confirm_passwd' => 'Confirm password',
     'passwd_update' => 'Change password',
     'passwd_changed' => 'Your password has been successfully changed !',
-    'error_bad_current_passwd' => 'The current password is not good !',
-    'error_same_current_and_new_passwd' => 'The new password can not be the current password !',
     'current_passwd' => 'Current password',
     'confirm_new_passwd' => 'Confirm new password',
-    'validate_error' => 'An error occurred while validating your email. Check that you have followed the correct link. If the problem persists please contact our support at the following address',
     'your_email' => 'Your email',
     'validated' => 'has been successfully validated',
 

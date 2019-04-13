@@ -13,7 +13,6 @@ return [
     |
     */
 
-    'thx_fill_field' => 'Merci de remplir le champs !',
     'rename' => 'Renomer',
     'cancel' => 'Annuler',
     'change' => 'Changer',
@@ -39,4 +38,6 @@ return [
     'dwarf' => 'Nain',
     'orc' => 'Orc',
     'ok' => 'Ok',
+    'price' => 'Prix',
+    'time' => 'Temps',
 ];

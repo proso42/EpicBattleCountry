@@ -27,7 +27,7 @@ return [
     'Champs' => 'Fields',
     'Hutte_de_chasseur' => 'Hunter\'s hut',
     'Scierie' => 'Sawmill',
-    'Carrierre' => 'Career',
+    'Carriere' => 'Career',
     'Mine_de_fer' => 'Iron mine',
     'Mine_or' => 'Gold mine',
     'Port' => 'Harbor',

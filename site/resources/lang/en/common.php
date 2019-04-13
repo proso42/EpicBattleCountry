@@ -40,5 +40,5 @@ return [
     'ok' => 'Ok',
     'price' => 'Price',
     'time' => 'Time',
-    'in_porgress' => 'In progress',
+    'in_progress' => 'In progress',
 ];

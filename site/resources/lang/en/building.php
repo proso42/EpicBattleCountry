@@ -54,4 +54,10 @@ return [
     'Laboratoire' => 'Laboratory',
     'Cartographe' => 'Cartographer',
     'Bibliotheque' => 'Library',
+    'eco' => 'Economy',
+    'military' => 'Military',
+    'god' => 'Religious',
+    'tech' => 'Technical',
+    'build' => 'Build',
+    'upgrade' => 'Upgrade',
 ];

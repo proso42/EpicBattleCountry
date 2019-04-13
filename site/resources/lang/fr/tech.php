@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'Epee_basique' => 'Épée basique',
+    'Epee_basique' => 'Epee basique',
     'Arc_basique' => 'Arc basique',
     'Esclavage' => 'Esclavage',
     'Navigation' => 'Navigation',

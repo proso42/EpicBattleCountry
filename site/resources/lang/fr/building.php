@@ -22,7 +22,7 @@ return [
     'Mur_basique' => 'Mur basique',
     'Mur_os' => 'Mur d os',
     'Douves_de_lave' => 'Douves de lave',
-    'Piege_a_piques' => 'Piege à piques',
+    'Piege_a_piques' => 'Piege a piques',
     'Fosse_cachee' => 'Fosse cachee',
     'Champs' => 'Champs',
     'Hutte_de_chasseur' => 'Hutte de chasseur',

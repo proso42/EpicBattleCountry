@@ -9,14 +9,14 @@
     </head>
     <body>
         <div class="center-rect" style="margin-top: 270px">
-            <h2>Mot de passe oublié</h2>
+            <h2>@lang('signin.forgot_passwd')</h2>
             <form method="POST" action="/send_reset_password_email" id="send_reset_password_email_form">
-                <input id="email" name="email" type="text" class="signin-input" placeholder="Email" required>
+                <input id="email" name="email" type="text" class="signin-input" placeholder="@lang('common.email')" required>
                 <div id="spin" style="display: none;">
                     <img class="signin-spin" src="images/loader.gif">
                 </div>
                 <div>
-                    <input id="reset-button" type="submit" class="signin-button" value="Confirmer">
+                    <input id="reset-button" type="submit" class="signin-button" value="@lang('common.confirm')">
                 </div>
                 <br/>
                 {{csrf_field()}}            

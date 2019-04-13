@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Unit Language Lines FR
+    | Unit Language Lines EN
     |--------------------------------------------------------------------------
     |
     | The following language lines are used during authentication for various

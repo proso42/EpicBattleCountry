@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Item Language Lines FR
+    | Item Language Lines EN
     |--------------------------------------------------------------------------
     |
     | The following language lines are used during authentication for various

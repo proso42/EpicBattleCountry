@@ -20,6 +20,7 @@ return [
     'return' => 'Retour',
     'update' => 'Modifier',
     'reset' => 'Réinitialiser',
+    'confirm' => 'Confirmer',
     'food' => 'Nourriture',
     'wood' => 'Bois',
     'rock' => 'Pierre',

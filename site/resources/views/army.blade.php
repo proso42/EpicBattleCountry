@@ -308,7 +308,7 @@
                         document.getElementById("confirm-title").textContent = "Entrainer " + quantity + " " + name + " ?";
                         if (basic[1] > 0)
                         {
-                            document.getElementById("food_list").textContent = "Food : " +  basic[1];
+                            document.getElementById("food_list").textContent = "@lang('common.food') : " +  basic[1];
                             document.getElementById("food_icon").className = basic[2];
                             document.getElementById("list1").style.display = "";
                         }

@@ -33,6 +33,7 @@ return [
     'Port' => 'Port',
     'Grenier' => 'Grenier',
     'Entrepot_de_bois' => 'Entrepot de bois',
+    'Entrepot_de_pierre' => 'Entrepot de pierre',
     'Entrepot_de_fer' => 'Entrepot de fer',
     'Entrepot_or' => 'Entrepot d\'or',
     'Elevage_de_chevaux' => 'Élevage de chevaux',

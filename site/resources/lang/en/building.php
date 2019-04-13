@@ -33,6 +33,7 @@ return [
     'Port' => 'Harbor',
     'Grenier' => 'Attic',
     'Entrepot_de_bois' => 'Wood warehouse',
+    'Entrepot_de_pierre' => 'Rock warehouse',
     'Entrepot_de_fer' => 'Iron warehouse',
     'Entrepot_or' => 'Gold warehouse',
     'Elevage_de_chevaux' => 'Horse breeding',

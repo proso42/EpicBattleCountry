@@ -14,6 +14,7 @@ return [
     */
 
     'thx_fill_field' => 'Merci de remplir le champs !',
+    'thx_fill_fields' => 'Merci de remplir le(s) champs !',
     'invalid_name' => 'Ce nom n\'est pas permis !',
     'already_taken' => 'Ce nom est déjà pris',
     'error_not_same_passwd' => 'Les deux mots de passe ne sont pas identiques !',
@@ -31,6 +32,10 @@ return [
     'passwds_not_same' => 'Les deux mots de passe ne sont pas identiques !',
     'no_godfather' => 'Ce parrain n\'existe pas !',
     'thx_correctly_fill_field' => 'Merci de remplir correctement le champs !',
+    'thx_correctly_fill_fields' => 'Merci de remplir correctement le(s) champs !',
     'give_val_pos' => 'Merci de renseigner une valeur supérieur à zéro !',
+    'an_error_occured' => 'Une erreur est survenue !',
+    'limit_coord' => 'Merci de renseigner des coordonnées compris entre -2000 et 2000 !',
+    'exp_not_moving' => 'Votre expédition ne va pas bouger !',
 
 ];

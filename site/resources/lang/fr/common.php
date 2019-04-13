@@ -20,6 +20,7 @@ return [
     'update' => 'Modifier',
     'reset' => 'Réinitialiser',
     'confirm' => 'Confirmer',
+    'choice' => 'Choisir',
     'food' => 'Nourriture',
     'wood' => 'Bois',
     'rock' => 'Pierre',

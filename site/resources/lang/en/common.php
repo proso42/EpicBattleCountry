@@ -20,6 +20,7 @@ return [
     'reset' => 'Reset',
     'update' => 'Update',
     'confirm' => 'Confirm',
+    'choice' => 'Choice',
     'food' => 'Food',
     'wood' => 'Wood',
     'rock' => 'Rock',

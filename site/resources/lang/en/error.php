@@ -13,7 +13,8 @@ return [
     |
     */
 
-    'thx_fill_field' => 'Thank you fill this fields !',
+    'thx_fill_field' => 'Thank you fill this field !',
+    'thx_fill_fields' => 'Thank you fill these fields !',
     'invalid_name' => 'This name is not allowed !',
     'already_taken' => 'This name is alreday taken !',
     'error_not_same_passwd' => 'The two passwords are not identical !',
@@ -31,6 +32,9 @@ return [
     'passwds_not_same' => 'The two passwords are not identical !',
     'no_godfather' => 'This godfather does not exist !',
     'thx_correctly_fill_field' => 'Thank you to fill the field correctly !',
+    'thx_correctly_fill_fields' => 'Thank you to fill these fields correctly !',
     'give_val_pos' => 'Please enter a positive value !',
-
+    'an_error_occured' => 'An error has occurred !',
+    'limit_coord' => 'Please enter coordinates between -2000 and 2000 !',
+    'exp_not_moving' => 'Your shipment will not move !',
 ];

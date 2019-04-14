@@ -159,17 +159,17 @@
                 {
                     if (xhr.readyState === 4 && xhr.status === 200)
                     {
-                        if (xhr.responseText !== "good")
+                        //if (xhr.responseText !== "good")
                             console.log(xhr.responseText);
-                        else
-                            window.location.href="http://www.epicbattlecorp.fr/techs";
+                        /*else
+                            window.location.href="http://www.epicbattlecorp.fr/techs";*/
                     }
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhr.send('_token=' + _token + '&tech_id=' + tech_id);
-                setTimeout(() => {
+                /*setTimeout(() => {
                     window.location.href="http://www.epicbattlecorp.fr/techs";
-                }, 400);
+                }, 400);*/
             }
         </script>
     </body>

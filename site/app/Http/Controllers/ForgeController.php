@@ -169,7 +169,7 @@
                         $gold_required = intval(substr($amount, 0, -1));
                 }
                 $duration = $this->sec_to_date($item->duration);
-                array_push($allowed_items, ["name" => trans('item.' . preg_replace('/\s/', "_", $item->name)), "food_required" => $food_required, "wood_required" => $wood_required, "rock_required" => $rock_required, "steel_required" => $steel_required, "gold_required" => $gold_required, "duration" => $duration]); 
+                array_push($allowed_items, ["name" => trans('item.' . preg_replace('/\s/', "_", $item->name)), "item_id" => $item->id, "food_required" => $food_required, "wood_required" => $wood_required, "rock_required" => $rock_required, "steel_required" => $steel_required, "gold_required" => $gold_required, "duration" => $duration]); 
             }
             return $allowed_items;
         }  
@@ -200,11 +200,11 @@
 
         public function calculate_price(Request $request)
         {
-            $item_name = preg_replace("/_/", " ", $request['name']);
+            $item_id = $request['item_id'];
             $quantity = $request['quantity'];
             $city_id = session()->get('city_id');
             $item = DB::table('forge')
-            ->where('name', '=', $item_name)
+            ->where('id', '=', $item_id)
             ->first();
             if ($item === null)
                 return ("item_error");
@@ -271,10 +271,10 @@
             $already_crafting = DB::table('waiting_items')->where('city_id', '=', $city_id)->value('id');
             if ($already_crafting !== null)
                 return "Greg le Hackeur";
-            $item_name = preg_replace("/_/", " ", $request['name']);
+            $item_id = $request['item_id'];
             $quantity = $request['quantity'];
             $item = DB::table('forge')
-            ->where('name', '=', $item_name)
+            ->where('id', '=', $item_id)
             ->first();
             if ($item === null)
                 return ("item_error");

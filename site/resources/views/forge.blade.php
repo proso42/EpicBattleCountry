@@ -32,8 +32,8 @@
                     <div id="items_list">
                     @foreach ($allowed_items as $item)
                         <div id="id_{{ $item['name'] }}" class="row" style="align-items: baseline;line-height: 31px;">
-                            <span class="forge-item offset-lg-2 offset-md-2 offset-sm-2 offset-2 col-lg-2 col-md-2 col-sm-2 col-2" style="text-align:center">{{ $item['name'] }}</span>
-                            <input id="input_{{ $item['name'] }}" type="text" placeholder="Quantité" class="forge-input col-lg-2 col-md-2 col-sm-2 col-2">
+                            <span id="name_{{ $item['item_id'] }}" class="forge-item offset-lg-2 offset-md-2 offset-sm-2 offset-2 col-lg-2 col-md-2 col-sm-2 col-2" style="text-align:center">{{ $item['name'] }}</span>
+                            <input id="input_{{ $item['item_id'] }}" type="text" placeholder="Quantité" class="forge-input col-lg-2 col-md-2 col-sm-2 col-2">
                             <div class="forge-ressources col-lg-2 col-md-2 col-sm-2 col-2">
                                 @if ($item['food_required'] > 0)
                                     <img class="forge-image" src="images/food.png"> x{{ $item['food_required'] }}
@@ -52,7 +52,7 @@
                                 @endif
                                 <i class="fas fa-clock"></i> {{ $item['duration'] }}
                             </div>
-                            <input onclick="craft('{{ $item['name'] }}')" type="button" class="forge-button col-lg-2 col-md-2 col-sm-2 col-2" value="@lang('forge.produce')">
+                            <input onclick="craft('{{ $item['item_id'] }}')" type="button" class="forge-button col-lg-2 col-md-2 col-sm-2 col-2" value="@lang('forge.produce')">
                         </div>
                     @endforeach
                     </div>
@@ -75,7 +75,7 @@
         <input id="_token" name="_token" type="hidden" value="{{csrf_token()}}">
         <script>
 
-            var g_name = "";
+            var g_item_id = 0;
             var item_timing = document.getElementById('item_timer');
             if (item_timing !== null)
                 timer('item_timer', item_timing.getAttribute("duration"));
@@ -186,7 +186,7 @@
 
             function cancel()
             {
-                g_name = "";
+                g_item_id = 0;
                 document.getElementById("confirm_win").style.display = "none";
                 document.getElementById("items_list").style.display = "";
             }
@@ -194,9 +194,8 @@
             function confirm()
             {
                 var _token = document.getElementById("_token").value;
-                var name = g_name;
-                var name_format = name.replace(/\s/gi, "_");
-                var quantity = document.getElementById("input_" + name).value;
+                var item_id = g_item_id;
+                var quantity = document.getElementById("input_" + item_id).value;
                 var xhr = new XMLHttpRequest();
                 xhr.open('POST', 'http://www.epicbattlecorp.fr/craft_item');
                 xhr.onreadystatechange =  function()
@@ -207,18 +206,18 @@
                     }
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                xhr.send('_token=' + _token + '&name=' + name_format + "&quantity=" + quantity);
+                xhr.send('_token=' + _token + '&item_id=' + item_id + "&quantity=" + quantity);
                 setTimeout(() => {
                     window.location.reload();
                 }, 300);
             }
 
-            function craft(name)
+            function craft(item_id)
             {
                 console.log('start');
-                g_name = name;
+                g_item_id = item_id;
                 var _token = document.getElementById("_token").value;
-                var quantity = document.getElementById("input_" + name).value;
+                var quantity = document.getElementById("input_" + item_id).value;
                 if (quantity == "")
                 {
                     document.getElementById("error_empty_input").style.display = "";
@@ -245,7 +244,7 @@
                 }
                 console.log('avant ajax');
                 quantity = parseInt(quantity);
-                var name_format = name.replace(/\s/gi, "_");
+                var name = document.getElementById("name_" + item_id).textContent;
                 var xhr = new XMLHttpRequest();
                 xhr.open('POST', 'http://www.epicbattlecorp.fr/calculate_price');
                 xhr.onreadystatechange =  function()
@@ -314,7 +313,7 @@
                     }
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                xhr.send('_token=' + _token + '&name=' + name_format + "&quantity=" + quantity);
+                xhr.send('_token=' + _token + '&item_id=' + item_id + "&quantity=" + quantity);
             }
         </script>
     </body>

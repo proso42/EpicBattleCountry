@@ -99,9 +99,9 @@
             foreach ($all_cells as $cell)
             {
                 if ($cell->x_pos == $capital->x_pos && $cell->y_pos == $capital->y_pos)
-                    array_push($visible_cells, ["type" => "capital", "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "color" => "green", "class" => "fa-star", "name" =>  $city->name, "diplomatie" => "owned", "race" => $user_race_name]);
+                    array_push($visible_cells, ["type" => trans('map.capital'), "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "color" => "green", "class" => "fa-star", "name" =>  $city->name, "diplomatie" => "owned", "race" => $user_race_name]);
                 else if ($cell->type == "water")
-                    array_push($visible_cells, ["type" => $cell->type, "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "color" => "black", "background-color" => "steelblue", "class" => $cell->icon]);
+                    array_push($visible_cells, ["type" => trans('map.water'), "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "color" => "black", "background-color" => "steelblue", "class" => $cell->icon]);
                 else if ($cell->type == "city")
                 {
                     $city_info = DB::table('cities')
@@ -112,20 +112,20 @@
                     if ($city_info->owner == $user_id)
                     {
                         $color = "green";
-                        $diplomatie = "owned";
-                        $city_race_name = $user_race_name;
+                        $diplomatie = trans('map.owned_city');
+                        $city_race_name = trans('common.' . $user_race_name);
                     }
                     else
                     {
                         $color = "black";
-                        $diplomatie = "neutre";
+                        $diplomatie = trans('map.other_city');
                         $city_race = DB::table('users')->where('id', '=', $city_info->owner)->value('race');
-                        $city_race_name = DB::table('races')->where('id', '=', $city_race)->value("race_name");
+                        $city_race_name = trans('common.' . DB::table('races')->where('id', '=', $city_race)->value("race_name"));
                     }
-                    array_push($visible_cells, ["type" => "city", "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "color" => $color, "class" => $cell->icon, "name" => $city_info->name, "diplomatie" => $diplomatie, "race" => $city_race_name]);
+                    array_push($visible_cells, ["type" => trans('map.city'), "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "color" => $color, "class" => $cell->icon, "name" => $city_info->name, "diplomatie" => $diplomatie, "race" => $city_race_name]);
                 }
                 else
-                    array_push($visible_cells, ["type" => $cell->type, "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "color" => "black", "background-color" => "lemonchiffon", "class" => $cell->icon]); 
+                    array_push($visible_cells, ["type" => trans('map.' . $cell->type), "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "color" => "black", "background-color" => "lemonchiffon", "class" => $cell->icon]); 
 
             }
             return view('map', compact('move_map' ,'cartographer', 'visible_cells', 'x_pos', 'city_x', 'y_pos', 'city_y', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));

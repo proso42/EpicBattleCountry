@@ -20,12 +20,12 @@
                 <li class="map-cell-info-line" id="cell_owner_race"></li>
                 <li class="map-cell-info-line" id="cell_diplomatie"></li>
             </ul>
-            <input onclick="hide_cell_info()" id="return_button" type="button" class="return-button" value="retour">            
+            <input onclick="hide_cell_info()" id="return_button" type="button" class="return-button" value="@lang('common.return')">            
         </div>
         @include('default')
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding-right: 10px;">
                 @if ($cartographer == 0)
-                    <p>Vous devez construire nu Cartoraphe pour pouvoir utiliser la carte !</p>
+                    <p>@lang('map.need_cartographer')</p>
                 @else
                     @if ($move_map == 1)
                         <i class="fas fa-arrow-circle-left" style="cursor: pointer" onclick="move_map({{ $x_pos - $city_x + 1}}, {{ $y_pos - $city_y}})"></i>
@@ -59,13 +59,16 @@
                     
                     <hr class="signin-footer">
                     <ul style="text-align: left">
-                        <li><i class="fas fa-star"></i> Votre ville</li>
-                        <li><i class="fas fa-city"></i> Autre ville</li>
-                        <li><i class="fas fa-dungeon"></i> Ruine</li>
-                        <li><i class="fas fa-dragon"></i> Tannière d'un dragon</li>
-                        <li><i class="fas fa-water"></i> Fleuve / Lac</li>
-                        <li><i class="fas fa-mountain"></i> Montagne</li>
-                        <li><i class="fas fa-tree"></i> Fôret</li>
+                        <li><i class="fas fa-star" style="color: green"></i> @lang('map.capital')</li>
+                        <li><i class="fas fa-city" style="color:green"></i> @lang('map.owned_city')</li>
+                        <li><i class="fas fa-city" style="color: darkred"></i> @lang('map.bad_city')</li>
+                        <li><i class="fas fa-city" style="color: lightblue"></i> @lang('map.good_city')</li>
+                        <li><i class="fas fa-city"></i> @lang('map.other_city')</li>
+                        <li><i class="fas fa-dungeon"></i> @lang('map.dungeon')</li>
+                        <li><i class="fas fa-dragon"></i> @lang('map.dragon')</li>
+                        <li><i class="fas fa-water"></i> @lang('map.water')</li>
+                        <li><i class="fas fa-mountain"></i> @lang('map.mountain')</li>
+                        <li><i class="fas fa-tree"></i> @lang('map.forest')</li>
                     </ul>
                 @endif
             </div>

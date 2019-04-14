@@ -99,7 +99,7 @@
             foreach ($all_cells as $cell)
             {
                 if ($cell->x_pos == $capital->x_pos && $cell->y_pos == $capital->y_pos)
-                    array_push($visible_cells, ["type" => trans('map.capital'), "format_type" => "capital", "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "color" => "green", "class" => "fa-star", "name" =>  $city->name, "diplomatie" => trans('map.owned_city'), "race" => trans('common.' . $user_race_name)]);
+                    array_push($visible_cells, ["type" => trans('map.capital'), "format_type" => "capital", "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "color" => "green", "class" => "fa-star", "name" =>  $city->name, "diplomatie" => trans('map.owned'), "race" => trans('common.' . $user_race_name)]);
                 else if ($cell->type == "water")
                     array_push($visible_cells, ["type" => trans('map.water'), "format_type" => "water", "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "color" => "black", "background-color" => "steelblue", "class" => $cell->icon]);
                 else if ($cell->type == "city")
@@ -112,13 +112,13 @@
                     if ($city_info->owner == $user_id)
                     {
                         $color = "green";
-                        $diplomatie = trans('map.owned_city');
+                        $diplomatie = trans('map.owned');
                         $city_race_name = trans('common.' . $user_race_name);
                     }
                     else
                     {
                         $color = "black";
-                        $diplomatie = trans('map.other_city');
+                        $diplomatie = trans('map.other');
                         $city_race = DB::table('users')->where('id', '=', $city_info->owner)->value('race');
                         $city_race_name = trans('common.' . DB::table('races')->where('id', '=', $city_race)->value("race_name"));
                     }

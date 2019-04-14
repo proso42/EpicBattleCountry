@@ -16,7 +16,7 @@ return [
     'Cheval' => 'Cheval',
     'Likonre' => 'Likorne',
     'Bouc_de_guerre' => 'Bouc de guerre',
-    'Warg' => 'Warg',
+    'Loup' => 'Loup',
     'Dragon' => 'Dragon',
 
 ];

@@ -320,9 +320,9 @@
             ->select('food', 'wood', 'rock', 'steel', 'gold')
             ->where('id', '=', $city_id)
             ->first();
-            /*if ($city_res->food < $food_required || $city_res->wood < $wood_required || $city_res->rock < $rock_required || $city_res->steel < $steel_required || $city_res->gold < $gold_required)
+            if ($city_res->food < $food_required || $city_res->wood < $wood_required || $city_res->rock < $rock_required || $city_res->steel < $steel_required || $city_res->gold < $gold_required)
                 return ("tech error : missing ressources required");
-            DB::table('cities')
+            /*DB::table('cities')
             ->where('id', '=', $city_id)
             ->update(['food' => $city_res->food - $food_required, 'wood' => $city_res->wood - $wood_required, 'rock' => $city_res->rock - $rock_required, 'steel' => $city_res->steel - $steel_required, 'gold' => $city_res->gold - $gold_required]);
             $id = DB::table('waiting_techs')

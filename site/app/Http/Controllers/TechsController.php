@@ -316,7 +316,7 @@
                 else
                     $gold_required = $this->get_exp_value($niv, intval(substr($amount, 0, -1)), $tech->levelup_price);
             }
-            $city_res = DB::table('cities')
+            /*$city_res = DB::table('cities')
             ->select('food', 'wood', 'rock', 'steel', 'gold')
             ->where('id', '=', $city_id)
             ->first();
@@ -329,7 +329,7 @@
             ->insertGetId(["city_id" => $city_id, "tech_id" => $tech_id, "finishing_date" => $finishing_date, "next_level" => $niv + 1]);
             $cmd = "cd /home/boss/www/scripts ; node ./finish_tech.js " . $finishing_date  . " " . $id;
             exec($cmd);
-            return ("good");
+            return ("good");*/
         }
     }
 

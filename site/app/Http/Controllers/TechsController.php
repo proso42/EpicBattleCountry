@@ -254,31 +254,82 @@
         public function update(Request $request)
         {
             $city_id = session()->get('city_id');
-            $next_level = $request['niv'] + 1;
-            $tech_name = $request['tech_name'];
-            $tech_id = DB::table('techs')
-            ->where('name', '=', $tech_name)
-            ->value('id');
-            $food_required = $request['food_required'];
-            $wood_required = $request['wood_required'];
-            $rock_required = $request['rock_required'];
-            $steel_required = $request['steel_required'];
-            $gold_required = $request['gold_required'];
-            $finishing_date = $this->date_to_sec($request['duration']);
+            $user_id = session()->get('user_id');
+            $user_race = session()->get('user_race');
+            $tech_id = $request['tech_id'];
+            $tech = DB::table('techs')
+            ->where('id', '=', $tech_id)
+            ->first();
+            if ($tech === null)
+                return ("tech error : unknow tech");
+            $allowed = 0;
+            if ($tech->race_required !== "NONE")
+            {
+                $races_allowed = explode(";", $tech->race_required);
+                foreach ($races_allowed as $race)
+                {
+                    if ($race == $user_race)
+                    {
+                        $allowed = 1;
+                        break ;
+                    }
+                }
+                if ($allowed == 0)
+                    return ("tech error : bad race");
+            }
+            if ($tech->building_required !== "NONE")
+            {
+                $split = explode(";", $tech->building_required);
+                $building_type = $split[0];
+                $building_id = $split[1];
+                $building_name = preg_replace('/\s/', "_", DB::table($building_type)->where('id', '=', $building_id)->value('name'));
+                $building_niv = DB::table('cities_buildings')->where('city_id', '=', $city_id)->value($building_name);
+                if ($building_niv <= 0)
+                    return ("tech error : missing building required");
+            }
+            if ($tech->tech_required !== "NONE")
+            {
+                $tech_name = preg_replace('/\s/', "_", DB::table('techs')->where('id', '=', $tech->tech_required)->value("name"));
+                $tech_niv = DB::table('cities_techs')->where('city_id', '=', $city_id)->value($tech_name);
+                if ($tech_niv <= 0)
+                    return ("tech error : missing tech required");
+            }
+            $food_required = 0;
+            $wood_required = 0;
+            $rock_required = 0;
+            $steel_required = 0;
+            $gold_required = 0;
+            $name = preg_replace('/\s/', "_", DB::table('techs')->where('id', '=', $tech_id)->value("name"));
+            $niv = DB::table('cities_techs')->where('city_id', '=', $city_id)->value($name);
+            $finishing_date = $this->sec_to_date($niv, $tech->duration, $tech->levelup_price);
+            $res_required = explode(";", $tech->basic_price);
+            foreach ($res_required as $res => $amount)
+            {
+                if ($amount[-1] == "F")
+                    $food_required = $this->get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);
+                else if ($amount[-1] == "W")
+                    $wood_required = $this->get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);
+                else if ($amount[-1] == "R")
+                    $rock_required = $this->get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);
+                else if ($amount[-1] == "S")
+                    $steel_required = $this->get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);
+                else
+                    $gold_required = $this->get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);
+            }
             $city_res = DB::table('cities')
             ->select('food', 'wood', 'rock', 'steel', 'gold')
             ->where('id', '=', $city_id)
             ->first();
             if ($city_res->food < $food_required || $city_res->wood < $wood_required || $city_res->rock < $rock_required || $city_res->steel < $steel_required || $city_res->gold < $gold_required)
-                return ;
+                return ("tech error : missing ressources required");
             DB::table('cities')
             ->where('id', '=', $city_id)
             ->update(['food' => $city_res->food - $food_required, 'wood' => $city_res->wood - $wood_required, 'rock' => $city_res->rock - $rock_required, 'steel' => $city_res->steel - $steel_required, 'gold' => $city_res->gold - $gold_required]);
             $id = DB::table('waiting_techs')
-            ->insertGetId(["city_id" => $city_id, "tech_id" => $tech_id, "finishing_date" => $finishing_date, "next_level" => $next_level]);
+            ->insertGetId(["city_id" => $city_id, "tech_id" => $tech_id, "finishing_date" => $finishing_date, "next_level" => $niv + 1]);
             $cmd = "cd /home/boss/www/scripts ; node ./finish_tech.js " . $finishing_date  . " " . $id;
             exec($cmd);
-            return ;
+            return ("good");
         }
     }
 

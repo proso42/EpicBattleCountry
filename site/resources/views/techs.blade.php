@@ -18,7 +18,7 @@
                                 <img class="tech" style="width:250px;height: 250px;" src="{{ $tech['illustration'] }}">
                                 @if ($tech['status'] == "OK")
                                     <div @if ($tech['food_required'] > $food || $tech['wood_required'] > $wood || $tech['rock_required'] > $rock || $tech['steel_required'] > $steel || $tech['gold_required'] > $gold) class="tech-button-impossible" @else class="tech-button"
-                                    onclick="update_tech('{{ $tech['name'] }}', '{{ $tech['food_required'] }}', '{{ $tech['wood_required'] }}', '{{ $tech['rock_required'] }}', '{{ $tech['steel_required'] }}', '{{ $tech['gold_required'] }}', '{{ $tech['duration'] }}', '{{ $tech['niv'] }}')"@endif>
+                                    onclick="update_tech('{{ $tech['tech_id'] }}')"@endif>
                                         Rechercher <i class="fas fa-flask icon"></i>
                                         <div class="tech-res-needed">
                                             <ul>
@@ -150,7 +150,7 @@
                 }
             }
 
-            function update_tech(name, food, wood, rock, steel, gold, duration, niv)
+            function update_tech(tech_id)
             {
                 var _token = document.getElementById('_token').value;
                 var xhr = new XMLHttpRequest();
@@ -159,11 +159,14 @@
                 {
                     if (xhr.readyState === 4 && xhr.status === 200)
                     {
-                        window.location.href="http://www.epicbattlecorp.fr/techs";
+                        if (xhr.responseText !== "good")
+                            console.log(xhr.responseText);
+                        else
+                            window.location.href="http://www.epicbattlecorp.fr/techs";
                     }
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                xhr.send('_token=' + _token + '&tech_name=' + name + '&food_required=' + food + '&wood_required=' + wood + '&rock_required=' + rock + '&steel_required=' + steel + '&gold_required=' + gold + '&duration=' + duration + '&niv=' + niv);
+                xhr.send('_token=' + _token + '&tech_id=' + tech_id);
                 setTimeout(() => {
                     window.location.href="http://www.epicbattlecorp.fr/techs";
                 }, 400);

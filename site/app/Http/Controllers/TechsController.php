@@ -301,7 +301,7 @@
             $gold_required = 0;
             $name = preg_replace('/\s/', "_", DB::table('techs')->where('id', '=', $tech_id)->value("name"));
             $niv = DB::table('cities_techs')->where('city_id', '=', $city_id)->value($name);
-            $finishing_date = $this->get_exp_value($niv, $tech->duration, $tech->levelup_price);
+            $finishing_date = $this->get_exp_value($niv, $tech->duration, $tech->levelup_price) + time();
             $res_required = explode(";", $tech->basic_price);
             foreach ($res_required as $res => $amount)
             {
@@ -329,7 +329,7 @@
             ->insertGetId(["city_id" => $city_id, "tech_id" => $tech_id, "finishing_date" => $finishing_date, "next_level" => $niv + 1]);
             $cmd = "cd /home/boss/www/scripts ; node ./finish_tech.js " . $finishing_date  . " " . $id;
             exec($cmd);
-            return ($finishing_date);
+            return ("good");
         }
     }
 

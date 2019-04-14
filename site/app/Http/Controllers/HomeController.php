@@ -79,6 +79,8 @@
             $compact_gold = $gold;
             $max_gold = $city->max_gold;
             $gold_prod = $city->gold_prod;
+            $mount_prod = $city->mount_prod;
+            $max_mount = $city->max_mount;
             if ($food > 999999)
                 $compact_food = substr($food, 0, 5) . '...';
             if ($wood > 999999)
@@ -109,6 +111,16 @@
                 if ($unit_quantity > 0)
                     array_push($units_owned, ["name" => trans('unit.' . $unit->name), "quantity" => $unit_quantity]);
             }
+            if ($city->Cheval > 0)
+                array_push($units_owned, ["name" => trans('mount.Cheval'), "quantity" => $city->Cheval]);
+            if ($city->Likorne > 0)
+                array_push($units_owned, ["name" => trans('mount.Likorne'), "quantity" => $city->Likorne]);
+            if ($city->Bouc_de_guerre > 0)
+                array_push($units_owned, ["name" => trans('mount.Bouc_de_guerre'), "quantity" => $city->Bouc_de_guerre]);
+            if ($city->Loup > 0)
+                array_push($units_owned, ["name" => trans('mount.Loup'), "quantity" => $city->Loup]);
+            if ($city->Dragon)
+                array_push($units_owned, ["name" => trans('mount.Dragon'), "quantity" => $city->Dragon]);
             $waiting_buildings = DB::table('waiting_buildings')
             ->where('city_id', '=', $city_id)
             ->get();
@@ -154,7 +166,7 @@
                 array_push($waiting_list, ["wait_id" => $travel->id, "type" => "explo", "name" => $mission_name, "duration" => $travel->finishing_date - time()]);
             }
 
-            return view('home', compact('food', 'compact_food', 'max_food', 'food_prod', 'wood', 'compact_wood' ,'max_wood', 'wood_prod', 'rock', 'compact_rock', 'max_rock', 'rock_prod', 'steel', 'compact_steel', 'max_steel', 'steel_prod', 'gold', 'compact_gold', 'max_gold', 'gold_prod', 'city_name', 'waiting_list', 'items_owned', 'units_owned', 'tables_class', 'user_cities'));
+            return view('home', compact('food', 'compact_food', 'max_food', 'food_prod', 'wood', 'compact_wood' ,'max_wood', 'wood_prod', 'rock', 'compact_rock', 'max_rock', 'rock_prod', 'steel', 'compact_steel', 'max_steel', 'steel_prod', 'gold', 'compact_gold', 'max_gold', 'gold_prod', 'mount_prod', 'max_mount', 'city_name', 'waiting_list', 'items_owned', 'units_owned', 'tables_class', 'user_cities'));
         }
 
         public function switch_city(Request $request)

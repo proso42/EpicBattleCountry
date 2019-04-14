@@ -176,7 +176,7 @@
                         $duration = $this->sec_to_date($niv, $val->duration, $val->levelup_price);
                     else
                         $duration = $is_wip - time();
-                    array_push($allowed_techs, ["tech_id" => $val->id, "status" => $status, "name" => $val->name, "niv" => $niv, "illustration" => $illustration, "duration" => $duration, "food_required" => $food_required, "wood_required" => $wood_required, "rock_required" => $rock_required, "steel_required" => $steel_required, "gold_required" => $gold_required]);
+                    array_push($allowed_techs, ["tech_id" => $val->id, "status" => $status, "name" => trans('tech.' . $val->name), "niv" => $niv, "illustration" => $illustration, "duration" => $duration, "food_required" => $food_required, "wood_required" => $wood_required, "rock_required" => $rock_required, "steel_required" => $steel_required, "gold_required" => $gold_required]);
                 }
                 else
                     continue;

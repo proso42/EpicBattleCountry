@@ -19,25 +19,25 @@
                                 @if ($tech['status'] == "OK")
                                     <div @if ($tech['food_required'] > $food || $tech['wood_required'] > $wood || $tech['rock_required'] > $rock || $tech['steel_required'] > $steel || $tech['gold_required'] > $gold) class="tech-button-impossible" @else class="tech-button"
                                     onclick="update_tech('{{ $tech['tech_id'] }}')"@endif>
-                                        Rechercher <i class="fas fa-flask icon"></i>
+                                        @lang('tech.search') <i class="fas fa-flask icon"></i>
                                         <div class="tech-res-needed">
                                             <ul>
                                             @if ($tech['food_required'] > 0)
-                                                    <li>Food : {{ $tech['food_required'] }} @if ($tech['food_required'] > $food) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                                    <li>@lang('common.food') : {{ $tech['food_required'] }} @if ($tech['food_required'] > $food) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
                                                 @endif
                                                 @if ($tech['wood_required'] > 0)
-                                                    <li>Wood : {{ $tech['wood_required'] }} @if ($tech['wood_required'] > $wood) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                                    <li>@lang('common.wood') : {{ $tech['wood_required'] }} @if ($tech['wood_required'] > $wood) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
                                                 @endif
                                                 @if ($tech['rock_required'] > 0)
-                                                    <li>Rock : {{ $tech['rock_required'] }} @if ($tech['rock_required'] > $rock) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                                    <li>@lang('common.rock') : {{ $tech['rock_required'] }} @if ($tech['rock_required'] > $rock) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
                                                 @endif
                                                 @if ($tech['steel_required'] > 0)
-                                                    <li>Steel : {{ $tech['steel_required'] }} @if ($tech['steel_required'] > $steel) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                                    <li>@lang('common.steel') : {{ $tech['steel_required'] }} @if ($tech['steel_required'] > $steel) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
                                                 @endif
                                                 @if ($tech['gold_required'] > 0)
-                                                    <li>Gold : {{ $tech['gold_required'] }} @if ($tech['gold_required'] > $gold) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                                    <li>@lang('common.gold') : {{ $tech['gold_required'] }} @if ($tech['gold_required'] > $gold) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
                                                 @endif
-                                                <li>Time : {{ $tech['duration'] }} <i class="fas fa-clock icon"></i></li>
+                                                <li>@lang('common.time') : {{ $tech['duration'] }} <i class="fas fa-clock icon"></i></li>
                                             </ul>
                                         </div>                        
                                     </div>
@@ -50,7 +50,7 @@
                     </div>
                 @else
                     <div id="need_lab" style="margin-top: 30px">
-                        <h2>Vous devez construire un laboratoire avant de pouvoir faire de la recherche.</h2>
+                        <h2>@lang('tech.need_laboratory')</h2>
                     <div>
                 @endif
             </div>

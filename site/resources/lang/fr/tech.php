@@ -13,6 +13,8 @@ return [
     |
     */
 
+    'search' => 'Rechercher',
+    'need_laboratory' => 'Vous devez construire un laboratoire avant de pouvoir faire de la recherche.',
     'Epee_basique' => 'Epee basique',
     'Arc_basique' => 'Arc basique',
     'Esclavage' => 'Esclavage',

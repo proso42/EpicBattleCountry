@@ -98,7 +98,7 @@
                 let y_pos = cell.getAttribute("y_pos");
                 document.getElementById("cell_coord").textContent = x_pos + "/" + y_pos;
                 let format_type = cell.getAttribute("format_type");
-                document.getElementById("cell_type").textContent = type;
+                document.getElementById("cell_type").textContent = format_type;
                 if (format_type == "city" || format_type == "capital")
                 {
                     let name = cell.getAttribute("name");

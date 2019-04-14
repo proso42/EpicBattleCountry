@@ -294,7 +294,7 @@
                 if ($tech_niv <= 0)
                     return ("tech error : missing tech required");
             }
-            /*$food_required = 0;
+            $food_required = 0;
             $wood_required = 0;
             $rock_required = 0;
             $steel_required = 0;
@@ -303,7 +303,7 @@
             $niv = DB::table('cities_techs')->where('city_id', '=', $city_id)->value($name);
             $finishing_date = $this->sec_to_date($niv, $tech->duration, $tech->levelup_price);
             $res_required = explode(";", $tech->basic_price);
-            foreach ($res_required as $res => $amount)
+            /*foreach ($res_required as $res => $amount)
             {
                 if ($amount[-1] == "F")
                     $food_required = $this->get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);

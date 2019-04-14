@@ -65,7 +65,7 @@
                         <li><i class="fas fa-city" style="color: lightskyblue"></i> @lang('map.good_city')</li>
                         <li><i class="fas fa-city"></i> @lang('map.other_city')</li>
                         <li><i class="fas fa-dungeon"></i> @lang('map.ruins')</li>
-                        <li><i class="fas fa-spider"><i>@lang('map.spider')</li>
+                        <li><i class="fas fa-spider"></i>@lang('map.spider')</li>
                         <li><i class="fas fa-dragon"></i> @lang('map.dragon')</li>
                         <li><i class="fas fa-water"></i> @lang('map.water')</li>
                         <li><i class="fas fa-mountain"></i> @lang('map.mountain')</li>

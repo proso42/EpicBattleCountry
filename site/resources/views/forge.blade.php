@@ -24,7 +24,7 @@
                 @elseif ($allowed == -1)
                     <div class="confirm-win">
                         <h3>@lang('forge.producting')</h3>
-                        <p>{{ $waiting_item['name'] }} x{{ $waiting_item['quantity'] }}</p> <!-- NEED TRAD -->
+                        <p>{{ $waiting_item['name'] }} x{{ $waiting_item['quantity'] }}</p>
                         <p id="item_timer" duration="{{ $waiting_item['finishing_date']}} "></p>
                         <input id="interrupt_item_button" onclick="interrupt_item()" type="button" class="forge-button-cancel" value="@lang('common.cancel')">
                     </div>
@@ -32,7 +32,7 @@
                     <div id="items_list">
                     @foreach ($allowed_items as $item)
                         <div id="id_{{ $item['name'] }}" class="row" style="align-items: baseline;line-height: 31px;">
-                            <span class="forge-item offset-lg-2 offset-md-2 offset-sm-2 offset-2 col-lg-2 col-md-2 col-sm-2 col-2" style="text-align:center">{{ $item['name'] }}</span> <!-- NEED TRAD -->
+                            <span class="forge-item offset-lg-2 offset-md-2 offset-sm-2 offset-2 col-lg-2 col-md-2 col-sm-2 col-2" style="text-align:center">{{ $item['name'] }}</span>
                             <input id="input_{{ $item['name'] }}" type="text" placeholder="Quantité" class="forge-input col-lg-2 col-md-2 col-sm-2 col-2">
                             <div class="forge-ressources col-lg-2 col-md-2 col-sm-2 col-2">
                                 @if ($item['food_required'] > 0)
@@ -59,12 +59,12 @@
                     <div id="confirm_win" class="confirm-win" style="display: none">
                         <h3 id="confirm-title"style="margin-top: 25px"></h3>
                         <ul style="text-align:left;margin-top: 25px;">
-                            <li id="list1"><span style="margin-right:5px" id="food_list"></span><i id="food_icon" class=""></i></li>    <!-- NEED TRAD -->
-                            <li id="list2"><span style="margin-right:5px" id="wood_list"></span><i id="wood_icon" class=""></i></li>    <!-- NEED TRAD -->
-                            <li id="list3"><span style="margin-right:5px" id="rock_list"></span><i id="rock_icon" class=""></i></li>    <!-- NEED TRAD -->
-                            <li id="list4"><span style="margin-right:5px" id="steel_list"></span><i id="steel_icon" class=""></i></li>  <!-- NEED TRAD -->
-                            <li id="list5"><span style="margin-right:5px" id="gold_list"></span><i id="gold_icon" class=""></i></li>    <!-- NEED TRAD -->
-                            <li><span style="margin-right:5px" id="time_list"></span><i class="fas fa-clock"></i></li>                  <!-- NEED TRAD -->
+                            <li id="list1"><span style="margin-right:5px" id="food_list"></span><i id="food_icon" class=""></i></li>
+                            <li id="list2"><span style="margin-right:5px" id="wood_list"></span><i id="wood_icon" class=""></i></li>
+                            <li id="list3"><span style="margin-right:5px" id="rock_list"></span><i id="rock_icon" class=""></i></li>
+                            <li id="list4"><span style="margin-right:5px" id="steel_list"></span><i id="steel_icon" class=""></i></li>
+                            <li id="list5"><span style="margin-right:5px" id="gold_list"></span><i id="gold_icon" class=""></i></li>
+                            <li><span style="margin-right:5px" id="time_list"></span><i class="fas fa-clock"></i></li>
                         </ul>
                         <input onclick="confirm()" id="confirm-button" type="button" class="forge-button" value="@lang('common.confirm')">
                         <input onclick="cancel()" type="button" class="forge-button-cancel" value="@lang('common.cancel')">
@@ -215,6 +215,7 @@
 
             function craft(name)
             {
+                console.log('start');
                 g_name = name;
                 var _token = document.getElementById("_token").value;
                 var quantity = document.getElementById("input_" + name).value;
@@ -242,6 +243,7 @@
                     }, 5000);
                     return ;
                 }
+                console.log('avant ajax');
                 quantity = parseInt(quantity);
                 var name_format = name.replace(/\s/gi, "_");
                 var xhr = new XMLHttpRequest();
@@ -250,6 +252,7 @@
                 {
                     if (xhr.readyState === 4 && xhr.status === 200)
                     {
+                        console.log(xhr.responseText)
                         if (xhr.responseText === "item_error")
                             return ;
                         var need_tab = xhr.responseText.replace(/]/gi, "").replace(/\[/gi, "").replace(/"/gi, "").split(",");

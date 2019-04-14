@@ -287,14 +287,14 @@
                 if ($building_niv <= 0)
                     return ("tech error : missing building required");
             }
-            /*if ($tech->tech_required !== "NONE")
+            if ($tech->tech_required !== "NONE")
             {
                 $tech_name = preg_replace('/\s/', "_", DB::table('techs')->where('id', '=', $tech->tech_required)->value("name"));
                 $tech_niv = DB::table('cities_techs')->where('city_id', '=', $city_id)->value($tech_name);
                 if ($tech_niv <= 0)
                     return ("tech error : missing tech required");
             }
-            $food_required = 0;
+            /*$food_required = 0;
             $wood_required = 0;
             $rock_required = 0;
             $steel_required = 0;

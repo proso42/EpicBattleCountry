@@ -64,7 +64,7 @@
                         <li><i class="fas fa-city" style="color: darkred"></i> @lang('map.bad_city')</li>
                         <li><i class="fas fa-city" style="color: lightblue"></i> @lang('map.good_city')</li>
                         <li><i class="fas fa-city"></i> @lang('map.other_city')</li>
-                        <li><i class="fas fa-dungeon"></i> @lang('map.dungeon')</li>
+                        <li><i class="fas fa-dungeon"></i> @lang('map.ruins')</li>
                         <li><i class="fas fa-dragon"></i> @lang('map.dragon')</li>
                         <li><i class="fas fa-water"></i> @lang('map.water')</li>
                         <li><i class="fas fa-mountain"></i> @lang('map.mountain')</li>
@@ -97,9 +97,9 @@
                 let x_pos = cell.getAttribute("x_pos");
                 let y_pos = cell.getAttribute("y_pos");
                 document.getElementById("cell_coord").textContent = x_pos + "/" + y_pos;
-                let type = cell.getAttribute("type");
+                let format_type = cell.getAttribute("format_type");
                 document.getElementById("cell_type").textContent = type;
-                if (type == "city" || type == "capital")
+                if (format_type == "city" || format_type == "capital")
                 {
                     let name = cell.getAttribute("name");
                     let diplomatie = cell.getAttribute("diplomatie");

@@ -28,6 +28,6 @@ return [
     'spider' => 'Nest of giant spider',
     'dragon' => 'Dragon',
     'water' => 'Water',
-    'mountain' => 'Montain',
+    'mountain' => 'Mountain',
     'forest' => 'Forest',
 ];

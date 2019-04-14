@@ -132,6 +132,13 @@
                         }
                         if ($allowed == 0)
                             continue;
+                        if ($val->tech_required !== "NONE")
+                        {
+                            $tech_name = preg_replace('/\s/', "_", DB::table('techs')->where('id', '=', $val->tech_required)->value("name"));
+                            $tech_niv = DB::table('cities_techs')->where('city_id', '=', $city_id)->value($tech_name);
+                            if ($tech_niv <= 0)
+                                continue ;
+                        }
                     }
                     $res_required = explode(";", $val->basic_price);
                     $food_required = 0;

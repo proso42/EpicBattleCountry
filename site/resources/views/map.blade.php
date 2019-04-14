@@ -42,7 +42,7 @@
                                     @for ($x = $x_pos - $cartographer; $x <= $x_pos + $cartographer; $x++)
                                         @if ($i < count($visible_cells) && $x == $visible_cells[$i]['x_pos'] && $y == $visible_cells[$i]['y_pos'])
                                             <td id="cell_{{ $i }}" onclick="display_cell_info('cell_{{ $i }}')" x_pos="{{ $visible_cells[$i]['x_pos'] }}" y_pos="{{ $visible_cells[$i]['y_pos'] }}" type="{{ $visible_cells[$i]['type'] }}" 
-                                                @if ($visible_cells[$i]['type'] == 'capital' || $visible_cells[$i]['type'] == 'city') name="{{ $visible_cells[$i]['name'] }}" diplomatie="{{ $visible_cells[$i]['diplomatie'] }}" owner_race="{{ $visible_cells[$i]['race'] }}" @endif
+                                                @if ($visible_cells[$i]['format_type'] == 'capital' || $visible_cells[$i]['format_type'] == 'city') name="{{ $visible_cells[$i]['name'] }}" diplomatie="{{ $visible_cells[$i]['diplomatie'] }}" owner_race="{{ $visible_cells[$i]['race'] }}" @endif
                                                 title="{{ $visible_cells[$i]['x_pos'] }}/{{ $visible_cells[$i]['y_pos'] }}" class="map-cell" style="cursor: help;background-color: {{ $visible_cells[$i]['background-color'] }};color: {{ $visible_cells[$i]['color'] }}">
                                                 <i id="cell_{{ $i  }}_icon" class="fas {{ $visible_cells[$i]['class'] }} "></i>
                                             </td>

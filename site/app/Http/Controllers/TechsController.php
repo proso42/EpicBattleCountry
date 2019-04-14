@@ -277,7 +277,7 @@
                 if ($allowed == 0)
                     return ("tech error : bad race");
             }
-            if ($tech->building_required !== "NONE")
+            /*if ($tech->building_required !== "NONE")
             {
                 $split = explode(";", $tech->building_required);
                 $building_type = $split[0];
@@ -329,7 +329,7 @@
             ->insertGetId(["city_id" => $city_id, "tech_id" => $tech_id, "finishing_date" => $finishing_date, "next_level" => $niv + 1]);
             $cmd = "cd /home/boss/www/scripts ; node ./finish_tech.js " . $finishing_date  . " " . $id;
             exec($cmd);
-            return ("good");
+            return ("good");*/
         }
     }
 

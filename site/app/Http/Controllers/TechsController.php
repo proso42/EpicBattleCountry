@@ -303,7 +303,7 @@
             $niv = DB::table('cities_techs')->where('city_id', '=', $city_id)->value($name);
             $finishing_date = $this->sec_to_date($niv, $tech->duration, $tech->levelup_price);
             $res_required = explode(";", $tech->basic_price);
-            /*foreach ($res_required as $res => $amount)
+            foreach ($res_required as $res => $amount)
             {
                 if ($amount[-1] == "F")
                     $food_required = $this->get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);
@@ -316,7 +316,7 @@
                 else
                     $gold_required = $this->get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);
             }
-            $city_res = DB::table('cities')
+            /*$city_res = DB::table('cities')
             ->select('food', 'wood', 'rock', 'steel', 'gold')
             ->where('id', '=', $city_id)
             ->first();

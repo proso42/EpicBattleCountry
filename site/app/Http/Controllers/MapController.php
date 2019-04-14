@@ -99,7 +99,7 @@
             foreach ($all_cells as $cell)
             {
                 if ($cell->x_pos == $capital->x_pos && $cell->y_pos == $capital->y_pos)
-                    array_push($visible_cells, ["type" => trans('map.capital'), "format_type" => "capital", "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "color" => "green", "class" => "fa-star", "name" =>  $city->name, "diplomatie" => trans('map.owned'), "race" => trans('common.' . $user_race_name)]);
+                    array_push($visible_cells, ["type" => trans('map.capital'), "format_type" => "capital", "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "background-color" => "lemonchiffon", "color" => "green", "class" => "fa-star", "name" =>  $city->name, "diplomatie" => trans('map.owned_city'), "race" => trans('common.' . $user_race_name)]);
                 else if ($cell->type == "water")
                     array_push($visible_cells, ["type" => trans('map.water'), "format_type" => "water", "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "color" => "black", "background-color" => "steelblue", "class" => $cell->icon]);
                 else if ($cell->type == "city")

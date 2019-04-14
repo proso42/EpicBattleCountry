@@ -277,7 +277,7 @@
                 if ($allowed == 0)
                     return ("tech error : bad race");
             }
-            /*if ($tech->building_required !== "NONE")
+            if ($tech->building_required !== "NONE")
             {
                 $split = explode(";", $tech->building_required);
                 $building_type = $split[0];
@@ -287,7 +287,7 @@
                 if ($building_niv <= 0)
                     return ("tech error : missing building required");
             }
-            if ($tech->tech_required !== "NONE")
+            /*if ($tech->tech_required !== "NONE")
             {
                 $tech_name = preg_replace('/\s/', "_", DB::table('techs')->where('id', '=', $tech->tech_required)->value("name"));
                 $tech_niv = DB::table('cities_techs')->where('city_id', '=', $city_id)->value($tech_name);

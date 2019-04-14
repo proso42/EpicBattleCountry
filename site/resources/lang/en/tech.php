@@ -21,4 +21,5 @@ return [
     'Navigation' => 'Shipping',
     'Lance_basique' => 'Basic spear',
     'Bouclier_basique' => 'Basic shield',
+    'Elevage' => 'Breeding',
 ];

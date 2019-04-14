@@ -21,4 +21,5 @@ return [
     'Navigation' => 'Navigation',
     'Lance_basique' => 'Lance basique',
     'Bouclier_basique' => 'Bouclier basique',
+    'Elevage' => 'Élevage',
 ];

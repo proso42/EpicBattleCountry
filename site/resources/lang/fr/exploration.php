@@ -14,10 +14,10 @@ return [
     */
 
     'exp_send' => 'Votre expedition a été envoyé !',
-    'scout' => 'Reconnaissance',
-    'raid_dungeon' => 'Fouiller un donjon',
-    'raid_battlefield' => 'Piller un champs de bataille',
-    'colonize' => 'Coloniser',
+    'Scouting' => 'Reconnaissance',
+    'Raid_Dungeon' => 'Fouiller un donjon',
+    'Raid_Battlefield' => 'Piller un champs de bataille',
+    'Colonize' => 'Coloniser',
     'dest' => 'Destination',
     'go_scouting' => 'Faire une reconaissance',
     'colonize_new_place' => 'Coloniser un nouvel endroit',

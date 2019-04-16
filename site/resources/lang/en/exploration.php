@@ -14,10 +14,10 @@ return [
     */
 
     'exp_send' => 'Your shipment has been sent !',
-    'scout' => 'Scouting',
-    'raid_dungeon' => 'Raid a dungeon',
-    'raid_battlefield' => 'Raid a battlefield',
-    'colonize' => 'Colonize',
+    'Scouting' => 'Scouting',
+    'Raid_Dungeon' => 'Raid a dungeon',
+    'Raid_Rattlefield' => 'Raid a battlefield',
+    'Colonize' => 'Colonize',
     'dest' => 'Destination',
     'go_scouting' => 'Go scouting',
     'colonize_new_place' => 'Colonize a new place',

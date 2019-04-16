@@ -42,7 +42,7 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <input id="input_{{ $unit['name'] }}" type="text" placeholder="@lang('common.quantity')" class="army-input col-lg-2 col-md-2 col-sm-2 col-2">
+                                <input id="input_{{ $unit['id'] }}" type="text" placeholder="@lang('common.quantity')" class="army-input col-lg-2 col-md-2 col-sm-2 col-2">
                                 <div class="army-ressources col-lg-2 col-md-2 col-sm-2 col-2">
                                     <span>@lang('common.price')</span>
                                     <div class="army-ressources-details">
@@ -217,7 +217,7 @@
             {
                 var _token = document.getElementById("_token").value;
                 var unit_id = g_unit_id;
-                var quantity = document.getElementById("input_" + name).value;
+                var quantity = document.getElementById("input_" + unit_id).value;
                 var xhr2 = new XMLHttpRequest();
                 xhr2.open('POST', 'http://www.epicbattlecorp.fr/train_unit');
                 xhr2.onreadystatechange =  function()
@@ -246,7 +246,7 @@
             {
                 g_unit_id = id;
                 var _token = document.getElementById("_token").value;
-                var quantity = document.getElementById("input_" + name).value;
+                var quantity = document.getElementById("input_" + id).value;
                 if (quantity == "")
                 {
                     document.getElementById("error_empty_input").style.display = "";

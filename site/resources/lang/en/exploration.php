@@ -17,6 +17,7 @@ return [
     'Scouting' => 'Scouting',
     'Raid_Dungeon' => 'Raid a dungeon',
     'Raid_Battlefield' => 'Raid a battlefield',
+    'Go_Home' => 'Return home',
     'Colonize' => 'Colonize',
     'dest' => 'Destination',
     'go_scouting' => 'Go scouting',

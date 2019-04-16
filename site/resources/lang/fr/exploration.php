@@ -18,6 +18,7 @@ return [
     'Raid_Dungeon' => 'Fouiller un donjon',
     'Raid_Battlefield' => 'Piller un champs de bataille',
     'Colonize' => 'Coloniser',
+    'Go_Home' => 'Retour',
     'dest' => 'Destination',
     'go_scouting' => 'Faire une reconaissance',
     'colonize_new_place' => 'Coloniser un nouvel endroit',

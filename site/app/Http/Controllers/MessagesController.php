@@ -76,7 +76,7 @@
             $all_users = DB::table('users')->get();
             $notif_alert = 0;
             $msg_received_alert = 0;
-            dd($all_user_msgs);
+            dd($city_id);
             foreach ($all_user_msgs as $msg)
             {
                 if ($msg->sender == "notification" && $msg->target_city == $city_id)

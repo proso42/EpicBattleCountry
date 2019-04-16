@@ -303,7 +303,10 @@
                 {
                     if (xhr.readyState === 4 && xhr.status === 200)
                     {
-                        window.location.reload();
+                        console.log(xhr.responseText);
+                        setTimeout(() =>{
+                            window.location.reload();                                
+                        }, 3000);
                     }
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

@@ -31,7 +31,7 @@
                             <img class="building" style="width:250px;height: 250px;" src="{{ $build['illustration'] }}">
                             @if ($build['status'] == "OK")
                                 <div id="eco_{{ $build['id'] }}" name="{{ $build['name'] }}" @if ($build['food_required'] > $food || $build['wood_required'] > $wood || $build['rock_required'] > $rock || $build['steel_required'] > $steel || $build['gold_required'] > $gold) class="building-button-impossible" @else class="building-button"
-                                onclick="update_building('eco_{{ $build['id'] }}')"@endif>                                
+                                onclick="update_building('{{ $build['id'] }}', '{{ $build['type'] }}')"@endif>                                
                                     @if ($build["niv"] == 0)
                                         @lang('building.build') <i class="fas fa-hammer icon"></i>
                                     @else
@@ -298,7 +298,7 @@
                 }
             }
 
-            function update_building(id)
+            function update_building(id, type)
             {
                 var _token = document.getElementById('_token').value;
                 var building_type = activeBuildings.replace(/-/gi, '_');
@@ -312,8 +312,9 @@
                         console.log(xhr.responseText);
                         if (xhr.responseText.indexOf("error") < 0)
                         {
+                            div_id = type + "_" + id; 
                             let duration = xhr.responseText;
-                            let elem = document.getElementById(id);
+                            let elem = document.getElementById(div_id);
                             elem.className = "building-wip";
                             elem.onclick = function (){};
                             document.getElementById("res_" + id).remove();

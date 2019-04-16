@@ -74,7 +74,7 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <input onclick="train('{{ $unit['name'] }}')" type="button" class="army-button col-lg-2 col-md-2 col-sm-2 col-2" value="@lang('army.train')">
+                                <input onclick="train('{{ $unit['unit_id'] }}')" type="button" class="army-button col-lg-2 col-md-2 col-sm-2 col-2" value="@lang('army.train')">
                             </div>
                         @endforeach
                     </div>
@@ -101,7 +101,7 @@
         <input id="_token" name="_token" type="hidden" value="{{csrf_token()}}">
         <script>
 
-            var g_name = "";
+            var g_unit_id = 0;
             var unit_timing = document.getElementById('unit_timer');
             if (unit_timing !== null)
                 timer('unit_timer', unit_timing.getAttribute("duration"));
@@ -216,8 +216,7 @@
             function confirm()
             {
                 var _token = document.getElementById("_token").value;
-                var name = g_name;
-                var name_format = name.replace(/\s/gi, "_");
+                var unit_id = g_unit_id;
                 var quantity = document.getElementById("input_" + name).value;
                 var xhr2 = new XMLHttpRequest();
                 xhr2.open('POST', 'http://www.epicbattlecorp.fr/train_unit');
@@ -230,7 +229,7 @@
                     }
                 }
                 xhr2.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                xhr2.send('_token=' + _token + '&name=' + name_format + "&quantity=" + quantity);
+                xhr2.send('_token=' + _token + '&unit_id=' + unit_id + "&quantity=" + quantity);
                 setTimeout(() => {
                     window.location.reload();
                 }, 300);
@@ -238,14 +237,14 @@
 
             function cancel()
             {
-                g_name = "";
+                g_unit_id = 0;
                 document.getElementById("confirm_win").style.display = "none";
                 document.getElementById("unit_list").style.display = "";
             }
 
-            function train(name)
+            function train(id)
             {
-                g_name = name;
+                g_unit_id = id;
                 var _token = document.getElementById("_token").value;
                 var quantity = document.getElementById("input_" + name).value;
                 if (quantity == "")
@@ -273,7 +272,6 @@
                     return ;
                 }
                 quantity = parseInt(quantity);
-                var name_format = name.replace(/\s/gi, "_");
                 var xhr = new XMLHttpRequest();
                 xhr.open('POST', 'http://www.epicbattlecorp.fr/calculate_training_price');
                 xhr.onreadystatechange =  function()
@@ -378,7 +376,7 @@
                     }
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                xhr.send('_token=' + _token + '&name=' + name_format + "&quantity=" + quantity);
+                xhr.send('_token=' + _token + '&unit_id=' + id + "&quantity=" + quantity);
             }
         </script>
     </body>

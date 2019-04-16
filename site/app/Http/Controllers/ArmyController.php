@@ -145,7 +145,7 @@
                 else
                     $mount = null;
                 $duration = $this->sec_to_date($unit->duration);
-                array_push($allowed_units, ["name" => trans('unit.' . preg_replace('/\s/', "_", $unit->name)), "food" => $food_required,  "wood" => $wood_required, "rock" => $rock_required, "steel" => $steel_required, "gold" => $gold_required, "duration" => $duration, "items" => $items_required, "mount" => $mount, "life" => $unit->life, "speed" => $unit->speed, "power" => $unit->power]);
+                array_push($allowed_units, ["unit_id" => $unit->id, "name" => trans('unit.' . preg_replace('/\s/', "_", $unit->name)), "food" => $food_required,  "wood" => $wood_required, "rock" => $rock_required, "steel" => $steel_required, "gold" => $gold_required, "duration" => $duration, "items" => $items_required, "mount" => $mount, "life" => $unit->life, "speed" => $unit->speed, "power" => $unit->power]);
             }
             return $allowed_units;
         }
@@ -176,11 +176,11 @@
 
         public function calculate_training_price(Request $request)
         {
-            $unit_name = preg_replace("/_/", " ", $request['name']);
             $quantity = $request['quantity'];
+            $unit_id = $request['unit_id'];
             $city_id = session()->get('city_id');
             $unit = DB::table('units')
-            ->where('name', '=', $unit_name)
+            ->where('id', '=', $unit_id)
             ->first();
             if ($unit === null)
                 return ("unit_error");
@@ -279,10 +279,10 @@
             $already_training = DB::table('waiting_units')->where('city_id', '=', $city_id)->value('id');
             if ($already_training !== null)
                 return ("hackeur !");
-            $unit_name = preg_replace("/_/", " ", $request['name']);
+            $unit_id = $request['unit_id'];
             $quantity = $request['quantity'];
             $unit = DB::table('units')
-            ->where('name', '=', $unit_name)
+            ->where('id', '=', $unit_id)
             ->first();
             if ($unit === null)
                 return ("unit_error");

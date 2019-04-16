@@ -20,8 +20,12 @@
                 $table = "waiting_techs";
             else if ($type_canceled == "item")
                 return $this->interrupt_item($city_id);
+            else if ($type_canceled == "unit")
+                return $this->interrupt_unit($city_id);
+            else if ($type_canceled == "explo")
+                return $this->interrupt_explo($city_id);
             else
-                return $this->interrupt_unit($city_id);            
+                return ("interrupt error : bad type canceled");
             $wait_id = $request['wait_id'];
             $elem_canceled = DB::table($table)
             ->where('id', '=', $wait_id)

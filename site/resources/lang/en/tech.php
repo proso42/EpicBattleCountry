@@ -22,4 +22,5 @@ return [
     'Lance_basique' => 'Basic spear',
     'Bouclier_basique' => 'Basic shield',
     'Elevage' => 'Breeding',
+    'Armure_basique' => 'Basic armor',
 ];

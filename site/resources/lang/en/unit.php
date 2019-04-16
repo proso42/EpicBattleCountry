@@ -29,4 +29,8 @@ return [
     'Archer_elfique' => 'Elf archer',
     'Archer_nain' => 'Dwarf archer',
     'Archer_sauvage' => 'Savage archer',
+    'Chevalier' => 'Knight',
+    'Chevaucheur_de_likorne' => 'Unikorne rider',
+    'Bastonneur_sur_bouc' => 'Brawling on goat',
+    'Chevaucheur_de_loup' => 'Wolf rider',
 ];

@@ -17,4 +17,5 @@ return [
     'basic_bow' => 'Basic bow',
     'basic_spear' => 'Basic spear',
     'basic_shield' => 'Basic shield',
+    'basic_armor' => 'Basic armor',
 ];

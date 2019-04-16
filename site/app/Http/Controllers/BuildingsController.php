@@ -245,10 +245,10 @@
             $building_id = $request['id'];
             $building_type = preg_replace('/tab/', "buildings", $request['type']);
             if ($building_type !== "eco_buildings" && $building_type !== "army_buildings" && $building_type !== "religious_buildings" && $building_type !== "tech_buildings")
-                return ("bad buildings type");
+                return ("error : bad buildings type");
             $building_name = DB::table($building_type)->where('id', '=', $building_id)->value('name');
             if ($building_name === null)
-                return ("bad id of building");
+                return ("error : bad id of building");
             $niv = DB::table('cities_buildings')->where('city_id', '=', $city_id)->value(preg_replace('/\s/', "_", $building_name));
             $alreday_waiting = DB::table('waiting_buildings')
             ->where('city_id', '=', $city_id)
@@ -256,7 +256,7 @@
             ->where('building_id', '=', $building_id)
             ->value('id');
             if ($alreday_waiting !== null && $alreday_waiting > 0)
-                return ("already waiting");
+                return ("error : already waiting");
             $building_info = DB::table($building_type)
             ->where('id', '=', $building_id)
             ->first();
@@ -277,7 +277,7 @@
             else
                 $allowed = 1;
             if ($allowed == 0)
-                return ("bad race");
+                return ("error : bad race");
             if ($building_info->building_required !== "NONE")
             {
                 $buildings_required = explode(";", $building_info->building_required);
@@ -298,7 +298,7 @@
                 }
             }
             if ($allowed == 0)
-                return ("bad building required");
+                return ("error : bad building required");
             $finishing_date = $this->get_exp_value($niv, $building_info->duration, $building_info->levelup_price) + time();
             $res_required = explode(";", $building_info->basic_price);
             $food_required = 0;
@@ -324,15 +324,15 @@
             ->where('id', '=', $city_id)
             ->first();
             if ($city_res->food < $food_required || $city_res->wood < $wood_required || $city_res->rock < $rock_required || $city_res->steel < $steel_required || $city_res->gold < $gold_required)
-                return ("need more ressources");
+                return ("error : need more ressources");
             DB::table('cities')
             ->where('id', '=', $city_id)
             ->update(['food' => $city_res->food - $food_required, 'wood' => $city_res->wood - $wood_required, 'rock' => $city_res->rock - $rock_required, 'steel' => $city_res->steel - $steel_required, 'gold' => $city_res->gold - $gold_required]);
             $id = DB::table('waiting_buildings')
             ->insertGetId(["city_id" => $city_id, "type" => $building_type, "building_id" => $building_id, "finishing_date" => $finishing_date, "next_level" => $niv + 1]);
-            $cmd = "cd /home/boss/www/scripts ; node ./finish_building.js " . $finishing_date  . " " . $id;
-            exec($cmd);
-            return ("Good");
+            /*$cmd = "cd /home/boss/www/scripts ; node ./finish_building.js " . $finishing_date  . " " . $id;
+            exec($cmd);*/
+            return ($finishing_date - time());
         }
     }
 

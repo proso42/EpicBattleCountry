@@ -30,14 +30,14 @@
                             <div class="building-name">{{ $build["name"] }} @if ($build["niv"] > 0) {{$build["niv"]}} @endif</div> <!-- NEED TRAD -->
                             <img class="building" style="width:250px;height: 250px;" src="{{ $build['illustration'] }}">
                             @if ($build['status'] == "OK")
-                                <div @if ($build['food_required'] > $food || $build['wood_required'] > $wood || $build['rock_required'] > $rock || $build['steel_required'] > $steel || $build['gold_required'] > $gold) class="building-button-impossible" @else class="building-button"
+                                <div id="eco_{{ $build['id'] }}" name="{{ $build['name'] }}" @if ($build['food_required'] > $food || $build['wood_required'] > $wood || $build['rock_required'] > $rock || $build['steel_required'] > $steel || $build['gold_required'] > $gold) class="building-button-impossible" @else class="building-button"
                                 onclick="update_building('{{ $build['id'] }}')"@endif>                                
                                     @if ($build["niv"] == 0)
                                         @lang('building.build') <i class="fas fa-hammer icon"></i>
                                     @else
                                         @lang('building.upgrade') <i class="fas fa-angle-double-up icon"></i>
                                     @endif
-                                    <div class="building-res-needed">
+                                    <div id="res_{{ $build['id'] }}" class="building-res-needed">
                                         <ul>
                                         @if ($build['food_required'] > 0)
                                                 <li>@lang('common.food') : {{ $build['food_required'] }} @if ($build['food_required'] > $food) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
@@ -308,15 +308,26 @@
                 {
                     if (xhr.readyState === 4 && xhr.status === 200)
                     {
-                        window.location.href="http://www.epicbattlecorp.fr/buildings?activeTab=" + (activeTab.split('-'))[0];
+                        //window.location.href="http://www.epicbattlecorp.fr/buildings?activeTab=" + (activeTab.split('-'))[0];
                         console.log(xhr.responseText);
+                        if (xhr.responseText.indexOf("error") < 0)
+                        {
+                            let duration = xhr.responseText;
+                            let elem = document.getElementById(id);
+                            elem.className = "building-wip";
+                            elem.onclick = function (){};
+                            document.getElementById("res_" + id).remove();
+                            timer(id, duration);
+                        }
+                        else
+                            return ;
                     }
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhr.send('_token=' + _token + '&id=' + id + '&type=' + building_type);
-                setTimeout(() => {
+                /*setTimeout(() => {
                     window.location.href="http://www.epicbattlecorp.fr/buildings?activeTab=" + (activeTab.split('-'))[0];
-                }, 300);
+                }, 300);*/
             }
         </script>
     </body>

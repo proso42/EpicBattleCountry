@@ -42,7 +42,7 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <input id="input_{{ $unit['id'] }}" type="text" placeholder="@lang('common.quantity')" class="army-input col-lg-2 col-md-2 col-sm-2 col-2">
+                                <input id="input_{{ $unit['unit_id'] }}" type="text" placeholder="@lang('common.quantity')" class="army-input col-lg-2 col-md-2 col-sm-2 col-2">
                                 <div class="army-ressources col-lg-2 col-md-2 col-sm-2 col-2">
                                     <span>@lang('common.price')</span>
                                     <div class="army-ressources-details">

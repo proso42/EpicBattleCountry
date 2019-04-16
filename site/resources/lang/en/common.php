@@ -42,4 +42,5 @@ return [
     'price' => 'Price',
     'time' => 'Time',
     'in_progress' => 'In progress',
+    'on' => 'on',
 ];

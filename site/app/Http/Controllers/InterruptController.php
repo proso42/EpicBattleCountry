@@ -13,6 +13,7 @@
         public function interrupt(Request $request)
         {
             $type_canceled = $request['type'];
+            $wait_id = $request['wait_id'];
             $city_id = session()->get('city_id');
             if ($type_canceled == "building")
                 $table = "waiting_buildings";
@@ -23,10 +24,9 @@
             else if ($type_canceled == "unit")
                 return $this->interrupt_unit($city_id);
             else if ($type_canceled == "explo")
-                return $this->interrupt_explo($city_id);
+                return $this->interrupt_explo($city_id, $wait_id);
             else
                 return ("interrupt error : bad type canceled");
-            $wait_id = $request['wait_id'];
             $elem_canceled = DB::table($table)
             ->where('id', '=', $wait_id)
             ->first();
@@ -98,6 +98,27 @@
             DB::table($table)
             ->where('id', '=', $wait_id)
             ->delete();
+            return ("ressources refound");
+        }
+
+        private function interrupt_explo($city_id, $wait_id)
+        {
+            $user_id = session()->get('user_id');
+            $explo = DB::table('travelling_units')->where('id', '=', $wait_id)->first();
+            if ($explo->mission == 6)
+                return ("interrupt error : cannot cancel mission : 6");
+            else if ($explo->mission == 5 || $explo->mission == 7)
+                return ("interrupt error : not implemented yet");
+            $mission_name = trans('exploration.' . DB::table('traveling_missions')->where('id', '=', $explo->mission)->value("mission"));
+            $starting_point = $explo->ending_point;
+            $ending_point = $explo->starting_point;
+            $mission = 6;
+            $time_elapsed = time() - ($explo->finishing_date - $explo->traveing_duration);
+            $finishing_date = $time_elapsed + time();
+            $content = trans('exploration.your_mission') . " ($mission_name) " . trans('common.on') . " $explo->ending_point " . trans('exploration.end_of_content');
+            DB::table('messages')->insert(["seen" => 0, "sender" => "notification", "target" => $user_id, "target_city" => $city_id, "title" => trans('exploration.canceled_mission'), "content" => $content, "sending_date" => time()]);
+            DB::table('traveling_units')->where('id', '=', $wait_id)->update(["strating_point" => $starting_point, "ending_point" => $ending_point, "traveling_duration" => $time_elapsed, "finishing_date" => $finishing_date, "mission" => 6, "flag" => 0]);
+            return ("reload");
         }
 
         private function interrupt_item($city_id)
@@ -157,6 +178,7 @@
             DB::table('waiting_items')
             ->where('id', '=', $item->id)
             ->delete();
+            return ("ressources refound");
         }
 
         private function interrupt_unit($city_id)
@@ -230,6 +252,7 @@
             DB::table('waiting_units')
             ->where('id', '=', $unit->id)
             ->delete();
+            return ("ressources refound");
         }
 
         private function get_exp_value($niv, $basic_value, $levelup)

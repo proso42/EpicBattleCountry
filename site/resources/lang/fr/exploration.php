@@ -24,4 +24,7 @@ return [
     'colonize_new_place' => 'Coloniser un nouvel endroit',
     'unknow_target' => 'Cible inconnue',
     'traveling_duration' => 'Temps requis pour faire le trajet',
+    'canceled_mission' => 'Mission annulée',
+    'your_mission' => 'Votre mission',
+    'end_of_content' => 'a été annulée. Les ressources ont été perdus. L\'équipe est sur le chemin du retour',
 ];

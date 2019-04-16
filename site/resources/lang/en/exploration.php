@@ -24,4 +24,8 @@ return [
     'colonize_new_place' => 'Colonize a new place',
     'unknow_target' => 'Unknow target',
     'traveling_duration' => 'Traveling duration',
+    'canceled_mission' => 'Canceled mission',
+    'your_mission' => 'Your mission',
+    'end_of_content' => 'has been canceled. Resources have been lost. The team is on the way back',
+
 ];

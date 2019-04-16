@@ -30,7 +30,7 @@
                 </div>
                 <div id="explo_choice" class="row" style="margin-top: 30px">
                     <div class="explo-block">
-                        <div class="explo-name">@lang('exploration.scout')</div>
+                        <div class="explo-name">@lang('exploration.Scouting')</div>
                         <img class="explo" style="width:250px;height: 250px;" src="{{ $explo[0]['illustration'] }}">
                         <div @if ($explo[0]['unit_required'] > $unit_avaible || $explo[0]['food_required'] > $food || $explo[0]['wood_required'] > $wood || $explo[0]['rock_required'] > $rock || $explo[0]['steel_required'] > $steel || $explo[0]['gold_required'] > $gold) class="explo-button-impossible" @else class="explo-button" onclick="choice(1)"@endif>                                
                             @lang('common.choice') <i class="fas fa-map-marked-alt"></i>
@@ -57,7 +57,7 @@
                         </div>
                     </div>
                     <div class="explo-block">
-                        <div class="explo-name">@lang('exploration.raid_dungeon')</div>
+                        <div class="explo-name">@lang('exploration.Raid_Rungeon')</div>
                         <img class="explo" style="width:250px;height: 250px;" src="{{ $explo[1]['illustration'] }}">
                         <div @if ($explo[1]['unit_required'] > $unit_avaible || $explo[1]['food_required'] > $food || $explo[1]['wood_required'] > $wood || $explo[1]['rock_required'] > $rock || $explo[1]['steel_required'] > $steel || $explo[1]['gold_required'] > $gold) class="explo-button-impossible" @else class="explo-button" onclick="choice(2)"@endif>                                
                             @lang('common.choice') <i class="fas fa-map-marked-alt"></i>
@@ -84,7 +84,7 @@
                         </div>
                     </div>
                     <div class="explo-block">
-                        <div class="explo-name">@lang('exploration.raid_battlefield')</div>
+                        <div class="explo-name">@lang('exploration.Raid_Battlefield')</div>
                         <img class="explo" style="width:250px;height: 250px;" src="{{ $explo[2]['illustration'] }}">
                         <div @if ($explo[2]['unit_required'] > $unit_avaible || $explo[2]['food_required'] > $food || $explo[2]['wood_required'] > $wood || $explo[2]['rock_required'] > $rock || $explo[2]['steel_required'] > $steel || $explo[2]['gold_required'] > $gold) class="explo-button-impossible" @else class="explo-button" onclick="choice(3)"@endif>                                
                             @lang('common.choice') <i class="fas fa-map-marked-alt"></i>
@@ -111,7 +111,7 @@
                         </div>
                     </div>
                     <div class="explo-block">
-                        <div class="explo-name">@lang('exploration.colonize')</div>
+                        <div class="explo-name">@lang('exploration.Colonize')</div>
                         <img class="explo" style="width:250px;height: 250px;" src="{{ $explo[3]['illustration'] }}">
                         <div @if ($explo[3]['unit_required'] > $unit_avaible || $explo[3]['food_required'] > $food || $explo[3]['wood_required'] > $wood || $explo[3]['rock_required'] > $rock || $explo[3]['steel_required'] > $steel || $explo[3]['gold_required'] > $gold) class="explo-button-impossible" @else class="explo-button" onclick="choice(4)"@endif>                                
                             @lang('common.choice') <i class="fas fa-map-marked-alt"></i>

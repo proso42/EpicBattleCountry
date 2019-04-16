@@ -41,6 +41,7 @@
                             <li onclick="choice_city('{{ $city->id }}')" id="city_{{ $city->id }}" class="city-li">{{ $city->name }}</li>
                         @endforeach
                         <input onclick="switch_city()" id="switch_button" type="button" class="home-button" value="@lang('common.change')">
+                        <input onclick="cancel_switch()" id="cancel_button_switch" type="button" class="home-button-cancel" value="@lang('common.cancel')">
                     </ul>
                 </div>
             </div>
@@ -208,6 +209,13 @@
                 }
                 xhr_switch.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhr_switch.send('_token=' + _token + '&new_city_id=' + g_choice);
+            }
+
+            function cancel_switch()
+            {
+                document.getElementById("overlay").style.display = "none";
+                document.getElementById("block_change_city").style.display = "none";
+                g_choice = ""
             }
 
             function show_edit_block()

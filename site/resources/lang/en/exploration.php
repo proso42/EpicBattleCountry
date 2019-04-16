@@ -16,7 +16,7 @@ return [
     'exp_send' => 'Your shipment has been sent !',
     'Scouting' => 'Scouting',
     'Raid_Dungeon' => 'Raid a dungeon',
-    'Raid_Rattlefield' => 'Raid a battlefield',
+    'Raid_Battlefield' => 'Raid a battlefield',
     'Colonize' => 'Colonize',
     'dest' => 'Destination',
     'go_scouting' => 'Go scouting',

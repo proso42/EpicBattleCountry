@@ -205,7 +205,8 @@
                 $unit = "Fouineur";
             else
                 $unit = "Eclaireur";
-            $unit_avaible = DB::table('cities_units')->select('id', $unit)->where('city_id', '=', $city_id)->first();
+            $unit_id = DB::table('units')->where('name', '=', $unit)->value($id);
+            $unit_avaible = DB::table('cities_units')->where('city_id', '=', $city_id)->value($unit);
             $city_res = DB::table('cities')->select('food', 'wood', 'rock', 'steel', 'gold', 'x_pos', 'y_pos')->where('id', '=', $city_id)->first();
             if ($city_res->x_pos == $dest_x && $city_res->y_pos == $dest_y)
             {
@@ -226,7 +227,7 @@
                 $steel_required = 2500;
                 $gold_required = 1000;
             }
-            if ($unit_avaible->$unit < $unit_required || $food_required > $city_res->food || $wood_required > $city_res->wood || $rock_required > $city_res->rock || $steel_required > $city_res->steel || $gold_required > $city_res->gold)
+            if ($unit_avaible < $unit_required || $food_required > $city_res->food || $wood_required > $city_res->wood || $rock_required > $city_res->rock || $steel_required > $city_res->steel || $gold_required > $city_res->gold)
             {
                 session()->put(["sending_failed" => 1]);
                 return (1);
@@ -234,13 +235,13 @@
             $speed = 3600 / (DB::table('units')->where('name', '=', $unit)->value('speed'));
             $finishing_date = ((abs($city_res->x_pos - $dest_x) + abs($city_res->y_pos - $dest_y)) * $speed) + time();
             DB::table('cities')->where('id', '=', $city_id)->update(["food" => $city_res->food - $food_required, "wood" => $city_res->wood - $wood_required, "rock" => $city_res->rock - $rock_required, "steel" => $city_res->steel - $steel_required, "gold" => $city_res->gold - $gold_required]);
-            DB::table('cities_units')->where('city_id', '=', $city_id)->update([$unit => $unit_avaible->$unit - $unit_required]);
+            DB::table('cities_units')->where('city_id', '=', $city_id)->update([$unit => $unit_avaible - $unit_required]);
             $traveling_id = DB::table('traveling_units')->insertGetId([
                 "city_id" => $city_id,
                 "owner" => $user_id,
                 "starting_point" => $city_res->x_pos . "/" . $city_res->y_pos,
                 "ending_point" => $dest_x . "/" . $dest_y,
-                "units" => $unit_avaible->id . ":" . $unit_required,
+                "units" => $unit_id . ":" . $unit_required,
                 "traveling_duration" => ((abs($city_res->x_pos - $dest_x) + abs($city_res->y_pos - $dest_y)) * $speed),
                 "finishing_date" => $finishing_date,
                 "mission" => $choice

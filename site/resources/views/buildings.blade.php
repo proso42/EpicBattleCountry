@@ -31,7 +31,7 @@
                             <img class="building" style="width:250px;height: 250px;" src="{{ $build['illustration'] }}">
                             @if ($build['status'] == "OK")
                                 <div id="eco_{{ $build['id'] }}" name="{{ $build['name'] }}" @if ($build['food_required'] > $food || $build['wood_required'] > $wood || $build['rock_required'] > $rock || $build['steel_required'] > $steel || $build['gold_required'] > $gold) class="building-button-impossible" @else class="building-button"
-                                onclick="update_building('{{ $build['id'] }}')"@endif>                                
+                                onclick="update_building('eco_{{ $build['id'] }}')"@endif>                                
                                     @if ($build["niv"] == 0)
                                         @lang('building.build') <i class="fas fa-hammer icon"></i>
                                     @else

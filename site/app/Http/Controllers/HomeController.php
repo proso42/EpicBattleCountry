@@ -109,7 +109,7 @@
                 $unit_format = preg_replace('/\s/', '_', $unit->name);
                 $unit_quantity = $city_units->$unit_format;
                 if ($unit_quantity > 0)
-                    array_push($units_owned, ["name" => trans('unit.' . $unit->name), "quantity" => $unit_quantity]);
+                    array_push($units_owned, ["name" => trans('unit.' . $unit_format), "quantity" => $unit_quantity]);
             }
             if ($city->Cheval > 0)
                 array_push($units_owned, ["name" => trans('mount.Cheval'), "quantity" => $city->Cheval]);

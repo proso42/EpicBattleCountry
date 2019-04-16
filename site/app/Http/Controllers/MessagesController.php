@@ -76,6 +76,7 @@
             $all_users = DB::table('users')->get();
             $notif_alert = 0;
             $msg_received_alert = 0;
+            dd($all_user_msgs);
             foreach ($all_user_msgs as $msg)
             {
                 if ($msg->sender == "notification" && $msg->target_city == $city_id)
@@ -85,10 +86,10 @@
                         $notif_alert++;
                 }
                 else if ($msg->sender == $user_id)
-                    array_push($msg_sended, ["id" => $msg->id, "seen" => $msg->seen, "sender" => $all_users[$msg->sender - 1]->login, "title" => $msg->title, "content" => $msg->content, "date" => $msg->sending_date]);
+                    array_push($msg_sended, ["id" => $msg->id, "seen" => $msg->seen, "sender" => $all_users[$msg->sender]->login, "title" => $msg->title, "content" => $msg->content, "date" => $msg->sending_date]);
                 else if ($msg->target == $user_id)
                 {
-                    array_push($msg_received, ["id" => $msg->id, "seen" => $msg->seen, "target" => $all_users[$msg->target - 1]->login, "title" => $msg->title, "content" => $msg->content, "date" => $msg->sending_date]);
+                    array_push($msg_received, ["id" => $msg->id, "seen" => $msg->seen, "target" => $all_users[$msg->target]->login, "title" => $msg->title, "content" => $msg->content, "date" => $msg->sending_date]);
                     if ($msg->seen == 0)
                         $msg_received_alert++;
                 }

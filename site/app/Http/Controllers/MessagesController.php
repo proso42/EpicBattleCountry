@@ -85,10 +85,10 @@
                         $notif_alert++;
                 }
                 else if ($msg->sender == $user_id)
-                    array_push($msg_sended, ["id" => $msg->id, "seen" => $msg->seen, "sender" => $all_users["id=$msg->sender"]->login, "title" => $msg->title, "content" => $msg->content, "date" => $msg->sending_date]);
-                else if ($msg->target == $user_id)
+                    array_push($msg_sended, ["id" => $msg->id, "seen" => $msg->seen, "sender" => $all_users[$this->get_id($all_users, $msg->sender)]->login, "title" => $msg->title, "content" => $msg->content, "date" => $msg->sending_date]);
+                else if ($msg->target == $user_id && $msg->sender != "notification")
                 {
-                    array_push($msg_received, ["id" => $msg->id, "seen" => $msg->seen, "target" => $all_users["id=$msg->target"]->login, "title" => $msg->title, "content" => $msg->content, "date" => $msg->sending_date]);
+                    array_push($msg_received, ["id" => $msg->id, "seen" => $msg->seen, "target" => $all_users[$this->get_id($all_users, $msg->target)]->login, "title" => $msg->title, "content" => $msg->content, "date" => $msg->sending_date]);
                     if ($msg->seen == 0)
                         $msg_received_alert++;
                 }
@@ -98,6 +98,16 @@
             foreach ($all_users_blocked as $blocked)
                 array_push($users_blocked, $all_users[$blocked->user_blocked]['login']);
             return view('messages', compact('first_active_tab', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold', 'notifications', 'msg_sended', 'msg_received', 'users_blocked', 'notif_alert', 'msg_received_alert'));
+        }
+
+        private function get_id($all_users, $id)
+        {
+            foreach ($all_users as $user)
+            {
+                if ($user->id == $id)
+                    return $id;
+            }
+            return 0;
         }
 
         public function seen(Request $request)

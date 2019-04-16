@@ -57,7 +57,7 @@
                         </div>
                     </div>
                     <div class="explo-block">
-                        <div class="explo-name">@lang('exploration.Raid_Rungeon')</div>
+                        <div class="explo-name">@lang('exploration.Raid_Dungeon')</div>
                         <img class="explo" style="width:250px;height: 250px;" src="{{ $explo[1]['illustration'] }}">
                         <div @if ($explo[1]['unit_required'] > $unit_avaible || $explo[1]['food_required'] > $food || $explo[1]['wood_required'] > $wood || $explo[1]['rock_required'] > $rock || $explo[1]['steel_required'] > $steel || $explo[1]['gold_required'] > $gold) class="explo-button-impossible" @else class="explo-button" onclick="choice(2)"@endif>                                
                             @lang('common.choice') <i class="fas fa-map-marked-alt"></i>

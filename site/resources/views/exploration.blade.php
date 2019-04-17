@@ -32,25 +32,25 @@
                     <div class="explo-block">
                         <div class="explo-name">@lang('exploration.Scouting')</div>
                         <img class="explo" style="width:250px;height: 250px;" src="{{ $explo[0]['illustration'] }}">
-                        <div @if ($explo[0]['unit_required'] > $unit_avaible || $explo[0]['food_required'] > $food || $explo[0]['wood_required'] > $wood || $explo[0]['rock_required'] > $rock || $explo[0]['steel_required'] > $steel || $explo[0]['gold_required'] > $gold) class="explo-button-impossible" @else class="explo-button" onclick="choice(1)"@endif>                                
+                        <div id="exp_0" @if ($explo[0]['unit_required'] > $unit_avaible || $explo[0]['food_required'] > $food || $explo[0]['wood_required'] > $wood || $explo[0]['rock_required'] > $rock || $explo[0]['steel_required'] > $steel || $explo[0]['gold_required'] > $gold) class="explo-button-impossible" @else class="explo-button" onclick="choice(1)"@endif>                                
                             @lang('common.choice') <i class="fas fa-map-marked-alt"></i>
                             <div class="explo-needed">
                                 <ul>
-                                    <li>{{ $explo_unit_name }} : {{ $explo[0]['unit_required'] }} @if ($explo[0]['unit_required'] > $unit_avaible) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                    <li>{{ $explo_unit_name }} : {{ $explo[0]['unit_required'] }} @if ($explo[0]['unit_required'] > $unit_avaible) <i id="icon_unit_exp_0" class="fas fa-times icon"></i> @else <i id="icon_unit_exp_0" class="fas fa-check icon"></i> @endif</li>
                                     @if ($explo[0]['food_required'] > 0)
-                                        <li>@lang('common.food') : {{ $explo[0]['food_required'] }} @if ($explo[0]['food_required'] > $food) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                        <li>@lang('common.food') : {{ $explo[0]['food_required'] }} @if ($explo[0]['food_required'] > $food) <i id="icon_food_exp_0" class="fas fa-times icon"></i> @else <i id="icon_food_exp_0" class="fas fa-check icon"></i> @endif</li>
                                     @endif
                                     @if ($explo[0]['wood_required'] > 0)
-                                        <li>@lang('common.wood') : {{ $explo[0]['wood_required'] }} @if ($explo[0]['wood_required'] > $wood) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                        <li>@lang('common.wood') : {{ $explo[0]['wood_required'] }} @if ($explo[0]['wood_required'] > $wood) <i id="icon_wood_exp_0" class="fas fa-times icon"></i> @else <i id="icon_wood_exp_0" class="fas fa-check icon"></i> @endif</li>
                                     @endif
                                     @if ($explo[0]['rock_required'] > 0)
-                                        <li>@lang('common.rock') : {{ $explo[0]['rock_required'] }} @if ($explo[0]['rock_required'] > $rock) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                        <li>@lang('common.rock') : {{ $explo[0]['rock_required'] }} @if ($explo[0]['rock_required'] > $rock) <i id="icon_rock_exp_0" class="fas fa-times icon"></i> @else <i id="icon_rock_exp_0" class="fas fa-check icon"></i> @endif</li>
                                     @endif
                                     @if ($explo[0]['steel_required'] > 0)
-                                        <li>@lang('common.steel') : {{ $explo[0]['steel_required'] }} @if ($explo[0]['steel_required'] > $steel) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                        <li>@lang('common.steel') : {{ $explo[0]['steel_required'] }} @if ($explo[0]['steel_required'] > $steel) <i id="icon_steel_exp_0" class="fas fa-times icon"></i> @else <i id="icon_steel_exp_0" class="fas fa-check icon"></i> @endif</li>
                                     @endif
                                     @if ($explo[0]['gold_required'] > 0)
-                                        <li>@lang('common.gold') : {{ $explo[0]['gold_required'] }} @if ($explo[0]['gold_required'] > $gold) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                        <li>@lang('common.gold') : {{ $explo[0]['gold_required'] }} @if ($explo[0]['gold_required'] > $gold) <i id="icon_gold_exp_0" class="fas fa-times icon"></i> @else <i id="icon_gold_exp_0" class="fas fa-check icon"></i> @endif</li>
                                     @endif
                                 </ul>
                             </div>                        
@@ -59,25 +59,25 @@
                     <div class="explo-block">
                         <div class="explo-name">@lang('exploration.Raid_Dungeon')</div>
                         <img class="explo" style="width:250px;height: 250px;" src="{{ $explo[1]['illustration'] }}">
-                        <div @if ($explo[1]['unit_required'] > $unit_avaible || $explo[1]['food_required'] > $food || $explo[1]['wood_required'] > $wood || $explo[1]['rock_required'] > $rock || $explo[1]['steel_required'] > $steel || $explo[1]['gold_required'] > $gold) class="explo-button-impossible" @else class="explo-button" onclick="choice(2)"@endif>                                
+                        <div id="exp_1" @if ($explo[1]['unit_required'] > $unit_avaible || $explo[1]['food_required'] > $food || $explo[1]['wood_required'] > $wood || $explo[1]['rock_required'] > $rock || $explo[1]['steel_required'] > $steel || $explo[1]['gold_required'] > $gold) class="explo-button-impossible" @else class="explo-button" onclick="choice(2)"@endif>                                
                             @lang('common.choice') <i class="fas fa-map-marked-alt"></i>
                             <div class="explo-needed">
                                 <ul>
-                                    <li>{{ $explo_unit_name }} : {{ $explo[1]['unit_required'] }} @if ($explo[1]['unit_required'] > $unit_avaible) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                    <li>{{ $explo_unit_name }} : {{ $explo[1]['unit_required'] }} @if ($explo[1]['unit_required'] > $unit_avaible) <i id="icon_unit_exp_1" class="fas fa-times icon"></i> @else <i id="icon_unit_exp_1" class="fas fa-check icon"></i> @endif</li>
                                     @if ($explo[1]['food_required'] > 0)
-                                        <li>@lang('common.food') : {{ $explo[1]['food_required'] }} @if ($explo[1]['food_required'] > $food) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                        <li>@lang('common.food') : {{ $explo[1]['food_required'] }} @if ($explo[1]['food_required'] > $food) <i id="icon_food_exp_1" class="fas fa-times icon"></i> @else <i id="icon_food_exp_1" class="fas fa-check icon"></i> @endif</li>
                                     @endif
                                     @if ($explo[1]['wood_required'] > 0)
-                                        <li>@lang('common.wood') : {{ $explo[1]['wood_required'] }} @if ($explo[1]['wood_required'] > $wood) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                        <li>@lang('common.wood') : {{ $explo[1]['wood_required'] }} @if ($explo[1]['wood_required'] > $wood) <i id="icon_wood_exp_1" class="fas fa-times icon"></i> @else <i id="icon_wood_exp_1" class="fas fa-check icon"></i> @endif</li>
                                     @endif
                                     @if ($explo[1]['rock_required'] > 0)
-                                        <li>@lang('common.rock') : {{ $explo[1]['rock_required'] }} @if ($explo[1]['rock_required'] > $rock) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                        <li>@lang('common.rock') : {{ $explo[1]['rock_required'] }} @if ($explo[1]['rock_required'] > $rock) <i id="icon_rock_exp_1" class="fas fa-times icon"></i> @else <i id="icon_rock_exp_1" class="fas fa-check icon"></i> @endif</li>
                                     @endif
                                     @if ($explo[1]['steel_required'] > 0)
-                                        <li>@lang('common.steel') : {{ $explo[1]['steel_required'] }} @if ($explo[1]['steel_required'] > $steel) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                        <li>@lang('common.steel') : {{ $explo[1]['steel_required'] }} @if ($explo[1]['steel_required'] > $steel) <i id="icon_steel_exp_1" class="fas fa-times icon"></i> @else <i id="icon_steel_exp_1" class="fas fa-check icon"></i> @endif</li>
                                     @endif
                                     @if ($explo[1]['gold_required'] > 0)
-                                        <li>@lang('common.gold') : {{ $explo[1]['gold_required'] }} @if ($explo[1]['gold_required'] > $gold) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                        <li>@lang('common.gold') : {{ $explo[1]['gold_required'] }} @if ($explo[1]['gold_required'] > $gold) <i id="icon_gold_exp_1" class="fas fa-times icon"></i> @else <i id="icon_gold_exp_1" class="fas fa-check icon"></i> @endif</li>
                                     @endif
                                 </ul>
                             </div>                        
@@ -86,25 +86,25 @@
                     <div class="explo-block">
                         <div class="explo-name">@lang('exploration.Raid_Battlefield')</div>
                         <img class="explo" style="width:250px;height: 250px;" src="{{ $explo[2]['illustration'] }}">
-                        <div @if ($explo[2]['unit_required'] > $unit_avaible || $explo[2]['food_required'] > $food || $explo[2]['wood_required'] > $wood || $explo[2]['rock_required'] > $rock || $explo[2]['steel_required'] > $steel || $explo[2]['gold_required'] > $gold) class="explo-button-impossible" @else class="explo-button" onclick="choice(3)"@endif>                                
+                        <div id="exp_2" @if ($explo[2]['unit_required'] > $unit_avaible || $explo[2]['food_required'] > $food || $explo[2]['wood_required'] > $wood || $explo[2]['rock_required'] > $rock || $explo[2]['steel_required'] > $steel || $explo[2]['gold_required'] > $gold) class="explo-button-impossible" @else class="explo-button" onclick="choice(3)"@endif>                                
                             @lang('common.choice') <i class="fas fa-map-marked-alt"></i>
                             <div class="explo-needed">
                                 <ul>
-                                    <li>{{ $explo_unit_name }} : {{ $explo[2]['unit_required'] }} @if ($explo[2]['unit_required'] > $unit_avaible) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                    <li>{{ $explo_unit_name }} : {{ $explo[2]['unit_required'] }} @if ($explo[2]['unit_required'] > $unit_avaible) <i id="icon_unit_exp_2" class="fas fa-times icon"></i> @else <i id="icon_unit_exp_2" class="fas fa-check icon"></i> @endif</li>
                                     @if ($explo[2]['food_required'] > 0)
-                                        <li>@lang('common.food') : {{ $explo[2]['food_required'] }} @if ($explo[2]['food_required'] > $food) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                        <li>@lang('common.food') : {{ $explo[2]['food_required'] }} @if ($explo[2]['food_required'] > $food) <i id="icon_food_exp_2" class="fas fa-times icon"></i> @else <i id="icon_food_exp_2" class="fas fa-check icon"></i> @endif</li>
                                     @endif
                                     @if ($explo[2]['wood_required'] > 0)
-                                        <li>@lang('common.wood') : {{ $explo[2]['wood_required'] }} @if ($explo[2]['wood_required'] > $wood) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                        <li>@lang('common.wood') : {{ $explo[2]['wood_required'] }} @if ($explo[2]['wood_required'] > $wood) <i id="icon_wood_exp_2" class="fas fa-times icon"></i> @else <i id="icon_wood_exp_2" class="fas fa-check icon"></i> @endif</li>
                                     @endif
                                     @if ($explo[2]['rock_required'] > 0)
-                                        <li>@lang('common.rock') : {{ $explo[2]['rock_required'] }} @if ($explo[2]['rock_required'] > $rock) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                        <li>@lang('common.rock') : {{ $explo[2]['rock_required'] }} @if ($explo[2]['rock_required'] > $rock) <i id="icon_rock_exp_2" class="fas fa-times icon"></i> @else <i id="icon_rock_exp_2" class="fas fa-check icon"></i> @endif</li>
                                     @endif
                                     @if ($explo[2]['steel_required'] > 0)
-                                        <li>@lang('common.steel') : {{ $explo[2]['steel_required'] }} @if ($explo[2]['steel_required'] > $steel) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                        <li>@lang('common.steel') : {{ $explo[2]['steel_required'] }} @if ($explo[2]['steel_required'] > $steel) <i id="icon_steel_exp_2" class="fas fa-times icon"></i> @else <i id="icon_steel_exp_2" class="fas fa-check icon"></i> @endif</li>
                                     @endif
                                     @if ($explo[2]['gold_required'] > 0)
-                                        <li>@lang('common.gold') : {{ $explo[2]['gold_required'] }} @if ($explo[2]['gold_required'] > $gold) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                        <li>@lang('common.gold') : {{ $explo[2]['gold_required'] }} @if ($explo[2]['gold_required'] > $gold) <i id="icon_gold_exp_2" class="fas fa-times icon"></i> @else <i id="icon_gold_exp_2" class="fas fa-check icon"></i> @endif</li>
                                     @endif
                                 </ul>
                             </div>                        
@@ -113,25 +113,25 @@
                     <div class="explo-block">
                         <div class="explo-name">@lang('exploration.Colonize')</div>
                         <img class="explo" style="width:250px;height: 250px;" src="{{ $explo[3]['illustration'] }}">
-                        <div @if ($explo[3]['unit_required'] > $unit_avaible || $explo[3]['food_required'] > $food || $explo[3]['wood_required'] > $wood || $explo[3]['rock_required'] > $rock || $explo[3]['steel_required'] > $steel || $explo[3]['gold_required'] > $gold) class="explo-button-impossible" @else class="explo-button" onclick="choice(4)"@endif>                                
+                        <div id="exp_3" @if ($explo[3]['unit_required'] > $unit_avaible || $explo[3]['food_required'] > $food || $explo[3]['wood_required'] > $wood || $explo[3]['rock_required'] > $rock || $explo[3]['steel_required'] > $steel || $explo[3]['gold_required'] > $gold) class="explo-button-impossible" @else class="explo-button" onclick="choice(4)"@endif>                                
                             @lang('common.choice') <i class="fas fa-map-marked-alt"></i>
                             <div class="explo-needed">
                                 <ul>
-                                    <li>{{ $explo_unit_name }} : {{ $explo[3]['unit_required'] }} @if ($explo[3]['unit_required'] > $unit_avaible) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                    <li>{{ $explo_unit_name }} : {{ $explo[3]['unit_required'] }} @if ($explo[3]['unit_required'] > $unit_avaible) <i id="icon_unit_exp_3" class="fas fa-times icon"></i> @else <i id="icon_unit_exp_3" class="fas fa-check icon"></i> @endif</li>
                                     @if ($explo[3]['food_required'] > 0)
-                                        <li>@lang('common.food') : {{ $explo[3]['food_required'] }} @if ($explo[3]['food_required'] > $food) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                        <li>@lang('common.food') : {{ $explo[3]['food_required'] }} @if ($explo[3]['food_required'] > $food) <i id="icon_food_exp_3" class="fas fa-times icon"></i> @else <i id="icon_food_exp_3" class="fas fa-check icon"></i> @endif</li>
                                     @endif
                                     @if ($explo[3]['wood_required'] > 0)
-                                        <li>@lang('common.wood') : {{ $explo[3]['wood_required'] }} @if ($explo[3]['wood_required'] > $wood) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                        <li>@lang('common.wood') : {{ $explo[3]['wood_required'] }} @if ($explo[3]['wood_required'] > $wood) <i id="icon_wood_exp_3" class="fas fa-times icon"></i> @else <i id="icon_wood_exp_3" class="fas fa-check icon"></i> @endif</li>
                                     @endif
                                     @if ($explo[3]['rock_required'] > 0)
-                                        <li>@lang('common.rock') : {{ $explo[3]['rock_required'] }} @if ($explo[3]['rock_required'] > $rock) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                        <li>@lang('common.rock') : {{ $explo[3]['rock_required'] }} @if ($explo[3]['rock_required'] > $rock) <i id="icon_rock_exp_3" class="fas fa-times icon"></i> @else <i id="icon_rock_exp_3" class="fas fa-check icon"></i> @endif</li>
                                     @endif
                                     @if ($explo[3]['steel_required'] > 0)
-                                        <li>@lang('common.steel') : {{ $explo[3]['steel_required'] }} @if ($explo[3]['steel_required'] > $steel) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                        <li>@lang('common.steel') : {{ $explo[3]['steel_required'] }} @if ($explo[3]['steel_required'] > $steel) <i id="icon_steel_exp_3" class="fas fa-times icon"></i> @else <i id="icon_steel_exp_3" class="fas fa-check icon"></i> @endif</li>
                                     @endif
                                     @if ($explo[3]['gold_required'] > 0)
-                                        <li>@lang('common.gold') : {{ $explo[3]['gold_required'] }} @if ($explo[3]['gold_required'] > $gold) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                        <li>@lang('common.gold') : {{ $explo[3]['gold_required'] }} @if ($explo[3]['gold_required'] > $gold) <i id="icon_gold_exp_3" class="fas fa-times icon"></i> @else <i id="icon_gold_exp_3" class="fas fa-check icon"></i> @endif</li>
                                     @endif
                                 </ul>
                             </div>                        
@@ -196,15 +196,56 @@
                     if (xhr.readyState === 4 && xhr.status === 200)
                     {
                         console.log(xhr.responseText)
-                        if (xhr.responseText == 1)
-                            window.location.reload();
+                        if (xhr.responseText.indexOf("error") < 0)
+                        {
+                            let infos = JSON.parse(xhr.responseText);
+                            console.log(infos);
+                            document.getElementById("food").textContent = infos.food;
+                            document.getElementById("wood").textContent = infos.wood;
+                            document.getElementById("rock").textContent = infos.rock;
+                            document.getElementById("steel").textContent = infos.steel;
+                            document.getElementById("gold").textContent = infos.gold;
+                            if (infos.food < 100 || infos.unit_avaible < 1)
+                            {
+                                for (let i = 0; i < 3; i++)
+                                {
+                                    let exp = document.getElementById("exp_" + i);
+                                    exp.className = "explo-button-impossible";
+                                    exp.onclick = function (){};
+                                    if (infos.food < 100)
+                                        document.getElementById("icon_food_exp_" + i).className = "fas fa-times icon";
+                                    if (infos.unit_avaible < 1)
+                                        document.getElementById("icon_unit_exp_" + i).className = "fas fa-times icon";
+                                }
+                            }
+                            if (infos.food < 100 || infos.wood < 10000 || infos.rock < 5000 || infos.steel < 2500 || infos.gold < 1000 || infos.unit_avaible < 5)
+                            {
+                                let colonize = document.getElementById("exp_3");
+                                colonize.className = "explo-button-impossible";
+                                colonize.onclick = function (){};
+                                if (infos.food < 100)
+                                    document.getElementById("icon_food_exp_3").className = "fas fa-times icon";
+                                if (infos.wood < 10000)
+                                    document.getElementById("icon_wood_exp_3").className = "fas fa-times icon";
+                                if (infos.rock < 5000)
+                                    document.getElementById("icon_rock_exp_3").className = "fas fa-times icon";
+                                if (infos.steel < 2500)
+                                    document.getElementById("icon_steel_exp_3").className = "fas fa-times icon";
+                                if (infos.gold < 1000)
+                                    document.getElementById("icon_gold_exp_3").className = "fas fa-times icon";
+                                if (infos.unit_avaible < 5)
+                                    document.getElementById("icon_unit_exp_3").className = "fas fa-times icon";
+                            }
+                        }
+                        else
+                        {
+                            console.log(xhr.responseText);
+                            return ;
+                        }
                     }
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhr.send('_token=' + _token + '&choice=' + g_choice + "&dest_x=" + dest_x + "&dest_y=" + dest_y);
-                setTimeout(() =>{
-                    window.location.reload();
-                }, 2000);
             }
 
             function check_coord(n)

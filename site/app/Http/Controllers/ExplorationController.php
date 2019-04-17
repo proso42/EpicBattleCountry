@@ -184,10 +184,7 @@
             $dest_y = $request['dest_y'];
             $choice = $request['choice'];
             if ($dest_x < -2000 || $dest_x > 2000 || $dest_y < -2000 || $dest_y > 2000 || $choice < 1 || $choice > 4 || !is_numeric($dest_x) || !is_numeric($dest_y) || !is_numeric($choice))
-            {
-                session()->put(["sending_failed" => 1]);
-                return (1);
-            }
+                return ("error : bad coord");
             $user_id = session()->get('user_id');
             $user_race = session()->get('user_race');
             $city_id = session()->get("city_id");
@@ -210,10 +207,7 @@
             $unit_avaible = DB::table('cities_units')->where('city_id', '=', $city_id)->value($unit);
             $city_res = DB::table('cities')->select('food', 'wood', 'rock', 'steel', 'gold', 'x_pos', 'y_pos')->where('id', '=', $city_id)->first();
             if ($city_res->x_pos == $dest_x && $city_res->y_pos == $dest_y)
-            {
-                session()->put(["sending_failed" => 1]);
-                return ("no_move");
-            }
+                return ("error : no_move");
             $unit_required = 1;
             $food_required = 100;
             $wood_required = 0;
@@ -229,10 +223,7 @@
                 $gold_required = 1000;
             }
             if ($unit_avaible < $unit_required || $food_required > $city_res->food || $wood_required > $city_res->wood || $rock_required > $city_res->rock || $steel_required > $city_res->steel || $gold_required > $city_res->gold)
-            {
-                session()->put(["sending_failed" => 1]);
-                return (1);
-            }
+                return ("error : not enough ressources or unit(s)");
             $speed = 3600 / (DB::table('units')->where('name', '=', $unit)->value('speed'));
             $finishing_date = ((abs($city_res->x_pos - $dest_x) + abs($city_res->y_pos - $dest_y)) * $speed) + time();
             DB::table('cities')->where('id', '=', $city_id)->update(["food" => $city_res->food - $food_required, "wood" => $city_res->wood - $wood_required, "rock" => $city_res->rock - $rock_required, "steel" => $city_res->steel - $steel_required, "gold" => $city_res->gold - $gold_required]);
@@ -247,10 +238,8 @@
                 "finishing_date" => $finishing_date,
                 "mission" => $choice
             ]);
-            session()->put(["sending_success" => 1]);
-            $cmd = "cd /home/boss/www/scripts ; node send_expedition.js " . $finishing_date . " " . $traveling_id;
-            exec($cmd);
-            return 0;
+            $infos = ["food" => $city_res->food - $food_required, "wood" => $city_res->wood - $wood_required, "rock" => $city_res->rock - $rock_required, "steel" => $city_res->steel - $steel_required, "gold" => $city_res->gold - $gold_required, "unit_available" => $unit_avaible - $unit_required];
+            return ($infos);
         }
     }
 ?>

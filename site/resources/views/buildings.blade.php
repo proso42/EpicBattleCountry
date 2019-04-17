@@ -206,7 +206,7 @@
                 {
                     document.getElementById(activeTab).className = "col-lg-3 col-md-3 col-sm-3 col-3 generique-tab";
                     document.getElementById(activeId + "-tab").className = "col-lg-3 col-md-3 col-sm-3 col-3 generique-tab-active";
-                    document.getElementById(activeBuildings).style.display = "";
+                    document.getElementById(activeBuildings).style.display = "none";
                     document.getElementById(activeId + "-buildings").style.display = "";
                     activeTab = activeId + "-tab";
                     activeBuildings = activeId + "-buildings";

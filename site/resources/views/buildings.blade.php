@@ -40,19 +40,19 @@
                                     <div id="res_eco_{{ $build['id'] }}" class="building-res-needed">
                                         <ul>
                                         @if ($build['food_required'] > 0)
-                                                <li>@lang('common.food') : {{ $build['food_required'] }} @if ($build['food_required'] > $food) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                                <li>@lang('common.food') : {{ $build['food_required'] }} @if ($build['food_required'] > $food) <i id="icon_food_eco_{{ $build['id'] }}" class="fas fa-times icon"></i> @else <i id="icon_food_eco_{{ $build['id'] }}" class="fas fa-check icon"></i> @endif</li>
                                             @endif
                                             @if ($build['wood_required'] > 0)
-                                                <li>@lang('common.wood') : {{ $build['wood_required'] }} @if ($build['wood_required'] > $wood) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                                <li>@lang('common.wood') : {{ $build['wood_required'] }} @if ($build['wood_required'] > $wood) <i id="icon_wood_eco_{{ $build['id'] }}" class="fas fa-times icon"></i> @else <i id="icon_wood_eco_{{ $build['id'] }}" class="fas fa-check icon"></i> @endif</li>
                                             @endif
                                             @if ($build['rock_required'] > 0)
-                                                <li>@lang('common.rock') : {{ $build['rock_required'] }} @if ($build['rock_required'] > $rock) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                                <li>@lang('common.rock') : {{ $build['rock_required'] }} @if ($build['rock_required'] > $rock) <i id="icon_rock_eco_{{ $build['id'] }}" class="fas fa-times icon"></i> @else <i id="icon_rock_eco_{{ $build['id'] }}" class="fas fa-check icon"></i> @endif</li>
                                             @endif
                                             @if ($build['steel_required'] > 0)
-                                                <li>@lang('common.steel') : {{ $build['steel_required'] }} @if ($build['steel_required'] > $steel) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                                <li>@lang('common.steel') : {{ $build['steel_required'] }} @if ($build['steel_required'] > $steel) <i id="icon_steel_eco_{{ $build['id'] }}" class="fas fa-times icon"></i> @else <i id="icon_steel_eco_{{ $build['id'] }}" class="fas fa-check icon"></i> @endif</li>
                                             @endif
                                             @if ($build['gold_required'] > 0)
-                                                <li>@lang('common.gold') : {{ $build['gold_required'] }} @if ($build['gold_required'] > $gold) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                                <li>@lang('common.gold') : {{ $build['gold_required'] }} @if ($build['gold_required'] > $gold) <i id="icon_gold_eco_{{ $build['id'] }}" class="fas fa-times icon"></i> @else <i id="icon_gold_eco_{{ $build['id'] }}" class="fas fa-check icon"></i> @endif</li>
                                             @endif
                                             <li>@lang('common.time') : {{ $build['duration'] }} <i class="fas fa-clock icon"></i></li>
                                         </ul>
@@ -80,19 +80,19 @@
                                 <div id="res_army_{{ $build['id'] }}" class="building-res-needed">
                                     <ul>
                                     @if ($build['food_required'] > 0)
-                                            <li>@lang('common.food') : {{ $build['food_required'] }} @if ($build['food_required'] > $food) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                            <li>@lang('common.food') : {{ $build['food_required'] }} @if ($build['food_required'] > $food) <i id="icon_food_army_{{ $build['id'] }}" class="fas fa-times icon"></i> @else <i id="icon_food_army_{{ $build['id'] }}" class="fas fa-check icon"></i> @endif</li>
                                         @endif
                                         @if ($build['wood_required'] > 0)
-                                            <li>@lang('common.wood') : {{ $build['wood_required'] }} @if ($build['wood_required'] > $wood) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                            <li>@lang('common.wood') : {{ $build['wood_required'] }} @if ($build['wood_required'] > $wood) <i id="icon_wood_army_{{ $build['id'] }}" class="fas fa-times icon"></i> @else <i id="icon_wood_army_{{ $build['id'] }}" class="fas fa-check icon"></i> @endif</li>
                                         @endif
                                         @if ($build['rock_required'] > 0)
-                                            <li>@lang('common.rock') : {{ $build['rock_required'] }} @if ($build['rock_required'] > $rock) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                            <li>@lang('common.rock') : {{ $build['rock_required'] }} @if ($build['rock_required'] > $rock) <i id="icon_rock_army_{{ $build['id'] }}" class="fas fa-times icon"></i> @else <i id="icon_rock_army_{{ $build['id'] }}" class="fas fa-check icon"></i> @endif</li>
                                         @endif
                                         @if ($build['steel_required'] > 0)
-                                            <li>@lang('common.steel') : {{ $build['steel_required'] }} @if ($build['steel_required'] > $steel) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                            <li>@lang('common.steel') : {{ $build['steel_required'] }} @if ($build['steel_required'] > $steel) <i id="icon_steel_army_{{ $build['id'] }}" class="fas fa-times icon"></i> @else <i id="icon_steel_army_{{ $build['id'] }}" class="fas fa-check icon"></i> @endif</li>
                                         @endif
                                         @if ($build['gold_required'] > 0)
-                                            <li>@lang('common.gold') : {{ $build['gold_required'] }} @if ($build['gold_required'] > $gold) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                            <li>@lang('common.gold') : {{ $build['gold_required'] }} @if ($build['gold_required'] > $gold) <i id="icon_gold_army_{{ $build['id'] }}" class="fas fa-times icon"></i> @else <i id="icon_gold_army_{{ $build['id'] }}" class="fas fa-check icon"></i> @endif</li>
                                         @endif
                                         <li>@lang('common.time') : {{ $build['duration'] }} <i class="fas fa-clock icon"></i></li>
                                     </ul>
@@ -120,19 +120,19 @@
                                 <div id="res_religious_{{ $build['id'] }}" class="building-res-needed">
                                     <ul>
                                     @if ($build['food_required'] > 0)
-                                            <li>@lang('common.food') : {{ $build['food_required'] }} @if ($build['food_required'] > $food) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                            <li>@lang('common.food') : {{ $build['food_required'] }} @if ($build['food_required'] > $food) <i id="icon_food_religious_{{ $build['id'] }}" class="fas fa-times icon"></i> @else <i id="icon_food_religious_{{ $build['id'] }}" class="fas fa-check icon"></i> @endif</li>
                                         @endif
                                         @if ($build['wood_required'] > 0)
-                                            <li>@lang('common.wood') : {{ $build['wood_required'] }} @if ($build['wood_required'] > $wood) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                            <li>@lang('common.wood') : {{ $build['wood_required'] }} @if ($build['wood_required'] > $wood) <i id="icon_wood_religious_{{ $build['id'] }}" class="fas fa-times icon"></i> @else <i id="icon_wood_religious_{{ $build['id'] }}" class="fas fa-check icon"></i> @endif</li>
                                         @endif
                                         @if ($build['rock_required'] > 0)
-                                            <li>@lang('common.rock') : {{ $build['rock_required'] }} @if ($build['rock_required'] > $rock) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                            <li>@lang('common.rock') : {{ $build['rock_required'] }} @if ($build['rock_required'] > $rock) <i id="icon_rock_religious_{{ $build['id'] }}" class="fas fa-times icon"></i> @else <i id="icon_rock_religious_{{ $build['id'] }}" class="fas fa-check icon"></i> @endif</li>
                                         @endif
                                         @if ($build['steel_required'] > 0)
-                                            <li>@lang('common.steel') : {{ $build['steel_required'] }} @if ($build['steel_required'] > $steel) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                            <li>@lang('common.steel') : {{ $build['steel_required'] }} @if ($build['steel_required'] > $steel) <i id="icon_steel_religious_{{ $build['id'] }}" class="fas fa-times icon"></i> @else <i id="icon_steel_religious_{{ $build['id'] }}" class="fas fa-check icon"></i> @endif</li>
                                         @endif
                                         @if ($build['gold_required'] > 0)
-                                            <li>@lang('common.gold') : {{ $build['gold_required'] }} @if ($build['gold_required'] > $gold) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                            <li>@lang('common.gold') : {{ $build['gold_required'] }} @if ($build['gold_required'] > $gold) <i id="icon_gold_religious_{{ $build['id'] }}" class="fas fa-times icon"></i> @else <i id="icon_gold_religious_{{ $build['id'] }}" class="fas fa-check icon"></i> @endif</li>
                                         @endif
                                         <li>@lang('common.time') : {{ $build['duration'] }} <i class="fas fa-clock icon"></i></li>
                                     </ul>
@@ -160,19 +160,19 @@
                                 <div id="res_tech_{{ $build['id'] }}" class="building-res-needed">
                                     <ul>
                                     @if ($build['food_required'] > 0)
-                                            <li>@lang('common.food') : {{ $build['food_required'] }} @if ($build['food_required'] > $food) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                            <li>@lang('common.food') : {{ $build['food_required'] }} @if ($build['food_required'] > $food) <i id="icon_food_tech_{{ $build['id'] }}" class="fas fa-times icon"></i> @else <i id="icon_food_tech_{{ $build['id'] }}" class="fas fa-check icon"></i> @endif</li>
                                         @endif
                                         @if ($build['wood_required'] > 0)
-                                            <li>@lang('common.wood') : {{ $build['wood_required'] }} @if ($build['wood_required'] > $wood) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                            <li>@lang('common.wood') : {{ $build['wood_required'] }} @if ($build['wood_required'] > $wood) <i id="icon_wood_tech_{{ $build['id'] }}" class="fas fa-times icon"></i> @else <i id="icon_wood_tech_{{ $build['id'] }}" class="fas fa-check icon"></i> @endif</li>
                                         @endif
                                         @if ($build['rock_required'] > 0)
-                                            <li>@lang('common.rock') : {{ $build['rock_required'] }} @if ($build['rock_required'] > $rock) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                            <li>@lang('common.rock') : {{ $build['rock_required'] }} @if ($build['rock_required'] > $rock) <i id="icon_rock_tech_{{ $build['id'] }}"class="fas fa-times icon"></i> @else <i id="icon_rock_tech_{{ $build['id'] }}" class="fas fa-check icon"></i> @endif</li>
                                         @endif
                                         @if ($build['steel_required'] > 0)
-                                            <li>@lang('common.steel') : {{ $build['steel_required'] }} @if ($build['steel_required'] > $steel) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                            <li>@lang('common.steel') : {{ $build['steel_required'] }} @if ($build['steel_required'] > $steel) <i id="icon_steel_tech_{{ $build['id'] }}" class="fas fa-times icon"></i> @else <i id="icon_steel_tech_{{ $build['id'] }}" class="fas fa-check icon"></i> @endif</li>
                                         @endif
                                         @if ($build['gold_required'] > 0)
-                                            <li>@lang('common.gold') : {{ $build['gold_required'] }} @if ($build['gold_required'] > $gold) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                            <li>@lang('common.gold') : {{ $build['gold_required'] }} @if ($build['gold_required'] > $gold) <i id="icon_gold_tech_{{ $build['id'] }}" class="fas fa-times icon"></i> @else <i id="icon_gold_tech_{{ $build['id'] }}" class="fas fa-check icon"></i> @endif</li>
                                         @endif
                                         <li>@lang('common.time') : {{ $build['duration'] }} <i class="fas fa-clock icon"></i></li>
                                     </ul>
@@ -330,7 +330,7 @@
                     {
                         if (xhr.responseText.indexOf("error") < 0)
                         {
-                            let infos = JSON.parse(xhr.responseText);
+                            var infos = JSON.parse(xhr.responseText);
                             console.log(infos);                          
                             div_id = type + "_" + id; 
                             let duration = infos.time_remaining;
@@ -343,9 +343,26 @@
                             elem.className = "building-wip";
                             elem.onclick = function (){};
                             document.getElementById("res_" + type + "_" + id).remove();
-                            /*infos.forbidden_buildings.forEach(function(e){
-                                
-                            });*/
+                            infos.forbidden_buildings.forEach(function(e){
+                                let forbidden = document.getElementById(e.id);
+                                if (forbidden.className == "building-button-impossible")
+                                    continue ;
+                                else
+                                {
+                                    forbidden.className = "building-button-impossible";
+                                    forbidden.onclick = function (){};
+                                    if (forbidden.food_required > 0 && forbidden.food_required > infos.food)
+                                        document.getElementById("icon_food_" + forbidden.id).className = "fas fa-times icon";
+                                    if (forbidden.wood_required > 0 && forbidden.wood_required > infos.wood)
+                                        document.getElementById("icon_wood_" + forbidden.id).className = "fas fa-times icon";
+                                    if (forbidden.rock_required > 0 && forbidden.rock_required > infos.rock)
+                                        document.getElementById("icon_rock_" + forbidden.id).className = "fas fa-times icon";
+                                    if (forbidden.steel_required > 0 && forbidden.steel_required > infos.steel)
+                                        document.getElementById("icon_steel_" + forbidden.id).className = "fas fa-times icon";
+                                    if (forbidden.gold_required > 0 && forbidden.gold_required > infos.gold)
+                                        document.getElementById("icon_gold_" + forbidden.id).className = "fas fa-times icon";
+                                }
+                            });
                             timer(div_id, duration);
                         }
                         else

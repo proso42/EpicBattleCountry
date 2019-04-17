@@ -204,9 +204,6 @@
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhr.send('_token=' + _token + '&tech_id=' + tech_id);
-                setTimeout(() => {
-                    window.location.href="http://www.epicbattlecorp.fr/techs";
-                }, 400);
             }
         </script>
     </body>

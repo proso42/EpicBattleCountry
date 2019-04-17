@@ -334,7 +334,7 @@
                             let infos = JSON.parse(xhr.responseText);
                             console.log(infos);                          
                             div_id = type + "_" + id; 
-                            let duration = infos.remaining_time;
+                            let duration = infos.time_remaining;
                             document.getElementById("food").textContent = infos.food;
                             document.getElementById("wood").textContent = infos.wood;
                             document.getElementById("rock").textContent = infos.rock;

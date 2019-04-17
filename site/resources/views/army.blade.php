@@ -224,15 +224,17 @@
                 {
                     if (xhr2.readyState === 4 && xhr2.status === 200)
                     {
-                        window.location.reload();
-                        console.log(xhr2.responseText);
+                        if (xhr.responseText == "Good")
+                            window.location.reload();
+                        else
+                        {
+                            console.log(xhr.responseText);
+                            return ;
+                        }
                     }
                 }
                 xhr2.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhr2.send('_token=' + _token + '&unit_id=' + unit_id + "&quantity=" + quantity);
-                setTimeout(() => {
-                    window.location.reload();
-                }, 300);
             }
 
             function cancel()

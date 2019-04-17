@@ -344,9 +344,7 @@
             ->update($ressources_tab);
             $id = DB::table('waiting_units')
             ->insertGetId(["city_id" => $city_id, "unit_id" => $unit->id, "finishing_date" => $finishing_date, "quantity" => $quantity]);
-            $cmd = "cd /home/boss/www/scripts ; node finish_unit.js " . $id . " " . $quantity . " " . $finishing_date;
-            exec($cmd);
-            return ;
+            return "Good";
         }
     }
 

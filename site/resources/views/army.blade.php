@@ -224,11 +224,11 @@
                 {
                     if (xhr2.readyState === 4 && xhr2.status === 200)
                     {
-                        if (xhr.responseText == "Good")
+                        if (xhr2.responseText == "Good")
                             window.location.reload();
                         else
                         {
-                            console.log(xhr.responseText);
+                            console.log(xhr2.responseText);
                             return ;
                         }
                     }

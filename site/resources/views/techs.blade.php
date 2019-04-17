@@ -150,7 +150,7 @@
                 }
             }
 
-            function update_tech(tech_id)
+            function update_tech(id)
             {
                 var _token = document.getElementById('_token').value;
                 var xhr = new XMLHttpRequest();
@@ -169,17 +169,17 @@
                             document.getElementById("rock").textContent = infos.rock;
                             document.getElementById("steel").textContent = infos.steel;
                             document.getElementById("gold").textContent = infos.gold;
-                            let elem = document.getElementById("tech_" + tech_id);
+                            let elem = document.getElementById("tech_" + id);
                             elem.className = "tech-wip";
                             elem.onclick = function (){};
-                            document.getElementById("res_tech_" + tech_id).remove();
+                            document.getElementById("res_tech_" + id).remove();
                             infos.forbidden_techs.forEach(function(e){
-                                let forbidden = document.getElementById("tech_" + e.tech_id);
-                                if (forbidden.className == "building-button-impossible")
+                                let forbidden = document.getElementById(e.tech_id);
+                                if (forbidden.className == "tech-button-impossible")
                                     return ;
                                 else
                                 {
-                                    forbidden.className = "building-button-impossible";
+                                    forbidden.className = "tech-button-impossible";
                                     forbidden.onclick = function (){};
                                     if (e.food_required > 0 && e.food_required > infos.food)
                                         document.getElementById("icon_food_tech_" + e.tech_id).className = "fas fa-times icon";

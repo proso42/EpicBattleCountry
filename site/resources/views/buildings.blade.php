@@ -328,10 +328,11 @@
                 {
                     if (xhr.readyState === 4 && xhr.status === 200)
                     {
-                        console.log(xhr.responseText);
+                        //console.log(xhr.responseText);
                         if (xhr.responseText.indexOf("error") < 0)
                         {
                             let infos = JSON.parse(xhr.responseText);
+                            console.log(infos);                          
                             div_id = type + "_" + id; 
                             let duration = infos.remaining_time;
                             document.getElementById("food").textContent = infos.food;

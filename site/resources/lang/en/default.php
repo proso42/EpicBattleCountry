@@ -29,6 +29,7 @@ return [
     'score' => 'Score',
     'profile' => 'Profile',
     'shop' => 'Shop',
+    'admin' => 'Admin menu',
     'logout' => 'Logout',
 
 ];

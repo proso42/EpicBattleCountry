@@ -30,6 +30,7 @@
                 ->value('id');
                 session()->put(['city_id' => $city_id]);
             }
+            $is_admin = DB::table('users')->where('id', '=', $user_id)->value("is_admin");
             $city_build = DB::table('cities_buildings')
             ->where('owner', '=', $user_id)
             ->where('city_id', '=', $city_id)
@@ -68,7 +69,7 @@
             if ($gold > 999999)
                 $compact_gold = substr($gold, 0, 5) . '...';
             $allowed_techs = $this->get_allowed_techs();
-            return view('techs', compact('allowed', 'allowed_techs','food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
+            return view('techs', compact('is_admin', 'allowed', 'allowed_techs','food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
         }
 
         private function get_allowed_techs()

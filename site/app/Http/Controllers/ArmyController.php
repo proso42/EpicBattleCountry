@@ -30,6 +30,7 @@
                 ->value('id');
                 session()->put(['city_id' => $city_id]);
             }
+            $is_admin = DB::table('users')->where('id', '=', $user_id)->value("is_admin");
             $city_builds = DB::table('cities_buildings')
             ->where('owner', '=', $user_id)
             ->where('city_id', '=', $city_id)
@@ -68,7 +69,7 @@
             if ($city_builds->Caserne == 0)
             {
                 $allowed = 0;
-                return view('army', compact('allowed', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
+                return view('army', compact('is_admin', 'allowed', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
             }
             $busy = DB::table('waiting_units')
             ->where('city_id', '=', $city_id)
@@ -77,10 +78,10 @@
             {
                 $allowed = -1;
                 $waiting_units = ["name" => trans('unit.' . preg_replace('/\s/', "_", (DB::table('units')->where('id', '=', $busy->unit_id)->value('name')))), "quantity" => $busy->quantity, "finishing_date" => $busy->finishing_date - time()];
-                return view('army', compact('allowed' , 'waiting_units', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
+                return view('army', compact('is_admin', 'allowed' , 'waiting_units', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
             }
             $allowed_units = $this->get_allowed_units($city_id, $user_race, $city_builds, $city_techs);
-            return view('army', compact('allowed', 'allowed_units','food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
+            return view('army', compact('is_admin', 'allowed', 'allowed_units','food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
         }
 
         private function get_allowed_units($city_id, $user_race, $city_builds, $city_techs)

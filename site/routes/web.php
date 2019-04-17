@@ -80,4 +80,10 @@ Route::group(['middleware' => ['logged']], function(){
     Route::post('/unlock_user', 'MessagesController@unlock_user');
 });
 
+// ADMIN ROUTES
+
+Route::group(['middleware' => ['logged', 'admin']], function (){
+    Route::get('/menu_god', 'AdminController@index');
+});
+
 

@@ -31,6 +31,7 @@
                 ->value('id');
                 session()->put(['city_id' => $city_id]);
             }
+            $is_admin = DB::table('users')->where('id', '=', $user_id)->value("is_admin");
             $city_build = DB::table('cities_buildings')
             ->where('owner', '=', $user_id)
             ->where('city_id', '=', $city_id)
@@ -70,7 +71,7 @@
             ->where('city_id', '=', $city_id)
             ->value('Cartographe');
             if ($cartographer == 0)
-                return view('map', compact('cartographer', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
+                return view('map', compact('is_admin', 'cartographer', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
             if (isset($_GET['x_offset']) && $cartographer > 11 && abs($_GET['x_offset']) <= $cartographer - 11)
                 $x_pos = $city->x_pos + $_GET['x_offset'];
             else
@@ -128,7 +129,7 @@
                     array_push($visible_cells, ["type" => trans('map.' . $cell->type), "format_type" => $cell->type, "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "color" => "black", "background-color" => "lemonchiffon", "class" => $cell->icon]); 
 
             }
-            return view('map', compact('move_map' ,'cartographer', 'visible_cells', 'x_pos', 'city_x', 'y_pos', 'city_y', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
+            return view('map', compact('is_admin', 'move_map' ,'cartographer', 'visible_cells', 'x_pos', 'city_x', 'y_pos', 'city_y', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
         }
     }
 

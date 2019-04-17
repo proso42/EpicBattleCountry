@@ -34,6 +34,7 @@
                 ->value('id');
                 session()->put(['city_id' => $city_id]);
             }
+            $is_admin = DB::table('users')->where('id', '=', $user_id)->value("is_admin");
             $city_build = DB::table('cities_buildings')
             ->where('owner', '=', $user_id)
             ->where('city_id', '=', $city_id)
@@ -97,7 +98,7 @@
             $all_users_blocked = DB::table('user_msg_blocked')->where('user_id', '=', $user_id)->get();
             foreach ($all_users_blocked as $blocked)
                 array_push($users_blocked, $all_users[$blocked->user_blocked]['login']);
-            return view('messages', compact('first_active_tab', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold', 'notifications', 'msg_sended', 'msg_received', 'users_blocked', 'notif_alert', 'msg_received_alert'));
+            return view('messages', compact('is_admin', 'first_active_tab', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold', 'notifications', 'msg_sended', 'msg_received', 'users_blocked', 'notif_alert', 'msg_received_alert'));
         }
 
         private function get_id($all_users, $id)

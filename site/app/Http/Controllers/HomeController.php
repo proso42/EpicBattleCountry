@@ -35,6 +35,7 @@
                 ->value('id');
                 session()->put(['city_id' => $city_id]);
             }
+            $is_admin = DB::table('users')->where('id', '=', $user_id)->value("is_admin");
             $city = DB::table('cities')
             ->where('owner', '=', $user_id)
             ->where('id', '=', $city_id)
@@ -170,7 +171,7 @@
                 array_push($waiting_list, ["allow_interrupt" => $allow_interrupt, "wait_id" => $travel->id, "type" => "explo", "name" => trans('exploration.' . $mission_name), "duration" => $travel->finishing_date - time()]);
             }
 
-            return view('home', compact('food', 'compact_food', 'max_food', 'food_prod', 'wood', 'compact_wood' ,'max_wood', 'wood_prod', 'rock', 'compact_rock', 'max_rock', 'rock_prod', 'steel', 'compact_steel', 'max_steel', 'steel_prod', 'gold', 'compact_gold', 'max_gold', 'gold_prod', 'mount_prod', 'max_mount', 'city_name', 'waiting_list', 'items_owned', 'units_owned', 'tables_class', 'user_cities'));
+            return view('home', compact('is_admin', 'food', 'compact_food', 'max_food', 'food_prod', 'wood', 'compact_wood' ,'max_wood', 'wood_prod', 'rock', 'compact_rock', 'max_rock', 'rock_prod', 'steel', 'compact_steel', 'max_steel', 'steel_prod', 'gold', 'compact_gold', 'max_gold', 'gold_prod', 'mount_prod', 'max_mount', 'city_name', 'waiting_list', 'items_owned', 'units_owned', 'tables_class', 'user_cities'));
         }
 
         public function switch_city(Request $request)

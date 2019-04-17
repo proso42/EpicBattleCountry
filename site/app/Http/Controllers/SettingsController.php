@@ -13,9 +13,10 @@
         public function index()
         {
             $user_infos = DB::table('users')
-            ->select('lang', 'email', 'login', 'race', 'is_premium')
+            ->select('lang', 'email', 'login', 'race', 'is_premium', 'is_admin')
             ->where('id', '=', session()->get('user_id'))
             ->first();
+            $is_admin = $user_infos->is_admin;
             $user_lang = $user_infos->lang;
             if ($user_lang == 'fr')
                 $alt_lang = 'en';
@@ -78,7 +79,7 @@
                 $compact_steel = substr($steel, 0, 5) . '...';
             if ($gold > 999999)
                 $compact_gold = substr($gold, 0, 5) . '...';
-            return view('settings', compact('user_lang', 'alt_lang', 'complete_email', 'user_email', 'complete_login', 'user_login', 'user_race', 'is_premium', 'csrf_token_login', 'csrf_token_email', 'csrf_token_password', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
+            return view('settings', compact('is_admin', 'user_lang', 'alt_lang', 'complete_email', 'user_email', 'complete_login', 'user_login', 'user_race', 'is_premium', 'csrf_token_login', 'csrf_token_email', 'csrf_token_password', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
         }
 
         public function reset_login(Request $request)

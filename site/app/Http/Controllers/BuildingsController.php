@@ -271,7 +271,7 @@
             {
                 $is_wip = DB::table('waiting_buildings')
                 ->where('city_id', '=', $city_id)
-                ->where('type', '=', $building_type)
+                ->where('type', '=', $type)
                 ->where('building_id', '=', $val->id)
                 ->value('finishing_date');
                 if ($is_wip != null)
@@ -305,7 +305,7 @@
                             $buildings_required = explode(";", $val->building_required);
                             foreach ($buildings_required as $building => $key)
                             {
-                                $building_name = DB::table($building_type)
+                                $building_name = DB::table($type)
                                 ->where('id', '=', $key)
                                 ->value('name');
                                 $building_name_format = preg_replace('/\s/', "_", $building_name);
@@ -348,7 +348,7 @@
                         else
                             $gold_required = $this->get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);
                     }
-                    if ($food_required > $city_res->food)
+                    if ($food_required > $city_res->food || $wood_required > $city_res->wood || $rock_required > $city_res->rock || $steel_required > $city_res->steel || $gold_required > $city_res->gold)
                         array_push($forbidden_buildings, ["id" => $type . "_" . $val->id, "food_required" => $food_required, "wood_required" => $wood_required, "rock_required" => $rock_required, "steel_required" => $steel_required, "gold_required" => $gold_required]);
                 }
                 else

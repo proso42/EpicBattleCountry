@@ -193,7 +193,7 @@
                                         document.getElementById("icon_gold_tech_" + e.tech_id).className = "fas fa-times icon";
                                 }
                             });
-                            timer("tech_" + tech_id, duration);
+                            timer("tech_" + id, duration);
                         }
                         else
                         {
@@ -203,7 +203,7 @@
                     }
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                xhr.send('_token=' + _token + '&tech_id=' + tech_id);
+                xhr.send('_token=' + _token + '&tech_id=' + id);
             }
         </script>
     </body>

@@ -52,6 +52,7 @@ Route::group(['middleware' => ['logged']], function(){
     Route::post('/update_password', 'SetNewPasswordController@update_password');
     // Buildings endpoints
     Route::get('/buildings', 'BuildingsController@index');
+    Route::post('/set_active_tab', 'BuildingsController@set_active_tab');
     Route::post('/update_building', 'BuildingsController@update');
     // Techs endpoints
     Route::get('/techs', 'TechsController@index');

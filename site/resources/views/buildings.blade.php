@@ -203,7 +203,23 @@
                     return ;
                 }
                 else
-                    window.location.href= "http://www.epicbattlecorp.fr/buildings?activeTab=" + activeId;
+                {
+                    document.getElementById(activeTab + "-tab").style.display = "none";
+                    document.getElementById(activeId + "-tab").style.display = "";
+                    activeTab = activeId;
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', 'http://www.epicbattlecorp.fr/set_active_tab');
+                    xhr.onreadystatechange =  function()
+                    {
+                        if (xhr.readyState === 4 && xhr.status === 200)
+                        {
+                            console.log(xhr.responseText);
+                            return ;
+                        }
+                    }
+                    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                    xhr.send('_token=' + _token + '&active_tab=' + activeId);
+                }
             }
 
             function launch_all_timers()
@@ -308,7 +324,6 @@
                 {
                     if (xhr.readyState === 4 && xhr.status === 200)
                     {
-                        //window.location.href="http://www.epicbattlecorp.fr/buildings?activeTab=" + (activeTab.split('-'))[0];
                         console.log(xhr.responseText);
                         if (xhr.responseText.indexOf("error") < 0)
                         {
@@ -326,9 +341,6 @@
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhr.send('_token=' + _token + '&id=' + id + '&type=' + building_type);
-                /*setTimeout(() => {
-                    window.location.href="http://www.epicbattlecorp.fr/buildings?activeTab=" + (activeTab.split('-'))[0];
-                }, 300);*/
             }
         </script>
     </body>

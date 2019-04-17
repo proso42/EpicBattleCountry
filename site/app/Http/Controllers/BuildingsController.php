@@ -12,10 +12,18 @@
     {
         public function index()
         {
-            if (!isset($_GET['activeTab'])|| ($_GET['activeTab'] !== "eco" && $_GET['activeTab'] !== "army" && $_GET['activeTab'] !== "religious" && $_GET['activeTab'] !== "tech"))
-                $first_active_tab = "eco";
+            if (session()->has('first_active_tab'))
+                $first_active_tab = session()->get('first_active_tab');
             else
-                $first_active_tab = $_GET['activeTab'];
+            {
+                $first_active_tab = "eco";
+                session()->put(["first_active_tab" => "eco"]);
+            }
+            if ($first_active_tab != "eco" && $first_active_tab != "army" && $first_active_tab != "religious" && $first_active_tab != "tech")
+            {
+                $first_active_tab = "eco";
+                session(["first_active_tab" => "eco"]);
+            }
             $user_id = session()->get('user_id');
             $user_race = session()->get('user_race');
             if ($user_race === null)
@@ -68,6 +76,18 @@
             $allowed_religious_buildings = $this->get_allowed_buildings('religious_buildings');
             $allowed_tech_buildings = $this->get_allowed_buildings('tech_buildings');
             return view('buildings', compact('first_active_tab', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold', 'allowed_eco_buildings', 'allowed_army_buildings', 'allowed_religious_buildings', 'allowed_tech_buildings'));
+        }
+
+        public function set_active_tab(Request $request)
+        {
+            $tab = $request['active_tab'];
+            if ($tab != "eco" && $tab != "army" && $tab != "religious" && $tab != "tech")
+                $first_active_tab = "eco";
+            if (session()->has("first_active_tab"))
+                session(["first_active_tab" => $tab]);
+            else
+                session()->put(["first_active_tab" => $tab]);
+            return ("tab saved");
         }
 
         private function get_allowed_buildings($building_type)

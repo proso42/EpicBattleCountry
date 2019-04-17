@@ -154,7 +154,7 @@
             </div>
         @endif
         <div onclick="document.location.href='/logout'" class="row menu-left last-case">
-            <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-fingerprint icon"></i></div>
+            <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas ffa-sign-out-alt icon"></i></div>
             <div class="col-lg-3 col-md-3 col-sm-3 col-3">@lang('default.logout')</div>
         </div>
     </div>

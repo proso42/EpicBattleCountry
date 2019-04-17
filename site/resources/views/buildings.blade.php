@@ -204,9 +204,12 @@
                 }
                 else
                 {
-                    document.getElementById(activeTab + "-tab").style.display = "none";
-                    document.getElementById(activeId + "-tab").style.display = "";
-                    activeTab = activeId;
+                    document.getElementById(activeTab).className = "col-lg-3 col-md-3 col-sm-3 col-3 generique-tab";
+                    document.getElementById(activeId + "-tab").className = "col-lg-3 col-md-3 col-sm-3 col-3 generique-tab-active";
+                    activeBuildings.style.display = "none";
+                    document.getElementById(activeId + "-buildings").style.display = "";
+                    activeTab = activeId + "-tab";
+                    activeBuildings = activeId + "-buildings";
                     var xhr = new XMLHttpRequest();
                     xhr.open('POST', 'http://www.epicbattlecorp.fr/set_active_tab');
                     xhr.onreadystatechange =  function()

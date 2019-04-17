@@ -331,13 +331,19 @@
                         console.log(xhr.responseText);
                         if (xhr.responseText.indexOf("error") < 0)
                         {
-                            /*div_id = type + "_" + id; 
-                            let duration = xhr.responseText;
+                            let infos = JSON.parse(xhr.responseText);
+                            div_id = type + "_" + id; 
+                            let duration = infos.remaining_time;
+                            document.getElementById("food").textContent = infos.food;
+                            document.getElementById("wood").textContent = infos.wood;
+                            document.getElementById("rock").textContent = infos.rock;
+                            document.getElementById("steel").textContent = infos.steel;
+                            document.getElementById("gold").textContent = infos.gold;
                             let elem = document.getElementById(div_id);
                             elem.className = "building-wip";
                             elem.onclick = function (){};
                             document.getElementById("res_" + type + "_" + id).remove();
-                            timer(div_id, duration);*/
+                            timer(div_id, duration);
                         }
                         else
                             return ;

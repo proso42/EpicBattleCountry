@@ -344,6 +344,7 @@
                             elem.className = "building-wip";
                             elem.onclick = function (){};
                             document.getElementById("res_" + type + "_" + id).remove();
+                            
                             timer(div_id, duration);
                         }
                         else

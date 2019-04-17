@@ -449,10 +449,11 @@
             $id = DB::table('waiting_buildings')
             ->insertGetId(["city_id" => $city_id, "type" => $building_type, "building_id" => $building_id, "finishing_date" => $finishing_date, "next_level" => $niv + 1]);
             $infos = ["time_remaining" => $finishing_date - time(), "food" => $city_res->food - $food_required, 'wood' => $city_res->wood - $wood_required, 'rock' => $city_res->rock - $rock_required, 'steel' => $city_res->steel - $steel_required, 'gold' => $city_res->gold - $gold_required];
-            $infos = array_merge($infos, $this->get_unavailable_buildings("eco_buildings"));
-            $infos = array_merge($infos, $this->get_unavailable_buildings("army_buildings"));
-            $infos = array_merge($infos, $this->get_unavailable_buildings("religious_buildings"));
-            $infos = array_merge($infos, $this->get_unavailable_buildings("tech_buildings"));
+            $forbidden_buildings = $this->get_unavailable_buildings("eco_buildings");
+            $forbidden_buildings = array_merge($forbidden_buildings, $this->get_unavailable_buildings("army_buildings"));
+            $forbidden_buildings = array_merge($forbidden_buildings, $this->get_unavailable_buildings("religious_buildings"));
+            $forbidden_buildings = array_merge($forbidden_buildings, $this->get_unavailable_buildings("tech_buildings"));
+            $infos["forbidden_buildings"] = $forbidden_buildings;
             return ($infos);
         }
     }

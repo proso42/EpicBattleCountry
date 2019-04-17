@@ -346,7 +346,7 @@
                             infos.forbidden_buildings.forEach(function(e){
                                 let forbidden = document.getElementById(e.id);
                                 if (forbidden.className == "building-button-impossible")
-                                    continue ;
+                                    return ;
                                 else
                                 {
                                     forbidden.className = "building-button-impossible";

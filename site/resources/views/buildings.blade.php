@@ -351,16 +351,16 @@
                                 {
                                     forbidden.className = "building-button-impossible";
                                     forbidden.onclick = function (){};
-                                    if (forbidden.food_required > 0 && forbidden.food_required > infos.food)
-                                        document.getElementById("icon_food_" + forbidden.id).className = "fas fa-times icon";
-                                    if (forbidden.wood_required > 0 && forbidden.wood_required > infos.wood)
-                                        document.getElementById("icon_wood_" + forbidden.id).className = "fas fa-times icon";
-                                    if (forbidden.rock_required > 0 && forbidden.rock_required > infos.rock)
-                                        document.getElementById("icon_rock_" + forbidden.id).className = "fas fa-times icon";
-                                    if (forbidden.steel_required > 0 && forbidden.steel_required > infos.steel)
-                                        document.getElementById("icon_steel_" + forbidden.id).className = "fas fa-times icon";
-                                    if (forbidden.gold_required > 0 && forbidden.gold_required > infos.gold)
-                                        document.getElementById("icon_gold_" + forbidden.id).className = "fas fa-times icon";
+                                    if (e.food_required > 0 && e.food_required > infos.food)
+                                        document.getElementById("icon_food_" + e.id).className = "fas fa-times icon";
+                                    if (e.wood_required > 0 && e.wood_required > infos.wood)
+                                        document.getElementById("icon_wood_" + e.id).className = "fas fa-times icon";
+                                    if (e.rock_required > 0 && e.rock_required > infos.rock)
+                                        document.getElementById("icon_rock_" + e.id).className = "fas fa-times icon";
+                                    if (e.steel_required > 0 && e.steel_required > infos.steel)
+                                        document.getElementById("icon_steel_" + e.id).className = "fas fa-times icon";
+                                    if (e.gold_required > 0 && e.gold_required > infos.gold)
+                                        document.getElementById("icon_gold_" + e.id).className = "fas fa-times icon";
                                 }
                             });
                             timer(div_id, duration);

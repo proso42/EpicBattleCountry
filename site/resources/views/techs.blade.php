@@ -17,25 +17,25 @@
                                 <div class="tech-name">{{ $tech["name"] }} @if ($tech["niv"] > 0) {{$tech["niv"]}} @endif</div>
                                 <img class="tech" style="width:250px;height: 250px;" src="{{ $tech['illustration'] }}">
                                 @if ($tech['status'] == "OK")
-                                    <div @if ($tech['food_required'] > $food || $tech['wood_required'] > $wood || $tech['rock_required'] > $rock || $tech['steel_required'] > $steel || $tech['gold_required'] > $gold) class="tech-button-impossible" @else class="tech-button"
+                                    <div id="tech_{{ $tech['tech_id'] }}" @if ($tech['food_required'] > $food || $tech['wood_required'] > $wood || $tech['rock_required'] > $rock || $tech['steel_required'] > $steel || $tech['gold_required'] > $gold) class="tech-button-impossible" @else class="tech-button"
                                     onclick="update_tech('{{ $tech['tech_id'] }}')"@endif>
                                         @lang('tech.search') <i class="fas fa-flask icon"></i>
-                                        <div class="tech-res-needed">
+                                        <div id="res_tech_{{ $tech['tech_id'] }}" class="tech-res-needed">
                                             <ul>
                                             @if ($tech['food_required'] > 0)
-                                                    <li>@lang('common.food') : {{ $tech['food_required'] }} @if ($tech['food_required'] > $food) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                                    <li>@lang('common.food') : {{ $tech['food_required'] }} @if ($tech['food_required'] > $food) <i id="icon_food_tech_{{ $tech['tech_id'] }}" class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
                                                 @endif
                                                 @if ($tech['wood_required'] > 0)
-                                                    <li>@lang('common.wood') : {{ $tech['wood_required'] }} @if ($tech['wood_required'] > $wood) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                                    <li>@lang('common.wood') : {{ $tech['wood_required'] }} @if ($tech['wood_required'] > $wood) <i id="icon_wood_tech_{{ $tech['tech_id'] }}" class="fas fa-times icon"></i> @else <i id="icon_wood_tech_{{ $tech['tech_id'] }}" class="fas fa-check icon"></i> @endif</li>
                                                 @endif
                                                 @if ($tech['rock_required'] > 0)
-                                                    <li>@lang('common.rock') : {{ $tech['rock_required'] }} @if ($tech['rock_required'] > $rock) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                                    <li>@lang('common.rock') : {{ $tech['rock_required'] }} @if ($tech['rock_required'] > $rock) <i id="icon_rock_tech_{{ $tech['tech_id'] }}" class="fas fa-times icon"></i> @else <i id="icon_rock_tech_{{ $tech['tech_id'] }}" class="fas fa-check icon"></i> @endif</li>
                                                 @endif
                                                 @if ($tech['steel_required'] > 0)
-                                                    <li>@lang('common.steel') : {{ $tech['steel_required'] }} @if ($tech['steel_required'] > $steel) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                                    <li>@lang('common.steel') : {{ $tech['steel_required'] }} @if ($tech['steel_required'] > $steel) <i id="icon_steel_tech_{{ $tech['tech_id'] }}" class="fas fa-times icon"></i> @else <i id="icon_steel_tech_{{ $tech['tech_id'] }}" class="fas fa-check icon"></i> @endif</li>
                                                 @endif
                                                 @if ($tech['gold_required'] > 0)
-                                                    <li>@lang('common.gold') : {{ $tech['gold_required'] }} @if ($tech['gold_required'] > $gold) <i class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                                    <li>@lang('common.gold') : {{ $tech['gold_required'] }} @if ($tech['gold_required'] > $gold) <i id="icon_gold_tech_{{ $tech['tech_id'] }}" class="fas fa-times icon"></i> @else <i id="icon_gold_tech_{{ $tech['tech_id'] }}" sclass="fas fa-check icon"></i> @endif</li>
                                                 @endif
                                                 <li>@lang('common.time') : {{ $tech['duration'] }} <i class="fas fa-clock icon"></i></li>
                                             </ul>
@@ -159,10 +159,47 @@
                 {
                     if (xhr.readyState === 4 && xhr.status === 200)
                     {
-                        if (xhr.responseText !== "good")
-                            console.log(xhr.responseText);
+                        if (xhr.responseText.indexOf("error") < 0)
+                        {
+                            var infos = JSON.parse(xhr.responseText);
+                            console.log(infos);                          
+                            let duration = infos.time_remaining;
+                            document.getElementById("food").textContent = infos.food;
+                            document.getElementById("wood").textContent = infos.wood;
+                            document.getElementById("rock").textContent = infos.rock;
+                            document.getElementById("steel").textContent = infos.steel;
+                            document.getElementById("gold").textContent = infos.gold;
+                            let elem = document.getElementById("tech_" + tech_id);
+                            elem.className = "tech-wip";
+                            elem.onclick = function (){};
+                            document.getElementById("res_tech_" + tech_id).remove();
+                            infos.forbidden_techs.forEach(function(e){
+                                let forbidden = document.getElementById(e.tech_id);
+                                if (forbidden.className == "building-button-impossible")
+                                    return ;
+                                else
+                                {
+                                    forbidden.className = "building-button-impossible";
+                                    forbidden.onclick = function (){};
+                                    if (e.food_required > 0 && e.food_required > infos.food)
+                                        document.getElementById("icon_food_tech" + e.tech_id).className = "fas fa-times icon";
+                                    if (e.wood_required > 0 && e.wood_required > infos.wood)
+                                        document.getElementById("icon_wood_tech" + e.tech_id).className = "fas fa-times icon";
+                                    if (e.rock_required > 0 && e.rock_required > infos.rock)
+                                        document.getElementById("icon_rock_tech" + e.tech_id).className = "fas fa-times icon";
+                                    if (e.steel_required > 0 && e.steel_required > infos.steel)
+                                        document.getElementById("icon_steel_tech" + e.tech_id).className = "fas fa-times icon";
+                                    if (e.gold_required > 0 && e.gold_required > infos.gold)
+                                        document.getElementById("icon_gold_tech" + e.tech_id).className = "fas fa-times icon";
+                                }
+                            });
+                            timer("tech_" + tech_id, duration);
+                        }
                         else
-                            window.location.href="http://www.epicbattlecorp.fr/techs";
+                        {
+                            console.log(xhr.responseText);
+                            return ;
+                        }
                     }
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

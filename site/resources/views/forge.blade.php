@@ -202,14 +202,19 @@
                 {
                     if (xhr.readyState === 4 && xhr.status === 200)
                     {
-                        window.location.reload();
+                        if (xhr.responseText == "good")
+                        {
+                            window.location.reload();
+                        }
+                        else
+                        {
+                            console.log(xhr.responseText);
+                            return ;
+                        }
                     }
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhr.send('_token=' + _token + '&item_id=' + item_id + "&quantity=" + quantity);
-                setTimeout(() => {
-                    window.location.reload();
-                }, 300);
             }
 
             function craft(item_id)

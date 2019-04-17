@@ -328,7 +328,6 @@
                 {
                     if (xhr.readyState === 4 && xhr.status === 200)
                     {
-                        //console.log(xhr.responseText);
                         if (xhr.responseText.indexOf("error") < 0)
                         {
                             let infos = JSON.parse(xhr.responseText);
@@ -344,7 +343,9 @@
                             elem.className = "building-wip";
                             elem.onclick = function (){};
                             document.getElementById("res_" + type + "_" + id).remove();
-                            
+                            /*infos.forbidden_buildings.forEach(function(e){
+                                
+                            });*/
                             timer(div_id, duration);
                         }
                         else

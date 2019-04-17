@@ -262,6 +262,7 @@
 
         private function get_unavailable_buildings($type)
         {
+            $simple_type = preg_replace('/_buildings/', "", $type);
             $city_id = session()->get('city_id');
             $city_res = DB::table('cities')->select('food', 'wood', 'rock', 'steel', 'gold')->where('id', '=', $city_id)->first();
             $all_type_buildings = DB::table($type)
@@ -349,7 +350,7 @@
                             $gold_required = $this->get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);
                     }
                     if ($food_required > $city_res->food || $wood_required > $city_res->wood || $rock_required > $city_res->rock || $steel_required > $city_res->steel || $gold_required > $city_res->gold)
-                        array_push($forbidden_buildings, ["id" => $type . "_" . $val->id, "food_required" => $food_required, "wood_required" => $wood_required, "rock_required" => $rock_required, "steel_required" => $steel_required, "gold_required" => $gold_required]);
+                        array_push($forbidden_buildings, ["id" =>  $simple_type . "_" . $val->id, "food_required" => $food_required, "wood_required" => $wood_required, "rock_required" => $rock_required, "steel_required" => $steel_required, "gold_required" => $gold_required]);
                 }
                 else
                     continue;

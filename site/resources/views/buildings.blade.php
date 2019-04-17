@@ -331,13 +331,13 @@
                         console.log(xhr.responseText);
                         if (xhr.responseText.indexOf("error") < 0)
                         {
-                            div_id = type + "_" + id; 
+                            /*div_id = type + "_" + id; 
                             let duration = xhr.responseText;
                             let elem = document.getElementById(div_id);
                             elem.className = "building-wip";
                             elem.onclick = function (){};
                             document.getElementById("res_" + type + "_" + id).remove();
-                            timer(div_id, duration);
+                            timer(div_id, duration);*/
                         }
                         else
                             return ;

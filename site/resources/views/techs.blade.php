@@ -23,7 +23,7 @@
                                         <div id="res_tech_{{ $tech['tech_id'] }}" class="tech-res-needed">
                                             <ul>
                                             @if ($tech['food_required'] > 0)
-                                                    <li>@lang('common.food') : {{ $tech['food_required'] }} @if ($tech['food_required'] > $food) <i id="icon_food_tech_{{ $tech['tech_id'] }}" class="fas fa-times icon"></i> @else <i class="fas fa-check icon"></i> @endif</li>
+                                                    <li>@lang('common.food') : {{ $tech['food_required'] }} @if ($tech['food_required'] > $food) <i id="icon_food_tech_{{ $tech['tech_id'] }}" class="fas fa-times icon"></i> @else <i id="icon_food_tech_{{ $tech['tech_id'] }}" class="fas fa-check icon"></i> @endif</li>
                                                 @endif
                                                 @if ($tech['wood_required'] > 0)
                                                     <li>@lang('common.wood') : {{ $tech['wood_required'] }} @if ($tech['wood_required'] > $wood) <i id="icon_wood_tech_{{ $tech['tech_id'] }}" class="fas fa-times icon"></i> @else <i id="icon_wood_tech_{{ $tech['tech_id'] }}" class="fas fa-check icon"></i> @endif</li>

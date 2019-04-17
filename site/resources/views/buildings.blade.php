@@ -210,6 +210,7 @@
                     document.getElementById(activeId + "-buildings").style.display = "";
                     activeTab = activeId + "-tab";
                     activeBuildings = activeId + "-buildings";
+                    var _token = document.getElementById('_token').value;
                     var xhr = new XMLHttpRequest();
                     xhr.open('POST', 'http://www.epicbattlecorp.fr/set_active_tab');
                     xhr.onreadystatechange =  function()

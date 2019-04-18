@@ -114,7 +114,7 @@
             $starting_point = $explo->ending_point;
             $ending_point = $explo->starting_point;
             $mission = 6;
-            $time_elapsed = time() - ($explo->finishing_date - $explo->traveing_duration);
+            $time_elapsed = time() - ($explo->finishing_date - $explo->traveling_duration);
             $finishing_date = $time_elapsed + time();
             $content = trans('exploration.your_mission') . " ($mission_name) " . trans('common.on') . " $explo->ending_point " . trans('exploration.end_of_content');
             DB::table('messages')->insert(["seen" => 0, "sender" => "notification", "target" => $user_id, "target_city" => $city_id, "title" => trans('exploration.canceled_mission'), "content" => $content, "sending_date" => time()]);

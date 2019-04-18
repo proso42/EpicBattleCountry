@@ -98,7 +98,8 @@
             DB::table($table)
             ->where('id', '=', $wait_id)
             ->delete();
-            return ("ressources refound");
+            $infos = ['type' => "build/tech", 'food' => $food_refund, 'wood' => $wood_refund, 'rock' => $rock_refund, 'steel' => $steel_refund, 'gold' => $gold_refund];
+            return ($infos);
         }
 
         private function interrupt_explo($city_id, $wait_id)

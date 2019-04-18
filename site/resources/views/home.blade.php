@@ -116,7 +116,7 @@
                     <hr class="signin-footer">
                     <div class="waiting-list" style="margin-bottom: 20px;">
                         @foreach ($waiting_list as $elem)
-                            <div id="id_{{$elem['name']}}" class="row">
+                            <div id="id_{{$elem['name']}}_{{ $elem['wait_id'] }}" class="row">
                                 <div class="offset-lg-1 offset-md-1 offset-sm-1 offset-1 col-lg-1 col-md-1 col-sm-1 col-1">
                                     @if ($elem['type'] == "building") 
                                         <i class="fas fa-hammer icon"></i>
@@ -294,7 +294,7 @@
                 xhr.send('_token=' + _token + '&new_name=' + new_name);
             }
 
-            function interrupt(wait_id, type, id)
+            function interrupt(wait_id, type, div_id)
             {
                 var _token = document.getElementById("_token").value;
                 var xhr = new XMLHttpRequest();
@@ -303,10 +303,28 @@
                 {
                     if (xhr.readyState === 4 && xhr.status === 200)
                     {
-                        console.log(xhr.responseText);
-                        setTimeout(() =>{
-                            window.location.reload();                                
-                        }, 3000);
+                        if (xhr.responseText.indexOf("error") < 0)
+                        {
+                            let infos = JSON.parse(xhr.responseText);
+                            console.log(infos);
+                            document.getElementById(div_id).remove();
+                            if (infos.type == "build/tech")
+                            {
+                                document.getElementById("food").textContent = infos.food;
+                                document.getElementById("wood").textContent = infos.wood;
+                                document.getElementById("rock").textContent = infos.rock;
+                                document.getElementById("steel").textContent = infos.steel;
+                                document.getElementById("gold").textContent = infos.gold;
+                            }
+                        }
+                        else
+                        {
+                            console.log(xhr.responseText);
+                            setTimeout(() =>{
+                                window.location.reload();
+                            }, 3000);                     
+                        }
+                        
                     }
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

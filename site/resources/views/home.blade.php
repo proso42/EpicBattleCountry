@@ -319,7 +319,7 @@
                                 {
                                     let div_mount = document.getElementById("id_" + infos.mount.mount_id);
                                     if (div_mount != null)
-                                        div_mount.textContent = e.mount.quantity;
+                                        div_mount.textContent = infos.mount.quantity;
                                     else
                                     {
                                         let parent = document.getElementById("unit_table").firstElementChild;

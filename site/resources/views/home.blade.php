@@ -342,6 +342,8 @@
             function timer(id, duration, name)
             {
                 var compteur=document.getElementById(id);
+                if (compteur == null)
+                    return ;
                 var s=duration;
                 var m=0;
                 var h=0;

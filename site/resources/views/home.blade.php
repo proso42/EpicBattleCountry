@@ -320,7 +320,7 @@
                             {
                                 let new_id = "id_" + infos.mission_name + div_id;
                                 document.getElementById(div_id).id = new_id;
-                                let compteur = document.getElementById(new_id).childNodes[1];
+                                let compteur = document.getElementById(new_id).children[1];
                                 compteur.textContent = "";
                                 compteur.id = "compteur_" + infos.mission_name + div_id;
                                 let red_cross_id = div_id.replace(/id/gi, "interrupt");

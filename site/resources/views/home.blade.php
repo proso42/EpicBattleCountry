@@ -323,7 +323,7 @@
                                 let compteur = document.getElementById(new_id).childNodes[1];
                                 compteur.id = "compteur_" + infos.mission_name + div_id;
                                 compteur.textContent = "";
-                                let red_cross_id = div_id.replace(/id/gi, "interrupt_");
+                                let red_cross_id = div_id.replace(/id/gi, "interrupt");
                                 document.getElementById(red_cross_id).remove();
                                 timer(new_id, infos.duration, infos.mission_name);
                             }

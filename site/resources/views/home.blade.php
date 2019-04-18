@@ -325,7 +325,7 @@
                                         let parent = document.getElementById("unit_table").firstElementChild;
                                         let new_tr = document.createElement("tr");
                                         parent.insertBefore(new_tr, parent.lastElementChild.nextSibling);
-                                        let td_name = document.getElementById("td");
+                                        let td_name = document.createElement("td");
                                         let textNode = document.createTextNode(infos.mount.mount_id);
                                         td_name.appendChild(textNode);
                                         new_tr.insertBefore(td_name, new_tr.childNodes[0]);
@@ -347,7 +347,7 @@
                                             let parent = document.getElementById("item_table").firstElementChild;
                                             let new_tr = document.createElement("tr");
                                             parent.insertBefore(new_tr, parent.lastElementChild.nextSibling);
-                                            let td_name = document.getElementById("td");
+                                            let td_name = document.createElement("td");
                                             let textNode = document.createTextNode(e.item_name);
                                             td_name.appendChild(textNode);
                                             new_tr.insertBefore(td_name, new_tr.childNodes[0]);

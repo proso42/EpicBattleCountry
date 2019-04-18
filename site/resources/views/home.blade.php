@@ -90,7 +90,7 @@
                         </tr>
                         @foreach ($items_owned as $item)
                             <tr>
-                                <td>{{ $item['name'] }}</td><td>{{ $item['quantity'] }}</td>
+                                <td>{{ $item['name'] }}</td><td id="item_id_{{ $item['name'] }}">{{ $item['quantity'] }}</td>
                             </tr>
                         @endforeach
                     </table>
@@ -106,7 +106,7 @@
                         </tr>
                         @foreach ($units_owned as $unit)
                             <tr>
-                                <td>{{ $unit['name'] }}</td><td>{{ $unit['quantity'] }}</td>
+                                <td>{{ $unit['name'] }}</td><td id="id_{{ $unit['name'] }}">{{ $unit['quantity'] }}</td>
                             </tr>
                         @endforeach
                     </table>
@@ -308,13 +308,25 @@
                             let infos = JSON.parse(xhr.responseText);
                             console.log(infos);
                             document.getElementById(div_id).remove();
-                            if (infos.type == "build/tech" || infos.type == "item")
+                            document.getElementById("food").textContent = infos.food;
+                            document.getElementById("wood").textContent = infos.wood;
+                            document.getElementById("rock").textContent = infos.rock;
+                            document.getElementById("steel").textContent = infos.steel;
+                            document.getElementById("gold").textContent = infos.gold;
+                            if (infos.type == "mounted_unit" || infos.type == "unit")
                             {
-                                document.getElementById("food").textContent = infos.food;
-                                document.getElementById("wood").textContent = infos.wood;
-                                document.getElementById("rock").textContent = infos.rock;
-                                document.getElementById("steel").textContent = infos.steel;
-                                document.getElementById("gold").textContent = infos.gold;
+                                if (infos.type == "mounted_unit")
+                                    document.getEelementById("id_" . infos.mount.mount_id).textContent = infos.mount.quantity;
+                                if (infos.item.length > 0)
+                                {
+                                    infos.item.forEach(function (e){
+                                        let div_quantity = document.getElementById("item_id_" + e.item_name);
+                                        if (div_quantity != null)
+                                            div_quantity.textContent = e.quantity;
+                                        else
+                                            console.log(e.item_name + " no found");
+                                    });
+                                }
                             }
                         }
                         else

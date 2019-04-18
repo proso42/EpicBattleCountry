@@ -188,9 +188,13 @@
             $unit = DB::table('waiting_units')
             ->where('city_id', '=', $city_id)
             ->first();
+            if ($unit == null)
+                return ("interrupt error A : nothing found in database");
             $unit_price = DB::table('units')
             ->where('id', '=', $unit->unit_id)
             ->first();
+            if ($unit->unit_id == null)
+                return ("interrupt error B : nothing found in database");
             $res_refund = explode(";", $unit_price->basic_price);
             $food_refund = 0;
             $wood_refund = 0;
@@ -236,8 +240,14 @@
             else
                 $gold_refund += $city_infos->gold;
             $refound_tab = ['food' => $food_refund, 'wood' => $wood_refund, 'rock' => $rock_refund, 'steel' => $steel_refund, 'gold' => $gold_refund];
+            $infos = ['type' => 'unit', 'food' => $food_refund, 'wood' => $wood_refund, 'rock' => $rock_refund, 'steel' => $steel_refund, 'gold' => $gold_refund];
             if ($unit_price->mount > 0)
+            {
                 $refound_tab[$mount_name] = $city_infos->$mount_name + $unit->quantity;
+                $infos['type'] = 'mounted_unit';
+                $infos['mount'] = ['mount_id' => trans('mount.' . $mount_name), "quantity" => $refound_tab[$mount_name]];
+            }
+            $infos["item"] = [];
             if ($unit_price->item_needed !== "NONE")
             {
                 $all_items = DB::table('forge')->get();
@@ -246,6 +256,7 @@
                 {
                     $item_name = preg_replace('/\s/', "_", $all_items[$item_id - 1]->name);
                     $refound_tab[$item_name] = $city_infos->$item_name + $unit->quantity;
+                    $infos['item'][] = ["item_name" => trans('item.' . $item_name), "quantity" => $refound_tab[$item_name]];
                 }
             }
             DB::table('cities')
@@ -254,7 +265,7 @@
             DB::table('waiting_units')
             ->where('id', '=', $unit->id)
             ->delete();
-            return ("ressources refound");
+            return ($infos);
         }
 
         private function get_exp_value($niv, $basic_value, $levelup)

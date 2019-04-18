@@ -325,7 +325,7 @@
                                 compteur.textContent = "";
                                 let red_cross_id = div_id.replace(/id/gi, "interrupt");
                                 document.getElementById(red_cross_id).remove();
-                                timer(new_id, infos.duration, infos.mission_name);
+                                timer(compteur.id, infos.duration, infos.mission_name);
                             }
                             if (infos.type == "mounted_unit" || infos.type == "unit")
                             {

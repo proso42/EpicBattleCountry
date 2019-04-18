@@ -321,11 +321,11 @@
                                 let new_id = "id_" + infos.mission_name + div_id;
                                 document.getElementById(div_id).id = new_id;
                                 let compteur = document.getElementById(new_id).childNodes[1];
-                                compteur.id = "compteur_" + infos.mission_name + div_id;
                                 compteur.textContent = "";
+                                compteur.id = "compteur_" + infos.mission_name + div_id;
                                 let red_cross_id = div_id.replace(/id/gi, "interrupt");
                                 document.getElementById(red_cross_id).remove();
-                                timer(compteur.id, infos.duration, infos.mission_name);
+                                timer("compteur_" + infos.mission_name + div_id, infos.duration, infos.mission_name);
                             }
                             if (infos.type == "mounted_unit" || infos.type == "unit")
                             {

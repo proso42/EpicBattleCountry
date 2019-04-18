@@ -316,7 +316,7 @@
                             if (infos.type == "mounted_unit" || infos.type == "unit")
                             {
                                 if (infos.type == "mounted_unit")
-                                    document.getEelementById("id_" + infos.mount.mount_id).textContent = infos.mount.quantity;
+                                    document.getElementById("id_" + infos.mount.mount_id).textContent = infos.mount.quantity;
                                 if (infos.item.length > 0)
                                 {
                                     infos.item.forEach(function (e){

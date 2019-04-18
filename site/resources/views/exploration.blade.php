@@ -10,10 +10,10 @@
     <body>
         @include('default')
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding-right: 10px;">
-                <div id="sending_failed" class="explo-input-error" @if ($sending_expedition_failed == 0) style="display: none;" @endif>
+                <div id="sending_failed" class="explo-input-error" style="display: none;">
                     <p>@lang('error.an_error_occured')</p>
                 </div>
-                <div id="sending_success" class="explo-input-success" @if ($sending_expedition_success == 0) style="display: none;" @endif>
+                <div id="sending_success" class="explo-input-success" style="display: none;">
                     <p>@lang('exploration.exp_send')</p>
                 </div>
                 <div id="error_empty_input" class="explo-input-error" style="display: none;">
@@ -160,11 +160,6 @@
         <script>
 
             var g_choice = -1;
-            setTimeout(() =>{
-                        document.getElementById("sending_failed").style.display = "none";
-                        document.getElementById("sending_success").style.display = "none";
-            }, 5000);
-
 
             function cancel()
             {
@@ -210,8 +205,11 @@
                                 for (let i = 0; i < 3; i++)
                                 {
                                     let exp = document.getElementById("exp_" + i);
-                                    exp.className = "explo-button-impossible";
-                                    exp.onclick = function (){};
+                                    if (exp.className != "explo-button-impossible")
+                                    {
+                                        exp.className = "explo-button-impossible";
+                                        exp.onclick = function (){};
+                                    }
                                     if (infos.food < 100)
                                         document.getElementById("icon_food_exp_" + i).className = "fas fa-times icon";
                                     if (infos.unit_avaible < 1)
@@ -221,8 +219,11 @@
                             if (infos.food < 100 || infos.wood < 10000 || infos.rock < 5000 || infos.steel < 2500 || infos.gold < 1000 || infos.unit_avaible < 5)
                             {
                                 let colonize = document.getElementById("exp_3");
-                                colonize.className = "explo-button-impossible";
-                                colonize.onclick = function (){};
+                                if (colonize.className != "explo-button-impossible")
+                                {
+                                    colonize.className = "explo-button-impossible";
+                                    colonize.onclick = function (){};
+                                }
                                 if (infos.food < 100)
                                     document.getElementById("icon_food_exp_3").className = "fas fa-times icon";
                                 if (infos.wood < 10000)
@@ -236,12 +237,33 @@
                                 if (infos.unit_avaible < 5)
                                     document.getElementById("icon_unit_exp_3").className = "fas fa-times icon";
                             }
+                            document.getElementById("explo_choice").style.display = "";
+                            document.getElementById("explo_dest").style.display = "";
+                            document.getElementById("explo_confirm").style.display = "none";
+                            document.getElementById("title_choice_" + g_choice).style.display = "none";
+                            document.getElementById("finishing_time").textContent = "";
+                            document.getElementById("warning").style.display = "none";
+                            document.getElementById("confirm-button").style.display = "";
+                            document.getElementById("confirm-button").disabled = "";
+                            document.getElementById("cancel-button").style.display = "";
+                            document.getElementById("confirm-button").disabled = "";
+                            document.getElementById("spin").style.display = "none";
+                            document.getElementById("dest_x").value = "";
+                            document.getElementById("dest_y").value = "";
+                            document.getElementById("sending_success").style.display = "";
+                            setTimeout(() =>{
+                                document.getElementById("sending_success").style.display = "none";
+                            }, 3000);
                         }
                         else
                         {
                             console.log(xhr.responseText);
-                            return ;
+                            document.getElementById("sending_failed");
+                            setTimeout(() =>{
+                                window.location.reload();
+                            }, 3000);
                         }
+
                     }
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

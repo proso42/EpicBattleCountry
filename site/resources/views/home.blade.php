@@ -316,7 +316,26 @@
                             if (infos.type == "mounted_unit" || infos.type == "unit")
                             {
                                 if (infos.type == "mounted_unit")
-                                    document.getElementById("id_" + infos.mount.mount_id).textContent = infos.mount.quantity;
+                                {
+                                    let div_mount = document.getElementById("id_" + infos.mount.mount_id);
+                                    if (div_mount != null)
+                                        div_mount.textContent = e.mount.quantity;
+                                    else
+                                    {
+                                        let parent = document.getElementById("unit_table").firstElementChild;
+                                        let new_tr = document.createElement("tr");
+                                        parent.insertBefore(new_tr, parent.lastElementChild.nextSibling);
+                                        let td_name = document.getElementById("td");
+                                        let textNode = document.createTextNode(infos.mount.mount_id);
+                                        td_name.appendChild(textNode);
+                                        new_tr.insertBefore(td_name, new_tr.childNodes[0]);
+                                        let td_quantity = document.createElement("td");
+                                        td_quantity.id = "id_" + infos.mount.mount_id;
+                                        let textNode2 = document.createTextNode(infos.mount.quantity);
+                                        td_quantity.appendChild(textNode2);
+                                        new_tr.insertBefore(td_quantity, new_tr.lastElementChild.nextSibling);
+                                    }
+                                }
                                 if (infos.item.length > 0)
                                 {
                                     infos.item.forEach(function (e){
@@ -324,7 +343,20 @@
                                         if (div_quantity != null)
                                             div_quantity.textContent = e.quantity;
                                         else
-                                            console.log(e.item_name + " no found");
+                                        {
+                                            let parent = document.getElementById("item_table").firstElementChild;
+                                            let new_tr = document.createElement("tr");
+                                            parent.insertBefore(new_tr, parent.lastElementChild.nextSibling);
+                                            let td_name = document.getElementById("td");
+                                            let textNode = document.createTextNode(e.item_name);
+                                            td_name.appendChild(textNode);
+                                            new_tr.insertBefore(td_name, new_tr.childNodes[0]);
+                                            let td_quantity = document.createElement("td");
+                                            td_quantity.id = "item_id_" + e.item_name;
+                                            let textNode2 = document.createTextNode(e.quantity);
+                                            td_quantity.appendChild(textNode2);
+                                            new_tr.insertBefore(td_quantity, new_tr.lastElementChild.nextSibling);
+                                        }
                                     });
                                 }
                             }

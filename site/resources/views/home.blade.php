@@ -308,7 +308,7 @@
                             let infos = JSON.parse(xhr.responseText);
                             console.log(infos);
                             document.getElementById(div_id).remove();
-                            if (infos.type == "build/tech")
+                            if (infos.type == "build/tech" || infos.type == "item")
                             {
                                 document.getElementById("food").textContent = infos.food;
                                 document.getElementById("wood").textContent = infos.wood;

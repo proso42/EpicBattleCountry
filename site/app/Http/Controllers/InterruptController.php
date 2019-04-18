@@ -179,7 +179,8 @@
             DB::table('waiting_items')
             ->where('id', '=', $item->id)
             ->delete();
-            return ("ressources refound");
+            $infos = ['type' => "item", 'food' => $food_refund, 'wood' => $wood_refund, 'rock' => $rock_refund, 'steel' => $steel_refund, 'gold' => $gold_refund];
+            return ($infos);
         }
 
         private function interrupt_unit($city_id)

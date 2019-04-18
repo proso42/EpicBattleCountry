@@ -307,12 +307,26 @@
                         {
                             let infos = JSON.parse(xhr.responseText);
                             console.log(infos);
-                            document.getElementById(div_id).remove();
-                            document.getElementById("food").textContent = infos.food;
-                            document.getElementById("wood").textContent = infos.wood;
-                            document.getElementById("rock").textContent = infos.rock;
-                            document.getElementById("steel").textContent = infos.steel;
-                            document.getElementById("gold").textContent = infos.gold;
+                            if (infos.type != "explo")
+                            {
+                                document.getElementById(div_id).remove();
+                                document.getElementById("food").textContent = infos.food;
+                                document.getElementById("wood").textContent = infos.wood;
+                                document.getElementById("rock").textContent = infos.rock;
+                                document.getElementById("steel").textContent = infos.steel;
+                                document.getElementById("gold").textContent = infos.gold;
+                            }
+                            else
+                            {
+                                let new_id = "id_" + infos.mission_name + div_id;
+                                document.getElementById(div_id).id = new_id;
+                                let compteur = document.getElementById(new_id).childNodes[1];
+                                compteur.id = "compteur_" + infos.mission_name + div_id;
+                                compteur.textContent = "";
+                                let red_cross_id = div_id.replace(/id/gi, "interrupt_");
+                                document.getElementById(red_cross_id).remove();
+                                timer(new_id, infos.duration, infos.mission_name);
+                            }
                             if (infos.type == "mounted_unit" || infos.type == "unit")
                             {
                                 if (infos.type == "mounted_unit")

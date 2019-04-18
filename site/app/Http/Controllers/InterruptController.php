@@ -105,7 +105,7 @@
         private function interrupt_explo($city_id, $wait_id)
         {
             $user_id = session()->get('user_id');
-            $explo = DB::table('travelling_units')->where('id', '=', $wait_id)->first();
+            $explo = DB::table('traveling_units')->where('id', '=', $wait_id)->first();
             if ($explo->mission == 6)
                 return ("interrupt error : cannot cancel mission : 6");
             else if ($explo->mission == 5 || $explo->mission == 7)

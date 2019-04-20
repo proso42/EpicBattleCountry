@@ -1,4 +1,14 @@
 var units_send = [];
+var click = false;
+onmousedown = function(){
+    console.log("enfoncé");
+    click = true;
+};
+
+onmouseup = function(){
+    console.log("relaché");
+    click = false;
+};
 
 function hide_img(side)
 {

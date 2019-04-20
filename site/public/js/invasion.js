@@ -53,17 +53,19 @@ function add_unit(unit_ref, max, nb)
     else if (nb > 20)
         speed = 10;
     setTimeout(function(){
-        if (units_send.hasOwnProperty(unit_ref) && units_send[unit_ref] < max)
+        if (units_send.hasOwnProperty(unit_ref))
         {
-            units_send[unit_ref]++;
-            document.getElementById(unit_ref + "_selected").textContent = units_send[unit_ref] + "/" + max;
+            if (units_send[unit_ref] < max)
+            {
+                units_send[unit_ref]++;
+                document.getElementById(unit_ref + "_selected").textContent = units_send[unit_ref] + "/" + max;
+            }
         }
         else
         {
             units_send[unit_ref] = 1;
             document.getElementById(unit_ref + "_selected").textContent = "1/" + max;
         }
-        //console.log("In function : " + click);
         if (click == true)
             add_unit(unit_ref, max, nb + 1);
     }, speed);
@@ -75,6 +77,8 @@ function remove_unit(unit_ref, max, nb)
         speed = 75;
     else if (nb > 10)
         speed = 50;
+    else if (nb > 20)
+        speed = 10;
     setTimeout(function(){
         if (units_send.hasOwnProperty(unit_ref) && units_send[unit_ref] > 0)
         {

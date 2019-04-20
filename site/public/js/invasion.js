@@ -1,3 +1,5 @@
+var units_send = [];
+
 function hide_img(side)
 {
     if (side == "left")
@@ -28,4 +30,9 @@ function back_step1()
 {
     document.getElementById("action_choice").style.display = "";
     document.getElementById("list_unit").style.display = "none";
+}
+
+function add_unit(unit_ref, unit_name)
+{
+    document.getElementById("unit_" + unit_ref).className = "invasion-green-unit-line";
 }

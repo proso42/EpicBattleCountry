@@ -1456,7 +1456,7 @@ input::placeholder
     border-radius: 4px;
     background-color: rgba(105, 105, 105, 0.9);
     cursor: pointer;
-    width: 50%;
+    width: 25%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -1465,4 +1465,16 @@ input::placeholder
 {
     font-weight: bold;
     color: floralwhite;
+}
+
+.invasion-green-unit-line
+{
+    border: 1px solid green;
+    border-radius: 4px;
+    background-color: lightgreen;
+    opacity: 0.9;
+    cursor: pointer;
+    width: 25%;
+    margin-left: auto;
+    margin-right: auto;
 }

@@ -22,7 +22,7 @@
                 </div>
                 <div id="list_unit" style="display: none; text-align: center;margin-top: 25px;">
                         @foreach ($info_unit as $unit)
-                            <p class="invasion-unit-line" unit_ref="{{ $unit['ref'] }}">{{ $unit['name'] }} x{{ $unit['quantity'] }}</p>
+                            <p id="unit_{{ $unit['ref'] }}" onclick="add_unit('{{ $unit['ref'] }}', '{{ $unit['name'] }}')" class="invasion-unit-line" unit_ref="{{ $unit['ref'] }}">{{ $unit['name'] }} x{{ $unit['quantity'] }}</p>
                         @endforeach
                         <input onclick="back_step1()" id="cancel_button_1" type="button" class="home-button-cancel" value="@lang('common.return')">
                 </div>

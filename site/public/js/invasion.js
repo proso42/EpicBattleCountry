@@ -108,14 +108,14 @@ function step4()
                 for (var key in units_send)
                 {
                     let new_div = document.createElement("div");
-                    new_div.className = "row";
+                    new_div.className = "row invasion-unit-line";
                     parent.insertBefore(new_div, duration_div);
                     let new_span = document.createElement("span");
                     let textNode = document.createTextNode(key + " x" + units_send[key]);
                     new_span.appendChild(textNode);
                     new_span.id = "confirm_unit_" + key;
-                    new_span.className = "invasion-unit-line";
-                    new_span.style.textAlign = "center";
+                    new_span.className = "offset-lg-4 offset-md-4 offset-sm-4 offset-4 col-lg-6 col-md-6 col-sm-6 col-6";
+                    new_span.style.textAlign = "left";
                     new_div.insertBefore(new_span, new_div.firstChild);
                 }
             }

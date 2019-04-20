@@ -115,14 +115,14 @@
             if ($city_target_info == null || $city_target_info->id == $city_id)
                 return ("invasion error : bad city");
             $city_units = DB::table('cities_units')->where('city_id', '=', $city_id)->first();
-            $min_speed = 0;
+            $min_speed = -1;
             foreach ($tab as $unit => $quantity)
             {
                 if ($city_units->$unit < $quantity)
                     return ("invasion error : bad unit");
                 $unit_name_format = preg_replace('/_/', " ", $unit);
                 $unit_speed = DB::table('units')->where('name', '=', $unit_name_format)->value('speed');
-                if ($unit_speed < $min_speed)
+                if ($min_speed == -1 || $unit_speed < $min_speed)
                     $min_speed = $unit_speed;
             }
             $city_coord = DB::table('cities')->select('x_pos', 'y_pos')->where('id', '=', $city_id)->first();

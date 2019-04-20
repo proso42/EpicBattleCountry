@@ -71,7 +71,7 @@
                 array_push($info_unit, ["ref" => $unit, "name" => trans("unit." . $unit), "quantity" => $val]);
             }
             $user_cities = DB::table('cities')->select('name')->where('owner', '=', $user_id)->get();
-            return view('invasion', compact('is_admin', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold', 'info_unit', 'user_cites'));
+            return view('invasion', compact('is_admin', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold', 'info_unit', 'user_cities'));
         }
     }
 

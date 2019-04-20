@@ -1455,7 +1455,7 @@ input::placeholder
     border: 1px solid lightblue;
     border-radius: 4px;
     background-color: rgba(105, 105, 105, 0.9);
-    width: 25%;
+    width: 320px;
     margin-left: auto;
     margin-right: auto;
     display: inline-flex;
@@ -1473,7 +1473,7 @@ input::placeholder
 
 .invasion-plus:hover
 {
-    background-color: green;
+    background-color: greenyellow;
 }
 
 .invasion-minus
@@ -1489,5 +1489,5 @@ input::placeholder
 
 .invasion-minus:hover
 {
-    background-color: darkred;
+    background-color: lightpink;
 }

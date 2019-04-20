@@ -20,9 +20,9 @@
                         <img class="invasion-right-image" src="images/invasion_moving.jpg">
                     </div>
                 </div>
-                <div id="list_unit" style="display: none; text-align: center;">
+                <div id="list_unit" style="display: none; text-align: center;margin-top: 25px;">
                         @foreach ($info_unit as $unit)
-                            <p unit_ref="{{ $unit['ref'] }}">{{ $unit['name'] }} x{{ $unit['quantity'] }}</p>
+                            <p class="invasion-unit-line" unit_ref="{{ $unit['ref'] }}">{{ $unit['name'] }} x{{ $unit['quantity'] }}</p>
                         @endforeach
                         <input onclick="back_step1()" id="cancel_button_1" type="button" class="home-button-cancel" value="@lang('common.return')">
                 </div>

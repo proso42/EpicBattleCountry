@@ -64,7 +64,7 @@
             $info_unit = [];
             foreach ($city_unit as $unit => $val)
             {
-                dd($unit);
+                dd($val);
                 if ($val <= 0)
                     continue ;
                 array_push($info_unit, ["ref" => $unit, "name" => trans("unit." . $unit), "quantity" => $val]);

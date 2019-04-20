@@ -105,7 +105,8 @@
             $user_id = session()->get('user_id');
             $city_id = session()->get('city_id');
             $city_target_info = DB::table('cities')->where('name', '=', $city_target)->where('owner', '=', $user_id)->first();
-            if ($city_target_info == null || $city_target_info->id == $city_id)
+            return ("ok");
+            /*if ($city_target_info == null || $city_target_info->id == $city_id)
                 return ("invasion error : bad city");
             $city_units = DB::table('cities_units')->where('city_id', '=', $city_id)->first();
             $min_speed = 0;
@@ -120,7 +121,7 @@
             }
             $city_coord = DB::table('cities')->select('x_pos', 'y_pos')->where('id', '=', $city_id)->first();
             $travel_duration = $this->sec_to_date(((abs($city_coord->x_pos - $city_target_info->x_pos) + abs($city_coord->y_pos - $city_target_info->y_pos)) * $min_speed));
-            return ($travel_duration);
+            return ($travel_duration);*/
         }
     }
 

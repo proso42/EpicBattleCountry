@@ -23,9 +23,9 @@
                 <div id="list_unit" style="display: none; text-align: center;margin-top: 25px;">
                         @foreach ($info_unit as $unit)
                             <div id="unit_{{ $unit['ref'] }}" onclick="add_unit('{{ $unit['ref'] }}', '{{ $unit['name'] }}')" class="invasion-unit-line" unit_ref="{{ $unit['ref'] }}">
-                                <div>{{ $unit['name'] }} x{{ $unit['quantity'] }}</div>
-                                <div class="invasion-plus"><i class="fas fa-plus"></i></div>
-                                <div class="invasion-minus"><i class="fas fa-minus"></i></div>
+                                <span>{{ $unit['name'] }} x{{ $unit['quantity'] }}</span>
+                                <i class="fas fa-plus invasion-plus"></i>
+                                <i class="fas fa-minus invasion-minus"></i>
                             </div>
                             <br/>
                         @endforeach

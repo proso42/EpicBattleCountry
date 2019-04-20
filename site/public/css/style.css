@@ -1466,8 +1466,6 @@ input::placeholder
 {
     background-color: lightgreen;
     color: black;
-    border-radius: 50px;
-    width: 35px;
     cursor: pointer;
 }
 
@@ -1480,8 +1478,6 @@ input::placeholder
 {
     background-color: crimson;
     color: black;
-    border-radius: 50px;
-    width: 35px;
     cursor: pointer;
     margin-left: 25px;
     margin-right: 25px;

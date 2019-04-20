@@ -1456,12 +1456,10 @@ input::placeholder
     border-radius: 4px;
     background-color: rgba(105, 105, 105, 0.9);
     cursor: pointer;
-    max-height: 25px;
 }
 
 .invasion-unit-line:hover
 {
     font-weight: bold;
     color: floralwhite;
-    max-height: 30px;
 }

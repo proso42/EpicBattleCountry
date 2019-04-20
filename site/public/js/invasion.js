@@ -1,13 +1,14 @@
 var units_send = [];
 var click = false;
 onmousedown = function(){
-    //console.log("enfoncé");
     click = true;
+    console.log(click);
 };
 
 onmouseup = function(){
     //console.log("relaché");
     click = false;
+    console.log(click);
 };
 
 function hide_img(side)
@@ -54,6 +55,7 @@ function add_unit(unit_ref, max)
         units_send[unit_ref] = 1;
         document.getElementById(unit_ref + "_selected").textContent = "1/" + max;
     }
+    console.log("In function : " + click);
     if (click == true)
         add_unit(unit_ref, max);
 }

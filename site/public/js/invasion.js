@@ -44,7 +44,7 @@ function back_step1()
 
 function add_unit(unit_ref, max)
 {
-    while (window.event.button==1)
+    while (click == true)
     {
         if (units_send.hasOwnProperty(unit_ref) && units_send[unit_ref] < max)
         {

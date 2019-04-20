@@ -42,7 +42,7 @@
                         <input onclick="step3()" id="button_step3" type="button" class="home-button" value="@lang('common.confirm')">
                         <input onclick="back_step1()" id="cancel_button_1" type="button" class="home-button-cancel" value="@lang('common.return')">
                 </div>
-                <div id="list_city">
+                <div id="list_city" style="display: none">
                     @if ($user_cities == null)
                         <h2>@lang('invasion.no_other_city')</h2>
                     @else

@@ -63,7 +63,7 @@ function add_unit(unit_ref, max, nb)
         }
         //console.log("In function : " + click);
         if (click == true)
-            add_unit(unit_ref, nb + 1);
+            add_unit(unit_ref, max, nb + 1);
     }, speed);
 }
 

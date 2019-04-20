@@ -7,7 +7,7 @@ onmousedown = function(){
 
 onmouseup = function(){
     //console.log("relaché");
-    click = false;
+    click = click;
     console.log(click);
 };
 

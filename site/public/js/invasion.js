@@ -1,9 +1,9 @@
 function hide_img(side)
 {
     if (side == "left")
-        document.getElementsByClassName("invasion-left-overlay").style.display = "";
+        document.getElementById("left_overlay").style.display = "";
     else if (side == "right")
-        document.getElementsByClassName("invasion-right-overlay").style.display = "";
+        document.getElementById("right_overlay").style.display = "";
     else
         return ;
 }

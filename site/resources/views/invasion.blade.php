@@ -23,7 +23,7 @@
                 <div id="list_unit" style="display: none; text-align: center;margin-top: 25px;">
                         @foreach ($info_unit as $unit)
                             <div id="unit_{{ $unit['ref'] }}" onclick="add_unit('{{ $unit['ref'] }}', '{{ $unit['name'] }}')" class="row invasion-unit-line" unit_ref="{{ $unit['ref'] }}">
-                                <span class="col-lg-6 col-md-6 col-sm-6 col-6" style="text-align: left">{{ $unit['name'] }}</span>
+                                <span class="col-lg-5 col-md-5 col-sm-5 col-5" style="text-align: left">{{ $unit['name'] }}</span>
                                 <span class="col-lg-2 col-md-2 col-sm-2 col-2"> 0/{{ $unit['quantity'] }}</span>
                                 <span class="col-lg-2 col-md-2 col-sm-2 col-2"><i class="fas fa-plus invasion-plus"></i></span>
                                 <span class="col-lg-2 col-md-2 col-sm-2 col-2"><i class="fas fa-minus invasion-minus"></i></span>

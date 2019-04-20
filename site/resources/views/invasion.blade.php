@@ -21,12 +21,10 @@
                     </div>
                 </div>
                 <div id="list_unit" style="display: none; text-align: center;">
-                    <ul style="text-align: left">
                         @foreach ($info_unit as $unit)
-                            <li unit_ref="{{ $unit['ref'] }}">{{ $unit['name'] }} x{{ $unit['quantity'] }}</li>
+                            <p unit_ref="{{ $unit['ref'] }}">{{ $unit['name'] }} x{{ $unit['quantity'] }}</p>
                         @endforeach
                         <input onclick="back_step1()" id="cancel_button_1" type="button" class="home-button-cancel" value="@lang('common.return')">
-                    </ul>
                 </div>
             </div>
             <input id="_token" name="_token" type="hidden" value="{{csrf_token()}}">

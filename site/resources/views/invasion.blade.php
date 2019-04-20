@@ -20,8 +20,8 @@
                         <img class="invasion-right-image" src="images/invasion_moving.jpg">
                     </div>
                 </div>
-                <div id="list_unit">
-                    <ul>
+                <div id="list_unit" style="display: none; text-align: center;">
+                    <ul style="text-align: left">
                         @foreach ($info_unit as $unit)
                             <li unit_ref="{{ $unit['ref'] }}">{{ $unit['name'] }} x{{ $unit['quantity'] }}</li>
                         @endforeach

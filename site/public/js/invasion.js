@@ -116,7 +116,7 @@ function step4()
         }
     }
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send('_token=' + _token + '&units=' + units_send + "&city_target=" + city);
+    xhr.send('_token=' + _token + '&units=' + JSON.stringify(units_send) + "&city_target=" + city);
 }
 
 function back_step1()

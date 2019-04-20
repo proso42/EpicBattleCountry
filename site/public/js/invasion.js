@@ -1,4 +1,5 @@
 var units_send = [];
+var speed = 100;
 var click = false;
 onmousedown = function(){
     click = true;
@@ -7,6 +8,7 @@ onmousedown = function(){
 
 onmouseup = function(){
     click = false;
+    speed = 100;
     //console.log(click);
 };
 
@@ -42,8 +44,10 @@ function back_step1()
     document.getElementById("list_unit").style.display = "none";
 }
 
-function add_unit(unit_ref, max)
+function add_unit(unit_ref, max, nb)
 {
+    if (nb > 10)
+        speed /= 2;
     setTimeout(function(){
         if (units_send.hasOwnProperty(unit_ref) && units_send[unit_ref] < max)
         {
@@ -57,12 +61,14 @@ function add_unit(unit_ref, max)
         }
         //console.log("In function : " + click);
         if (click == true)
-            add_unit(unit_ref, max);
-    }, 100);
+            add_unit(unit_ref, nb + 1);
+    }, speed);
 }
 
-function remove_unit(unit_ref, max)
+function remove_unit(unit_ref, max, nb)
 {
+    if (nb > 10)
+        speed /= 2;
     setTimeout(function(){
         if (units_send.hasOwnProperty(unit_ref) && units_send[unit_ref] > 0)
         {
@@ -70,6 +76,6 @@ function remove_unit(unit_ref, max)
             document.getElementById(unit_ref + "_selected").textContent = units_send[unit_ref] + "/" + max;
         }
         if (click == true)
-            remove_unit(unit_ref, max);
-    }, 100);
+            remove_unit(unit_ref, max, nb + 1);
+    }, speed);
 }

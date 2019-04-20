@@ -10,7 +10,7 @@
     <body>
         @include('default')
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding: 0;">
-                <div id="action_choice" class="row">
+                <div id="action_choice" class="row no-gutters">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-6" onmouseover="show_img('left')" onmouseout="hide_img('left')">
                         <div id="left_overlay" class="invasion-left-overlay"></div>
                         <img class="invasion-left-image" src="images/invasion_battle.jpg">

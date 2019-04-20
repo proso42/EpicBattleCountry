@@ -32,7 +32,13 @@ function back_step1()
     document.getElementById("list_unit").style.display = "none";
 }
 
-function add_unit(unit_ref, unit_name)
+function add_unit(unit_ref, max)
 {
-    
+    if (units_send.hasOwnProperty(unit_ref) && units_send[unit_ref] < max)
+    {
+        units_send[unit_ref]++;
+    }
+    else
+        units_send[unit_ref] = 1;
+    console.log(units_send[unit_ref]);
 }

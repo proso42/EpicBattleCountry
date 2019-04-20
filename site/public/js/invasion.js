@@ -110,6 +110,7 @@ function step4()
                     let textNode = document.createTextNode(key + " x" + units_send[key]);
                     new_span.appendChild(textNode);
                     new_span.id = "confirm_unit_" + key;
+                    new_span.className = "invasion-unit-line";
                     parent.insertBefore(new_span, document.getElementById("move_unit_duration"));
                 }
             }

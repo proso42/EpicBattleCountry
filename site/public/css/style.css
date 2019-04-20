@@ -1483,3 +1483,29 @@ input::placeholder
 {
     color: crimson;
 }
+
+.edit-unit-quantity-block
+{
+    margin-top: 50px;
+    margin-left: 33%;
+    width: 33%;
+    height: 250px;
+    background-color: rgb(105, 105, 105);
+    border: solid 1px lightblue;
+    border-radius: 4px;
+    text-align: center;
+    position: absolute;
+    z-index: 2;
+}
+
+.edit-unit-quantity-input
+{
+    margin-top: 10px;
+    background-color: tan;
+    color: black;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    height: 28px;
+    width: 204px;
+}

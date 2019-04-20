@@ -8,6 +8,15 @@
         <link rel="stylesheet" type="text/css" href="css/style.css"/>
     </head>
     <body>
+        <div id="overlay" class="home-overlay" style="display: none">
+        </div>
+        <div id="block_edit" class="edit-unit-quantity-block" style="display: none">
+            <h3 id="quantity_title"></h3>
+            <input id="new_quantity" type="text" class="edit-unit-quantity-input" placeholder="@lang('common.quantity')">
+            <br/>
+            <input id="edit_button" type="button" class="home-button" value="@lang('common.confirm')">
+            <input id="cancel_button" type="button" class="home-button-cancel" value="@lang('common.cancel')">
+        </div>
         @include('default')
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding: 0;">
                 <div id="action_choice" class="row no-gutters">
@@ -24,7 +33,7 @@
                         @foreach ($info_unit as $unit)
                             <div id="unit_{{ $unit['ref'] }}" class="row invasion-unit-line" unit_ref="{{ $unit['ref'] }}">
                                 <span class="col-lg-5 col-md-5 col-sm-5 col-5" style="text-align: left">{{ $unit['name'] }}</span>
-                                <span id="{{ $unit['ref'] }}_selected" class="col-lg-4 col-md-4 col-sm-4 col-4"> 0/{{ $unit['quantity'] }}</span>
+                                <span onclick="manual('{{ $unit['ref'] }}', '{{ $unit['name'] }}', '{{ $unit['quantity'] }}')" id="{{ $unit['ref'] }}_selected" class="col-lg-4 col-md-4 col-sm-4 col-4" style="cursor: pointer"> 0/{{ $unit['quantity'] }}</span>
                                 <span class="col-lg-1 col-md-1 col-sm-1 col-1"><i onmousedown="add_unit('{{ $unit['ref'] }}', '{{ $unit['quantity'] }}', 0)" class="fas fa-plus invasion-plus"></i></span>
                                 <span class="col-lg-1 col-md-1 col-sm-1 col-1"><i onmousedown="remove_unit('{{ $unit['ref'] }}', '{{ $unit['quantity'] }}'), 0" class="fas fa-minus invasion-minus"></i></span>
                             </div>

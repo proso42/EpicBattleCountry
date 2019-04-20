@@ -1,16 +1,53 @@
+setTimeout(() =>{
+    let body_height = document.body.scrollHeight + 20;
+    let win_height = window.innerHeight;
+    if (body_height > win_height)
+        document.getElementById("overlay").style.height = body_height + "px";
+    else
+        document.getElementById("overlay").style.height = win_height + "px";
+}, 1000);
+
+
 var units_send = [];
 var speed = 100;
 var click = false;
 onmousedown = function(){
     click = true;
-    //console.log(click);
 };
 
 onmouseup = function(){
     click = false;
     speed = 100;
-    //console.log(click);
 };
+
+function manual(unit_ref, unit_name, max)
+{
+    document.getElementById("quantity_title").textContent = unit_name;
+    document.getElementById("overlay").style.display = "";
+    document.getElementById("block_edit").style.display = "";
+    document.getElementById("edit_button").onclick = function (ref = unit_ref, maxi = max){
+        let quantity = document.getElementById("new_quantity").value;
+        if (quantity == "")
+            quantity = 0;
+        else if (!(!isNaN(parseFloat(quantity)) && isFinite(quantity)))
+            quantity = 0;
+        else if (parseInt(quantity) <= 0)
+            quantity = 0;
+        quantity = parseInt(quantity);
+        if (quantity > maxi)
+            quantity = maxi;
+        units_send[ref] = quantity;
+        document.getElementById(ref + "_selected").textContent = units_send[ref] + "/" + maxi;
+        document.getElementById("overlay").style.display = "none";
+        document.getElementById("block_edit").style.display = "none";
+        document.getElementById("new_quantity").value = "";
+    };
+    document.getElementById("cancel_button").onclick = function (){
+        document.getElementById("overlay").style.display = "none";
+        document.getElementById("block_edit").style.display = "none";
+        document.getElementById("new_quantity").value = "";
+    };
+}
 
 function hide_img(side)
 {

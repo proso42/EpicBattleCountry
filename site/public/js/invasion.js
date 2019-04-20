@@ -44,20 +44,18 @@ function back_step1()
 
 function add_unit(unit_ref, max)
 {
-    console.log("click : " + click);
-    while (click == true)
+    if (units_send.hasOwnProperty(unit_ref) && units_send[unit_ref] < max)
     {
-        if (units_send.hasOwnProperty(unit_ref) && units_send[unit_ref] < max)
-        {
-            units_send[unit_ref]++;
-            document.getElementById(unit_ref + "_selected").textContent = units_send[unit_ref] + "/" + max;
-        }
-        else
-        {
-            units_send[unit_ref] = 1;
-            document.getElementById(unit_ref + "_selected").textContent = "1/" + max;
-        }
+        units_send[unit_ref]++;
+        document.getElementById(unit_ref + "_selected").textContent = units_send[unit_ref] + "/" + max;
     }
+    else
+    {
+        units_send[unit_ref] = 1;
+        document.getElementById(unit_ref + "_selected").textContent = "1/" + max;
+    }
+    if (click == true)
+        add_unit(unit_ref, max);
 }
 
 function remove_unit(unit_ref, max)

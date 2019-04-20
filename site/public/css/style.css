@@ -1430,12 +1430,12 @@ input::placeholder
     cursor: pointer;
 }
 
-.invasion-left-image:hover .invasion-right-overlay
+.invasion-left-image:hover + .invasion-right-overlay
 {
     display: block;
 }
 
-.invasion-right-image:hover .invasion-left-overlay
+.invasion-right-image:hover + .invasion-left-overlay
 {
     display: block;
 }

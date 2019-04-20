@@ -6,7 +6,6 @@ onmousedown = function(){
 };
 
 onmouseup = function(){
-    //console.log("relaché");
     click = false;
     console.log(click);
 };
@@ -45,19 +44,21 @@ function back_step1()
 
 function add_unit(unit_ref, max)
 {
-    if (units_send.hasOwnProperty(unit_ref) && units_send[unit_ref] < max)
-    {
-        units_send[unit_ref]++;
-        document.getElementById(unit_ref + "_selected").textContent = units_send[unit_ref] + "/" + max;
-    }
-    else
-    {
-        units_send[unit_ref] = 1;
-        document.getElementById(unit_ref + "_selected").textContent = "1/" + max;
-    }
-    console.log("In function : " + click);
-    if (click == true)
-        add_unit(unit_ref, max);
+    setTimeout(function(){
+        if (units_send.hasOwnProperty(unit_ref) && units_send[unit_ref] < max)
+        {
+            units_send[unit_ref]++;
+            document.getElementById(unit_ref + "_selected").textContent = units_send[unit_ref] + "/" + max;
+        }
+        else
+        {
+            units_send[unit_ref] = 1;
+            document.getElementById(unit_ref + "_selected").textContent = "1/" + max;
+        }
+        console.log("In function : " + click);
+        if (click == true)
+            add_unit(unit_ref, max);
+    }, 500);
 }
 
 function remove_unit(unit_ref, max)

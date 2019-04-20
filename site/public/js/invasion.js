@@ -110,7 +110,7 @@ function step4()
                     let new_div = document.createElement("div");
                     new_div.className = "row";
                     parent.insertBefore(new_div, duration_div);
-                    let new_span = document.createElement("p");
+                    let new_span = document.createElement("span");
                     let textNode = document.createTextNode(key + " x" + units_send[key]);
                     new_span.appendChild(textNode);
                     new_span.id = "confirm_unit_" + key;

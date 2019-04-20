@@ -2,12 +2,12 @@ var units_send = [];
 var click = false;
 onmousedown = function(){
     click = true;
-    console.log(click);
+    //console.log(click);
 };
 
 onmouseup = function(){
     click = false;
-    console.log(click);
+    //console.log(click);
 };
 
 function hide_img(side)
@@ -55,17 +55,21 @@ function add_unit(unit_ref, max)
             units_send[unit_ref] = 1;
             document.getElementById(unit_ref + "_selected").textContent = "1/" + max;
         }
-        console.log("In function : " + click);
+        //console.log("In function : " + click);
         if (click == true)
             add_unit(unit_ref, max);
-    }, 500);
+    }, 100);
 }
 
 function remove_unit(unit_ref, max)
 {
-    if (units_send.hasOwnProperty(unit_ref) && units_send[unit_ref] > 0)
-    {
-        units_send[unit_ref]--;
-        document.getElementById(unit_ref + "_selected").textContent = units_send[unit_ref] + "/" + max;
-    }
+    setTimeout(function(){
+        if (units_send.hasOwnProperty(unit_ref) && units_send[unit_ref] > 0)
+        {
+            units_send[unit_ref]--;
+            document.getElementById(unit_ref + "_selected").textContent = units_send[unit_ref] + "/" + max;
+        }
+        if (click == true)
+            remove_unit(unit_ref, max);
+    }, 100);
 }

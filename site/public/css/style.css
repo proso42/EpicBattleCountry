@@ -1464,14 +1464,14 @@ input::placeholder
 
 .invasion-plus
 {
-    color: green;
+    color: lightgreen;
     cursor: pointer;
     margin-left: 25px;
 }
 
 .invasion-plus:hover
 {
-    color: lightgreen;
+    color: yellowgreen;
 }
 
 .invasion-minus

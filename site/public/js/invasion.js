@@ -133,7 +133,7 @@ function remove_unit(unit_ref, max, nb)
     }, speed);
 }
 
-function remove_all(unit_ref)
+function remove_all(unit_ref, max)
 {
     units_send[unit_ref] = 0;
     document.getElementById(unit_ref + "_selected").textContent = "0/" + max;

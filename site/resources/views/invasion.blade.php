@@ -11,11 +11,11 @@
         @include('default')
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding: 0;">
                 <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-6 div-left">
                         <div class="invasion-left-overlay"></div>
                         <img class="invasion-left-image" src="images/invasion_battle.jpg">
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-6 div-right">
                         <div class="invasion-right-overlay"></div>
                         <img class="invasion-right-image" src="images/invasion_moving.jpg">
                     </div>

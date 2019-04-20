@@ -48,8 +48,8 @@
                     @else
                         <h2>@lang('invasion.select_city')</h2>
                         @foreach ($user_cities as $city)
-                            <div id="id_{{ $city->name }}" onclick="select_city('{{ $city->name }}')" class="invasion-city-line" style="text-align: center; cursor: pointer">
-                                <span>{{ $city->name }} <i id="city_{{ $city->name }}" class="fas fa-check icon-color-green" style="display: none"></i></span>
+                            <div id="id_{{ $city->name }}" onclick="select_city('{{ $city->name }}')" class="row invasion-city-line" style="text-align: center; cursor: pointer">
+                                <span class="col-lg-12 col-md-12 col-sm-12 col-12">{{ $city->name }} <i id="city_{{ $city->name }}" class="fas fa-check icon-color-green" style="display: none"></i></span>
                             </div>
                         @endforeach
                         <input onclick="step4()" id="button_step4" type="button" class="home-button" value="@lang('common.confirm')">

@@ -159,6 +159,13 @@ function select_city(name)
         document.getElementById("id_" + city).style.border = "1px solid lightblue";
         document.getElementById("city_" + city).style.display = "none";
     }
+    if (city == name)
+    {
+        document.getElementById("id_" + city).style.border = "1px solid lightblue";
+        document.getElementById("city_" + city).style.display = "none";
+        city = "";
+        return ;
+    }
     city = name;
     document.getElementById("id_" + city).style.border = "1px solid lightgreen";
     document.getElementById("city_" + city).style.display = "";

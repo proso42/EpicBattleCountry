@@ -102,7 +102,7 @@ function step4()
                 console.log("duration : " + xhr.responseText);
                 document.getElementById("confirm_move_unit").style.display = "";
                 document.getElementById("list_city").style.display = "none";
-                document.getElementById("move_unit_duration").firstChild.textContent = xhr.responseText;
+                document.getElementById("travel_duration").textContent = xhr.responseText;
                 var parent = document.getElementById("confirm_move_unit");
                 var duration_div = document.getElementById("move_unit_duration");
                 for (var key in units_send)

@@ -1,12 +1,12 @@
 var units_send = [];
 var click = false;
 onmousedown = function(){
-    console.log("enfoncé");
+    //console.log("enfoncé");
     click = true;
 };
 
 onmouseup = function(){
-    console.log("relaché");
+    //console.log("relaché");
     click = false;
 };
 
@@ -44,6 +44,7 @@ function back_step1()
 
 function add_unit(unit_ref, max)
 {
+    console.log("click : " + click);
     while (click == true)
     {
         if (units_send.hasOwnProperty(unit_ref) && units_send[unit_ref] < max)

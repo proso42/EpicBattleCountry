@@ -56,7 +56,7 @@
                         <input onclick="back_step2()" id="cancel_button_2" type="button" class="home-button-cancel" value="@lang('common.return')">
                     @endif
                 </div>
-                <div id="confirm_move_unit">
+                <div id="confirm_move_unit" style="display: none">
                     <h2>@lang('invasion.confirm_move_unit')</h2>
                     <p id="move_unit_duration"></p>
                     <input onclick="step5()" id="button_step5" type="button" class="home-button" value="@lang('common.confirm')">

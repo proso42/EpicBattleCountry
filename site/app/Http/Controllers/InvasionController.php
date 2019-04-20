@@ -100,7 +100,7 @@
 
         public function calculate_move_units(Request $request)
         {
-            $units = $request['units'];
+            $units = json_decode($request['units']);
             $city_target = $request['city_target'];
             $user_id = session()->get('user_id');
             $city_id = session()->get('city_id');
@@ -118,10 +118,9 @@
                 if ($unit_speed < $min_speed)
                     $min_speed = $unit_speed;
             }
-            return ("ok");
-            /*$city_coord = DB::table('cities')->select('x_pos', 'y_pos')->where('id', '=', $city_id)->first();
+            $city_coord = DB::table('cities')->select('x_pos', 'y_pos')->where('id', '=', $city_id)->first();
             $travel_duration = $this->sec_to_date(((abs($city_coord->x_pos - $city_target_info->x_pos) + abs($city_coord->y_pos - $city_target_info->y_pos)) * $min_speed));
-            return ($travel_duration);*/
+            return ($travel_duration);
         }
     }
 

@@ -98,13 +98,14 @@ function step4()
             }
             else
             {
+                console.log("duration : " + xhr.responseText);
                 document.getElementById("confirm_move_unit").style.display = "";
                 document.getElementById("list_city").style.display = "none";
                 document.getElementById("move_unit_duration").textContent = xhr.responseText;
                 var parent = document.getElementById("confirm_move_unit");
                 for (var key in units_send)
                 {
-                    let new_span = document.createElement("span");
+                    let new_span = document.createElement("p");
                     let textNode = document.createTextNode(key + " x" + units_send[key]);
                     new_span.appendChild(textNode);
                     new_span.id = "confirm_unit_" + key;

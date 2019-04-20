@@ -34,15 +34,18 @@ function back_step1()
 
 function add_unit(unit_ref, max)
 {
-    if (units_send.hasOwnProperty(unit_ref) && units_send[unit_ref] < max)
+    while (window.event.button==1)
     {
-        units_send[unit_ref]++;
-        document.getElementById(unit_ref + "_selected").textContent = units_send[unit_ref] + "/" + max;
-    }
-    else
-    {
-        units_send[unit_ref] = 1;
-        document.getElementById(unit_ref + "_selected").textContent = "1/" + max;
+        if (units_send.hasOwnProperty(unit_ref) && units_send[unit_ref] < max)
+        {
+            units_send[unit_ref]++;
+            document.getElementById(unit_ref + "_selected").textContent = units_send[unit_ref] + "/" + max;
+        }
+        else
+        {
+            units_send[unit_ref] = 1;
+            document.getElementById(unit_ref + "_selected").textContent = "1/" + max;
+        }
     }
 }
 

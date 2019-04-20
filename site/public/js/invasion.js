@@ -103,7 +103,7 @@ function step4()
                 document.getElementById("confirm_move_unit").style.display = "";
                 document.getElementById("list_city").style.display = "none";
                 document.getElementById("move_unit_duration").textContent = xhr.responseText;
-                var parent = document.getElementById("confirm_unit_list");
+                var parent = document.getElementById("confirm_move_unit");
                 var duration_div = document.getElementById("move_unit_duration");
                 for (var key in units_send)
                 {

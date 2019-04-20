@@ -109,8 +109,7 @@
                 return ("invasion error : bad city");
             $city_units = DB::table('cities_units')->where('city_id', '=', $city_id)->first();
             $min_speed = 0;
-            return ("ok");
-            /*foreach ($units as $unit => $quantity)
+            foreach ($units as $unit => $quantity)
             {
                 if ($city_units->$unit < $quantity)
                     return ("invasion error : bad unit");
@@ -119,7 +118,8 @@
                 if ($unit_speed < $min_speed)
                     $min_speed = $unit_speed;
             }
-            $city_coord = DB::table('cities')->select('x_pos', 'y_pos')->where('id', '=', $city_id)->first();
+            return ("ok");
+            /*$city_coord = DB::table('cities')->select('x_pos', 'y_pos')->where('id', '=', $city_id)->first();
             $travel_duration = $this->sec_to_date(((abs($city_coord->x_pos - $city_target_info->x_pos) + abs($city_coord->y_pos - $city_target_info->y_pos)) * $min_speed));
             return ($travel_duration);*/
         }

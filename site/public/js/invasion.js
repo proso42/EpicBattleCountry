@@ -46,7 +46,7 @@ function add_unit(unit_ref, max)
     }
 }
 
-function remove_unit(unit_ref)
+function remove_unit(unit_ref, max)
 {
     if (units_send.hasOwnProperty(unit_ref) && units_send[unit_ref] > 0)
     {

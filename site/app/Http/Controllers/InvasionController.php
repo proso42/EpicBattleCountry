@@ -100,7 +100,7 @@
 
         public function calculate_move_units(Request $request)
         {
-            $unit = json_decode($request['units']);
+            $unit = $request['units'];
             return ($unit);
             $city_target = $request['city_target'];
             $user_id = session()->get('user_id');

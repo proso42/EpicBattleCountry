@@ -40,7 +40,10 @@ function add_unit(unit_ref, max)
         document.getElementById(unit_ref + "_selected").textContent = units_send[unit_ref] + "/" + max;
     }
     else
-        units_send[unit_ref] = "1/" + max;
+    {
+        units_send[unit_ref] = 1;
+        document.getElementById(unit_ref + "_selected").textContent = "1/" + max;
+    }
 }
 
 function remove_unit(unit_ref)

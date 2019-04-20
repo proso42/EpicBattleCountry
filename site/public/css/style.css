@@ -1430,16 +1430,6 @@ input::placeholder
     cursor: pointer;
 }
 
-.div-left:hover ~ .invasion-right-overlay
-{
-    display: block;
-}
-
-.div-right:hover ~ .invasion-left-overlay
-{
-    display: block;
-}
-
 .invasion-right-overlay
 {
     width: 100%;

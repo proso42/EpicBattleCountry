@@ -9,13 +9,13 @@
     </head>
     <body>
         @include('default')
-            <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding-right: 10px;">
+            <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding: 0;">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-6">
-                        <img src="images/invasion_battle.jpg">
+                        <img style="width: 100%;height: 596px" src="images/invasion_battle.jpg">
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-6">
-                        <img src="images/invasion_moving.jpg">
+                        <img style="width: 100%;height: 596px" ssrc="images/invasion_moving.jpg">
                     </div>
                 </div>
             </div>

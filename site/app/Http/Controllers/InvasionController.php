@@ -60,7 +60,7 @@
                 $compact_steel = substr($steel, 0, 5) . '...';
             if ($gold > 999999)
                 $compact_gold = substr($gold, 0, 5) . '...';
-            $city_unit = DB::table('cities_units')->where('city_id', '=', $city_id)->get();
+            $city_unit = DB::table('cities_units')->where('city_id', '=', $city_id)->first();
             $info_unit = [];
             foreach ($city_unit as $unit => $val)
             {

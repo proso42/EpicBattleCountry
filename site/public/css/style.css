@@ -1461,20 +1461,18 @@ input::placeholder
     margin-right: auto;
 }
 
-.invasion-unit-line:hover
+.invasion-plus
 {
-    font-weight: bold;
-    color: floralwhite;
+    background-color: lightgreen;
+    color: black;
+    border-radius: 20px;
+    cursor: pointer;
 }
 
-.invasion-green-unit-line
+.invasion-minus
 {
-    border: 1px solid green;
-    border-radius: 4px;
-    background-color: lightgreen;
-    opacity: 0.9;
+    background-color: crimson;
+    color: black;
+    border-radius: 20px;
     cursor: pointer;
-    width: 25%;
-    margin-left: auto;
-    margin-right: auto;
 }

@@ -34,5 +34,5 @@ function back_step1()
 
 function add_unit(unit_ref, unit_name)
 {
-    document.getElementById("unit_" + unit_ref).className = "invasion-green-unit-line";
+    
 }

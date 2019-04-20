@@ -15,7 +15,7 @@
                         <img style="width: 100%;height: 596px" src="images/invasion_battle.jpg">
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-6">
-                        <img style="width: 100%;height: 596px" ssrc="images/invasion_moving.jpg">
+                        <img style="width: 100%;height: 596px" src="images/invasion_moving.jpg">
                     </div>
                 </div>
             </div>

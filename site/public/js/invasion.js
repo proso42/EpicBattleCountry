@@ -42,3 +42,16 @@ function add_unit(unit_ref, max)
         units_send[unit_ref] = 1;
     console.log(units_send[unit_ref]);
 }
+
+function remove_unit(unit_ref)
+{
+    if (units_send.hasOwnProperty(unit_ref) && units_send[unit_ref] > 0)
+    {
+        units_send[unit_ref]--;
+        console.log(units_send[unit_ref]);
+    }
+    else
+    {
+        console.log('0');
+    }
+}

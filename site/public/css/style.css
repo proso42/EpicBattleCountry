@@ -1509,3 +1509,21 @@ input::placeholder
     height: 28px;
     width: 204px;
 }
+
+.invasion-city-line
+{
+    border: 1px solid lightblue;
+    border-radius: 4px;
+    background-color: rgba(105, 105, 105, 0.9);
+    width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    align-items: baseline;
+}
+
+.invasion-city-line:hover
+{
+    font-weight: bold;
+    color: floralwhite;
+}

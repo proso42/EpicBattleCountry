@@ -9,6 +9,7 @@ setTimeout(() =>{
 
 
 var units_send = [];
+var city = "";
 var speed = 100;
 var click = false;
 onmousedown = function(){
@@ -75,6 +76,18 @@ function step2()
     document.getElementById("list_unit").style.display = "";
 }
 
+function step3()
+{
+    document.getElementById("list_unit").style.display = "none";
+    document.getElementById("list_city").style.display = "";
+}
+
+function back_step2()
+{
+    document.getElementById("list_unit").style.display = "";
+    document.getElementById("list_city").style.display = "none";
+}
+
 function back_step1()
 {
     document.getElementById("action_choice").style.display = "";
@@ -137,4 +150,16 @@ function remove_all(unit_ref, max)
 {
     units_send[unit_ref] = 0;
     document.getElementById(unit_ref + "_selected").textContent = "0/" + max;
+}
+
+function select_city(name)
+{
+    if (city != "")
+    {
+        document.getElementById("id_" + city).style.border = "1px solid lightblue";
+        document.getElementById("city_" + city).style.display = "none";
+    }
+    city = name;
+    document.getElementById("id_" + city).style.border = "1px solid lightgreen";
+    document.getElementById("city_" + city).style.display = "";
 }

@@ -42,6 +42,20 @@
                         <input onclick="step3()" id="button_step3" type="button" class="home-button" value="@lang('common.confirm')">
                         <input onclick="back_step1()" id="cancel_button_1" type="button" class="home-button-cancel" value="@lang('common.return')">
                 </div>
+                <div id="list_city">
+                    @if ($user_cities == null)
+                        <h2>@lang('invasion.no_other_city')</h2>
+                    @else
+                        <h2>@lang('invasion.select_city')</h2>
+                        @foreach ($user_cities as $city)
+                            <div id="id_{{ $city['name'] }}" onclick="select_city('{{ $city['name'] }}')" class="invasion-city-line" style="text-align: center;">
+                                <span>$city['name']<i id="city_{{ $city['name'] }}" class="fas fa-check icon-color-green" style="display: none"></i></span>;
+                            </div>
+                        @endforeach
+                        <input onclick="step4()" id="button_step4" type="button" class="home-button" value="@lang('common.confirm')">
+                        <input onclick="back_step2()" id="cancel_button_2" type="button" class="home-button-cancel" value="@lang('common.return')">
+                    @endif
+                </div>
             </div>
             <input id="_token" name="_token" type="hidden" value="{{csrf_token()}}">
         </div>

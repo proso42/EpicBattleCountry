@@ -98,6 +98,8 @@ function step4()
             }
             else
             {
+                console.log(xhr.responseText)
+                return ;
                 document.getElementById("confirm_move_unit").style.display = "";
                 document.getElementById("list_city").style.display = "none";
                 document.getElementById("move_unit_duration").textContent = xhr.responseText;

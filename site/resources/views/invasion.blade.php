@@ -10,15 +10,23 @@
     <body>
         @include('default')
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding: 0;">
-                <div class="row">
+                <div id="action_choice" class="row">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-6" onmouseover="hide_img('right')" onmouseout="show_img('left')">
                         <div id="left_overlay" class="invasion-left-overlay" style="display: none"></div>
                         <img class="invasion-left-image" src="images/invasion_battle.jpg">
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-6" onmouseover="hide_img('left')" onmouseout="show_img('right')">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-6" onmouseover="hide_img('left')" onmouseout="show_img('right')" onclick="step2()">
                         <div id="right_overlay" class="invasion-right-overlay" style="display: none"></div>
                         <img class="invasion-right-image" src="images/invasion_moving.jpg">
                     </div>
+                </div>
+                <div id="list_unit">
+                    <ul>
+                        @foreach ($info_unit as $unit)
+                            <li unit_ref="{{ $unit['ref'] }}">{{ $unit['name'] }} x{{ $unit['quantity'] }}</li>
+                        @endforeach
+                        <input onclick="back_step1()" id="cancel_button_1" type="button" class="home-button-cancel" value="@lang('common.return')">
+                    </ul>
                 </div>
             </div>
             <input id="_token" name="_token" type="hidden" value="{{csrf_token()}}">

@@ -17,3 +17,15 @@ function show_img(side)
     else
         return ;
 }
+
+function step2()
+{
+    document.getElementById("action_choice").style.display = "none";
+    document.getElementById("list_unit").style.display = "";
+}
+
+function step1()
+{
+    document.getElementById("action_choice").style.display = "";
+    document.getElementById("list_unit").style.display = "none";
+}

@@ -47,7 +47,9 @@ function back_step1()
 function add_unit(unit_ref, max, nb)
 {
     if (nb > 10)
-        speed /= 2;
+        speed = 75;
+    else if (nb > 25)
+        speed = 50;
     setTimeout(function(){
         if (units_send.hasOwnProperty(unit_ref) && units_send[unit_ref] < max)
         {
@@ -68,7 +70,9 @@ function add_unit(unit_ref, max, nb)
 function remove_unit(unit_ref, max, nb)
 {
     if (nb > 10)
-        speed /= 2;
+        speed = 75;
+    else if (nb > 25)
+        speed = 50;
     setTimeout(function(){
         if (units_send.hasOwnProperty(unit_ref) && units_send[unit_ref] > 0)
         {

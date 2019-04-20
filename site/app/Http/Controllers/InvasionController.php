@@ -108,7 +108,6 @@
                 $ex = explode(":", $key);
                 $tab[$ex[0]] = $ex[1];
             }
-            return ($tab);
             $city_target = $request['city_target'];
             $user_id = session()->get('user_id');
             $city_id = session()->get('city_id');

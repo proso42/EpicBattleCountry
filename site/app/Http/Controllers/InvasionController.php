@@ -61,10 +61,10 @@
             if ($gold > 999999)
                 $compact_gold = substr($gold, 0, 5) . '...';
             $city_unit = DB::table('cities_units')->where('city_id', '=', $city_id)->get();
-            dd($city_unit);
             $info_unit = [];
             foreach ($city_unit as $unit => $val)
             {
+                dd($unit);
                 if ($val <= 0)
                     continue ;
                 array_push($info_unit, ["ref" => $unit, "name" => trans("unit." . $unit), "quantity" => $val]);

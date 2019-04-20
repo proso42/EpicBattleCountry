@@ -64,7 +64,8 @@
             $info_unit = [];
             foreach ($city_unit as $unit => $val)
             {
-                dd($val);
+                if ($unit == "id" || $unit == "city_id" || $unit == "owner")
+                    continue;
                 if ($val <= 0)
                     continue ;
                 array_push($info_unit, ["ref" => $unit, "name" => trans("unit." . $unit), "quantity" => $val]);

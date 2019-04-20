@@ -1438,7 +1438,6 @@ input::placeholder
     opacity: 0.5;
     position: absolute;
     z-index: 2;
-    display: none;
 }
 
 .invasion-left-overlay
@@ -1449,5 +1448,4 @@ input::placeholder
     opacity: 0.5;
     position: absolute;
     z-index: 2;
-    display: none;
 }

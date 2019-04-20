@@ -104,14 +104,18 @@ function step4()
                 document.getElementById("list_city").style.display = "none";
                 document.getElementById("move_unit_duration").textContent = xhr.responseText;
                 var parent = document.getElementById("confirm_unit_list");
+                var duration_div = document.getElementById("move_unit_duration");
                 for (var key in units_send)
                 {
+                    let new_div = document.createElement("div");
+                    new_div.className = "row";
+                    parent.insertBefore(new_div, duration_div);
                     let new_span = document.createElement("p");
                     let textNode = document.createTextNode(key + " x" + units_send[key]);
                     new_span.appendChild(textNode);
-                    new_span.id = "confirm_unit_" + key;
-                    new_span.className = "invasion-unit-line";
-                    parent.insertBefore(new_span, document.getElementById("move_unit_duration"));
+                    //new_span.id = "confirm_unit_" + key;
+                    new_span.className = "offset-lg-4 offset-md-4 offset-sm-4 offset-4 col-lg-6 col-md-6 col-sm-6 col-6 invasion-unit-line";
+                    new_div.insertBefore(new_span, new_div.firstChild);
                 }
             }
         }

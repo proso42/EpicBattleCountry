@@ -36,8 +36,8 @@ function manual(unit_ref, unit_name, max)
         quantity = parseInt(quantity);
         if (quantity > max)
             quantity = max;
-        units_send[ref] = quantity;
-        document.getElementById(unit_ref + "_selected").textContent = units_send[ref] + "/" + max;
+        units_send[unit_ref] = quantity;
+        document.getElementById(unit_ref + "_selected").textContent = units_send[unit_ref] + "/" + max;
         document.getElementById("overlay").style.display = "none";
         document.getElementById("block_edit").style.display = "none";
         document.getElementById("new_quantity").value = "";

@@ -91,13 +91,13 @@ function step4()
     {
         if (xhr.readyState === 4 && xhr.status === 200)
         {
-            /*if (xhr.responseText.indexOf("error") >= 0)
+            if (xhr.responseText.indexOf("error") >= 0)
             {
                 console.log(xhr.responseText);
                 return ;
             }
             else
-            {*/
+            {
                 console.log("duration : " + xhr.responseText);
                 document.getElementById("confirm_move_unit").style.display = "";
                 document.getElementById("list_city").style.display = "none";
@@ -111,7 +111,7 @@ function step4()
                     new_span.id = "confirm_unit_" + key;
                     parent.insertBefore(new_span, document.getElementById("move_unit_duration"));
                 }
-            //}
+            }
         }
     }
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

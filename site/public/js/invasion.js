@@ -50,6 +50,8 @@ function add_unit(unit_ref, max, nb)
         speed = 75;
     else if (nb > 10)
         speed = 50;
+    else if (nb > 20)
+        speed = 10;
     setTimeout(function(){
         if (units_send.hasOwnProperty(unit_ref) && units_send[unit_ref] < max)
         {

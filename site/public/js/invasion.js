@@ -25,7 +25,7 @@ function manual(unit_ref, unit_name, max)
     document.getElementById("quantity_title").textContent = unit_name;
     document.getElementById("overlay").style.display = "";
     document.getElementById("block_edit").style.display = "";
-    document.getElementById("edit_button").onclick = function (ref = unit_ref, maxi = max){
+    document.getElementById("edit_button").onclick = function (){
         let quantity = document.getElementById("new_quantity").value;
         if (quantity == "")
             quantity = 0;
@@ -34,10 +34,10 @@ function manual(unit_ref, unit_name, max)
         else if (parseInt(quantity) <= 0)
             quantity = 0;
         quantity = parseInt(quantity);
-        if (quantity > maxi)
-            quantity = maxi;
+        if (quantity > max)
+            quantity = max;
         units_send[ref] = quantity;
-        document.getElementById(ref + "_selected").textContent = units_send[ref] + "/" + maxi;
+        document.getElementById(unit_ref + "_selected").textContent = units_send[ref] + "/" + max;
         document.getElementById("overlay").style.display = "none";
         document.getElementById("block_edit").style.display = "none";
         document.getElementById("new_quantity").value = "";

@@ -30,6 +30,7 @@
                     </div>
                 </div>
                 <div id="list_unit" style="display: none; text-align: center;margin-top: 25px;">
+                        <h2>@lang('invasion.unit_to_move')</h2>
                         @foreach ($info_unit as $unit)
                             <div id="unit_{{ $unit['ref'] }}" class="row invasion-unit-line" unit_ref="{{ $unit['ref'] }}">
                                 <span class="col-lg-5 col-md-5 col-sm-5 col-5" style="text-align: left">{{ $unit['name'] }}</span>
@@ -39,6 +40,7 @@
                             </div>
                         @endforeach
                         <input onclick="back_step1()" id="cancel_button_1" type="button" class="home-button-cancel" value="@lang('common.return')">
+                        <input onclick="step3()" id="button_step3" type="button" class="home-button-cancel" value="@lang('common.confirm')">
                 </div>
             </div>
             <input id="_token" name="_token" type="hidden" value="{{csrf_token()}}">

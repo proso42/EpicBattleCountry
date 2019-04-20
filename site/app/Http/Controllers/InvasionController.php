@@ -121,7 +121,7 @@
             }
             $city_coord = DB::table('cities')->select('x_pos', 'y_pos')->where('id', '=', $city_id)->first();
             $travel_duration = $this->sec_to_date(((abs($city_coord->x_pos - $city_target_info->x_pos) + abs($city_coord->y_pos - $city_target_info->y_pos)) * $min_speed));
-            return ($travel_duration);
+            return ($min_speed);
         }
     }
 

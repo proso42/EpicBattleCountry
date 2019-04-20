@@ -108,6 +108,12 @@ function add_unit(unit_ref, max, nb)
     }, speed);
 }
 
+function add_max(unit_ref, max)
+{
+    units_send[unit_ref] = max;
+    document.getElementById(unit_ref + "_selected").textContent = max + "/" + max;
+}
+
 function remove_unit(unit_ref, max, nb)
 {
     if (nb > 5)
@@ -125,4 +131,10 @@ function remove_unit(unit_ref, max, nb)
         if (click == true)
             remove_unit(unit_ref, max, nb + 1);
     }, speed);
+}
+
+function remoave_all(unit_ref)
+{
+    units_send[unit_ref] = 0;
+    document.getElementById(unit_ref + "_selected").textContent = "0/" + max;
 }

@@ -80,6 +80,7 @@ Route::group(['middleware' => ['logged']], function(){
     Route::post('/unlock_user', 'MessagesController@unlock_user');
     // Invasion endpoints
     Route::get('/invasion', 'InvasionController@index');
+    Route::post('/calculate_move_units', 'InvasionController@calculate_move_units');
 });
 
 // ADMIN ROUTES

@@ -8,7 +8,7 @@ setTimeout(() =>{
 }, 1000);
 
 
-var units_send = [];
+var units_send = {};
 var city = "";
 var speed = 100;
 var click = false;
@@ -82,16 +82,59 @@ function step3()
     document.getElementById("list_city").style.display = "";
 }
 
-function back_step2()
+function step4()
 {
-    document.getElementById("list_unit").style.display = "";
-    document.getElementById("list_city").style.display = "none";
+    var _token = document.getElementById("_token").value;
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'http://www.epicbattlecorp.fr/calculate_move_units');
+    xhr.onreadystatechange =  function()
+    {
+        if (xhr.readyState === 4 && xhr.status === 200)
+        {
+            if (xhr.responseText.indexOf("error") >= 0)
+            {
+                console.log(xhr.responseText);
+                return ;
+            }
+            else
+            {
+                document.getElementById("confirm_move_unit").style.display = "";
+                document.getElementById("list_city").style.display = "none";
+                document.getElementById("move_unit_duration").textContent = xhr.responseText;
+                var parent = document.getElementById("confirm_move_unit");
+                for (var key in units_send)
+                {
+                    let new_span = document.createElement("span");
+                    let textNode = document.createTextNode(key + " x" + units_send[key]);
+                    new_span.appendChild(textNode);
+                    new_span.id = "confirm_unit_" + key;
+                    parent.insertBefore(new_span, document.getElementById("move_unit_duration"));
+                }
+            }
+        }
+    }
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send('_token=' + _token + '&units=' + units_send + "&city_target=" + city);
 }
 
 function back_step1()
 {
     document.getElementById("action_choice").style.display = "";
     document.getElementById("list_unit").style.display = "none";
+}
+
+function back_step2()
+{
+    document.getElementById("list_unit").style.display = "";
+    document.getElementById("list_city").style.display = "none";
+}
+
+function back_step3()
+{
+    document.getElementById("list_city").style.display = "";
+    document.getElementById("confirm_move_unit").style.display = "none";
+    for (var key in units_send)
+        document.getElementById("confirm_unit_" + key).remove();
 }
 
 function add_unit(unit_ref, max, nb)

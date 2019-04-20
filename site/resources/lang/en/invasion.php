@@ -16,4 +16,5 @@ return [
     'unit_to_move' => 'Units to move',
     'no_other_city' => 'You have only one city !',
     'select_city' => 'Select a city',
+    'confirm_move_unit' => 'Confirm move unit',
 ];

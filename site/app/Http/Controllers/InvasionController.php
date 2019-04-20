@@ -73,6 +73,55 @@
             $user_cities = DB::table('cities')->select('name')->where('owner', '=', $user_id)->where('id', '!=', $city_id)->get();
             return view('invasion', compact('is_admin', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold', 'info_unit', 'user_cities'));
         }
+
+        private function sec_to_date($duration)
+        {
+            $new_duration = "";
+            if ($duration < 60)
+                return ($duration . " s");
+            if ($duration % 60 > 0)
+                $new_duration = ($duration % 60) . " s";
+            $duration = floor($duration / 60);
+            if ($duration < 60)
+                return ($duration . " m " . $new_duration);
+            if ($duration % 60 > 0)
+                $new_duration = ($duration % 60) . " m " . $new_duration;
+            $duration = floor($duration / 60);
+            if ($duration < 60)
+                return ($duration . " h " . $new_duration);
+            if ($duration % 60 > 0)
+                $new_duration = ($duration % 60) . " h " . $new_duration;
+            $duration = floor($duration / 24);
+            if ($new_duration !== "")
+                return ($duration . " j " . $new_duration);
+            else
+                return ($duration . " j");
+        }
+
+        public function calculate_move_units(Request $request)
+        {
+            $units = json_decode($request['units']);
+            $city_target = $request['city_target'];
+            $user_id = session()->get('user_id');
+            $city_id = session()->get('city_id');
+            $city_target_info = DB::table('cities')->where('name', '=', $city_target)->where('owner', '=', $user_id)->first();
+            if ($city_target_info == null || $city_target_info->id == $city_id)
+                return ("invasion error : bad city");
+            $city_units = DB::table('cities_units')->where('city_id', '=', $city_id)->first();
+            $min_speed = 0;
+            foreach ($units as $unit => $quantity)
+            {
+                if ($city_units->$unit < $quantity)
+                    return ("invasion error : bad unit");
+                $unit_name_format = preg_replace('/_/', " ", $unit);
+                $unit_speed = DB::table('units')->where('name', '=', $unit_name_format)->value('speed');
+                if ($unit_speed < $min_speed)
+                    $min_speed = $unit_speed;
+            }
+            $city_coord = DB::table('cities')->select('x_pos', 'y_pos')->where('id', '=', $city_id)->first();
+            $travel_duration = $this->sec_to_date(((abs($city_coord->x_pos - $city_target_info->x_pos) + abs($city_coord->y_pos - $city_target_info->y_pos)) * $min_speed));
+            return ("travel_duration");
+        }
     }
 
 ?>

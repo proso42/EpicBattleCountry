@@ -16,4 +16,5 @@ return [
     'unit_to_move' => 'Unités à déplacer',
     'no_other_city' => 'Vous n\'avez qu\'une seule ville !',
     'select_city' => 'Choisissez une ville',
+    'confirm_move_unit' => 'Confirmer le mouvement des troupes',
 ];

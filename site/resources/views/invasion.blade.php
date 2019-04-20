@@ -56,6 +56,12 @@
                         <input onclick="back_step2()" id="cancel_button_2" type="button" class="home-button-cancel" value="@lang('common.return')">
                     @endif
                 </div>
+                <div id="confirm_move_unit">
+                    <h2>@lang('invasion.confirm_move_unit')</h2>
+                    <p id="move_unit_duration"></p>
+                    <input onclick="step5()" id="button_step5" type="button" class="home-button" value="@lang('common.confirm')">
+                    <input onclick="back_step3()" id="cancel_button_3" type="button" class="home-button-cancel" value="@lang('common.return')">
+                </div>
             </div>
             <input id="_token" name="_token" type="hidden" value="{{csrf_token()}}">
         </div>

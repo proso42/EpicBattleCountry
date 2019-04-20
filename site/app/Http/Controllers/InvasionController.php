@@ -101,7 +101,14 @@
         public function calculate_move_units(Request $request)
         {
             $units = $request['units'];
-            return ($units);
+            $units = explode(",", preg_replace('/[{}\"]/', '', $units));
+            $tab = [];
+            foreach ($units as $key)
+            {
+                $ex = explode(":", $key);
+                $tab[$ex[0]] = $ex[1];
+            }
+            return ($tab);
             $city_target = $request['city_target'];
             $user_id = session()->get('user_id');
             $city_id = session()->get('city_id');
@@ -110,7 +117,7 @@
                 return ("invasion error : bad city");
             $city_units = DB::table('cities_units')->where('city_id', '=', $city_id)->first();
             $min_speed = 0;
-            foreach ($units as $unit => $quantity)
+            foreach ($tab as $unit => $quantity)
             {
                 if ($city_units->$unit < $quantity)
                     return ("invasion error : bad unit");

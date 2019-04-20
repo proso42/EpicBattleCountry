@@ -84,6 +84,7 @@ function step3()
 
 function step4()
 {
+    console.log(units_send);
     var _token = document.getElementById("_token").value;
     var xhr = new XMLHttpRequest();
     xhr.open('POST', 'http://www.epicbattlecorp.fr/calculate_move_units');

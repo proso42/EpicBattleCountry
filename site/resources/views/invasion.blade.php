@@ -39,8 +39,8 @@
                                 <span class="col-lg-1 col-md-1 col-sm-1 col-1"><i ondblclick="remove_all('{{ $unit['ref'] }}', '{{ $unit['quantity'] }}')" onmousedown="remove_unit('{{ $unit['ref'] }}', '{{ $unit['quantity'] }}'), 0" class="fas fa-minus invasion-minus"></i></span>
                             </div>
                         @endforeach
+                        <input onclick="step3()" id="button_step3" type="button" class="home-button" value="@lang('common.confirm')">
                         <input onclick="back_step1()" id="cancel_button_1" type="button" class="home-button-cancel" value="@lang('common.return')">
-                        <input onclick="step3()" id="button_step3" type="button" class="home-button-cancel" value="@lang('common.confirm')">
                 </div>
             </div>
             <input id="_token" name="_token" type="hidden" value="{{csrf_token()}}">

@@ -24,7 +24,7 @@ function step2()
     document.getElementById("list_unit").style.display = "";
 }
 
-function step1()
+function back_step1()
 {
     document.getElementById("action_choice").style.display = "";
     document.getElementById("list_unit").style.display = "none";

@@ -1455,17 +1455,18 @@ input::placeholder
     border: 1px solid lightblue;
     border-radius: 4px;
     background-color: rgba(105, 105, 105, 0.9);
-    cursor: pointer;
     width: 25%;
     margin-left: auto;
     margin-right: auto;
+    display: inline-flex;
 }
 
 .invasion-plus
 {
     background-color: lightgreen;
     color: black;
-    border-radius: 20px;
+    border-radius: 50px;
+    width: 35px;
     cursor: pointer;
 }
 
@@ -1473,6 +1474,9 @@ input::placeholder
 {
     background-color: crimson;
     color: black;
-    border-radius: 20px;
+    border-radius: 50px;
+    width: 35px;
     cursor: pointer;
+    margin-left: 25px;
+    margin-right: 25px;
 }

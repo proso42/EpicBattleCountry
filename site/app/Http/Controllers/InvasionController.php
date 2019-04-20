@@ -105,12 +105,12 @@
             $user_id = session()->get('user_id');
             $city_id = session()->get('city_id');
             $city_target_info = DB::table('cities')->where('name', '=', $city_target)->where('owner', '=', $user_id)->first();
-            return ("ok");
-            /*if ($city_target_info == null || $city_target_info->id == $city_id)
+            if ($city_target_info == null || $city_target_info->id == $city_id)
                 return ("invasion error : bad city");
             $city_units = DB::table('cities_units')->where('city_id', '=', $city_id)->first();
             $min_speed = 0;
-            foreach ($units as $unit => $quantity)
+            return ("ok");
+            /*foreach ($units as $unit => $quantity)
             {
                 if ($city_units->$unit < $quantity)
                     return ("invasion error : bad unit");

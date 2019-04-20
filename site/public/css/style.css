@@ -1460,24 +1460,23 @@ input::placeholder
     margin-right: auto;
     display: inline-flex;
     margin-bottom: 20px;
+    align-items: baseline;
 }
 
 .invasion-plus
 {
-    background-color: lightgreen;
-    color: black;
+    color: lightgreen;
     cursor: pointer;
 }
 
 .invasion-plus:hover
 {
-    background-color: greenyellow;
+    color: greenyellow;
 }
 
 .invasion-minus
 {
-    background-color: crimson;
-    color: black;
+    color: crimson;
     cursor: pointer;
     margin-left: 25px;
     margin-right: 25px;
@@ -1485,5 +1484,5 @@ input::placeholder
 
 .invasion-minus:hover
 {
-    background-color: lightpink;
+    color: lightpink;
 }

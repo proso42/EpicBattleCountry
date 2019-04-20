@@ -111,12 +111,12 @@
             $min_speed = 0;
             foreach ($units as $unit => $quantity)
             {
-                if ($city_units->$unit < $quantity)
+                /*if ($city_units->$unit < $quantity)
                     return ("invasion error : bad unit");
                 $unit_name_format = preg_replace('/_/', " ", $unit);
                 $unit_speed = DB::table('units')->where('name', '=', $unit_name_format)->value('speed');
                 if ($unit_speed < $min_speed)
-                    $min_speed = $unit_speed;
+                    $min_speed = $unit_speed;*/
             }
             $city_coord = DB::table('cities')->select('x_pos', 'y_pos')->where('id', '=', $city_id)->first();
             $travel_duration = $this->sec_to_date(((abs($city_coord->x_pos - $city_target_info->x_pos) + abs($city_coord->y_pos - $city_target_info->y_pos)) * $min_speed));

@@ -126,7 +126,7 @@
                                         <i class="fas fa-cog icon"></i>
                                     @elseif ($elem['type'] == "unit")
                                         <i class="fas fa-chess-rook icon"></i>
-                                    @else if ($elem['type'] == "explo")
+                                    @elseif ($elem['type'] == "explo")
                                         <i class="fas fa-map-marked-alt"></i>
                                     @else
                                         <i class="fas fa-shoe-prints"></i>

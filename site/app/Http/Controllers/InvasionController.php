@@ -165,7 +165,7 @@
                 if ($units_send == "")
                     $units_send .= $info_unit->id . ":" . $quantity;
                 else
-                    $units_send += ";" . $info_unit->id . ":" . $quantity;
+                    $units_send .= ";" . $info_unit->id . ":" . $quantity;
                 $update_units_tab[$unit] = $city_units->$unit - $quantity;
             }
             $city_coord = DB::table('cities')->select('x_pos', 'y_pos')->where('id', '=', $city_id)->first();

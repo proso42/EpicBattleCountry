@@ -142,7 +142,6 @@
                 $ex = explode(":", $key);
                 $tab[$ex[0]] = $ex[1];
             }
-            return ("ok");
             $city_target = $request['city_target'];
             $user_id = session()->get('user_id');
             $city_id = session()->get('city_id');
@@ -153,7 +152,7 @@
             $min_speed = -1;
             $units_send = "";
             $update_units_tab = [];
-            /*foreach ($tab as $unit => $quantity)
+            foreach ($tab as $unit => $quantity)
             {
                 if ($quantity <= 0)
                     continue;
@@ -169,7 +168,8 @@
                     $units_send += ";" . $info_unit->id . ":" . $quantity;
                 $update_units_tab[$unit] = $city_units->$unit - $quantity;
             }
-            $city_coord = DB::table('cities')->select('x_pos', 'y_pos')->where('id', '=', $city_id)->first();
+            return ("ok");
+            /*$city_coord = DB::table('cities')->select('x_pos', 'y_pos')->where('id', '=', $city_id)->first();
             $travel_duration = ((abs($city_coord->x_pos - $city_target_info->x_pos) + abs($city_coord->y_pos - $city_target_info->y_pos)) * (3600 / $min_speed));
             $finishing_date = $travel_duration + time();
             $starting_point = $city_coord->x_pos . "/" . $city_coord->y_pos;

@@ -152,7 +152,7 @@ function step5()
     {
         if (xhr.readyState === 4 && xhr.status === 200)
         {
-            conosle.log(xhr.responseText);
+            console.log(xhr.responseText);
             /*if (xhr.responseText.indexOf("error") >= 0)
                 conosle.log(xhr.responseText);
             else

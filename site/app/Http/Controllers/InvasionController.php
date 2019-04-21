@@ -143,7 +143,7 @@
                 $tab[$ex[0]] = $ex[1];
             }
             return ("ok");
-            /*$city_target = $request['city_target'];
+            $city_target = $request['city_target'];
             $user_id = session()->get('user_id');
             $city_id = session()->get('city_id');
             $city_target_info = DB::table('cities')->where('name', '=', $city_target)->where('owner', '=', $user_id)->first();
@@ -153,7 +153,7 @@
             $min_speed = -1;
             $units_send = "";
             $update_units_tab = [];
-            foreach ($tab as $unit => $quantity)
+            /*foreach ($tab as $unit => $quantity)
             {
                 if ($quantity <= 0)
                     continue;

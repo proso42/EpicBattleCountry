@@ -157,7 +157,11 @@ function back_step3()
     document.getElementById("list_city").style.display = "";
     document.getElementById("confirm_move_unit").style.display = "none";
     for (var key in units_send)
+    {
+        if (units_send[key] <= 0)
+            continue ;
         document.getElementById("confirm_unit_" + key).remove();
+    }
 }
 
 function add_unit(unit_ref, max, nb)

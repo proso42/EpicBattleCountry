@@ -120,6 +120,8 @@ function step4()
                 var duration_div = document.getElementById("move_unit_duration");
                 for (var key in units_send)
                 {
+                    if (units_send[key] <= 0)
+                        continue;
                     let new_div = document.createElement("div");
                     new_div.className = "row invasion-unit-line";
                     new_div.id = "confirm_unit_" + key;

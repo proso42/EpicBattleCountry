@@ -118,6 +118,8 @@
             $min_speed = -1;
             foreach ($tab as $unit => $quantity)
             {
+                if ($quantity <= 0)
+                    continue;
                 if ($city_units->$unit < $quantity)
                     return ("invasion error : bad unit");
                 $unit_name_format = preg_replace('/_/', " ", $unit);

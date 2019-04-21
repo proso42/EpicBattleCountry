@@ -152,8 +152,7 @@
             $min_speed = -1;
             $units_send = "";
             $update_units_tab = [];
-            return ("ok");
-            /*foreach ($tab as $unit => $quantity)
+            foreach ($tab as $unit => $quantity)
             {
                 if ($quantity <= 0)
                     continue;
@@ -164,7 +163,7 @@
                 if ($min_speed == -1 || $unit_infos->speed < $min_speed)
                     $min_speed = $unit_infos->speed;
                 if ($units_send == "")
-                    $units_send += $info_unit->id . ":" . $quantity;
+                    $units_send .= $info_unit->id . ":" . $quantity;
                 else
                     $units_send += ";" . $info_unit->id . ":" . $quantity;
                 $update_units_tab[$unit] = $city_units->$unit - $quantity;
@@ -176,7 +175,7 @@
             $ending_point = $city_target_info->x_pos . "/" . $city_target_info->y_pos;
             DB::table('traveling_units')->insert(["city_id" => $city_id, "owner" => $user_id, "starting_point" => $starting_point, "ending_point" => $ending_point, "units" => $units_send, "traveling_duration" => $travel_duration, "finishing_date" => $finishing_date, "mission" => 7]);
             DB::table('cities_units')->where('city_id', '=', $city_id)->update($update_units_tab);
-            return ("good");*/
+            return ("good");
         }
     }
 

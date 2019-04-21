@@ -163,20 +163,19 @@
                 if ($min_speed == -1 || $unit_infos->speed < $min_speed)
                     $min_speed = $unit_infos->speed;
                 if ($units_send == "")
-                    $units_send .= $info_unit->id . ":" . $quantity;
+                    $units_send .= $unit_infos->id . ":" . $quantity;
                 else
-                    $units_send .= ";" . $info_unit->id . ":" . $quantity;
+                    $units_send .= ";" . $unit_infos->id . ":" . $quantity;
                 $update_units_tab[$unit] = $city_units->$unit - $quantity;
             }
-            return ("ok");
-            /*$city_coord = DB::table('cities')->select('x_pos', 'y_pos')->where('id', '=', $city_id)->first();
+            $city_coord = DB::table('cities')->select('x_pos', 'y_pos')->where('id', '=', $city_id)->first();
             $travel_duration = ((abs($city_coord->x_pos - $city_target_info->x_pos) + abs($city_coord->y_pos - $city_target_info->y_pos)) * (3600 / $min_speed));
             $finishing_date = $travel_duration + time();
             $starting_point = $city_coord->x_pos . "/" . $city_coord->y_pos;
             $ending_point = $city_target_info->x_pos . "/" . $city_target_info->y_pos;
             DB::table('traveling_units')->insert(["city_id" => $city_id, "owner" => $user_id, "starting_point" => $starting_point, "ending_point" => $ending_point, "units" => $units_send, "traveling_duration" => $travel_duration, "finishing_date" => $finishing_date, "mission" => 7]);
             DB::table('cities_units')->where('city_id', '=', $city_id)->update($update_units_tab);
-            return ("good");*/
+            return ("good");
         }
     }
 

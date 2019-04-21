@@ -37,4 +37,5 @@ return [
     'an_error_occured' => 'An error has occurred !',
     'limit_coord' => 'Please enter coordinates between -2000 and 2000 !',
     'exp_not_moving' => 'Your shipment will not move !',
+    'error_no_unit_selected' => 'Please select at least one unit',
 ];

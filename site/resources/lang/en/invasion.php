@@ -17,4 +17,5 @@ return [
     'no_other_city' => 'You have only one city !',
     'select_city' => 'Select a city',
     'confirm_move_unit' => 'Confirm move unit',
+    'no_unit' => 'You do not hav any unit',
 ];

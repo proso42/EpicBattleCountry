@@ -17,6 +17,9 @@
             <input id="edit_button" type="button" class="home-button" value="@lang('common.confirm')">
             <input id="cancel_button" type="button" class="home-button-cancel" value="@lang('common.cancel')">
         </div>
+        <div id="error_no_unit_selected" class="forge-input-error" style="display: none;">
+            <p>@lang('error.no_unit_selected')</p>
+        </div>
         @include('default')
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding: 0;">
                 <div id="action_choice" class="row no-gutters">
@@ -30,21 +33,27 @@
                     </div>
                 </div>
                 <div id="list_unit" style="display: none; text-align: center;margin-top: 25px;">
-                        <h2>@lang('invasion.unit_to_move')</h2>
-                        @foreach ($info_unit as $unit)
-                            <div id="unit_{{ $unit['ref'] }}" class="row invasion-unit-line" unit_ref="{{ $unit['ref'] }}">
-                                <span class="col-lg-5 col-md-5 col-sm-5 col-5" style="text-align: left">{{ $unit['name'] }}</span>
-                                <span onclick="manual('{{ $unit['ref'] }}', '{{ $unit['name'] }}', '{{ $unit['quantity'] }}')" id="{{ $unit['ref'] }}_selected" class="col-lg-4 col-md-4 col-sm-4 col-4" style="cursor: pointer"> 0/{{ $unit['quantity'] }}</span>
-                                <span class="col-lg-1 col-md-1 col-sm-1 col-1"><i ondblclick="add_max('{{ $unit['ref'] }}', '{{ $unit['quantity'] }}')" onmousedown="add_unit('{{ $unit['ref'] }}', '{{ $unit['quantity'] }}', 0)" class="fas fa-plus invasion-plus"></i></span>
-                                <span class="col-lg-1 col-md-1 col-sm-1 col-1"><i ondblclick="remove_all('{{ $unit['ref'] }}', '{{ $unit['quantity'] }}')" onmousedown="remove_unit('{{ $unit['ref'] }}', '{{ $unit['quantity'] }}'), 0" class="fas fa-minus invasion-minus"></i></span>
-                            </div>
-                        @endforeach
-                        <input onclick="step3()" id="button_step3" type="button" class="home-button" value="@lang('common.confirm')">
-                        <input onclick="back_step1()" id="cancel_button_1" type="button" class="home-button-cancel" value="@lang('common.return')">
+                        @if ($info_unit == null)
+                            <h2>@lang('invasion.no_unit')</h2>
+                            <input onclick="back_step1()" id="cancel_button_1" type="button" class="home-button-cancel" value="@lang('common.return')">
+                        @else
+                            <h2>@lang('invasion.unit_to_move')</h2>
+                            @foreach ($info_unit as $unit)
+                                <div id="unit_{{ $unit['ref'] }}" class="row invasion-unit-line" unit_ref="{{ $unit['ref'] }}">
+                                    <span class="col-lg-5 col-md-5 col-sm-5 col-5" style="text-align: left">{{ $unit['name'] }}</span>
+                                    <span onclick="manual('{{ $unit['ref'] }}', '{{ $unit['name'] }}', '{{ $unit['quantity'] }}')" id="{{ $unit['ref'] }}_selected" class="col-lg-4 col-md-4 col-sm-4 col-4" style="cursor: pointer"> 0/{{ $unit['quantity'] }}</span>
+                                    <span class="col-lg-1 col-md-1 col-sm-1 col-1"><i ondblclick="add_max('{{ $unit['ref'] }}', '{{ $unit['quantity'] }}')" onmousedown="add_unit('{{ $unit['ref'] }}', '{{ $unit['quantity'] }}', 0)" class="fas fa-plus invasion-plus"></i></span>
+                                    <span class="col-lg-1 col-md-1 col-sm-1 col-1"><i ondblclick="remove_all('{{ $unit['ref'] }}', '{{ $unit['quantity'] }}')" onmousedown="remove_unit('{{ $unit['ref'] }}', '{{ $unit['quantity'] }}'), 0" class="fas fa-minus invasion-minus"></i></span>
+                                </div>
+                            @endforeach
+                            <input onclick="step3()" id="button_step3" type="button" class="home-button" value="@lang('common.confirm')">
+                            <input onclick="back_step1()" id="cancel_button_1" type="button" class="home-button-cancel" value="@lang('common.return')">
+                        @endif
                 </div>
                 <div id="list_city" style="display: none">
                     @if ($user_cities == null)
                         <h2>@lang('invasion.no_other_city')</h2>
+                        <input onclick="back_step2()" id="cancel_button_2" type="button" class="home-button-cancel" value="@lang('common.return')">
                     @else
                         <h2>@lang('invasion.select_city')</h2>
                         @foreach ($user_cities as $city)

@@ -140,6 +140,31 @@ function step4()
     xhr.send('_token=' + _token + '&units=' + JSON.stringify(units_send) + "&city_target=" + city);
 }
 
+function step5()
+{
+    document.getElementById("button_step5").style.display = "none";
+    document.getElementById("cancel_button_3").style.display = "none";
+    document.getElementById("spin").style.display = "";
+    var _token = document.getElementById("_token").value;
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'http://www.epicbattlecorp.fr/move_units');
+    xhr.onreadystatechange =  function()
+    {
+        if (xhr.readyState === 4 && xhr.status === 200)
+        {
+            if (xhr.responseText.indexOf("error") >= 0)
+                conosle.log(xhr.responseText);
+            else
+                document.getElementById("units_move_success").style.display = "";
+            setTimeout(function(){
+                window.location.reload();
+            }, 3000)
+        }
+    }
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send('_token=' + _token + '&units=' + JSON.stringify(units_send) + "&city_target=" + city);
+}
+
 function back_step1()
 {
     document.getElementById("action_choice").style.display = "";

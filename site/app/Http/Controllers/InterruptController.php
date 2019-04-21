@@ -23,7 +23,7 @@
                 return $this->interrupt_item($city_id);
             else if ($type_canceled == "unit")
                 return $this->interrupt_unit($city_id);
-            else if ($type_canceled == "explo")
+            else if ($type_canceled == "explo" || $type_canceled == "move_units")
                 return $this->interrupt_explo($city_id, $wait_id);
             else
                 return ("interrupt error : bad type canceled");
@@ -108,7 +108,7 @@
             $explo = DB::table('traveling_units')->where('id', '=', $wait_id)->first();
             if ($explo->mission == 6)
                 return ("interrupt error : cannot cancel mission : 6");
-            else if ($explo->mission == 5 || $explo->mission == 7)
+            else if ($explo->mission == 5)
                 return ("interrupt error : not implemented yet");
             $mission_name = trans('exploration.' . DB::table('traveling_missions')->where('id', '=', $explo->mission)->value("mission"));
             $starting_point = $explo->ending_point;

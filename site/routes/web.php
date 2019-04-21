@@ -81,6 +81,7 @@ Route::group(['middleware' => ['logged']], function(){
     // Invasion endpoints
     Route::get('/invasion', 'InvasionController@index');
     Route::post('/calculate_move_units', 'InvasionController@calculate_move_units');
+    Route::post('/move_units', 'InvasionController@move_units');
 });
 
 // ADMIN ROUTES

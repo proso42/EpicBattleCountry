@@ -18,4 +18,5 @@ return [
     'select_city' => 'Select a city',
     'confirm_move_unit' => 'Confirm move unit',
     'no_unit' => 'You do not hav any unit',
+    'units_move_success' => 'Units are now moving',
 ];

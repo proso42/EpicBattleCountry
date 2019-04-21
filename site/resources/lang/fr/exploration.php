@@ -19,6 +19,7 @@ return [
     'Raid_Battlefield' => 'Piller un champs de bataille',
     'Colonize' => 'Coloniser',
     'Go_Home' => 'Retour',
+    'Move_Units' => 'Déplacement de troupes',
     'dest' => 'Destination',
     'go_scouting' => 'Faire une reconaissance',
     'colonize_new_place' => 'Coloniser un nouvel endroit',

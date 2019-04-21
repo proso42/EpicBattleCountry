@@ -131,6 +131,52 @@
             $travel_duration = $this->sec_to_date(((abs($city_coord->x_pos - $city_target_info->x_pos) + abs($city_coord->y_pos - $city_target_info->y_pos)) * (3600 / $min_speed)));
             return ($travel_duration);
         }
+
+        public function move_units(Request $request)
+        {
+            $units = $request['units'];
+            $units = explode(",", preg_replace('/[{}\"]/', '', $units));
+            $tab = [];
+            foreach ($units as $key)
+            {
+                $ex = explode(":", $key);
+                $tab[$ex[0]] = $ex[1];
+            }
+            $city_target = $request['city_target'];
+            $user_id = session()->get('user_id');
+            $city_id = session()->get('city_id');
+            $city_target_info = DB::table('cities')->where('name', '=', $city_target)->where('owner', '=', $user_id)->first();
+            if ($city_target_info == null || $city_target_info->id == $city_id)
+                return ("invasion error : bad city");
+            $city_units = DB::table('cities_units')->where('city_id', '=', $city_id)->first();
+            $min_speed = -1;
+            $units_send = "";
+            $update_units_tab = [];
+            foreach ($tab as $unit => $quantity)
+            {
+                if ($quantity <= 0)
+                    continue;
+                if ($city_units->$unit < $quantity)
+                    return ("invasion error : bad unit");
+                $unit_name_format = preg_replace('/_/', " ", $unit);
+                $unit_infos = DB::table('units')->select('id', 'speed')->where('name', '=', $unit_name_format)->first();
+                if ($min_speed == -1 || $unit_infos->speed < $min_speed)
+                    $min_speed = $unit_infos->speed;
+                if ($units_send == "")
+                    $units_send += $info_unit->id . ":" . $quantity;
+                else
+                    $units_send += ";" . $info_unit->id . ":" . $quantity;
+                $update_units_tab[$unit] = $city_units->$unit - $quantity;
+            }
+            $city_coord = DB::table('cities')->select('x_pos', 'y_pos')->where('id', '=', $city_id)->first();
+            $travel_duration = ((abs($city_coord->x_pos - $city_target_info->x_pos) + abs($city_coord->y_pos - $city_target_info->y_pos)) * (3600 / $min_speed));
+            $finishing_date = $travel_duration + time();
+            $starting_point = $city_coord->x_pos . "/" . $city_coord->y_pos;
+            $ending_point = $city_target_info->x_pos . "/" . $city_target_info->y_pos;
+            DB::table('traveling_units')->insert(["city_id" => $city_id, "owner" => $user_id, "starting_point" => $starting_point, "ending_point" => $ending_point, "units" => $units_send, "traveling_duration" => $travel_duration, "finishing_date" => $finishing_date, "mission" => 7]);
+            DB::table('cities_units')->where('city_id', '=', $city_id)->update($update_units_tab);
+            return ("good");
+        }
     }
 
 ?>

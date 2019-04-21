@@ -22,6 +22,9 @@
                 <div id="error_no_unit_selected" class="forge-input-error" style="display: none;">
                     <p>@lang('error.no_unit_selected')</p>
                 </div>
+                <div id="units_move_success" class="explo-input-success" style="display: none;">
+                    <p>@lang('invasion.units_move_success')</p>
+                </div>
                 <div id="action_choice" class="row no-gutters">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-6" onmouseover="show_img('left')" onmouseout="hide_img('left')">
                         <div id="left_overlay" class="invasion-left-overlay"></div>
@@ -72,6 +75,7 @@
                     </div>
                     <input onclick="step5()" id="button_step5" type="button" class="home-button" value="@lang('common.confirm')">
                     <input onclick="back_step3()" id="cancel_button_3" type="button" class="home-button-cancel" value="@lang('common.return')">
+                    <img id="spin" class="explo-spin" style="display: none" src="images/loader.gif">
                 </div>
             </div>
             <input id="_token" name="_token" type="hidden" value="{{csrf_token()}}">

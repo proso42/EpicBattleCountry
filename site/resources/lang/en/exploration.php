@@ -19,6 +19,7 @@ return [
     'Raid_Battlefield' => 'Raid a battlefield',
     'Go_Home' => 'Return home',
     'Colonize' => 'Colonize',
+    'Move_Units' => 'Units moving',
     'dest' => 'Destination',
     'go_scouting' => 'Go scouting',
     'colonize_new_place' => 'Colonize a new place',

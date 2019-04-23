@@ -162,7 +162,7 @@
                         <input id="dest_x" type="text" class="explo-input" placeholder="X">
                         <input id="dest_y" type="text" class="explo-input" placeholder="Y">
                     </div>
-                    <div id="expedition_numbers">
+                    <div id="expedition_numbers" style="text-align: left">
                         <hr class="signin-footer">
                         <p>@lang('exploration.expediton_in_progress') : <span id="info_1">{{ $waiting_scouting }}</span></p>
                         <p>@lang('exploration.remaining_expedition') : <span id="info_2">{{ $allowed - $waiting_scouting }}</span></p>
@@ -197,6 +197,7 @@
                 document.getElementById("dest_y").value = "";
                 document.getElementById("explo_choice").style.display = "";
                 document.getElementById("explo_dest").style.display = "";
+                document.getElementById("expedition_numbers").style.display = "";
             }
 
             function confirm()

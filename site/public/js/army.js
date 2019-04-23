@@ -3,17 +3,6 @@ var unit_timing = document.getElementById('unit_timer');
 if (unit_timing !== null)
     timer('unit_timer', unit_timing.getAttribute("duration"));
 
-function trans(key, replace = {})
-{
-    let translation = key.split('.').reduce((t, i) => t[i] || null, window.translations);
-
-    for (var placeholder in replace) {
-        translation = translation.replace(`:${placeholder}`, replace[placeholder]);
-    }
-
-    return translation;
-}
-
 function timer(id, duration)
 {
     var compteur=document.getElementById(id);

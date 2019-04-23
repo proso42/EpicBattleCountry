@@ -157,11 +157,13 @@
                             </div>
                         </div>
                     </div>
-                    <div id="explo_dest" class="explo-dest">
-                        <h2>@lang('exploration.dest')</h2>
-                        <input id="dest_x" type="text" class="explo-input" placeholder="X">
-                        <input id="dest_y" type="text" class="explo-input" placeholder="Y">
-                    </div>
+                    @if ($allowed - $waiting_scouting > 0)
+                        <div id="explo_dest" class="explo-dest">
+                            <h2>@lang('exploration.dest')</h2>
+                            <input id="dest_x" type="text" class="explo-input" placeholder="X">
+                            <input id="dest_y" type="text" class="explo-input" placeholder="Y">
+                        </div>
+                    @endif
                     <div id="expedition_numbers" style="text-align: left">
                         <hr class="signin-footer">
                         <p>@lang('exploration.expediton_in_progress') : <span id="info_1">{{ $waiting_scouting }}</span></p>

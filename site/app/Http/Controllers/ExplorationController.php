@@ -167,10 +167,6 @@
 
         public function send_expedition(Request $request)
         {
-            $tech_lvl = DB::table('cities_techs')->where('city_id', '=', $city_id)->value('Exploration');
-            $nb_waiting_scouting = DB::table('traveling_units')->where('city_id', '=', $city_id)->where('mission', '>=', 1)->where('mission', '<=', 4)->count();
-            if ($tech_lvl - $nb_waiting_scouting <= 0)
-                return ("error : expedition unavailable");
             $dest_x = $request['dest_x'];
             $dest_y = $request['dest_y'];
             $choice = $request['choice'];
@@ -179,6 +175,10 @@
             $user_id = session()->get('user_id');
             $user_race = session()->get('user_race');
             $city_id = session()->get("city_id");
+            $tech_lvl = DB::table('cities_techs')->where('city_id', '=', $city_id)->value('Exploration');
+            $nb_waiting_scouting = DB::table('traveling_units')->where('city_id', '=', $city_id)->where('mission', '>=', 1)->where('mission', '<=', 4)->count();
+            if ($tech_lvl - $nb_waiting_scouting <= 0)
+                return ("error : expedition unavailable");
             if ($user_race === null)
             {
                 $user_race = DB::table('users')

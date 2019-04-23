@@ -60,7 +60,7 @@
                                             @endif
                                         </ul>
                                     </div>
-                                @endifif                     
+                                @endif                  
                             </div>
                         </div>
                         <div class="explo-block">

@@ -91,7 +91,7 @@
             $allowed_units = [];
             foreach ($all_units as $unit)
             {
-                if ($unit->race_required != $user_race)
+                if ($unit->race_required != $user_race && $unit->race_required > 0)
                     continue;
                 if ($unit->building_required !== "NONE")
                 {

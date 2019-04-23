@@ -132,7 +132,7 @@
                                 @if ($allowed - $waiting_scouting <= 0)
                                     <span>@lang('common.unavailable')</span> <i class="fas fa-ban"></i>
                                 @else
-                                    </span>@lang('common.choice')</span> <i class="fas fa-map-marked-alt"></i>
+                                    <span>@lang('common.choice')</span> <i class="fas fa-map-marked-alt"></i>
                                     <div id="exp_need_3" class="explo-needed">
                                         <ul>
                                             <li>{{ $explo_unit_name }} : {{ $explo[3]['unit_required'] }} @if ($explo[3]['unit_required'] > $unit_avaible) <i id="icon_unit_exp_3" class="fas fa-times icon"></i> @else <i id="icon_unit_exp_3" class="fas fa-check icon"></i> @endif</li>

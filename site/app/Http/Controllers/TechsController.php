@@ -134,15 +134,21 @@
                         if ($val->tech_required !== "NONE")
                         {
                             $techs_required = explode(";", $val->tech_required);
+                            echo "start foreach";
+                            print_r($techs_required);
                             foreach ($techs_required as $tech => $key)
                             {
+                                echo "foreach";
                                 $tech_name = DB::table('techs')
                                 ->where('id', '=', $key)
                                 ->value('name');
+                                echo $tech_name;
                                 $tech_name_format = preg_replace('/\s/', "_", $tech_name);
+                                echo $tech_name_format;
                                 $tech_niv = DB::table('cities_techs')
                                 ->where('city_id', '=', $city_id)
                                 ->value($tech_name_format);
+                                dd($tech_niv);
                                 if ($tech_niv <= 0)
                                 {
                                     $allowed = 0;

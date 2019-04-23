@@ -160,6 +160,8 @@
                     return ("invasion error : bad unit");
                 $unit_name_format = preg_replace('/_/', " ", $unit);
                 $unit_infos = DB::table('units')->select('id', 'speed')->where('name', '=', $unit_name_format)->first();
+                if ($unit_infos == null)
+                    return ("invasion error : unknow unit");
                 if ($min_speed == -1 || $unit_infos->speed < $min_speed)
                     $min_speed = $unit_infos->speed;
                 if ($units_send == "")
@@ -170,6 +172,8 @@
             }
             $city_coord = DB::table('cities')->select('x_pos', 'y_pos')->where('id', '=', $city_id)->first();
             $travel_duration = ((abs($city_coord->x_pos - $city_target_info->x_pos) + abs($city_coord->y_pos - $city_target_info->y_pos)) * (3600 / $min_speed));
+            if ($travel_duration < 0)
+                return ("invasion error : bad travel");
             $finishing_date = $travel_duration + time();
             $starting_point = $city_coord->x_pos . "/" . $city_coord->y_pos;
             $ending_point = $city_target_info->x_pos . "/" . $city_target_info->y_pos;

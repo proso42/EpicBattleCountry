@@ -23,4 +23,5 @@ return [
     'Bouclier_basique' => 'Bouclier basique',
     'Elevage' => 'Élevage',
     'Armure_basique' => 'Armure basique',
+    'Exploration' => 'Exploration',
 ];

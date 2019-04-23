@@ -23,4 +23,5 @@ return [
     'Bouclier_basique' => 'Basic shield',
     'Elevage' => 'Breeding',
     'Armure_basique' => 'Basic armor',
+    'Exploration' => 'Scouting',
 ];

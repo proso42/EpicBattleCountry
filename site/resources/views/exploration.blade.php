@@ -12,7 +12,7 @@
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding-right: 10px;">
                 @if ($allowed <= 0)
                     <h2>@lang('exploration.need_scouting_tech')</h2>
-                @elseif
+                @else
                     <div id="sending_failed" class="explo-input-error" style="display: none;">
                         <p>@lang('error.an_error_occured')</p>
                     </div>

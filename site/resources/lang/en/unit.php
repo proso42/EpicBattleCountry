@@ -33,4 +33,5 @@ return [
     'Chevaucheur_de_likorne' => 'Unikorne rider',
     'Bastonneur_sur_bouc' => 'Brawling on goat',
     'Chevaucheur_de_loup' => 'Wolf rider',
+    'Charrette_a_bras' => 'Pushcart',
 ];

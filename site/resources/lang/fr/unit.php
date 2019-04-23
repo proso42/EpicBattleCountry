@@ -33,4 +33,5 @@ return [
     'Chevaucheur_de_likorne' => 'Chevaucheur de likorne',
     'Bastonneur_sur_bouc' => 'Bastonneur sur bouc',
     'Chevaucheur_de_loup' => 'Chevaucheur de loup',
+    'Charrette_a_bras' => 'Charrette à bras',
 ];

@@ -28,5 +28,5 @@ return [
     'canceled_mission' => 'Canceled mission',
     'your_mission' => 'Your mission',
     'end_of_content' => 'has been canceled. Resources have been lost. The team is on the way back',
-
+    'need_scouting_tech' => 'You need to search Scouting before !'
 ];

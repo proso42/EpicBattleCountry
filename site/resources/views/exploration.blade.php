@@ -267,19 +267,22 @@
                                     if (infos.unit_avaible < 5)
                                         document.getElementById("icon_unit_exp_3").className = "fas fa-times icon";
                                 }
+                                document.getElementById("explo_dest").style.display = "";
                             }
                             else
                             {
                                 for (let i = 0; i < 4; i++)
                                 {
-                                    document.getElementById("exp_" + i).className = "explo-button-lock";
+                                    let button = document.getElementById("exp_" + i);
+                                    button.className = "explo-button-lock";
                                     document.getElementById("exp_need_" + i).remove();
-                                    document.getElementById("exp_" + i).children[0] = "@lang('common.unavailable')";
-                                    document.getElementById("exp_" + i).children[1].className = "fas fa-ban";
+                                    button.children[0].textContent = "@lang('common.unavailable')";
+                                    button.children[1].className = "fas fa-ban";
+                                    button.onclick = function (){};
                                 }
+                                document.getElementById("explo_dest").remove();
                             }
                                 document.getElementById("explo_choice").style.display = "";
-                                document.getElementById("explo_dest").style.display = "";
                                 document.getElementById("expedition_numbers").style.display = "";
                                 document.getElementById("explo_confirm").style.display = "none";
                                 document.getElementById("title_choice_" + g_choice).style.display = "none";

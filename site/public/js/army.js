@@ -1,3 +1,4 @@
+import Lang from 'lang.js';
 var g_unit_id = 0;
 var unit_timing = document.getElementById('unit_timer');
 if (unit_timing !== null)

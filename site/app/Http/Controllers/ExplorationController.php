@@ -229,7 +229,7 @@
                 "finishing_date" => $finishing_date,
                 "mission" => $choice
             ]);
-            $infos = ["tech_lvl" => $tech_lvl, "waiting_scouting" => $nb_waiting_scouting, "food" => $city_res->food - $food_required, "wood" => $city_res->wood - $wood_required, "rock" => $city_res->rock - $rock_required, "steel" => $city_res->steel - $steel_required, "gold" => $city_res->gold - $gold_required, "unit_available" => $unit_avaible - $unit_required];
+            $infos = ["tech_lvl" => $tech_lvl, "waiting_scouting" => $nb_waiting_scouting + 1, "food" => $city_res->food - $food_required, "wood" => $city_res->wood - $wood_required, "rock" => $city_res->rock - $rock_required, "steel" => $city_res->steel - $steel_required, "gold" => $city_res->gold - $gold_required, "unit_available" => $unit_avaible - $unit_required];
             return ($infos);
         }
     }

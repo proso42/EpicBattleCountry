@@ -268,6 +268,8 @@
                                         document.getElementById("icon_unit_exp_3").className = "fas fa-times icon";
                                 }
                                 document.getElementById("explo_dest").style.display = "";
+                                document.getElementById("dest_x").value = "";
+                                document.getElementById("dest_y").value = "";
                             }
                             else
                             {
@@ -293,8 +295,6 @@
                                 document.getElementById("cancel-button").style.display = "";
                                 document.getElementById("confirm-button").disabled = "";
                                 document.getElementById("spin").style.display = "none";
-                                document.getElementById("dest_x").value = "";
-                                document.getElementById("dest_y").value = "";
                                 document.getElementById("sending_success").style.display = "";
                                 setTimeout(() =>{
                                     document.getElementById("sending_success").style.display = "none";

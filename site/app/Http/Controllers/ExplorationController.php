@@ -35,23 +35,6 @@
             ->where('owner', '=', $user_id)
             ->where('id', '=', $city_id)
             ->first();
-            if (session()->get('sending_failed') !== null)
-            {
-                $sending_expedition_failed = 1;
-                $sending_expedition_success = 0;
-            }
-            else if (session()->get('sending_success') !== null)
-            {
-                $sending_expedition_failed = 0;
-                $sending_expedition_success = 1;
-            }
-            else
-            {
-                $sending_expedition_failed = 0;
-                $sending_expedition_success = 0;
-            }
-            session()->forget('sending_failed');
-            session()->forget('sending_success');
             $city_name = $city->name;
             $food = $city->food;
             $compact_food = $food;
@@ -89,6 +72,7 @@
             $allowed = DB::table('cities_techs')->where('city_id', '=', $city_id)->value('Exploration');
             if ($allowed <= 0)
                 return view('exploration', compact('allowed', 'is_admin', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
+            $nb_waiting_scouting = DB::table('traveling_units')->where('city_id', '=', $city_id)->where('mission', '>=', 1)->where('mission', '<=', 4)->count();
             $explo = [];
             $unit_avaible = DB::table('cities_units')->where('city_id', '=', $city_id)->value($explo_unit_name);
             $explo_unit_name = trans('unit.' . $explo_unit_name);
@@ -96,7 +80,7 @@
             $explo[1] = ["unit_required" => 1, "food_required" => 100, "wood_required" => 0, "rock_required" => 0, "steel_required" => 0, "gold_required" => 0, 'illustration' => "images/explo_dungeon.jpg"]; //Donjon
             $explo[2] = ["unit_required" => 1, "food_required" => 100, "wood_required" => 0, "rock_required" => 0, "steel_required" => 0, "gold_required" => 0, 'illustration' => "images/explo_battlefield.jpg"]; //Champs de battaille
             $explo[3] = ["unit_required" => 5, "food_required" => 100, "wood_required" => 10000, "rock_required" => 5000, "steel_required" => 2500, "gold_required" => 1000, 'illustration' => "images/explo_colonize.jpg"]; //Nouvelle ville
-            return view('exploration', compact('allowed', 'is_admin', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold', 'explo_unit_name', 'unit_avaible', 'explo', 'sending_expedition_failed', 'sending_expedition_success'));
+            return view('exploration', compact('allowed', 'waiting_scouting', 'is_admin', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold', 'explo_unit_name', 'unit_avaible', 'explo'));
         }
 
         private function sec_to_date($duration)
@@ -183,6 +167,10 @@
 
         public function send_expedition(Request $request)
         {
+            $tech_lvl = DB::table('cities_techs')->where('city_id', '=', $city_id)->value('Exploration');
+            $nb_waiting_scouting = DB::table('traveling_units')->where('city_id', '=', $city_id)->where('mission', '>=', 1)->where('mission', '<=', 4)->count();
+            if ($tech_lvl - $nb_waiting_scouting <= 0)
+                return ("error : expedition unavailable");
             $dest_x = $request['dest_x'];
             $dest_y = $request['dest_y'];
             $choice = $request['choice'];
@@ -241,7 +229,7 @@
                 "finishing_date" => $finishing_date,
                 "mission" => $choice
             ]);
-            $infos = ["food" => $city_res->food - $food_required, "wood" => $city_res->wood - $wood_required, "rock" => $city_res->rock - $rock_required, "steel" => $city_res->steel - $steel_required, "gold" => $city_res->gold - $gold_required, "unit_available" => $unit_avaible - $unit_required];
+            $infos = ["tech_lvl" => $tech_lvl, "waiting_scouting" => $nb_waiting_scouting, "food" => $city_res->food - $food_required, "wood" => $city_res->wood - $wood_required, "rock" => $city_res->rock - $rock_required, "steel" => $city_res->steel - $steel_required, "gold" => $city_res->gold - $gold_required, "unit_available" => $unit_avaible - $unit_required];
             return ($infos);
         }
     }

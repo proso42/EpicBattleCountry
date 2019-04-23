@@ -43,4 +43,5 @@ return [
     'time' => 'Temps',
     'in_progress' => 'En cours',
     'on' => 'en',
+    'unavailable' => 'Indisponible',
 ];

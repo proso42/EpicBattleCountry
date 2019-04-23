@@ -29,4 +29,6 @@ return [
     'your_mission' => 'Votre mission',
     'end_of_content' => 'a été annulée. Les ressources ont été perdus. L\'équipe est sur le chemin du retour',
     'need_scouting_tech' => 'Vous avez besoin de la technologie d\'exploration !',
+    'expediton_in_progress' => 'Expédition(s) en cours',
+    'remaining_expedition' => 'Expedition(s) restante(s)',
 ];

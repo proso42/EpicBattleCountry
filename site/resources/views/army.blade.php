@@ -100,7 +100,9 @@
             </div>
         </div>
         <input id="_token" name="_token" type="hidden" value="{{csrf_token()}}">
-        <script>window.translations = {!! Cache::get('translations') !!};</script>
+        <script>
+            window.translations = {!! Cache::get('translations') !!}
+        </script>
         <script src="/js/army.js"></script>
     </body>
 </html>

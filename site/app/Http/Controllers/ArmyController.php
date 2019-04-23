@@ -181,13 +181,13 @@
             $unit_id = $request['unit_id'];
             $city_id = session()->get('city_id');
             $user_id = sesion()->get('user_id');
-            $user_race = DB::table('users')->where('user_id', '=', $user_id)->value('race');
+            $user_race = DB::table('users')->where('id', '=', $user_id)->value('race');
             $unit = DB::table('units')
             ->where('id', '=', $unit_id)
             ->first();
             if ($unit === null)
                 return ("army error : unknow unit");
-            /*else if ($unit->race_required != $user_race)
+            else if ($unit->race_required != $user_race)
                 return ("army error : bad user race for this unit");
             $city_res = DB::table('cities')
             ->where('id', '=', $city_id)
@@ -275,7 +275,7 @@
                 $enough_gold = "fas fa-times icon-color-red";
                 $allowed = "KO";
             }
-            return ([$allowed, $food_required, $enough_food, $wood_required, $enough_wood, $rock_required, $enough_rock, $steel_required, $enough_steel, $gold_required, $enough_gold, $mount_required, $enough_mount, $duration, $items_owned]);*/
+            return ([$allowed, $food_required, $enough_food, $wood_required, $enough_wood, $rock_required, $enough_rock, $steel_required, $enough_steel, $gold_required, $enough_gold, $mount_required, $enough_mount, $duration, $items_owned]);
         }
 
         public function train_unit(Request $request)

@@ -136,6 +136,7 @@
                             $techs_required = explode(";", $val->tech_required);
                             echo "start foreach";
                             print_r($techs_required);
+                            dd($techs_required);
                             foreach ($techs_required as $tech => $key)
                             {
                                 echo "foreach";

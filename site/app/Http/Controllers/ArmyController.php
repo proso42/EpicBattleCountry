@@ -187,7 +187,7 @@
             ->first();
             if ($unit === null)
                 return ("army error : unknow unit");
-            else if ($unit->race_required != $user_race)
+            else if ($unit->race_required != $user_race && $unit->race_required > 0)
                 return ("army error : bad user race for this unit");
             $city_res = DB::table('cities')
             ->where('id', '=', $city_id)

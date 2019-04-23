@@ -24,4 +24,5 @@ return [
     'Elevage' => 'Breeding',
     'Armure_basique' => 'Basic armor',
     'Exploration' => 'Scouting',
+    'Meca' => 'Mechanic',
 ];

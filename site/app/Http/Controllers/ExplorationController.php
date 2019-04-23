@@ -72,7 +72,7 @@
             $allowed = DB::table('cities_techs')->where('city_id', '=', $city_id)->value('Exploration');
             if ($allowed <= 0)
                 return view('exploration', compact('allowed', 'is_admin', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
-            $nb_waiting_scouting = DB::table('traveling_units')->where('city_id', '=', $city_id)->where('mission', '>=', 1)->where('mission', '<=', 4)->count();
+            $waiting_scouting = DB::table('traveling_units')->where('city_id', '=', $city_id)->where('mission', '>=', 1)->where('mission', '<=', 4)->count();
             $explo = [];
             $unit_avaible = DB::table('cities_units')->where('city_id', '=', $city_id)->value($explo_unit_name);
             $explo_unit_name = trans('unit.' . $explo_unit_name);

@@ -37,7 +37,7 @@
                             <img class="explo" style="width:250px;height: 250px;" src="{{ $explo[0]['illustration'] }}">
                             <div id="exp_0" @if ($allowed - $waiting_scouting <= 0) class="explo-button-lock" @elseif ($explo[0]['unit_required'] > $unit_avaible || $explo[0]['food_required'] > $food || $explo[0]['wood_required'] > $wood || $explo[0]['rock_required'] > $rock || $explo[0]['steel_required'] > $steel || $explo[0]['gold_required'] > $gold) class="explo-button-impossible" @else class="explo-button" onclick="choice(1)"@endif>                                
                                 @if ($allowed - $waiting_scouting <= 0)
-                                    @lang('common.unavialable') <i class="fas fa-ban"></i>
+                                    @lang('common.unavailable') <i class="fas fa-ban"></i>
                                 @else
                                     @lang('common.choice') <i class="fas fa-map-marked-alt"></i>
                                     <div id="exp_need_0" class="explo-needed">
@@ -68,7 +68,7 @@
                             <img class="explo" style="width:250px;height: 250px;" src="{{ $explo[1]['illustration'] }}">
                             <div id="exp_1" @if ($allowed - $waiting_scouting <= 0) class="explo-button-lock" @elseif ($explo[1]['unit_required'] > $unit_avaible || $explo[1]['food_required'] > $food || $explo[1]['wood_required'] > $wood || $explo[1]['rock_required'] > $rock || $explo[1]['steel_required'] > $steel || $explo[1]['gold_required'] > $gold) class="explo-button-impossible" @else class="explo-button" onclick="choice(2)"@endif>                                
                                 @if ($allowed - $waiting_scouting <= 0)
-                                    @lang('common.unavialable') <i class="fas fa-ban"></i>
+                                    @lang('common.unavailable') <i class="fas fa-ban"></i>
                                 @else
                                     @lang('common.choice') <i class="fas fa-map-marked-alt"></i>
                                     <div id="exp_need_1" class="explo-needed">
@@ -99,7 +99,7 @@
                             <img class="explo" style="width:250px;height: 250px;" src="{{ $explo[2]['illustration'] }}">
                             <div id="exp_2" @if ($allowed - $waiting_scouting <= 0) class="explo-button-lock" @elseif ($explo[2]['unit_required'] > $unit_avaible || $explo[2]['food_required'] > $food || $explo[2]['wood_required'] > $wood || $explo[2]['rock_required'] > $rock || $explo[2]['steel_required'] > $steel || $explo[2]['gold_required'] > $gold) class="explo-button-impossible" @else class="explo-button" onclick="choice(3)"@endif>                                
                                 @if ($allowed - $waiting_scouting <= 0)
-                                    @lang('common.unavialable') <i class="fas fa-ban"></i>
+                                    @lang('common.unavailable') <i class="fas fa-ban"></i>
                                 @else
                                     @lang('common.choice') <i class="fas fa-map-marked-alt"></i>
                                     <div id="exp_need_2" class="explo-needed">
@@ -130,7 +130,7 @@
                             <img class="explo" style="width:250px;height: 250px;" src="{{ $explo[3]['illustration'] }}">
                             <div id="exp_3" @if ($allowed - $waiting_scouting <= 0) class="explo-button-lock" @elseif ($explo[3]['unit_required'] > $unit_avaible || $explo[3]['food_required'] > $food || $explo[3]['wood_required'] > $wood || $explo[3]['rock_required'] > $rock || $explo[3]['steel_required'] > $steel || $explo[3]['gold_required'] > $gold) class="explo-button-impossible" @else class="explo-button" onclick="choice(4)"@endif>                                
                                 @if ($allowed - $waiting_scouting <= 0)
-                                    @lang('common.unavialable') <i class="fas fa-ban"></i>
+                                    @lang('common.unavailable') <i class="fas fa-ban"></i>
                                 @else
                                     @lang('common.choice') <i class="fas fa-map-marked-alt"></i>
                                     <div id="exp_need_3" class="explo-needed">
@@ -226,8 +226,8 @@
                             document.getElementById("rock").textContent = infos.rock;
                             document.getElementById("steel").textContent = infos.steel;
                             document.getElementById("gold").textContent = infos.gold;
-                            document.getElementById("infos_1").textContent = infos.waiting_scouting;
-                            document.getElementById("infos_2").textContent = infos.tech_lvl - infos.waiting_scouting;
+                            document.getElementById("info_1").textContent = infos.waiting_scouting;
+                            document.getElementById("info_2").textContent = infos.tech_lvl - infos.waiting_scouting;
                             if (infos.tech_lvl - infos.waiting_scouting > 0)
                             {
                                 if (infos.food < 100 || infos.unit_avaible < 1)

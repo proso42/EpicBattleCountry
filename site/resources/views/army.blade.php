@@ -39,6 +39,7 @@
                                             <li>@lang('army.life') : {{ $unit['life'] }} <i class="fas fa-heartbeat"></i></li>
                                             <li>@lang('army.speed') : {{ $unit['speed'] }} <i class="fas fa-tachometer-alt"></i></li>
                                             <li>@lang('army.power') : {{ $unit['power'] }} <i class="fas fa-fist-raised"></i></li>
+                                            <li>@lang('army.storage') : {{ $unit['storage'] }} <i class="fas fa-box"></i></li>
                                         </ul>
                                     </div>
                                 </div>

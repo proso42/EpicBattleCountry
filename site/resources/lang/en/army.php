@@ -18,6 +18,7 @@ return [
     'life' => 'Life',
     'speed' => 'Speed',
     'power' => 'Power',
+    'storage' => 'Storage',
     'mount' => 'Mount',
     'train' => 'Train',
 ];

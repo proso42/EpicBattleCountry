@@ -18,6 +18,7 @@ return [
     'life' => 'Vie',
     'speed' => 'Vitesse',
     'power' => 'Puissance',
+    'storage' => 'Stockage',
     'mount' => 'Monture',
     'train' => 'Entrainer',
 

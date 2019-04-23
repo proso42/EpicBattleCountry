@@ -187,9 +187,9 @@
             ->first();
             if ($unit === null)
                 return ("army error : unknow unit");
-            else if ($unit->race_required != $user_race)
+            /*else if ($unit->race_required != $user_race)
                 return ("army error : bad user race for this unit");
-            /*$city_res = DB::table('cities')
+            $city_res = DB::table('cities')
             ->where('id', '=', $city_id)
             ->first();
             $all_items = DB::table('forge')->select('name')->get();

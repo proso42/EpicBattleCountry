@@ -22,4 +22,5 @@ return [
     'res_to_move' => 'Resources and items to move',
     'freight' => 'Available freight',
     'travel_duration' => 'Travel duration : ',
+    'target_city' => 'Target city : ',
 ];

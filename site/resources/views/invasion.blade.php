@@ -101,6 +101,10 @@
                     <div id="move_unit_duration" class="invasion-unit-line">
                         <span id="travel_duration"></span>
                     </div>
+                    <div id="div_target_city" class="invasion-unit-line">
+                        <span>@lang('invasion.target_city')</span>
+                        <span id="target_city_name"></span>
+                    </div>
                     <input onclick="step5()" id="button_step5" type="button" class="home-button" value="@lang('common.confirm')">
                     <input onclick="back_step3()" id="cancel_button_3" type="button" class="home-button-cancel" value="@lang('common.return')">
                     <img id="spin" class="explo-spin" style="display: none" src="images/loader.gif">

@@ -165,6 +165,7 @@ function step4()
                 console.log("duration : " + xhr.responseText);
                 document.getElementById("confirm_move_unit").style.display = "";
                 document.getElementById("list_city").style.display = "none";
+                document.getElementById("target_city_name").textContent = city;
                 let travel_duration = document.getElementById("travel_duration");
                 if (travel_duration.childElementCount == 1)
                     travel_duration.lastChild.remove();
@@ -187,11 +188,24 @@ function step4()
                     new_span.appendChild(textNode);
                     new_div.insertBefore(new_span, new_div.firstChild);
                 }
+                for (var key2 in res_taken)
+                {
+                    if (res_taken[key2] <= 0)
+                        continue;
+                    let new_div = document.createElement("div");
+                    new_div.className = "invasion-unit-line";
+                    new_div.id = "confirm_res_" + key2;
+                    parent.insertBefore(new_div, duration_div);
+                    let new_span = document.createElement("span");
+                    let textNode = document.createTextNode(key2 + " x" + res_taken[key2]);
+                    new_span.appendChild(textNode);
+                    new_div.insertBefore(new_span, new_div.firstChild);
+                }
             }
         }
     }
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send('_token=' + _token + '&units=' + JSON.stringify(units_send) + "&city_target=" + city);
+    xhr.send('_token=' + _token + '&units=' + JSON.stringify(units_send) + + '&res=' + JSON.stringify(res_taken) + "&city_target=" + city);
 }
 
 function step5()
@@ -216,7 +230,7 @@ function step5()
         }
     }
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send('_token=' + _token + '&units=' + JSON.stringify(units_send) + "&city_target=" + city);
+    xhr.send('_token=' + _token + '&units=' + JSON.stringify(units_send) + '&res=' + JSON.stringify(res_taken) + "&city_target=" + city);
 }
 
 function back_step1()
@@ -246,6 +260,12 @@ function back_step3()
         if (units_send[key] <= 0)
             continue ;
         document.getElementById("confirm_unit_" + key).remove();
+    }
+    for (var key2 in res_taken)
+    {
+        if (res_taken[key2] <= 0)
+            continue ;
+        document.getElementById("confirm_res_" + key2).remove();
     }
 }
 

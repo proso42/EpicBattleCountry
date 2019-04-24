@@ -128,6 +128,14 @@
                 $ex = explode(":", $key);
                 $tab[$ex[0]] = $ex[1];
             }
+            $res = $request['res'];
+            $res = explode(",", preg_replace('/[{}\"]/', '', $res));
+            $tab_res = [];
+            foreach ($res as $key)
+            {
+                $ex = explode(":", $key);
+                $tab_res[$ex[0]] = $ex[1];
+            }
             $city_target = $request['city_target'];
             $user_id = session()->get('user_id');
             $city_id = session()->get('city_id');
@@ -136,17 +144,32 @@
                 return ("invasion error : bad city");
             $city_units = DB::table('cities_units')->where('city_id', '=', $city_id)->first();
             $min_speed = -1;
+            $current_city = DB::table('cities')->where('id', '=', $city_id)->first();
+            $fret = 0;
+            $storage = 0;
+            foreach ($tab_res as $res => $val)
+            {
+                if ($val <= 0)
+                    continue ;
+                if (!isset($current_city->$res) || $current_city->$res < $val)
+                    return ("invasion error : bad res or item");
+                else
+                    $fret += $val;
+            }
             foreach ($tab as $unit => $quantity)
             {
                 if ($quantity <= 0)
                     continue;
-                if ($city_units->$unit < $quantity)
+                if (!isset($city_units->$unit) || $city_units->$unit < $quantity)
                     return ("invasion error : bad unit");
                 $unit_name_format = preg_replace('/_/', " ", $unit);
-                $unit_speed = DB::table('units')->where('name', '=', $unit_name_format)->value('speed');
-                if ($min_speed == -1 || $unit_speed < $min_speed)
-                    $min_speed = $unit_speed;
+                $unit_infos = DB::table('units')->select('speed', 'storage')->where('name', '=', $unit_name_format)->first();
+                if ($min_speed == -1 || $unit_infos->speed < $min_speed)
+                    $min_speed = $unit_infos->speed;
+                $storage += $unit_infos->storage;
             }
+            if ($fret > $storage)
+                return ("invasion error : fret > storage");
             $city_coord = DB::table('cities')->select('x_pos', 'y_pos')->where('id', '=', $city_id)->first();
             $travel_duration = $this->sec_to_date(((abs($city_coord->x_pos - $city_target_info->x_pos) + abs($city_coord->y_pos - $city_target_info->y_pos)) * (3600 / $min_speed)));
             return (trans('invasion.travel_duration') . " " . $travel_duration . " ");

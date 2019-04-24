@@ -22,4 +22,5 @@ return [
     'res_to_move' => 'Ressources et objets à déplacer',
     'freight' => 'Fret disponible',
     'travel_duration' => 'Durée du trajet : ',
+    'target_city' => 'Ville cible : ',
 ];

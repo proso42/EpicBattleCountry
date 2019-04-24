@@ -17,6 +17,7 @@ return [
     'cancel' => 'Cancel',
     'change' => 'Change',
     'return' => 'Return',
+    'skip' => 'Skip',
     'reset' => 'Reset',
     'update' => 'Update',
     'confirm' => 'Confirm',

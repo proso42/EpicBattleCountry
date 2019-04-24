@@ -9,9 +9,11 @@ setTimeout(() =>{
 
 
 var units_send = {};
+var res_taken = {};
 var city = "";
 var speed = 100;
 var total_storage = 0;
+var total_taken = 0;
 var click = false;
 onmousedown = function(){
     click = true;
@@ -80,7 +82,7 @@ function step2()
     document.getElementById("list_unit").style.display = "";
 }
 
-function step3()
+function step_res()
 {
     let total_unit = 0;
     for (var key in units_send)
@@ -95,9 +97,15 @@ function step3()
     else
     {
         document.getElementById("list_unit").style.display = "none";
-        document.getElementById("list_city").style.display = "";
+        document.getElementById("list_res_item").style.display = "";
     }
     console.log("total_storage : " + total_storage);
+}
+
+function step3()
+{
+    document.getElementById("list_res_item").style.display = "none";
+    document.getElementById("list_city").style.display = "";
 }
 
 function step4()
@@ -170,6 +178,13 @@ function step5()
     xhr.send('_token=' + _token + '&units=' + JSON.stringify(units_send) + "&city_target=" + city);
 }
 
+function skip_step_res(res)
+{
+    for (var re in res)
+        document.getElementById("res_" + re + "_selected").textContent = res[re];
+    step3();
+}
+
 function back_step1()
 {
     document.getElementById("action_choice").style.display = "";
@@ -179,6 +194,12 @@ function back_step1()
 function back_step2()
 {
     document.getElementById("list_unit").style.display = "";
+    document.getElementById("list_res_item").style.display = "none";
+}
+
+function back_step_res()
+{
+    document.getElementById("list_res_item").style.display = "";
     document.getElementById("list_city").style.display = "none";
 }
 
@@ -257,6 +278,74 @@ function remove_all(unit_ref, max)
     total_storage -= parseInt((units_send[unit_ref] * document.getElementById("unit_" + unit_ref).getAttribute("storage")));
     units_send[unit_ref] = 0;
     document.getElementById(unit_ref + "_selected").textContent = "0/" + max;
+}
+
+function add_res(res_ref, max, nb)
+{
+    if (nb > 5)
+        speed = 75;
+    else if (nb > 10)
+        speed = 50;
+    else if (nb > 20)
+        speed = 10;
+    setTimeout(function(){
+        if (total_taken == total_storage)
+            return ;
+        else if (res_taken.hasOwnProperty(res_ref))
+        {
+            if (res_taken[res_ref] < max)
+            {
+                res_taken[res_ref]++;
+                document.getElementById("res_" + res_ref + "_selected").textContent = res_taken[res_ref] + "/" + max;
+                total_taken++;
+            }
+        }
+        else
+        {
+            res_taken[res_ref] = 1;
+            document.getElementById("res_" + res_ref + "_selected").textContent = "1/" + max;
+            total_taken++;
+        }
+        if (click == true)
+            add_res(res_ref, max, nb + 1);
+    }, speed);
+}
+
+function add_max_res(res_ref, max)
+{
+    let res_max = max;
+    if (total_taken + max > total_storage)
+        max = (total_storage - total_taken);
+    res_taken[res_ref] += max;
+    total_taken += max;
+    document.getElementById("res_" + res_ref + "_selected").textContent = max + "/" + res_max;
+}
+
+function remove_res(res_ref, max, nb)
+{
+    if (nb > 5)
+        speed = 75;
+    else if (nb > 10)
+        speed = 50;
+    else if (nb > 20)
+        speed = 10;
+    setTimeout(function(){
+        if (res_taken.hasOwnProperty(res_ref) && res_taken[res_ref] > 0)
+        {
+            res_taken[res_ref]--;
+            document.getElementById("res_" + res_ref + "_selected").textContent = res_taken[res_ref] + "/" + max;
+            total_taken--;
+        }
+        if (click == true)
+            remove_res(res_ref, max, nb + 1);
+    }, speed);
+}
+
+function remove_all_all(res_ref, max)
+{
+    total_taken -= res_taken[res_ref];
+    res_taken[res_ref] = 0;
+    document.getElementById("res_" + res_ref + "_selected").textContent = "0/" + max;
 }
 
 function select_city(name)

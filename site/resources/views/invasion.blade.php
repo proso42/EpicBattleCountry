@@ -49,14 +49,27 @@
                                     <span class="col-lg-1 col-md-1 col-sm-1 col-1"><i ondblclick="remove_all('{{ $unit['ref'] }}', '{{ $unit['quantity'] }}')" onmousedown="remove_unit('{{ $unit['ref'] }}', '{{ $unit['quantity'] }}'), 0" class="fas fa-minus invasion-minus"></i></span>
                                 </div>
                             @endforeach
-                            <input onclick="step3()" id="button_step3" type="button" class="home-button" value="@lang('common.confirm')">
+                            <input onclick="step_res()" id="button_step3" type="button" class="home-button" value="@lang('common.confirm')">
                             <input onclick="back_step1()" id="cancel_button_1" type="button" class="home-button-cancel" value="@lang('common.return')">
                         @endif
+                </div>
+                <div id="list_res_item" style="display: none; text-align: center;margin-top: 25px;">
+                    @foreach ($res as $re => $val)
+                        <div id="res_{{ $re }}" class="row invasion-unit-line">
+                            <span class="col-lg-5 col-md-5 col-sm-5 col-5" style="text-align: left">@lang('common.' . $re)</span>
+                            <span onclick="manual_res('{{ $re }}', '{{ $val }}')" id="res_{{ $re }}_selected" class="col-lg-4 col-md-4 col-sm-4 col-4" style="cursor: pointer"> 0/{{ $val }}</span>
+                            <span class="col-lg-1 col-md-1 col-sm-1 col-1"><i ondblclick="add_max_res('{{ $re }}', '{{ $val }}')" onmousedown="add_res('{{ $re }}', '{{ $val }}', 0)" class="fas fa-plus invasion-plus"></i></span>
+                            <span class="col-lg-1 col-md-1 col-sm-1 col-1"><i ondblclick="remove_all_res('{{ $re }}', '{{ $val }}')" onmousedown="remove_res('{{ $re }}', '{{ $val }}'), 0" class="fas fa-minus invasion-minus"></i></span>
+                        </div>
+                    @endforeach
+                    <input onclick="step3()" id="button_step3" type="button" class="home-button" value="@lang('common.confirm')">
+                    <input onclick="skip_step_res('{{ $res }}')" id="button_skip" type="button" class="invasion-skip-button" value="@lang('common.skip')">
+                    <input onclick="back_step2()" id="cancel_button_1" type="button" class="home-button-cancel" value="@lang('common.return')">
                 </div>
                 <div id="list_city" style="display: none">
                     @if ($user_cities == null)
                         <h2>@lang('invasion.no_other_city')</h2>
-                        <input onclick="back_step2()" id="cancel_button_2" type="button" class="home-button-cancel" value="@lang('common.return')">
+                        <input onclick="back_step_res()" id="cancel_button_2" type="button" class="home-button-cancel" value="@lang('common.return')">
                     @else
                         <h2>@lang('invasion.select_city')</h2>
                         @foreach ($user_cities as $city)
@@ -65,7 +78,7 @@
                             </div>
                         @endforeach
                         <input onclick="step4()" id="button_step4" type="button" class="home-button" value="@lang('common.confirm')">
-                        <input onclick="back_step2()" id="cancel_button_2" type="button" class="home-button-cancel" value="@lang('common.return')">
+                        <input onclick="back_step_res()" id="cancel_button_2" type="button" class="home-button-cancel" value="@lang('common.return')">
                     @endif
                 </div>
                 <div id="confirm_move_unit" style="display: none">

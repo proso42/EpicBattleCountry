@@ -17,6 +17,7 @@ return [
     'cancel' => 'Annuler',
     'change' => 'Changer',
     'return' => 'Retour',
+    'skip' => 'Passer',
     'update' => 'Modifier',
     'reset' => 'Réinitialiser',
     'confirm' => 'Confirmer',

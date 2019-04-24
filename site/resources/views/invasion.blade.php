@@ -18,7 +18,7 @@
             <input id="cancel_button" type="button" class="home-button-cancel" value="@lang('common.cancel')">
         </div>
         @include('default')
-            <div class="offset-lg-0 offset-md-2 offset-sm-0 offset-0 col-lg-9 col-md-7 col-sm-11 col-11 center-win" style="margin-top: 50px; padding: 0;">
+            <div class="offset-lg-0 offset-md-2 offset-sm-0 offset-0 col-lg-9 col-md-7 col-sm-12 col-12 center-win" style="margin-top: 50px; padding: 0;">
                 <div id="error_no_unit_selected" class="forge-input-error" style="display: none;">
                     <p>@lang('error.no_unit_selected')</p>
                 </div>

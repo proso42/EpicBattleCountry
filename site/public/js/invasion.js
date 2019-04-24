@@ -70,13 +70,14 @@ function manual_res(res_ref, res_name, max)
         else if (parseInt(quantity) <= 0)
             quantity = 0;
         quantity = parseInt(quantity);
+        if (res_taken.hasOwnProperty(res_ref))
+            total_taken -= res_taken[res_ref];
         if (quantity > max)
             quantity = max;
-        if (res_taken[res_ref] + quantity > total_storage)
-            quantity = total_storage - res_taken[res_ref];
-        total_taken -= res_taken[res_ref];        
+        if (quantity > total_storage)
+            quantity = total_storage - total_taken;
+        total_taken += quantity;      
         res_taken[res_ref] = quantity;
-        total_taken += res_taken[res_ref];
         document.getElementById("res_" + res_ref + "_selected").textContent = res_taken[res_ref] + "/" + max;
         document.getElementById("overlay").style.display = "none";
         document.getElementById("block_edit").style.display = "none";

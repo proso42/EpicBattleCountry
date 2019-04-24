@@ -204,7 +204,7 @@
             $fret = 0;
             $storage = 0;
             $res_send = null;
-            $update_res_tab;
+            $update_res_tab = [];
             foreach ($tab_res as $res => $val)
             {
                 if ($val <= 0)

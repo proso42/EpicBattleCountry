@@ -131,10 +131,10 @@
             $res = $request['res'];
             $res = explode(",", preg_replace('/[{}\"]/', '', $res));
             $tab_res = [];
-            foreach ($res as $key2)
+            foreach ($res as $key)
             {
-                $ex = explode(":", $key2);
-                $tab_res[$ex[0]] = $ex[1];
+                $ex = explode(":", $key);
+                //$tab_res[$ex[0]] = $ex[1];
             }
             return ("ok");
             /*$city_target = $request['city_target'];

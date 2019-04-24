@@ -43,7 +43,7 @@ function manual(unit_ref, unit_name, max)
         document.getElementById("overlay").style.display = "none";
         document.getElementById("block_edit").style.display = "none";
         document.getElementById("new_quantity").value = "";
-        total_unit = 0;
+        total_storage = 0;
         for (var key in units_send)
             total_storage += parseInt((units_send[key] * document.getElementById("unit_" + key).getAttribute("storage")));
     };

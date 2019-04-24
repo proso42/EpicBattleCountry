@@ -221,8 +221,7 @@
                     $update_res_tab[$res] = $current_city->$res - $val;
                 }
             }
-            return ("ok");
-            /*$units_send = "";
+            $units_send = "";
             $update_units_tab = [];
             foreach ($tab as $unit => $quantity)
             {
@@ -255,7 +254,7 @@
             DB::table('cities_units')->where('city_id', '=', $city_id)->update($update_units_tab);
             if ($res_send != null)
                 DB::table('cities')->where('id', '=', $city_id)->update($update_res_tab);
-            return ("good");*/
+            return ("good");
         }
     }
 

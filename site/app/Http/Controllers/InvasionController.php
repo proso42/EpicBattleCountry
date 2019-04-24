@@ -79,7 +79,6 @@
                     continue ;
                 $info_item[$item] = ["ref" => $item, "name" => trans('item.' . $item), "quantity" => $quantity];
             }
-            foreach ($items as $item)
             $user_cities = DB::table('cities')->select('name')->where('owner', '=', $user_id)->where('id', '!=', $city_id)->get();
             $res = ["food" => $food, "wood" => $wood, "rock" => $rock, "steel" => $steel, "gold" => $gold];
             return view('invasion', compact('is_admin', 'res', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold', 'info_unit', 'info_item', 'user_cities'));

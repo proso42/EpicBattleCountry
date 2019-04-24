@@ -310,7 +310,8 @@ function remove_unit(unit_ref, max, nb)
 
 function remove_all(unit_ref, max)
 {
-    total_storage -= parseInt((units_send[unit_ref] * document.getElementById("unit_" + unit_ref).getAttribute("storage")));
+    if (units_send.hasOwnProperty(unit_ref))
+        total_storage -= parseInt((units_send[unit_ref] * document.getElementById("unit_" + unit_ref).getAttribute("storage")));
     units_send[unit_ref] = 0;
     document.getElementById(unit_ref + "_selected").textContent = "0/" + max;
 }

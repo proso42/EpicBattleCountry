@@ -285,10 +285,6 @@
             $already_training = DB::table('waiting_units')->where('city_id', '=', $city_id)->value('id');
             $user_id = session()->get('user_id');
             $user_race = DB::table('users')->where('id', '=', $user_id)->value('race');
-            if ($already_training !== null)
-                return ("hackeur !");
-            else if ($unit->race_required != $user_race && $unit->race_required > 0)
-                return ("army error : bad user race for this unit");
             $unit_id = $request['unit_id'];
             $quantity = $request['quantity'];
             $unit = DB::table('units')
@@ -296,6 +292,10 @@
             ->first();
             if ($unit === null)
                 return ("unit_error");
+            else if ($already_training !== null)
+                return ("hackeur !");
+            else if ($unit->race_required != $user_race && $unit->race_required > 0)
+                return ("army error : bad user race for this unit");
             $city_res = DB::table('cities')
             ->where('id', '=', $city_id)
             ->first();

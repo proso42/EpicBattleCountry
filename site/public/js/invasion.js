@@ -290,7 +290,10 @@ function add_res(res_ref, max, nb)
         speed = 10;
     setTimeout(function(){
         if (total_taken == total_storage)
+        {
+            console.log("total_taken : " + total_taken);
             return ;
+        }
         else if (res_taken.hasOwnProperty(res_ref))
         {
             if (res_taken[res_ref] < max)
@@ -306,6 +309,7 @@ function add_res(res_ref, max, nb)
             document.getElementById("res_" + res_ref + "_selected").textContent = "1/" + max;
             total_taken++;
         }
+        console.log("total_taken : " + total_taken);
         if (click == true)
             add_res(res_ref, max, nb + 1);
     }, speed);
@@ -319,6 +323,7 @@ function add_max_res(res_ref, max)
     res_taken[res_ref] += max;
     total_taken += max;
     document.getElementById("res_" + res_ref + "_selected").textContent = max + "/" + res_max;
+    console.log("total_taken : " + total_taken);
 }
 
 function remove_res(res_ref, max, nb)
@@ -336,6 +341,7 @@ function remove_res(res_ref, max, nb)
             document.getElementById("res_" + res_ref + "_selected").textContent = res_taken[res_ref] + "/" + max;
             total_taken--;
         }
+        console.log("total_taken : " + total_taken);
         if (click == true)
             remove_res(res_ref, max, nb + 1);
     }, speed);
@@ -346,6 +352,7 @@ function remove_all_res(res_ref, max)
     total_taken -= res_taken[res_ref];
     res_taken[res_ref] = 0;
     document.getElementById("res_" + res_ref + "_selected").textContent = "0/" + max;
+    console.log("total_taken : " + total_taken);
 }
 
 function select_city(name)

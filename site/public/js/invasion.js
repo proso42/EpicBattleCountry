@@ -229,12 +229,7 @@ function add_max(unit_ref, max)
     document.getElementById(unit_ref + "_selected").textContent = max + "/" + max;
     total_storage = 0;
     for (var key in units_send)
-    {
-        if (key == unit_ref)
-            total_storage += parseInt((max * document.getElementById("unit_" + unit_ref).getAttribute("storage")));
-        else
-            total_storage += parseInt((units_send[key] * document.getElementById("unit_" + key).getAttribute("storage")));
-    }
+        total_storage += parseInt((units_send[key] * document.getElementById("unit_" + key).getAttribute("storage")));
 }
 
 function remove_unit(unit_ref, max, nb)

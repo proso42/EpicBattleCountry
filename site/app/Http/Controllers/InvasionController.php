@@ -205,8 +205,7 @@
             $storage = 0;
             $res_send = null;
             $update_res_tab = [];
-            return ("ok");
-            /*foreach ($tab_res as $res => $val)
+            foreach ($tab_res as $res => $val)
             {
                 if ($val <= 0)
                     continue ;
@@ -216,13 +215,14 @@
                 {
                     $fret += $val;
                     if ($res_send == null)
-                        $res_send = $current_city->res . ":" . $val;
+                        $res_send = $current_city->$res . ":" . $val;
                     else
-                        $res_send .= ";" . $current_city->res . ":" . $val;
-                    $update_res_tab[$res] = $current_city->res - $val;
+                        $res_send .= ";" . $current_city->$res . ":" . $val;
+                    $update_res_tab[$res] = $current_city->$res - $val;
                 }
             }
-            $units_send = "";
+            return ("ok");
+            /*$units_send = "";
             $update_units_tab = [];
             foreach ($tab as $unit => $quantity)
             {

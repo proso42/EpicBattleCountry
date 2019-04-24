@@ -84,7 +84,7 @@ function timer(id, duration)
         {
             j += " j"
         }
-        compteur.textContent= lang.get('common.in_progress') + " : " + j + " " + h+" "+m+" "+s;
+        compteur.textContent= Lang.get('common.in_progress') + " : " + j + " " + h+" "+m+" "+s;
         setTimeout(function(same_id=id, new_duration=duration-1){
             timer(same_id, new_duration);
         },1000);
@@ -202,10 +202,10 @@ function train(id)
                 document.getElementById("confirm-button").style.display = "";
                 document.getElementById("confirm-button").disabled = "";  
             }
-            document.getElementById("confirm-title").textContent = lang.get('army.train') + " " + quantity + " " + name + " ?";
+            document.getElementById("confirm-title").textContent = Lang.get('army.train') + " " + quantity + " " + name + " ?";
             if (basic[1] > 0)
             {
-                document.getElementById("food_list").textContent = lang.get('common.food') + " : " +  basic[1];
+                document.getElementById("food_list").textContent = Lang.get('common.food') + " : " +  basic[1];
                 document.getElementById("food_icon").className = basic[2];
                 document.getElementById("list1").style.display = "";
             }
@@ -213,7 +213,7 @@ function train(id)
                 document.getElementById("list1").style.display = "none";
             if (basic[3] > 0)
             {
-                document.getElementById("wood_list").textContent = lang.get('common.wood') + " : " +  basic[3];
+                document.getElementById("wood_list").textContent = Lang.get('common.wood') + " : " +  basic[3];
                 document.getElementById("wood_icon").className = basic[4];
                 document.getElementById("list2").style.display = "";
             }
@@ -221,7 +221,7 @@ function train(id)
                 document.getElementById("list2").style.display = "none";
             if (basic[5] > 0)
             {
-                document.getElementById("rock_list").textContent = lang.get('common.rock') + " : " +  basic[5];
+                document.getElementById("rock_list").textContent = Lang.get('common.rock') + " : " +  basic[5];
                 document.getElementById("rock_icon").className = basic[6];
                 document.getElementById("list3").style.display = "";
             }
@@ -229,7 +229,7 @@ function train(id)
                 document.getElementById("list3").style.display = "none";
             if (basic[7] > 0)
             {
-                document.getElementById("steel_list").textContent = lang.get('common.steel') + " : " +  basic[7];
+                document.getElementById("steel_list").textContent = Lang.get('common.steel') + " : " +  basic[7];
                 document.getElementById("steel_icon").className = basic[8];
                 document.getElementById("list4").style.display = "";
             }
@@ -237,7 +237,7 @@ function train(id)
                 document.getElementById("list4").style.display = "none";
             if (basic[9] > 0)
             {
-                document.getElementById("gold_list").textContent = lang.get('common.gold') + " : " +  basic[9];
+                document.getElementById("gold_list").textContent = Lang.get('common.gold') + " : " +  basic[9];
                 document.getElementById("gold_icon").className = basic[10];
                 document.getElementById("list5").style.display = "";
             }
@@ -247,11 +247,11 @@ function train(id)
                 document.getElementById("list_last").style.display = "none";
             else
             {
-                document.getElementById("mount_list").textContent = lang.get('army.mount') + " : " +  basic[11] + " x" + quantity;
+                document.getElementById("mount_list").textContent = Lang.get('army.mount') + " : " +  basic[11] + " x" + quantity;
                 document.getElementById("mount_icon").className = basic[12];
                 document.getElementById("list_last").style.display = "";
             }
-            document.getElementById("time_list").textContent = lang.get('common.time') + " : " +  basic[13] + " ";
+            document.getElementById("time_list").textContent = Lang.get('common.time') + " : " +  basic[13] + " ";
             var i = 0;
             items.forEach(function(e){
                 let e_split = e.split(":");

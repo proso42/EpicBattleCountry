@@ -56,6 +56,40 @@ function manual(unit_ref, unit_name, max)
     };
 }
 
+function manual_res(res_ref, res_name, max)
+{
+    document.getElementById("quantity_title").textContent = res_name;
+    document.getElementById("overlay").style.display = "";
+    document.getElementById("block_edit").style.display = "";
+    document.getElementById("edit_button").onclick = function (){
+        let quantity = document.getElementById("new_quantity").value;
+        if (quantity == "")
+            quantity = 0;
+        else if (!(!isNaN(parseFloat(quantity)) && isFinite(quantity)))
+            quantity = 0;
+        else if (parseInt(quantity) <= 0)
+            quantity = 0;
+        quantity = parseInt(quantity);
+        if (quantity > max)
+            quantity = max;
+        if (res_taken[res_ref] + quantity > total_storage)
+            quantity = total_storage - res_taken[res_ref];
+        total_taken -= res_taken[res_ref];        
+        res_taken[res_ref] = quantity;
+        total_taken += res_taken[res_ref];
+        document.getElementById("res_" + res_ref + "_selected").textContent = res_taken[res_ref] + "/" + max;
+        document.getElementById("overlay").style.display = "none";
+        document.getElementById("block_edit").style.display = "none";
+        document.getElementById("new_quantity").value = "";
+        
+    };
+    document.getElementById("cancel_button").onclick = function (){
+        document.getElementById("overlay").style.display = "none";
+        document.getElementById("block_edit").style.display = "none";
+        document.getElementById("new_quantity").value = "";
+    };
+}
+
 function hide_img(side)
 {
     if (side == "left")

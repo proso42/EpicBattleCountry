@@ -62,7 +62,9 @@
                             <span class="col-lg-1 col-md-1 col-sm-1 col-1"><i ondblclick="remove_all_res('{{ $re }}', '{{ $val }}')" onmousedown="remove_res('{{ $re }}', '{{ $val }}'), 0" class="fas fa-minus invasion-minus"></i></span>
                         </div>
                     @endforeach
+                    <input onclick="step3()" id="button_step3" type="button" class="home-button" value="@lang('common.confirm')">
                     
+                    <input onclick="back_step2()" id="cancel_button_1" type="button" class="home-button-cancel" value="@lang('common.return')">
                 </div>
                 <div id="list_city" style="display: none">
                     @if ($user_cities == null)

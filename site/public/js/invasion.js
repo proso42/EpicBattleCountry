@@ -165,7 +165,13 @@ function step4()
                 console.log("duration : " + xhr.responseText);
                 document.getElementById("confirm_move_unit").style.display = "";
                 document.getElementById("list_city").style.display = "none";
-                document.getElementById("travel_duration").textContent = xhr.responseText;
+                let travel_duration = document.getElementById("travel_duration");
+                if (travel_duration.childElementCount == 1)
+                    travel_duration.lastChild.remove();
+                travel_duration.textContent = xhr.responseText;
+                let clock_icon = document.createElement("i");
+                clock_icon.className = "fas fa-clock";
+                travel_duration.insertBefore(clock_icon, travel_duration.lastChild.nextSibling);
                 var parent = document.getElementById("confirm_move_unit");
                 var duration_div = document.getElementById("move_unit_duration");
                 for (var key in units_send)

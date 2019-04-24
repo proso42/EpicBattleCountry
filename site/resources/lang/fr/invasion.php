@@ -21,4 +21,5 @@ return [
     'units_move_success' => 'Les troupes sont en mouvements',
     'res_to_move' => 'Ressources et objets à déplacer',
     'freight' => 'Fret disponible',
+    'travel_duration' => 'Durée du trajet : ',
 ];

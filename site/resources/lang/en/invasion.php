@@ -21,4 +21,5 @@ return [
     'units_move_success' => 'Units are now moving',
     'res_to_move' => 'Resources and items to move',
     'freight' => 'Available freight',
+    'travel_duration' => 'Travel duration : ',
 ];

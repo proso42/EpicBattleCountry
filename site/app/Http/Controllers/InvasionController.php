@@ -149,7 +149,7 @@
             }
             $city_coord = DB::table('cities')->select('x_pos', 'y_pos')->where('id', '=', $city_id)->first();
             $travel_duration = $this->sec_to_date(((abs($city_coord->x_pos - $city_target_info->x_pos) + abs($city_coord->y_pos - $city_target_info->y_pos)) * (3600 / $min_speed)));
-            return ($travel_duration);
+            return (trans('invasion.travel_duration') . " " . $travel_duration . " ");
         }
 
         public function move_units(Request $request)

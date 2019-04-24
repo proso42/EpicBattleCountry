@@ -19,4 +19,6 @@ return [
     'confirm_move_unit' => 'Confirmer le mouvement des troupes',
     'no_unit' => 'Vous n\'avez aucune unité',
     'units_move_success' => 'Les troupes sont en mouvements',
+    'res_to_move' => 'Ressources et objets à déplacer',
+    'freight' => 'Fret disponible',
 ];

@@ -19,4 +19,6 @@ return [
     'confirm_move_unit' => 'Confirm move unit',
     'no_unit' => 'You do not hav any unit',
     'units_move_success' => 'Units are now moving',
+    'res_to_move' => 'Resources and items to move',
+    'freight' => 'Available freight',
 ];

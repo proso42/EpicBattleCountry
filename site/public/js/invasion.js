@@ -337,6 +337,7 @@ function add_res(res_ref, max, nb)
                 res_taken[res_ref]++;
                 document.getElementById("res_" + res_ref + "_selected").textContent = res_taken[res_ref] + "/" + max;
                 total_taken++;
+                document.getElementById("fert").textContent = total_taken + "/" + total_storage;
             }
         }
         else
@@ -344,6 +345,7 @@ function add_res(res_ref, max, nb)
             res_taken[res_ref] = 1;
             document.getElementById("res_" + res_ref + "_selected").textContent = "1/" + max;
             total_taken++;
+            document.getElementById("fert").textContent = total_taken + "/" + total_storage;
         }
         console.log("total_taken : " + total_taken);
         if (click == true)
@@ -362,6 +364,7 @@ function add_max_res(res_ref, max)
         res_taken[res_ref] = max;
     total_taken += max;
     document.getElementById("res_" + res_ref + "_selected").textContent = res_taken[res_ref] + "/" + res_max;
+    document.getElementById("fert").textContent = total_taken + "/" + total_storage;
     console.log("total_taken : " + total_taken);
 }
 
@@ -379,6 +382,7 @@ function remove_res(res_ref, max, nb)
             res_taken[res_ref]--;
             document.getElementById("res_" + res_ref + "_selected").textContent = res_taken[res_ref] + "/" + max;
             total_taken--;
+            document.getElementById("fert").textContent = total_taken + "/" + total_storage;
         }
         console.log("total_taken : " + total_taken);
         if (click == true)
@@ -392,6 +396,7 @@ function remove_all_res(res_ref, max)
         total_taken -= res_taken[res_ref];
     res_taken[res_ref] = 0;
     document.getElementById("res_" + res_ref + "_selected").textContent = "0/" + max;
+    document.getElementById("fert").textContent = total_taken + "/" + total_storage;
     console.log("total_taken : " + total_taken);
 }
 

@@ -63,7 +63,7 @@
                         </div>
                     @endforeach
                     <input onclick="step3()" id="button_step3" type="button" class="home-button" value="@lang('common.confirm')">
-                    <input onclick="" id="button_skip" type="button" class="invasion-skip-button" value="@lang('common.skip')">
+                    <input onclick="skip_step_res()" id="button_skip" type="button" class="invasion-skip-button" value="@lang('common.skip')">
                     <input onclick="back_step2()" id="cancel_button_1" type="button" class="home-button-cancel" value="@lang('common.return')">
                 </div>
                 <div id="list_city" style="display: none">

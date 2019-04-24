@@ -192,8 +192,7 @@
                 $ex = explode(":", $key);
                 $tab_res[$ex[0]] = $ex[1];
             }
-            return ("ok");
-            /*$city_target = $request['city_target'];
+            $city_target = $request['city_target'];
             $user_id = session()->get('user_id');
             $city_id = session()->get('city_id');
             $city_target_info = DB::table('cities')->where('name', '=', $city_target)->where('owner', '=', $user_id)->first();
@@ -230,8 +229,7 @@
                     continue;
                 if ($city_units->$unit < $quantity)
                     return ("invasion error : bad unit");
-                $unit_name_format = preg_replace('/_/', " ", $unit);
-                $unit_infos = DB::table('units')->select('id', 'speed', 'storage')->where('name', '=', $unit_name_format)->first();
+                $unit_infos = DB::table('units')->select('id', 'speed', 'storage')->where('name', '=', $unit)->first();
                 if ($unit_infos == null)
                     return ("invasion error : unknow unit");
                 if ($min_speed == -1 || $unit_infos->speed < $min_speed)
@@ -256,7 +254,7 @@
             DB::table('cities_units')->where('city_id', '=', $city_id)->update($update_units_tab);
             if ($res_send != "")
                 DB::table('cities')->where('id', '=', $city_id)->update($update_res_tab);
-            return ("good");*/
+            return ("good");
         }
     }
 

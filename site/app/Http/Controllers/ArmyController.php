@@ -285,10 +285,10 @@
             $already_training = DB::table('waiting_units')->where('city_id', '=', $city_id)->value('id');
             if ($already_training !== null)
                 return ("hackeur !");
-            else if ($unit->race_required != $user_race)
+            else if ($unit->race_required != $user_race && $unit->race_required > 0)
                 return ("army error : bad user race for this unit");
-            $user_id = sesion()->get('user_id');
-            $user_race = DB::table('users')->where('user_id', '=', $user_id)->value('race');
+            $user_id = session()->get('user_id');
+            $user_race = DB::table('users')->where('id', '=', $user_id)->value('race');
             $unit_id = $request['unit_id'];
             $quantity = $request['quantity'];
             $unit = DB::table('units')

@@ -56,7 +56,7 @@
                 <div id="list_res_item" style="display: none; text-align: center;margin-top: 25px;">
                     <h2>@lang('invasion.res_to_move')</h2>
                     <div id="fret_div" class="row invasion-unit-line">
-                        <span class="col-lg-5 col-md-5 col-sm-5 col-5">@lang('invasion.freight') : </span>
+                        <span class="col-lg-5 col-md-5 col-sm-5 col-5">@lang('invasion.freight')</span>
                         <span class="col-lg-4 col-md-4 col-sm-4 col-4" id="fret"></span>
                     </div>
                     @foreach ($res as $re => $val)

@@ -134,6 +134,7 @@ function step_res()
     {
         document.getElementById("list_unit").style.display = "none";
         document.getElementById("list_res_item").style.display = "";
+        document.getElementById("fret").textContent = "0/" + total_storage;
     }
     console.log("total_storage : " + total_storage);
 }

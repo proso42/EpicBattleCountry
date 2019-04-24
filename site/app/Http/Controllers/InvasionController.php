@@ -131,13 +131,13 @@
             $res = $request['res'];
             $res = explode(",", preg_replace('/[{}\"]/', '', $res));
             $tab_res = [];
-            return ("ok");
-            /*foreach ($res as $key)
+            foreach ($res as $key)
             {
                 $ex = explode(":", $key);
                 $tab_res[$ex[0]] = $ex[1];
             }
-            $city_target = $request['city_target'];
+            return ("ok");
+            /*$city_target = $request['city_target'];
             $user_id = session()->get('user_id');
             $city_id = session()->get('city_id');
             $city_target_info = DB::table('cities')->where('name', '=', $city_target)->where('owner', '=', $user_id)->first();

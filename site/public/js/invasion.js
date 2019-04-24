@@ -402,7 +402,7 @@ function reset_fret()
     for (var key in res_taken)
     {
         if (res_taken[key] == 0)
-            return ;
+            continue ;
         else
         {
             let quantity = document.getElementById("res_" + key).getAttribute("quantity");

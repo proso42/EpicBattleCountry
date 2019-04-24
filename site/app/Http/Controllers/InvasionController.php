@@ -165,7 +165,7 @@
                 $unit_infos = DB::table('units')->select('speed', 'storage')->where('name', '=', $unit)->first();
                 if ($min_speed == -1 || $unit_infos->speed < $min_speed)
                     $min_speed = $unit_infos->speed;
-                $storage += $unit_infos->storage;
+                $storage += ($unit_infos->storage * $quantity);
             }
             if ($fret > $storage)
                 return ("invasion error : fret > storage");
@@ -184,6 +184,14 @@
                 $ex = explode(":", $key);
                 $tab[$ex[0]] = $ex[1];
             }
+            $res = $request['res'];
+            $res = explode(",", preg_replace('/[{}\"]/', '', $res));
+            $tab_res = [];
+            foreach ($res as $key)
+            {
+                $ex = explode(":", $key);
+                $tab_res[$ex[0]] = $ex[1];
+            }
             $city_target = $request['city_target'];
             $user_id = session()->get('user_id');
             $city_id = session()->get('city_id');
@@ -192,6 +200,27 @@
                 return ("invasion error : bad city");
             $city_units = DB::table('cities_units')->where('city_id', '=', $city_id)->first();
             $min_speed = -1;
+            $current_city = DB::table('cities')->where('id', '=', $city_id)->first();
+            $fret = 0;
+            $storage = 0;
+            $res_send = null;
+            $update_res_tab;
+            foreach ($tab_res as $res => $val)
+            {
+                if ($val <= 0)
+                    continue ;
+                if (!isset($current_city->$res) || $current_city->$res < $val)
+                    return ("invasion error : bad res or item");
+                else
+                {
+                    $fret += $val;
+                    if ($res_send == null)
+                        $res_send = $current_city->res . ":" . $val;
+                    else
+                        $res_send .= ";" . $current_city->res . ":" . $val;
+                    $update_res_tab[$res] = $current_city->res - $val;
+                }
+            }
             $units_send = "";
             $update_units_tab = [];
             foreach ($tab as $unit => $quantity)
@@ -201,7 +230,7 @@
                 if ($city_units->$unit < $quantity)
                     return ("invasion error : bad unit");
                 $unit_name_format = preg_replace('/_/', " ", $unit);
-                $unit_infos = DB::table('units')->select('id', 'speed')->where('name', '=', $unit_name_format)->first();
+                $unit_infos = DB::table('units')->select('id', 'speed', 'storage')->where('name', '=', $unit_name_format)->first();
                 if ($unit_infos == null)
                     return ("invasion error : unknow unit");
                 if ($min_speed == -1 || $unit_infos->speed < $min_speed)
@@ -211,7 +240,10 @@
                 else
                     $units_send .= ";" . $unit_infos->id . ":" . $quantity;
                 $update_units_tab[$unit] = $city_units->$unit - $quantity;
+                $storage += ($unit_infos->storage * $quantity);
             }
+            if ($fret > $storage)
+                return ("invasion error : fret > storage");
             $city_coord = DB::table('cities')->select('x_pos', 'y_pos')->where('id', '=', $city_id)->first();
             $travel_duration = ((abs($city_coord->x_pos - $city_target_info->x_pos) + abs($city_coord->y_pos - $city_target_info->y_pos)) * (3600 / $min_speed));
             if ($travel_duration < 0)
@@ -219,8 +251,10 @@
             $finishing_date = $travel_duration + time();
             $starting_point = $city_coord->x_pos . "/" . $city_coord->y_pos;
             $ending_point = $city_target_info->x_pos . "/" . $city_target_info->y_pos;
-            DB::table('traveling_units')->insert(["city_id" => $city_id, "owner" => $user_id, "starting_point" => $starting_point, "ending_point" => $ending_point, "units" => $units_send, "traveling_duration" => $travel_duration, "finishing_date" => $finishing_date, "mission" => 7]);
+            DB::table('traveling_units')->insert(["city_id" => $city_id, "owner" => $user_id, "starting_point" => $starting_point, "ending_point" => $ending_point, "units" => $units_send, "res_taken" => $res_send, "traveling_duration" => $travel_duration, "finishing_date" => $finishing_date, "mission" => 7]);
             DB::table('cities_units')->where('city_id', '=', $city_id)->update($update_units_tab);
+            if ($res_send != "")
+                DB::table('cities')->where('id', '=', $city_id)->update($update_res_tab);
             return ("good");
         }
     }

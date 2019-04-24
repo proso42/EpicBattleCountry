@@ -303,10 +303,9 @@
                         else
                         {
                             document.getElementById("confirm-button").style.display = "";
-                            document.getElementById("confirm-button").disabled = "";  
+                            document.getElementById("confirm-button").disabled = "";
                         }
-                        console.log("name : " + name);
-                        document.getElementById("confirm-title").textContent = "@lang('army.train') : " + quantity + " " + name + " ?";
+                        document.getElementById("confirm-title").textContent = "@lang('army.train') : " + quantity + " " + basic[14] + " ?";
                         if (basic[1] > 0)
                         {
                             document.getElementById("food_list").textContent = "@lang('common.food') : " +  basic[1];

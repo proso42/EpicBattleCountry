@@ -98,8 +98,8 @@
                 </div>
                 <div id="confirm_move_unit" style="display: none">
                     <h2>@lang('invasion.confirm_move_unit')</h2>
-                    <div id="move_unit_duration" class="row invasion-unit-line">
-                        <span id="travel_duration" style="text-align: left" class="offset-lg-4 offset-md-4 offset-sm-4 offset-4 col-lg-6 col-md-6 col-sm-6 col-6"></span>
+                    <div id="move_unit_duration" class="invasion-unit-line">
+                        <span id="travel_duration"></span>
                     </div>
                     <input onclick="step5()" id="button_step5" type="button" class="home-button" value="@lang('common.confirm')">
                     <input onclick="back_step3()" id="cancel_button_3" type="button" class="home-button-cancel" value="@lang('common.return')">

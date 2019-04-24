@@ -11,6 +11,7 @@ setTimeout(() =>{
 var units_send = {};
 var city = "";
 var speed = 100;
+var total_storage = 0;
 var click = false;
 onmousedown = function(){
     click = true;
@@ -93,6 +94,7 @@ function step3()
         document.getElementById("list_unit").style.display = "none";
         document.getElementById("list_city").style.display = "";
     }
+    console.log("total_storage : " + total_storage);
 }
 
 function step4()
@@ -204,12 +206,14 @@ function add_unit(unit_ref, max, nb)
             {
                 units_send[unit_ref]++;
                 document.getElementById(unit_ref + "_selected").textContent = units_send[unit_ref] + "/" + max;
+                total_storage += document.getElementById("unit_" + unit_ref).getAttribute("storage");
             }
         }
         else
         {
             units_send[unit_ref] = 1;
             document.getElementById(unit_ref + "_selected").textContent = "1/" + max;
+            total_storage += document.getElementById("unit_" + unit_ref).getAttribute("storage");
         }
         if (click == true)
             add_unit(unit_ref, max, nb + 1);
@@ -220,6 +224,14 @@ function add_max(unit_ref, max)
 {
     units_send[unit_ref] = max;
     document.getElementById(unit_ref + "_selected").textContent = max + "/" + max;
+    total_storage = 0;
+    for (var key in units_send)
+    {
+        if (key == unit_ref)
+            total_storage += (max * document.getElementById("unit_" + unit_ref).getAttribute("storage"));
+        else
+            total_storage += (units_send[key] * document.getElementById("unit_" + key).getAttribute("storage"));
+    }
 }
 
 function remove_unit(unit_ref, max, nb)
@@ -235,6 +247,7 @@ function remove_unit(unit_ref, max, nb)
         {
             units_send[unit_ref]--;
             document.getElementById(unit_ref + "_selected").textContent = units_send[unit_ref] + "/" + max;
+            total_storage -= document.getElementById("unit_" + unit_ref).getAttribute("storage");
         }
         if (click == true)
             remove_unit(unit_ref, max, nb + 1);
@@ -243,6 +256,7 @@ function remove_unit(unit_ref, max, nb)
 
 function remove_all(unit_ref, max)
 {
+    total_storage -= (units_send[unit_ref] * document.getElementById("unit_" + unit_ref).getAttribute("storage"));
     units_send[unit_ref] = 0;
     document.getElementById(unit_ref + "_selected").textContent = "0/" + max;
 }

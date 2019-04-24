@@ -42,7 +42,7 @@
                         @else
                             <h2>@lang('invasion.unit_to_move')</h2>
                             @foreach ($info_unit as $unit)
-                                <div id="unit_{{ $unit['ref'] }}" class="row invasion-unit-line" unit_ref="{{ $unit['ref'] }}">
+                                <div id="unit_{{ $unit['ref'] }}" class="row invasion-unit-line" unit_ref="{{ $unit['ref'] }}" storage="{{ $unit['storage'] }}">
                                     <span class="col-lg-5 col-md-5 col-sm-5 col-5" style="text-align: left">{{ $unit['name'] }}</span>
                                     <span onclick="manual('{{ $unit['ref'] }}', '{{ $unit['name'] }}', '{{ $unit['quantity'] }}')" id="{{ $unit['ref'] }}_selected" class="col-lg-4 col-md-4 col-sm-4 col-4" style="cursor: pointer"> 0/{{ $unit['quantity'] }}</span>
                                     <span class="col-lg-1 col-md-1 col-sm-1 col-1"><i ondblclick="add_max('{{ $unit['ref'] }}', '{{ $unit['quantity'] }}')" onmousedown="add_unit('{{ $unit['ref'] }}', '{{ $unit['quantity'] }}', 0)" class="fas fa-plus invasion-plus"></i></span>

@@ -384,7 +384,8 @@ function remove_res(res_ref, max, nb)
 
 function remove_all_res(res_ref, max)
 {
-    total_taken -= res_taken[res_ref];
+    if (res_taken.hasOwnProperty(res_ref))
+        total_taken -= res_taken[res_ref];
     res_taken[res_ref] = 0;
     document.getElementById("res_" + res_ref + "_selected").textContent = "0/" + max;
     console.log("total_taken : " + total_taken);

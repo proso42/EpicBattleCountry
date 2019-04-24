@@ -407,6 +407,7 @@ function reset_fret()
         {
             let quantity = document.getElementById("res_" + key).getAttribute("quantity");
             document.getElementById("res_" + key + "_selected").textContent = "0/" + quantity;
+            res_taken[key] = 0;
         }
     }
 }

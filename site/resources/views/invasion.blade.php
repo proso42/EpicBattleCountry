@@ -58,12 +58,12 @@
                     <div id="fret_div" class="row invasion-unit-line">
                         <span class="col-lg-5 col-md-5 col-sm-5 col-5" style="text-align: left">@lang('invasion.freight')</span>
                         <span class="col-lg-4 col-md-4 col-sm-4 col-4" id="fret"></span>
-                        <span class="col-lg-2 col-md-2 col-sm-2 col-2" style="margin-left: 5px"><i onclick="reset_fret()" class="fas fa-undo-alt" style="pointer: cursor"></i></span>
+                        <span class="col-lg-2 col-md-2 col-sm-2 col-2" style="margin-left: 5px"><i onclick="reset_fret()" class="fas fa-undo-alt" style="cursor: pointer"></i></span>
                     </div>
                     @foreach ($res as $re => $val)
                         <div id="res_{{ $re }}" quantity="{{ $val }}" class="row invasion-unit-line">
                             <span class="col-lg-5 col-md-5 col-sm-5 col-5" style="text-align: left">@lang('common.' . $re)</span>
-                            <span onclick="manual_res('{{ $re }}', '{{ trans('common.' . $re) }}', '{{ $val }}')" id="res_{{ $re }}_selected" class="col-lg-4 col-md-4 col-sm-4 col-4" style="pointer: cursor"> 0/{{ $val }}</span>
+                            <span onclick="manual_res('{{ $re }}', '{{ trans('common.' . $re) }}', '{{ $val }}')" id="res_{{ $re }}_selected" class="col-lg-4 col-md-4 col-sm-4 col-4"> 0/{{ $val }}</span>
                             <span class="col-lg-1 col-md-1 col-sm-1 col-1"><i ondblclick="add_max_res('{{ $re }}', '{{ $val }}')" onmousedown="add_res('{{ $re }}', '{{ $val }}', 0)" class="fas fa-plus invasion-plus"></i></span>
                             <span class="col-lg-1 col-md-1 col-sm-1 col-1"><i ondblclick="remove_all_res('{{ $re }}', '{{ $val }}')" onmousedown="remove_res('{{ $re }}', '{{ $val }}'), 0" class="fas fa-minus invasion-minus"></i></span>
                         </div>

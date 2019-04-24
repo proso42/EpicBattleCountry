@@ -131,14 +131,12 @@
             $res = $request['res'];
             $res = explode(",", preg_replace('/[{}\"]/', '', $res));
             $tab_res = [];
-            return ($res);
             foreach ($res as $key)
             {
                 $ex = explode(":", $key);
                 $tab_res[$ex[0]] = $ex[1];
             }
-            return ("ok");
-            /*$city_target = $request['city_target'];
+            $city_target = $request['city_target'];
             $user_id = session()->get('user_id');
             $city_id = session()->get('city_id');
             $city_target_info = DB::table('cities')->where('name', '=', $city_target)->where('owner', '=', $user_id)->first();
@@ -174,7 +172,7 @@
                 return ("invasion error : fret > storage");
             $city_coord = DB::table('cities')->select('x_pos', 'y_pos')->where('id', '=', $city_id)->first();
             $travel_duration = $this->sec_to_date(((abs($city_coord->x_pos - $city_target_info->x_pos) + abs($city_coord->y_pos - $city_target_info->y_pos)) * (3600 / $min_speed)));
-            return (trans('invasion.travel_duration') . " " . $travel_duration . " ");*/
+            return (trans('invasion.travel_duration') . " " . $travel_duration . " ");
         }
 
         public function move_units(Request $request)

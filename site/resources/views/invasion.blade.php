@@ -58,9 +58,10 @@
                     <div id="fret_div" class="row invasion-unit-line">
                         <span class="col-lg-5 col-md-5 col-sm-5 col-5" style="text-align: left">@lang('invasion.freight')</span>
                         <span class="col-lg-4 col-md-4 col-sm-4 col-4" id="fret"></span>
+                        <span class="col-lg-2 col-md-2 col-sm-2 col-2"><i onclick="reset_fret()" class="fas fa-undo-alt"></i></span>
                     </div>
                     @foreach ($res as $re => $val)
-                        <div id="res_{{ $re }}" class="row invasion-unit-line">
+                        <div id="res_{{ $re }}" quantity="{{ $val }}" class="row invasion-unit-line">
                             <span class="col-lg-5 col-md-5 col-sm-5 col-5" style="text-align: left">@lang('common.' . $re)</span>
                             <span onclick="manual_res('{{ $re }}', '{{ trans('common.' . $re) }}', '{{ $val }}')" id="res_{{ $re }}_selected" class="col-lg-4 col-md-4 col-sm-4 col-4" style="cursor: pointer"> 0/{{ $val }}</span>
                             <span class="col-lg-1 col-md-1 col-sm-1 col-1"><i ondblclick="add_max_res('{{ $re }}', '{{ $val }}')" onmousedown="add_res('{{ $re }}', '{{ $val }}', 0)" class="fas fa-plus invasion-plus"></i></span>
@@ -69,7 +70,7 @@
                     @endforeach
                     @if ($info_item != null)
                         @foreach ($info_item as $item)
-                            <div id="res_{{ $item['ref'] }}" class="row invasion-unit-line">
+                            <div id="res_{{ $item['ref'] }}" quantity="{{ $item['quantity'] }}" class="row invasion-unit-line">
                                 <span class="col-lg-5 col-md-5 col-sm-5 col-5" style="text-align: left">{{ $item['name'] }}</span>
                                 <span onclick="manual_res('{{ $item['ref'] }}', '{{ $item['name'] }}', '{{ $item['quantity'] }}')" id="res_{{ $item['ref'] }}_selected" class="col-lg-4 col-md-4 col-sm-4 col-4" style="cursor: pointer"> 0/{{ $item['quantity'] }}</span>
                                 <span class="col-lg-1 col-md-1 col-sm-1 col-1"><i ondblclick="add_max_res('{{ $item['ref'] }}', '{{ $item['quantity'] }}')" onmousedown="add_res('{{ $item['ref'] }}', '{{ $item['quantity'] }}', 0)" class="fas fa-plus invasion-plus"></i></span>
@@ -78,7 +79,6 @@
                         @endforeach
                     @endif
                     <input onclick="step3()" id="button_step3" type="button" class="home-button" value="@lang('common.confirm')">
-                    <input onclick="skip_step_res()" id="button_skip" type="button" class="invasion-skip-button" value="@lang('common.skip')">
                     <input onclick="back_step2()" id="cancel_button_1" type="button" class="home-button-cancel" value="@lang('common.return')">
                 </div>
                 <div id="list_city" style="display: none">

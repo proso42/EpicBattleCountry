@@ -1543,24 +1543,3 @@ input::placeholder
     font-weight: bold;
     color: floralwhite;
 }
-
-.invasion-skip-button
-{
-    margin-top: 10px;
-    line-height: 0;
-    background-color: cornflowerblue;
-    color: black;
-    text-align: center;
-    border: 1px solid black;
-    border-radius: 4px;
-    cursor: pointer;
-    height: 32px;
-    width: 204px;
-}
-
-.invasion-skip-button:hover
-{
-    background-color: royalblue;
-    font-weight: bold;
-    color: white;
-}

@@ -215,13 +215,6 @@ function step5()
     xhr.send('_token=' + _token + '&units=' + JSON.stringify(units_send) + "&city_target=" + city);
 }
 
-function skip_step_res(res)
-{
-    for (var re in res)
-        document.getElementById("res_" + re + "_selected").textContent = res[re];
-    step3();
-}
-
 function back_step1()
 {
     document.getElementById("action_choice").style.display = "";
@@ -400,6 +393,22 @@ function remove_all_res(res_ref, max)
     document.getElementById("res_" + res_ref + "_selected").textContent = "0/" + max;
     document.getElementById("fret").textContent = total_taken + "/" + total_storage;
     console.log("total_taken : " + total_taken);
+}
+
+function reset_fret()
+{
+    total_taken = 0;
+    document.getElementById("fret").textContent = "0/" + total_storage;
+    for (var key in res_taken)
+    {
+        if (res_taken[key] == 0)
+            return ;
+        else
+        {
+            let quantity = document.getElementById("res_" + key).getAttribute("quantity");
+            document.getElementById("res_" + key + "_selected").textContent = "0/" + quantity;
+        }
+    }
 }
 
 function select_city(name)

@@ -74,7 +74,7 @@ function manual_res(res_ref, res_name, max)
             total_taken -= res_taken[res_ref];
         if (quantity > max)
             quantity = max;
-        if (quantity > total_storage)
+        if (total_taken + quantity > total_storage)
             quantity = total_storage - total_taken;
         total_taken += quantity;      
         res_taken[res_ref] = quantity;

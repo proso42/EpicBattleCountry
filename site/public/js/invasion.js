@@ -48,6 +48,9 @@ function manual(unit_ref, unit_name, max)
         document.getElementById("overlay").style.display = "none";
         document.getElementById("block_edit").style.display = "none";
         document.getElementById("new_quantity").value = "";
+        total_unit = 0;
+        for (var key in units_send)
+            total_storage += parseInt((units_send[key] * document.getElementById("unit_" + key).getAttribute("storage")));
     };
 }
 
@@ -206,14 +209,14 @@ function add_unit(unit_ref, max, nb)
             {
                 units_send[unit_ref]++;
                 document.getElementById(unit_ref + "_selected").textContent = units_send[unit_ref] + "/" + max;
-                total_storage += document.getElementById("unit_" + unit_ref).getAttribute("storage");
+                total_storage += parseInt(document.getElementById("unit_" + unit_ref).getAttribute("storage"));
             }
         }
         else
         {
             units_send[unit_ref] = 1;
             document.getElementById(unit_ref + "_selected").textContent = "1/" + max;
-            total_storage += document.getElementById("unit_" + unit_ref).getAttribute("storage");
+            total_storage += parseInt(document.getElementById("unit_" + unit_ref).getAttribute("storage"));
         }
         if (click == true)
             add_unit(unit_ref, max, nb + 1);
@@ -228,9 +231,9 @@ function add_max(unit_ref, max)
     for (var key in units_send)
     {
         if (key == unit_ref)
-            total_storage += (max * document.getElementById("unit_" + unit_ref).getAttribute("storage"));
+            total_storage += parseInt((max * document.getElementById("unit_" + unit_ref).getAttribute("storage")));
         else
-            total_storage += (units_send[key] * document.getElementById("unit_" + key).getAttribute("storage"));
+            total_storage += parseInt((units_send[key] * document.getElementById("unit_" + key).getAttribute("storage")));
     }
 }
 
@@ -247,7 +250,7 @@ function remove_unit(unit_ref, max, nb)
         {
             units_send[unit_ref]--;
             document.getElementById(unit_ref + "_selected").textContent = units_send[unit_ref] + "/" + max;
-            total_storage -= document.getElementById("unit_" + unit_ref).getAttribute("storage");
+            total_storage -= parseInt(document.getElementById("unit_" + unit_ref).getAttribute("storage"));
         }
         if (click == true)
             remove_unit(unit_ref, max, nb + 1);
@@ -256,7 +259,7 @@ function remove_unit(unit_ref, max, nb)
 
 function remove_all(unit_ref, max)
 {
-    total_storage -= (units_send[unit_ref] * document.getElementById("unit_" + unit_ref).getAttribute("storage"));
+    total_storage -= parseInt((units_send[unit_ref] * document.getElementById("unit_" + unit_ref).getAttribute("storage")));
     units_send[unit_ref] = 0;
     document.getElementById(unit_ref + "_selected").textContent = "0/" + max;
 }

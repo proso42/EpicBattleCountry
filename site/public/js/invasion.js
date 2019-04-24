@@ -341,7 +341,7 @@ function remove_res(res_ref, max, nb)
     }, speed);
 }
 
-function remove_all_all(res_ref, max)
+function remove_all_res(res_ref, max)
 {
     total_taken -= res_taken[res_ref];
     res_taken[res_ref] = 0;

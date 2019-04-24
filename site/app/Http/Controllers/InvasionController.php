@@ -129,9 +129,9 @@
                 $tab[$ex[0]] = $ex[1];
             }
             $res = $request['res'];
+            $res = explode(",", preg_replace('/[{}\"]/', '', $res));
             return ("ok");
-            /*$res = explode(",", preg_replace('/[{}\"]/', '', $res));
-            $tab_res = [];
+            /*$tab_res = [];
             foreach ($res as $key)
             {
                 $ex = explode(":", $key);

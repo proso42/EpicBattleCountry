@@ -192,7 +192,8 @@
                 $ex = explode(":", $key);
                 $tab_res[$ex[0]] = $ex[1];
             }
-            $city_target = $request['city_target'];
+            return ("ok");
+            /*$city_target = $request['city_target'];
             $user_id = session()->get('user_id');
             $city_id = session()->get('city_id');
             $city_target_info = DB::table('cities')->where('name', '=', $city_target)->where('owner', '=', $user_id)->first();
@@ -252,9 +253,9 @@
             $ending_point = $city_target_info->x_pos . "/" . $city_target_info->y_pos;
             DB::table('traveling_units')->insert(["city_id" => $city_id, "owner" => $user_id, "starting_point" => $starting_point, "ending_point" => $ending_point, "units" => $units_send, "res_taken" => $res_send, "traveling_duration" => $travel_duration, "finishing_date" => $finishing_date, "mission" => 7]);
             DB::table('cities_units')->where('city_id', '=', $city_id)->update($update_units_tab);
-            if ($res_send != "")
+            if ($res_send != null)
                 DB::table('cities')->where('id', '=', $city_id)->update($update_res_tab);
-            return ("good");
+            return ("good");*/
         }
     }
 

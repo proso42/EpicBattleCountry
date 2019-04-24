@@ -192,8 +192,7 @@
                 $ex = explode(":", $key);
                 $tab_res[$ex[0]] = $ex[1];
             }
-            return ("ok");
-            /*$city_target = $request['city_target'];
+            $city_target = $request['city_target'];
             $user_id = session()->get('user_id');
             $city_id = session()->get('city_id');
             $city_target_info = DB::table('cities')->where('name', '=', $city_target)->where('owner', '=', $user_id)->first();
@@ -222,7 +221,8 @@
                     $update_res_tab[$res] = $current_city->res - $val;
                 }
             }
-            $units_send = "";
+            return ("ok");
+            /*$units_send = "";
             $update_units_tab = [];
             foreach ($tab as $unit => $quantity)
             {

@@ -55,12 +55,12 @@
                 </div>
                 <div id="list_res_item" style="display: none; text-align: center;margin-top: 25px;">
                     @foreach ($res as $re => $val)
-                        <div id="res_{{ $re }}" class="row invasion-unit-line">
+                        <!--<div id="res_{{ $re }}" class="row invasion-unit-line">
                             <span class="col-lg-5 col-md-5 col-sm-5 col-5" style="text-align: left">@lang('common.' . $re)</span>
                             <span onclick="manual_res('{{ $re }}', '{{ $val }}')" id="res_{{ $re }}_selected" class="col-lg-4 col-md-4 col-sm-4 col-4" style="cursor: pointer"> 0/{{ $val }}</span>
                             <span class="col-lg-1 col-md-1 col-sm-1 col-1"><i ondblclick="add_max_res('{{ $re }}', '{{ $val }}')" onmousedown="add_res('{{ $re }}', '{{ $val }}', 0)" class="fas fa-plus invasion-plus"></i></span>
                             <span class="col-lg-1 col-md-1 col-sm-1 col-1"><i ondblclick="remove_all_res('{{ $re }}', '{{ $val }}')" onmousedown="remove_res('{{ $re }}', '{{ $val }}'), 0" class="fas fa-minus invasion-minus"></i></span>
-                        </div>
+                        </div>-->
                     @endforeach
                     <input onclick="step3()" id="button_step3" type="button" class="home-button" value="@lang('common.confirm')">
                     <input onclick="skip_step_res('{{ $res }}')" id="button_skip" type="button" class="invasion-skip-button" value="@lang('common.skip')">

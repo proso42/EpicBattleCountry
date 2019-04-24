@@ -131,9 +131,9 @@
             $res = $request['res'];
             $res = explode(",", preg_replace('/[{}\"]/', '', $res));
             $tab_res = [];
-            foreach ($res as $key)
+            foreach ($res as $key2)
             {
-                $ex = explode(":", $key);
+                $ex = explode(":", $key2);
                 $tab_res[$ex[0]] = $ex[1];
             }
             return ("ok");

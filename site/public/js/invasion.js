@@ -76,7 +76,8 @@ function manual_res(res_ref, res_name, max)
             quantity = max;
         if (total_taken + quantity > total_storage)
             quantity = total_storage - total_taken;
-        total_taken += quantity;      
+        total_taken += quantity;
+        document.getElementById("fert").textContent = total_taken + "/" + total_storage;    
         res_taken[res_ref] = quantity;
         document.getElementById("res_" + res_ref + "_selected").textContent = res_taken[res_ref] + "/" + max;
         document.getElementById("overlay").style.display = "none";

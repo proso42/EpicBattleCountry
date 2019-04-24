@@ -162,8 +162,7 @@
                     continue;
                 if (!isset($city_units->$unit) || $city_units->$unit < $quantity)
                     return ("invasion error : bad unit");
-                $unit_name_format = preg_replace('/_/', " ", $unit);
-                $unit_infos = DB::table('units')->select('speed', 'storage')->where('name', '=', $unit_name_format)->first();
+                $unit_infos = DB::table('units')->select('speed', 'storage')->where('name', '=', $unit)->first();
                 if ($min_speed == -1 || $unit_infos->speed < $min_speed)
                     $min_speed = $unit_infos->speed;
                 $storage += $unit_infos->storage;

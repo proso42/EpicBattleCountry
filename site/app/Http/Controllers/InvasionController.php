@@ -215,9 +215,9 @@
                 {
                     $fret += $val;
                     if ($res_send == null)
-                        $res_send = $current_city->$res . ":" . $val;
+                        $res_send = $res . ":" . $val;
                     else
-                        $res_send .= ";" . $current_city->$res . ":" . $val;
+                        $res_send .= ";" . $res . ":" . $val;
                     $update_res_tab[$res] = $current_city->$res - $val;
                 }
             }

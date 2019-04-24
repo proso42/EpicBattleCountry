@@ -222,14 +222,13 @@ function step5()
     {
         if (xhr.readyState === 4 && xhr.status === 200)
         {
-            /*if (xhr.responseText.indexOf("error") >= 0)
+            if (xhr.responseText.indexOf("error") >= 0)
                 console.log(xhr.responseText);
             else
                 document.getElementById("units_move_success").style.display = "";
             setTimeout(function(){
                 window.location.reload();
-            }, 3000);*/
-            console.log(xhr.responseText);
+            }, 3000);
         }
     }
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

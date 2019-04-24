@@ -322,7 +322,7 @@ function add_max_res(res_ref, max)
         max = (total_storage - total_taken);
     res_taken[res_ref] += max;
     total_taken += max;
-    document.getElementById("res_" + res_ref + "_selected").textContent = max + "/" + res_max;
+    document.getElementById("res_" + res_ref + "_selected").textContent = res_taken[res_ref] + "/" + res_max;
     console.log("total_taken : " + total_taken);
 }
 

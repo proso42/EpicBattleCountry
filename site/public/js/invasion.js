@@ -155,7 +155,7 @@ function step4()
     {
         if (xhr.readyState === 4 && xhr.status === 200)
         {
-            if (xhr.responseText.indexOf("error") >= 0)
+            /*if (xhr.responseText.indexOf("error") >= 0)
             {
                 console.log(xhr.responseText);
                 return ;
@@ -201,7 +201,8 @@ function step4()
                     new_span.appendChild(textNode);
                     new_div.insertBefore(new_span, new_div.firstChild);
                 }
-            }
+            }*/
+            console.log(xhr.responseText);
         }
     }
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

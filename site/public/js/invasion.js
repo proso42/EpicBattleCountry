@@ -410,6 +410,9 @@ function reset_fret()
             res_taken[key] = 0;
         }
     }
+    console.log("total_taken : " + total_taken);
+    console.log(res_taken);
+
 }
 
 function select_city(name)

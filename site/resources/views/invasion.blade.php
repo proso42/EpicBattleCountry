@@ -42,7 +42,7 @@
                         @else
                             <h2>@lang('invasion.unit_to_move')</h2>
                             @foreach ($info_unit as $unit)
-                                <div id="unit_{{ $unit['ref'] }}" class="row invasion-unit-line" unit_ref="{{ $unit['ref'] }}" storage="{{ $unit['storage'] }}">
+                                <div id="unit_{{ $unit['ref'] }}" class="row invasion-unit-line" unit_ref="{{ $unit['ref'] }}" storage="{{ $unit['storage'] }}" unit_name="{{ $unit['name'] }}">
                                     <span class="col-lg-5 col-md-5 col-sm-5 col-5" style="text-align: left">{{ $unit['name'] }}</span>
                                     <span onclick="manual('{{ $unit['ref'] }}', '{{ $unit['name'] }}', '{{ $unit['quantity'] }}')" id="{{ $unit['ref'] }}_selected" class="col-lg-4 col-md-4 col-sm-4 col-4" style="cursor: pointer"> 0/{{ $unit['quantity'] }}</span>
                                     <span class="col-lg-1 col-md-1 col-sm-1 col-1"><i ondblclick="add_max('{{ $unit['ref'] }}', '{{ $unit['quantity'] }}')" onmousedown="add_unit('{{ $unit['ref'] }}', '{{ $unit['quantity'] }}', 0)" class="fas fa-plus invasion-plus"></i></span>
@@ -61,7 +61,7 @@
                         <span class="col-lg-2 col-md-2 col-sm-2 col-2" style="margin-left: 5px"><i onclick="reset_fret()" class="fas fa-undo-alt" style="cursor: pointer"></i></span>
                     </div>
                     @foreach ($res as $re => $val)
-                        <div id="res_{{ $re }}" quantity="{{ $val }}" class="row invasion-unit-line">
+                        <div id="res_{{ $re }}" res_name="@lang('common.' . $re)" quantity="{{ $val }}" class="row invasion-unit-line">
                             <span class="col-lg-5 col-md-5 col-sm-5 col-5" style="text-align: left">@lang('common.' . $re)</span>
                             <span onclick="manual_res('{{ $re }}', '{{ trans('common.' . $re) }}', '{{ $val }}')" id="res_{{ $re }}_selected" class="col-lg-4 col-md-4 col-sm-4 col-4" style="cursor: pointer"> 0/{{ $val }}</span>
                             <span class="col-lg-1 col-md-1 col-sm-1 col-1"><i ondblclick="add_max_res('{{ $re }}', '{{ $val }}')" onmousedown="add_res('{{ $re }}', '{{ $val }}', 0)" class="fas fa-plus invasion-plus"></i></span>
@@ -70,7 +70,7 @@
                     @endforeach
                     @if ($info_item != null)
                         @foreach ($info_item as $item)
-                            <div id="res_{{ $item['ref'] }}" quantity="{{ $item['quantity'] }}" class="row invasion-unit-line">
+                            <div id="res_{{ $item['ref'] }}" res_name="{{ $item['name'] }}" quantity="{{ $item['quantity'] }}" class="row invasion-unit-line">
                                 <span class="col-lg-5 col-md-5 col-sm-5 col-5" style="text-align: left">{{ $item['name'] }}</span>
                                 <span onclick="manual_res('{{ $item['ref'] }}', '{{ $item['name'] }}', '{{ $item['quantity'] }}')" id="res_{{ $item['ref'] }}_selected" class="col-lg-4 col-md-4 col-sm-4 col-4" style="cursor: pointer"> 0/{{ $item['quantity'] }}</span>
                                 <span class="col-lg-1 col-md-1 col-sm-1 col-1"><i ondblclick="add_max_res('{{ $item['ref'] }}', '{{ $item['quantity'] }}')" onmousedown="add_res('{{ $item['ref'] }}', '{{ $item['quantity'] }}', 0)" class="fas fa-plus invasion-plus"></i></span>

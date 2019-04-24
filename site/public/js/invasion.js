@@ -184,7 +184,8 @@ function step4()
                     new_div.id = "confirm_unit_" + key;
                     parent.insertBefore(new_div, duration_div);
                     let new_span = document.createElement("span");
-                    let textNode = document.createTextNode(key + " x" + units_send[key]);
+                    let unit_name = document.getElementById("unit_" + key).getAttribute("unit_name");
+                    let textNode = document.createTextNode(unit_name + " x" + units_send[key]);
                     new_span.appendChild(textNode);
                     new_div.insertBefore(new_span, new_div.firstChild);
                 }
@@ -197,7 +198,8 @@ function step4()
                     new_div.id = "confirm_res_" + key2;
                     parent.insertBefore(new_div, duration_div);
                     let new_span = document.createElement("span");
-                    let textNode = document.createTextNode(key2 + " x" + res_taken[key2]);
+                    let res_name = document.getElementById("res_" + key2).getAttribute("res_name");
+                    let textNode = document.createTextNode(res_name + " x" + res_taken[key2]);
                     new_span.appendChild(textNode);
                     new_div.insertBefore(new_span, new_div.firstChild);
                 }

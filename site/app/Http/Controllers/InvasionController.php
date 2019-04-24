@@ -205,7 +205,8 @@
             $storage = 0;
             $res_send = null;
             $update_res_tab = [];
-            foreach ($tab_res as $res => $val)
+            return ("ok");
+            /*foreach ($tab_res as $res => $val)
             {
                 if ($val <= 0)
                     continue ;
@@ -221,8 +222,7 @@
                     $update_res_tab[$res] = $current_city->res - $val;
                 }
             }
-            return ("ok");
-            /*$units_send = "";
+            $units_send = "";
             $update_units_tab = [];
             foreach ($tab as $unit => $quantity)
             {

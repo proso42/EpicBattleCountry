@@ -81,7 +81,7 @@ function manual_res(res_ref, res_name, max)
         document.getElementById("overlay").style.display = "none";
         document.getElementById("block_edit").style.display = "none";
         document.getElementById("new_quantity").value = "";
-        
+        console.log("total_taken : " + total_taken);
     };
     document.getElementById("cancel_button").onclick = function (){
         document.getElementById("overlay").style.display = "none";

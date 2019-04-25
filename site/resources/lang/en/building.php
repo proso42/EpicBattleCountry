@@ -20,7 +20,7 @@ return [
     'Loufterie' => 'Wolf\'s lair',
     'Prison' => 'Prison',
     'Mur_basique' => 'Basic wall',
-    'Mur_os' => 'Bone wall',
+    'Skull_wall' => 'Skull wall',
     'Douves_de_lave' => 'Lava moats',
     'Piege_a_piques' => 'Spikes trap',
     'Fosse_cachee' => 'Hidden hole',

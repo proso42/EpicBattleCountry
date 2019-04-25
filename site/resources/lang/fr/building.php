@@ -20,7 +20,7 @@ return [
     'Loufterie' => 'Loufterie',
     'Prison' => 'Prison',
     'Mur_basique' => 'Mur basique',
-    'Mur_os' => 'Mur d os',
+    'Skull_wall' => 'Mur d\'os',
     'Douves_de_lave' => 'Douves de lave',
     'Piege_a_piques' => 'Piege a piques',
     'Fosse_cachee' => 'Fosse cachee',

@@ -138,12 +138,11 @@ module.exports.launch_battle = function (id)
     function calc_boost(init_val, lvl)
     {
         boosted = init_val;
-        boost = init_val * 30 / 100;
+        boost = init_val * 10 / 100;
         for (let i = 0; i < lvl; i++)
         {
             boosted += boost;
-            boost = boosted * 30 / 100;
-            console.log(boosted);
+            boost = boosted * 10 / 100;
         }
         return (Math.trunc(boosted));
     }

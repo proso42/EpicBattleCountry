@@ -31,11 +31,12 @@ module.exports.launch_battle = function (id)
             let p1 = get_D_units(ret[0]['ending_point']);
             Promise.all([p0, p1])
             .then((ret) => {
+                console.log("then");
                 console.log(ret);
                 return 0;
-
             })
             .catch((err) =>{
+                console.log("error");
                 console.log(err);
                 return -1;
             })
@@ -80,15 +81,15 @@ module.exports.launch_battle = function (id)
                     let unit_ref = ret[split[0] - 1]['name'];
                     unit_obj[unit_ref] = {"id":split[0], "quantity":parseInt(split[1]), "life":parseInt(life), "dmg_type":dmg_type, "dmg":parseInt(dmg), "mv":mv};
                 }
-                console.log ("avant boost");
-                console.log(unit_obj);
+                //console.log ("avant boost");
+                //console.log(unit_obj);
                 var tab_p = [];
                 for (var key in unit_obj)
                     tab_p.push(serach_unit_boost(key, unit_obj, city_id));
                 Promise.all(tab_p)
                 .then(() => 
                 {
-                    console.log(unit_obj);
+                  //  console.log(unit_obj);
                     resolve();
                 })
                 .catch((err) => 
@@ -101,7 +102,7 @@ module.exports.launch_battle = function (id)
 
     function serach_unit_boost(key, obj, city_id)
     {
-        console.log("search_unit_boost");
+        //console.log("search_unit_boost");
         return new Promise ((resolve, reject) => {
             let unit = obj[key];
             mysqlClient.query(`SELECT item_needed FROM units WHERE id = ${unit['id']}`, function (err, ret){
@@ -109,28 +110,28 @@ module.exports.launch_battle = function (id)
                     reject(err);
                 else
                 {
-                    console.log("req1 passed");
+                    //console.log("req1 passed");
                     let items = ret[0]['item_needed'];
                     if (items == "NONE")
                         resolve(); // pas d'item = pas de boost
                     else if (items.indexOf(";") < 0)
                     {
                         // un seul item
-                        console.log("1 item");
+          //              console.log("1 item");
                         let pp0 = apply_boost(obj, key, city_id, items);
                         Promise.all([pp0])
                         .then(() =>{
-                            console.log(obj[key]);
+                  //          console.log(obj[key]);
                         })
                         .catch((err) => {
-                            console.log(err);
+                    //        console.log(err);
                             mysqlClient.end();
                             reject();
                         });
                     }
                     else
                     {
-                        console.log("x items");
+            //            console.log("x items");
                         // plusieurs items
                         let tab_pp0 = [];
                         let split = items.split(";");
@@ -138,10 +139,10 @@ module.exports.launch_battle = function (id)
                             tab_pp0.push(apply_boost(obj, key, city_id, split[item]));
                         Promise.all(tab_pp0)
                         .then(() =>{
-                            console.log(obj[key]);
+              //              console.log(obj[key]);
                         })
                         .catch((err) => {
-                            console.log(err);
+                //            console.log(err);
                             mysqlClient.end();
                             reject();
                         });
@@ -154,7 +155,7 @@ module.exports.launch_battle = function (id)
     function apply_boost(obj, key, city_id, item)
     {
         return new Promise((resolve, reject) => {
-            console.log(`SELECT techs.name, techs.boost FROM techs INNER JOIN forge ON techs.id = forge.tech_required WHERE forge.id = ${item}`);
+            //console.log(`SELECT techs.name, techs.boost FROM techs INNER JOIN forge ON techs.id = forge.tech_required WHERE forge.id = ${item}`);
             mysqlClient.query(`SELECT techs.name, techs.boost FROM techs INNER JOIN forge ON techs.id = forge.tech_required WHERE forge.id = ${item}`, function (err, ret){
                 if (err)
                     reject(err);
@@ -164,7 +165,7 @@ module.exports.launch_battle = function (id)
                     var boost = ret[0]['boost'];
                     if (tech_name.indexOf(" ") >= 0)
                         tech_name = tech_name.replace(/\s/gi, "_");
-                    console.log(`SELECT ${tech_name} FROM cities_techs WHERE city_id = ${city_id}`);
+              //      console.log(`SELECT ${tech_name} FROM cities_techs WHERE city_id = ${city_id}`);
                     mysqlClient.query(`SELECT ${tech_name} FROM cities_techs WHERE city_id = ${city_id}`, function (err, ret){
                         if (err)
                             reject(err);

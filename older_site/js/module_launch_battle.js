@@ -107,12 +107,14 @@ module.exports.launch_battle = function (id)
                                             resolve();
                                         else
                                         {
-                                            let tech_lvl = ret[0][$tech_name];                                            
+                                            let tech_lvl = ret[0][tech_name];                                            
                                             if (tech_lvl == 0)
                                                 resolve();
                                             else
                                             {
                                                 obj[key].boost = Math.trunc(obj[key].boost * Math.pow(5, tech_lvl));
+                                                console.log("After boost");
+                                                console.log(obj[key]);
                                                 resolve();
                                             }
                                         }

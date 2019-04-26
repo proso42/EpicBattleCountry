@@ -32,7 +32,7 @@ module.exports.launch_battle = function (id)
             Promise.all([p0, p1])
             .then((ret) => {
                 console.log("then");
-                console.log(ret);
+                console.log(ret[1]);
                 return 0;
             })
             .catch((err) =>{
@@ -56,7 +56,21 @@ module.exports.launch_battle = function (id)
                 else if (ret == null || ret.length == 0)
                     resolve("no target");
                 else
-                    resolve("target ok");
+                {
+                    let city_id = ret[0]['id'];
+                    mysqlClient.query(`SELECT * FROM cities_units WHERE city_id = ${city_id}`, function (err, ret){
+                        var unit_obj = {};
+                        for (var key in ret[0])
+                        {
+                            if (key == "id" || key == "city_id" || key == "owner")
+                                continue ;
+                            else
+                                unit_obj[key] = ret[0][key];
+                        }
+                        console.log(unit_obj);
+                        resolve();
+                    });
+                }
             });
         });
     }

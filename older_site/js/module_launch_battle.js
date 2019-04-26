@@ -121,6 +121,7 @@ module.exports.launch_battle = function (id)
                         let pp0 = apply_boost(obj, key, city_id, items);
                         Promise.all([pp0])
                         .then(() =>{
+                            resolve();
                   //          console.log(obj[key]);
                         })
                         .catch((err) => {
@@ -140,6 +141,7 @@ module.exports.launch_battle = function (id)
                         Promise.all(tab_pp0)
                         .then(() =>{
               //              console.log(obj[key]);
+                            resolve();
                         })
                         .catch((err) => {
                 //            console.log(err);

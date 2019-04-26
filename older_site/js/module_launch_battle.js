@@ -28,7 +28,7 @@ module.exports.launch_battle = function (id)
         else
         {
             let p0 = get_A_units(ret[0]['city_id'], ret[0]['units']);
-            let p1 = get_D_units(ret[0]['ending_points']);
+            let p1 = get_D_units(ret[0]['ending_point']);
             Promise.all([p0, p1])
             .then((ret) => {
                 console.log(ret);

@@ -29,10 +29,12 @@ module.exports.launch_battle = function (id)
         {
             let p0 = get_A_units(ret[0]['city_id'], ret[0]['units']);
             let p1 = get_D_units(ret[0]['ending_point']);
-            Promise.all([p0, p1])
+            let p2 = get_D_builds(ret[0]['ending_point']);
+            Promise.all([p0, p1, p2])
             .then((ret) => {
                 console.log("then");
                 console.log(ret[1]);
+                console.log(ret[2]);
                 return 0;
             })
             .catch((err) =>{
@@ -42,6 +44,37 @@ module.exports.launch_battle = function (id)
             })
         }
     });
+
+    function get_D_builds(coord)
+    {
+        return new Promise((resolve, reject) => {
+            coord = coord.split("/");
+            let x_pos = coord[0];
+            let y_pos = coord[1];
+            mysqlClient.query(`SELECT id FROM cities WHERE x_pos = ${x_pos} AND y_pos = ${y_pos}`, function (err, ret){
+                if (err)
+                    reject(err);
+                else if (ret == null || ret.length == 0)
+                    resolve("no target");
+                else
+                {
+                    let city_id = ret[0]['id'];
+                    mysqlClient.query("SELECT defenses.life, defenses.type, defenses.dmg_type, defenses.dmg, army_buildings.name FROM defenses, army_buildings WHERE defenses.building_id = army_buildings.id", function (err, ret){
+                        if (err)
+                            reject(err);
+                        else
+                        {
+                            var build_stats = ret;
+                            for (var key in build_stats)
+                                build_stats[key]['name'] = build_stats[key]['name'].replace(/\s/gi, "_");
+                        }
+                        console.log(build_stats);
+                        resolve();
+                    });
+                }
+            });
+        });
+    }
 
     function get_D_units(coord)
     {

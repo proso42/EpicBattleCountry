@@ -201,6 +201,8 @@
                 $tab_res = [];
                 foreach ($res as $key)
                 {
+                    if (strstr($key, ":") == false)
+                        continue ;
                     $ex = explode(":", $key);
                     $tab_res[$ex[0]] = $ex[1];
                 }

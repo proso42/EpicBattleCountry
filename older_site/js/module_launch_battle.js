@@ -49,12 +49,13 @@ module.exports.launch_battle = function (id)
             let x_pos = coord[0];
             let y_pos = coord[1];
             mysqlClient.query(`SELECT id FROM cities WHERE x_pos = ${x_pos} AND y_pos = ${y_pos}`, function (err, ret){
+                console.log("laaaaaaaaaaaaa !!!");
                 if (err)
                     reject(err);
                 else if (ret == null || ret.length == 0)
-                    resolve("no cible");
+                    resolve("no target");
                 else
-                    resolve();
+                    resolve("target ok");
             });
         });
     }

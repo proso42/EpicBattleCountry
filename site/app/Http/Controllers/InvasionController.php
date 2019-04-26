@@ -130,6 +130,7 @@
             }
             if (isset($request['res']))
             {
+                return ("impossible");
                 $res = $request['res'];
                 $res = explode(",", preg_replace('/[{}\"]/', '', $res));
                 $tab_res = [];

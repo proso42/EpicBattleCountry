@@ -28,8 +28,36 @@ module.exports.launch_battle = function (id)
         else
         {
             let p0 = get_A_units(ret[0]['city_id'], ret[0]['units']);
+            let p1 = get_D_units(ret[0]['ending_points']);
+            Promise.all([p0, p1])
+            .then((ret) => {
+                console.log(ret);
+                return 0;
+
+            })
+            .catch((err) =>{
+                console.log(err);
+                return -1;
+            })
         }
     });
+
+    function get_D_units(coord)
+    {
+        return new Promise((resolve, reject) => {
+            coord = coord.split("/");
+            let x_pos = coord[0];
+            let y_pos = coord[1];
+            mysqlClient.query(`SELECT id FROM city WHERE x_pos = ${x_pos} AND y_pos = ${y_pos}`, function (err, ret){
+                if (err)
+                    reject(err);
+                else if (ret == null || ret.length == 0)
+                    resolve("no cible");
+                else
+                    resolve();
+            });
+        });
+    }
 
     function get_A_units(city_id, units)
     {

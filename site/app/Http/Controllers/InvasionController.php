@@ -132,6 +132,7 @@
             {
                 $res = $request['res'];
                 $res = explode(",", preg_replace('/[{}\"]/', '', $res));
+                return ($res);
                 if ($res == "")
                     $tab_res = null;
                 else
@@ -146,7 +147,6 @@
             }
             else
                 $tab_res = null;
-            return ("ok");
             $city_target = $request['city_target'];
             $user_id = session()->get('user_id');
             $city_id = session()->get('city_id');

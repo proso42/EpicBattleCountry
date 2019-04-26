@@ -85,13 +85,14 @@ module.exports.launch_battle = function (id)
                                     unit_obj[unit_ref] = {"id":id, "quantity":parseInt(city_units[ret[key_2]['name']]), "life":parseInt(life), "dmg_type":dmg_type, "dmg":parseInt(dmg), "mv":mv};
                                 }
                             }
-                            console.log(unit_obj);
+                            //console.log(unit_obj);
                             var tab_p = [];
                             for (var key in unit_obj)
                                 tab_p.push(serach_unit_boost(key, unit_obj, city_id));
                             Promise.all(tab_p)
                             .then(() => 
                             {
+                                console.log("Def army : ");
                                 console.log(unit_obj);
                                 resolve();
                             })
@@ -134,7 +135,8 @@ module.exports.launch_battle = function (id)
                 Promise.all(tab_p)
                 .then(() => 
                 {
-                  //  console.log(unit_obj);
+                    console.log("Attack army : ");
+                    console.log(unit_obj);
                     resolve();
                 })
                 .catch((err) => 

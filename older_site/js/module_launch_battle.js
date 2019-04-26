@@ -55,7 +55,7 @@ module.exports.launch_battle = function (id)
                 console.log(unit_obj);
                 var tab_p = [];
                 for (var key in unit_obj)
-                    tab_p.push(apply_unit_boost(key, unit_obj, city_id));
+                    tab_p.push(serach_unit_boost(key, unit_obj, city_id));
                 Promise.all(tab_p)
                 .then(() => 
                 {
@@ -70,7 +70,7 @@ module.exports.launch_battle = function (id)
         });
     }
 
-    function apply_unit_boost(key, obj, city_id)
+    function serach_unit_boost(key, obj, city_id)
     {
         console.log("apply_unit_boost");
         return new Promise ((resolve, reject) => {
@@ -88,54 +88,60 @@ module.exports.launch_battle = function (id)
                     {
                         // un seul item
                         console.log("1 item");
-                        mysqlClient.query(`SELECT techs.name, techs.boost FROM techs INNER JOIN forge ON techs.id = forge.tech_required WHERE forge.id = ${items}`, function (err, ret){
-                            if (err)
-                                reject(err);
-                            else
-                            {
-                                var tech_name = ret[0]['name'];
-                                var boost = ret[0]['boost'];
-                                if (tech_name.indexOf(" ") >= 0)
-                                    tech_name = tech_name.replace(/\s/gi, "_");
-                                console.log(`SELECT ${tech_name} FROM cities_techs WHERE city_id = ${city_id}`);
-                                mysqlClient.query(`SELECT ${tech_name} FROM cities_techs WHERE city_id = ${city_id}`, function (err, ret){
-                                    if (err)
-                                        reject(err);
-                                    else
-                                    {
-                                        if (boost != "life" && boost != "power")
-                                            resolve();
-                                        else
-                                        {
-                                            let tech_lvl = ret[0][tech_name];                                            
-                                            if (tech_lvl == 0)
-                                                resolve();
-                                            else
-                                            {
-                                                if (boost == "power")
-                                                    obj[key].dmg = calc_boost(obj[key].dmg, tech_lvl);
-                                                else if (boost == "life")
-                                                    obj[key].life = calc_boost(obj[key].dmg, tech_lvl);
-                                                resolve();
-                                            }
-                                        }
-                                    }
-                                });
-                            }
-                        });
+                        apply_boost(obj, key, city_id, items);
                     }
                     else
                     {
                         // plusieurs items
-                        console.log("x items");
-                        resolve();
+                        
                     }
                 }
             });
         });
     }
 
-    function calc_boost(init_val, lvl)
+    function apply_boost(obj, key, city_id, item)
+    {
+        return new Promise((resolve, reject) => {
+            mysqlClient.query(`SELECT techs.name, techs.boost FROM techs INNER JOIN forge ON techs.id = forge.tech_required WHERE forge.id = ${item}`, function (err, ret){
+                if (err)
+                    reject(err);
+                else
+                {
+                    var tech_name = ret[0]['name'];
+                    var boost = ret[0]['boost'];
+                    if (tech_name.indexOf(" ") >= 0)
+                        tech_name = tech_name.replace(/\s/gi, "_");
+                    console.log(`SELECT ${tech_name} FROM cities_techs WHERE city_id = ${city_id}`);
+                    mysqlClient.query(`SELECT ${tech_name} FROM cities_techs WHERE city_id = ${city_id}`, function (err, ret){
+                        if (err)
+                            reject(err);
+                        else
+                        {
+                            if (boost != "life" && boost != "power")
+                                resolve();
+                            else
+                            {
+                                let tech_lvl = ret[0][tech_name];                                            
+                                if (tech_lvl == 0)
+                                    resolve();
+                                else
+                                {
+                                    if (boost == "power")
+                                        obj[key].dmg = calc_new_value(obj[key].dmg, tech_lvl);
+                                    else if (boost == "life")
+                                        obj[key].life = calc_new_value(obj[key].dmg, tech_lvl);
+                                    resolve();
+                                }
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    }
+
+    function calc_new_value(init_val, lvl)
     {
         boosted = init_val;
         boost = init_val * 10 / 100;

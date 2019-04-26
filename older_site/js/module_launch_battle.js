@@ -96,7 +96,7 @@ module.exports.launch_battle = function (id)
                                 var tech_name = ret[0]['name'];
                                 var boost = ret[0]['boost'];
                                 if (tech_name.indexOf(" ") >= 0)
-                                    tech_name = tech_name.replace('/\s/gi', "_");
+                                    tech_name = tech_name.replace(/\s/gi, "_");
                                 console.log(`SELECT ${tech_name} FROM cities_techs WHERE city_id = ${city_id}`);
                                 mysqlClient.query(`SELECT ${tech_name} FROM cities_techs WHERE city_id = ${city_id}`, function (err, ret){
                                     if (err)

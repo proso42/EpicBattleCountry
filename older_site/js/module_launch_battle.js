@@ -67,7 +67,7 @@ module.exports.launch_battle = function (id)
                             if (key == "id" || key == "city_id" || key == "owner" || ret[0][key] == 0)
                                 continue ;
                             else
-                                city_units[key.replace(/_/gi, " ")] = ret[0][key];
+                                city_units[key] = ret[0][key];
                         }
                         mysqlClient.query("SELECT * FROM units", function (err, ret){
                             if (err)

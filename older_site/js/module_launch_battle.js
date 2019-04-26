@@ -107,7 +107,7 @@ module.exports.launch_battle = function (id)
                         let split = items.split(";");
                         for (var item in split)
                             tab_pp0.push(apply_boost(obj, key, city_id, item));
-                        Promise.all([tab_pp0])
+                        Promise.all(tab_pp0)
                         .then(() =>{
                             console.log(obj[key]);
                         })

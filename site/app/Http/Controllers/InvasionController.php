@@ -130,7 +130,6 @@
             }
             if (isset($request['res']))
             {
-                return ("impossible");
                 $res = $request['res'];
                 $res = explode(",", preg_replace('/[{}\"]/', '', $res));
                 $tab_res = [];
@@ -141,10 +140,8 @@
                 }
             }
             else
-            {
-                return ("ok");
                 $tab_res = null;
-            }
+            return ("ok");
             $city_target = $request['city_target'];
             $user_id = session()->get('user_id');
             $city_id = session()->get('city_id');

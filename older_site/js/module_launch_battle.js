@@ -88,8 +88,16 @@ module.exports.launch_battle = function (id)
                     {
                         // un seul item
                         console.log("1 item");
-                        apply_boost(obj, key, city_id, items);
-                        console.log(obj[key]);
+                        let pp0 = apply_boost(obj, key, city_id, items);
+                        Promise.all([pp0])
+                        .then(() =>{
+                            console.log(obj[key]);
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                            mysqlClient.end();
+                            reject();
+                        });
                     }
                     else
                     {

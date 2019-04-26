@@ -128,14 +128,19 @@
                 $ex = explode(":", $key);
                 $tab[$ex[0]] = $ex[1];
             }
-            $res = $request['res'];
-            $res = explode(",", preg_replace('/[{}\"]/', '', $res));
-            $tab_res = [];
-            foreach ($res as $key)
+            if (isset($request['res']))
             {
-                $ex = explode(":", $key);
-                $tab_res[$ex[0]] = $ex[1];
+                $res = $request['res'];
+                $res = explode(",", preg_replace('/[{}\"]/', '', $res));
+                $tab_res = [];
+                foreach ($res as $key)
+                {
+                    $ex = explode(":", $key);
+                    $tab_res[$ex[0]] = $ex[1];
+                }
             }
+            else
+                $tab_res = null;
             $city_target = $request['city_target'];
             $user_id = session()->get('user_id');
             $city_id = session()->get('city_id');
@@ -147,14 +152,17 @@
             $current_city = DB::table('cities')->where('id', '=', $city_id)->first();
             $fret = 0;
             $storage = 0;
-            foreach ($tab_res as $res => $val)
+            if ($tab_res != null)
             {
-                if ($val <= 0)
-                    continue ;
-                if (!isset($current_city->$res) || $current_city->$res < $val)
-                    return ("invasion error : bad res or item");
-                else
-                    $fret += $val;
+                foreach ($tab_res as $res => $val)
+                {
+                    if ($val <= 0)
+                        continue ;
+                    if (!isset($current_city->$res) || $current_city->$res < $val)
+                        return ("invasion error : bad res or item");
+                    else
+                        $fret += $val;
+                }
             }
             foreach ($tab as $unit => $quantity)
             {
@@ -184,14 +192,19 @@
                 $ex = explode(":", $key);
                 $tab[$ex[0]] = $ex[1];
             }
-            $res = $request['res'];
-            $res = explode(",", preg_replace('/[{}\"]/', '', $res));
-            $tab_res = [];
-            foreach ($res as $key)
+            if (isset($request['res']))
             {
-                $ex = explode(":", $key);
-                $tab_res[$ex[0]] = $ex[1];
+                $res = $request['res'];
+                $res = explode(",", preg_replace('/[{}\"]/', '', $res));
+                $tab_res = [];
+                foreach ($res as $key)
+                {
+                    $ex = explode(":", $key);
+                    $tab_res[$ex[0]] = $ex[1];
+                }
             }
+            else
+                $tab_res = null;
             $city_target = $request['city_target'];
             $user_id = session()->get('user_id');
             $city_id = session()->get('city_id');
@@ -204,21 +217,24 @@
             $fret = 0;
             $storage = 0;
             $res_send = null;
-            $update_res_tab = [];
-            foreach ($tab_res as $res => $val)
+            if ($tab_res != null)
             {
-                if ($val <= 0)
-                    continue ;
-                if (!isset($current_city->$res) || $current_city->$res < $val)
-                    return ("invasion error : bad res or item");
-                else
+                $update_res_tab = [];
+                foreach ($tab_res as $res => $val)
                 {
-                    $fret += $val;
-                    if ($res_send == null)
-                        $res_send = $res . ":" . $val;
+                    if ($val <= 0)
+                        continue ;
+                    if (!isset($current_city->$res) || $current_city->$res < $val)
+                        return ("invasion error : bad res or item");
                     else
-                        $res_send .= ";" . $res . ":" . $val;
-                    $update_res_tab[$res] = $current_city->$res - $val;
+                    {
+                        $fret += $val;
+                        if ($res_send == null)
+                            $res_send = $res . ":" . $val;
+                        else
+                            $res_send .= ";" . $res . ":" . $val;
+                        $update_res_tab[$res] = $current_city->$res - $val;
+                    }
                 }
             }
             $units_send = "";

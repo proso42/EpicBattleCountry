@@ -88,7 +88,7 @@ module.exports.launch_battle = function (id)
                     {
                         // un seul item
                         console.log("1 item");
-                        mysqlClient.query(`SELECT techs.name techs.boost FROM techs INNER JOIN forge ON techs.id = forge.tech_required WHERE forge.id = ${items}`, function (err, ret){
+                        mysqlClient.query(`SELECT techs.name, techs.boost FROM techs INNER JOIN forge ON techs.id = forge.tech_required WHERE forge.id = ${items}`, function (err, ret){
                             if (err)
                                 reject(err);
                             else

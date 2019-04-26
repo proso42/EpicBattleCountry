@@ -72,7 +72,7 @@ module.exports.launch_battle = function (id)
 
     function serach_unit_boost(key, obj, city_id)
     {
-        console.log("apply_unit_boost");
+        console.log("search_unit_boost");
         return new Promise ((resolve, reject) => {
             let unit = obj[key];
             mysqlClient.query(`SELECT item_needed FROM units WHERE id = ${unit['id']}`, function (err, ret){
@@ -89,6 +89,7 @@ module.exports.launch_battle = function (id)
                         // un seul item
                         console.log("1 item");
                         apply_boost(obj, key, city_id, items);
+                        console.log(obj[key]);
                     }
                     else
                     {

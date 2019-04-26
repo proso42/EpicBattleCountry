@@ -67,9 +67,25 @@ module.exports.launch_battle = function (id)
                             var build_stats = {};
                             for (var key in ret)
                                 build_stats[ret[key]['name'].replace(/\s/gi, "_")] = {"life":parseInt(ret[key]['life']), "type":ret[key]['type'], "dmg_type":ret[key]['dmg_type'], "dmg":ret[key]["dmg"]};
+                            mysqlClient.query(`SELECT * FROM cities_buildings WHERE city_id = ${city_id}`, function (err, ret){
+                                if (err)
+                                    reject(err);
+                                else
+                                {
+                                    let builds = ret[0];
+                                    var build_obj = {};
+                                    for (var key in builds)
+                                    {
+                                        if (builds[key] <= 0 || !build_stats.hasOwnProperty(key))
+                                            continue ;
+                                        else
+                                            build_obj[key] = {"lvl":parseInt(builds[key]), "life":parseInt(build_stats[key]['life']) * parseInt(builds[key]), "type":build_stats[key]["type"], "dmg_type":build_stats[key]["dmg_type"], "dmg":parseInt(build_stats[key]['dmg'])};
+                                    }
+                                    console.log(build_obj);
+                                    resolve();
+                                }
+                            });
                         }
-                        console.log(build_stats);
-                        resolve();
                     });
                 }
             });

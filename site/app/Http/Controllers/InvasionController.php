@@ -140,7 +140,10 @@
                 }
             }
             else
+            {
+                return ("ok");
                 $tab_res = null;
+            }
             $city_target = $request['city_target'];
             $user_id = session()->get('user_id');
             $city_id = session()->get('city_id');

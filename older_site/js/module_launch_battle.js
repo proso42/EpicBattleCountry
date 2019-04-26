@@ -62,7 +62,7 @@ module.exports.launch_battle = function (id)
                         var unit_obj = {};
                         for (var key in ret[0])
                         {
-                            if (key == "id" || key == "city_id" || key == "owner")
+                            if (key == "id" || key == "city_id" || key == "owner" || ret[0][key] == 0)
                                 continue ;
                             else
                                 unit_obj[key] = ret[0][key];

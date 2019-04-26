@@ -102,7 +102,19 @@ module.exports.launch_battle = function (id)
                     else
                     {
                         // plusieurs items
-                        
+                        let tab_pp0 = [];
+                        let split = items.split(";");
+                        for (var item in split)
+                            tab_pp0.push(apply_boost(obj, key, city_id, item));
+                        Promise.all([tab_pp0])
+                        .then(() =>{
+                            console.log(obj[key]);
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                            mysqlClient.end();
+                            reject();
+                        });
                     }
                 }
             });

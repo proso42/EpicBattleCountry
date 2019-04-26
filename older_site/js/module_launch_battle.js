@@ -153,7 +153,7 @@ module.exports.launch_battle = function (id)
                                     if (boost == "power")
                                         obj[key].dmg = calc_new_value(obj[key].dmg, tech_lvl);
                                     else if (boost == "life")
-                                        obj[key].life = calc_new_value(obj[key].dmg, tech_lvl);
+                                        obj[key].life = calc_new_value(obj[key].life, tech_lvl);
                                     resolve();
                                 }
                             }

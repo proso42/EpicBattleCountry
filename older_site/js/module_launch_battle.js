@@ -50,7 +50,6 @@ module.exports.launch_battle = function (id)
             let x_pos = coord[0];
             let y_pos = coord[1];
             mysqlClient.query(`SELECT id FROM cities WHERE x_pos = ${x_pos} AND y_pos = ${y_pos}`, function (err, ret){
-                console.log("laaaaaaaaaaaaa !!!");
                 if (err)
                     reject(err);
                 else if (ret == null || ret.length == 0)
@@ -59,16 +58,36 @@ module.exports.launch_battle = function (id)
                 {
                     let city_id = ret[0]['id'];
                     mysqlClient.query(`SELECT * FROM cities_units WHERE city_id = ${city_id}`, function (err, ret){
+                        if (err)
+                            reject(err);
+                        var city_units = {};
                         var unit_obj = {};
                         for (var key in ret[0])
                         {
                             if (key == "id" || key == "city_id" || key == "owner" || ret[0][key] == 0)
                                 continue ;
                             else
-                                unit_obj[key] = ret[0][key];
+                                city_units[key.replace(/_/gi, "\s")] = ret[0][key];
                         }
-                        console.log(unit_obj);
-                        resolve();
+                        mysqlClient.query("SELECT * FROM units", function (err, ret){
+                            if (err)
+                                reject(err);
+                            for (var key_2 in ret)
+                            {
+                                if (city_units.hasOwnProperty(ret[key_2]['name']))
+                                {
+                                    let life = ret[key_2]['life'];
+                                    let dmg_type = ret[key_2]['dmg_type'];
+                                    let dmg = ret[key_2]['power'];
+                                    let mv = ret[key_2]['mv'];
+                                    let unit_ref = ret[key_2]['name'];
+                                    let id = ret[key_2]['id'];
+                                    unit_obj[unit_ref] = {"id":id, "quantity":parseInt(city_units[key_2]), "life":parseInt(life), "dmg_type":dmg_type, "dmg":parseInt(dmg), "mv":mv};
+                                }
+                            }
+                            console.log(unit_obj);
+                            resolve();
+                        });
                     });
                 }
             });

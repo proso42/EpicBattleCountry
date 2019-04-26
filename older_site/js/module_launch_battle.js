@@ -112,7 +112,7 @@ module.exports.launch_battle = function (id)
                                                 resolve();
                                             else
                                             {
-                                                obj[key].boost = Math.trunc(obj[key].boost * Math.pow(5, tech_lvl));
+                                                obj[key].power = Math.trunc(obj[key].power * Math.pow(5, tech_lvl));
                                                 console.log("After boost");
                                                 console.log(obj[key]);
                                                 resolve();

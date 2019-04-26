@@ -113,9 +113,9 @@ module.exports.launch_battle = function (id)
                                             else
                                             {
                                                 if (boost == "power")
-                                                    obj[key].dmg = Math.trunc(obj[key].dmg * Math.pow(0.05, tech_lvl));
+                                                    obj[key].dmg = calc_boost(obj[key].dmg, tech_lvl);
                                                 else if (boost == "life")
-                                                    obj[key].life = Math.trunc(obj[key].life * Math.pow(0.05, tech_lvl));
+                                                    obj[key].life = calc_boost(obj[key].dmg, tech_lvl);
                                                 resolve();
                                             }
                                         }
@@ -133,5 +133,17 @@ module.exports.launch_battle = function (id)
                 }
             });
         });
+    }
+
+    function calc_boost(init_val, lvl)
+    {
+        boosted = init_val;
+        boost = init_val * 30 / 100;
+        for (let i = 0; i < lvl; i++)
+        {
+            boosted += boost;
+            boost = boosted * 30 / 100;
+        }
+        return (Math.trunc(boosted));
     }
 }

@@ -132,17 +132,13 @@
             {
                 $res = $request['res'];
                 $res = explode(",", preg_replace('/[{}\"]/', '', $res));
-                return ($res);
-                if ($res == "")
-                    $tab_res = null;
-                else
+                $tab_res = [];
+                foreach ($res as $key)
                 {
-                    $tab_res = [];
-                    foreach ($res as $key)
-                    {
-                        $ex = explode(":", $key);
-                        $tab_res[$ex[0]] = $ex[1];
-                    }
+                    if (strstr($key, ":") == false)
+                        continue ;
+                    $ex = explode(":", $key);
+                    $tab_res[$ex[0]] = $ex[1];
                 }
             }
             else

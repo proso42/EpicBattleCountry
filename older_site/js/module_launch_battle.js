@@ -1,4 +1,4 @@
-export function launch_battle(id)
+module.exports.launch_battle = function (id)
 {
     var fs = require('fs');
     var mysql = require('mysql');
@@ -48,7 +48,7 @@ export function launch_battle(id)
                     let dmg_type = ret[split[0]]['dmg_type'];
                     let dmg = ret[split[0]]['power'];
                     let mv = ret[split[0]]['moving_type'];
-                    let unit_ref = ret[split[0]]['name'];
+                    let unit_ref = ret[split[0] - 1]['name'];
                     unit_obj[unit_ref] = {"id":split[0], "quantity":parseInt(split[1]), "life":parseInt(life), "dmg_type":dmg_type, "dmg":parseInt(dmg), "mv":mv};
                 }
                 console.log ("avant boost");

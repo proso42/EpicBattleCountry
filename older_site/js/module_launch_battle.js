@@ -125,8 +125,8 @@ module.exports.launch_battle = function (id)
                             Promise.all(tab_p)
                             .then(() => 
                             {
-                                console.log("Def army : ");
-                                console.log(unit_obj);
+                                /*console.log("Def army : ");
+                                console.log(unit_obj);*/
                                 resolve();
                             })
                             .catch((err) => 
@@ -168,8 +168,8 @@ module.exports.launch_battle = function (id)
                 Promise.all(tab_p)
                 .then(() => 
                 {
-                    console.log("Attack army : ");
-                    console.log(unit_obj);
+                    /*console.log("Attack army : ");
+                    console.log(unit_obj);*/
                     resolve();
                 })
                 .catch((err) => 

@@ -101,6 +101,7 @@ module.exports.launch_battle = function (id)
                     }
                     else
                     {
+                        console.log("x items");
                         // plusieurs items
                         let tab_pp0 = [];
                         let split = items.split(";");

@@ -143,6 +143,7 @@ module.exports.launch_battle = function (id)
         {
             boosted += boost;
             boost = boosted * 30 / 100;
+            console.log(boosted);
         }
         return (Math.trunc(boosted));
     }

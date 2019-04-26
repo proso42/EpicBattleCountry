@@ -112,9 +112,10 @@ module.exports.launch_battle = function (id)
                                                 resolve();
                                             else
                                             {
-                                                obj[key].dmg = Math.trunc(obj[key].dmg * Math.pow(5, tech_lvl));
-                                                console.log("After boost");
-                                                console.log(obj[key]);
+                                                if (boost == "power")
+                                                    obj[key].dmg = Math.trunc(obj[key].dmg * Math.pow(0.05, tech_lvl));
+                                                else if (boost == "life")
+                                                    obj[key].life = Math.trunc(obj[key].life * Math.pow(0.05, tech_lvl));
                                                 resolve();
                                             }
                                         }

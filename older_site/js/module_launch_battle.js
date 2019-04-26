@@ -64,9 +64,9 @@ module.exports.launch_battle = function (id)
                             reject(err);
                         else
                         {
-                            var build_stats = ret;
-                            for (var key in build_stats)
-                                build_stats[key]['name'] = build_stats[key]['name'].replace(/\s/gi, "_");
+                            var build_stats = {};
+                            for (var key in ret)
+                                build_stats[ret[key]['name'].replace(/\s/gi, "_")] = {"life":parseInt(ret[key]['life']), "type":ret[key]['type'], "dmg_type":ret[key]['dmg_type'], "dmg":ret[key]["dmg"]};
                         }
                         console.log(build_stats);
                         resolve();

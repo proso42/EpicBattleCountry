@@ -131,17 +131,22 @@
             if (isset($request['res']))
             {
                 $res = $request['res'];
-                return ($res);
                 $res = explode(",", preg_replace('/[{}\"]/', '', $res));
-                $tab_res = [];
-                foreach ($res as $key)
+                if ($res == "")
+                    $tab_res = null;
+                else
                 {
-                    $ex = explode(":", $key);
-                    $tab_res[$ex[0]] = $ex[1];
+                    $tab_res = [];
+                    foreach ($res as $key)
+                    {
+                        $ex = explode(":", $key);
+                        $tab_res[$ex[0]] = $ex[1];
+                    }
                 }
             }
             else
                 $tab_res = null;
+            return ("ok");
             $city_target = $request['city_target'];
             $user_id = session()->get('user_id');
             $city_id = session()->get('city_id');

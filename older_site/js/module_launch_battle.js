@@ -86,7 +86,19 @@ module.exports.launch_battle = function (id)
                                 }
                             }
                             console.log(unit_obj);
-                            resolve();
+                            var tab_p = [];
+                            for (var key in unit_obj)
+                                tab_p.push(serach_unit_boost(key, unit_obj, city_id));
+                            Promise.all(tab_p)
+                            .then(() => 
+                            {
+                                console.log(unit_obj);
+                                resolve();
+                            })
+                            .catch((err) => 
+                            {
+                                reject(err);
+                            });
                         });
                     });
                 }

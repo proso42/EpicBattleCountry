@@ -44,10 +44,10 @@ module.exports.launch_battle = function (id)
                     let split = units[key].split(":");
                     //split[0] -> unit_id
                     //split[1] -> quantity
-                    let life = ret[split[0]]['life'];
-                    let dmg_type = ret[split[0]]['dmg_type'];
-                    let dmg = ret[split[0]]['power'];
-                    let mv = ret[split[0]]['moving_type'];
+                    let life = ret[split[0] - 1]['life'];
+                    let dmg_type = ret[split[0] - 1]['dmg_type'];
+                    let dmg = ret[split[0] - 1]['power'];
+                    let mv = ret[split[0] - 1]['moving_type'];
                     let unit_ref = ret[split[0] - 1]['name'];
                     unit_obj[unit_ref] = {"id":split[0], "quantity":parseInt(split[1]), "life":parseInt(life), "dmg_type":dmg_type, "dmg":parseInt(dmg), "mv":mv};
                 }
@@ -72,6 +72,7 @@ module.exports.launch_battle = function (id)
 
     function apply_unit_boost(key, obj, city_id)
     {
+        console.log("apply_unit_boost");
         return new Promise ((resolve, reject) => {
             let unit = obj[key];
             mysqlClient.query(`SELECT item_needed FROM units WHERE id = ${unit['id']}`, function (err, ret){
@@ -79,12 +80,14 @@ module.exports.launch_battle = function (id)
                     reject(err);
                 else
                 {
+                    console.log("req1 passed");
                     let items = ret[0]['item_needed'];
                     if (items == "NONE")
                         resolve(); // pas d'item = pas de boost
                     else if (items.indexOf(";") < 0)
                     {
                         // un seul item
+                        console.log("1 item");
                         mysqlClient.query(`SELECT techs.name techs.boost FROM techs INNER JOIN forge ON techs.id = forge.tech_required WHERE forge.id = ${items}`, function (err, ret){
                             if (err)
                                 reject(err);
@@ -120,7 +123,8 @@ module.exports.launch_battle = function (id)
                     else
                     {
                         // plusieurs items
-
+                        console.log("x items");
+                        resolve();
                     }
                 }
             });

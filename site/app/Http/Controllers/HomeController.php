@@ -163,6 +163,8 @@
                 array_push($waiting_list, ["wait_id" => $waiting_unit->id, "type" => "unit", "name" => trans('unit.' . preg_replace('/\s/', '_', DB::table('units')->where('id', '=', $waiting_unit->unit_id)->value('name'))), "duration" => $waiting_unit->finishing_date - time(), "quantity" => $waiting_unit->quantity]);
             foreach ($traveling_units as $travel)
             {
+                if ($travel->mission == 5)
+                    continue ;
                 $mission_name = DB::table('traveling_missions')->where('id', '=', $travel->mission)->value('mission');
                 if ($travel->mission == 6)
                     $allow_interrupt = 0;

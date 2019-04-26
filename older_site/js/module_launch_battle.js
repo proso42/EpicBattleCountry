@@ -125,6 +125,7 @@ module.exports.launch_battle = function (id)
     function apply_boost(obj, key, city_id, item)
     {
         return new Promise((resolve, reject) => {
+            console.log(`SELECT techs.name, techs.boost FROM techs INNER JOIN forge ON techs.id = forge.tech_required WHERE forge.id = ${item}`);
             mysqlClient.query(`SELECT techs.name, techs.boost FROM techs INNER JOIN forge ON techs.id = forge.tech_required WHERE forge.id = ${item}`, function (err, ret){
                 if (err)
                     reject(err);

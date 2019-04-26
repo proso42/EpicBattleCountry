@@ -79,10 +79,10 @@ module.exports.launch_battle = function (id)
                                     let life = ret[key_2]['life'];
                                     let dmg_type = ret[key_2]['dmg_type'];
                                     let dmg = ret[key_2]['power'];
-                                    let mv = ret[key_2]['mv'];
+                                    let mv = ret[key_2]['moving_type'];
                                     let unit_ref = ret[key_2]['name'];
                                     let id = ret[key_2]['id'];
-                                    unit_obj[unit_ref] = {"id":id, "quantity":parseInt(city_units[key_2]), "life":parseInt(life), "dmg_type":dmg_type, "dmg":parseInt(dmg), "mv":mv};
+                                    unit_obj[unit_ref] = {"id":id, "quantity":parseInt(city_units[ret[key_2]['name']]), "life":parseInt(life), "dmg_type":dmg_type, "dmg":parseInt(dmg), "mv":mv};
                                 }
                             }
                             console.log(unit_obj);

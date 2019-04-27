@@ -123,7 +123,7 @@ module.exports.start_battle = function(D_defenses, D_troopers, A_troopers)
 			let nb_troopers = 0;
 			for (var key in target)
 			{
-				if (target[key].life == 0)
+				if (target[key].quantity == 0)
 					continue;
 				else
 					nb_troopers++;

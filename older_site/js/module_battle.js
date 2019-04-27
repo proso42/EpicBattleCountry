@@ -10,6 +10,7 @@ D_troopers['archer_nain'] = {"quantity":1475, "life":50, "dmg_type":"Dist", "dmg
 module.exports.start_battle = function(D_defenses, D_troopers, A_troopers)
 {
 	var tour = 1 ;
+	var print = require('./module_color');
 	while (1)
 	{
 		/*console.log(D_defenses);
@@ -18,8 +19,8 @@ module.exports.start_battle = function(D_defenses, D_troopers, A_troopers)
 		if (defense_status(D_defenses) == "ok")
 		{
 			// defense step
-			console.log("Tour " + tour);
-			console.log("Defense Step ");
+			print.color("Tour " + tour, "B");
+			print.color("Defense Step ", "B");
 			A_dmg = get_Atrooper_dmg();
 			D_dmg = get_Dtrooper_dmg("ok");
 			Def_dmg = get_defenses_dmg();
@@ -30,8 +31,8 @@ module.exports.start_battle = function(D_defenses, D_troopers, A_troopers)
 		else
 		{
 			// battle step
-			console.log("Tour " + tour);
-			console.log("Battle Step ");
+			print.color("Tour " + tour, "B");
+			print.color("Battle Step ", "B");
 			A_dmg = get_Atrooper_dmg();
 			D_dmg = get_Dtrooper_dmg("ko");
 			spread_dmg(A_dmg, D_troopers);

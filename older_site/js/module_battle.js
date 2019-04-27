@@ -51,6 +51,8 @@ module.exports.start_battle = function(D_defenses, D_troopers, A_troopers)
 		tour++;
 	}
 	print.color('fin', "C");
+	let final_obj = {"D_defenses":D_defenses, "D_troopers":D_troopers, "A_troopers":A_troopers};
+	return (final_obj);
 	/*print.color(D_defenses);
 	print.color(D_troopers);
 	print.color(A_troopers);*/

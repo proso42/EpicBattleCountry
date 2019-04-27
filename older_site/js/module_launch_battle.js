@@ -41,7 +41,8 @@ module.exports.launch_battle = function (id)
                 console.log("Batiments : ")
                 console.log(ret[2]);
                 let mod_battle = require('./module_battle');
-                mod_battle.start_battle(ret[2], ret[1], ret[0]);
+                let result_battle = mod_battle.start_battle(ret[2], ret[1], ret[0]);
+                console.log(result_battle);
             })
             .catch((err) =>{
                 console.log("error");

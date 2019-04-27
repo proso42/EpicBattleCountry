@@ -32,8 +32,12 @@ module.exports.launch_battle = function (id)
             let p2 = get_D_builds(ret[0]['ending_point']);
             Promise.all([p0, p1, p2])
             .then((ret) => {
-                console.log("then");
+                //console.log("then");
+                console.log("Attaquant : ")
+                console.log(ret[0]);
+                console.log("Defenseurs : ")
                 console.log(ret[1]);
+                console.log("Batiments : ")
                 console.log(ret[2]);
                 return 0;
             })
@@ -81,8 +85,8 @@ module.exports.launch_battle = function (id)
                                         else
                                             build_obj[key] = {"lvl":parseInt(builds[key]), "life":parseInt(build_stats[key]['life']) * parseInt(builds[key]), "type":build_stats[key]["type"], "dmg_type":build_stats[key]["dmg_type"], "dmg":parseInt(build_stats[key]['dmg'])};
                                     }
-                                    console.log(build_obj);
-                                    resolve();
+                                    //console.log(build_obj);
+                                    resolve(build_obj);
                                 }
                             });
                         }
@@ -143,7 +147,7 @@ module.exports.launch_battle = function (id)
                             {
                                 /*console.log("Def army : ");
                                 console.log(unit_obj);*/
-                                resolve();
+                                resolve($unit_obj);
                             })
                             .catch((err) => 
                             {
@@ -186,7 +190,7 @@ module.exports.launch_battle = function (id)
                 {
                     /*console.log("Attack army : ");
                     console.log(unit_obj);*/
-                    resolve();
+                    resolve(unit_obj);
                 })
                 .catch((err) => 
                 {

@@ -27,6 +27,7 @@ module.exports.launch_battle = function (id)
         }
         else
         {
+            console.log("debut");
             let p0 = get_A_units(ret[0]['city_id'], ret[0]['units']);
             let p1 = get_D_units(ret[0]['ending_point']);
             let p2 = get_D_builds(ret[0]['ending_point']);

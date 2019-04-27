@@ -32,14 +32,14 @@ module.exports.launch_battle = function (id)
             let p2 = get_D_builds(ret[0]['ending_point']);
             Promise.all([p0, p1, p2])
             .then((ret) => {
-                //console.log("then");
+                console.log("then");
                 console.log("Attaquant : ")
                 console.log(ret[0]);
                 console.log("Defenseurs : ")
                 console.log(ret[1]);
                 console.log("Batiments : ")
                 console.log(ret[2]);
-                return 0;
+                //return 0;
             })
             .catch((err) =>{
                 console.log("error");
@@ -246,7 +246,7 @@ module.exports.launch_battle = function (id)
                         .catch((err) => {
                 //            console.log(err);
                             mysqlClient.end();
-                            reject();
+                            reject(err);
                         });
                     }
                 }

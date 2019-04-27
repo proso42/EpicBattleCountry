@@ -13,9 +13,9 @@ module.exports.start_battle = function(D_defenses, D_troopers, A_troopers)
 	var print = require('./module_color');
 	while (1)
 	{
-		/*console.log(D_defenses);
-		console.log(D_troopers);
-		console.log(A_troopers);*/
+		/*print.color(D_defenses);
+		print.color(D_troopers);
+		print.color(A_troopers);*/
 		if (defense_status(D_defenses) == "ok")
 		{
 			// defense step
@@ -40,20 +40,20 @@ module.exports.start_battle = function(D_defenses, D_troopers, A_troopers)
 		}
 		if (check("A") == "ko")
 		{
-			console.log("Tout les attaquants sont morts ! Les défenseurs gagnent !");
+			print.color("Tout les attaquants sont morts ! Les défenseurs gagnent !", "V");
 			break;
 		}
 		else if (check("D") == "ko")
 		{
-			console.log("Tout les défenseurs sont morts ! Les attaquants gagnent !");
+			print.color("Tout les défenseurs sont morts ! Les attaquants gagnent !", "R");
 			break ;
 		}
 		tour++;
 	}
-	console.log('fin');
-	/*console.log(D_defenses);
-	console.log(D_troopers);
-	console.log(A_troopers);*/
+	print.color('fin', "C");
+	/*print.color(D_defenses);
+	print.color(D_troopers);
+	print.color(A_troopers);*/
 
 	function check(side)
 	{
@@ -84,7 +84,7 @@ module.exports.start_battle = function(D_defenses, D_troopers, A_troopers)
 
 	function spread_dmg(dmg_object, target)
 	{
-		//console.log(dmg_object);
+		//print.color(dmg_object);
 		if (target == D_defenses)
 		{
 			let nb_defenses = 0;
@@ -99,8 +99,8 @@ module.exports.start_battle = function(D_defenses, D_troopers, A_troopers)
 			dmg_object["Dist"] /= nb_defenses;
 			dmg_object["Magic"] /= nb_defenses;
 			dmg_object["Siege"] /= nb_defenses;
-		//	console.log("Apres division : ");
-		//	console.log(dmg_object);
+		//	print.color("Apres division : ");
+		//	print.color(dmg_object);
 			for (var key in D_defenses)
 			{
 				let dmg = 0;
@@ -110,17 +110,17 @@ module.exports.start_battle = function(D_defenses, D_troopers, A_troopers)
 				else
 					dmg = Math.round((dmg_object["CaC"]) + (dmg_object["Dist"] / 4) + (dmg_object["Magic"] / 3) + (dmg_object["Siege"] * 2));
 				D_defenses[key].life -= dmg;
-				console.log(`[Defenses]${key} subit ${dmg} dommages`);
+				print.color(`[Defenses]${key} subit ${dmg} dommages`, "V");
 				if (D_defenses[key].life <= 0)
 				{
 					D_defenses[key].life = 0;
-					console.log(`[Defenses]${key} est detruit`);
+					print.color(`[Defenses]${key} est detruit`, "V");
 				}
 			}
 		}
 		else
 		{
-		//	console.log(dmg_object);
+		//	print.color(dmg_object);
 			let nb_troopers = 0;
 			for (var key in target)
 			{
@@ -134,8 +134,8 @@ module.exports.start_battle = function(D_defenses, D_troopers, A_troopers)
 			dmg_object["Dist"] /= nb_troopers;
 			dmg_object["Magic"] /= nb_troopers;
 			dmg_object["Siege"] /= nb_troopers;
-		//	console.log("apres divide");
-		//	console.log(dmg_object);
+		//	print.color("apres divide");
+		//	print.color(dmg_object);
 			for (var key in target)
 			{
 				if (target[key].quantity == 0)
@@ -145,36 +145,36 @@ module.exports.start_battle = function(D_defenses, D_troopers, A_troopers)
 				let trooper_type = target[key].mv;
 				if (trooper_type == "ground")
 				{
-		//			console.log("ground");
+		//			print.color("ground");
 					dmg = Math.round((dmg_object["CaC"]) + (dmg_object["Dist"]) + (dmg_object["Magic"] * 3) + (dmg_object["Siege"] / 3));
 				}
 				else if (trooper_type == "naval")
 				{
-		//			console.log("naval");
+		//			print.color("naval");
 					dmg = Math.round((dmg_object["CaC"] / 5) + (dmg_object["Dist"] / 3) + (dmg_object["Magic"] / 2) + (dmg_object["Siege"]));
 				}
 				else
 				{
-		//			console.log("sky");
+		//			print.color("sky");
 					dmg = Math.round((dmg_object["CaC"] * 0) + (dmg_object["Dist"] * 2) + (dmg_object["Magic"]) + (dmg_object["Siege"] * 0));
 				}
 				lost = Math.round(dmg / target[key].life);
 				// affichage
 				if (target == D_troopers)
 				{
-					console.log(`[Defenseur]${key} subit ${dmg} dommages`);
+					print.color(`[Defenseur]${key} subit ${dmg} dommages`, "V");
 					if (lost > target[key].quantity)
-						console.log(`[Defenseur]${key} sont tous morts`);
+						print.color(`[Defenseur]${key} sont tous morts`, "V");
 					else
-						console.log(`[Defenseur]${key} ont des pertes : ${lost}`);
+						print.color(`[Defenseur]${key} ont des pertes : ${lost}`, "V");
 				}
 				else
 				{
-					console.log(`[Attaquant]${key} subit ${dmg} dommages`);
+					print.color(`[Attaquant]${key} subit ${dmg} dommages`, "R");
 					if (lost > target[key].quantity)
-						console.log(`[Attaquant]${key} sont tous morts`);
+						print.color(`[Attaquant]${key} sont tous morts`, "R");
 					else
-						console.log(`[Attaquant]${key} ont des pertes : ${lost}`);
+						print.color(`[Attaquant]${key} ont des pertes : ${lost}`, "R");
 				}
 				// fin affichage
 				(lost > target[key].quantity) ? target[key].quantity = 0 : target[key].quantity = target[key].quantity - lost;

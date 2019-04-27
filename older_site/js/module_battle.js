@@ -7,7 +7,7 @@ D_defenses['spike_trap'] = {"lvl":20, "life":20, "type":"trap", "dmg_type":"CaC"
 A_troopers['guerrier'] = {"quantity":1000, "life":110, "dmg_type":"CaC", "dmg":25, "mv":"ground"};
 A_troopers['chevalier'] = {"quantity":200, "life":300, "dmg_type":"CaC", "dmg":70, "mv":"ground"};
 D_troopers['archer_nain'] = {"quantity":1475, "life":50, "dmg_type":"Dist", "dmg":20, "mv":"ground"};*/
-export function start_battle (D_defenses, D_troopers, A_troopers)
+module.exports.start_battle = function(D_defenses, D_troopers, A_troopers)
 {
 	var tour = 1 ;
 	while (1)

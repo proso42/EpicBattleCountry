@@ -137,6 +137,8 @@ module.exports.start_battle = function(D_defenses, D_troopers, A_troopers)
 		//	console.log(dmg_object);
 			for (var key in target)
 			{
+				if (target[key].quantity == 0)
+					continue ;
 				let dmg = 0;
 				let lost = 0;
 				let trooper_type = target[key].mv;

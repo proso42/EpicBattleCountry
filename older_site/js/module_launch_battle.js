@@ -28,9 +28,12 @@ module.exports.launch_battle = function (id)
         else
         {
             //console.log("debut");
-            let p0 = get_A_units(ret[0]['city_id'], ret[0]['units']);
-            let p1 = get_D_units(ret[0]['ending_point']);
-            let p2 = get_D_builds(ret[0]['ending_point']);
+            var city_id = ret[0]['city_id'];
+            var ending_point = ret[0]['ending_point'];
+            var user_id = ret[0]['owner'];
+            let p0 = get_A_units(city_id, ret[0]['units']);
+            let p1 = get_D_units(ending_point);
+            let p2 = get_D_builds(ending_point);
             Promise.all([p0, p1, p2])
             .then((ret) => {
                 //console.log("then");
@@ -43,6 +46,11 @@ module.exports.launch_battle = function (id)
                 let mod_battle = require('./module_battle');
                 let result_battle = mod_battle.start_battle(ret[2], ret[1], ret[0]);
                 console.log(result_battle);
+                var winner = result_battle["winner"];
+                let p10 = update_build(result_battle["D_defenses"]);
+                let p11 = update_Dunit(result_battle["D_troopers"]);
+                let p12 = update_Aunit(result_battle["A_troopers"], winner, ret[0]);
+
             })
             .catch((err) =>{
                 console.log("error");
@@ -51,6 +59,189 @@ module.exports.launch_battle = function (id)
             })
         }
     });
+
+    function update_Aunit(unit_obj, winner, data)
+    {
+        return new Promise((resolve, reject) => {
+            let split = data["ending_point"].split("/");
+            let x_pos = split[0];
+            let y_pos = split[1];
+            mysqlClient.query(`SELECT * FROM cities WHERE x_pos = ${x_pos} AND y_pos = ${y_pos}`, function (err, ret){
+                if (err)
+                    reject(err);
+                else
+                {
+                    let info_city = ret[0];
+                    if (winner == "A")
+                    {
+                        var p0 = rob_res(unit_obj, info_city);
+                        var p1 = calc_traveling_duration(unit_obj, data, x_pos, y_pos);
+                        var p2 = remove_deaths(unit_obj);
+                        Promise.all([p0, p1, p2])
+                        .then((result) => {
+                            let robed_res = JSON.stringify(result[0]).replace(/[{}"]/gi, '').replace(/,/gi,";");
+                            let traveling_duration = result[1];
+                            let finishing_date = Date.now() + traveling_duration;
+                            let units = JSON.stringify(result[2]).replace(/[{}"]/gi, '').replace(/,/gi,";");
+                            mysqlClient.query(`DELETE FROM traveling_units WHERE id = ${id}`, function (err, ret){
+                                if (err)
+                                    reject(err)
+                                else
+                                {
+                                    mysqlClient.query(`INSERT INTO traveling_units (city_id, owner, starting_point, ending_point, units, res_taken, traveling_duration, finishing_date, mission) VALUES (${data['city_id']}, ${data['owner']}, '${data['ending_point']}', '${data['starting_point']}', '${units}', '${robed_res}', ${traveling_duration}, ${finishing_date}, 6)`, function (err, ret){
+                                        if (err)
+                                            reject(err);
+                                        else
+                                        {
+                                            robed_res = result[0];
+                                            let title = "Succes de l'assault";
+                                            let text = `Notre attaque contre la ville ${info_city['name']} en ${x_pos}/${y_pos} est une réussite ! `;
+                                            if (robed_res['food'] == 0 && robed_res['wood'] == 0 && robed_res['rock'] == 0 && robed_res['steel'] == 0 && robed_res['gold'] == 0)
+                                                text += "Nos troupes n'ont pas pillé de ressources car les réserves de la villes étaient vides";
+                                            else
+                                            {
+                                                text += "Nos troupes ont pillé :";
+                                                for (var key in robed_res)
+                                                {
+                                                    if (key == "captives" || robed_res[key] == 0)
+                                                        continue;
+                                                    text += ` ${key} x${robed_res[key]}`;
+                                                }
+                                            }
+                                            text += `. Nos troupes ont fait ${robed_res['captives']} prisonniers. Il nous reste :`;
+                                            for (var key_2 in unit_obj)
+                                            {
+                                                if (unit_obj[key_2][quantity] == 0)
+                                                    continue;
+                                                else
+                                                    text += ` ${key_2} x${unit_obj[key_2]['quantity']}`;
+                                            }
+                                            text += ".Les troupes sont sur le chemin du retour.";
+                                            mysqlClient.query(`INSERT INTO messages (sender, target, target_city, title, content, sending_date VALUES ('notification', ${data['owner']}, ${data['city_id']}, '${title}', '${text}', ${data['finishing_date']}))`, function (err, ret){
+                                                if (err)
+                                                    reject(err);
+                                                else
+                                                {
+                                                    mysqlClient.query(`DELETE FROM traveling_units WHERE id = ${id}`, function (err, ret){
+                                                        if (err)
+                                                            reject(err)
+                                                        else
+                                                            resolve();
+                                                    });
+                                                }
+                                            });
+                                        }
+                                    });
+                                }
+                            });
+                        })
+                        .catch((err) => {
+                            reject(err);
+                        })
+                    }
+                    else
+                    {
+                        let title = "Echec de l'assault";
+                        let text = `Notre attaque contre la ville ${info_city['name']} en ${x_pos}/${y_pos} s'est soldée par un echec. Toutes nos troupes on été vaincus.`;
+                        mysqlClient.query(`INSERT INTO messages (sender, target, target_city, title, content, sending_date VALUES ('notification', ${data['owner']}, ${data['city_id']}, '${title}', '${text}', ${data['finishing_date']}))`, function (err, ret){
+                            if (err)
+                                reject(err);
+                            else
+                            {
+                                mysqlClient.query(`DELETE FROM traveling_units WHERE id = ${id}`, function (err, ret){
+                                    if (err)
+                                        reject(err)
+                                    else
+                                        resolve();
+                                });
+                            }
+                        });
+                    }
+                }
+            });
+        });
+    }
+
+    function remove_deaths(unit_obj)
+    {
+        return new Promise((resolve, reject) => {
+            let remaining_units = {};
+            for (var key in unit_obj)
+            {
+                if (unit_obj[key]['quantity'] == 0)
+                    continue ;
+                else
+                    remaining_units[unit_obj[key]['id']] = unit_obj[key]['quantity'];
+            }
+            resolve(remaining_units);
+        });
+    }
+
+    function calc_traveling_duration(unit_obj, data, x, y)
+    {
+        return new Promise((resolve, reject) => {
+            let min_speed = -1;
+            for (var key in unit_obj)
+            {
+                if (unit_obj[key]['quantity'] > 0 && unit_obj[key]['speed'] > min_speed)
+                    min_speed = unit_obj[key][speed];
+            }
+            if (min_speed < 0)
+                reject("Error : negative speed");
+            else
+            {
+                min_speed = 3600 / min_speed;
+                let starting_coord = data['starting_point'].split("/");
+                let x_target = starting_coord[0];
+                let y_target = starting_coord[1];
+                let traveling_duration = (Math.abs(x - x_target) + Math.abs(y - y_target) * min_speed);
+                resolve(traveling_duration);
+            }
+        });
+    }
+
+    function rob_res(unit_obj, data)
+    {
+        return new Promise((resolve, reject) => {
+            mysqlClient.query('SELECT name, storage FROM units', function (err, ret){
+                if (err)
+                    reject(err);
+                else
+                {
+                    let storage = 0;
+                    let robed_res = {"food":0, "wood":0, "rock":0, "steel":0, "gold":0, "captives":0};
+                    for (var key in ret)
+                    {
+                        let unit_ref = ret[key]['name'];
+                        if (unit_obj.hasOwnProperty(unit_ref) && unit_obj[unit_ref]['quantity'] > 0)
+                            storage += (unit_obj[unit_ref]['quantity'] * ret[key]['storage']);
+                    }
+                    let part = Math.trunc(storage / 6);
+                    for (var res in robed_res)
+                    {
+                        if (res != "captives")
+                        {
+                            if (data[res] < part)
+                            {
+                                robed_res[res] = data[res];
+                                robed_res["captives"] += (part - data[res]);
+                            }
+                            else
+                                robed_res[res] = part;
+                        }   
+                        else
+                            robed_res["captives"] += part;
+                    }
+                    mysqlClient.query(`UPDATE cities SET food = cities.food - ${robed_res['food']},  wood = cities.wood - ${robed_res['wood']}, rock = cities.rock - ${robed_res['rock']}, steel = cities.steel - ${robed_res['steel']}, gold = cities.gold - ${robed_res['gold']} WHERE id = ${data['id']}`, function (err, ret){
+                        if (err)
+                            reject(err);
+                        else
+                            resolve(robed_res);
+                    })
+                }
+            });
+        });
+    }
 
     function get_D_builds(coord)
     {
@@ -138,7 +329,8 @@ module.exports.launch_battle = function (id)
                                     let mv = ret[key_2]['moving_type'];
                                     let unit_ref = ret[key_2]['name'];
                                     let id = ret[key_2]['id'];
-                                    unit_obj[unit_ref] = {"id":id, "quantity":parseInt(city_units[ret[key_2]['name']]), "life":parseInt(life), "dmg_type":dmg_type, "dmg":parseInt(dmg), "mv":mv};
+                                    let speed = ret[key_2]['speed'];
+                                    unit_obj[unit_ref] = {"id":id, "quantity":parseInt(city_units[ret[key_2]['name']]), "life":parseInt(life), "dmg_type":dmg_type, "dmg":parseInt(dmg), "mv":mv, "speed":parseInt(speed)};
                                 }
                             }
                             //console.log(unit_obj);
@@ -181,7 +373,8 @@ module.exports.launch_battle = function (id)
                     let dmg = ret[split[0] - 1]['power'];
                     let mv = ret[split[0] - 1]['moving_type'];
                     let unit_ref = ret[split[0] - 1]['name'];
-                    unit_obj[unit_ref] = {"id":split[0], "quantity":parseInt(split[1]), "life":parseInt(life), "dmg_type":dmg_type, "dmg":parseInt(dmg), "mv":mv};
+                    let speed = ret[split[0] - 1]['speed'];
+                    unit_obj[unit_ref] = {"id":split[0], "quantity":parseInt(split[1]), "life":parseInt(life), "dmg_type":dmg_type, "dmg":parseInt(dmg), "mv":mv, "speed":parseInt(speed)};
                 }
                 //console.log ("avant boost");
                 //console.log(unit_obj);

@@ -11,6 +11,7 @@ module.exports.start_battle = function(D_defenses, D_troopers, A_troopers)
 {
 	var tour = 1 ;
 	var print = require('./module_color');
+	let winner = "";
 	while (1)
 	{
 		/*print.color(D_defenses);
@@ -41,17 +42,19 @@ module.exports.start_battle = function(D_defenses, D_troopers, A_troopers)
 		if (check("A") == "ko")
 		{
 			print.color("Tout les attaquants sont morts ! Les défenseurs gagnent !", "V");
+			winner = "D";
 			break;
 		}
 		else if (check("D") == "ko")
 		{
 			print.color("Tout les défenseurs sont morts ! Les attaquants gagnent !", "R");
+			winner = "A";
 			break ;
 		}
 		tour++;
 	}
 	print.color('fin', "C");
-	let final_obj = {"D_defenses":D_defenses, "D_troopers":D_troopers, "A_troopers":A_troopers};
+	let final_obj = {"D_defenses":D_defenses, "D_troopers":D_troopers, "A_troopers":A_troopers, "winner":winner};
 	return (final_obj);
 	/*print.color(D_defenses);
 	print.color(D_troopers);

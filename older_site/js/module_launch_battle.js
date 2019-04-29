@@ -262,7 +262,7 @@ module.exports.launch_battle = function (id)
                                 {
                                     robed_res = result[0];
                                     let title = "Succes de l'assault";
-                                    let text = `Notre attaque contre la ville ${target_city['name']} en ${x_pos}/${y_pos} est une réussite ! `;
+                                    let text = `Notre attaque contre la ville ${target_city['name']} en ${target_city['x_pos']}/${target_city['y_pos']} est une réussite ! `;
                                     if (robed_res['food'] == 0 && robed_res['wood'] == 0 && robed_res['rock'] == 0 && robed_res['steel'] == 0 && robed_res['gold'] == 0)
                                         text += "Nos troupes n'ont pas pillé de ressources car les réserves de la villes étaient vides";
                                     else

@@ -78,7 +78,7 @@ module.exports.start_battle = function(D_defenses, D_troopers, A_troopers)
 				if (D_troopers[key].quantity > 0 && D_troopers[key].dmg_type != "NONE")
 					return ("ok");
 			}
-			return "ko";
+			return defense_status();
 		}
 	}
 

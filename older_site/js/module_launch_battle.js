@@ -3,6 +3,7 @@ module.exports.launch_battle = function (id)
     var Promise = require("bluebird");
     var fs = require('fs');
     var mysql = require('mysql');
+    var print = require('./module_color');
     let env_file = fs.readFileSync("../src/site/.env", 'utf8').split('\n');
     var db_user = '';
     var db_password = '';
@@ -137,6 +138,7 @@ module.exports.launch_battle = function (id)
             mysqlClient.query("SELECT id, name FROM units", function (err, ret){
                 let request = "UPDATE cities_units SET"
                 let flag = 0;
+                console.log(remaining_units);
                 for (var key in ret)
                 {
                     if (remaining_units.hasOwnProperty(ret[key]['id']))
@@ -172,7 +174,10 @@ module.exports.launch_battle = function (id)
                             if (err)
                                 reject(err);
                             else
+                            {
+                                print.color("update_Dunit finished", "V");
                                 resolve();
+                            }
                         });
                     }
                 })
@@ -224,7 +229,10 @@ module.exports.launch_battle = function (id)
                                 if (err)
                                     reject(err);
                                 else
+                                {
+                                    print.color("update_build finished", "V");
                                     resolve();
+                                }
                             });
                         }
                     });
@@ -290,7 +298,10 @@ module.exports.launch_battle = function (id)
                                                 if (err)
                                                     reject(err)
                                                 else
+                                                {
+                                                    print.color("update_Aunit finished", "V");
                                                     resolve();
+                                                }
                                             });
                                         }
                                     });

@@ -134,53 +134,60 @@ module.exports.launch_battle = function (id)
     {
         // la key c'est l'id et la val c'est la quantity
         return new Promise((resolve, reject) => {
-            let remaining_units = remove_deaths(unit_obj);
-            mysqlClient.query("SELECT id, name FROM units", function (err, ret){
-                let request = "UPDATE cities_units SET"
-                let flag = 0;
-                console.log(remaining_units);
-                for (var key in ret)
-                {
-                    if (remaining_units.hasOwnProperty(ret[key]['id']))
+            let p0 = remove_deaths(unit_obj);
+            Promise.all([p0])
+            .then((result) => {
+                let remaining_units = result[0];
+                mysqlClient.query("SELECT id, name FROM units", function (err, ret){
+                    let request = "UPDATE cities_units SET"
+                    let flag = 0;
+                    console.log(remaining_units);
+                    for (var key in ret)
                     {
-                        if (flag == 0)
+                        if (remaining_units.hasOwnProperty(ret[key]['id']))
                         {
-                            request += ` ${ret[key]['name']} = ${remaining_units[ret[key['id']]]}`;
-                            flag = 1;
+                            if (flag == 0)
+                            {
+                                request += ` ${ret[key]['name']} = ${remaining_units[ret[key['id']]]}`;
+                                flag = 1;
+                            }
+                            else
+                                request += `, ${ret[key]['name']} = ${remaining_units[ret[key['id']]]}`;
                         }
-                        else
-                            request += `, ${ret[key]['name']} = ${remaining_units[ret[key['id']]]}`;
                     }
-                }
-                request += ` WHERE city_id = ${target_city['id']}`;
-                mysqlClient.query(request, function (err, ret){
-                    if (err)
-                        reject(err);
-                    else
-                    {
-                        let title = "Assault énemie - ";
-                        let text = `Une armée étrangère à attaquer notre cité ${target_city['name']} ! `;
-                        if (winner == "A")
-                        {
-                            text += "Malheureusement nos troupes n'ont pas réussis à repousser les assaillants. Toutes les unitées présentes dans la ville ont été tués. L'énemie à également piller des ressources de la ville et fait des prisonniers !";
-                            title += "Victoire"
-                        }
+                    request += ` WHERE city_id = ${target_city['id']}`;
+                    mysqlClient.query(request, function (err, ret){
+                        if (err)
+                            reject(err);
                         else
                         {
-                            text += "Fort heureusement nos troupes ont réussis à vaincre tout les assaillants !"
-                            title += "Défaite"
-                        }
-                        mysqlClient.query(`INSERT INTO messages (sender, target, target_city, title, content, sending_date) VALUES ('notification', ${target_city['owner']}, ${target_city['id']}, '${title}', '${text}', ${Date.now()})`, function (err, ret){
-                            if (err)
-                                reject(err);
+                            let title = "Assault énemie - ";
+                            let text = `Une armée étrangère à attaquer notre cité ${target_city['name']} ! `;
+                            if (winner == "A")
+                            {
+                                text += "Malheureusement nos troupes n'ont pas réussis à repousser les assaillants. Toutes les unitées présentes dans la ville ont été tués. L'énemie à également piller des ressources de la ville et fait des prisonniers !";
+                                title += "Victoire"
+                            }
                             else
                             {
-                                print.color("update_Dunit finished", "V");
-                                resolve();
+                                text += "Fort heureusement nos troupes ont réussis à vaincre tout les assaillants !"
+                                title += "Défaite"
                             }
-                        });
-                    }
-                })
+                            mysqlClient.query(`INSERT INTO messages (sender, target, target_city, title, content, sending_date) VALUES ('notification', ${target_city['owner']}, ${target_city['id']}, '${title}', '${text}', ${Date.now()})`, function (err, ret){
+                                if (err)
+                                    reject(err);
+                                else
+                                {
+                                    print.color("update_Dunit finished", "V");
+                                    resolve();
+                                }
+                            });
+                        }
+                    })
+                });
+            })
+            .catch((err) => {
+                reject (err);
             });
         });
     }

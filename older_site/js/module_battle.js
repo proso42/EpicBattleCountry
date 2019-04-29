@@ -103,6 +103,8 @@ module.exports.start_battle = function(D_defenses, D_troopers, A_troopers)
 		//	print.color(dmg_object);
 			for (var key in D_defenses)
 			{
+				if (D_defenses[key].life == 0)
+					continue;
 				let dmg = 0;
 				let def_type = D_defenses[key].type;
 				if (def_type == "block")
@@ -137,7 +139,7 @@ module.exports.start_battle = function(D_defenses, D_troopers, A_troopers)
 		//	print.color(dmg_object);
 			for (var key in target)
 			{
-				if (target[key].quantity == 0)
+				if (target[key].quantity == 0 || target[key].dmg_type == "NONE")
 					continue ;
 				let dmg = 0;
 				let lost = 0;

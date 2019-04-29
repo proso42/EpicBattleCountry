@@ -278,7 +278,7 @@ module.exports.launch_battle = function (id)
                                     text += `. Nos troupes ont fait ${robed_res['captives']} prisonniers. Il nous reste :`;
                                     for (var key_2 in unit_obj)
                                     {
-                                        if (unit_obj[key_2][quantity] == 0)
+                                        if (unit_obj[key_2]['quantity'] == 0)
                                             continue;
                                         else
                                             text += ` ${key_2} x${unit_obj[key_2]['quantity']}`;

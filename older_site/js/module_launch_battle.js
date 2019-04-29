@@ -192,7 +192,7 @@ module.exports.launch_battle = function (id)
                     for (var key in ret)
                         build_stats[ret[key]['name'].replace(/\s/gi, "_")] = {"life":parseInt(ret[key]['life']), "id":parseInt(ret[key]['building_id'])};
                     let request_update = "UPDATE cities_buildings SET";
-                    let request_delete = `DELETE FROM waiting_buildings WHERE city_id = ${target_city['id']} AND type = army_buildings AND (`;
+                    let request_delete = `DELETE FROM waiting_buildings WHERE city_id = ${target_city['id']} AND type = 'army_buildings' AND (`;
                     let flag_u = 0;
                     let flag_d = 0;
                     for (var key in build_obj)

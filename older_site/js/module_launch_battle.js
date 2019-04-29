@@ -312,7 +312,7 @@ module.exports.launch_battle = function (id)
             else
             {
                 let title = "Echec de l'assault";
-                let text = `Notre attaque contre la ville ${target_city['name']} en ${x_pos}/${y_pos} s'est soldée par un echec. Toutes nos troupes on été vaincus.`;
+                let text = `Notre attaque contre la ville ${target_city['name']} en ${target_city['x_pos']}/${target_cityp['y_pos']} s'est soldée par un echec. Toutes nos troupes on été vaincus.`;
                 mysqlClient.query(`INSERT INTO messages (sender, target, target_city, title, content, sending_date VALUES ('notification', ${data['owner']}, ${data['city_id']}, '${title}', '${text}', ${data['finishing_date']}))`, function (err, ret){
                     if (err)
                         reject(err);

@@ -246,8 +246,9 @@ module.exports.start = function (id)
 							}
 							else
 							{
-								var p = refound_units(results_go_home[0]['units'].split(';'), city_id);
-								Promise.all([p]).then(() => {console.log('fin 6');mysqlClient.end();return 0;}).catch((err) =>{console.log(err);mysqlClient.end();return -1;});
+								var p1 = refound_units(results_go_home[0]['units'].split(';'), city_id);
+								var p2 = refound_res(results_go_home[0]['res_taken'].split(';'), city_id);
+								Promise.all([p1, p2]).then(() => {console.log('fin 6');mysqlClient.end();return 0;}).catch((err) =>{console.log(err);mysqlClient.end();return -1;});
 							}
 						});
 				}
@@ -284,8 +285,7 @@ module.exports.start = function (id)
 								else
 								{
 									var p = refound_units(units, ret[0]['id']);
-									if (res_taken != null)
-										var p2 = refound_res(res_taken, ret[0]['id']);
+									var p2 = refound_res(res_taken, ret[0]['id']);
 									Promise.all([p, p2]).then(() => {console.log('fin 7');mysqlClient.end();return 0;}).catch((err) => {console.log(err);mysqlClient.end();return -1;});
 								}
 							});
@@ -440,6 +440,8 @@ module.exports.start = function (id)
 			function refound_res(res, city_id)
 			{
 				return new Promise((resolve, reject) => {
+					if (res == null)
+						resolve();
 					console.log('Promise res');
 					var refound_request_res = "UPDATE cities SET ";
 					for (let i = 0; i < res.length ;i++)

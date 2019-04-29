@@ -34,6 +34,7 @@ module.exports.launch_battle = function (id)
             let split = (ret[0]['ending_point']).split("/");
             let x_target = split[0];
             let y_target = split[1];
+            let data = ret[0];
             mysqlClient.query(`SELECT * FROM cities WHERE x_pos = ${x_target} AND y_pos = ${y_target}`, function (err, ret){
                 if (err)
                 {
@@ -76,7 +77,7 @@ module.exports.launch_battle = function (id)
                     let winner = result_battle["winner"];
                     let p10 = update_build(result_battle["D_defenses"], target_city);
                     let p11 = update_Dunit(result_battle["D_troopers"], target_city, winner);
-                    let p12 = update_Aunit(result_battle["A_troopers"], winner, result[0], target_city);
+                    let p12 = update_Aunit(result_battle["A_troopers"], winner, data, target_city);
                     Promise.all([p10, p11, p12])
                     .then(() =>{
                         console.log('Fin de la bataille');
@@ -356,8 +357,8 @@ module.exports.launch_battle = function (id)
                 let ending_coord = data['ending_point'].split("/");
                 let x_target = starting_coord[0];
                 let y_target = starting_coord[1];
-                let x = ending_point[0];
-                let y = ending_point[1];
+                let x = ending_coord[0];
+                let y = ending_coord[1];
                 let traveling_duration = (Math.abs(x - x_target) + Math.abs(y - y_target) * min_speed);
                 resolve(traveling_duration);
             }

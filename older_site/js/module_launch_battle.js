@@ -165,7 +165,7 @@ module.exports.launch_battle = function (id)
                             text += "Fort heureusement nos troupes ont réussis à vaincre tout les assaillants !"
                             title += "Défaite"
                         }
-                        mysqlClient.query(`INSERT INTO messages (sender, target, target_city, title, content, sending_date) VALUES ('notification', ${target_city['owner']}, ${target_city['id']}, '${title}', '${text}', ${Date.now()})`, function (err, ret){
+                        mysqlClient.query(`INSERT INTO messages (sender, target, target_city, title, content, sending_date) VALUES ('notification', ${target_city['owner']}, ${target_city['id']}, '${title}', "${text}", ${Date.now()})`, function (err, ret){
                             if (err)
                                 reject(err);
                             else
@@ -284,7 +284,7 @@ module.exports.launch_battle = function (id)
                                             text += ` ${key_2} x${unit_obj[key_2]['quantity']}`;
                                     }
                                     text += ".Les troupes sont sur le chemin du retour.";
-                                    mysqlClient.query(`INSERT INTO messages (sender, target, target_city, title, content, sending_date VALUES ('notification', ${data['owner']}, ${data['city_id']}, '${title}', '${text}', ${data['finishing_date']}))`, function (err, ret){
+                                    mysqlClient.query(`INSERT INTO messages (sender, target, target_city, title, content, sending_date VALUES ('notification', ${data['owner']}, ${data['city_id']}, '${title}', "${text}", ${data['finishing_date']}))`, function (err, ret){
                                         if (err)
                                             reject(err);
                                         else

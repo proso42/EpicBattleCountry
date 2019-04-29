@@ -237,7 +237,7 @@ module.exports.launch_battle = function (id)
             if (winner == "A")
             {
                 var p0 = rob_res(unit_obj, target_city);
-                var p1 = calc_traveling_duration(unit_obj, data, x_pos, y_pos);
+                var p1 = calc_traveling_duration(unit_obj, data);
                 var p2 = remove_deaths(unit_obj);
                 Promise.all([p0, p1, p2])
                 .then((result) => {
@@ -337,7 +337,7 @@ module.exports.launch_battle = function (id)
         });
     }
 
-    function calc_traveling_duration(unit_obj, data, x, y)
+    function calc_traveling_duration(unit_obj, data)
     {
         return new Promise((resolve, reject) => {
             let min_speed = -1;
@@ -352,8 +352,11 @@ module.exports.launch_battle = function (id)
             {
                 min_speed = 3600 / min_speed;
                 let starting_coord = data['starting_point'].split("/");
+                let ending_coord = data['ending_point'].split("/");
                 let x_target = starting_coord[0];
                 let y_target = starting_coord[1];
+                let x = ending_point[0];
+                let y = ending_point[1];
                 let traveling_duration = (Math.abs(x - x_target) + Math.abs(y - y_target) * min_speed);
                 resolve(traveling_duration);
             }

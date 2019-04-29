@@ -1,5 +1,6 @@
 module.exports.launch_battle = function (id)
 {
+    var Promise = require("bluebird");
     var fs = require('fs');
     var mysql = require('mysql');
     let env_file = fs.readFileSync("../src/site/.env", 'utf8').split('\n');
@@ -344,7 +345,7 @@ module.exports.launch_battle = function (id)
             for (var key in unit_obj)
             {
                 if (unit_obj[key]['quantity'] > 0 && unit_obj[key]['speed'] > min_speed)
-                    min_speed = unit_obj[key][speed];
+                    min_speed = unit_obj[key]['speed'];
             }
             if (min_speed < 0)
                 reject("Error : negative speed");

@@ -66,7 +66,7 @@ module.exports.start_battle = function(D_defenses, D_troopers, A_troopers)
 		{
 			for (var key in A_troopers)
 			{
-				if (A_troopers[key].quantity > 0)
+				if (A_troopers[key].quantity > 0 && A_troopers[key].dmg_type != "NONE")
 					return ("ok");
 			}
 			return ("ko");
@@ -75,12 +75,7 @@ module.exports.start_battle = function(D_defenses, D_troopers, A_troopers)
 		{
 			for (var key in D_troopers)
 			{
-				if (D_troopers[key].quantity > 0)
-					return ("ok");
-			}
-			for (var key in D_defenses)
-			{
-				if (D_defenses[key].life > 0)
+				if (D_troopers[key].quantity > 0 && D_troopers[key].dmg_type != "NONE")
 					return ("ok");
 			}
 			return "ko";
@@ -129,12 +124,11 @@ module.exports.start_battle = function(D_defenses, D_troopers, A_troopers)
 			let nb_troopers = 0;
 			for (var key in target)
 			{
-				if (target[key].quantity == 0)
+				if (target[key].quantity == 0 || target[key].dmg_type == "NONE")
 					continue;
 				else
 					nb_troopers++;
 			}
-					nb_troopers++;
 			dmg_object["CaC"] /= nb_troopers;
 			dmg_object["Dist"] /= nb_troopers;
 			dmg_object["Magic"] /= nb_troopers;

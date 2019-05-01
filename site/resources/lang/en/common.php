@@ -46,4 +46,5 @@ return [
     'on' => 'on',
     'unavailable' => 'Unavailable',
     'dest' => 'Destination',
+    'target' => 'Target',
 ];

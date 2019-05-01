@@ -325,7 +325,7 @@
             {
                 $cell_type = DB::table('map')->where('x_pos', '=', $request['x_pos'])->where('y_pos', '=', $request['y_pos'])->value('type');
                 if ($cell_type == null)
-                    $infos['cell'] = 'empty';
+                    $infos['cell'] = trans('map.empty');
                 else
                     $infos['cell'] = trans('map.' . $cell_type);
             }
@@ -338,7 +338,7 @@
                 $infos['name'] = $target_city->name;
             }
             else
-                $infos['cell'] = 'unknow2';
+                $infos['cell'] = 'unknow';
             $x_pos = null;
             $y_pos = null;
             if ($target_city == null)
@@ -382,6 +382,8 @@
             }
             $travel_duration = $this->sec_to_date((abs($user_city->x_pos - $x_pos) + abs($user_city->y_pos - $y_pos)) * (3600 / $min_speed));
             $infos['travel_duration'] = $travel_duration;
+            $infos['x'] = $x_pos;
+            $infos['y'] = $y_pos;
             return $infos;
         }
     }

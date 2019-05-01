@@ -30,4 +30,5 @@ return [
     'water' => 'Water',
     'mountain' => 'Mountain',
     'forest' => 'Forest',
+    'empty' => 'Empty location',
 ];

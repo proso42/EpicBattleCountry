@@ -46,4 +46,5 @@ return [
     'on' => 'en',
     'unavailable' => 'Indisponible',
     'dest' => 'Destination',
+    'target' => 'Cible',
 ];

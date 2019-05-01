@@ -147,6 +147,26 @@
                     <input onclick="back_step3()" id="cancel_button_3" type="button" class="home-button-cancel" value="@lang('common.return')">
                     <img id="spin" class="explo-spin" style="display: none" src="images/loader.gif">
                 </div>
+                <div id="confirm_attack" style="display: none">
+                    <h2>@lang('invasion.confirm_attack')</h2>
+                    <div id="div_attack_target" class="invasion-unit-line">
+                        <div id="warning" style="color: crimson;display: none">
+                            <i class="fas fa-exclamation-triangle icon-color-orange" style="margin-right: 15px"></i>
+                            <span class="explo-warning-text">@lang('exploration.unknow_target') : <span>
+                            <span id="warning_coord"></span>
+                            <i class="fas fa-exclamation-triangle icon-color-orange" style="margin-left: 15px"></i>
+                        </div>
+                        <div id="div_attack_target">
+                            <span>@lang('common.target') : </span>
+                            <span id="attack_target"></span>
+                        </div>
+                    </div>
+                    <div id="attack_duration" class="invasion-unit-line">
+                        <span id="attack_travel_duration"></span>
+                    </div>
+                    <input onclick="step_attack()" id="button_step_attack" type="button" class="home-button" value="@lang('common.confirm')">
+                    <input onclick="back_step_dest()" id="cancel_button_attack" type="button" class="home-button-cancel" value="@lang('common.return')">
+                </div>
             </div>
             <input id="_token" name="_token" type="hidden" value="{{csrf_token()}}">
         </div>

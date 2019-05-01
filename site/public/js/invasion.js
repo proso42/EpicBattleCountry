@@ -171,6 +171,46 @@ function step_confirm_dest()
             {
                 let rep = JSON.parse(xhr.responseText)
                 console.log(rep);
+                document.getElementById("confirm_attack").style.display = "";
+                document.getElementById("block_dest").style.display = "none";
+                if (rep.cell == "unknow")
+                {
+                    document.getElementById("warning").style.display = "";
+                    document.getElementById("warning_coord").textContent += "(" + rep.x_pos + "/" + rep.y_pos + ")";
+                    document.getElementById("div_attack_target").style.display = "none";
+                }
+                else
+                {
+                    document.getElementById("warning").style.display = "none";
+                    document.getElementById("div_attack_target").style.display = "";
+                    if (rep.cell == "city")
+                        document.getElementById("attack_target").textContent = rep.cell + " : " + rep.name + " (" + x + "/" + y + ")";
+                    else
+                        document.getElementById("attack_taregt").textContent = rep.cell + " (" + x + "/" + y + ")";
+                }
+                let travel_duration = document.getElementById("attack_travel_duration");
+                if (travel_duration.childElementCount == 1)
+                    travel_duration.lastChild.remove();
+                travel_duration.textContent = rep.travel_duration;
+                let clock_icon = document.createElement("i");
+                clock_icon.className = "fas fa-clock";
+                travel_duration.insertBefore(clock_icon, travel_duration.lastChild.nextSibling);
+                var parent = document.getElementById("confirm_attack");
+                var duration_div = document.getElementById("attack_duration");
+                for (var key in units_send)
+                {
+                    if (units_send[key] <= 0)
+                        continue;
+                    let new_div = document.createElement("div");
+                    new_div.className = "invasion-unit-line";
+                    new_div.id = "confirm_attack_unit" + key;
+                    parent.insertBefore(new_div, duration_div);
+                    let new_span = document.createElement("span");
+                    let unit_name = document.getElementById("unit_" + key).getAttribute("unit_name");
+                    let textNode = document.createTextNode(unit_name + " x" + units_send[key]);
+                    new_span.appendChild(textNode);
+                    new_div.insertBefore(new_span, new_div.firstChild);
+                }
                 return ;
             }
         }
@@ -342,6 +382,18 @@ function back_step3()
         if (res_taken[key2] <= 0)
             continue ;
         document.getElementById("confirm_res_" + key2).remove();
+    }
+}
+
+function back_step_dest()
+{
+    document.getElementById("block_dest").style.display = "";
+    document.getElementById("confirm_attack").style.display = "none";
+    for (var key in units_send)
+    {
+        if (units_send[key] <= 0)
+            continue ;
+        document.getElementById("confirm_attack_unit" + key).remove();
     }
 }
 

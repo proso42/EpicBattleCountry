@@ -330,7 +330,7 @@
                                 let red_cross_id = div_id.replace(/id/gi, "interrupt");
                                 document.getElementById(red_cross_id).remove();
                                 timer("compteur_" + infos.mission_name + div_id, infos.duration, infos.mission_name);
-                                document.getElementById("icon_" + div_id).className = "fas fa-map-marked-alt";
+                                document.getElementById(div_id.replace(/id/gi, "icon")).className = "fas fa-map-marked-alt";
                             }
                             if (infos.type == "mounted_unit" || infos.type == "unit")
                             {

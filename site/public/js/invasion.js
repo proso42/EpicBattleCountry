@@ -184,9 +184,9 @@ function step_confirm_dest()
                     document.getElementById("warning").style.display = "none";
                     document.getElementById("div_attack_target").style.display = "";
                     if (rep.cell == "city")
-                        document.getElementById("attack_target").textContent = rep.cell + " : " + rep.name + " (" + x + "/" + y + ")";
+                        document.getElementById("attack_target").textContent = rep.cell + " : " + rep.name + " (" + rep.x_pos + "/" + rep.y_pos + ")";
                     else
-                        document.getElementById("attack_target").textContent = rep.cell + " (" + x + "/" + y + ")";
+                        document.getElementById("attack_target").textContent = rep.cell + " (" + rep.x_pos + "/" + rep.y_pos + ")";
                 }
                 let travel_duration = document.getElementById("attack_travel_duration");
                 if (travel_duration.childElementCount == 1)

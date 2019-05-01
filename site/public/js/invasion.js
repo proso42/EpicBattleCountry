@@ -183,8 +183,8 @@ function step_confirm_dest()
                 {
                     document.getElementById("warning").style.display = "none";
                     document.getElementById("div_attack_target").style.display = "";
-                    if (rep.cell == "city")
-                        document.getElementById("attack_target").textContent = rep.cell + " : " + rep.name + " (" + rep.x + "/" + rep.y + ")";
+                    if (rep.cell == "City" || rep.cell == "Ville")
+                        document.getElementById("attack_target").textContent = rep.cell + " - " + rep.name + " (" + rep.x + "/" + rep.y + ")";
                     else
                         document.getElementById("attack_target").textContent = rep.cell + " (" + rep.x + "/" + rep.y + ")";
                 }

@@ -235,7 +235,7 @@ module.exports.start = function (id)
 				else if (mission == 6)
 				{
 					// Go Home
-					var request_go_home = `SELECT city_id, units FROM traveling_units WHERE id = ${id}`;
+					var request_go_home = `SELECT city_id, units, res_taken FROM traveling_units WHERE id = ${id}`;
 					mysqlClient.query(request_go_home, function (error, results_go_home)
 						{
 							if (error)

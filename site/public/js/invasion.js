@@ -143,6 +143,7 @@ function step_confirm_dest()
         setTimeout(function(){
             document.getElementById("error_city_and_dest").style.display = "";
         }, 3000);
+        return ;
     }
     else if (target_city == "" && check_coord(x) == 0 || target_city == "" && check_coord(y) == 0)
         return ;

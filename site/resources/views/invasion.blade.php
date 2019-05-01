@@ -25,7 +25,7 @@
                 <div id="units_move_success" class="explo-input-success" style="display: none;">
                     <p>@lang('invasion.units_move_success')</p>
                 </div>
-                <div id="error_city_and_dest" class="explo-input-success" style="display: none;">
+                <div id="error_city_and_dest" class="explo-input-error" style="display: none;">
                     <p>@lang('error.city_and_dest')</p>
                 </div>
                 <div id="error_empty_input" class="explo-input-error" style="display: none;">

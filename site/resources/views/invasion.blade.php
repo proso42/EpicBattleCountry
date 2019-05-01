@@ -72,7 +72,7 @@
                         <h4>@lang('invasion.attackable_cities')</h3>
                         @foreach ($attackable_cities as $target)
                             <div onclick="select_target_city('{{ $target->name }}')" id="id_target_city_{{ $target->name }}" class="row invasion-city-line" style="cursor: pointer;text-align: center;">
-                                <span style="text-align: left" class="offset-lg-4 offset-md-4 offset-sm-4 offset-4 col-lg-6 col-md-6 col-sm-6 col-6">
+                                <span style="text-align: left" class="offset-lg-4 offset-md-4 offset-sm-4 offset-4 col-lg-8 col-md-8 col-sm-8 col-8">
                                     {{ $target->name }} ({{ $target->x_pos }}/{{ $target->y_pos }})
                                     <i id="target_city_{{ $target->name }}" class="fas fa-check icon-color-green" style="display: none"></i>
                                 </span>
@@ -81,7 +81,7 @@
                     @endif
                     <hr class="signin-footer">
                     <h4>@lang('invasion.manual_coord')</h3>
-                    <div id="inputs_dest" class="explo-dest">
+                    <div id="inputs_dest" class="explo-dest" style="margin-top: 0px">
                         <input id="dest_x" type="text" class="explo-input" placeholder="X">
                         <input id="dest_y" type="text" class="explo-input" placeholder="Y">
                     </div>

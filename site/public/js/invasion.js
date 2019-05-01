@@ -158,6 +158,13 @@ function step_confirm_dest()
             if (xhr.responseText.indexOf("error") >= 0)
             {
                 console.log(xhr.responseText);
+                if (xhr.responseText == "Invasion error : cannot attack allied")
+                {
+                    document.getElementById("error_cannot_attack_allied").style.display = "";
+                    setTimeout(function(){
+                        document.getElementById("error_cannot_attack_allied").style.display = "none";
+                    }, 2500);
+                }
                 return ;
             }
             else

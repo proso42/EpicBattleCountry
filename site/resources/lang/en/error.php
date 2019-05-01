@@ -39,4 +39,5 @@ return [
     'exp_not_moving' => 'Your shipment will not move !',
     'no_unit_selected' => 'Please select at least one unit',
     'city_and_dest' => 'You must choice a city in the list OR coordinates !',
+    'cannot_attack_allied' => 'You cannot attack your own city !',
 ];

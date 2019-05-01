@@ -28,6 +28,9 @@
                 <div id="error_city_and_dest" class="explo-input-error" style="display: none;">
                     <p>@lang('error.city_and_dest')</p>
                 </div>
+                <div id="error_cannot_attack_allied" class="explo-input-error" style="display: none;">
+                    <p>@lang('error.cannot_attack_allied')</p>
+                </div>
                 <div id="error_empty_input" class="explo-input-error" style="display: none;">
                     <p>@lang('error.thx_fill_fields')</p>
                 </div>

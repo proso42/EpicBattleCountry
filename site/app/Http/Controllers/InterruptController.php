@@ -108,8 +108,6 @@
             $explo = DB::table('traveling_units')->where('id', '=', $wait_id)->first();
             if ($explo->mission == 6)
                 return ("interrupt error : cannot cancel mission : 6");
-            else if ($explo->mission == 5)
-                return ("interrupt error : not implemented yet");
             $mission_name = trans('exploration.' . DB::table('traveling_missions')->where('id', '=', $explo->mission)->value("mission"));
             $starting_point = $explo->ending_point;
             $ending_point = $explo->starting_point;

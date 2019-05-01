@@ -119,17 +119,19 @@
                             <div id="id_{{$elem['name']}}_{{ $elem['wait_id'] }}" class="row">
                                 <div class="offset-lg-1 offset-md-1 offset-sm-1 offset-1 col-lg-1 col-md-1 col-sm-1 col-1">
                                     @if ($elem['type'] == "building") 
-                                        <i class="fas fa-hammer icon"></i>
+                                        <i id="icon_{{$elem['name']}}_{{ $elem['wait_id'] }}" class="fas fa-hammer icon"></i>
                                     @elseif ($elem['type'] == "tech")
-                                        <i class="fas fa-flask icon"></i>
+                                        <i id="icon_{{$elem['name']}}_{{ $elem['wait_id'] }}" class="fas fa-flask icon"></i>
                                     @elseif ($elem['type'] == "item")
-                                        <i class="fas fa-cog icon"></i>
+                                        <i id="icon_{{$elem['name']}}_{{ $elem['wait_id'] }}" class="fas fa-cog icon"></i>
                                     @elseif ($elem['type'] == "unit")
-                                        <i class="fas fa-chess-rook icon"></i>
+                                        <i id="icon_{{$elem['name']}}_{{ $elem['wait_id'] }}" class="fas fa-chess-rook icon"></i>
                                     @elseif ($elem['type'] == "explo")
-                                        <i class="fas fa-map-marked-alt"></i>
+                                        <i id="icon_{{$elem['name']}}_{{ $elem['wait_id'] }}" class="fas fa-map-marked-alt"></i>
+                                    @elseif ($elem['type'] == "battle")
+                                        <i id="icon_{{$elem['name']}}_{{ $elem['wait_id'] }}" class="fas fa-fist-raised"></i>
                                     @else
-                                        <i class="fas fa-shoe-prints"></i>
+                                        <i id="icon_{{$elem['name']}}_{{ $elem['wait_id'] }}" class="fas fa-shoe-prints"></i>
                                     @endif
                                 </div>
                                 <div id="compteur_{{ $elem['name'] }}_{{ $elem['wait_id'] }}" duration="{{ $elem['duration'] }}" name="{{ $elem['name'] }}" @if($elem['type'] == 'item' || $elem['type'] == 'unit') quantity="x{{ $elem['quantity'] }}" @endif class="col-lg-8 col-md-8 col-sm-8 col-8 infos-building-wip"></div>
@@ -328,6 +330,7 @@
                                 let red_cross_id = div_id.replace(/id/gi, "interrupt");
                                 document.getElementById(red_cross_id).remove();
                                 timer("compteur_" + infos.mission_name + div_id, infos.duration, infos.mission_name);
+                                document.getElementById("icon_" + div_id).className = "fas fa-map-marked-alt";
                             }
                             if (infos.type == "mounted_unit" || infos.type == "unit")
                             {

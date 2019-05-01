@@ -336,6 +336,9 @@
             else
                 $infos['cell'] = 'unknow2';
             $infos['t'] = $target_city;
+            $infos['x_pos'] = $request['x_pos'];
+            $infos['y_pos'] = $request['y_pos'];
+            $infos['user_city'] = $user_city;
             $x_pos = null;
             $y_pos = null;
             if ($target_city == null)

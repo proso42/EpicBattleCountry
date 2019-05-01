@@ -246,8 +246,12 @@ module.exports.start = function (id)
 							}
 							else
 							{
-								var p1 = refound_units(results_go_home[0]['units'].split(';'), city_id);
-								var p2 = refound_res(results_go_home[0]['res_taken'].split(';'), city_id);
+								let p1 = refound_units(results_go_home[0]['units'].split(';'), city_id);
+								let p2;
+								if (results_go_home[0]['res_taken'] == null)
+									p2 = Promise.resolve();
+								else
+									p2 = refound_res(results_go_home[0]['res_taken'].split(';'), city_id);
 								Promise.all([p1, p2]).then(() => {console.log('fin 6');mysqlClient.end();return 0;}).catch((err) =>{console.log(err);mysqlClient.end();return -1;});
 							}
 						});

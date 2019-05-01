@@ -309,7 +309,7 @@
             else if (isset($request['x_pos']) && isset($request['y_pos']))
             {
                 $target_city = DB::table('cities')->where('x_pos', '=', $request['x_pos'])->where('y_pos', '=', $request['y_pos'])->first();
-                if ($target_city->owner == $user_id)
+                if ($target_city != null && $target_city->owner == $user_id)
                     return ("Invasion error : cannot attack allied");
             }
             else

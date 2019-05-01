@@ -186,7 +186,7 @@ function step_confirm_dest()
                     if (rep.cell == "city")
                         document.getElementById("attack_target").textContent = rep.cell + " : " + rep.name + " (" + x + "/" + y + ")";
                     else
-                        document.getElementById("attack_taregt").textContent = rep.cell + " (" + x + "/" + y + ")";
+                        document.getElementById("attack_target").textContent = rep.cell + " (" + x + "/" + y + ")";
                 }
                 let travel_duration = document.getElementById("attack_travel_duration");
                 if (travel_duration.childElementCount == 1)

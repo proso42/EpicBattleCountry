@@ -69,7 +69,7 @@
                     <h2>@lang('exploration.dest')</h2>
                     <hr class="signin-footer">
                     @if ($attackable_cities != null)
-                        <h3>@lang('invasion.attackable_cities')</h3>
+                        <h4>@lang('invasion.attackable_cities')</h3>
                         @foreach ($attackable_cities as $target)
                             <div onclick="select_target_city('{{ $target->name }}')" id="id_target_city_{{ $target->name }}" class="row invasion-city-line" style="cursor: pointer;text-align: center;">
                                 <span style="text-align: left" class="offset-lg-4 offset-md-4 offset-sm-4 offset-4 col-lg-6 col-md-6 col-sm-6 col-6">
@@ -79,8 +79,8 @@
                             </div>
                         @endforeach
                     @endif
-                    <h3>@lang('invasion.manual_coord')</h3>
                     <hr class="signin-footer">
+                    <h4>@lang('invasion.manual_coord')</h3>
                     <div id="inputs_dest" class="explo-dest">
                         <input id="dest_x" type="text" class="explo-input" placeholder="X">
                         <input id="dest_y" type="text" class="explo-input" placeholder="Y">

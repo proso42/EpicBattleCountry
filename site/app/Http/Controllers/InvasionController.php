@@ -327,8 +327,8 @@
             }
             else if ($target_city == null)
                 $infos['cell'] = 'unknow';
-            else if ($target_city != null && $request['x_pos'] >= $user_city->x_pos - $user_city->Cartographe && $request['x_pos'] <= $user_city->x_pos + $user_city->Cartographe
-                    && $request['y_pos'] >= $user_city->y_pos - $user_city->Cartographe && $request['y_pos'] <= $user_city->y_pos + $user_city->Cartographe)
+            else if ($target_city != null && $target_city->x_pos >= $user_city->x_pos - $user_city->Cartographe && $target_city->x_pos <= $user_city->x_pos + $user_city->Cartographe
+                    && $target_city->y_pos >= $user_city->y_pos - $user_city->Cartographe && $target_city->y_pos <= $user_city->y_pos + $user_city->Cartographe)
             {
                 $infos['cell'] = trans('map.city');
                 $infos['name'] = $target_city->name;

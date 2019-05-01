@@ -20,6 +20,7 @@ return [
     'Colonize' => 'Coloniser',
     'Go_Home' => 'Retour',
     'Move_Units' => 'Déplacement de troupes',
+    'Attack' => 'Attaque',
     'dest' => 'Destination',
     'go_scouting' => 'Faire une reconaissance',
     'colonize_new_place' => 'Coloniser un nouvel endroit',

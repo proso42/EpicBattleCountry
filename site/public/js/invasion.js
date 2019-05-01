@@ -137,7 +137,7 @@ function step_confirm_dest()
 {
     let x = document.getElementById('dest_x').value;
     let y = document.getElementById('dest_y').value;
-    if ((target_city != "" && (x != "" || y != "")) || target_city == "" && (x == "" || y == ""))
+    if ((target_city != "" && (x != "" || y != "")) || target_city == "" && x == "" && y == "")
     {
         document.getElementById("error_city_and_dest").style.display = "";
         setTimeout(function(){

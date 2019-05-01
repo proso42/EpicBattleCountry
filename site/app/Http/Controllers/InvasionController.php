@@ -334,7 +334,7 @@
                 $infos['name'] = $target_city->name;
             }
             else
-                $infos['cell'] = 'unknow';
+                $infos['cell'] = 'unknow2';
             $x_pos = null;
             $y_pos = null;
             if ($target_city == null)

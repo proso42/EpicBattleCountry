@@ -25,8 +25,20 @@
                 <div id="units_move_success" class="explo-input-success" style="display: none;">
                     <p>@lang('invasion.units_move_success')</p>
                 </div>
+                <div id="error_city_and_dest" class="explo-input-success" style="display: none;">
+                    <p>@lang('error.city_and_dest')</p>
+                </div>
+                <div id="error_empty_input" class="explo-input-error" style="display: none;">
+                    <p>@lang('error.thx_fill_fields')</p>
+                </div>
+                <div id="error_bad_input" class="explo-input-error" style="display: none;">
+                    <p>@lang('error.thx_correclty_fill_fields')</p>
+                </div>
+                <div id="error_limit_value" class="explo-input-error" style="display: none;">
+                    <p>@lang('error.limit_coord')</p>
+                </div>
                 <div id="action_choice" class="row no-gutters">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-6" onmouseover="show_img('left')" onmouseout="hide_img('left')">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-6" onmouseover="show_img('left')" onmouseout="hide_img('left')" onclick="step2bis()">
                         <div id="left_overlay" class="invasion-left-overlay"></div>
                         <img class="invasion-left-image" src="images/invasion_battle.jpg">
                     </div>
@@ -49,9 +61,29 @@
                                     <span class="col-lg-1 col-md-1 col-sm-1 col-1"><i ondblclick="remove_all('{{ $unit['ref'] }}', '{{ $unit['quantity'] }}')" onmousedown="remove_unit('{{ $unit['ref'] }}', '{{ $unit['quantity'] }}'), 0" class="fas fa-minus invasion-minus"></i></span>
                                 </div>
                             @endforeach
-                            <input onclick="step_res()" id="button_step3" type="button" class="home-button" value="@lang('common.confirm')">
+                            <input id="button_step3" type="button" class="home-button" value="@lang('common.confirm')">
                             <input onclick="back_step1()" id="cancel_button_1" type="button" class="home-button-cancel" value="@lang('common.return')">
                         @endif
+                </div>
+                <div id="block_dest" style="display: none; text-align:center; margin-top: 25px;">
+                    <h2>@lang('common.dest')</h2>
+                    @if ($attackable_cities != null)
+                        @foreach ($attackable_cities as $target)
+                            <div id="id_target_city_{{ $target->name }}" class="row invasion-city-line" style="cursor: pointer;text-align: center;">
+                                <span style="text-align: left" class="offset-lg-4 offset-md-4 offset-sm-4 offset-4 col-lg-6 col-md-6 col-sm-6 col-6">
+                                    {{ $target->name }} ({{ $target->x_pos }}/{{ $target->y_pos }})
+                                    <i id="target_city_{{ $target->name }}" class="fas fa-check icon-color-green" style="display: none"></i>
+                                </span>
+                            </div>
+                        @endforeach
+                    @endif
+                    <hr class="signin-footer">
+                    <div id="inputs_dest" class="explo-dest">
+                        <input id="dest_x" type="text" class="explo-input" placeholder="X">
+                        <input id="dest_y" type="text" class="explo-input" placeholder="Y">
+                    </div>
+                    <input onclick="step_confirm_dest()" id="button_confirm_dest" type="button" class="home-button" value="@lang('common.confirm')">
+                    <input onclick="back_step2bis()" id="cancel_button_2bis" type="button" class="home-button-cancel" value="@lang('common.return')">
                 </div>
                 <div id="list_res_item" style="display: none; text-align: center;margin-top: 25px;">
                     <h2>@lang('invasion.res_to_move')</h2>

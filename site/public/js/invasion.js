@@ -11,6 +11,7 @@ setTimeout(() =>{
 var units_send = {};
 var res_taken = {};
 var city = "";
+var target_city = "";
 var speed = 100;
 var total_storage = 0;
 var total_taken = 0;
@@ -116,6 +117,64 @@ function step2()
 {
     document.getElementById("action_choice").style.display = "none";
     document.getElementById("list_unit").style.display = "";
+    document.getElementById("button_step3").onclick = function(){step_res()};
+}
+
+function step2bis()
+{
+    document.getElementById("action_choice").style.display = "none";
+    document.getElementById("list_unit").style.display = "";
+    document.getElementById("button_step3").onclick = function(){step_dest()};
+}
+
+function step_dest()
+{
+    document.getElementById("list_unit").style.display = "none";
+    document.getElementById("block_dest").style.display = "";
+}
+
+function step_confirm_dest()
+{
+    let x = document.getElementById('dest_x').value;
+    let y = document.getElementById('dest_y').value;
+    if ((target_city != "" && (x != "" || y != "")) || target_city == "" && (x == "" || y == ""))
+    {
+        document.getElementById("error_city_and_dest").style.display = "";
+        setTimeout(function(){
+            document.getElementById("error_city_and_dest").style.display = "";
+        }, 3000);
+    }
+    else if (target_city == "" && check_coord(x) == 0 || target_city == "" && check_coord(y) == 0)
+        return ;
+    console.log(units_send);
+    var _token = document.getElementById("_token").value;
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'http://www.epicbattlecorp.fr/calculate_attack');
+    xhr.onreadystatechange =  function()
+    {
+        if (xhr.readyState === 4 && xhr.status === 200)
+        {
+            if (xhr.responseText.indexOf("error") >= 0)
+            {
+                console.log(xhr.responseText);
+                return ;
+            }
+            else
+            {
+                console.log(xhr.responseText);
+                return ;
+            }
+        }
+    }
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    if (target_city == "")
+    {
+        x = parseInt(x);
+        y = parseInt(y);
+        xhr.send('_token=' + _token + '&units=' + JSON.stringify(units_send) + "&x_pos=" + x + "&y_pos=" + y);
+    }
+    else
+        xhr.send('_token=' + _token + '&units=' + JSON.stringify(units_send) + "&target_city=" + target_city);
 }
 
 function step_res()
@@ -247,6 +306,12 @@ function back_step2()
     document.getElementById("list_res_item").style.display = "none";
 }
 
+function back_step2bis()
+{
+    document.getElementById("block_dest").style.display = "none";
+    document.getElementById("list_unit").style.display = "";
+}
+
 function back_step_res()
 {
     document.getElementById("list_res_item").style.display = "";
@@ -269,6 +334,35 @@ function back_step3()
             continue ;
         document.getElementById("confirm_res_" + key2).remove();
     }
+}
+
+function check_coord(n)
+{
+    if (n == "")
+    {
+        document.getElementById("error_empty_input").style.display = "";
+        setTimeout(() =>{
+            document.getElementById("error_empty_input").style.display = 'none';
+        }, 5000);
+        return 0;
+    }
+    else if (!(!isNaN(parseFloat(n)) && isFinite(n)))
+    {
+        document.getElementById("error_bad_input").style.display = "";
+        setTimeout(() =>{
+            document.getElementById("error_bad_input").style.display = 'none';
+        }, 5000);
+        return 0;
+    }
+    else if (parseInt(n) < -2000 || parseInt(n) > 2000)
+    {
+        document.getElementById("error_limit_value").style.display = "";
+        setTimeout(() =>{
+            document.getElementById("error_limit_value").style.display = 'none';
+        }, 5000);
+        return 0;
+    }
+    return 1;
 }
 
 function add_unit(unit_ref, max, nb)
@@ -458,4 +552,23 @@ function select_city(name)
     city = name;
     document.getElementById("id_" + city).style.border = "1px solid lightgreen";
     document.getElementById("city_" + city).style.display = "";
+}
+
+function select_target_city(name)
+{
+    if (target_city != "")
+    {
+        document.getElementById("id_target_city_" + target_city).style.border = "1px solid lightblue";
+        document.getElementById("target_city_" + target_city).style.display = "none";
+    }
+    if (target_city == name)
+    {
+        document.getElementById("id_target_city_" + target_city).style.border = "1px solid lightblue";
+        document.getElementById("target_city_" + target_city).style.display = "none";
+        target_city = "";
+        return ;
+    }
+    target_city = name;
+    document.getElementById("id_target_city_" + target_city).style.border = "1px solid lightgreen";
+    document.getElementById("target_city_" + target_city).style.display = "";
 }

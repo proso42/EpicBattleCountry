@@ -45,4 +45,5 @@ return [
     'in_progress' => 'In progress',
     'on' => 'on',
     'unavailable' => 'Unavailable',
+    'dest' => 'Destination',
 ];

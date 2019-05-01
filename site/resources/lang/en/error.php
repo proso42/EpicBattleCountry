@@ -38,4 +38,5 @@ return [
     'limit_coord' => 'Please enter coordinates between -2000 and 2000 !',
     'exp_not_moving' => 'Your shipment will not move !',
     'no_unit_selected' => 'Please select at least one unit',
+    'city_and_dest' => 'You must choice a city in the list OR coordinates !',
 ];

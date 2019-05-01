@@ -38,4 +38,5 @@ return [
     'limit_coord' => 'Merci de renseigner des coordonnées compris entre -2000 et 2000 !',
     'exp_not_moving' => 'Votre expédition ne va pas bouger !',
     'no_unit_selected' => 'Merci de sélectionner au moins une unité',
+    'city_and_dest' => 'Vous devez choisir une ville dans la liste OU des coordonnées !',
 ];

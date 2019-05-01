@@ -81,7 +81,23 @@
             }
             $user_cities = DB::table('cities')->select('name')->where('owner', '=', $user_id)->where('id', '!=', $city_id)->get();
             $res = ["food" => $food, "wood" => $wood, "rock" => $rock, "steel" => $steel, "gold" => $gold];
-            return view('invasion', compact('is_admin', 'res', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold', 'info_unit', 'info_item', 'user_cities'));
+            $attackable_cities = $this->get_attackable_cities($city, $user_id);
+            return view('invasion', compact('is_admin', 'res', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold', 'info_unit', 'info_item', 'user_cities', 'attackable_cities'));
+        }
+
+        private function get_attackable_cities($city, $user_id)
+        {
+            $cartographer = DB::table('cities_buildings')->where('city_id', '=', $city->id)->value('Cartographe');
+            if ($cartographer <= 0)
+                return null;
+            return (DB::table('cities')
+            ->select('name', 'x_pos', 'y_pos')
+            ->where('x_pos' ,'>=', $city->x_pos - $cartographer)
+            ->where('x_pos', '<=', $city->x_pos + $cartographer)
+            ->where('y_pos', '>=', $city->y_pos - $cartographer)
+            ->where('y_pos', '<=', $city->y_pos + $cartographer)
+            ->where('owner', '!=', $user_id)
+            ->get());
         }
 
         private function get_unit_storage($units, $name)
@@ -275,6 +291,94 @@
             if ($res_send != null)
                 DB::table('cities')->where('id', '=', $city_id)->update($update_res_tab);
             return ("good");
+        }
+
+        public function calculate_attack(Request $request)
+        {
+            $target_city = null;
+            $user_id = session()->get('user_id');
+            $city_id = session()->get('city_id');
+            if (isset($request['target_city']))
+            {
+                $target_city = DB::table('cities')->where('name', '=', $request['target_city'])->first();
+                if ($target_city == null)
+                    return ("Invasion error : city not found");
+                else if ($target_city->owner == $user_id)
+                    return ("Invasion error : cannot attack allied");
+            }
+            else if (isset($request['x_pos']) && isset($request['y_pos']))
+                $target_city = DB::table('cities')->where('x_pos', '=', $request['x_pos'])->where('y_pos', '=', $request['y_pos'])->first();
+            else
+                return "Invasion error : missing data";
+            $infos = [];
+            $user_city = DB::table('cities')
+            ->join('cities_buildings', 'cities.id', '=', 'cities_buildings.city_id')
+            ->select('cities.x_pos', 'cities.y_pos', 'cities_buildings.Cartographe')
+            ->where('cities.id', '=', $city_id)
+            ->first();
+            if ($target_city == null && $request['x_pos'] >= $user_city->x_pos - $user_city->Cartographe && $request['x_pos'] <= $user_city->x_pos + $user_city->Cartographe
+                    && $request['y_pos'] >= $user_city->y_pos - $user_city->Cartographe && $request['y_pos'] <= $user_city->y_pos + $user_city->Cartographe)
+            {
+                $cell_type = DB::table('map')->where('x_pos', '=', $request['x_pos'])->where('y_pos', '=', $request['y_pos'])->value('type');
+                if ($cell_type == null)
+                    $infos['cell'] = 'empty';
+                else
+                    $infos['cell'] = trans('map.' . $cell_type);
+            }
+            else if ($target_city == null)
+                $infos['cell'] = 'unknow';
+            else if ($target_city != null && $request['x_pos'] >= $user_city->x_pos - $user_city->Cartographe && $request['x_pos'] <= $user_city->x_pos + $user_city->Cartographe
+                    && $request['y_pos'] >= $user_city->y_pos - $user_city->Cartographe && $request['y_pos'] <= $user_city->y_pos + $user_city->Cartographe)
+            {
+                $infos['cell'] = trans('map.city');
+                $infos['name'] = $target_city->name;
+            }
+            else
+                $infos['cell'] = 'unknow';
+            $x_pos = null;
+            $y_pos = null;
+            if ($target_city == null)
+            {
+                $x_pos = $request['x_pos'];
+                $y_pos = $request['y_pos'];
+            }
+            else
+            {
+                $x_pos = $target_city->x_pos;
+                $y_pos = $target_city->y_pos;
+            }
+            $units = $request['units'];
+            $units = explode(",", preg_replace('/[{}\"]/', '', $units));
+            $tab = [];
+            foreach ($units as $key)
+            {
+                $ex = explode(":", $key);
+                $tab[$ex[0]] = $ex[1];
+            }
+            $city_units = DB::table('cities_units')->where('city_id', '=', $city_id)->first();
+            $min_speed = -1;
+            $units_send = "";
+            $update_units_tab = [];
+            foreach ($tab as $unit => $quantity)
+            {
+                if ($quantity <= 0)
+                    continue;
+                if ($city_units->$unit < $quantity)
+                    return ("invasion error : bad unit");
+                $unit_infos = DB::table('units')->select('id', 'speed')->where('name', '=', $unit)->first();
+                if ($unit_infos == null)
+                    return ("invasion error : unknow unit");
+                if ($min_speed == -1 || $unit_infos->speed < $min_speed)
+                    $min_speed = $unit_infos->speed;
+                if ($units_send == "")
+                    $units_send .= $unit_infos->id . ":" . $quantity;
+                else
+                    $units_send .= ";" . $unit_infos->id . ":" . $quantity;
+                $update_units_tab[$unit] = $city_units->$unit - $quantity;
+            }
+            $travel_duration = $this->sec_to_date((abs($user_city->x_pos - $x_pos) + abs($user_city->y_pos - $y_pos)) * (3600 / $min_speed));
+            $infos['travel_duration'] = $travel_duration;
+            return $infos;
         }
     }
 

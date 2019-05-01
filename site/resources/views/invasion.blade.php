@@ -156,7 +156,7 @@
                             <span id="warning_coord"></span>
                             <i class="fas fa-exclamation-triangle icon-color-orange" style="margin-left: 15px"></i>
                         </div>
-                        <div id="div_attack_target">
+                        <div id="info_target">
                             <span>@lang('common.target') : </span>
                             <span id="attack_target"></span>
                         </div>

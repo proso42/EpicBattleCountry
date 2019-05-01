@@ -177,12 +177,12 @@ function step_confirm_dest()
                 {
                     document.getElementById("warning").style.display = "";
                     document.getElementById("warning_coord").textContent += "(" + rep.x + "/" + rep.y + ")";
-                    document.getElementById("div_attack_target").style.display = "none";
+                    document.getElementById("info_target").style.display = "none";
                 }
                 else
                 {
                     document.getElementById("warning").style.display = "none";
-                    document.getElementById("div_attack_target").style.display = "";
+                    document.getElementById("info_target").style.display = "";
                     if (rep.cell == "City" || rep.cell == "Ville")
                         document.getElementById("attack_target").textContent = rep.cell + " - " + rep.name + " (" + rep.x + "/" + rep.y + ")";
                     else

@@ -23,7 +23,7 @@
                 return $this->interrupt_item($city_id);
             else if ($type_canceled == "unit")
                 return $this->interrupt_unit($city_id);
-            else if ($type_canceled == "explo" || $type_canceled == "move_units")
+            else if ($type_canceled == "explo" || $type_canceled == "move_units" || $type_canceled == "battle")
                 return $this->interrupt_explo($city_id, $wait_id);
             else
                 return ("interrupt error : bad type canceled");

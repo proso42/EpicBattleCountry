@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'unit_to_move' => 'Units to move',
+    'select_units' => 'Select units',
     'no_other_city' => 'You have only one city !',
     'select_city' => 'Select a city',
     'confirm_move_unit' => 'Confirm move unit',

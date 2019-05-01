@@ -52,7 +52,7 @@
                             <h2>@lang('invasion.no_unit')</h2>
                             <input onclick="back_step1()" id="cancel_button_1" type="button" class="home-button-cancel" value="@lang('common.return')">
                         @else
-                            <h2>@lang('invasion.unit_to_move')</h2>
+                            <h2>@lang('invasion.select_units')</h2>
                             @foreach ($info_unit as $unit)
                                 <div id="unit_{{ $unit['ref'] }}" class="row invasion-unit-line" unit_ref="{{ $unit['ref'] }}" storage="{{ $unit['storage'] }}" unit_name="{{ $unit['name'] }}">
                                     <span class="col-lg-5 col-md-5 col-sm-5 col-5" style="text-align: left">{{ $unit['name'] }}</span>

@@ -176,7 +176,7 @@ function step_confirm_dest()
                 if (rep.cell == "unknow")
                 {
                     document.getElementById("warning").style.display = "";
-                    document.getElementById("warning_coord").textContent += "(" + rep.x_pos + "/" + rep.y_pos + ")";
+                    document.getElementById("warning_coord").textContent += "(" + rep.x + "/" + rep.y + ")";
                     document.getElementById("div_attack_target").style.display = "none";
                 }
                 else
@@ -184,9 +184,9 @@ function step_confirm_dest()
                     document.getElementById("warning").style.display = "none";
                     document.getElementById("div_attack_target").style.display = "";
                     if (rep.cell == "city")
-                        document.getElementById("attack_target").textContent = rep.cell + " : " + rep.name + " (" + rep.x_pos + "/" + rep.y_pos + ")";
+                        document.getElementById("attack_target").textContent = rep.cell + " : " + rep.name + " (" + rep.x + "/" + rep.y + ")";
                     else
-                        document.getElementById("attack_target").textContent = rep.cell + " (" + rep.x_pos + "/" + rep.y_pos + ")";
+                        document.getElementById("attack_target").textContent = rep.cell + " (" + rep.x + "/" + rep.y + ")";
                 }
                 let travel_duration = document.getElementById("attack_travel_duration");
                 if (travel_duration.childElementCount == 1)

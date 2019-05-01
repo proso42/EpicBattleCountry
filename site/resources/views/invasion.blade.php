@@ -66,10 +66,12 @@
                         @endif
                 </div>
                 <div id="block_dest" style="display: none; text-align:center; margin-top: 25px;">
-                    <h2>@lang('common.dest')</h2>
+                    <h2>@lang('exploration.dest')</h2>
+                    <hr class="signin-footer">
                     @if ($attackable_cities != null)
+                        <h3>@lang('invasion.attackable_cities')</h3>
                         @foreach ($attackable_cities as $target)
-                            <div id="id_target_city_{{ $target->name }}" class="row invasion-city-line" style="cursor: pointer;text-align: center;">
+                            <div onclick="select_target_city('{{ $target->name }}')" id="id_target_city_{{ $target->name }}" class="row invasion-city-line" style="cursor: pointer;text-align: center;">
                                 <span style="text-align: left" class="offset-lg-4 offset-md-4 offset-sm-4 offset-4 col-lg-6 col-md-6 col-sm-6 col-6">
                                     {{ $target->name }} ({{ $target->x_pos }}/{{ $target->y_pos }})
                                     <i id="target_city_{{ $target->name }}" class="fas fa-check icon-color-green" style="display: none"></i>
@@ -77,6 +79,7 @@
                             </div>
                         @endforeach
                     @endif
+                    <h3>@lang('invasion.manual_coord')</h3>
                     <hr class="signin-footer">
                     <div id="inputs_dest" class="explo-dest">
                         <input id="dest_x" type="text" class="explo-input" placeholder="X">

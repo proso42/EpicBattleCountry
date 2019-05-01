@@ -23,4 +23,6 @@ return [
     'freight' => 'Fret disponible',
     'travel_duration' => 'Durée du trajet : ',
     'target_city' => 'Ville cible : ',
+    'attackable_cities' => 'Ville(s) attaquable(s)',
+    'manual_coord' => 'Coordonnées manuelles',
 ];

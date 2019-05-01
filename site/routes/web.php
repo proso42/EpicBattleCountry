@@ -83,6 +83,7 @@ Route::group(['middleware' => ['logged']], function(){
     Route::post('/calculate_move_units', 'InvasionController@calculate_move_units');
     Route::post('/move_units', 'InvasionController@move_units');
     Route::post('/calculate_attack', 'InvasionController@calculate_attack');
+    Route::post('/attack', 'InvasionController@attack');
 });
 
 // ADMIN ROUTES

@@ -87,8 +87,8 @@ module.exports.start = function (id)
 									}
 									else
 									{										
-										return 0;
 										mysqlClient.end();
+										return 0;
 									}
 								});
 							}
@@ -231,6 +231,21 @@ module.exports.start = function (id)
 							return -1;
 						});
 					}
+				}
+				else if (mission == 5)
+				{
+					// Attack
+					let mod_battle = require("./module_launch_battle");
+					let p_attack = mod_battle.launch_battle(id);
+					Promise.all([p_attack])
+					.then(() => {
+						mysqlClient.end();
+						return 0;
+					})
+					.catch(() => {
+						mysqlClient.end();
+						return -1;
+					});
 				}
 				else if (mission == 6)
 				{

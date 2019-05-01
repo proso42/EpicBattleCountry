@@ -343,6 +343,38 @@ function step5()
     xhr.send('_token=' + _token + '&units=' + JSON.stringify(units_send) + '&res=' + JSON.stringify(res_taken) + "&city_target=" + city);
 }
 
+function step_attack()
+{
+    document.getElementById("button_step_attack").style.display = "none";
+    document.getElementById("cancel_button_attack").style.display = "none";
+    document.getElementById("spin_attack").style.display = "";
+    var _token = document.getElementById("_token").value;
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'http://www.epicbattlecorp.fr/attack');
+    xhr.onreadystatechange =  function()
+    {
+        if (xhr.readyState === 4 && xhr.status === 200)
+        {
+            if (xhr.responseText.indexOf("error") >= 0)
+                console.log(xhr.responseText);
+            else
+                document.getElementById("attack_launch").style.display = "";
+            setTimeout(function(){
+                window.location.reload();
+            }, 2500);
+        }
+    }
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    if (target_city == "")
+    {
+        x = document.getElementById("dest_x").value;
+        y = document.getElementById("dest_y").value;
+        xhr.send('_token=' + _token + '&units=' + JSON.stringify(units_send) + "&x_pos=" + x + "&y_pos=" + y);
+    }
+    else
+        xhr.send('_token=' + _token + '&units=' + JSON.stringify(units_send) + '&res=' + JSON.stringify(res_taken) + "&target_city=" + target_city);
+}
+
 function back_step1()
 {
     document.getElementById("action_choice").style.display = "";

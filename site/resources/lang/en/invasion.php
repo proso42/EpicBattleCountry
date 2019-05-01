@@ -26,4 +26,5 @@ return [
     'attackable_cities' => 'Attackable cities',
     'manual_coord' => 'Manual coordinates',
     'confirm_attack' => 'Confirm attack',
+    'attack_launch' => 'Attack launch !',
 ];

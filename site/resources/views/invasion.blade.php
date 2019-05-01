@@ -25,6 +25,9 @@
                 <div id="units_move_success" class="explo-input-success" style="display: none;">
                     <p>@lang('invasion.units_move_success')</p>
                 </div>
+                <div id="attack_launch" class="explo-input-success" style="display: none;">
+                    <p>@lang('invasion.attack_launch')</p>
+                </div>
                 <div id="error_city_and_dest" class="explo-input-error" style="display: none;">
                     <p>@lang('error.city_and_dest')</p>
                 </div>
@@ -166,6 +169,7 @@
                     </div>
                     <input onclick="step_attack()" id="button_step_attack" type="button" class="home-button" value="@lang('common.confirm')">
                     <input onclick="back_step_dest()" id="cancel_button_attack" type="button" class="home-button-cancel" value="@lang('common.return')">
+                    <img id="spin_attack" class="explo-spin" style="display: none" src="images/loader.gif">
                 </div>
             </div>
             <input id="_token" name="_token" type="hidden" value="{{csrf_token()}}">

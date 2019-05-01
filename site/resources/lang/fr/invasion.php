@@ -25,5 +25,6 @@ return [
     'target_city' => 'Ville cible : ',
     'attackable_cities' => 'Ville(s) attaquable(s)',
     'manual_coord' => 'Coordonnées manuelles',
-    'confirm_attack' => 'Confirmer l\'attaque',    
+    'confirm_attack' => 'Confirmer l\'attaque',
+    'attack_launch' => 'L\'attaque est lancé !',
 ];

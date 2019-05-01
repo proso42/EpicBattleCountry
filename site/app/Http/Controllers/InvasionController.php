@@ -308,6 +308,8 @@
             }
             else if (isset($request['x_pos']) && isset($request['y_pos']))
             {
+                if ($request['x_pos'] < -2000 || $request['x_pos'] > 2000 || $request['y_pos'] < -2000 || $request['y_pos'] > 2000 || !is_numeric($request['x_pos']) || !is_numeric($request['y_pos']))
+                    return "Invasion error : bad coord";
                 $target_city = DB::table('cities')->where('x_pos', '=', $request['x_pos'])->where('y_pos', '=', $request['y_pos'])->first();
                 if ($target_city != null && $target_city->owner == $user_id)
                     return ("Invasion error : cannot attack allied");
@@ -362,6 +364,75 @@
             $city_units = DB::table('cities_units')->where('city_id', '=', $city_id)->first();
             $min_speed = -1;
             $units_send = "";
+            foreach ($tab as $unit => $quantity)
+            {
+                if ($quantity <= 0)
+                    continue;
+                if ($city_units->$unit < $quantity)
+                    return ("invasion error : bad unit");
+                $unit_infos = DB::table('units')->select('id', 'speed')->where('name', '=', $unit)->first();
+                if ($unit_infos == null)
+                    return ("invasion error : unknow unit");
+                if ($min_speed == -1 || $unit_infos->speed < $min_speed)
+                    $min_speed = $unit_infos->speed;
+                if ($units_send == "")
+                    $units_send .= $unit_infos->id . ":" . $quantity;
+                else
+                    $units_send .= ";" . $unit_infos->id . ":" . $quantity;
+            }
+            $travel_duration = $this->sec_to_date((abs($user_city->x_pos - $x_pos) + abs($user_city->y_pos - $y_pos)) * (3600 / $min_speed));
+            $infos['travel_duration'] = trans('invasion.travel_duration') . $travel_duration . " ";
+            $infos['x'] = $x_pos;
+            $infos['y'] = $y_pos;
+            return $infos;
+        }
+
+        public function attack()
+        {
+            $target_city = null;
+            $user_id = session()->get('user_id');
+            $city_id = session()->get('city_id');
+            if (isset($request['target_city']))
+            {
+                $target_city = DB::table('cities')->where('name', '=', $request['target_city'])->first();
+                if ($target_city == null)
+                    return ("Invasion error : city not found");
+                else if ($target_city->owner == $user_id)
+                    return ("Invasion error : cannot attack allied");
+            }
+            else if (isset($request['x_pos']) && isset($request['y_pos']))
+            {
+                if ($request['x_pos'] < -2000 || $request['x_pos'] > 2000 || $request['y_pos'] < -2000 || $request['y_pos'] > 2000 || !is_numeric($request['x_pos']) || !is_numeric($request['y_pos']))
+                    return "Invasion error : bad coord";
+                $target_city = DB::table('cities')->where('x_pos', '=', $request['x_pos'])->where('y_pos', '=', $request['y_pos'])->first();
+                if ($target_city != null && $target_city->owner == $user_id)
+                    return ("Invasion error : cannot attack allied");
+            }
+            else
+                return "Invasion error : missing data";
+            $x_pos = null;
+            $y_pos = null;
+            if ($target_city == null)
+            {
+                $x_pos = $request['x_pos'];
+                $y_pos = $request['y_pos'];
+            }
+            else
+            {
+                $x_pos = $target_city->x_pos;
+                $y_pos = $target_city->y_pos;
+            }
+            $units = $request['units'];
+            $units = explode(",", preg_replace('/[{}\"]/', '', $units));
+            $tab = [];
+            foreach ($units as $key)
+            {
+                $ex = explode(":", $key);
+                $tab[$ex[0]] = $ex[1];
+            }
+            $city_units = DB::table('cities_units')->where('city_id', '=', $city_id)->first();
+            $min_speed = -1;
+            $units_send = "";
             $update_units_tab = [];
             foreach ($tab as $unit => $quantity)
             {
@@ -380,11 +451,15 @@
                     $units_send .= ";" . $unit_infos->id . ":" . $quantity;
                 $update_units_tab[$unit] = $city_units->$unit - $quantity;
             }
-            $travel_duration = $this->sec_to_date((abs($user_city->x_pos - $x_pos) + abs($user_city->y_pos - $y_pos)) * (3600 / $min_speed));
-            $infos['travel_duration'] = trans('invasion.travel_duration') . $travel_duration . " ";
-            $infos['x'] = $x_pos;
-            $infos['y'] = $y_pos;
-            return $infos;
+            $user_city = DB::table('cities')->select('x_pos', 'y_pos')->where('id', '=', $city_id)->first();
+            $travel_duration = (abs($user_city->x_pos - $x_pos) + abs($user_city->y_pos - $y_pos)) * (3600 / $min_speed);
+            $starting_point = $user_city->x_pos . "/" . $user_city->y_pos;
+            $ending_point = $x_pos . "/" . $y_pos;
+            DB::table('cities_units')->where('city_id', '=', $city_id)->update($update_units_tab);
+            DB::table('traveling_units')->insert(
+                ['city_id' => $city_id, 'owner' => $user_id, 'starting_point' => $starting_point, 'ending_point' => $ending_point, 'units' => $units_send, 'traveling_duration' => $travel_duration, 'finishing_date' => $travel_duration + time(), 'mission' => 5]
+            );
+            return "Good";
         }
     }
 

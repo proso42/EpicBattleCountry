@@ -387,7 +387,7 @@
             return $infos;
         }
 
-        public function attack()
+        public function attack(Request $request)
         {
             $target_city = null;
             $user_id = session()->get('user_id');

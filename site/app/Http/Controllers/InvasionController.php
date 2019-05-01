@@ -381,7 +381,7 @@
                 $update_units_tab[$unit] = $city_units->$unit - $quantity;
             }
             $travel_duration = $this->sec_to_date((abs($user_city->x_pos - $x_pos) + abs($user_city->y_pos - $y_pos)) * (3600 / $min_speed));
-            $infos['travel_duration'] = trans('invasion.travel_duration') . $travel_duration;
+            $infos['travel_duration'] = trans('invasion.travel_duration') . $travel_duration . " ";
             $infos['x'] = $x_pos;
             $infos['y'] = $y_pos;
             return $infos;

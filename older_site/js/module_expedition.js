@@ -447,25 +447,34 @@ module.exports.start = function (id)
 					if (res == null)
 						resolve();
 					console.log('Promise res');
-					var refound_request_res = "UPDATE cities SET ";
-					for (let i = 0; i < res.length ;i++)
-					{
-						console.log(`Boucle res : ${i}`);
-						let split = res[i].split(':');
-						let key = split[0];
-						let val = split[1];
-						if (i == 0)
-							refound_request_res += `${key} = cities.${key} + ${val}`;
-						else
-							refound_request_res += ` , ${key} = cities.${key} + ${val}`;
-					}
-					refound_request_res += ` WHERE id = ${city_id}`;
-					console.log(`refound_request_res : ${refound_request_res}`);
-					mysqlClient.query(refound_request_res, function (err, ret){
+					mysqlClient.query(`SELECT food, wood, rock, steel, gold, max_food, max_wood, max_rock, max_steel, max_gold FROM cities WHERE id = ${city_id}`, function (err, ret){
 						if (err)
 							reject(err);
 						else
-							resolve();
+						{
+							let refound_request_res = "UPDATE cities SET ";
+							for (let i = 0; i < res.length ;i++)
+							{
+								console.log(`Boucle res : ${i}`);
+								let split = res[i].split(':');
+								let key = split[0];
+								let val = split[1];
+								if (val + ret[0][key] > ret[0]["max_" + key])
+									val = ret[0]["max_" + key];
+								if (i == 0)
+									refound_request_res += `${key} = cities.${key} + ${val}`;
+								else
+									refound_request_res += ` , ${key} = cities.${key} + ${val}`;
+							}
+							refound_request_res += ` WHERE id = ${city_id}`;
+							console.log(`refound_request_res : ${refound_request_res}`);
+							mysqlClient.query(refound_request_res, function (err, ret){
+								if (err)
+									reject(err);
+								else
+									resolve();
+							});
+						}
 					});
 				});
 			}

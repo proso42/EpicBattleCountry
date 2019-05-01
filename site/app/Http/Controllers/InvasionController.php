@@ -335,6 +335,7 @@
             }
             else
                 $infos['cell'] = 'unknow2';
+            $infos['t'] = $target_city;
             $x_pos = null;
             $y_pos = null;
             if ($target_city == null)

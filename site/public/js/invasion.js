@@ -162,7 +162,8 @@ function step_confirm_dest()
             }
             else
             {
-                console.log(xhr.responseText);
+                let rep = JSON.parse(xhr.responseText)
+                console.log(rep);
                 return ;
             }
         }

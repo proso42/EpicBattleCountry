@@ -141,8 +141,8 @@ function step_confirm_dest()
     {
         document.getElementById("error_city_and_dest").style.display = "";
         setTimeout(function(){
-            document.getElementById("error_city_and_dest").style.display = "";
-        }, 3000);
+            document.getElementById("error_city_and_dest").style.display = "none";
+        }, 2500);
         return ;
     }
     else if (target_city == "" && check_coord(x) == 0 || target_city == "" && check_coord(y) == 0)

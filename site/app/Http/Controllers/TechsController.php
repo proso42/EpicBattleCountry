@@ -426,7 +426,7 @@
             $gold_required = 0;
             $name = preg_replace('/\s/', "_", DB::table('techs')->where('id', '=', $tech_id)->value("name"));
             $niv = DB::table('cities_techs')->where('city_id', '=', $city_id)->value($name);
-            $duration = $this->boost_lab($tech->duration, $city_build);
+            $duration = $this->boost_lab($tech->duration, $city_id);
             $finishing_date = $this->get_exp_value($niv, $duration, $tech->levelup_price) + time();
             $res_required = explode(";", $tech->basic_price);
             foreach ($res_required as $res => $amount)

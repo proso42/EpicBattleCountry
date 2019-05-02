@@ -204,13 +204,8 @@
                 return $duration;
             else
             {
-                $boosted = $duration;
-                $boost = $duration * 10 / 100;
                 for ($i = 0; $i < $meca; $i++)
-                {
-                    $boosted -= $boost;
-                    $boost = $boosted * 10 / 100;
-                }
+                    $duration *= 0.9;
                 return round($boosted);
             }
         }

@@ -174,7 +174,10 @@
                     }
                     $illustration = "images/" . $val->illustration . ".jpg";
                     if ($status === "OK")
-                        $duration = $this->sec_to_date($niv, $val->duration, $val->levelup_price);
+                    {
+                        $duration = $this->boost_lab($val->duration, $city_id);
+                        $duration = $this->sec_to_date($niv, $duration, $val->levelup_price);
+                    }
                     else
                         $duration = $is_wip - time();
                     array_push($allowed_techs, ["tech_id" => $val->id, "status" => $status, "name" => trans('tech.' . preg_replace('/\s/', "_", $val->name)), "niv" => $niv, "illustration" => $illustration, "duration" => $duration, "food_required" => $food_required, "wood_required" => $wood_required, "rock_required" => $rock_required, "steel_required" => $steel_required, "gold_required" => $gold_required]);
@@ -183,6 +186,19 @@
                     continue;
             }
             return $allowed_techs;
+        }
+
+        private function boost_lab($duration, $city_id)
+        {
+            $lab = DB::table('cities_buildings')->where('city_id', '=', $city_id)->value('Laboratoire');
+            if ($lab <= 0)
+                return $duration;
+            else
+            {
+                for ($i = 0; $i < $lab; $i++)
+                    $duration *= 0.9;
+                return $duration;
+            }
         }
 
         private function get_exp_value($niv, $basic_value, $levelup)
@@ -410,7 +426,8 @@
             $gold_required = 0;
             $name = preg_replace('/\s/', "_", DB::table('techs')->where('id', '=', $tech_id)->value("name"));
             $niv = DB::table('cities_techs')->where('city_id', '=', $city_id)->value($name);
-            $finishing_date = $this->get_exp_value($niv, $tech->duration, $tech->levelup_price) + time();
+            $duration = $this->boost_lab($tech->duration, $city_build);
+            $finishing_date = $this->get_exp_value($niv, $duration, $tech->levelup_price) + time();
             $res_required = explode(";", $tech->basic_price);
             foreach ($res_required as $res => $amount)
             {

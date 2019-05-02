@@ -52,6 +52,19 @@
                     <h2 id="city_name">{{ $city_name }} <i onclick="show_edit_block()" class="fas fa-edit" style="cursor:pointer;margin-left: 25px;font-size: 15px"></i> @if (count($user_cities) > 0) <i onclick="show_switch_block()" class="fas fa-sync-alt" style="cursor:pointer;margin-left: 25px;font-size: 15px"></i>@endif</h2> 
                 </div>
                 <hr class="signin-footer">
+                @if (count($enemy_on_the_way) > 0)
+                    <div class="waiting-list" style="margin-bottom: 20px;">
+                        @foreach ($enemy_on_the_way as $enemy)
+                            <div class="row">
+                                <div class="offset-lg-1 offset-md-1 offset-sm-1 offset-1 col-lg-1 col-md-1 col-sm-1 col-1">
+                                    <i class="fas fa-fist-raised icon-color-red"></i>
+                                </div>
+                                <div id="compteur_{{ $enemy['wait_id'] }}_attack" name="@lang('common.enemy_attack')" duration="{{ $enemy['duration'] }}" class="col-lg-8 col-md-8 col-sm-8 col-8 infos-building-wip" style="color: crimson"></div>
+                            </div>
+                        @endforeach
+                    </div>
+                    <hr class="signin-footer">
+                @endif
                 <div class="prod-div">
                     <h3 class="home-title-table">@lang('home.prod') <i id="prod_table_eye" onclick="switch_part('prod_table')" @if($tables_class['prod'] == 0) class="fas fa-eye icon-eye" @else class="fas fa-eye-slash icon-eye" @endif></i></h3>
                     <table id="prod_table" class="prod-table" @if($tables_class['prod'] == 0) style="display: none" @endif>

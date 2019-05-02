@@ -47,4 +47,5 @@ return [
     'unavailable' => 'Indisponible',
     'dest' => 'Destination',
     'target' => 'Cible',
+    'enemy_attack' => 'Attaque énemie',
 ];

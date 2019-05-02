@@ -53,7 +53,7 @@
                 </div>
                 <hr class="signin-footer">
                 @if (count($enemy_on_the_way) > 0)
-                    <div class="waiting-list" style="margin-bottom: 20px;boredr-color: crimson">
+                    <div class="waiting-list" style="margin-bottom: 20px;border-color: crimson">
                         @foreach ($enemy_on_the_way as $enemy)
                             <div class="row">
                                 <div class="offset-lg-1 offset-md-1 offset-sm-1 offset-1 col-lg-1 col-md-1 col-sm-1 col-1">

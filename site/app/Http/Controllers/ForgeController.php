@@ -185,7 +185,8 @@
             {
                 for ($i = 0; $i < $forge; $i++)
                     $duration *= 0.9;
-                return round($duration);
+                $duration = round($duration);
+                return ($duration > 0) ? $duration : 1;
             }
         }
 

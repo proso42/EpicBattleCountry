@@ -53,13 +53,13 @@
                 </div>
                 <hr class="signin-footer">
                 @if (count($enemy_on_the_way) > 0)
-                    <div class="waiting-list" style="margin-bottom: 20px;">
+                    <div class="waiting-list" style="margin-bottom: 20px;boredr-color: crimson">
                         @foreach ($enemy_on_the_way as $enemy)
                             <div class="row">
                                 <div class="offset-lg-1 offset-md-1 offset-sm-1 offset-1 col-lg-1 col-md-1 col-sm-1 col-1">
                                     <i class="fas fa-fist-raised icon-color-red"></i>
                                 </div>
-                                <div id="compteur_{{ $enemy['wait_id'] }}_attack" name="@lang('common.enemy_attack')" duration="{{ $enemy['duration'] }}" class="col-lg-8 col-md-8 col-sm-8 col-8 infos-building-wip" style="color: crimson"></div>
+                                <div id="compteur_{{ $enemy['wait_id'] }}_attack" name="@lang('common.enemy_attack')" duration="{{ $enemy['duration'] }}" class="col-lg-8 col-md-8 col-sm-8 col-8 infos-building-wip"></div>
                             </div>
                         @endforeach
                     </div>

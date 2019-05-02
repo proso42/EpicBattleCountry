@@ -87,8 +87,7 @@
 
         private function get_allowed_units($city_id, $user_race, $city_builds, $city_techs)
         {
-            $all_units = DB::table('units')
-            ->get();
+            $all_units = DB::table('units')->get();
             $allowed_units = [];
             foreach ($all_units as $unit)
             {
@@ -146,10 +145,38 @@
                     $mount = trans('mount.' . preg_replace('/\s/', "_", DB::table('mounts')->where('id', '=', $unit->mount)->value('mount_name')));
                 else
                     $mount = null;
-                $duration = $this->sec_to_date($unit->duration);
+                $duration = $this->boost_unit($unit->duration, $city_id, $user_race);
+                $duration = $this->sec_to_date($duration);
                 array_push($allowed_units, ["unit_id" => $unit->id, "name" => trans('unit.' . preg_replace('/\s/', "_", $unit->name)), "food" => $food_required,  "wood" => $wood_required, "rock" => $rock_required, "steel" => $steel_required, "gold" => $gold_required, "duration" => $duration, "items" => $items_required, "mount" => $mount, "life" => $unit->life, "speed" => $unit->speed, "power" => $unit->power, "storage" => $unit->storage]);
             }
             return $allowed_units;
+        }
+
+        private function boost_unit($duration, $city_id, $user_race)
+        {
+            if ($unit->mount > 0)
+            {
+                if ($user_race == 1)
+                    $build_boost = "Ecurie";
+                else if ($user_race == 2)
+                    $build_boost = "Likornerie";
+                else if ($user_race == 3)
+                    $build_boost = "Bergerie";
+                else
+                    $build_boost = "Loufterie";
+            }
+            else
+                $build_boost = "Caserne";
+            $build_boost = DB::table('cities_buildings')->where('city_id', '=', $city_id)->value($build_boost);
+            if ($build_boost <= 0)
+                return $duration;
+            else
+            {
+                for ($i = 0; $i < $build_boost; $i++)
+                    $duration *= 0.9;
+                $duration = round($duration);
+                return ($duration > 0) ? $duration : 1;
+            }
         }
 
         private function sec_to_date($duration)
@@ -194,7 +221,8 @@
             ->where('id', '=', $city_id)
             ->first();
             $all_items = DB::table('forge')->select('name')->get();
-            $duration = $this->sec_to_date($unit->duration * $quantity);
+            $duration = $this->boost_unit($unit->duration, $city_id, $user_race);
+            $duration = $this->sec_to_date($duration * $quantity);
             $food_required = 0;
             $enough_food = "fas fa-check icon-color-green";
             $wood_required = 0;
@@ -299,7 +327,8 @@
             $city_res = DB::table('cities')
             ->where('id', '=', $city_id)
             ->first();
-            $finishing_date = ($unit->duration * $quantity) + time();
+            $duration = $this->boost_unit($unit->duration, $city_id, $user_race);
+            $finishing_date = ($duration * $quantity) + time();
             $food_required = 0;
             $wood_required = 0;
             $rock_required = 0;

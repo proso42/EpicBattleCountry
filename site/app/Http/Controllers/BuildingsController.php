@@ -182,7 +182,11 @@
                     }
                     $illustration = "images/" . $val->illustration . ".jpg";
                     if ($status === "OK")
-                        $duration = $this->sec_to_date($niv, $val->duration, $val->levelup_price);
+                    {
+                        $duration = $this->boost_meca($val->duration, $city_id);
+                        $duration = $this->sec_to_date($niv, $duration, $val->levelup_price);
+                        
+                    }
                     else
                         $duration = $is_wip - time();
                     array_push($allowed_type_buildings, ["status" => $status, "id" => $val->id, "name" => trans('building.' . preg_replace('/\s/', '_', $val->name)), "niv" => $niv, "illustration" => $illustration, "duration" => $duration, "food_required" => $food_required, "wood_required" => $wood_required, "rock_required" => $rock_required, "steel_required" => $steel_required, "gold_required" => $gold_required]);
@@ -193,6 +197,24 @@
             return $allowed_type_buildings;
         }
     
+        private function boost_meca($duration, $city_id)
+        {
+            $meca = DB::table('cities_techs')->where('city_id', '=', $city_id)->value('Meca');
+            if ($meca <= 0)
+                return $duration;
+            else
+            {
+                $boosted = $duration;
+                $boost = $duration * 10 / 100;
+                for ($i = 0; $i < $meca; $i++)
+                {
+                    $boosted -= $boost;
+                    $boost = $boosted * 10 / 100;
+                }
+                return round($boosted);
+            }
+        }
+
         private function get_exp_value($niv, $basic_value, $levelup)
         {
             $final_value = intval($basic_value);
@@ -418,7 +440,8 @@
             }
             if ($allowed == 0)
                 return ("error : bad building required");
-            $finishing_date = $this->get_exp_value($niv, $building_info->duration, $building_info->levelup_price) + time();
+            $duration = $this->boost_meca($building_info->duration, $city_id);
+            $finishing_date = $this->get_exp_value($niv, $duration, $building_info->levelup_price) + time();
             $res_required = explode(";", $building_info->basic_price);
             $food_required = 0;
             $wood_required = 0;

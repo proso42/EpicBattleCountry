@@ -197,7 +197,7 @@
             {
                 for ($i = 0; $i < $lab; $i++)
                     $duration *= 0.9;
-                return $duration;
+                return round($duration);
             }
         }
 

@@ -206,7 +206,7 @@
             {
                 for ($i = 0; $i < $meca; $i++)
                     $duration *= 0.9;
-                return round($boosted);
+                return round($duration);
             }
         }
 

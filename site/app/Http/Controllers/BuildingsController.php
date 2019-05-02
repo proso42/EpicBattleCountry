@@ -192,7 +192,7 @@
             }
             return $allowed_type_buildings;
         }
-
+    
         private function get_exp_value($niv, $basic_value, $levelup)
         {
             $final_value = intval($basic_value);

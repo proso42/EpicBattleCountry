@@ -141,8 +141,12 @@
             $tab = [];
             foreach ($units as $key)
             {
+                if (strstr($key, ":") == false)
+                    continue ;
                 $ex = explode(":", $key);
-                $tab[$ex[0]] = $ex[1];
+                if (!is_numeric($ex[1]))
+                    return ("Invasion error : bad format unit");
+                $tab[$ex[0]] = intval($ex[1]);
             }
             if (isset($request['res']))
             {
@@ -154,7 +158,9 @@
                     if (strstr($key, ":") == false)
                         continue ;
                     $ex = explode(":", $key);
-                    $tab_res[$ex[0]] = $ex[1];
+                    if (!is_numeric($ex[1]))
+                        return ("Invasion error : bad format unit");
+                    $tab_res[$ex[0]] = intval($ex[1]);
                 }
             }
             else
@@ -207,8 +213,12 @@
             $tab = [];
             foreach ($units as $key)
             {
+                if (strstr($key, ":") == false)
+                    continue ;
                 $ex = explode(":", $key);
-                $tab[$ex[0]] = $ex[1];
+                if (!is_numeric($ex[1]))
+                    return ("Invasion error : bad format unit");
+                $tab[$ex[0]] = intval($ex[1]);
             }
             if (isset($request['res']))
             {
@@ -220,7 +230,9 @@
                     if (strstr($key, ":") == false)
                         continue ;
                     $ex = explode(":", $key);
-                    $tab_res[$ex[0]] = $ex[1];
+                    if (!is_numeric($ex[1]))
+                        return ("Invasion error : bad format unit");
+                    $tab_res[$ex[0]] = intval($ex[1]);
                 }
             }
             else
@@ -358,8 +370,12 @@
             $tab = [];
             foreach ($units as $key)
             {
+                if (strstr($key, ":") == false)
+                    continue ;
                 $ex = explode(":", $key);
-                $tab[$ex[0]] = $ex[1];
+                if (!is_numeric($ex[1]))
+                    return ("Invasion error : bad format unit");
+                $tab[$ex[0]] = intval($ex[1]);
             }
             $city_units = DB::table('cities_units')->where('city_id', '=', $city_id)->first();
             $min_speed = -1;
@@ -427,8 +443,12 @@
             $tab = [];
             foreach ($units as $key)
             {
+                if (strstr($key, ":") == false)
+                    continue ;
                 $ex = explode(":", $key);
-                $tab[$ex[0]] = $ex[1];
+                if (!is_numeric($ex[1]))
+                    return ("Invasion error : bad format unit");
+                $tab[$ex[0]] = intval($ex[1]);
             }
             $city_units = DB::table('cities_units')->where('city_id', '=', $city_id)->first();
             $min_speed = -1;

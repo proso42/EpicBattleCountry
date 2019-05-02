@@ -145,16 +145,16 @@
                     $mount = trans('mount.' . preg_replace('/\s/', "_", DB::table('mounts')->where('id', '=', $unit->mount)->value('mount_name')));
                 else
                     $mount = null;
-                $duration = $this->boost_unit($unit->duration, $city_id, $user_race);
+                $duration = $this->boost_unit($unit->duration, $city_id, $user_race, $unit->mount);
                 $duration = $this->sec_to_date($duration);
                 array_push($allowed_units, ["unit_id" => $unit->id, "name" => trans('unit.' . preg_replace('/\s/', "_", $unit->name)), "food" => $food_required,  "wood" => $wood_required, "rock" => $rock_required, "steel" => $steel_required, "gold" => $gold_required, "duration" => $duration, "items" => $items_required, "mount" => $mount, "life" => $unit->life, "speed" => $unit->speed, "power" => $unit->power, "storage" => $unit->storage]);
             }
             return $allowed_units;
         }
 
-        private function boost_unit($duration, $city_id, $user_race)
+        private function boost_unit($duration, $city_id, $user_race, $mounted)
         {
-            if ($unit->mount > 0)
+            if ($mounted > 0)
             {
                 if ($user_race == 1)
                     $build_boost = "Ecurie";
@@ -221,7 +221,7 @@
             ->where('id', '=', $city_id)
             ->first();
             $all_items = DB::table('forge')->select('name')->get();
-            $duration = $this->boost_unit($unit->duration, $city_id, $user_race);
+            $duration = $this->boost_unit($unit->duration, $city_id, $user_race, $unit->mount);
             $duration = $this->sec_to_date($duration * $quantity);
             $food_required = 0;
             $enough_food = "fas fa-check icon-color-green";
@@ -327,7 +327,7 @@
             $city_res = DB::table('cities')
             ->where('id', '=', $city_id)
             ->first();
-            $duration = $this->boost_unit($unit->duration, $city_id, $user_race);
+            $duration = $this->boost_unit($unit->duration, $city_id, $user_race, $unit->mount);
             $finishing_date = ($duration * $quantity) + time();
             $food_required = 0;
             $wood_required = 0;

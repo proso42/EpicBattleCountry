@@ -170,7 +170,7 @@
                         $gold_required = intval(substr($amount, 0, -1));
                 }
                 $duration = $this->boost_forge($item->duration, $city_id);
-                $duration = $this->sec_to_date($item->duration);
+                $duration = $this->sec_to_date($duration);
                 array_push($allowed_items, ["name" => trans('item.' . preg_replace('/\s/', "_", $item->name)), "item_id" => $item->id, "food_required" => $food_required, "wood_required" => $wood_required, "rock_required" => $rock_required, "steel_required" => $steel_required, "gold_required" => $gold_required, "duration" => $duration]); 
             }
             return $allowed_items;
@@ -185,7 +185,7 @@
             {
                 for ($i = 0; $i < $forge; $i++)
                     $duration *= 0.9;
-                return $duration;
+                return round($duration);
             }
         }
 

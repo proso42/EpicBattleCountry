@@ -520,13 +520,15 @@ module.exports.launch_battle = function (id)
                         let mv = ret[split[0] - 1]['moving_type'];
                         let unit_ref = ret[split[0] - 1]['name'];
                         let speed = ret[split[0] - 1]['speed'];
-                        unit_obj[unit_ref] = {"id":split[0], "quantity":parseInt(split[1]), "life":parseInt(life), "dmg_type":dmg_type, "dmg":parseInt(dmg), "mv":mv, "speed":parseInt(speed)};
+                        let mount = ret[split[0] - 1]['mount'];
+                        unit_obj[unit_ref] = {"id":split[0], "quantity":parseInt(split[1]), "life":parseInt(life), "dmg_type":dmg_type, "dmg":parseInt(dmg), "mv":mv, "speed":parseInt(speed), "mount":parseInt(mount)};
                     }
                     //console.log ("avant boost");
                     //console.log(unit_obj);
                     var tab_p = [];
                     for (var key in unit_obj)
                         tab_p.push(serach_unit_boost(key, unit_obj, city_id));
+                    tab_p.push(mount_boost(key, unit_obj, city_id));
                     Promise.all(tab_p)
                     .then(() => 
                     {
@@ -539,6 +541,34 @@ module.exports.launch_battle = function (id)
                         reject(err);
                     });
                 }); 
+            });
+        }
+
+        function mount_boost(key, obj, city_id)
+        {
+            return new Promise((resolve, reject) => {
+                let unit = obj[key];
+                if (unit['mount'] <= 0)
+                    resolve();
+                else
+                {
+                    mysqlClient.query(`SELECT Elevage FROM cities_techs WHERE city_id = ${city_id}`, function (err, ret){
+                        if (err)
+                            reject(err);
+                        else
+                        {
+                            if (ret[0]['Elevage'] <= 0)
+                                resolve();
+                            else
+                            {
+                                for (let i = 0; i < ret[0]['Elevage']; i++)
+                                    unit['speed'] *= 1.10;
+                                Math.trunc(unit['speed']);
+                                resolve();
+                            }
+                        }
+                    });
+                }
             });
         }
 
@@ -638,14 +668,9 @@ module.exports.launch_battle = function (id)
 
         function calc_new_value(init_val, lvl)
         {
-            boosted = init_val;
-            boost = init_val * 10 / 100;
             for (let i = 0; i < lvl; i++)
-            {
-                boosted += boost;
-                boost = boosted * 10 / 100;
-            }
-            return (Math.trunc(boosted));
+                init_val *= 1.1;
+            return (Math.trunc(init_val));
         }
     });
 }

@@ -186,7 +186,7 @@
             if ($lvl <= 0)
                 return $init_val;
             for ($i = 0; $i < $lvl; $i++)
-                $init_val *= 0.9;
+                $init_val *= 1.1;
             return round($init_val);
         }
 

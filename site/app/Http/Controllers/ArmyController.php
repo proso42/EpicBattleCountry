@@ -193,6 +193,7 @@
         private function boost_unit_stats($city_id, $unit)
         {
             $all_techs = DB::table('techs')->get();
+            $all_items = DB::table('forge')->get();
             $city_techs = DB::table('cities_techs')->where('city_id', '=', $city_id)->first();
             if ($unit->mount > 0)
                 $unit->speed = $this->apply_boost($city_techs->Elevage, $unit->speed);
@@ -201,8 +202,9 @@
             else
             {
                 $split = explode(';', $unit->item_needed);
-                foreach ($split as $item => $tech_id)
+                foreach ($split as $item => $val)
                 {
+                    $tech_id = $all_items[$val - 1]->tech_required;
                     $type_boost = $all_techs[$tech_id - 1]->boost;
                     $tech_ref = preg_replace('/\s/', "_", $all_techs[$tech_id - 1]->name);
                     if ($type_boost == "life" || $type_boost == "power")

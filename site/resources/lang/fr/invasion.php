@@ -27,4 +27,6 @@ return [
     'manual_coord' => 'Coordonnées manuelles',
     'confirm_attack' => 'Confirmer l\'attaque',
     'attack_launch' => 'L\'attaque est lancé !',
+    'limit_attack_reach' => 'Vous ne pouvez pas lancer plus de trois assaults simultanément avec la même ville !',
+    'limit_move_reach' => 'Vous ne pouvez pas déplacer plus de cinq armées simultanément avec la même ville !',
 ];

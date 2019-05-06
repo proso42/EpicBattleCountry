@@ -25,6 +25,22 @@ onmouseup = function(){
     speed = 100;
 };
 
+function limit_attack_reach()
+{
+    document.getElementById("error_limit_attack_reach").style.display = "";
+    setTimeout(() =>{
+        document.getElementById("error_limit_attack_reach").style.display = "none";
+    }, 3000);
+}
+
+function limit_move_reach()
+{
+    document.getElementById("error_limit_move_reach").style.display = "";
+    setTimeout(() =>{
+        document.getElementById("error_limit_move_reach").style.display = "none";
+    }, 3000);
+}
+
 function manual(unit_ref, unit_name, max)
 {
     document.getElementById("quantity_title").textContent = unit_name;

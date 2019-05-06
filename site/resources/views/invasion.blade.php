@@ -43,12 +43,18 @@
                 <div id="error_limit_value" class="explo-input-error" style="display: none;">
                     <p>@lang('error.limit_coord')</p>
                 </div>
+                <div id="error_limit_attack_reach" class="explo-input-error" style="display: none;">
+                    <p>@lang('error.limit_attack_reach')</p>
+                </div>
+                <div id="error_limit_move_reach" class="explo-input-error" style="display: none;">
+                    <p>@lang('error.limit_move_reach')</p>
+                </div>
                 <div id="action_choice" class="row no-gutters">
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-6" onmouseover="show_img('left')" onmouseout="hide_img('left')" onclick="step2bis()">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-6" onmouseover="show_img('left')" onmouseout="hide_img('left')" @if ($limits['attack'] < 3) onclick="step2bis()" @else onclick="limit_attack_reach()" @endif>
                         <div id="left_overlay" class="invasion-left-overlay"></div>
                         <img class="invasion-left-image" src="images/invasion_battle.jpg">
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-6" onmouseover="show_img('right')" onmouseout="hide_img('right')" onclick="step2()">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-6" onmouseover="show_img('right')" onmouseout="hide_img('right')" @if ($limits['move'] < 5) onclick="step2()" @else onclick="limit_move_reach()" @endif>
                         <div id="right_overlay" class="invasion-right-overlay"></div>
                         <img class="invasion-right-image" src="images/invasion_moving.jpg">
                     </div>

@@ -82,7 +82,22 @@
             $user_cities = DB::table('cities')->select('name')->where('owner', '=', $user_id)->where('id', '!=', $city_id)->get();
             $res = ["food" => $food, "wood" => $wood, "rock" => $rock, "steel" => $steel, "gold" => $gold];
             $attackable_cities = $this->get_attackable_cities($city, $user_id);
-            return view('invasion', compact('is_admin', 'res', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold', 'info_unit', 'info_item', 'user_cities', 'attackable_cities'));
+            $limits = $this->get_limits($city_id);
+            return view('invasion', compact('is_admin', 'res', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold', 'info_unit', 'info_item', 'user_cities', 'attackable_cities', 'limits'));
+        }
+
+        private function get_limits($city_id)
+        {
+            $limits = ["attack" => 0, "move" => 0];
+            $traveling_units = DB::table('traveling_units')->where('city_id', '=', $city_id)->where('mission', '=', 5)->orWhere('mission', '=', 7)->get();
+            foreach ($traveling_units as $travel)
+            {
+                if ($travel->mission == 5)
+                    $limits["attack"]++;
+                else
+                    $limits["move"]++;
+            }
+            return $limits;
         }
 
         private function get_attackable_cities($city, $user_id)

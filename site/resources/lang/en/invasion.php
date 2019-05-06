@@ -27,4 +27,6 @@ return [
     'manual_coord' => 'Manual coordinates',
     'confirm_attack' => 'Confirm attack',
     'attack_launch' => 'Attack launch !',
+    'limit_attack_reach' => 'You cannot attack more than three times simultaneously with the same city',
+    'limit_move_reach' => 'You cannot move more than five armys simultaneously with the same city',
 ];

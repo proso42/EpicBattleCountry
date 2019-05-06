@@ -147,6 +147,7 @@
                     $mount = null;
                 $duration = $this->boost_unit($unit->duration, $city_id, $user_race, $unit->mount);
                 $duration = $this->sec_to_date($duration);
+                $this->boost_unit_stats($city_id, $unit);
                 array_push($allowed_units, ["unit_id" => $unit->id, "name" => trans('unit.' . preg_replace('/\s/', "_", $unit->name)), "food" => $food_required,  "wood" => $wood_required, "rock" => $rock_required, "steel" => $steel_required, "gold" => $gold_required, "duration" => $duration, "items" => $items_required, "mount" => $mount, "life" => $unit->life, "speed" => $unit->speed, "power" => $unit->power, "storage" => $unit->storage]);
             }
             return $allowed_units;
@@ -172,10 +173,41 @@
                 return $duration;
             else
             {
-                for ($i = 0; $i < $build_boost; $i++)
+                /*for ($i = 0; $i < $build_boost; $i++)
                     $duration *= 0.9;
-                $duration = round($duration);
+                $duration = round($duration);*/
+                $duration = $this->apply_boost($build_boost, $duration);
                 return ($duration > 0) ? $duration : 1;
+            }
+        }
+
+        private function apply_boost($lvl, $init_val)
+        {
+            if ($lvl <= 0)
+                return $init_val;
+            for ($i = 0; $i < $lvl; $i++)
+                $init_val *= 0.9;
+            return round($init_val);
+        }
+
+        private function boost_unit_stats($city_id, $unit)
+        {
+            $all_techs = DB::table('techs')->get();
+            $city_techs = DB::table('cities_techs')->where('city_id', '=', $city_id)->first();
+            if ($unit->mount > 0)
+                $unit->speed = $this->apply_boost($city_techs->Elevage, $unit->speed);
+            if ($unit->item_needed == "NONE")
+                return ;
+            else
+            {
+                $split = explode(';', $unit->item_needed);
+                foreach ($split as $item => $tech_id)
+                {
+                    $type_boost = $all_techs[$tech_id - 1]->boost;
+                    $tech_ref = preg_replace('/\s/', "_", $all_techs[$tech_id - 1]->name);
+                    if ($type_boost == "life" || $type_boost == "power")
+                        $unit->$type_boost = $this->apply_boost($city_techs->$tech_ref, $unit->$type_boost);
+                }
             }
         }
 

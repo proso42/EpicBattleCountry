@@ -27,6 +27,7 @@ return [
     'rock' => 'Pierre',
     'steel' => 'Fer',
     'gold' => 'Or',
+    'faith' => 'Foi',
     'unit' => 'Unitée',
     'quantity' => 'Quantité',
     'register_success' => 'Votre compte a été créer avec succès ! Un email de confirmation a été envoyé à',

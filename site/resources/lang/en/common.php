@@ -27,6 +27,7 @@ return [
     'rock' => 'Rock',
     'steel' => 'Steel',
     'gold' => 'Gold',
+    'faith' => 'Faith',
     'unit' => 'Unit',
     'quantity' => 'Quantity',
     'register_success' => 'Your account has been successfully created ! A confirmation email has been sent to',

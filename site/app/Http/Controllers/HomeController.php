@@ -82,6 +82,8 @@
             $gold_prod = $city->gold_prod;
             $mount_prod = $city->mount_prod;
             $max_mount = $city->max_mount;
+            $max_faith = $city->max_faith;
+            $faith_prod = $city->faith_prod;
             if ($food > 999999)
                 $compact_food = substr($food, 0, 5) . '...';
             if ($wood > 999999)

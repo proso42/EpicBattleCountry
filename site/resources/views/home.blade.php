@@ -86,6 +86,9 @@
                         <tr>
                             <td>@lang('common.gold')</td><td>{{ $gold_prod * 60 }}</td><td>{{ $max_gold }}</td>
                         </tr>
+                        <tr>
+                            <td>@lang('common.faith')</td><td>{{ $faith_prod * 60 }}</td><td>{{ $max_faith }}</td>
+                        </tr>
                         @if ($mount_prod > 0)
                             <tr>
                                 <td>@lang('army.mount')</td><td>{{ $mount_prod}}</td><td>{{ $max_mount }}</td>

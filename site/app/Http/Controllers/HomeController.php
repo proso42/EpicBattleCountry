@@ -183,7 +183,7 @@
             foreach ($all_attacks as $attack)
                 array_push($enemy_on_the_way, ["wait_id" => $attack->id, "duration" => $attack->finishing_date - time()]);
             return view('home', compact('is_admin', 'food', 'compact_food', 'max_food', 'food_prod', 'wood', 'compact_wood' ,'max_wood', 'wood_prod', 'rock', 'compact_rock', 'max_rock', 'rock_prod', 'steel', 
-                                        'compact_steel', 'max_steel', 'steel_prod', 'gold', 'compact_gold', 'max_gold', 'gold_prod', 'mount_prod', 'max_mount', 'city_name', 'waiting_list', 'items_owned', 
+                                        'compact_steel', 'max_steel', 'steel_prod', 'gold', 'compact_gold', 'max_gold', 'gold_prod', 'max_faith', 'faith_prod', 'mount_prod', 'max_mount', 'city_name', 'waiting_list', 'items_owned', 
                                         'units_owned', 'tables_class', 'user_cities', 'enemy_on_the_way'
             ));
         }

@@ -86,6 +86,7 @@ Route::group(['middleware' => ['logged']], function(){
     Route::post('/attack', 'InvasionController@attack');
     // Divinity endpoints
     Route::get('/divinity', 'DivinityController@index');
+    Route::post('/set_active_divinity', 'DivinityController@set_active_divinity');
 });
 
 // ADMIN ROUTES

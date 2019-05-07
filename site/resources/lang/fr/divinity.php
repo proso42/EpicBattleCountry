@@ -14,5 +14,7 @@ return [
     */
 
     'available_faith' => 'Foi disponible',
+    'blessing' => 'Bénédiction',
+    'disaster' => 'Catastrophe',
     
 ];

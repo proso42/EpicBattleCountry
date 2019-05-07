@@ -31,6 +31,18 @@
                 session()->put(['city_id' => $city_id]);
             }
             $is_admin = DB::table('users')->where('id', '=', $user_id)->value("is_admin");
+            if (session()->has('divinity_active_tab'))
+                $divinity_active_tab = session()->get('divinity_active_tab');
+            else
+            {
+                $divinity_active_tab = "blessing";
+                session()->put(["divinity_active_tab" => "blessing"]);
+            }
+            if ($divinity_active_tab != "blessing" && $divinity_active_tab != "disaster")
+            {
+                $divinity_active_tab = "blessing";
+                session(["divinity_active_tab" => "blessing"]);
+            }
             $city = DB::table('cities')
             ->where('owner', '=', $user_id)
             ->where('id', '=', $city_id)
@@ -61,7 +73,19 @@
                 $compact_steel = substr($steel, 0, 5) . '...';
             if ($gold > 999999)
                 $compact_gold = substr($gold, 0, 5) . '...';
-            return view('divinity', compact('is_admin', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold', 'faith'));
+            return view('divinity', compact('is_admin', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold', 'faith', 'divinity_active_tab'));
+        }
+
+        public function set_active_divinity(Request $request)
+        {
+            $tab = $request['active_tab'];
+            if ($tab != "blessing" && $tab != "disaster")
+                $divinity_active_tab = "blessing";
+            if (session()->has("divinity_active_tab"))
+                session(["divinity_active_tab" => $tab]);
+            else
+                session()->put(["divinity_active_tab" => $tab]);
+            return ("tab saved");
         }
     }
 

@@ -14,5 +14,7 @@ return [
     */
 
     'available_faith' => 'Available faith',
+    'blessing' => 'Blessing',
+    'disaster' => 'Disaster',
     
 ];

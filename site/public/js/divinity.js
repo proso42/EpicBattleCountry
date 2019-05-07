@@ -1,5 +1,7 @@
 var activeTab = document.getElementById("fat").getAttribute("divinity_active_tab") + "-tab";
 var activePanel = document.getElementById("fat").getAttribute("divinity_active_tab") + "-panel";
+document.getElementById(activeTab).className = "col-lg-3 col-md-3 col-sm-3 col-3 generique-tab-active";
+document.getElementById(activePanel).style.display = '';
 
 function switchTab(activeId)
 {

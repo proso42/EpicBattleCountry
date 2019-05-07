@@ -32,5 +32,6 @@
                 <div id="fat" style="display: none" divinity_active_tab="{{ $divinity_active_tab }}" ></div>
             </div>
         </div>
+        <script src="/js/divinity.js"></script>
     </body>
 </html>

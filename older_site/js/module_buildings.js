@@ -66,10 +66,10 @@ module.exports.start = function (id)
 					}
 					else
 						console.log('success DELETE');
-					if (type == "eco_buildings")
+					if (type == "eco_buildings" || type == "religious_buildings")
 					{
 						console.log('eco_buildings')
-						let request5 = `SELECT prod_type, basic_prod, raised_prod FROM eco_buildings WHERE id = ${building_id}`;
+						let request5 = `SELECT prod_type, basic_prod, raised_prod FROM ${type} WHERE id = ${building_id}`;
 						console.log(`r5 : ${request5}`);
 						mysqlClient.query(request5, function (error, results5){
 							if (error)
@@ -113,6 +113,10 @@ module.exports.start = function (id)
 										var p1 = update_mount_prod(next_level, basic_prod, raised_prod, city_id);
 									else if (prod_type == 12)
 										var p1 = update_mount_stock(next_level, basic_prod, raised_prod, city_id);
+									else if (prod_type == 13)
+										var p1 = update_faith_prod(next_level, basic_prod, raised_prod, city_id);
+									else if (prod_type == 14)
+										var p1 = update_faith_stock(next_level, basic_prod, raised_prod, city_id);
 									Promise.all([p1]).then(() => {console.log('fin ok');mysqlClient.end();return (0)}).catch((err) => {console.log(`fin error : ${err}`);mysqlClient.end();return -1});
 								}
 							}
@@ -124,6 +128,24 @@ module.exports.start = function (id)
 		});
 	});
 
+	function update_faith_prod(next_level, basic_prod, raised_prod, city_id)
+	{
+		console.log('faith');
+		return new Promise((resolve, reject) => {
+			let request = 'UPDATE cities SET faith_prod = cities.faith_prod + ';
+			if (next_level == 1)
+				request += `${basic_prod}`;
+			else
+				request += `${raised_prod}`;
+			request += ` WHERE id = ${city_id}`;
+			mysqlClient.query(request, function (err, ret){
+				if (err)
+					reject(err);
+				else
+					resolve();
+			});
+		});
+	}
 
 	function update_food_prod(next_level, basic_prod, raised_prod, city_id)
 	{
@@ -322,6 +344,25 @@ module.exports.start = function (id)
 			let new_max_mount = Math.trunc(basic_prod * Math.pow(raised_prod, next_level - 1));
 			let mount_request = `UPDATE cities SET max_mount = ${new_max_mount} WHERE id = ${city_id}`;
 			mysqlClient.query(mount_request, function (error, ret){
+				if (error)
+					reject();
+				else
+					resolve();
+			});
+		});
+	}
+
+	function update_faith_stock(next_level, basic_prod, raised_prod, city_id)
+	{
+		console.log('faith stock');
+		return new Promise((resolve, reject) => {
+			let faith_request = 'UPDATE cities SET max_faith = cities.max_faith + ';
+			if (next_level == 1)
+				faith_request += basic_prod;
+			else
+				faith_request += raised_prod;
+			faith_request += ` WHERE id = ${city_id}`;
+			mysqlClient.query(faith_request, function (error, ret){
 				if (error)
 					reject();
 				else

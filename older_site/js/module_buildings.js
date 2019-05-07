@@ -66,9 +66,12 @@ module.exports.start = function (id)
 					}
 					else
 						console.log('success DELETE');
+					console.log(type);
+					if (type == "religious_buildings")
+						console.log('AAAAAAAA');
 					if (type == "eco_buildings" || type == "religious_buildings")
 					{
-						console.log('eco_buildings')
+						console.log('go update prod')
 						let request5 = `SELECT prod_type, basic_prod, raised_prod FROM ${type} WHERE id = ${building_id}`;
 						console.log(`r5 : ${request5}`);
 						mysqlClient.query(request5, function (error, results5){

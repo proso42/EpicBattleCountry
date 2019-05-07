@@ -50,6 +50,7 @@
             $gold = $city->gold;
             $compact_gold = $gold;
             $max_gold = $city->max_gold;
+            $faith = $city->faith;
             if ($food > 999999)
                 $compact_food = substr($food, 0, 5) . '...';
             if ($wood > 999999)
@@ -60,7 +61,7 @@
                 $compact_steel = substr($steel, 0, 5) . '...';
             if ($gold > 999999)
                 $compact_gold = substr($gold, 0, 5) . '...';
-            return view('divinity', compact('is_admin', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
+            return view('divinity', compact('is_admin', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold', 'faith'));
         }
     }
 

@@ -102,8 +102,8 @@
 
         private function get_visible_cities($city_id, $user_id, $x_pos, $y_pos)
         {
-            $carthorapher = DB::table('cities_buildings')->where('city_id', '=', $city_id)->value('Cartographe');
-            if ($carthorapher <= 0)
+            $cartographer = DB::table('cities_buildings')->where('city_id', '=', $city_id)->value('Cartographe');
+            if ($cartographer <= 0)
                 return null;
             return (DB::table('cities')
             ->select('name', 'x_pos', 'y_pos')

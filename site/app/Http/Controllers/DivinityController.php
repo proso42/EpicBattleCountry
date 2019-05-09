@@ -181,6 +181,7 @@
             $allowed_disaster = [];
             foreach ($ret as $building => $val)
                 $user_buildings[preg_replace('/_/', " ", $building)] = $val;
+            dd($user_buildings);
             foreach ($all_disaster as $disaster)
             {
                 if ($this->disaster_is_allowed($city_id, $disaster, $user_race, $all_reg_building, $user_buildings, $faith) == false)

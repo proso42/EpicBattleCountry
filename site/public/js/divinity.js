@@ -87,11 +87,11 @@ function select_target_city(name)
         document.getElementById("id_target_city_" + target_city).style.border = "1px solid lightblue";
         document.getElementById("target_city_" + target_city).style.display = "none";
         target_city = "";
-        console.log("target City : " + target_city);
+        console.log("Target City : " + target_city);
         return ;
     }
     target_city = name;
     document.getElementById("id_target_city_" + target_city).style.border = "1px solid lightgreen";
     document.getElementById("target_city_" + target_city).style.display = "";
-    console.log("target City : " + target_city);
+    console.log("Target City2 : " + target_city);
 }

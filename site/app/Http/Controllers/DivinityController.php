@@ -191,7 +191,7 @@
                         "name" => trans('divinity.disaster_' . $disaster->name),
                         "illustration" => "images/" . $disaster->illustration . ".jpg",
                         "faith_cost" => $disaster->faith_cost,
-                        "cool_down" => $disaster->cool_down,
+                        "cool_down" => $this->sec_to_date($disaster->cool_down),
                         "description" => trans('divinity.disaster_desc_' . $disaster->name),
                         "id" => $disaster->id
                     ]);

@@ -50,5 +50,5 @@ return [
     'target' => 'Cible',
     'enemy_attack' => 'Attaque énemie',
     'trigger' => 'Déclencher',
-    'cool_down' => 'Temps de relance',
+    'cool_down' => 'Relance',
 ];

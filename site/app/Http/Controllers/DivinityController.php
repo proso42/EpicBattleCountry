@@ -78,7 +78,7 @@
             $disaster_cool_down = DB::table('magic_cool_down')->where('city_id', '=', $city_id)->where('type', '=', 'disaster')->value('finishing_date');
             if ($disaster_cool_down == null)
             {
-                $allowed_disaster = $this->get_allowed_disaster($city_id, $user_race, $faith);
+                $allowed_disaster = $this->get_allowed_disaster($city_id, $user_race, $util->faith);
                 $visible_cities = Common::get_visible_cities($city_id, $user_id, $util->x_pos, $util->y_pos);
             }
             else

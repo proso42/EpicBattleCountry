@@ -47,8 +47,9 @@ function show_desc(id)
 {
     document.getElementById("overlay").style.display = "";
     document.getElementById("block_desc").style.display = "";
-    document.getElementById("block_desc_p").textContent = document.getElementById("block_desc").getAttribute("desc");
-    document.getElementById("block_desc_title").textContent = document.getElementById("block_desc").getAttribute("name");
+    let elem = document.getElementById(id);
+    document.getElementById("block_desc_p").textContent = elem.getAttribute("desc");
+    document.getElementById("block_desc_title").textContent = elem.getAttribute("name");
 }
 
 function ok()

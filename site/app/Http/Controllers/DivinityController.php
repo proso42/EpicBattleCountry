@@ -44,7 +44,7 @@
                 $divinity_active_tab = "blessing";
                 session(["divinity_active_tab" => "blessing"]);
             }
-            $city = DB::table('cities')
+            /*$city = DB::table('cities')
             ->where('owner', '=', $user_id)
             ->where('id', '=', $city_id)
             ->first();
@@ -73,14 +73,13 @@
             if ($steel > 999999)
                 $compact_steel = substr($steel, 0, 5) . '...';
             if ($gold > 999999)
-                $compact_gold = substr($gold, 0, 5) . '...';
+                $compact_gold = substr($gold, 0, 5) . '...';*/
             $util = Common::get_utilities($user_id, $city_id);
-            dd ($util);
             $disaster_cool_down = DB::table('magic_cool_down')->where('city_id', '=', $city_id)->where('type', '=', 'disaster')->value('finishing_date');
             if ($disaster_cool_down == null)
             {
                 $allowed_disaster = $this->get_allowed_disaster($city_id, $user_race, $faith);
-                $visible_cities = Common::get_visible_cities($city_id, $user_id, $city->x_pos, $city->y_pos);
+                $visible_cities = Common::get_visible_cities($city_id, $user_id, $util->x_pos, $util->y_pos);
             }
             else
             {
@@ -88,7 +87,7 @@
                 $visible_cities = null;
                 $disaster_cool_down = $this->sec_to_date($disaster_cool_down);
             }
-            return view('divinity', compact('is_admin', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold', 'faith', 'divinity_active_tab', 'allowed_disaster', 'disaster_cool_down', 'visible_cities'));
+            return view('divinity', compact('is_admin', 'util', 'divinity_active_tab', 'allowed_disaster', 'disaster_cool_down', 'visible_cities'));
         }
 
         public function set_active_divinity(Request $request)

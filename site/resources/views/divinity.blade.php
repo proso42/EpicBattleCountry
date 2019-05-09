@@ -78,7 +78,7 @@
                 </div>
                 <hr class="signin-footer">
                 <div style="text-align: left">
-                    <span><i class="fas fa-praying-hands"></i> @lang('divinity.available_faith') : </span><span>{{ $faith }}</span>
+                    <span><i class="fas fa-praying-hands"></i> @lang('divinity.available_faith') : </span><span>{{ $util->faith }}</span>
                 </div>
                 <input id="_token" name="_token" type="hidden" value="{{csrf_token()}}">
                 <div id="fat" style="display: none" divinity_active_tab="{{ $divinity_active_tab }}" ></div>

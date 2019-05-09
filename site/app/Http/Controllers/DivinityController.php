@@ -206,6 +206,7 @@
                     ]);
                 }
             }
+            return $allowed_disaster;
         }
     }
 

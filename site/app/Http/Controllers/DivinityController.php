@@ -155,8 +155,8 @@
                     foreach ($split_slash as $sub_elem)
                     {
                         $split_two_points = explode(":", $sub_elem);
-                        $building_lvl = $sub_sub_elem[1];
-                        $building_name = $all_reg_building[$sub_elem[0] - 1]->name;
+                        $building_lvl = $split_two_points[1];
+                        $building_name = $all_reg_building[$split_two_points[0] - 1]->name;
                         if ($user_buildings[$building_name] >= $building_lvl)
                         {
                             $ko_slash = false;

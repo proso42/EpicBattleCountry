@@ -59,7 +59,7 @@
                         <span id="steel" style="margin-left: 5px;margin-top: 7px;margin-right: 10px;@if ($util->steel == $util->max_steel) color:maroon @elseif ($util->steel >= ($util->max_steel / 10 * 9)) color:darkorange @endif">
                             {{ $util->steel }}
                         </span>
-                        <span id="compact_steel" style="margin-left: 5px;margin-top: 7px;margin-right: 10px;@if ($util->steel == $util->max_steel) color:maroon @elseif ($util->steel >= ($util->ax_steel / 10 * 9)) color:darkorange @endif; display: none">
+                        <span id="compact_steel" style="margin-left: 5px;margin-top: 7px;margin-right: 10px;@if ($util->steel == $util->max_steel) color:maroon @elseif ($util->steel >= ($util->max_steel / 10 * 9)) color:darkorange @endif; display: none">
                             {{ $util->compact_steel }}
                         </span>
                     </div>

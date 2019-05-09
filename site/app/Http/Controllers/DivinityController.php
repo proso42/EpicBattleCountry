@@ -74,7 +74,7 @@
             if ($gold > 999999)
                 $compact_gold = substr($gold, 0, 5) . '...';
             $disaster_cool_down = DB::table('magic_cool_down')->where('city_id', '=', $city_id)->where('type', '=', 'disaster')->value('finishing_date');
-            if ($disaster_cool_down != null)
+            if ($disaster_cool_down == null)
             {
                 $allowed_disaster = $this->get_allowed_disaster($city_id, $user_race);
                 $disaster_cool_down = $this->sec_to_date($disaster_cool_down);

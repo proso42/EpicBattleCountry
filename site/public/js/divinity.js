@@ -3,6 +3,9 @@ var activePanel = document.getElementById("fat").getAttribute("divinity_active_t
 document.getElementById(activeTab).className = "col-lg-3 col-md-3 col-sm-4 col-4 generique-tab-active";
 document.getElementById(activePanel).style.display = '';
 
+var disaster_id = -1;
+var target_city = "";
+
 setTimeout(() =>{
     let body_height = document.body.scrollHeight + 20;
     let win_height = window.innerHeight;
@@ -56,4 +59,39 @@ function ok()
 {
     document.getElementById("overlay").style.display = "none";
     document.getElementById("block_desc").style.display = "none";
+}
+
+function choice_disaster_target(id)
+{
+    disaster_id = id;
+    document.getElementById("main_panel").style.display = "none";
+    document.getElementById("block_disaster_target").style.display = "";
+}
+
+function back_to_main()
+{
+    disaster_id = -1;
+    document.getElementById("main_panel").style.display = "";
+    document.getElementById("block_disaster_target").style.display = "none";
+}
+
+function select_target_city(name)
+{
+    if (target_city != "")
+    {
+        document.getElementById("id_target_city_" + target_city).style.border = "1px solid lightblue";
+        document.getElementById("target_city_" + target_city).style.display = "none";
+    }
+    if (target_city == name)
+    {
+        document.getElementById("id_target_city_" + target_city).style.border = "1px solid lightblue";
+        document.getElementById("target_city_" + target_city).style.display = "none";
+        target_city = "";
+        console.log("target City : " + target_city);
+        return ;
+    }
+    target_city = name;
+    document.getElementById("id_target_city_" + target_city).style.border = "1px solid lightgreen";
+    document.getElementById("target_city_" + target_city).style.display = "";
+    console.log("target City : " + target_city);
 }

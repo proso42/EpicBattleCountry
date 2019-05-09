@@ -75,13 +75,17 @@
                 $compact_gold = substr($gold, 0, 5) . '...';
             $disaster_cool_down = DB::table('magic_cool_down')->where('city_id', '=', $city_id)->where('type', '=', 'disaster')->value('finishing_date');
             if ($disaster_cool_down == null)
+            {
                 $allowed_disaster = $this->get_allowed_disaster($city_id, $user_race, $faith);
+                $visible_cities = $this->get_visible_cities($city_id, $user_id);
+            }
             else
             {
                 $allowed_disaster = null;
+                $visible_cities = null;
                 $disaster_cool_down = $this->sec_to_date($disaster_cool_down);
             }
-            return view('divinity', compact('is_admin', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold', 'faith', 'divinity_active_tab', 'allowed_disaster', 'disaster_cool_down'));
+            return view('divinity', compact('is_admin', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold', 'faith', 'divinity_active_tab', 'allowed_disaster', 'disaster_cool_down', 'visible_cities'));
         }
 
         public function set_active_divinity(Request $request)
@@ -94,6 +98,21 @@
             else
                 session()->put(["divinity_active_tab" => $tab]);
             return ("tab saved");
+        }
+
+        private function get_visible_cities($city_id, $user_id)
+        {
+            $carthorapher = DB::table('cities_buildings')->where('city_id', '=', $city_id)->value('Cartographe');
+            if ($carthorapher <= 0)
+                return null;
+            return (DB::table('cities')
+            ->select('name', 'x_pos', 'y_pos')
+            ->where('x_pos' ,'>=', $city->x_pos - $cartographer)
+            ->where('x_pos', '<=', $city->x_pos + $cartographer)
+            ->where('y_pos', '>=', $city->y_pos - $cartographer)
+            ->where('y_pos', '<=', $city->y_pos + $cartographer)
+            ->where('owner', '!=', $user_id)
+            ->get());
         }
 
         private function sec_to_date($duration)

@@ -25,31 +25,56 @@
                         @lang('divinity.disaster')
                     </div>
                 </div>
+                <div id="main_panel">
                 <div id="blessing-panel" class="row" style="margin-top: 30px;display:none">
                     <p>blessing</p>
                 </div>
-                <div id="disaster-panel" class="row" style="margin-top: 30px;display:none">
-                @if ($disaster_cool_down != null)
-                    <div>
-                        <span>@lang('divinity.next_disaster') : </span><span id="disaster_count" duration="{{ $disaster_cool_down }}"></span>
-                    </div>
-                @else
-                    @foreach ($allowed_disaster as $disaster)
-                        <div class="divinity-block" id="disaster_{{ $disaster['id'] }}" desc="{{ $disaster['desc'] }}" name="{{ $disaster['name'] }}">
-                            <div onclick="show_desc('disaster_{{ $disaster['id'] }}')" class="divinity-name">{{ $disaster["name"] }}</div> 
-                            <img class="divinity" style="width:250px;height: 250px;" src="{{ $disaster['illustration'] }}">
-                            <div id="disaster{{ $disaster['id'] }}" name="{{ $disaster['name'] }}" @if ($disaster['faith_cost'] > $faith) class="divinity-button-impossible" @else class="divinity-button" onclick="launch_disaster('{{ $disaster['id'] }}')"@endif>                                
-                                <span>@lang('common.trigger') <i class="fas fa-praying-hands"></i></span>
-                                <div id="disaster_cost{{ $disaster['id'] }}" class="divinity-res-needed">
-                                    <ul>
-                                        <li>@lang('common.faith') : {{ $disaster['faith_cost'] }} <i @if ($disaster['faith_cost'] > $faith) class="fas fa-times icon" @else class="fas fa-check icon" @endif></i></li>
-                                        <li>@lang('common.cool_down') : {{ $disaster['cool_down'] }} <i class="fas fa-clock"></i></li>
-                                    </ul>
-                                </div>                        
+                    <div id="disaster-panel" class="row" style="margin-top: 30px;display:none">
+                        @if ($disaster_cool_down != null)
+                            <div>
+                                <span>@lang('divinity.next_disaster') : </span><span id="disaster_count" duration="{{ $disaster_cool_down }}"></span>
                             </div>
-                        </div>
-                    @endforeach
-                @endif
+                        @else
+                            @foreach ($allowed_disaster as $disaster)
+                                <div class="divinity-block" id="disaster_{{ $disaster['id'] }}" desc="{{ $disaster['desc'] }}" name="{{ $disaster['name'] }}">
+                                    <div onclick="show_desc('disaster_{{ $disaster['id'] }}')" class="divinity-name">{{ $disaster["name"] }}</div> 
+                                    <img class="divinity" style="width:250px;height: 250px;" src="{{ $disaster['illustration'] }}">
+                                    <div id="disaster_id_{{ $disaster['id'] }}" @if ($disaster['faith_cost'] > $faith) class="divinity-button-impossible" @else class="divinity-button" onclick="choice_disaster_target('{{ $disaster['id'] }}')"@endif>                                
+                                        <span>@lang('common.trigger') <i class="fas fa-praying-hands"></i></span>
+                                        <div id="disaster_cost{{ $disaster['id'] }}" class="divinity-res-needed">
+                                            <ul>
+                                                <li>@lang('common.faith') : {{ $disaster['faith_cost'] }} <i @if ($disaster['faith_cost'] > $faith) class="fas fa-times icon" @else class="fas fa-check icon" @endif></i></li>
+                                                <li>@lang('common.cool_down') : {{ $disaster['cool_down'] }} <i class="fas fa-clock"></i></li>
+                                            </ul>
+                                        </div>                        
+                                    </div>
+                                </div>
+                            @endforeach
+                        @endif
+                    </div>
+                </div>
+                <div id="block_disaster_target" style="display: none; text-align:center; margin-top: 25px;">
+                    <h2>@lang('exploration.dest')</h2>
+                    <hr class="signin-footer">
+                    @if ($visible_cities != null)
+                        <h4>@lang('common.target')</h3>
+                        @foreach ($visible_cities as $target)
+                            <div onclick="select_target_city('{{ $target->name }}')" id="id_target_city_{{ $target->name }}" class="row divinity-line" style="cursor: pointer;text-align: center;">
+                                <span style="text-align: left" class="offset-lg-4 offset-md-4 offset-sm-4 offset-4 col-lg-8 col-md-8 col-sm-8 col-8">
+                                    {{ $target->name }} ({{ $target->x_pos }}/{{ $target->y_pos }})
+                                    <i id="target_city_{{ $target->name }}" class="fas fa-check icon-color-green" style="display: none"></i>
+                                </span>
+                            </div>
+                        @endforeach
+                    @endif
+                    <hr class="signin-footer">
+                    <h4>@lang('invasion.manual_coord')</h3>
+                    <div id="inputs_dest" class="explo-dest" style="margin-top: 0px">
+                        <input id="dest_x" type="text" class="explo-input" placeholder="X">
+                        <input id="dest_y" type="text" class="explo-input" placeholder="Y">
+                    </div>
+                    <input id="button_confirm_dest" type="button" class="home-button" value="@lang('common.confirm')">
+                    <input onclick="back_to_main()" id="cancel_button1" type="button" class="home-button-cancel" value="@lang('common.return')">
                 </div>
                 <hr class="signin-footer">
                 <div style="text-align: left">

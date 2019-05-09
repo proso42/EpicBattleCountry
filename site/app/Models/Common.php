@@ -10,7 +10,7 @@
 
     class Common
     {
-        public function get_visible_cities($city_id, $user_id, $x_pos, $y_pos)
+        public static function get_visible_cities($city_id, $user_id, $x_pos, $y_pos)
         {
             $cartographer = DB::table('cities_buildings')->where('city_id', '=', $city_id)->value('Cartographe');
             if ($cartographer <= 0)

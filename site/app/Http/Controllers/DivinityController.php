@@ -3,6 +3,7 @@
     namespace App\Http\Controllers;
 
     use App\Http\Requests;
+    use App\Models\Common;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\DB;
     use Illuminate\Support\Facades\Auth;
@@ -77,7 +78,7 @@
             if ($disaster_cool_down == null)
             {
                 $allowed_disaster = $this->get_allowed_disaster($city_id, $user_race, $faith);
-                $visible_cities = $this->get_visible_cities($city_id, $user_id, $city->x_pos, $city->y_pos);
+                $visible_cities = Common::get_visible_cities($city_id, $user_id, $city->x_pos, $city->y_pos);
             }
             else
             {

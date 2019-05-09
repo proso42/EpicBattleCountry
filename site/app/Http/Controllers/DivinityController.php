@@ -74,6 +74,8 @@
                 $compact_steel = substr($steel, 0, 5) . '...';
             if ($gold > 999999)
                 $compact_gold = substr($gold, 0, 5) . '...';
+            $util = Common::get_utilities($user_id, $city_id);
+            dd ($util);
             $disaster_cool_down = DB::table('magic_cool_down')->where('city_id', '=', $city_id)->where('type', '=', 'disaster')->value('finishing_date');
             if ($disaster_cool_down == null)
             {
@@ -99,21 +101,6 @@
             else
                 session()->put(["divinity_active_tab" => $tab]);
             return ("tab saved");
-        }
-
-        private function get_visible_cities($city_id, $user_id, $x_pos, $y_pos)
-        {
-            $cartographer = DB::table('cities_buildings')->where('city_id', '=', $city_id)->value('Cartographe');
-            if ($cartographer <= 0)
-                return null;
-            return (DB::table('cities')
-            ->select('name', 'x_pos', 'y_pos')
-            ->where('x_pos' ,'>=', $x_pos - $cartographer)
-            ->where('x_pos', '<=', $x_pos + $cartographer)
-            ->where('y_pos', '>=', $y_pos - $cartographer)
-            ->where('y_pos', '<=', $y_pos + $cartographer)
-            ->where('owner', '!=', $user_id)
-            ->get());
         }
 
         private function sec_to_date($duration)

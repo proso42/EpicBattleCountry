@@ -180,7 +180,10 @@
             $user_buildings = [];
             $allowed_disaster = [];
             foreach ($ret as $building => $val)
+            {
+                echo "a ";
                 $user_buildings[preg_replace('/_/', " ", $building)] = $val;
+            }
             dd($ret);
             foreach ($all_disaster as $disaster)
             {

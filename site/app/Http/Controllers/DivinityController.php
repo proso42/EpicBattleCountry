@@ -78,6 +78,7 @@
                 $allowed_disaster = $this->get_allowed_disaster($city_id, $user_race, $faith);
             else
             {
+                echo ("impossible");
                 $allowed_disaster = null;
                 $disaster_cool_down = $this->sec_to_date($disaster_cool_down);
             }

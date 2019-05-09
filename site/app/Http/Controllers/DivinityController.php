@@ -147,7 +147,10 @@
                     if ($user_race != $disaster->race_required)
                         return false;
                 }
+                echo "race ok";
             }
+            else
+                echo "race ok";
             // this part check if the player has all required buildings to use this disaster
             if ($disaster->building_required != "NONE")
             {
@@ -170,10 +173,15 @@
                     if ($ko_slash == true)
                         return false;
                 }
+                echo "buildings ok";
             }
+            else
+                echo "buildings ok";
             // this part check if player has enough faith to use the disaster
             if ($faith < $disaster->faith_cost)
                 return false;
+            else
+                return true;
         }
 
         private function get_allowed_disaster($city_id, $user_race, $faith)
@@ -191,6 +199,7 @@
                     continue;
                 else
                 {
+                    echo "a ";
                     array_push($allowed_disaster, [
                         "name" => trans('divinity.disaster_' . $disaster->name),
                         "illustration" => "images/" . $disaster->illustration . ".jpg",

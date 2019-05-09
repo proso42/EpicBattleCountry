@@ -35,7 +35,7 @@
                                 <span>@lang('common.trigger') <i class="fas fa-praying-hands"></i></span>
                                 <div id="disaster_cost{{ $disaster['id'] }}" class="divinity-res-needed">
                                     <ul>
-                                        <li>@lang('divinity.faith') : {{ $disaster['faith_cost'] }} <i @if ($disaster['faith_cost'] > $faith) class="fas fa-times icon" @else class="fas fa-check icon" @endif></i></li>
+                                        <li>@lang('common.faith') : {{ $disaster['faith_cost'] }} <i @if ($disaster['faith_cost'] > $faith) class="fas fa-times icon" @else class="fas fa-check icon" @endif></i></li>
                                         <li>@lang('common.cool_down') : {{ $disaster['cool_down'] }} <i class="fas fa-clock"></i></li>
                                     </ul>
                                 </div>                        

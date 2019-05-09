@@ -39,11 +39,11 @@
                                 <div class="divinity-block" id="disaster_{{ $disaster['id'] }}" desc="{{ $disaster['desc'] }}" name="{{ $disaster['name'] }}">
                                     <div onclick="show_desc('disaster_{{ $disaster['id'] }}')" class="divinity-name">{{ $disaster["name"] }}</div> 
                                     <img class="divinity" style="width:250px;height: 250px;" src="{{ $disaster['illustration'] }}">
-                                    <div id="disaster_id_{{ $disaster['id'] }}" @if ($disaster['faith_cost'] > $faith) class="divinity-button-impossible" @else class="divinity-button" onclick="choice_disaster_target('{{ $disaster['id'] }}')"@endif>                                
+                                    <div id="disaster_id_{{ $disaster['id'] }}" @if ($disaster['faith_cost'] > $util->faith) class="divinity-button-impossible" @else class="divinity-button" onclick="choice_disaster_target('{{ $disaster['id'] }}')"@endif>                                
                                         <span>@lang('common.trigger') <i class="fas fa-praying-hands"></i></span>
                                         <div id="disaster_cost{{ $disaster['id'] }}" class="divinity-res-needed">
                                             <ul>
-                                                <li>@lang('common.faith') : {{ $disaster['faith_cost'] }} <i @if ($disaster['faith_cost'] > $faith) class="fas fa-times icon" @else class="fas fa-check icon" @endif></i></li>
+                                                <li>@lang('common.faith') : {{ $disaster['faith_cost'] }} <i @if ($disaster['faith_cost'] > $util->faith) class="fas fa-times icon" @else class="fas fa-check icon" @endif></i></li>
                                                 <li>@lang('common.cool_down') : {{ $disaster['cool_down'] }} <i class="fas fa-clock"></i></li>
                                             </ul>
                                         </div>                        

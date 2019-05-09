@@ -18,7 +18,7 @@ return [
     'disaster' => 'Catastrophe',
     'next_disaster' => 'La prochaine catastrophe sera disponible dans',
     'disaster_earthquake' => 'Tremblement de terre',
-    'disaster_sandstrom' => 'Tempête de sable',
+    'disaster_sandstorm' => 'Tempête de sable',
     'disaster_grasshopper_invasion' => 'Invasion de sauterelles',
     'disaster_plague' => 'Peste',
     'disaster_forest_fire' => 'Feu de fôret',

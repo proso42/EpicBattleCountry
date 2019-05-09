@@ -50,4 +50,5 @@ return [
     'target' => 'Target',
     'enemy_attack' => 'Enemy attack',
     'trigger' => 'Trigger',
+    'cool_down' => 'Cool down',
 ];

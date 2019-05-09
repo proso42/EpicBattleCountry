@@ -15,12 +15,12 @@
         <div class="row">
             <div class="offset-lg-1 offset-md-1 offset-sm-1 offset-1 col-lg-2 col-md-2 col-sm-2 col-2">
                 <div class="row">
-                    <div  class="col-lg-12" title="Food : {{ $food }}">
+                    <div  class="col-lg-12" title="Food : {{ $util->food }}">
                         <img src="images/food.png">
-                        <span id="food" style="margin-left: 5px;margin-top: 7px;margin-right: 10px; @if ($food == $max_food) color:maroon @elseif ($food >= ($max_food / 10 * 9)) color:darkorange @endif">
+                        <span id="food" style="margin-left: 5px;margin-top: 7px;margin-right: 10px; @if ($util->food == $util->max_food) color:maroon @elseif ($util->food >= ($util->max_food / 10 * 9)) color:darkorange @endif">
                             {{ $util->food }}
                         </span>
-                        <span id="compact_food" style="margin-left: 5px;margin-top: 7px;margin-right: 10px;@if ($food == $max_food) color:maroon @elseif ($food >= ($max_food / 10 * 9)) color:darkorange @endif; display: none">
+                        <span id="compact_food" style="margin-left: 5px;margin-top: 7px;margin-right: 10px;@if ($util->food == $util->max_food) color:maroon @elseif ($util->food >= ($util->max_food / 10 * 9)) color:darkorange @endif; display: none">
                             {{ $util->compact_food }}
                         </span>
                     </div>
@@ -28,12 +28,12 @@
             </div>
             <div class="col-lg-2 col-md-2 col-sm-2 col-2">
                 <div class="row">
-                    <div  class="col-lg-12" title="Wood : {{ $wood }}">
+                    <div  class="col-lg-12" title="Wood : {{ $util->wood }}">
                         <img src="images/wood.png">
-                        <span id="wood" style="margin-left: 5px;margin-top: 7px;margin-right: 10px;@if ($wood == $max_wood) color:maroon @elseif ($wood >= ($max_wood / 10 * 9)) color:darkorange @endif">
+                        <span id="wood" style="margin-left: 5px;margin-top: 7px;margin-right: 10px;@if ($util->wood == $util->max_wood) color:maroon @elseif ($util->wood >= ($util->max_wood / 10 * 9)) color:darkorange @endif">
                             {{ $util->wood }}
                         </span>
-                        <span id="compact_wood" style="margin-left: 5px;margin-top: 7px;margin-right: 10px;@if ($wood == $max_wood) color:maroon @elseif ($wood >= ($max_wood / 10 * 9)) color:darkorange @endif; display: none">
+                        <span id="compact_wood" style="margin-left: 5px;margin-top: 7px;margin-right: 10px;@if ($util->wood == $util->max_wood) color:maroon @elseif ($util->wood >= ($util->max_wood / 10 * 9)) color:darkorange @endif; display: none">
                             {{ $util->compact_wood }}
                         </span>
                     </div>
@@ -41,12 +41,12 @@
             </div>
             <div class="col-lg-2 col-md-2 col-sm-2 col-2">
                 <div class="row">
-                    <div  class="col-lg-12" title="Rock : {{ $rock }}">
+                    <div  class="col-lg-12" title="Rock : {{ $util->rock }}">
                         <img src="images/rock.png">
-                        <span id="rock" style="margin-left: 5px;margin-top: 7px;margin-right: 10px;@if ($rock == $max_rock) color:maroon @elseif ($rock >= ($max_rock / 10 * 9)) color:darkorange @endif">
+                        <span id="rock" style="margin-left: 5px;margin-top: 7px;margin-right: 10px;@if ($util->rock == $util->max_rock) color:maroon @elseif ($util->rock >= ($util->max_rock / 10 * 9)) color:darkorange @endif">
                             {{ $util->rock }}
                         </span>
-                        <span id="compact_rock" style="margin-left: 5px;margin-top: 7px;margin-right: 10px;@if ($rock == $max_rock) color:maroon @elseif ($rock >= ($max_rock / 10 * 9)) color:darkorange @endif; display: none">
+                        <span id="compact_rock" style="margin-left: 5px;margin-top: 7px;margin-right: 10px;@if ($util->rock == $util->max_rock) color:maroon @elseif ($util->rock >= ($util->max_rock / 10 * 9)) color:darkorange @endif; display: none">
                             {{ $util->compact_rock }}
                         </span>
                     </div>
@@ -54,12 +54,12 @@
             </div>
             <div class="col-lg-2 col-md-2 col-sm-2 col-2">
                 <div class="row">
-                    <div  class="col-lg-12" title="Steel : {{ $steel }}">
+                    <div  class="col-lg-12" title="Steel : {{ $util->steel }}">
                         <img src="images/steel.png">
-                        <span id="steel" style="margin-left: 5px;margin-top: 7px;margin-right: 10px;@if ($steel == $max_steel) color:maroon @elseif ($steel >= ($max_steel / 10 * 9)) color:darkorange @endif">
+                        <span id="steel" style="margin-left: 5px;margin-top: 7px;margin-right: 10px;@if ($util->steel == $util->max_steel) color:maroon @elseif ($util->steel >= ($util->max_steel / 10 * 9)) color:darkorange @endif">
                             {{ $util->steel }}
                         </span>
-                        <span id="compact_steel" style="margin-left: 5px;margin-top: 7px;margin-right: 10px;@if ($steel == $max_steel) color:maroon @elseif ($steel >= ($max_steel / 10 * 9)) color:darkorange @endif; display: none">
+                        <span id="compact_steel" style="margin-left: 5px;margin-top: 7px;margin-right: 10px;@if ($util->steel == $util->max_steel) color:maroon @elseif ($util->steel >= ($util->ax_steel / 10 * 9)) color:darkorange @endif; display: none">
                             {{ $util->compact_steel }}
                         </span>
                     </div>
@@ -67,12 +67,12 @@
             </div>
             <div class="col-lg-2 col-md-2 col-sm-2 col-2">
                 <div class="row">
-                    <div  class="col-lg-12" title="Gold : {{ $gold }}">
+                    <div  class="col-lg-12" title="Gold : {{ $util->gold }}">
                         <img src="images/gold.png">
-                        <span id="gold" style="margin-left: 5px;margin-top: 7px;margin-right: 10px;@if ($gold == $max_gold) color:maroon @elseif ($gold >= ($max_gold / 10 * 9)) color:darkorange @endif">
+                        <span id="gold" style="margin-left: 5px;margin-top: 7px;margin-right: 10px;@if ($util->gold == $util->max_gold) color:maroon @elseif ($util->gold >= ($util->max_gold / 10 * 9)) color:darkorange @endif">
                             {{ $util->gold }}
                         </span>
-                        <span id="compact_gold" style="margin-left: 5px;margin-top: 7px;margin-right: 10px;@if ($gold == $max_gold) color:maroon @elseif ($gold >= ($max_gold / 10 * 9)) color:darkorange @endif; display: none">
+                        <span id="compact_gold" style="margin-left: 5px;margin-top: 7px;margin-right: 10px;@if ($util->gold == $util->max_gold) color:maroon @elseif ($util->gold >= ($util->max_gold / 10 * 9)) color:darkorange @endif; display: none">
                             {{ $util->compact_gold }}
                         </span>
                     </div>

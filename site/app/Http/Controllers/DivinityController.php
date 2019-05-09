@@ -177,11 +177,7 @@
             }
             else
                 echo "buildings ok";
-            // this part check if player has enough faith to use the disaster
-            if ($faith < $disaster->faith_cost)
-                return false;
-            else
-                return true;
+            return true;
         }
 
         private function get_allowed_disaster($city_id, $user_race, $faith)

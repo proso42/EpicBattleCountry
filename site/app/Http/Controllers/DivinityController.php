@@ -78,11 +78,9 @@
                 $allowed_disaster = $this->get_allowed_disaster($city_id, $user_race, $faith);
             else
             {
-                echo ("impossible");
                 $allowed_disaster = null;
                 $disaster_cool_down = $this->sec_to_date($disaster_cool_down);
             }
-            dd($allowed_disaster);
             return view('divinity', compact('is_admin', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold', 'faith', 'divinity_active_tab', 'allowed_disaster', 'disaster_cool_down'));
         }
 
@@ -147,10 +145,7 @@
                     if ($user_race != $disaster->race_required)
                         return false;
                 }
-                echo "race ok";
             }
-            else
-                echo "race ok";
             // this part check if the player has all required buildings to use this disaster
             if ($disaster->building_required != "NONE")
             {
@@ -173,10 +168,7 @@
                     if ($ko_slash == true)
                         return false;
                 }
-                echo "buildings ok";
             }
-            else
-                echo "buildings ok";
             return true;
         }
 
@@ -195,7 +187,6 @@
                     continue;
                 else
                 {
-                    echo "a ";
                     array_push($allowed_disaster, [
                         "name" => trans('divinity.disaster_' . $disaster->name),
                         "illustration" => "images/" . $disaster->illustration . ".jpg",

@@ -8,6 +8,13 @@
         <link rel="stylesheet" type="text/css" href="css/style.css"/>
     </head>
     <body>
+    <div id="overlay" class="home-overlay" style="display: none">
+        </div>
+        <div id="block_desc" class="divinity-block-desc" style="display: none">
+            <h2 id="block_desc_title"></h2>
+            <p id="block_desc_p"></p>
+            <input onclick="ok()" id="ok_button" type="button" class="return-button" value="@lang('common.ok')">
+        </div>
             @include('default')
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding-right: 10px;">
                 <div class="row">
@@ -28,8 +35,8 @@
                     </div>
                 @else
                     @foreach ($allowed_disaster as $disaster)
-                        <div class="divinity-block">
-                            <div class="divinity-name">{{ $disaster["name"] }}</div> 
+                        <div class="divinity-block" id="disaster_{{ $disaster['id'] }}" desc="{{ $disaster['desc'] }}" name="{{ $disaster['name'] }}">
+                            <div onclick="show_desc('disaster_{{ $disaster['id'] }}')" class="divinity-name">{{ $disaster["name"] }}</div> 
                             <img class="divinity" style="width:250px;height: 250px;" src="{{ $disaster['illustration'] }}">
                             <div id="disaster{{ $disaster['id'] }}" name="{{ $disaster['name'] }}" @if ($disaster['faith_cost'] > $faith) class="divinity-button-impossible" @else class="divinity-button" onclick="launch_disaster('{{ $disaster['id'] }}')"@endif>                                
                                 <span>@lang('common.trigger') <i class="fas fa-praying-hands"></i></span>

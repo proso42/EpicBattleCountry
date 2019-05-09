@@ -232,10 +232,10 @@
             if ($duration % 60 > 0)
                 $new_duration = ($duration % 60) . " m " . $new_duration;
             $duration = floor($duration / 60);
-            if ($duration < 60)
+            if ($duration < 24)
                 return ($duration . " h " . $new_duration);
-            if ($duration % 60 > 0)
-                $new_duration = ($duration % 60) . " h " . $new_duration;
+            if ($duration % 24 > 0)
+                $new_duration = ($duration % 24) . " h " . $new_duration;
             $duration = floor($duration / 24);
             if ($new_duration !== "")
                 return ($duration . " j " . $new_duration);

@@ -49,4 +49,5 @@ return [
     'dest' => 'Destination',
     'target' => 'Target',
     'enemy_attack' => 'Enemy attack',
+    'trigger' => 'Trigger',
 ];

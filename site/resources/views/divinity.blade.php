@@ -22,7 +22,27 @@
                     <p>blessing</p>
                 </div>
                 <div id="disaster-panel" class="row" style="margin-top: 30px;display:none">
-                    <p>disaster</p>
+                @if ($disaster_cool_down != null)
+                    <div>
+                        <span>@lang('divinity.next_disaster') : </span><span id="disaster_count" duration="{{ $disaster_cool_down }}"></span>
+                    </div>
+                @else
+                    @foreach ($allowed_disaster as $disaster)
+                        <div class="divinity-block">
+                            <div class="divinity-name">{{ $disaster["name"] }}</div> 
+                            <img class="divinity" style="width:250px;height: 250px;" src="{{ $disaster['illustration'] }}">
+                            <div id="disaster{{ $disaster['id'] }}" name="{{ $disaster['name'] }}" @if ($disaster['faith_cost'] > $faith) class="divinity-button-impossible" @else class="divinity-button" onclick="launch_disaster('{{ $disaster['id'] }}')"@endif>                                
+                                <span>@lang('common.trigger') <i class="fas fa-praying-hands"></i></span>
+                                <div id="disaster_cost{{ $disaster['id'] }}" class="disaster-res-needed">
+                                    <ul>
+                                        <li>@lang('divinity.faith') : {{ $disaster['faith_cost'] }} <i @if ($disaster['faith_cost'] > $faith) class="fas fa-times icon" @else class="fas fa-check icon" @endif></i></li>
+                                        <li>@lang('common.cool_down') : {{ $disaster['cool_down'] }} <i class="fas fa-clock"></i></li>
+                                    </ul>
+                                </div>                        
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
                 </div>
                 <hr class="signin-footer">
                 <div style="text-align: left">

@@ -27,7 +27,7 @@
                 <div id="eco-buildings" class="row" style="margin-top: 30px;display:none">
                     @foreach ($allowed_eco_buildings as $build)
                         <div class="building-block">
-                            <div class="building-name">{{ $build["name"] }} @if ($build["niv"] > 0) {{$build["niv"]}} @endif</div> <!-- NEED TRAD -->
+                            <div class="building-name">{{ $build["name"] }} @if ($build["niv"] > 0) {{$build["niv"]}} @endif</div> 
                             <img class="building" style="width:250px;height: 250px;" src="{{ $build['illustration'] }}">
                             @if ($build['status'] == "OK")
                                 <div id="eco_{{ $build['id'] }}" name="{{ $build['name'] }}" @if ($build['food_required'] > $food || $build['wood_required'] > $wood || $build['rock_required'] > $rock || $build['steel_required'] > $steel || $build['gold_required'] > $gold) class="building-button-impossible" @else class="building-button"
@@ -67,7 +67,7 @@
                 <div id="army-buildings" class="row" style="margin-top: 30px;display:none">
                 @foreach ($allowed_army_buildings as $build)
                     <div class="building-block">
-                        <div class="building-name">{{ $build["name"] }} @if ($build["niv"] > 0) {{$build["niv"]}} @endif</div> <!-- NEED TRAD -->
+                        <div class="building-name">{{ $build["name"] }} @if ($build["niv"] > 0) {{$build["niv"]}} @endif</div> 
                         <img class="building" style="width:250px;height: 250px;" src="{{ $build['illustration'] }}">
                         @if ($build['status'] == "OK")
                             <div id="army_{{ $build['id'] }}" name="{{ $build['name'] }}" @if ($build['food_required'] > $food || $build['wood_required'] > $wood || $build['rock_required'] > $rock || $build['steel_required'] > $steel || $build['gold_required'] > $gold) class="building-button-impossible" @else class="building-button"
@@ -107,7 +107,7 @@
                 <div id="religious-buildings" class="row" style="margin-top: 30px;display:none">
                 @foreach ($allowed_religious_buildings as $build)
                     <div class="building-block">
-                        <div class="building-name">{{ $build["name"] }} @if ($build["niv"] > 0) {{$build["niv"]}} @endif</div> <!-- NEED TRAD -->
+                        <div class="building-name">{{ $build["name"] }} @if ($build["niv"] > 0) {{$build["niv"]}} @endif</div> 
                         <img class="building" style="width:250px;height: 250px;" src="{{ $build['illustration'] }}">
                         @if ($build['status'] == "OK")
                             <div id="religious_{{ $build['id'] }}" name="{{ $build['name'] }}" @if ($build['food_required'] > $food || $build['wood_required'] > $wood || $build['rock_required'] > $rock || $build['steel_required'] > $steel || $build['gold_required'] > $gold) class="building-button-impossible" @else class="building-button"
@@ -147,7 +147,7 @@
                 <div id="tech-buildings" class="row" style="margin-top: 30px;display:none">
                 @foreach ($allowed_tech_buildings as $build)
                     <div class="building-block">
-                        <div class="building-name">{{ $build["name"] }} @if ($build["niv"] > 0) {{$build["niv"]}} @endif</div> <!-- NEED TRAD -->
+                        <div class="building-name">{{ $build["name"] }} @if ($build["niv"] > 0) {{$build["niv"]}} @endif</div> 
                         <img class="building" style="width:250px;height: 250px;" src="{{ $build['illustration'] }}">
                         @if ($build['status'] == "OK")
                             <div id="tech_{{ $build['id'] }}" name="{{ $build['name'] }}" @if ($build['food_required'] > $food || $build['wood_required'] > $wood || $build['rock_required'] > $rock || $build['steel_required'] > $steel || $build['gold_required'] > $gold) class="building-button-impossible" @else class="building-button"

@@ -176,15 +176,11 @@
         {
             $all_disaster = DB::table('disasters')->get();
             $all_reg_building = DB::table('religious_buildings')->get();
-            $ret = DB::table('cities_buildings')->where('city_id', '=', $city_id)->get();
+            $ret = DB::table('cities_buildings')->where('city_id', '=', $city_id)->first();
             $user_buildings = [];
             $allowed_disaster = [];
             foreach ($ret as $building => $val)
-            {
-                echo "a ";
                 $user_buildings[preg_replace('/_/', " ", $building)] = $val;
-            }
-            dd($ret);
             foreach ($all_disaster as $disaster)
             {
                 if ($this->disaster_is_allowed($city_id, $disaster, $user_race, $all_reg_building, $user_buildings, $faith) == false)

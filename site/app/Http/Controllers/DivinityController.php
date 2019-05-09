@@ -77,7 +77,7 @@
             if ($disaster_cool_down == null)
             {
                 $allowed_disaster = $this->get_allowed_disaster($city_id, $user_race, $faith);
-                $visible_cities = $this->get_visible_cities($city_id, $user_id);
+                $visible_cities = $this->get_visible_cities($city_id, $user_id, $city->x_pos, $city->y_pos);
             }
             else
             {
@@ -100,17 +100,17 @@
             return ("tab saved");
         }
 
-        private function get_visible_cities($city_id, $user_id)
+        private function get_visible_cities($city_id, $user_id, $x_pos, $y_pos)
         {
             $carthorapher = DB::table('cities_buildings')->where('city_id', '=', $city_id)->value('Cartographe');
             if ($carthorapher <= 0)
                 return null;
             return (DB::table('cities')
             ->select('name', 'x_pos', 'y_pos')
-            ->where('x_pos' ,'>=', $city->x_pos - $cartographer)
-            ->where('x_pos', '<=', $city->x_pos + $cartographer)
-            ->where('y_pos', '>=', $city->y_pos - $cartographer)
-            ->where('y_pos', '<=', $city->y_pos + $cartographer)
+            ->where('x_pos' ,'>=', $x_pos - $cartographer)
+            ->where('x_pos', '<=', $x_pos + $cartographer)
+            ->where('y_pos', '>=', $y_pos - $cartographer)
+            ->where('y_pos', '<=', $y_pos + $cartographer)
             ->where('owner', '!=', $user_id)
             ->get());
         }

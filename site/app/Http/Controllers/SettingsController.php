@@ -16,7 +16,7 @@
             $user_id =  $user_id = session()->get('user_id');
             $user_infos = DB::table('users')
             ->select('lang', 'email', 'login', 'race', 'is_premium', 'is_admin')
-            ->where('id', '=', session()->get($user_id))
+            ->where('id', '=', $user_id)
             ->first();
             $is_admin = $user_infos->is_admin;
             $user_lang = $user_infos->lang;

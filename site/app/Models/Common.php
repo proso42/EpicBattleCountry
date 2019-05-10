@@ -90,7 +90,7 @@
                 return ($duration . " j");
         }
 
-        public function get_exp_value($niv, $basic_value, $levelup)
+        public static function get_exp_value($niv, $basic_value, $levelup)
         {
             $final_value = intval($basic_value);
             for ($i = 1; $i <= $niv; $i++)

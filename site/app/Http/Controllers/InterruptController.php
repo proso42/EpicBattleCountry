@@ -3,6 +3,7 @@
     namespace App\Http\Controllers;
 
     use App\Http\Requests;
+    use App\Models\Common;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\DB;
     use Illuminate\Support\Facades\Auth;
@@ -58,15 +59,15 @@
             foreach ($res_refund as $res => $amount)
             {
                 if ($amount[-1] == "F")
-                    $food_refund = $this->get_exp_value($niv, intval(substr($amount, 0, -1)), $levelup_price);
+                    $food_refund = Common::get_exp_value($niv, intval(substr($amount, 0, -1)), $levelup_price);
                 else if ($amount[-1] == "W")
-                    $wood_refund = $this->get_exp_value($niv, intval(substr($amount, 0, -1)), $levelup_price);
+                    $wood_refund = Common::get_exp_value($niv, intval(substr($amount, 0, -1)), $levelup_price);
                 else if ($amount[-1] == "R")
-                    $rock_refund = $this->get_exp_value($niv, intval(substr($amount, 0, -1)), $levelup_price);
+                    $rock_refund = Common::get_exp_value($niv, intval(substr($amount, 0, -1)), $levelup_price);
                 else if ($amount[-1] == "S")
-                    $steel_refund = $this->get_exp_value($niv, intval(substr($amount, 0, -1)), $levelup_price);
+                    $steel_refund = Common::get_exp_value($niv, intval(substr($amount, 0, -1)), $levelup_price);
                 else
-                    $gold_refund = $this->get_exp_value($niv, intval(substr($amount, 0, -1)), $levelup_price);
+                    $gold_refund = Common::get_exp_value($niv, intval(substr($amount, 0, -1)), $levelup_price);
             }
             $city_infos = DB::table('cities')
             ->select('food', 'max_food', 'wood', 'max_wood', 'rock', 'max_rock', 'steel', 'max_steel', 'gold', 'max_gold')
@@ -266,14 +267,6 @@
             ->where('id', '=', $unit->id)
             ->delete();
             return ($infos);
-        }
-
-        private function get_exp_value($niv, $basic_value, $levelup)
-        {
-            $final_value = intval($basic_value);
-            for ($i = 1; $i <= $niv; $i++)
-                $final_value *= $levelup;
-            return floor($final_value);
         }
             
     }

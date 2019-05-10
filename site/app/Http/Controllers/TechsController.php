@@ -135,21 +135,21 @@
                     foreach ($res_required as $res => $amount)
                     {
                         if ($amount[-1] == "F")
-                            $food_required = $this->get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);
+                            $food_required = Common::get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);
                         else if ($amount[-1] == "W")
-                            $wood_required = $this->get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);
+                            $wood_required = Common::get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);
                         else if ($amount[-1] == "R")
-                            $rock_required = $this->get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);
+                            $rock_required = Common::get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);
                         else if ($amount[-1] == "S")
-                            $steel_required = $this->get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);
+                            $steel_required = Common::get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);
                         else
-                            $gold_required = $this->get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);
+                            $gold_required = Common::get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);
                     }
                     $illustration = "images/" . $val->illustration . ".jpg";
                     if ($status === "OK")
                     {
                         $duration = $this->boost_lab($val->duration, $city_id);
-                        $duration = Common::sec_to_date($this->get_exp_value($niv, $duration, $val->levelup_price));
+                        $duration = Common::sec_to_date(Common::get_exp_value($niv, $duration, $val->levelup_price));
                     }
                     else
                         $duration = $is_wip - time();
@@ -172,14 +172,6 @@
                     $duration *= 0.9;
                 return round($duration);
             }
-        }
-
-        private function get_exp_value($niv, $basic_value, $levelup)
-        {
-            $final_value = intval($basic_value);
-            for ($i = 1; $i <= $niv; $i++)
-                $final_value *= $levelup;
-            return floor($final_value);
         }
 
         private function date_to_sec($date)
@@ -305,15 +297,15 @@
                     foreach ($res_required as $res => $amount)
                     {
                         if ($amount[-1] == "F")
-                            $food_required = $this->get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);
+                            $food_required = Common::get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);
                         else if ($amount[-1] == "W")
-                            $wood_required = $this->get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);
+                            $wood_required = Common::get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);
                         else if ($amount[-1] == "R")
-                            $rock_required = $this->get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);
+                            $rock_required = Common::get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);
                         else if ($amount[-1] == "S")
-                            $steel_required = $this->get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);
+                            $steel_required = Common::get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);
                         else
-                            $gold_required = $this->get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);
+                            $gold_required = Common::get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);
                     }
                     if ($food_required > $city_res->food || $wood_required > $city_res->wood || $rock_required > $city_res->rock || $steel_required > $city_res->steel || $gold_required > $city_res->gold)
                         array_push($forbidden_techs, ["tech_id" => "tech_" . $val->id, "food_required" => $food_required, "wood_required" => $wood_required, "rock_required" => $rock_required, "steel_required" => $steel_required, "gold_required" => $gold_required]);
@@ -375,20 +367,20 @@
             $name = preg_replace('/\s/', "_", DB::table('techs')->where('id', '=', $tech_id)->value("name"));
             $niv = DB::table('cities_techs')->where('city_id', '=', $city_id)->value($name);
             $duration = $this->boost_lab($tech->duration, $city_id);
-            $finishing_date = $this->get_exp_value($niv, $duration, $tech->levelup_price) + time();
+            $finishing_date = Common::get_exp_value($niv, $duration, $tech->levelup_price) + time();
             $res_required = explode(";", $tech->basic_price);
             foreach ($res_required as $res => $amount)
             {
                 if ($amount[-1] == "F")
-                    $food_required = $this->get_exp_value($niv, intval(substr($amount, 0, -1)), $tech->levelup_price);
+                    $food_required = Common::get_exp_value($niv, intval(substr($amount, 0, -1)), $tech->levelup_price);
                 else if ($amount[-1] == "W")
-                    $wood_required = $this->get_exp_value($niv, intval(substr($amount, 0, -1)), $tech->levelup_price);
+                    $wood_required = Common::get_exp_value($niv, intval(substr($amount, 0, -1)), $tech->levelup_price);
                 else if ($amount[-1] == "R")
-                    $rock_required = $this->get_exp_value($niv, intval(substr($amount, 0, -1)), $tech->levelup_price);
+                    $rock_required = Common::get_exp_value($niv, intval(substr($amount, 0, -1)), $tech->levelup_price);
                 else if ($amount[-1] == "S")
-                    $steel_required = $this->get_exp_value($niv, intval(substr($amount, 0, -1)), $tech->levelup_price);
+                    $steel_required = Common::get_exp_value($niv, intval(substr($amount, 0, -1)), $tech->levelup_price);
                 else
-                    $gold_required = $this->get_exp_value($niv, intval(substr($amount, 0, -1)), $tech->levelup_price);
+                    $gold_required = Common::get_exp_value($niv, intval(substr($amount, 0, -1)), $tech->levelup_price);
             }
             $city_res = DB::table('cities')
             ->select('food', 'wood', 'rock', 'steel', 'gold')

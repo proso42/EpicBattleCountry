@@ -146,9 +146,6 @@
                 return $duration;
             else
             {
-                /*for ($i = 0; $i < $build_boost; $i++)
-                    $duration *= 0.9;
-                $duration = round($duration);*/
                 $duration = $this->apply_boost($build_boost, $duration);
                 return ($duration > 0) ? $duration : 1;
             }

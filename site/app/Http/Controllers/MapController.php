@@ -93,7 +93,7 @@
                     array_push($visible_cells, ["type" => trans('map.' . $cell->type), "format_type" => $cell->type, "x_pos" => $cell->x_pos, "y_pos" => $cell->y_pos, "color" => "black", "background-color" => "lemonchiffon", "class" => $cell->icon]); 
 
             }
-            return view('map', compact('is_admin', 'move_map' ,'cartographer', 'visible_cells', 'x_pos', 'city_x', 'y_pos', 'city_y', 'util'));
+            return view('map', compact('is_admin', 'move_map' ,'cartographer', 'visible_cells', 'x_pos', 'y_pos', 'util'));
         }
     }
 

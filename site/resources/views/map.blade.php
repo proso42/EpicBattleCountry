@@ -28,10 +28,10 @@
                     <p>@lang('map.need_cartographer')</p>
                 @else
                     @if ($move_map == 1)
-                        <i class="fas fa-arrow-circle-left" style="cursor: pointer" onclick="move_map({{ $x_pos - $city_x + 1}}, {{ $y_pos - $city_y}})"></i>
-                        <i class="fas fa-arrow-circle-up" style="cursor: pointer" onclick="move_map({{ $x_pos - $city_x}}, {{ $y_pos - $city_y + 1 }})"></i>
-                        <i class="fas fa-arrow-circle-down" style="cursor: pointer" onclick="move_map({{ $x_pos - $city_x}}, {{ $y_pos - $city_y - 1 }})"></i>
-                        <i class="fas fa-arrow-circle-right" style="cursor: pointer" onclick="move_map({{ $x_pos - $city_x - 1}}, {{ $y_pos - $city_y}})"></i>
+                        <i class="fas fa-arrow-circle-left" style="cursor: pointer" onclick="move_map({{ $x_pos - $util->x_pos + 1}}, {{ $y_pos - $util->y_pos}})"></i>
+                        <i class="fas fa-arrow-circle-up" style="cursor: pointer" onclick="move_map({{ $x_pos - $util->x_pos}}, {{ $y_pos - $util->y_pos + 1 }})"></i>
+                        <i class="fas fa-arrow-circle-down" style="cursor: pointer" onclick="move_map({{ $x_pos - $util->x_pos}}, {{ $y_pos - $util->y_pos - 1 }})"></i>
+                        <i class="fas fa-arrow-circle-right" style="cursor: pointer" onclick="move_map({{ $x_pos - $util->x_pos - 1}}, {{ $y_pos - $util->y_pos}})"></i>
                     @endif
                     <br/>
                     <div style="display: inline-block">

@@ -149,7 +149,7 @@
                     if ($status === "OK")
                     {
                         $duration = $this->boost_lab($val->duration, $city_id);
-                        $duration = Common::sec_to_date($this->get_exp_value($niv, $duration, $levelup));
+                        $duration = Common::sec_to_date($this->get_exp_value($niv, $duration, $val->levelup_price));
                     }
                     else
                         $duration = $is_wip - time();

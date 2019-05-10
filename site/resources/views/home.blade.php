@@ -72,26 +72,26 @@
                             <td>@lang('home.res')</td><td>@lang('home.prod_per_h')</td><td>@lang('home.max_storage')</td>
                         </tr>
                         <tr>
-                            <td>@lang('common.food')</td><td>{{ $food_prod * 60 }}</td><td>{{ $max_food }}</td>
+                            <td>@lang('common.food')</td><td>{{ $util->food_prod * 60 }}</td><td>{{ $util->max_food }}</td>
                         </tr>
                         <tr>
-                            <td>@lang('common.wood')</td><td>{{ $wood_prod * 60 }}</td><td>{{ $max_wood }}</td>
+                            <td>@lang('common.wood')</td><td>{{ $util->wood_prod * 60 }}</td><td>{{ $util->max_wood }}</td>
                         </tr>
                         <tr>
-                            <td>@lang('common.rock')</td><td>{{ $rock_prod * 60 }}</td><td>{{ $max_rock }}</td>
+                            <td>@lang('common.rock')</td><td>{{ $util->rock_prod * 60 }}</td><td>{{ $util->max_rock }}</td>
                         </tr>
                         <tr>
-                            <td>@lang('common.steel')</td><td>{{ $steel_prod * 60 }}</td><td>{{ $max_steel }}</td>
+                            <td>@lang('common.steel')</td><td>{{ $util->steel_prod * 60 }}</td><td>{{ $util->max_steel }}</td>
                         </tr>
                         <tr>
-                            <td>@lang('common.gold')</td><td>{{ $gold_prod * 60 }}</td><td>{{ $max_gold }}</td>
+                            <td>@lang('common.gold')</td><td>{{ $util->gold_prod * 60 }}</td><td>{{ $util->max_gold }}</td>
                         </tr>
                         <tr>
-                            <td>@lang('common.faith')</td><td>{{ $faith_prod }}</td><td>{{ $max_faith }}</td>
+                            <td>@lang('common.faith')</td><td>{{ $util->faith_prod }}</td><td>{{ $util->max_faith }}</td>
                         </tr>
-                        @if ($mount_prod > 0)
+                        @if ($util->mount_prod > 0)
                             <tr>
-                                <td>@lang('army.mount')</td><td>{{ $mount_prod }}</td><td>{{ $max_mount }}</td>
+                                <td>@lang('army.mount')</td><td>{{ $util->mount_prod }}</td><td>{{ $util->max_mount }}</td>
                             </tr>
                         @endif
                     </table>

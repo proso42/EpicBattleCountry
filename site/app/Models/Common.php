@@ -10,7 +10,7 @@
 
     class Common
     {
-        public static function get_visible_cities($city_id, $user_id, $x_pos, $y_pos)
+        public static function get_targetable_cities($city_id, $user_id, $x_pos, $y_pos)
         {
             $cartographer = DB::table('cities_buildings')->where('city_id', '=', $city_id)->value('Cartographe');
             if ($cartographer <= 0)
@@ -22,6 +22,18 @@
             ->where('y_pos', '>=', $y_pos - $cartographer)
             ->where('y_pos', '<=', $y_pos + $cartographer)
             ->where('owner', '!=', $user_id)
+            ->get());
+        }
+
+        public static function get_visible_cells($x_pos, $y_pos, $cartographer)
+        {
+            return (DB::table('map')
+            ->where('x_pos' ,'>=', $x_pos - $cartographer)
+            ->where('x_pos', '<=', $x_pos + $cartographer)
+            ->where('y_pos', '>=', $y_pos - $cartographer)
+            ->where('y_pos', '<=', $y_pos + $cartographer)
+            ->orderBy('y_pos', 'desc')
+            ->orderBy('x_pos', 'asc')
             ->get());
         }
 

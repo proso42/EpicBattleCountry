@@ -49,37 +49,8 @@
             $csrf_token_email = csrf_token();
             $csrf_token_password = csrf_token();
             session()->put(['csrf_token_login' => $csrf_token_login, 'csrf_token_email' => $csrf_token_email, 'csrf_token_password' => $csrf_token_password]);
-            $city = DB::table('cities')
-            ->where('owner', '=', session()->get('user_id'))
-            ->where('id', '=', session()->get('city_id'))
-            ->first();
-            $city_name = $city->name;
-            $food = $city->food;
-            $compact_food = $food;
-            $max_food = $city->max_food;
-            $wood = $city->wood;
-            $compact_wood = $wood;
-            $max_wood = $city->max_wood;
-            $rock = $city->rock;
-            $compact_rock = $rock;
-            $max_rock = $city->max_rock;
-            $steel = $city->steel;
-            $compact_steel = $steel;
-            $max_steel = $city->max_steel;
-            $gold = $city->gold;
-            $compact_gold = $gold;
-            $max_gold = $city->max_gold;
-            if ($food > 999999)
-                $compact_food = substr($food, 0, 5) . '...';
-            if ($wood > 999999)
-                $compact_wood = substr($wood, 0, 5) . '...';
-            if ($rock > 999999)
-                $compact_rock = substr($rock, 0, 5) . '...';
-            if ($steel > 999999)
-                $compact_steel = substr($steel, 0, 5) . '...';
-            if ($gold > 999999)
-                $compact_gold = substr($gold, 0, 5) . '...';
-            return view('settings', compact('is_admin', 'user_lang', 'alt_lang', 'complete_email', 'user_email', 'complete_login', 'user_login', 'user_race', 'is_premium', 'csrf_token_login', 'csrf_token_email', 'csrf_token_password', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
+            $util = Common::get_utilities($user_id, $city_id);
+            return view('settings', compact('is_admin', 'user_lang', 'alt_lang', 'complete_email', 'user_email', 'complete_login', 'user_login', 'user_race', 'is_premium', 'csrf_token_login', 'csrf_token_email', 'csrf_token_password', 'util'));
         }
 
         public function reset_login(Request $request)

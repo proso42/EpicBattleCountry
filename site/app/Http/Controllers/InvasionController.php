@@ -3,6 +3,7 @@
     namespace App\Http\Controllers;
 
     use App\Http\Requests;
+    use App\Models\Common;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\DB;
     use Illuminate\Support\Facades\Auth;
@@ -31,35 +32,7 @@
                 session()->put(['city_id' => $city_id]);
             }
             $is_admin = DB::table('users')->where('id', '=', $user_id)->value("is_admin");
-            $city = DB::table('cities')
-            ->where('owner', '=', $user_id)
-            ->where('id', '=', $city_id)
-            ->first();
-            $food = $city->food;
-            $compact_food = $food;
-            $max_food = $city->max_food;
-            $wood = $city->wood;
-            $compact_wood = $wood;
-            $max_wood = $city->max_wood;
-            $rock = $city->rock;
-            $compact_rock = $rock;
-            $max_rock = $city->max_rock;
-            $steel = $city->steel;
-            $compact_steel = $steel;
-            $max_steel = $city->max_steel;
-            $gold = $city->gold;
-            $compact_gold = $gold;
-            $max_gold = $city->max_gold;
-            if ($food > 999999)
-                $compact_food = substr($food, 0, 5) . '...';
-            if ($wood > 999999)
-                $compact_wood = substr($wood, 0, 5) . '...';
-            if ($rock > 999999)
-                $compact_rock = substr($rock, 0, 5) . '...';
-            if ($steel > 999999)
-                $compact_steel = substr($steel, 0, 5) . '...';
-            if ($gold > 999999)
-                $compact_gold = substr($gold, 0, 5) . '...';
+            $util = Common::get_utilities($user_id, $city_id);
             $city_unit = DB::table('cities_units')->where('city_id', '=', $city_id)->first();
             $units = DB::table('units')->select('name', 'storage')->get();
             $city_items = DB::table('cities')->select('basic_shield', 'basic_armor', 'basic_sword', 'basic_spear', 'basic_bow')->where('id', '=', $city_id)->first();
@@ -80,10 +53,10 @@
                 $info_item[$item] = ["ref" => $item, "name" => trans('item.' . $item), "quantity" => $quantity];
             }
             $user_cities = DB::table('cities')->select('name')->where('owner', '=', $user_id)->where('id', '!=', $city_id)->get();
-            $res = ["food" => $food, "wood" => $wood, "rock" => $rock, "steel" => $steel, "gold" => $gold];
-            $attackable_cities = $this->get_attackable_cities($city, $user_id);
+            $res = ["food" => $util->food, "wood" => $util->wood, "rock" => $util->rock, "steel" => $util->steel, "gold" => $util->gold];
+            $attackable_cities = Common::get_targetable_cities($city_id, $user_id, $util->x_pos, $util->y_pos);
             $limits = $this->get_limits($city_id);
-            return view('invasion', compact('is_admin', 'res', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold', 'info_unit', 'info_item', 'user_cities', 'attackable_cities', 'limits'));
+            return view('invasion', compact('is_admin', 'res', 'util', 'info_unit', 'info_item', 'user_cities', 'attackable_cities', 'limits'));
         }
 
         private function get_limits($city_id)
@@ -98,21 +71,6 @@
                     $limits["move"]++;
             }
             return $limits;
-        }
-
-        private function get_attackable_cities($city, $user_id)
-        {
-            $cartographer = DB::table('cities_buildings')->where('city_id', '=', $city->id)->value('Cartographe');
-            if ($cartographer <= 0)
-                return null;
-            return (DB::table('cities')
-            ->select('name', 'x_pos', 'y_pos')
-            ->where('x_pos' ,'>=', $city->x_pos - $cartographer)
-            ->where('x_pos', '<=', $city->x_pos + $cartographer)
-            ->where('y_pos', '>=', $city->y_pos - $cartographer)
-            ->where('y_pos', '<=', $city->y_pos + $cartographer)
-            ->where('owner', '!=', $user_id)
-            ->get());
         }
 
         private function get_unit_storage($units, $name)

@@ -17,25 +17,25 @@
                                 <div class="tech-name">{{ $tech["name"] }} @if ($tech["niv"] > 0) {{$tech["niv"]}} @endif</div>
                                 <img class="tech" style="width:250px;height: 250px;" src="{{ $tech['illustration'] }}">
                                 @if ($tech['status'] == "OK")
-                                    <div id="tech_{{ $tech['tech_id'] }}" @if ($tech['food_required'] > $food || $tech['wood_required'] > $wood || $tech['rock_required'] > $rock || $tech['steel_required'] > $steel || $tech['gold_required'] > $gold) class="tech-button-impossible" @else class="tech-button"
+                                    <div id="tech_{{ $tech['tech_id'] }}" @if ($tech['food_required'] > $util->food || $tech['wood_required'] > $util->wood || $tech['rock_required'] > $util->rock || $tech['steel_required'] > $util->steel || $tech['gold_required'] > $util->gold) class="tech-button-impossible" @else class="tech-button"
                                     onclick="update_tech('{{ $tech['tech_id'] }}')"@endif>
                                         @lang('tech.search') <i class="fas fa-flask icon"></i>
                                         <div id="res_tech_{{ $tech['tech_id'] }}" class="tech-res-needed">
                                             <ul>
                                             @if ($tech['food_required'] > 0)
-                                                    <li>@lang('common.food') : {{ $tech['food_required'] }} @if ($tech['food_required'] > $food) <i id="icon_food_tech_{{ $tech['tech_id'] }}" class="fas fa-times icon"></i> @else <i id="icon_food_tech_{{ $tech['tech_id'] }}" class="fas fa-check icon"></i> @endif</li>
+                                                    <li>@lang('common.food') : {{ $tech['food_required'] }} @if ($tech['food_required'] > $util->food) <i id="icon_food_tech_{{ $tech['tech_id'] }}" class="fas fa-times icon"></i> @else <i id="icon_food_tech_{{ $tech['tech_id'] }}" class="fas fa-check icon"></i> @endif</li>
                                                 @endif
                                                 @if ($tech['wood_required'] > 0)
-                                                    <li>@lang('common.wood') : {{ $tech['wood_required'] }} @if ($tech['wood_required'] > $wood) <i id="icon_wood_tech_{{ $tech['tech_id'] }}" class="fas fa-times icon"></i> @else <i id="icon_wood_tech_{{ $tech['tech_id'] }}" class="fas fa-check icon"></i> @endif</li>
+                                                    <li>@lang('common.wood') : {{ $tech['wood_required'] }} @if ($tech['wood_required'] > $util->wood) <i id="icon_wood_tech_{{ $tech['tech_id'] }}" class="fas fa-times icon"></i> @else <i id="icon_wood_tech_{{ $tech['tech_id'] }}" class="fas fa-check icon"></i> @endif</li>
                                                 @endif
                                                 @if ($tech['rock_required'] > 0)
-                                                    <li>@lang('common.rock') : {{ $tech['rock_required'] }} @if ($tech['rock_required'] > $rock) <i id="icon_rock_tech_{{ $tech['tech_id'] }}" class="fas fa-times icon"></i> @else <i id="icon_rock_tech_{{ $tech['tech_id'] }}" class="fas fa-check icon"></i> @endif</li>
+                                                    <li>@lang('common.rock') : {{ $tech['rock_required'] }} @if ($tech['rock_required'] > $util->rock) <i id="icon_rock_tech_{{ $tech['tech_id'] }}" class="fas fa-times icon"></i> @else <i id="icon_rock_tech_{{ $tech['tech_id'] }}" class="fas fa-check icon"></i> @endif</li>
                                                 @endif
                                                 @if ($tech['steel_required'] > 0)
-                                                    <li>@lang('common.steel') : {{ $tech['steel_required'] }} @if ($tech['steel_required'] > $steel) <i id="icon_steel_tech_{{ $tech['tech_id'] }}" class="fas fa-times icon"></i> @else <i id="icon_steel_tech_{{ $tech['tech_id'] }}" class="fas fa-check icon"></i> @endif</li>
+                                                    <li>@lang('common.steel') : {{ $tech['steel_required'] }} @if ($tech['steel_required'] > $util->steel) <i id="icon_steel_tech_{{ $tech['tech_id'] }}" class="fas fa-times icon"></i> @else <i id="icon_steel_tech_{{ $tech['tech_id'] }}" class="fas fa-check icon"></i> @endif</li>
                                                 @endif
                                                 @if ($tech['gold_required'] > 0)
-                                                    <li>@lang('common.gold') : {{ $tech['gold_required'] }} @if ($tech['gold_required'] > $gold) <i id="icon_gold_tech_{{ $tech['tech_id'] }}" class="fas fa-times icon"></i> @else <i id="icon_gold_tech_{{ $tech['tech_id'] }}" class="fas fa-check icon"></i> @endif</li>
+                                                    <li>@lang('common.gold') : {{ $tech['gold_required'] }} @if ($tech['gold_required'] > $gutil->old) <i id="icon_gold_tech_{{ $tech['tech_id'] }}" class="fas fa-times icon"></i> @else <i id="icon_gold_tech_{{ $tech['tech_id'] }}" class="fas fa-check icon"></i> @endif</li>
                                                 @endif
                                                 <li>@lang('common.time') : {{ $tech['duration'] }} <i class="fas fa-clock icon"></i></li>
                                             </ul>

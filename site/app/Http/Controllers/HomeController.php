@@ -3,6 +3,7 @@
     namespace App\Http\Controllers;
 
     use App\Http\Requests;
+    use App\Models\Common;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\DB;
     use Illuminate\Support\Facades\Auth;
@@ -36,10 +37,6 @@
                 session()->put(['city_id' => $city_id]);
             }
             $is_admin = DB::table('users')->where('id', '=', $user_id)->value("is_admin");
-            $city = DB::table('cities')
-            ->where('owner', '=', $user_id)
-            ->where('id', '=', $city_id)
-            ->first();
             $prod_table_class = session()->get('prod_table_status');
             if ($prod_table_class == null)
             {
@@ -59,48 +56,14 @@
                 $unit_table_class = 1;
             }
             $tables_class = ["prod" => $prod_table_class, "item" => $item_table_class, "unit" => $unit_table_class];
-            $city_name = $city->name;
-            $food = $city->food;
-            $compact_food = $food;
-            $max_food = $city->max_food;
-            $food_prod = $city->food_prod;
-            $wood = $city->wood;
-            $compact_wood = $wood;
-            $max_wood = $city->max_wood;
-            $wood_prod = $city->wood_prod;
-            $rock = $city->rock;
-            $compact_rock = $rock;
-            $max_rock = $city->max_rock;
-            $rock_prod = $city->rock_prod;
-            $steel = $city->steel;
-            $compact_steel = $steel;
-            $max_steel = $city->max_steel;
-            $steel_prod = $city->steel_prod;
-            $gold = $city->gold;
-            $compact_gold = $gold;
-            $max_gold = $city->max_gold;
-            $gold_prod = $city->gold_prod;
-            $mount_prod = $city->mount_prod;
-            $max_mount = $city->max_mount;
-            $max_faith = $city->max_faith;
-            $faith_prod = $city->faith_prod;
-            if ($food > 999999)
-                $compact_food = substr($food, 0, 5) . '...';
-            if ($wood > 999999)
-                $compact_wood = substr($wood, 0, 5) . '...';
-            if ($rock > 999999)
-                $compact_rock = substr($rock, 0, 5) . '...';
-            if ($steel > 999999)
-                $compact_steel = substr($steel, 0, 5) . '...';
-            if ($gold > 999999)
-                $compact_gold = substr($gold, 0, 5) . '...';
+            $util = Common::get_utilities($user_id, $city_id);
             $all_items = DB::table('forge')
             ->get();
             $items_owned = array();
             foreach ($all_items as $item)
             {
                 $item_format = preg_replace('/\s/', '_', $item->name);
-                $item_quantity = $city->$item_format;
+                $item_quantity = $util->$item_format;
                 if ($item_quantity > 0)
                     array_push($items_owned, ["name" => trans('item.' . $item_format), "quantity" => $item_quantity]);
             }
@@ -114,16 +77,16 @@
                 if ($unit_quantity > 0)
                     array_push($units_owned, ["name" => trans('unit.' . $unit_format), "quantity" => $unit_quantity]);
             }
-            if ($city->Cheval > 0)
-                array_push($units_owned, ["name" => trans('mount.Cheval'), "quantity" => $city->Cheval]);
-            if ($city->Likorne > 0)
-                array_push($units_owned, ["name" => trans('mount.Likorne'), "quantity" => $city->Likorne]);
-            if ($city->Bouc_de_guerre > 0)
-                array_push($units_owned, ["name" => trans('mount.Bouc_de_guerre'), "quantity" => $city->Bouc_de_guerre]);
-            if ($city->Loup > 0)
-                array_push($units_owned, ["name" => trans('mount.Loup'), "quantity" => $city->Loup]);
-            if ($city->Dragon)
-                array_push($units_owned, ["name" => trans('mount.Dragon'), "quantity" => $city->Dragon]);
+            if ($util->Cheval > 0)
+                array_push($units_owned, ["name" => trans('mount.Cheval'), "quantity" => $util->Cheval]);
+            if ($util->Likorne > 0)
+                array_push($units_owned, ["name" => trans('mount.Likorne'), "quantity" => $util->Likorne]);
+            if ($util->Bouc_de_guerre > 0)
+                array_push($units_owned, ["name" => trans('mount.Bouc_de_guerre'), "quantity" => $util->Bouc_de_guerre]);
+            if ($util->Loup > 0)
+                array_push($units_owned, ["name" => trans('mount.Loup'), "quantity" => $util->Loup]);
+            if ($util->Dragon)
+                array_push($units_owned, ["name" => trans('mount.Dragon'), "quantity" => $util->Dragon]);
             $waiting_buildings = DB::table('waiting_buildings')
             ->where('city_id', '=', $city_id)
             ->get();
@@ -182,10 +145,7 @@
             $all_attacks = DB::table('traveling_units')->where('mission', '=', 5)->where('ending_point', '=', $city->x_pos . "/" . $city->y_pos)->get();
             foreach ($all_attacks as $attack)
                 array_push($enemy_on_the_way, ["wait_id" => $attack->id, "duration" => $attack->finishing_date - time()]);
-            return view('home', compact('is_admin', 'food', 'compact_food', 'max_food', 'food_prod', 'wood', 'compact_wood' ,'max_wood', 'wood_prod', 'rock', 'compact_rock', 'max_rock', 'rock_prod', 'steel', 
-                                        'compact_steel', 'max_steel', 'steel_prod', 'gold', 'compact_gold', 'max_gold', 'gold_prod', 'max_faith', 'faith_prod', 'mount_prod', 'max_mount', 'city_name', 'waiting_list', 'items_owned', 
-                                        'units_owned', 'tables_class', 'user_cities', 'enemy_on_the_way'
-            ));
+            return view('home', compact('is_admin', 'util', 'waiting_list', 'items_owned', 'units_owned', 'tables_class', 'user_cities', 'enemy_on_the_way'));
         }
 
         public function switch_city(Request $request)

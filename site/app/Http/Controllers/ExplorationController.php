@@ -3,6 +3,7 @@
     namespace App\Http\Controllers;
 
     use App\Http\Requests;
+    use App\Models\Common;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\DB;
     use Illuminate\Support\Facades\Auth;
@@ -31,36 +32,7 @@
                 session()->put(['city_id' => $city_id]);
             }
             $is_admin = DB::table('users')->where('id', '=', $user_id)->value("is_admin");
-            $city = DB::table('cities')
-            ->where('owner', '=', $user_id)
-            ->where('id', '=', $city_id)
-            ->first();
-            $city_name = $city->name;
-            $food = $city->food;
-            $compact_food = $food;
-            $max_food = $city->max_food;
-            $wood = $city->wood;
-            $compact_wood = $wood;
-            $max_wood = $city->max_wood;
-            $rock = $city->rock;
-            $compact_rock = $rock;
-            $max_rock = $city->max_rock;
-            $steel = $city->steel;
-            $compact_steel = $steel;
-            $max_steel = $city->max_steel;
-            $gold = $city->gold;
-            $compact_gold = $gold;
-            $max_gold = $city->max_gold;
-            if ($food > 999999)
-                $compact_food = substr($food, 0, 5) . '...';
-            if ($wood > 999999)
-                $compact_wood = substr($wood, 0, 5) . '...';
-            if ($rock > 999999)
-                $compact_rock = substr($rock, 0, 5) . '...';
-            if ($steel > 999999)
-                $compact_steel = substr($steel, 0, 5) . '...';
-            if ($gold > 999999)
-                $compact_gold = substr($gold, 0, 5) . '...';
+            $util = Common::get_utilities($user_id, $city_id);
             if ($user_race == 1)
                 $explo_unit_name = "Explorateur";
             else if ($user_race == 2)
@@ -71,7 +43,7 @@
                 $explo_unit_name = "Eclaireur";
             $allowed = DB::table('cities_techs')->where('city_id', '=', $city_id)->value('Exploration');
             if ($allowed <= 0)
-                return view('exploration', compact('allowed', 'is_admin', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold'));
+                return view('exploration', compact('allowed', 'is_admin', 'util'));
             $waiting_scouting = DB::table('traveling_units')->where('city_id', '=', $city_id)->where('mission', '>=', 1)->where('mission', '<=', 4)->count();
             $explo = [];
             $unit_avaible = DB::table('cities_units')->where('city_id', '=', $city_id)->value($explo_unit_name);
@@ -80,7 +52,7 @@
             $explo[1] = ["unit_required" => 1, "food_required" => 100, "wood_required" => 0, "rock_required" => 0, "steel_required" => 0, "gold_required" => 0, 'illustration' => "images/explo_dungeon.jpg"]; //Donjon
             $explo[2] = ["unit_required" => 1, "food_required" => 100, "wood_required" => 0, "rock_required" => 0, "steel_required" => 0, "gold_required" => 0, 'illustration' => "images/explo_battlefield.jpg"]; //Champs de battaille
             $explo[3] = ["unit_required" => 5, "food_required" => 100, "wood_required" => 10000, "rock_required" => 5000, "steel_required" => 2500, "gold_required" => 1000, 'illustration' => "images/explo_colonize.jpg"]; //Nouvelle ville
-            return view('exploration', compact('allowed', 'waiting_scouting', 'is_admin', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold', 'explo_unit_name', 'unit_avaible', 'explo'));
+            return view('exploration', compact('allowed', 'waiting_scouting', 'is_admin', 'util', 'explo_unit_name', 'unit_avaible', 'explo'));
         }
 
         private function sec_to_date($duration)

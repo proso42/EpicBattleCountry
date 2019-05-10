@@ -3,6 +3,7 @@
     namespace App\Http\Controllers;
 
     use App\Http\Requests;
+    use App\Models\Common;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\DB;
     use Illuminate\Support\Facades\Auth;
@@ -43,40 +44,12 @@
                 session()->put(['city_id' => $city_id]);
             }
             $is_admin = DB::table('users')->where('id', '=', $user_id)->value("is_admin");
-            $city = DB::table('cities')
-            ->where('owner', '=', $user_id)
-            ->where('id', '=', $city_id)
-            ->first();
-            $food = $city->food;
-            $compact_food = $food;
-            $max_food = $city->max_food;
-            $wood = $city->wood;
-            $compact_wood = $wood;
-            $max_wood = $city->max_wood;
-            $rock = $city->rock;
-            $compact_rock = $rock;
-            $max_rock = $city->max_rock;
-            $steel = $city->steel;
-            $compact_steel = $steel;
-            $max_steel = $city->max_steel;
-            $gold = $city->gold;
-            $compact_gold = $gold;
-            $max_gold = $city->max_gold;
-            if ($food > 999999)
-                $compact_food = substr($food, 0, 5) . '...';
-            if ($wood > 999999)
-                $compact_wood = substr($wood, 0, 5) . '...';
-            if ($rock > 999999)
-                $compact_rock = substr($rock, 0, 5) . '...';
-            if ($steel > 999999)
-                $compact_steel = substr($steel, 0, 5) . '...';
-            if ($gold > 999999)
-                $compact_gold = substr($gold, 0, 5) . '...';
+            $util = Common::get_utilities($user_id, $city_id);
             $allowed_eco_buildings = $this->get_allowed_buildings('eco_buildings');
             $allowed_army_buildings = $this->get_allowed_buildings('army_buildings');
             $allowed_religious_buildings = $this->get_allowed_buildings('religious_buildings');
             $allowed_tech_buildings = $this->get_allowed_buildings('tech_buildings');
-            return view('buildings', compact('is_admin', 'first_active_tab', 'food', 'compact_food', 'max_food', 'wood', 'compact_wood' ,'max_wood', 'rock', 'compact_rock', 'max_rock', 'steel', 'compact_steel', 'max_steel', 'gold', 'compact_gold', 'max_gold', 'allowed_eco_buildings', 'allowed_army_buildings', 'allowed_religious_buildings', 'allowed_tech_buildings'));
+            return view('buildings', compact('is_admin', 'first_active_tab', 'util', 'allowed_eco_buildings', 'allowed_army_buildings', 'allowed_religious_buildings', 'allowed_tech_buildings'));
         }
 
         public function set_active_tab(Request $request)

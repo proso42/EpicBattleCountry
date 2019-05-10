@@ -35,7 +35,7 @@
                                                     <li>@lang('common.steel') : {{ $tech['steel_required'] }} @if ($tech['steel_required'] > $util->steel) <i id="icon_steel_tech_{{ $tech['tech_id'] }}" class="fas fa-times icon"></i> @else <i id="icon_steel_tech_{{ $tech['tech_id'] }}" class="fas fa-check icon"></i> @endif</li>
                                                 @endif
                                                 @if ($tech['gold_required'] > 0)
-                                                    <li>@lang('common.gold') : {{ $tech['gold_required'] }} @if ($tech['gold_required'] > $gutil->old) <i id="icon_gold_tech_{{ $tech['tech_id'] }}" class="fas fa-times icon"></i> @else <i id="icon_gold_tech_{{ $tech['tech_id'] }}" class="fas fa-check icon"></i> @endif</li>
+                                                    <li>@lang('common.gold') : {{ $tech['gold_required'] }} @if ($tech['gold_required'] > $util->gold) <i id="icon_gold_tech_{{ $tech['tech_id'] }}" class="fas fa-times icon"></i> @else <i id="icon_gold_tech_{{ $tech['tech_id'] }}" class="fas fa-check icon"></i> @endif</li>
                                                 @endif
                                                 <li>@lang('common.time') : {{ $tech['duration'] }} <i class="fas fa-clock icon"></i></li>
                                             </ul>

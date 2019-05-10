@@ -183,40 +183,6 @@
             }
         }
 
-        private function date_to_sec($date)
-        {
-            $date = preg_replace('/\s+/', "", $date);
-            $finishing_date = time();
-            if (strpos($date, "j") !== FALSE)
-            {
-                $tmp = explode("j", $date);
-                $days = intval($tmp[0]);
-                $date = $tmp[1];
-                $finishing_date += ($days * 86400);
-            }
-            if (strpos($date, "h") !== FALSE)
-            {
-                $tmp = explode("h", $date);
-                $hours = intval($tmp[0]);
-                $date = $tmp[1];
-                $finishing_date += ($hours * 3600);
-            }
-            if (strpos($date, "m") !== FALSE)
-            {
-                $tmp = explode("m", $date);
-                $min = intval($tmp[0]);
-                $date = $tmp[1];
-                $finishing_date += ($min * 60);
-            }
-            if (strpos($date, "s") !== FALSE)
-            {
-                $tmp = explode("s", $date);
-                $sec = intval($tmp[0]);
-                $finishing_date += $sec;
-            }
-            return $finishing_date;
-        }
-
         private function get_unavailable_buildings($type)
         {
             $simple_type = preg_replace('/_buildings/', "", $type);

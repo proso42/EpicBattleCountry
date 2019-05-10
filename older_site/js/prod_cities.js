@@ -89,6 +89,7 @@ function inc_prod(e)
 				var mount_type = 'Bouc_de_guerre';
 			else if (race == 4)
 				var mount_type = 'Loup';
+			console.log(`before test : minutes [${minutes}]`);
 			if (minutes == 0)
 			{
 				console.log('test minute');

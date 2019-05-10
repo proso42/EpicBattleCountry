@@ -66,7 +66,7 @@
             return $util;
         }
 
-        private static function sec_to_date($duration)
+        public static function sec_to_date($duration)
         {
             $new_duration = "";
             if ($duration < 60)

@@ -18,6 +18,15 @@
             ->select('lang', 'email', 'login', 'race', 'is_premium', 'is_admin')
             ->where('id', '=', $user_id)
             ->first();
+            $city_id = session()->get('city_id');
+            if ($city_id === null)
+            {
+                $city_id = DB::table('cities')
+                ->where('owner', '=', $user_id)
+                ->where('is_capital', '=', 1)
+                ->value('id');
+                session()->put(['city_id' => $city_id]);
+            }
             $is_admin = $user_infos->is_admin;
             $user_lang = $user_infos->lang;
             if ($user_lang == 'fr')

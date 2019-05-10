@@ -95,7 +95,7 @@ function inc_prod(e)
 				console.log('test minute');
 				var new_mount = e['mount_prod'] + e[mount_type];
 				if (e['mount_prod'] + e['Cheval'] + e['Likorne'] + e['Bouc_de_guerre'] + e['Loup'] > e['max_mount'])
-					new_mount = e[mount_type] + (e['max_mount'] - (e['Cheval'] + e['Likorne'] + e['Boc_de_guerre'] + e['Loup']));
+					new_mount = e[mount_type] + (e['max_mount'] - (e['Cheval'] + e['Likorne'] + e['Bouc_de_guerre'] + e['Loup']));
 				var new_faith = e['faith_prod'] + e['faith'];
 				if (new_faith > e['max_faith'])
 					new_faith = e['max_faith'];

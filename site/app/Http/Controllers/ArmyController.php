@@ -119,7 +119,7 @@
                 else
                     $mount = null;
                 $duration = $this->boost_unit($unit->duration, $city_id, $user_race, $unit->mount);
-                $duration = $this->sec_to_date($duration);
+                $duration = Common::sec_to_date($duration);
                 $this->boost_unit_stats($city_id, $unit);
                 array_push($allowed_units, ["unit_id" => $unit->id, "name" => trans('unit.' . preg_replace('/\s/', "_", $unit->name)), "food" => $food_required,  "wood" => $wood_required, "rock" => $rock_required, "steel" => $steel_required, "gold" => $gold_required, "duration" => $duration, "items" => $items_required, "mount" => $mount, "life" => $unit->life, "speed" => $unit->speed, "power" => $unit->power, "storage" => $unit->storage]);
             }
@@ -186,30 +186,6 @@
             }
         }
 
-        private function sec_to_date($duration)
-        {
-            $new_duration = "";
-            if ($duration < 60)
-                return ($duration . " s");
-            if ($duration % 60 > 0)
-                $new_duration = ($duration % 60) . " s";
-            $duration = floor($duration / 60);
-            if ($duration < 60)
-                return ($duration . " m " . $new_duration);
-            if ($duration % 60 > 0)
-                $new_duration = ($duration % 60) . " m " . $new_duration;
-            $duration = floor($duration / 60);
-            if ($duration < 24)
-                return ($duration . " h " . $new_duration);
-            if ($duration % 24 > 0)
-                $new_duration = ($duration % 24) . " h " . $new_duration;
-            $duration = floor($duration / 24);
-            if ($new_duration !== "")
-                return ($duration . " j " . $new_duration);
-            else
-                return ($duration . " j");
-        }
-
         public function calculate_training_price(Request $request)
         {
             $quantity = $request['quantity'];
@@ -229,7 +205,7 @@
             ->first();
             $all_items = DB::table('forge')->select('name')->get();
             $duration = $this->boost_unit($unit->duration, $city_id, $user_race, $unit->mount);
-            $duration = $this->sec_to_date($duration * $quantity);
+            $duration = Common::sec_to_date($duration * $quantity);
             $food_required = 0;
             $enough_food = "fas fa-check icon-color-green";
             $wood_required = 0;

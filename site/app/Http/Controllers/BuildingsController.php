@@ -157,7 +157,7 @@
                     if ($status === "OK")
                     {
                         $duration = $this->boost_meca($val->duration, $city_id);
-                        $duration = $this->sec_to_date($niv, $duration, $val->levelup_price);
+                        $duration = Common::sec_to_date($this->get_exp_value($niv, $duration, $levelup));
                         
                     }
                     else
@@ -189,31 +189,6 @@
             for ($i = 1; $i <= $niv; $i++)
                 $final_value *= $levelup;
             return floor($final_value);
-        }
-
-        private function sec_to_date($niv, $duration, $levelup)
-        {
-            $new_duration = "";
-            $duration = $this->get_exp_value($niv, $duration, $levelup);
-            if ($duration < 60)
-                return ($duration . " s");
-            if ($duration % 60 > 0)
-                $new_duration = ($duration % 60) . " s";
-            $duration = floor($duration / 60);
-            if ($duration < 60)
-                return ($duration . " m " . $new_duration);
-            if ($duration % 60 > 0)
-                $new_duration = ($duration % 60) . " m " . $new_duration;
-            $duration = floor($duration / 60);
-            if ($duration < 24)
-                return ($duration . " h " . $new_duration);
-            if ($duration % 24 > 0)
-                $new_duration = ($duration % 24) . " h " . $new_duration;
-            $duration = floor($duration / 24);
-            if ($new_duration !== "")
-                return ($duration . " j " . $new_duration);
-            else
-                return ($duration . " j");
         }
 
         private function date_to_sec($date)

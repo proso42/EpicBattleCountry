@@ -55,7 +55,7 @@
             {
                 $allowed_disaster = null;
                 $visible_cities = null;
-                $disaster_cool_down = $this->sec_to_date($disaster_cool_down);
+                $disaster_cool_down = Common::sec_to_date($disaster_cool_down);
             }
             return view('divinity', compact('is_admin', 'util', 'divinity_active_tab', 'allowed_disaster', 'disaster_cool_down', 'visible_cities'));
         }
@@ -70,30 +70,6 @@
             else
                 session()->put(["divinity_active_tab" => $tab]);
             return ("tab saved");
-        }
-
-        private function sec_to_date($duration)
-        {
-            $new_duration = "";
-            if ($duration < 60)
-                return ($duration . " s");
-            if ($duration % 60 > 0)
-                $new_duration = ($duration % 60) . " s";
-            $duration = floor($duration / 60);
-            if ($duration < 60)
-                return ($duration . " m " . $new_duration);
-            if ($duration % 60 > 0)
-                $new_duration = ($duration % 60) . " m " . $new_duration;
-            $duration = floor($duration / 60);
-            if ($duration < 24)
-                return ($duration . " h " . $new_duration);
-            if ($duration % 24 > 0)
-                $new_duration = ($duration % 24) . " h " . $new_duration;
-            $duration = floor($duration / 24);
-            if ($new_duration !== "")
-                return ($duration . " j " . $new_duration);
-            else
-                return ($duration . " j");
         }
 
         private function disaster_is_allowed($city_id, $disaster, $user_race, $all_reg_building, $user_buildings, $faith)
@@ -167,7 +143,7 @@
                         "name" => trans('divinity.disaster_' . $disaster->name),
                         "illustration" => "images/" . $disaster->illustration . ".jpg",
                         "faith_cost" => $disaster->faith_cost,
-                        "cool_down" => $this->sec_to_date($disaster->cool_down),
+                        "cool_down" => Common::sec_to_date($disaster->cool_down),
                         "desc" => trans('divinity.disaster_desc_' . $disaster->name),
                         "id" => $disaster->id
                     ]);

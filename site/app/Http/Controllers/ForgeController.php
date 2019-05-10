@@ -142,7 +142,7 @@
                         $gold_required = intval(substr($amount, 0, -1));
                 }
                 $duration = $this->boost_forge($item->duration, $city_id);
-                $duration = $this->sec_to_date($duration);
+                $duration = Common::sec_to_date($duration);
                 array_push($allowed_items, ["name" => trans('item.' . preg_replace('/\s/', "_", $item->name)), "item_id" => $item->id, "food_required" => $food_required, "wood_required" => $wood_required, "rock_required" => $rock_required, "steel_required" => $steel_required, "gold_required" => $gold_required, "duration" => $duration]); 
             }
             return $allowed_items;
@@ -162,30 +162,6 @@
             }
         }
 
-        private function sec_to_date($duration)
-        {
-            $new_duration = "";
-            if ($duration < 60)
-                return ($duration . " s");
-            if ($duration % 60 > 0)
-                $new_duration = ($duration % 60) . " s";
-            $duration = floor($duration / 60);
-            if ($duration < 60)
-                return ($duration . " m " . $new_duration);
-            if ($duration % 60 > 0)
-                $new_duration = ($duration % 60) . " m " . $new_duration;
-            $duration = floor($duration / 60);
-            if ($duration < 24)
-                return ($duration . " h " . $new_duration);
-            if ($duration % 24 > 0)
-                $new_duration = ($duration % 24) . " h " . $new_duration;
-            $duration = floor($duration / 24);
-            if ($new_duration !== "")
-                return ($duration . " j " . $new_duration);
-            else
-                return ($duration . " j");
-        }
-
         public function calculate_price(Request $request)
         {
             $item_id = $request['item_id'];
@@ -200,7 +176,7 @@
             ->where('id', '=', $city_id)
             ->first();
             $duration = $this->boost_forge($item->duration, $city_id);
-            $duration = $this->sec_to_date($duration * $quantity);
+            $duration = Common::sec_to_date($duration * $quantity);
             $food_required = 0;
             $enough_food = "fas fa-check icon-color-green";
             $wood_required = 0;

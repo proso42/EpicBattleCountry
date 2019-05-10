@@ -83,30 +83,6 @@
             return (0);
         }
 
-        private function sec_to_date($duration)
-        {
-            $new_duration = "";
-            if ($duration < 60)
-                return ($duration . " s");
-            if ($duration % 60 > 0)
-                $new_duration = ($duration % 60) . " s";
-            $duration = floor($duration / 60);
-            if ($duration < 60)
-                return ($duration . " m " . $new_duration);
-            if ($duration % 60 > 0)
-                $new_duration = ($duration % 60) . " m " . $new_duration;
-            $duration = floor($duration / 60);
-            if ($duration < 24)
-                return ($duration . " h " . $new_duration);
-            if ($duration % 24 > 0)
-                $new_duration = ($duration % 24) . " h " . $new_duration;
-            $duration = floor($duration / 24);
-            if ($new_duration !== "")
-                return ($duration . " j " . $new_duration);
-            else
-                return ($duration . " j");
-        }
-
         public function calculate_move_units(Request $request)
         {
             $units = $request['units'];
@@ -175,7 +151,7 @@
             if ($fret > $storage)
                 return ("invasion error : fret > storage");
             $city_coord = DB::table('cities')->select('x_pos', 'y_pos')->where('id', '=', $city_id)->first();
-            $travel_duration = $this->sec_to_date(((abs($city_coord->x_pos - $city_target_info->x_pos) + abs($city_coord->y_pos - $city_target_info->y_pos)) * (3600 / $min_speed)));
+            $travel_duration = Common::sec_to_date(((abs($city_coord->x_pos - $city_target_info->x_pos) + abs($city_coord->y_pos - $city_target_info->y_pos)) * (3600 / $min_speed)));
             return (trans('invasion.travel_duration') . " " . $travel_duration . " ");
         }
 
@@ -369,7 +345,7 @@
                 else
                     $units_send .= ";" . $unit_infos->id . ":" . $quantity;
             }
-            $travel_duration = $this->sec_to_date((abs($user_city->x_pos - $x_pos) + abs($user_city->y_pos - $y_pos)) * (3600 / $min_speed));
+            $travel_duration = Common::sec_to_date((abs($user_city->x_pos - $x_pos) + abs($user_city->y_pos - $y_pos)) * (3600 / $min_speed));
             $infos['travel_duration'] = trans('invasion.travel_duration') . $travel_duration . " ";
             $infos['x'] = $x_pos;
             $infos['y'] = $y_pos;

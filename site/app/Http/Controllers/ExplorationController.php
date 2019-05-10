@@ -55,30 +55,6 @@
             return view('exploration', compact('allowed', 'waiting_scouting', 'is_admin', 'util', 'explo_unit_name', 'unit_avaible', 'explo'));
         }
 
-        private function sec_to_date($duration)
-        {
-            $new_duration = "";
-            if ($duration < 60)
-                return ($duration . " s");
-            if ($duration % 60 > 0)
-                $new_duration = ($duration % 60) . " s";
-            $duration = floor($duration / 60);
-            if ($duration < 60)
-                return ($duration . " m " . $new_duration);
-            if ($duration % 60 > 0)
-                $new_duration = ($duration % 60) . " m " . $new_duration;
-            $duration = floor($duration / 60);
-            if ($duration < 24)
-                return ($duration . " h " . $new_duration);
-            if ($duration % 24 > 0)
-                $new_duration = ($duration % 24) . " h " . $new_duration;
-            $duration = floor($duration / 24);
-            if ($new_duration !== "")
-                return ($duration . " j " . $new_duration);
-            else
-                return ($duration . " j");
-        }
-
         public function time_explo(Request $request)
         {
             $dest_x = $request['dest_x'];
@@ -125,7 +101,7 @@
             if ($unit_avaible < $unit_required || $food_required > $city_res->food || $wood_required > $city_res->wood || $rock_required > $city_res->rock || $steel_required > $city_res->steel || $gold_required > $city_res->gold)
                 return 1;
             $speed = 3600 / (DB::table('units')->where('name', '=', $unit)->value('speed'));
-            $finishing_date = $this->sec_to_date((abs($city_res->x_pos - $dest_x) + abs($city_res->y_pos - $dest_y)) * $speed);
+            $finishing_date = Common::sec_to_date((abs($city_res->x_pos - $dest_x) + abs($city_res->y_pos - $dest_y)) * $speed);
             $cartographe = DB::table('cities_buildings')->where('city_id', '=', $city_id)->value('Cartographe');
             $x_min = $city_res->x_pos - $cartographe;
             $x_max = $city_res->x_pos + $cartographe;

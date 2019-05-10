@@ -157,7 +157,7 @@
                     if ($status === "OK")
                     {
                         $duration = $this->boost_meca($val->duration, $city_id);
-                        $duration = Common::sec_to_date($this->get_exp_value($niv, $duration, $levelup));
+                        $duration = Common::sec_to_date($this->get_exp_value($niv, $duration, $val->levelup));
                         
                     }
                     else

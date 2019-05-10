@@ -142,7 +142,7 @@
                 array_push($waiting_list, ["allow_interrupt" => $allow_interrupt, "wait_id" => $travel->id, "type" => $type, "name" => trans('exploration.' . $mission_name), "duration" => $travel->finishing_date - time()]);
             }
             $enemy_on_the_way = [];
-            $all_attacks = DB::table('traveling_units')->where('mission', '=', 5)->where('ending_point', '=', $city->x_pos . "/" . $city->y_pos)->get();
+            $all_attacks = DB::table('traveling_units')->where('mission', '=', 5)->where('ending_point', '=', $util->x_pos . "/" . $util->y_pos)->get();
             foreach ($all_attacks as $attack)
                 array_push($enemy_on_the_way, ["wait_id" => $attack->id, "duration" => $attack->finishing_date - time()]);
             return view('home', compact('is_admin', 'util', 'waiting_list', 'items_owned', 'units_owned', 'tables_class', 'user_cities', 'enemy_on_the_way'));

@@ -50,7 +50,7 @@ function main()
 					//});
 				}
 				console.log('async abuse');
-				Promise.all(tab_promises).then(()=>{console.log('fin success');process.exit()}).catch(()=>{console.log('fin error');process.exit()});
+				Promise.all(tab_promises).then(()=>{console.log('fin success');mysqlClient.end();process.exit()}).catch(()=>{console.log('fin error');mysqlClient.end();process.exit()});
 			}
 			
 		});

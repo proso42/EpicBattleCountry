@@ -194,3 +194,9 @@ function confirm_target()
     else
         xhr.send('_token=' + _token + '&disaster_id=' + disaster_id + "&target_city=" + target_city);
 }
+
+function back_choice_target()
+{
+    document.getElementById("confirm_disaster").style.display = "none";
+    document.getElementById("block_disaster_target").style.display = "";
+}

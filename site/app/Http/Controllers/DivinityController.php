@@ -161,7 +161,6 @@
             $disaster = DB::table('disasters')->where('id', '=', $request['disaster_id'])->first();
             if ($disaster == null)
                 return ("divinity error : unknow disaster");
-            return ("ok");
             $city_id = session()->get('city_id');
             $user_id = session()->get('user_id');
             $user_race = session()->get('user_race');

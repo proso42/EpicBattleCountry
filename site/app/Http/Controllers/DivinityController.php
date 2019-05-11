@@ -151,6 +151,84 @@
             }
             return $allowed_disaster;
         }
+
+        public function check_disaster_target(Request $request)
+        {
+            if (!isset($request['disaster_id']) || !isset($request['x_pos']) && !isset($request['y_pos']) && !isset($request['target_city']))
+                return ("divinity error : missing data");
+            else if (isset($request['x_pos']) && isset($request['y_pos']) && isset($request['target_city']))
+                return ("divinity error : too many data");
+            $disaster = DB::table('disaster')->where('id', '=', $request['disaster_id'])->first();
+            if ($disaster == null)
+                return ("divinity error : unknow disaster");
+            $city_id = session()->get('city_id');
+            $user_id = session()->get('user_id');
+            $user_race = session()->get('user_race');
+            $all_reg_building = DB::table('religious_buildings')->get();
+            $faith = DB::table('cities')->where('id', '=', $city_id)->value('faith');
+            $user_buildings = [];
+            foreach ($ret as $building => $val)
+                $user_buildings[preg_replace('/_/', " ", $building)] = $val;
+            if ($this->disaster_is_allowed($city_id, $disaster, $user_race, $all_reg_building, $user_buildings, $faith) == false)
+                return "divinity error : disaster not allowed";
+            else
+            {
+                if (isset($request['target_city']))
+                {
+                    $target_city = DB::table('cities')->where('name', '=', $request['target_city'])->first();
+                    if ($target_city == null)
+                        return ("Divinity error : city not found");
+                    else if ($target_city->owner == $user_id)
+                        return ("Divinity error : cannot attack allied");
+                }
+                else if (isset($request['x_pos']) && isset($request['y_pos']))
+                {
+                    if ($request['x_pos'] < -2000 || $request['x_pos'] > 2000 || $request['y_pos'] < -2000 || $request['y_pos'] > 2000 || !is_numeric($request['x_pos']) || !is_numeric($request['y_pos']))
+                        return "Divinity error : bad coord";
+                    $target_city = DB::table('cities')->where('x_pos', '=', $request['x_pos'])->where('y_pos', '=', $request['y_pos'])->first();
+                    if ($target_city != null && $target_city->owner == $user_id)
+                        return ("Divinity error : cannot attack allied");
+                }
+                else
+                    return "Divinity error : missing data";
+                $infos = [];
+                $user_city = DB::table('cities')
+                ->join('cities_buildings', 'cities.id', '=', 'cities_buildings.city_id')
+                ->select('cities.x_pos', 'cities.y_pos', 'cities_buildings.Cartographe')
+                ->where('cities.id', '=', $city_id)
+                ->first();
+                if ($target_city == null && $request['x_pos'] >= $user_city->x_pos - $user_city->Cartographe && $request['x_pos'] <= $user_city->x_pos + $user_city->Cartographe
+                        && $request['y_pos'] >= $user_city->y_pos - $user_city->Cartographe && $request['y_pos'] <= $user_city->y_pos + $user_city->Cartographe)
+                {
+                    $cell_type = DB::table('map')->where('x_pos', '=', $request['x_pos'])->where('y_pos', '=', $request['y_pos'])->value('type');
+                    if ($cell_type == null)
+                        $infos['cell'] = trans('map.empty');
+                    else
+                        $infos['cell'] = trans('map.' . $cell_type);
+                }
+                else if ($target_city == null)
+                    $infos['cell'] = 'unknow';
+                else if ($target_city != null && $target_city->x_pos >= $user_city->x_pos - $user_city->Cartographe && $target_city->x_pos <= $user_city->x_pos + $user_city->Cartographe
+                        && $target_city->y_pos >= $user_city->y_pos - $user_city->Cartographe && $target_city->y_pos <= $user_city->y_pos + $user_city->Cartographe)
+                {
+                    $infos['cell'] = trans('map.city');
+                    $infos['name'] = $target_city->name;
+                }
+                else
+                    $infos['cell'] = 'unknow';
+                if ($target_city == null)
+                {
+                    $infos['x'] = $request['x_pos'];
+                    $infos['y'] = $request['y_pos'];
+                }
+                else
+                {
+                    $infos['x'] = $target_city->x_pos;
+                    $infos['y'] = $target_city->y_pos;
+                }
+                return $infos;
+            }
+        }
     }
 
 ?>

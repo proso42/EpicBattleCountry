@@ -27,7 +27,7 @@ return [
     'disaster_desc_plague' => 'Prevents unit training in the target city for 6 hours. Units in training are canceled, resources are lost. Only the Orcs can trigger this disaster.',
     'disaster_forest_fire' => 'Forest fire',
     'disaster_desc_forest_fire' => 'Reduce the target city\'s wood production to 0 for 12 hours. Only the elves can trigger this disaster.',
-    
+    'confirm_disaster' => 'Confirm disaster',
 
     
 ];

@@ -27,5 +27,5 @@ return [
     'disaster_desc_plague' => 'Empêche l\'entrainement d\'unitée dans la ville ciblée pendant 6h. Les unitées en cours d\'entrainement sont annulées, les ressources sont perdues. Seul les Orcs peuvent déclencher cette catastrophe.',
     'disaster_forest_fire' => 'Feu de fôret',
     'disaster_desc_forest_fire' => 'Reduis à 0 la production de bois de la ville ciblée pendant 12h. Seul les elfes peuvent déclencher cette catastrophe.',
-    
+    'confirm_disaster' => 'Confirmer la catastrophe',
 ];

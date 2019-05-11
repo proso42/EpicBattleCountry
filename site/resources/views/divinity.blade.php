@@ -17,6 +17,21 @@
         </div>
             @include('default')
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding-right: 10px;">
+                <div id="error_city_and_dest" class="explo-input-error" style="display: none;">
+                    <p>@lang('error.city_and_dest')</p>
+                </div>
+                <div id="error_empty_input" class="explo-input-error" style="display: none;">
+                    <p>@lang('error.thx_fill_fields')</p>
+                </div>
+                <div id="error_bad_input" class="explo-input-error" style="display: none;">
+                    <p>@lang('error.thx_correclty_fill_fields')</p>
+                </div>
+                <div id="error_limit_value" class="explo-input-error" style="display: none;">
+                    <p>@lang('error.limit_coord')</p>
+                </div>
+                <div id="error_cannot_attack_allied" class="explo-input-error" style="display: none;">
+                    <p>@lang('error.cannot_attack_allied')</p>
+                </div>
                 <div id="main_panel">
                     <div class="row">
                         <div id="blessing-tab" class="col-lg-3 col-md-3 col-sm-4 col-4 generique-tab" onclick="switchTab('blessing')">
@@ -73,8 +88,26 @@
                         <input id="dest_x" type="text" class="explo-input" placeholder="X">
                         <input id="dest_y" type="text" class="explo-input" placeholder="Y">
                     </div>
-                    <input id="button_confirm_dest" type="button" class="home-button" value="@lang('common.confirm')">
+                    <input onclick="confirm_target()" id="button_confirm_dest" type="button" class="home-button" value="@lang('common.confirm')">
                     <input onclick="back_to_main()" id="cancel_button1" type="button" class="home-button-cancel" value="@lang('common.return')">
+                </div>
+                <div id="confirm_disaster" style="display: none">
+                    <h2>@lang('divinity.confirm_disaster')</h2>
+                    <div id="div_disaster_target" class="divinity-unit-line">
+                        <div id="warning" style="color: crimson;display: none">
+                            <i class="fas fa-exclamation-triangle icon-color-orange" style="margin-right: 15px"></i>
+                            <span class="explo-warning-text">@lang('exploration.unknow_target') : <span>
+                            <span id="warning_coord"></span>
+                            <i class="fas fa-exclamation-triangle icon-color-orange" style="margin-left: 15px"></i>
+                        </div>
+                        <div id="info_target">
+                            <span>@lang('common.target') : </span>
+                            <span id="disaster_target"></span>
+                        </div>
+                    </div>
+                    <input onclick="trigger_disaster()" id="button_trigger_disaster" type="button" class="home-button" value="@lang('common.confirm')">
+                    <input onclick="back_choice_target()" id="cancel_trigger_disaster" type="button" class="home-button-cancel" value="@lang('common.return')">
+                    <img id="spin_disaster" class="explo-spin" style="display: none" src="images/loader.gif">
                 </div>
                 <hr class="signin-footer">
                 <div style="text-align: left">

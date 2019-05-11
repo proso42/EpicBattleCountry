@@ -95,3 +95,101 @@ function select_target_city(name)
     document.getElementById("target_city_" + target_city).style.display = "";
     console.log("Target City2 : " + target_city);
 }
+
+function check_coord(n)
+{
+    if (n == "")
+    {
+        document.getElementById("error_empty_input").style.display = "";
+        setTimeout(() =>{
+            document.getElementById("error_empty_input").style.display = 'none';
+        }, 5000);
+        return 0;
+    }
+    else if (!(!isNaN(parseFloat(n)) && isFinite(n)))
+    {
+        document.getElementById("error_bad_input").style.display = "";
+        setTimeout(() =>{
+            document.getElementById("error_bad_input").style.display = 'none';
+        }, 5000);
+        return 0;
+    }
+    else if (parseInt(n) < -2000 || parseInt(n) > 2000)
+    {
+        document.getElementById("error_limit_value").style.display = "";
+        setTimeout(() =>{
+            document.getElementById("error_limit_value").style.display = 'none';
+        }, 5000);
+        return 0;
+    }
+    return 1;
+}
+
+function confirm_target()
+{
+    let x = document.getElementById('dest_x').value;
+    let y = document.getElementById('dest_y').value;
+    if ((target_city != "" && (x != "" || y != "")) || target_city == "" && x == "" && y == "")
+    {
+        document.getElementById("error_city_and_dest").style.display = "";
+        setTimeout(function(){
+            document.getElementById("error_city_and_dest").style.display = "none";
+        }, 2500);
+        return ;
+    }
+    else if (target_city == "" && check_coord(x) == 0 || target_city == "" && check_coord(y) == 0)
+        return ;
+    var _token = document.getElementById('_token').value;
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'http://www.epicbattlecorp.fr/check_disaster_target');
+    xhr.onreadystatechange =  function()
+    {
+        if (xhr.readyState === 4 && xhr.status === 200)
+        {
+            if (xhr.responseText.indexOf("error") >= 0)
+            {
+                console.log(xhr.responseText);
+                if (xhr.responseText == "Divinity error : cannot attack allied")
+                {
+                    document.getElementById("error_cannot_attack_allied").style.display = "";
+                    setTimeout(function(){
+                        document.getElementById("error_cannot_attack_allied").style.display = "none";
+                    }, 2500);
+                }
+                return ;
+            }
+            else
+            {
+                let rep = JSON.parse(xhr.responseText)
+                console.log(rep);
+                document.getElementById("confirm_disaster").style.display = "";
+                document.getElementById("block_disaster_target").style.display = "none";
+                if (rep.cell == "unknow")
+                {
+                    document.getElementById("warning").style.display = "";
+                    document.getElementById("warning_coord").textContent += "(" + rep.x + "/" + rep.y + ")";
+                    document.getElementById("info_target").style.display = "none";
+                }
+                else
+                {
+                    document.getElementById("warning").style.display = "none";
+                    document.getElementById("info_target").style.display = "";
+                    if (rep.cell == "City" || rep.cell == "Ville")
+                        document.getElementById("disaster_target").textContent = rep.cell + " - " + rep.name + " (" + rep.x + "/" + rep.y + ")";
+                    else
+                        document.getElementById("disaster_target").textContent = rep.cell + " (" + rep.x + "/" + rep.y + ")";
+                }
+                return ;
+            }
+        }
+    }
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    if (target_city == "")
+    {
+        x = parseInt(x);
+        y = parseInt(y);
+        xhr.send('_token=' + _token + '&disaster_id=' + disaster_id + "&x_pos=" + x + "&y_pos=" + y);
+    }
+    else
+        xhr.send('_token=' + _token + '&disaster_id=' + disaster_id + "&target_city=" + target_city);
+}

@@ -165,6 +165,7 @@
             $user_id = session()->get('user_id');
             $user_race = session()->get('user_race');
             $all_reg_building = DB::table('religious_buildings')->get();
+            $ret = DB::table('cities_buildings')->where('city_id', '=', $city_id)->first();
             $faith = DB::table('cities')->where('id', '=', $city_id)->value('faith');
             $user_buildings = [];
             foreach ($ret as $building => $val)

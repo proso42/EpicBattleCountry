@@ -144,7 +144,7 @@ function confirm_target()
     xhr.open('POST', 'http://www.epicbattlecorp.fr/check_disaster_target');
     xhr.onreadystatechange =  function()
     {
-        console.log(xhr.responseText);
+        //console.log(xhr.responseText);
         if (xhr.readyState === 4 && xhr.status === 200)
         {
             if (xhr.responseText.indexOf("error") >= 0)
@@ -180,6 +180,7 @@ function confirm_target()
                     else
                         document.getElementById("disaster_target").textContent = rep.cell + " (" + rep.x + "/" + rep.y + ")";
                 }
+                document.getElementById("disaster_name").textContent = rep.name;
                 return ;
             }
         }

@@ -227,6 +227,7 @@
                     $infos['x'] = $target_city->x_pos;
                     $infos['y'] = $target_city->y_pos;
                 }
+                $infos['name'] = trans('divinity.disaster_' . $disaster->name);
                 return $infos;
             }
         }

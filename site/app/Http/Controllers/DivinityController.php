@@ -161,7 +161,8 @@
             $disaster = DB::table('disaster')->where('id', '=', $request['disaster_id'])->first();
             if ($disaster == null)
                 return ("divinity error : unknow disaster");
-            $city_id = session()->get('city_id');
+            return ("ok");
+            /*$city_id = session()->get('city_id');
             $user_id = session()->get('user_id');
             $user_race = session()->get('user_race');
             $all_reg_building = DB::table('religious_buildings')->get();
@@ -226,7 +227,7 @@
                     $infos['x'] = $target_city->x_pos;
                     $infos['y'] = $target_city->y_pos;
                 }
-                return $infos;
+                return $infos;*/
             }
         }
     }

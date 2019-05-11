@@ -104,9 +104,9 @@
                             <span>@lang('common.target') : </span>
                             <span id="disaster_target"></span>
                         </div>
-                        <div>
-                            <span>@lang('divinity.disaster') : </span><span id="disaster_name"></span>
-                        </div>
+                    </div>
+                    <div>
+                        <span>@lang('divinity.disaster') : </span><span id="disaster_name"></span>
                     </div>
                     <input onclick="trigger_disaster()" id="button_trigger_disaster" type="button" class="home-button" value="@lang('common.confirm')">
                     <input onclick="back_choice_target()" id="cancel_trigger_disaster" type="button" class="home-button-cancel" value="@lang('common.return')">

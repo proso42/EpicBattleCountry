@@ -227,8 +227,8 @@
                     $infos['x'] = $target_city->x_pos;
                     $infos['y'] = $target_city->y_pos;
                 }
-                return $infos;*/
-            }
+                return $infos;
+            }*/
         }
     }
 

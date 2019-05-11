@@ -146,8 +146,7 @@ function confirm_target()
     {
         if (xhr.readyState === 4 && xhr.status === 200)
         {
-            console.log(xhr.responseText);
-            /*if (xhr.responseText.indexOf("error") >= 0)
+            if (xhr.responseText.indexOf("error") >= 0)
             {
                 console.log(xhr.responseText);
                 if (xhr.responseText == "Divinity error : cannot attack allied")
@@ -181,7 +180,7 @@ function confirm_target()
                         document.getElementById("disaster_target").textContent = rep.cell + " (" + rep.x + "/" + rep.y + ")";
                 }
                 return ;
-            }*/
+            }
         }
     }
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

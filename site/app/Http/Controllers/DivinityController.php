@@ -156,13 +156,13 @@
         {
             if (!isset($request['disaster_id']) || !isset($request['x_pos']) && !isset($request['y_pos']) && !isset($request['target_city']))
                 return ("divinity error : missing data");
-            /*else if (isset($request['x_pos']) && isset($request['y_pos']) && isset($request['target_city']))
+            else if (isset($request['x_pos']) && isset($request['y_pos']) && isset($request['target_city']))
                 return ("divinity error : too many data");
-            $disaster = DB::table('disaster')->where('id', '=', $request['disaster_id'])->first();
+            $disaster = DB::table('disasters')->where('id', '=', $request['disaster_id'])->first();
             if ($disaster == null)
-                return ("divinity error : unknow disaster");*/
+                return ("divinity error : unknow disaster");
             return ("ok");
-            /*$city_id = session()->get('city_id');
+            $city_id = session()->get('city_id');
             $user_id = session()->get('user_id');
             $user_race = session()->get('user_race');
             $all_reg_building = DB::table('religious_buildings')->get();
@@ -228,7 +228,7 @@
                     $infos['y'] = $target_city->y_pos;
                 }
                 return $infos;
-            }*/
+            }
         }
     }
 

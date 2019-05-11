@@ -93,7 +93,7 @@
                 </div>
                 <div id="confirm_disaster" style="display: none">
                     <h2>@lang('divinity.confirm_disaster')</h2>
-                    <div id="div_disaster_target" class="divinity-unit-line">
+                    <div id="div_disaster_target" class="divinity-line">
                         <div id="warning" style="color: crimson;display: none">
                             <i class="fas fa-exclamation-triangle icon-color-orange" style="margin-right: 15px"></i>
                             <span class="explo-warning-text">@lang('exploration.unknow_target') : <span>

@@ -271,7 +271,7 @@ function trigger_disaster()
 
 function launch_all_timers()
 {
-    var timers = Array.prototype.slice.call(document.getElementsByClassName('divinity-cool-down'));
+    var timers = Array.prototype.slice.call(document.getElementsByClassName('cool-down'));
     if (timers.length == 0)
         return ;
     timers.forEach(function(e){

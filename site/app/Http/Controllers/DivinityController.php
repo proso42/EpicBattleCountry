@@ -365,7 +365,7 @@
                 $dmg = round($disaster->damages / $nb_active_def);
                 foreach ($defensive_buildings as $def)
                 {
-                    if ($defensive_buildings->real_life == 0)
+                    if ($def->real_life == 0)
                         continue;
                     $def->real_life -= $dmg;
                     $disaster->damages -= $dmg;

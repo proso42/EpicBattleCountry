@@ -344,9 +344,6 @@
                     "content" => $content,
                     "sending_date" => time()
                 ]);
-                DB::table('cities')
-                ->where('id', '=', $city_id)
-                ->update(["faith" => ]);
                 return 0;
             }
             else

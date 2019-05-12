@@ -272,8 +272,9 @@
                 }
                 else
                     return "divinity error : missing data";
+                $city_obj = DB::table('cities')->where('id', '=', $city_id)->first();
                 if ($disaster->effect_type == "destruction")
-                    $effect_result = $this->apply_destruction_effect($disaster, $target_city, $user_id);
+                    $effect_result = $this->apply_destruction_effect($disaster, $target_city, $city_obj);
                 else if ($disaster->effect_type == "prod_canceled")
                     $effect_result = $this->apply_prod_canceled_effect($disaster, $target_city);
                 else
@@ -299,7 +300,7 @@
             }
         }
 
-        private function apply_destruction_effect($disaster, $target_city, $user_id)
+        private function apply_destruction_effect($disaster, $target_city, $city_obj)
         {
             if ($target_city == null)
                 return 0;
@@ -327,14 +328,14 @@
                 DB::table('cities_buildings')
                 ->where('city_id', '=', $target_city->id)
                 ->update($update);
-                $login = DB::table('users')->where('id', '=', $user_id)->value('login');
+                $login = DB::table('users')->where('id', '=', $city_obj->owner)->value('login');
                 $title = trans('divinity.disaster_' . $disaster->name);
                 $content = trans('divinity.disaster_general_msg');
                 $content = preg_replace('/{login}/', $login, $content);
                 $content = preg_replace('/{disaster}/', trans('divinity.disaster_lexical_' . $disaster->name), $content);
-                $content = preg_replace('/{city_name}/', $target_city->name, $content);
-                $content = preg_replace('/{x_pos}/', $target_city->x_pos, $content);
-                $content = preg_replace('/{y_pos}/', $target_city->y_pos, $content);
+                $content = preg_replace('/{city_name}/', $city_obj->name, $content);
+                $content = preg_replace('/{x_pos}/', $city_obj->x_pos, $content);
+                $content = preg_replace('/{y_pos}/', $city_obj->y_pos, $content);
                 $content .= " " . trans('divinity.disaster_destruction_msg');
                 DB::table('messages')->insert([
                     "sender" => "notification",

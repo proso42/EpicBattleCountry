@@ -55,7 +55,6 @@
             {
                 $allowed_disaster = null;
                 $visible_cities = null;
-                $disaster_cool_down = Common::sec_to_date($disaster_cool_down);
             }
             return view('divinity', compact('is_admin', 'util', 'divinity_active_tab', 'allowed_disaster', 'disaster_cool_down', 'visible_cities'));
         }
@@ -178,20 +177,20 @@
                 {
                     $target_city = DB::table('cities')->where('name', '=', $request['target_city'])->first();
                     if ($target_city == null)
-                        return ("Divinity error : city not found");
+                        return ("divinity error : city not found");
                     else if ($target_city->owner == $user_id)
-                        return ("Divinity error : cannot attack allied");
+                        return ("divinity error : cannot attack allied");
                 }
                 else if (isset($request['x_pos']) && isset($request['y_pos']))
                 {
                     if ($request['x_pos'] < -2000 || $request['x_pos'] > 2000 || $request['y_pos'] < -2000 || $request['y_pos'] > 2000 || !is_numeric($request['x_pos']) || !is_numeric($request['y_pos']))
-                        return "Divinity error : bad coord";
+                        return "divinity error : bad coord";
                     $target_city = DB::table('cities')->where('x_pos', '=', $request['x_pos'])->where('y_pos', '=', $request['y_pos'])->first();
                     if ($target_city != null && $target_city->owner == $user_id)
-                        return ("Divinity error : cannot attack allied");
+                        return ("divinity error : cannot attack allied");
                 }
                 else
-                    return "Divinity error : missing data";
+                    return "divinity error : missing data";
                 $infos = [];
                 $user_city = DB::table('cities')
                 ->join('cities_buildings', 'cities.id', '=', 'cities_buildings.city_id')
@@ -230,6 +229,155 @@
                 $infos['name'] = trans('divinity.disaster_' . $disaster->name);
                 return $infos;
             }
+        }
+
+        public function trigger_disaster(Request $request)
+        {
+            if (!isset($request['disaster_id']) || !isset($request['x_pos']) && !isset($request['y_pos']) && !isset($request['target_city']))
+                return ("divinity error : missing data");
+            else if (isset($request['x_pos']) && isset($request['y_pos']) && isset($request['target_city']))
+                return ("divinity error : too many data");
+            $disaster = DB::table('disasters')->where('id', '=', $request['disaster_id'])->first();
+            if ($disaster == null)
+                return ("divinity error : unknow disaster");
+            $city_id = session()->get('city_id');
+            $user_id = session()->get('user_id');
+            $user_race = session()->get('user_race');
+            $all_reg_building = DB::table('religious_buildings')->get();
+            $ret = DB::table('cities_buildings')->where('city_id', '=', $city_id)->first();
+            $faith = DB::table('cities')->where('id', '=', $city_id)->value('faith');
+            $user_buildings = [];
+            foreach ($ret as $building => $val)
+                $user_buildings[preg_replace('/_/', " ", $building)] = $val;
+            if ($this->disaster_is_allowed($city_id, $disaster, $user_race, $all_reg_building, $user_buildings, $faith) == false)
+                return "divinity error : disaster not allowed";
+            else
+            {
+                if (isset($request['target_city']))
+                {
+                    $target_city = DB::table('cities')->where('name', '=', $request['target_city'])->first();
+                    if ($target_city == null)
+                        return ("divinity error : city not found");
+                    else if ($target_city->owner == $user_id)
+                        return ("divinity error : cannot target allied");
+                }
+                else if (isset($request['x_pos']) && isset($request['y_pos']))
+                {
+                    if ($request['x_pos'] < -2000 || $request['x_pos'] > 2000 || $request['y_pos'] < -2000 || $request['y_pos'] > 2000 || !is_numeric($request['x_pos']) || !is_numeric($request['y_pos']))
+                        return "divinity error : bad coord";
+                    $target_city = DB::table('cities')->where('x_pos', '=', $request['x_pos'])->where('y_pos', '=', $request['y_pos'])->first();
+                    if ($target_city != null && $target_city->owner == $user_id)
+                        return ("divinity error : cannot attack allied");
+                }
+                else
+                    return "divinity error : missing data";
+                if ($disaster->effect_type == "destruction")
+                    $effect_result = $this->apply_destruction_effect($disaster, $target_city, $user_id);
+                else if ($disaster->effect_type == "prod_canceled")
+                    $effect_result = $this->apply_prod_canceled_effect($disaster, $target_city);
+                else
+                    return ("divinity error : unknow disaster type effect");
+                if ($effect_result == 0)
+                {
+                    DB::table('magic_cool_down')->insert([
+                        "user_id" => $user_id,
+                        "city_id" => $city_id,
+                        "type" => "disaster",
+                        "finishing_date" => time() + $disaster->cool_down
+                    ]);
+                    return ("good");
+                }
+                else
+                    return ("divinity error : cannot apply disaster");
+            }
+        }
+
+        private function apply_destruction_effect($disaster, $target_city, $user_id)
+        {
+            if ($target_city == null)
+                return 0;
+            else if ($disaster->damages_target == "defenses")
+            {
+                $defensive_buildings = DB::table('army_buildings')
+                ->join('defenses', 'army_buildings.id', '=', 'defenses.building_id')
+                ->select('army_buildings.name', 'defenses.life')
+                ->get();
+                $ref_tab = [];
+                foreach ($defensive_buildings as $def)
+                {
+                    $def->name = preg_replace('/\s/', "_", $def->name);
+                    $ref_tab[] = $def->name;
+                }
+                DB::table('waiting_buildings')
+                ->where('city_id', '=', $target_city->id)
+                ->where('type', '=', 'army_buildings')
+                ->delete();
+                $target_buildings = DB::table('cities_buildings')
+                ->select($ref_tab)
+                ->where('city_id', '=', $target_city->id)
+                ->first();
+                $update = $this->decrease_buildings_lvl($disaster, $defensive_buildings);
+                DB::table('cities_buildings')
+                ->where('city_id', '=', $target_city->id)
+                ->update($update);
+                $login = DB::table('users')->where('id', '=', $user_id)->value('login');
+                $title = trans('divinity.disaster_' . $disaster->name);
+                $content = trans('divinity.disaster_general_msg');
+                $content = preg_replace('/{login}/', $login, $content);
+                $content = preg_replace('/{disaster}/', trans('divinity.disaster_lexical_' . $disaster->name), $content);
+                $content = preg_replace('/{city_name}/', $target_city->name, $content);
+                $content = preg_replace('/{x_pos}/', $target_city->x_pos, $content);
+                $content = preg_replace('/{y_pos}/', $target_city->y_pos, $content);
+                $content .= " " . trans('divinity.disaster_destruction_msg');
+                DB::table('messages')->insert([
+                    "sender" => "notification",
+                    "target" => $target_city->owner,
+                    "target_city" => $target_city->id,
+                    "title" => $title,
+                    "content" => $content,
+                    "sending_date" => time()
+                ]);
+                return 0;
+            }
+            else
+                return -1;
+        }
+
+        private function decrease_buildings_lvl($disaster, $defensive_buildings)
+        {
+            $nb_active_def = 0;
+            foreach ($defensive_buildings as $def)
+            {
+                $def->real_life = $def->life * $target_buildings[$def->name];
+                if ($def->real_life > 0)
+                    $nb_active_def++;
+            }
+            while ($disaster->damages > 0 && $nb_active_def > 0)
+            {
+                $dmg = round($disaster->damages / $nb_active_def);
+                foreach ($defensive_buildings as $def)
+                {
+                    if ($defensive_buildings->real_life == 0)
+                        continue;
+                    $def->real_life -= $dmg;
+                    $disaster->damages -= $dmg;
+                    if ($def->real_life < 0)
+                    {
+                        $disaster->damages += $def->real_life * (-1);
+                        $def->real_life = 0;
+                        $nb_active_def--;
+                    }
+                    else if ($def->real_life == 0)
+                        $nb_active_def--;
+                }
+            }
+            $update = [];
+            foreach ($defensive_buildings as $def)
+            {
+                $new_lvl = floor($def->real_life / $def->life);
+                $update[$def->name] = $new_lvl;
+            }
+            return $update;
         }
     }
 

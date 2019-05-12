@@ -40,4 +40,5 @@ return [
     'no_unit_selected' => 'Please select at least one unit',
     'city_and_dest' => 'You must choice a city in the list OR coordinates !',
     'cannot_attack_allied' => 'You cannot attack your own city !',
+    'cannot_target_allied' => 'You cannot target your own city !',
 ];

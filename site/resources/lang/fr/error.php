@@ -40,4 +40,5 @@ return [
     'no_unit_selected' => 'Merci de sélectionner au moins une unité',
     'city_and_dest' => 'Vous devez choisir une ville dans la liste OU des coordonnées !',
     'cannot_attack_allied' => 'Vous ne pouvez pas attaquer une ville que vous possedez !',
+    'cannot_target_allied' => 'Vous ne pouvez pas cibler une ville que vous possedez !',
 ];

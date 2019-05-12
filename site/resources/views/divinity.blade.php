@@ -30,7 +30,10 @@
                     <p>@lang('error.limit_coord')</p>
                 </div>
                 <div id="error_cannot_attack_allied" class="explo-input-error" style="display: none;">
-                    <p>@lang('error.cannot_attack_allied')</p>
+                    <p>@lang('error.cannot_target_allied')</p>
+                </div>
+                <div id="disaster_success" class="explo-input-success" style="display: none;">
+                    <p>@lang('divinity.disaster_success')</p>
                 </div>
                 <div id="main_panel">
                     <div class="row">
@@ -47,7 +50,7 @@
                     <div id="disaster-panel" class="row" style="margin-top: 30px;display:none">
                         @if ($disaster_cool_down != null)
                             <div>
-                                <span>@lang('divinity.next_disaster') : </span><span id="disaster_count" duration="{{ $disaster_cool_down }}"></span>
+                                <span>@lang('divinity.next_disaster') : </span><span class="cool_down" id="disaster_count" duration="{{ $disaster_cool_down }}"></span>
                             </div>
                         @else
                             @foreach ($allowed_disaster as $disaster)
@@ -105,7 +108,7 @@
                             <span id="disaster_target"></span>
                         </div>
                     </div>
-                    <div>
+                    <div class="divinity-confirm-line">
                         <span>@lang('divinity.disaster') : </span><span id="disaster_name"></span>
                     </div>
                     <input onclick="trigger_disaster()" id="button_trigger_disaster" type="button" class="home-button" value="@lang('common.confirm')">

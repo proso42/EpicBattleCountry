@@ -63,6 +63,11 @@
                 $util->compact_gold = substr($util->gold, 0, 5) . '...';
             else
                 $util->compact_gold = $util->gold;
+            $msg_not_seen = DB::table('messages')
+            ->where('target_city', '=', 1)
+            ->where('seen', '=', 0)
+            ->count();
+            $util->msg_not_seen = $msg_not_seen;
             return $util;
         }
 

@@ -1667,3 +1667,16 @@ input::placeholder
     margin-bottom: 20px;
     align-items: baseline;
 }
+
+.divinity-cool-down
+{
+    border: 1px solid black;
+    text-align: center;
+    border-radius: 4px;
+    background-color: burlywood;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    align-items: baseline;
+}

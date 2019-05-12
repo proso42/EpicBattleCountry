@@ -50,7 +50,7 @@
                     <div id="disaster-panel" class="row" style="margin-top: 30px;display:none">
                         @if ($disaster_cool_down != null)
                             <div>
-                                <span>@lang('divinity.next_disaster') : </span><span class="cool_down" id="disaster_count" duration="{{ $disaster_cool_down }}"></span>
+                                <span>@lang('divinity.next_disaster') : </span><span class="divinity-cool-down" id="disaster_count" duration="{{ $disaster_cool_down }}"></span>
                             </div>
                         @else
                             @foreach ($allowed_disaster as $disaster)

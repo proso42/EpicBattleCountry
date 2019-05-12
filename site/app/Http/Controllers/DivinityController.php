@@ -278,6 +278,9 @@
                     $effect_result = $this->apply_prod_canceled_effect($disaster, $target_city);
                 else
                     return ("divinity error : unknow disaster type effect");
+                $city_faith = DB::table('cities')->where('id', '=', $city_id)->value('faith');
+                if ($city_faith < $disaster->faith_cost)
+                    return "divinity error : not enough faith";
                 if ($effect_result == 0)
                 {
                     DB::table('magic_cool_down')->insert([
@@ -286,6 +289,9 @@
                         "type" => "disaster",
                         "finishing_date" => time() + $disaster->cool_down
                     ]);
+                    DB::table('cities')
+                    ->where('id', '=', $city_id)
+                    ->update(["faith" => $city_faith - $disaster->faith_cost]);
                     return ("good");
                 }
                 else
@@ -338,6 +344,9 @@
                     "content" => $content,
                     "sending_date" => time()
                 ]);
+                DB::table('cities')
+                ->where('id', '=', $city_id)
+                ->update(["faith" => ]);
                 return 0;
             }
             else

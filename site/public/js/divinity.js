@@ -229,7 +229,7 @@ function trigger_disaster()
     xhr.open('POST', 'http://www.epicbattlecorp.fr/trigger_disaster');
     xhr.onreadystatechange =  function()
     {
-        //console.log(xhr.responseText);
+        console.log(xhr.responseText);
         if (xhr.readyState === 4 && xhr.status === 200)
         {
             if (xhr.responseText.indexOf("error") >= 0)

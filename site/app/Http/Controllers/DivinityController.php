@@ -316,7 +316,7 @@
                 ->select($ref_tab)
                 ->where('city_id', '=', $target_city->id)
                 ->first();
-                $update = $this->decrease_buildings_lvl($disaster, $defensive_buildings);
+                $update = $this->decrease_buildings_lvl($disaster, $defensive_buildings, $target_buildings);
                 DB::table('cities_buildings')
                 ->where('city_id', '=', $target_city->id)
                 ->update($update);
@@ -343,7 +343,7 @@
                 return -1;
         }
 
-        private function decrease_buildings_lvl($disaster, $defensive_buildings)
+        private function decrease_buildings_lvl($disaster, $defensive_buildings, $target_buildings)
         {
             $nb_active_def = 0;
             foreach ($defensive_buildings as $def)

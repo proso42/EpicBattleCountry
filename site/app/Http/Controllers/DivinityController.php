@@ -348,7 +348,8 @@
             $nb_active_def = 0;
             foreach ($defensive_buildings as $def)
             {
-                $def->real_life = $def->life * $target_buildings->$def->name;
+                $ref = $def->name;
+                $def->real_life = $def->life * $target_buildings->$ref;
                 if ($def->real_life > 0)
                     $nb_active_def++;
             }

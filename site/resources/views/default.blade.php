@@ -132,8 +132,8 @@
             <div class="col-lg-3 col-md-3 col-sm-3 col-3">@lang('default.map')</div>
         </div>
         <div onclick="document.location.href='/messages'" class="row menu-left">
-            <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-comment icon"></i></div>
-            <div class="col-lg-3 col-md-3 col-sm-3 col-3"><span>@lang('default.messages') @if($util->msg_not_seen) <i class="fas fa-exclamation icon-color-red"></i>@endif</span></div>
+            <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i @if($util->msg_not_seen > 0) class="fas fa-comment icon-color-red" @else class="fas fa-comment icon" @endif></i></div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-3">@lang('default.messages')</div>
         </div>
         <div class="row menu-left">
             <div class="col-lg-1 col-md-1 col-sm-1 col-1"><i class="fas fa-chart-line icon"></i></div>

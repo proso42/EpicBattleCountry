@@ -55,6 +55,7 @@
             {
                 $allowed_disaster = null;
                 $visible_cities = null;
+                $disaster_cool_down -= time();
             }
             return view('divinity', compact('is_admin', 'util', 'divinity_active_tab', 'allowed_disaster', 'disaster_cool_down', 'visible_cities'));
         }

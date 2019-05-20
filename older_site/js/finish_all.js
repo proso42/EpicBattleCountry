@@ -4,6 +4,7 @@ var mysql = require('mysql');
 let env_file = fs.readFileSync("../src/site/.env", 'utf8').split('\n');
 var db_user = '';
 var db_password = '';
+var print = require("./module_color");
 env_file.forEach(function (e){
 	let e_split = e.split('=');
 	if (e_split[0] == 'DB_USERNAME')
@@ -23,7 +24,8 @@ let unflag_items_p = unflag_items();
 let unflag_techs_p = unflag_techs();
 let unflag_units_p = unflag_units();
 let unflag_travels_p = unflag_travels();
-Promise.all([unflag_buildings_p, unflag_items_p, unflag_techs_p, unflag_units_p, unflag_travels_p])
+let unflag_magic_cool_down_p = unflag_magic_cool_down();
+Promise.all([unflag_buildings_p, unflag_items_p, unflag_techs_p, unflag_units_p, unflag_travels_p, unflag_magic_cool_down_p])
 	.then(() => {
 		setInterval(catch_unflag_action, 1000);
 	})
@@ -184,6 +186,35 @@ function catch_unflag_action()
 			return ;
 		}
 	});
+	mysqlClient.query("SELECT finishing_date FROM magic_cool_down WHERE flag = 0;", function (err, ret)
+	{
+		if (err)
+			return (err);
+		else
+		{
+			print.color("new magic cool down entry !", "J");
+			for (let i = 0; i < ret.length; i++)
+			{
+				mysqlClient.query(`UPDATE magic_cool_down SET flag = 0 WHERE id = ${ret[i]['id']};`, function (err, ret)
+				{
+					if (err)
+						return (err);
+					else
+						return ;
+				});
+				setTimeout(() =>
+				{
+					mysqlClient.query(`DELETE FROM magic_cool_down WHERE id = ${ret[i]['id']};`, function (err, ret)
+					{
+						if (err)
+							return (err);
+						else
+							console.log(`Magic cool down (${ret[i]['id']}) deleted !`);
+					}, (ret[i]['finishing_date'] - (Math.round(Date.now() / 1000))) * 1000);
+				});
+			}
+		}
+	});
 }
 
 function unflag_buildings()
@@ -238,6 +269,18 @@ function unflag_travels()
 {
 	return new Promise ((resolve, reject) => {
 		mysqlClient.query("UPDATE traveling_units SET flag = 0", function (err, ret){
+			if (err)
+				reject(err);
+			else
+				resolve();
+		});
+	});
+}
+
+function unflag_magic_cool_down()
+{
+	return new Promise ((resolve, reject) => {
+		mysqlClient.query("UPDATE magic_cool_down SET flag = 0", function (err, ret){
 			if (err)
 				reject(err);
 			else

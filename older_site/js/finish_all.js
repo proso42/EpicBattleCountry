@@ -195,7 +195,7 @@ function catch_unflag_action()
 			print.color("new magic cool down entry !", "J");
 			for (let i = 0; i < ret.length; i++)
 			{
-				console.log("boucle");
+				let entry_id = ret[i]["id"];
 				mysqlClient.query(`UPDATE magic_cool_down SET flag = 1 WHERE id = ${ret[i]['id']};`, function (err, ret)
 				{
 					if (err)
@@ -205,13 +205,13 @@ function catch_unflag_action()
 				});
 				setTimeout(() =>
 				{
-					mysqlClient.query(`DELETE FROM magic_cool_down WHERE id = ${ret[i]['id']};`, function (err, ret)
+					mysqlClient.query(`DELETE FROM magic_cool_down WHERE id = ${entry_id};`, function (err, ret)
 					{
 						if (err)
 							return (err);
 						else
-							console.log(`Magic cool down (${ret[i]['id']}) deleted !`);
-					}, (ret[i]['finishing_date'] - (Math.round(Date.now() / 1000))) * 1000);
+							console.log(`Magic cool down (${entry_id}) deleted !`);
+					}, (ret[i]['finishing_date'] - (Math.round(Date.now() / 1000))) * 1000), entry_id;
 				});
 			}
 		}

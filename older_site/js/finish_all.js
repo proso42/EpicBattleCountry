@@ -186,7 +186,7 @@ function catch_unflag_action()
 			return ;
 		}
 	});
-	mysqlClient.query("SELECT finishing_date FROM magic_cool_down WHERE flag = 0;", function (err, ret)
+	mysqlClient.query("SELECT id, finishing_date FROM magic_cool_down WHERE flag = 0;", function (err, ret)
 	{
 		if (err)
 			return (err);
@@ -195,6 +195,7 @@ function catch_unflag_action()
 			print.color("new magic cool down entry !", "J");
 			for (let i = 0; i < ret.length; i++)
 			{
+				console.log("boucle");
 				mysqlClient.query(`UPDATE magic_cool_down SET flag = 1 WHERE id = ${ret[i]['id']};`, function (err, ret)
 				{
 					if (err)

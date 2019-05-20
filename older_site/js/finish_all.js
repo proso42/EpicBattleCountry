@@ -190,7 +190,7 @@ function catch_unflag_action()
 	{
 		if (err)
 			return (err);
-		else
+		else if (ret.length > 0)
 		{
 			print.color("new magic cool down entry !", "J");
 			for (let i = 0; i < ret.length; i++)
@@ -215,6 +215,8 @@ function catch_unflag_action()
 				});
 			}
 		}
+		else
+			return ;
 	});
 }
 

@@ -195,7 +195,7 @@ function catch_unflag_action()
 			print.color("new magic cool down entry !", "J");
 			for (let i = 0; i < ret.length; i++)
 			{
-				mysqlClient.query(`UPDATE magic_cool_down SET flag = 0 WHERE id = ${ret[i]['id']};`, function (err, ret)
+				mysqlClient.query(`UPDATE magic_cool_down SET flag = 1 WHERE id = ${ret[i]['id']};`, function (err, ret)
 				{
 					if (err)
 						return (err);

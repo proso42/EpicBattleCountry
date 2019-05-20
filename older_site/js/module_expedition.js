@@ -344,7 +344,7 @@ module.exports.start = function (id)
 												else if (user_race == 3)
 													building_request = `INSERT INTO cities_buildings (city_id, owner, Champs, Ecurie, Likornerie, Loufterie, Douves_de_lave, Fosse_cachee, Statue_de_la_Guerre, Temple_de_la_Guerre, Arbre_de_la_Vie, Temple_de_la_Vie, Statue_engloutie_de_la_Mort, Temple_de_la_Mort, Sanctuaire, Skull_wall) VALUES (${new_city_id}, ${owner}, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1)`;
 												else
-													building_request = `INSERT INTO cities_buildings (city_id, owner, Champs, Ecurie, Likornerie, Bergerie, Mur_basiques, Fosse_cachee, Statue_de_la_Guerre, Temple_de_la_Guerre, Arbre_de_la_Vie, Temple_de_la_Vie, Statue_du_Dieu_Nain, Temple_de_la_Montagne, Sanctuaire) VALUES (${new_city_id}, ${owner}, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1)`;
+													building_request = `INSERT INTO cities_buildings (city_id, owner, Champs, Ecurie, Likornerie, Bergerie, Mur_basique, Fosse_cachee, Statue_de_la_Guerre, Temple_de_la_Guerre, Arbre_de_la_Vie, Temple_de_la_Vie, Statue_du_Dieu_Nain, Temple_de_la_Montagne, Sanctuaire) VALUES (${new_city_id}, ${owner}, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1)`;
 												console.log("building request : " + building_request);
 												mysqlClient.query(building_request, function (error, ret)
 													{

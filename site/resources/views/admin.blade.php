@@ -18,8 +18,6 @@
                             @endforeach
                         </optgroup>
                     </select>
-                    <span class="admin-button col-lg-1 col-md-1 col-sm-1 col-1">1</span>
-                    <span class="admin-button col-lg-1 col-md-1 col-sm-1 col-1">2</span>
                 </div>
             </div>
         </div>

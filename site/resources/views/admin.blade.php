@@ -10,7 +10,7 @@
     <body>
         @include('default')
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding-right: 10px;">
-                <select class="forge-item signup-select-race offset-lg-2 offset-md-2 offset-sm-2 offset-2 col-lg-2 col-md-2 col-sm-2 col-2">
+                <select class="signup-select-race offset-lg-2 offset-md-2 offset-sm-2 offset-2 col-lg-2 col-md-2 col-sm-2 col-2">
                     <optgroup style="background-color: white" label="@lang('common.users')">
                         @foreach ($all_users as $user)
                             <option class="signup-option-race">{{ $user->login }}</option>

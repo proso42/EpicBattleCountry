@@ -11,8 +11,9 @@
         @include('default')
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding-right: 10px;">
                 <select>
-                    
-                    <option>{{ $all_users[0]->login }}</option>
+                    @foreach ($all_users as $user)
+                        <option>{{ $user->login }}</option>
+                    @endforeach
                 </select>
             </div>
         </div>

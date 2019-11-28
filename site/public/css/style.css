@@ -27,6 +27,23 @@ body
     font-weight: bold;
 }
 
+.admin-select
+{
+    margin-top: 25px;
+    background-color: tan;
+    color: black;
+    border: 1px solid black;
+    border-radius: 4px;
+    height: 32px;
+    width: 204px;
+}
+
+.admin-option
+{
+    background-color: white;
+    color: black;
+}
+
 .res
 {
     color: black;

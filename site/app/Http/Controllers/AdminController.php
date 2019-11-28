@@ -26,7 +26,7 @@
             }
             $is_admin = DB::table('users')->where('id', '=', $user_id)->value("is_admin");
             $util = Common::get_utilities($user_id, $city_id);
-            $all_users = DB::table('users')->get('login');
+            $all_users = DB::table('users')->value('login');
             dd($all_users);
             return view('admin', compact('is_admin', 'util', 'all_users'));
         }

@@ -11,9 +11,11 @@
         @include('default')
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding-right: 10px;">
                 <select class="signup-select-race">
-                    @foreach ($all_users as $user)
-                        <option>{{ $user->login }}</option>
-                    @endforeach
+                    <optgroup style="background-color: white" label="@lang('common.users')">
+                        @foreach ($all_users as $user)
+                            <option class="signup-option-race">{{ $user->login }}</option>
+                        @endforeach
+                    </optgroup>
                 </select>
             </div>
         </div>

@@ -33,6 +33,7 @@ return [
     'register_success' => 'Your account has been successfully created ! A confirmation email has been sent to',
     'passwd_reset' => 'Your password has been reinitialized !',
     'reset_passwd_email_send' => 'A password reset email was sent to',
+    'users' => 'Users',
     'login' => 'Login',
     'email' => 'Email',
     'race' => 'Race',

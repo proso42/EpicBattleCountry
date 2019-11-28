@@ -18,7 +18,7 @@
                             @endforeach
                         </optgroup>
                     </select>
-                    <input type="button" class="forge-button col-lg-1 col-md-1 col-sm-1 col-1">
+                    <input type="button" class="admin-button col-lg-1 col-md-1 col-sm-1 col-1">
                 </div>
             </div>
         </div>

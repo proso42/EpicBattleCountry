@@ -44,6 +44,20 @@ body
     color: black;
 }
 
+.admin-button
+{
+    margin-top: 26px;
+    line-height: 0;
+    background-color: aquamarine;
+    color: black;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 32px;
+    width: 204px;
+}
+
 .res
 {
     color: black;

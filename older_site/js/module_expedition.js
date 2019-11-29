@@ -319,13 +319,14 @@ module.exports.start = function (id)
 				return new Promise((resolve, reject) =>
 					{
 						let race_request = `SELECT race FROM users WHERE id = ${owner}`;
+						let new_rdm_name = get_rdm_name();
 						console.log("race request : " + race_request);
 						mysqlClient.query(race_request, function (error, ret)
 							{
 								if (error)
 									reject(error)
 								var user_race = ret[0]['race'];
-								let city_request = `INSERT INTO cities (name, owner, x_pos, y_pos, is_capital) VALUES ("rename_me", ${owner}, ${x_pos}, ${y_pos}, 0)`;
+								let city_request = `INSERT INTO cities (name, owner, x_pos, y_pos, is_capital) VALUES (${new_rdm_name}, ${owner}, ${x_pos}, ${y_pos}, 0)`;
 								mysqlClient.query(city_request, function (error, ret)
 									{
 										if (error)
@@ -491,6 +492,28 @@ module.exports.start = function (id)
 							});
 						}
 					});
+				});
+			}
+
+			function get_rdm_name()
+			{
+				return new Promise((resolve, reject) => {
+					let rdm_name = "";
+					let con = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'z'];
+					let voy = ['a', 'e', 'i', 'o', 'u', 'y'];
+					let max = Math.floor(Math.random() * Math.floor(12));
+					while (max < 3)
+						max = Math.floor(Math.random() * Math.floor(12));
+					while (max > 0)
+					{
+						let rdm = Math.floor(Math.random() * Math.floor(3));
+						if (rdm == 2)
+							rdm_name = rdm_name.concat(voy[Math.floor(Math.random() * Math.floor(6))]);
+						else
+							rdm_name = rdm_name.concat(con[Math.floor(Math.random() * Math.floor(20))]);
+						max--;
+					}
+					resolve(rdm_name);
 				});
 			}
 

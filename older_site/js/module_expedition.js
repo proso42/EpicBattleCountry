@@ -319,9 +319,12 @@ module.exports.start = function (id)
 				return new Promise((resolve, reject) =>
 					{
 						let race_request = `SELECT race FROM users WHERE id = ${owner}`;
-						let new_rdm_name = get_rdm_name();
-						console.log("race request : " + race_request);
-						mysqlClient.query(race_request, function (error, ret)
+						let p0 = get_rdm_name();
+						Promise.all([p0])
+						.then((result) => {
+							let new_rdm_name = result[0];
+							console.log("race request : " + race_request);
+							mysqlClient.query(race_request, function (error, ret)
 							{
 								if (error)
 									reject(error)
@@ -385,6 +388,7 @@ module.exports.start = function (id)
 											});
 									});
 							});
+						});
 					});
 			}
 

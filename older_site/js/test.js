@@ -18,10 +18,15 @@ while (max > 0)
     else if (rdm == 1)
     {
         // -- Tech 2 -- Voy Con Con
-        let lettre = con[get_rdm_int(20)];
+        let syl = "";
+        let lettre = voy[get_rdm_int(6)];
         while (lettre == rdm_name[rdm_name.length - 1])
+            lettre = voy[get_rdm_int(6)];
+        syl = syl.concat(lettre, con[get_rdm_int(20)]);
+        lettre = con[get_rdm_int(20)];
+        while (lettre == syl[syl.length - 1])
             lettre = con[get_rdm_int(20)];
-        rdm_name = rdm_name.concat(lettre, voy[get_rdm_int(6)], con[get_rdm_int(20)]);
+        rdm_name = rdm_name.concat(syl, lettre);
     }
     else
     {
@@ -29,7 +34,10 @@ while (max > 0)
         let lettre = con[get_rdm_int(20)];
         while (lettre == rdm_name[rdm_name.length - 1])
             lettre = con[get_rdm_int(20)];
-        rdm_name = rdm_name.concat(lettre, voy[get_rdm_int(6)], con[get_rdm_int(20)]);
+        let lettre2 = con[get_rdm_int(20)];
+        while (lettre == lettre2)
+            lettre2 = con[get_rdm_int(20)];
+        rdm_name = rdm_name.concat(lettre, lettre2, voy[get_rdm_int(6)]);
     }
     max--;
 }

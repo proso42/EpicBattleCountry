@@ -330,6 +330,7 @@ module.exports.start = function (id)
 									reject(error)
 								var user_race = ret[0]['race'];
 								let city_request = `INSERT INTO cities (name, owner, x_pos, y_pos, is_capital) VALUES (${new_rdm_name}, ${owner}, ${x_pos}, ${y_pos}, 0)`;
+								console.log("city request : " + city_request);
 								mysqlClient.query(city_request, function (error, ret)
 									{
 										if (error)

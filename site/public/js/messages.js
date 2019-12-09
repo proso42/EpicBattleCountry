@@ -80,8 +80,14 @@ function remove_msg(id, type)
             if (xhr.responseText == 0)
             {
                 console.log('msg removed !');
-                document.getElementById(id).remove();
-                decrease(type);
+                let seen = document.getElementById("seen_" + id).className;
+                if (seen.indexOf("icon-color-red") === -1)
+                    document.getElementById(id).remove();
+                else
+                {
+                    document.getElementById(id).remove();
+                    decrease(type);
+                }
             }
             else
                 console.log("error");

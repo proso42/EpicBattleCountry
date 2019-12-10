@@ -43,7 +43,7 @@
                                 </div>
                             </div>
                             <input onclick="recruit()" type="button" class="mercenary-button col-lg-2 col-md-2 col-sm-2 col-2" value="@lang('common.recruit')">
-                            <button onclick="switch_unit(1)" class="mercenary-button col-lg-1 col-md-1 col-sm-1 col-1" style="background-color: cornflowerblue"><i class="fas fa-random"></i></button>
+                            <button onclick="switch_unit(1)" class="mercenary-button-rdm col-lg-1 col-md-1 col-sm-1 col-1" style="background-color: cornflowerblue"><i class="fas fa-random"></i></button>
                         </div>
                     </div>
                 @endif

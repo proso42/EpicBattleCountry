@@ -1712,6 +1712,18 @@ input::placeholder
     align-items: baseline;
 }
 
+.mercenary-slot
+{
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(105, 105, 105, 0.9);
+    color: black;
+    text-align: center;
+    border: 1px solid lightblue;
+    border-radius: 4px;
+}
+
 .mercenary-unit
 {
     text-align: center;

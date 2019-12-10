@@ -42,7 +42,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <input onclick="recrut('{{ $unit['unit_id'] }}')" type="button" class="mercenary-button col-lg-2 col-md-2 col-sm-2 col-2" value="@lang('common.recruit')">
+                            <input onclick="recruit()" type="button" class="mercenary-button col-lg-2 col-md-2 col-sm-2 col-2" value="@lang('common.recruit')">
                         </div>
                     </div>
                 @endif

@@ -1805,6 +1805,28 @@ input::placeholder
     color: white;
 }
 
+.mercenary-button-rdm
+{
+    margin-top: 26px;
+    margin-left: 20px;
+    line-height: 0;
+    background-color: cornflowerblue;
+    color: black;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 32px;
+    width: 204px;
+}
+
+.mercenary-button-rdm:hover
+{
+    background-color: royalblue;
+    font-weight: bold;
+    color: white;
+}
+
 .mercenary-button-cancel
 {
     margin-top: 26px;

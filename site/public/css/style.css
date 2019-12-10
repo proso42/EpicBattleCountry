@@ -1712,7 +1712,7 @@ input::placeholder
     align-items: baseline;
 }
 
-.mercerany-unit
+.mercenary-unit
 {
     text-align: center;
     background-color: floralwhite;
@@ -1722,25 +1722,25 @@ input::placeholder
     height: 32px;
 }
 
-.mercerany-unit:hover
+.mercenary-unit:hover
 {
     background-color: honeydew;
     font-weight: bold;
     height: 100%;
 }
 
-.mercerany-info-unit
+.mercenary-info-unit
 {
     text-align: left;
     display: none;
 }
 
-.mercerany-unit:hover .mercerany-info-unit
+.mercenary-unit:hover .mercenary-info-unit
 {
     display: block;
 }
 
-.mercerany-quantity
+.mercenary-quantity
 {
     margin-top: 25px;
     background-color: tan;
@@ -1752,7 +1752,7 @@ input::placeholder
     width: 204px;
 }
 
-.mercerany-ressources
+.mercenary-ressources
 {
     margin-top: 25px;
     margin-right: 20px;
@@ -1766,25 +1766,25 @@ input::placeholder
     width: 204px;
 }
 
-.mercerany-ressources:hover
+.mercenary-ressources:hover
 {
     color: white;
     font-weight: bold;
     height: 100%;
 }
 
-.mercerany-ressources-details
+.mercenary-ressources-details
 {
     text-align: left;
     display: none;
 }
 
-.mercerany-ressources:hover .mercerany-ressources-details
+.mercenary-ressources:hover .mercenary-ressources-details
 {
     display: block;
 }
 
-.mercerany-button
+.mercenary-button
 {
     margin-top: 26px;
     line-height: 0;
@@ -1798,14 +1798,14 @@ input::placeholder
     width: 204px;
 }
 
-.mercerany-button:hover
+.mercenary-button:hover
 {
     background-color: darkcyan;
     font-weight: bold;
     color: white;
 }
 
-.mercerany-button-cancel
+.mercenary-button-cancel
 {
     margin-top: 26px;
     margin-bottom: 20px;
@@ -1820,7 +1820,7 @@ input::placeholder
     width: 204px;
 }
 
-.mercerany-button-cancel:hover
+.mercenary-button-cancel:hover
 {
     background-color: crimson;
     font-weight: bold;

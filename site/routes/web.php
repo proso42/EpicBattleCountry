@@ -67,6 +67,8 @@ Route::group(['middleware' => ['logged']], function(){
     Route::get('/army', 'ArmyController@index');
     Route::post('calculate_training_price', 'ArmyController@calculate_training_price');
     Route::post('train_unit', 'ArmyController@train_unit');
+    // Mercenaries endpoints
+    Route::get('/mercenaries', 'MercenariesController@index');
     // Map endpoints
     Route::get('/map', 'MapController@index');
     //Exploration endpoints

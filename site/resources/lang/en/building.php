@@ -54,6 +54,7 @@ return [
     'Laboratoire' => 'Laboratory',
     'Cartographe' => 'Cartographer',
     'Bibliotheque' => 'Library',
+    'Taverne' => 'Tavern',
     'eco' => 'Economy',
     'military' => 'Military',
     'god' => 'Religious',

@@ -20,6 +20,7 @@ return [
     'forge' => 'Forge',
     'scout' => 'Exploration',
     'army' => 'Armée',
+    'mercenaries' => 'Mercenaires',
     'battle' => 'Invasion',
     'diplomacy' => 'Diplomacie',
     'trade' => 'Commerce',

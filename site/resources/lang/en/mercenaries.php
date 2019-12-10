@@ -13,6 +13,7 @@ return [
     |
     */
 
+    'missing_tavern' => 'You have to build a tavern before you can recruit mercenaries !',
     'cham_humain' => 'Veteran chamelier',
     'royal_elfe' => 'Elven royal guard',
     'lf_nain' => 'Dwarf embers launcher',

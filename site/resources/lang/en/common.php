@@ -28,6 +28,7 @@ return [
     'steel' => 'Steel',
     'gold' => 'Gold',
     'faith' => 'Faith',
+    'diamond' => 'Diamond',
     'unit' => 'Unit',
     'quantity' => 'Quantity',
     'register_success' => 'Your account has been successfully created ! A confirmation email has been sent to',
@@ -42,6 +43,7 @@ return [
     'dwarf' => 'Dwarf',
     'orc' => 'Orc',
     'ok' => 'Ok',
+    'or' => 'Or',
     'price' => 'Price',
     'time' => 'Time',
     'in_progress' => 'In progress',
@@ -52,4 +54,5 @@ return [
     'enemy_attack' => 'Enemy attack',
     'trigger' => 'Trigger',
     'cool_down' => 'Cool down',
+    'recruit' => 'Recruit',
 ];

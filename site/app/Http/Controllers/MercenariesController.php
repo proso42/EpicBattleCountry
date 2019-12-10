@@ -51,7 +51,7 @@
             $slot2 = null;
             $slot3 = null;
             $slots = DB::table('cities')
-            ->select('tavern_slot1', 'tavern_slot2', 'tavern_slot3')
+            ->select('tavern_slot1', 'tavern_slot2', 'tavern_slot3', 'tavern_slot1_qt', 'tavern_slot2_qt', 'tavern_slot3_qt')
             ->where('id', '=', $city_id)
             ->first();
             $info_merc1 = DB::table('mercenaries')
@@ -74,7 +74,8 @@
                 'power' => $info_merc1->power,
                 'storage' => $info_merc1->storage,
                 'cool_down' => Common::sec_to_date($info_merc1->cool_down),
-                'available' => 1];
+                'available' => 1,
+                'quantity' => $slots->tavern_slot1_qt];
             }
             if ($tavern_lvl >= 10)
             {
@@ -98,7 +99,8 @@
                     'power' => $info_merc2->power,
                     'storage' => $info_merc2->storage,
                     'cool_down' => Common::sec_to_date($info_merc2->cool_down),
-                    'available' => 1];
+                    'available' => 1,
+                    'quantity' => $slots->tavern_slot2_qt];
                 }
             }
             if ($tavern_lvl >= 25)
@@ -123,7 +125,8 @@
                     'power' => $info_merc3->power,
                     'storage' => $info_merc3->storage,
                     'cool_down' => Common::sec_to_date($info_merc3->cool_down),
-                    'available' => 1];
+                    'available' => 1,
+                    'quantity' => $slots->tavern_slot3_qt];
                 }
             }
             $slots = ['slot1' => $slot1, 'slot2' => $slot2, 'slot3' => $slot3];

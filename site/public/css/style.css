@@ -1711,3 +1711,118 @@ input::placeholder
     margin-bottom: 20px;
     align-items: baseline;
 }
+
+.mercerany-unit
+{
+    text-align: center;
+    background-color: floralwhite;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin-right: 20px;
+    height: 32px;
+}
+
+.mercerany-unit:hover
+{
+    background-color: honeydew;
+    font-weight: bold;
+    height: 100%;
+}
+
+.mercerany-info-unit
+{
+    text-align: left;
+    display: none;
+}
+
+.mercerany-unit:hover .mercerany-info-unit
+{
+    display: block;
+}
+
+.mercerany-quantity
+{
+    margin-top: 25px;
+    background-color: tan;
+    color: black;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    height: 32px;
+    width: 204px;
+}
+
+.mercerany-ressources
+{
+    margin-top: 25px;
+    margin-right: 20px;
+    margin-left: 20px;
+    background-color: rgba(105, 105, 105, 0.9);
+    color: black;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    height: 32px;
+    width: 204px;
+}
+
+.mercerany-ressources:hover
+{
+    color: white;
+    font-weight: bold;
+    height: 100%;
+}
+
+.mercerany-ressources-details
+{
+    text-align: left;
+    display: none;
+}
+
+.mercerany-ressources:hover .mercerany-ressources-details
+{
+    display: block;
+}
+
+.mercerany-button
+{
+    margin-top: 26px;
+    line-height: 0;
+    background-color: aquamarine;
+    color: black;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 32px;
+    width: 204px;
+}
+
+.mercerany-button:hover
+{
+    background-color: darkcyan;
+    font-weight: bold;
+    color: white;
+}
+
+.mercerany-button-cancel
+{
+    margin-top: 26px;
+    margin-bottom: 20px;
+    line-height: 0;
+    background-color: lightpink;
+    color: black;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 32px;
+    width: 204px;
+}
+
+.mercerany-button-cancel:hover
+{
+    background-color: crimson;
+    font-weight: bold;
+    color: white;
+}

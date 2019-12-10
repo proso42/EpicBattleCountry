@@ -9,7 +9,7 @@
     use Illuminate\Support\Facades\Auth;
     use Illuminate\Support\Facades\Session;
 
-    class ForgeController extends Controller
+    class MercenariesController extends Controller
     {
         public function index(Request $request)
         {

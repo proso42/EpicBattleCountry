@@ -52,7 +52,7 @@
             $slot3 = null;
             $slots = DB::table('cities')
             ->select('tavern_slot1', 'tavern_slot2', 'tavern_slot3')
-            ->where('city_id', '=', $city_id)
+            ->where('id', '=', $city_id)
             ->first();
             $info_merc1 = DB::table('mercenaries')
             ->select('name', 'gold_price', 'diamond_price', 'life', 'speed', 'power', 'storage', 'cool_down')

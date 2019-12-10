@@ -14,7 +14,7 @@
                     <p>@lang('mercenaries.missing_tavern')</p>
                 @else
                     <!-- Listes des slots -->
-                    <h2 style="margin-top: 25px">@lang('building.tavern')</h2>
+                    <h2 style="margin-top: 25px">@lang('building.Taverne')</h2>
                     <div>
                         <!-- SLOT 1 -->
                         <div id="slot1" class="row mercenary-slot" style="align-items: baseline;line-height: 31px;">

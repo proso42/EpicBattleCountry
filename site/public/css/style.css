@@ -1722,6 +1722,7 @@ input::placeholder
     text-align: center;
     border: 1px solid lightblue;
     border-radius: 4px;
+    width: 90%;
 }
 
 .mercenary-unit

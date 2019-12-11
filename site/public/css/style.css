@@ -1827,6 +1827,28 @@ input::placeholder
     color: white;
 }
 
+.mercenary-button-up
+{
+    margin-top: 26px;
+    margin-left: 20px;
+    line-height: 0;
+    background-color: greenyellow;
+    color: black;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 32px;
+    width: 204px;
+}
+
+.mercenary-button-up:hover
+{
+    background-color: green;
+    font-weight: bold;
+    color: white;
+}
+
 .mercenary-button-cancel
 {
     margin-top: 26px;

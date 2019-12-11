@@ -44,6 +44,8 @@
                                 </div>
                             </div>
                             <input onclick="recruit()" type="button" class="mercenary-button col-lg-2 col-md-2 col-sm-2 col-2" value="@lang('common.recruit')">
+                            <button class="offset-lg-5 offset-md-5 offset-sm-5 offset-5 col-lg-1 col-md-1 col-sm-1 col-1 mercenary-button-rdm"><i class="fas fa-random"></i></button>
+                            <button class="col-lg-1 col-md-1 col-sm-1 col-1 mercenary-button-up"><i class="fas fa-sort-amount-up"></i></button>
                         </div>
                     </div>
                 @endif

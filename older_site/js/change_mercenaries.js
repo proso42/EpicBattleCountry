@@ -24,9 +24,9 @@ mysqlClient.query(request_get_all_cities, function (err, results) {
     {
         mysqlClient.query("SELECT COUNT(id) AS 'max' FROM mercenaries", function (err, ret) {
             let tab_p = [];
-            let max = ret[0]['max'];
+            //let max = ret[0]['max'];
             for (let i = 0; i < results.length; i++)
-                tab_p.push(change_mercenraies(results[i]), max);
+                tab_p.push(change_mercenraies(results[i]), 8);
             Promise.all(tab_p)
             .then(() => {
                 console.log('All availables mercenaries changed !');

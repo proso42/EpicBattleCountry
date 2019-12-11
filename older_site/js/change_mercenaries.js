@@ -54,7 +54,9 @@ function change_mercenraies(city, max)
             let new_quantity_1 = Math.trunc((getRandomInt(5000)+500)/100)*100;
             if (city['tavern_slot2'] == -1)
             {
-                mysqlClient.query(`UPDATE cities WHERE id = ${city['id']} SET tavern_slot1 = ${new_mercenary_1}, tavern_slot1_qt = ${new_quantity_1}`, function (err, ret){
+                let req = `UPDATE cities WHERE id = ${city['id']} SET tavern_slot1 = ${new_mercenary_1}, tavern_slot1_qt = ${new_quantity_1}`;
+                console.log(req);
+                mysqlClient.query(req, function (err, ret){
                     console.log(`For city ${city['id']} tavern_slot1 UPDATED !`);
                     resolve();
                 });

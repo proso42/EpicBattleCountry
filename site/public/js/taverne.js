@@ -78,7 +78,7 @@ function timer(id, duration)
                     {
                         j += " j ";
                     }
-                    compteur.textContent+= j + " " + h+" "+m+" "+s;
+                    compteur.textContent = j + " " + h+" "+m+" "+s;
                     setTimeout(function(same_id=id, new_duration=duration-1){
                         timer(same_id, new_duration);
                     },1000);

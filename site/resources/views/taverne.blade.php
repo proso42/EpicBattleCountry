@@ -17,7 +17,7 @@
                     <h2 style="margin-top: 25px">@lang('building.Taverne')</h2>
                     <div>
                         <!-- SLOT 1 -->
-                        <div id="slot1" class="row mercenary-slot" style="align-items: baseline;line-height: 31px;">
+                        <div id="slot1" class="row" style="align-items: baseline;line-height: 31px;">
                             <div class="mercenary-unit offset-lg-2 offset-md-2 offset-sm-2 offset-2 col-lg-2 col-md-2 col-sm-2 col-2" style="text-align:center">
                                 <span>{{ $slots['slot1']['name'] }}</span>
                                 <div class="mercenary-info-unit">

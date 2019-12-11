@@ -218,6 +218,38 @@ function catch_unflag_action()
 		else
 			return ;
 	});
+	mysqlClient.query("SELECT id, finishing_date FROM mercenaries_cool_down WHERE flag = 0;", function (err, ret)
+	{
+		if (err)
+			return (err);
+		else if (ret.length > 0)
+		{
+			print.color("new mercenaries cool down entry !", "M");
+			for (let i = 0; i < ret.length; i++)
+			{
+				let entry_id = ret[i]["id"];
+				mysqlClient.query(`UPDATE mercenaries_cool_down SET flag = 1 WHERE id = ${ret[i]['id']};`, function (err, ret)
+				{
+					if (err)
+						return (err);
+					else
+						return ;
+				});
+				setTimeout(() =>
+				{
+					mysqlClient.query(`DELETE FROM mercenaries_cool_down WHERE id = ${entry_id};`, function (err, ret)
+					{
+						if (err)
+							return (err);
+						else
+							console.log(`Mercenaries cool down (${entry_id}) deleted !`);
+					}, (ret[i]['finishing_date'] - (Math.round(Date.now() / 1000))) * 1000), entry_id;
+				});
+			}
+		}
+		else
+			return ;
+	});
 }
 
 function unflag_buildings()
@@ -284,6 +316,18 @@ function unflag_magic_cool_down()
 {
 	return new Promise ((resolve, reject) => {
 		mysqlClient.query("UPDATE magic_cool_down SET flag = 0", function (err, ret){
+			if (err)
+				reject(err);
+			else
+				resolve();
+		});
+	});
+}
+
+function unflag_mercenaries_cool_down()
+{
+	return new Promise ((resolve, reject) => {
+		mysqlClient.query("UPDATE mercenaries_cool_down SET flag = 0", function (err, ret){
 			if (err)
 				reject(err);
 			else

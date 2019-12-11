@@ -126,6 +126,19 @@ module.exports.start = function (id)
 
 						});
 					}
+					else if (type == "tech_buildings")
+					{
+						if (building_id == 5)
+						{
+							var tech1 = update_tavern_slot(next_level, city_id);
+							Promise.all([tech1]).then(() => {console.log('tech fin ok');mysqlClient.end();return (0)}).catch((err) => {console.log(`tech fin error : ${err}`);mysqlClient.end();return -1})
+						}
+						else
+						{
+							mysqlClient.end();
+							return -1
+						}
+					}
 				});
 			});
 		});

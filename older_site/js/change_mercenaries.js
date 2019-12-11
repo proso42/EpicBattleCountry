@@ -83,3 +83,7 @@ function change_mercenraies(city, max)
         }
     });
 }
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+  }

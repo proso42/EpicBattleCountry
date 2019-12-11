@@ -54,7 +54,7 @@ function change_mercenraies(city, max)
             let new_quantity_1 = Math.trunc((getRandomInt(5000)+500)/100)*100;
             if (city['tavern_slot2'] == -1)
             {
-                let req = `UPDATE cities WHERE id = ${city['id']} SET tavern_slot1 = ${new_mercenary_1}, tavern_slot1_qt = ${new_quantity_1}`;
+                let req = `UPDATE cities SET tavern_slot1 = ${new_mercenary_1}, tavern_slot1_qt = ${new_quantity_1} WHERE id = ${city['id']}`;
                 console.log(req);
                 mysqlClient.query(req, function (err, ret){
                     console.log(`For city ${city['id']} tavern_slot1 UPDATED !`);
@@ -67,7 +67,7 @@ function change_mercenraies(city, max)
                 let new_quantity_2 = Math.trunc((getRandomInt(5000)+500)/100)*100;
                 if (city['tavern_slot3'] == -1)
                 {
-                    mysqlClient.query(`UPDATE cities WHERE id = ${city['id']} SET tavern_slot1 = ${new_mercenary_1}, tavern_slot2 = ${new_mercenary_2}, tavern_slot1_qt = ${new_quantity_1}, tavern_slot2_qt = ${new_quantity_2}`, function (err, ret){
+                    mysqlClient.query(`UPDATE cities SET tavern_slot1 = ${new_mercenary_1}, tavern_slot2 = ${new_mercenary_2}, tavern_slot1_qt = ${new_quantity_1}, tavern_slot2_qt = ${new_quantity_2} WHERE id = ${city['id']}`, function (err, ret){
                         console.log(`For city ${city['id']} tavern_slot1 and tavern_slot2 UPDATED !`);
                         resolve();
                     });
@@ -76,7 +76,7 @@ function change_mercenraies(city, max)
                 {
                     let new_mercenary_3 = Math.floor(Math.random() * Math.floor(max)) + 1;
                     let new_quantity_3 = Math.trunc((getRandomInt(5000)+500)/100)*100;
-                    mysqlClient.query(`UPDATE cities WHERE id = ${city['id']} SET tavern_slot1 = ${new_mercenary_1}, tavern_slot2 = ${new_mercenary_2}, tavern_slot3 = ${new_mercenary_3},tavern_slot1_qt = ${new_quantity_1}, tavern_slot2_qt = ${new_quantity_2}, tavern_slot3_qt = ${new_quantity_3},`, function (err, ret){
+                    mysqlClient.query(`UPDATE cities SET tavern_slot1 = ${new_mercenary_1}, tavern_slot2 = ${new_mercenary_2}, tavern_slot3 = ${new_mercenary_3},tavern_slot1_qt = ${new_quantity_1}, tavern_slot2_qt = ${new_quantity_2}, tavern_slot3_qt = ${new_quantity_3} WHERE id = ${city['id']}`, function (err, ret){
                         console.log(`For city ${city['id']} all slots UPDATED !`);
                         resolve();
                     });

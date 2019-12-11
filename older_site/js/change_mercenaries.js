@@ -50,6 +50,7 @@ function change_mercenraies(city, max)
         }
         else
         {
+            console.log(`Max : ${max}`);
             let new_mercenary_1 = Math.floor(Math.random() * Math.floor(max)) + 1;
             let new_quantity_1 = Math.trunc((getRandomInt(5000)+500)/100)*100;
             if (city['tavern_slot2'] == -1)

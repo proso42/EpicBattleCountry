@@ -27,6 +27,7 @@ mysqlClient.query(request_get_all_cities, function (err, results) {
             let max = ret[0]['max'];
             console.log(ret);
             console.log(ret[0]);
+            console.log(ret[0]['max']);
             for (let i = 0; i < results.length; i++)
                 tab_p.push(change_mercenraies(results[i]), max);
             Promise.all(tab_p)

@@ -22,8 +22,8 @@ mysqlClient.query(request_get_all_cities, function (err, results) {
         return (err);
     else
     {
-        mysqlClient.query('SELECT COUNT(id) FROM mercenaries', function (err, ret) {
-            console.log(ret);
+        mysqlClient.query("SELECT COUNT(id) AS 'max' FROM mercenaries", function (err, ret) {
+            console.log(ret[0]['max']);
             return 0;
             let tab_p = [];
             for (let i = 0; i < results.length; i++)

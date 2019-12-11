@@ -15,6 +15,10 @@
                 @else
                     <!-- Listes des slots -->
                     <h1 style="margin-top: 25px">@lang('building.Taverne')</h1>
+                    <div style="text-align: left">
+                        <span>@lang('mercenaries.next_switch')</span>
+                        <span id="main_timing" duration="{{ $next_switch }}"></span>
+                    </div>
                     <div class="mercenary-slot">
                         <!-- SLOT 1 -->
                         <div id="slot1" class="row" style="align-items: baseline;line-height: 31px;">
@@ -58,7 +62,6 @@
             </div>
         </div>
         <input id="_token" name="_token" type="hidden" value="{{csrf_token()}}">
-        <script>
-        </script>
+        <script src="/js/taverne.js"></script>
     </body>
 </html>

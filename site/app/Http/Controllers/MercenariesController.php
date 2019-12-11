@@ -41,7 +41,8 @@
             else
             {
                 $slots = $this->get_available_mercenaries($city_id, $allowed);
-                return view('taverne', compact('is_admin', 'allowed' ,'util', 'slots'));
+                $next_switch = $this->get_time_before_3h();
+                return view('taverne', compact('is_admin', 'allowed' ,'util', 'slots', 'next_switch'));
             }
         }
 
@@ -131,6 +132,31 @@
             }
             $slots = ['slot1' => $slot1, 'slot2' => $slot2, 'slot3' => $slot3];
             return $slots;
+        }
+
+        private function get_time_before_3h()
+        {
+            $hours = date('H');
+            $min = date('i');
+            $sec = date('s');
+            $duration = 0;
+            if ($sec > 0)
+            {
+                $duration += 60 - $sec;
+                $min++;
+            }
+            if ($min === 0)
+                $hours++;
+            else
+            {
+                $duration += ((60 - $min) * 60);
+                $hours++;
+            }
+            if ($hours < 24 && $hours > 3)
+                $duration += ((24 - $hours + 3) * 3600);
+            else
+                $duration += ((3 - $hours) * 3600);
+            return $duration;
         }
     }
 ?>

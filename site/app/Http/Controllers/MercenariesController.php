@@ -64,7 +64,7 @@
             ->where('tavern_slot', '=', 1)
             ->first();
             if ($info_slot1)
-                $slot1 = ['cool_down' => Common::sec_to_date($info_slot1->finishing_date - time()), 'available' => 0];
+                $slot1 = ['cool_down' => $info_slot1->finishing_date - time(), 'available' => 0];
             else
             {
                 $slot1 = ['name' => trans('mercenaries.' . $info_merc1->name), 
@@ -89,7 +89,7 @@
                 ->where('tavern_slot', '=', 2)
                 ->first();
                 if ($info_slot2)
-                    $slot2 = ['cool_down' => Common::sec_to_date($info_slot2->finishing_date - time()), 'available' => 0];
+                    $slot2 = ['cool_down' => $info_slot2->finishing_date - time(), 'available' => 0];
                 else
                 {
                     $slot2 = ['name' => trans('mercenaries.' . $info_merc2->name), 
@@ -115,7 +115,7 @@
                 ->where('tavern_slot', '=', 3)
                 ->first();
                 if ($info_slot3)
-                    $slot3 = ['cool_down' => Common::sec_to_date($info_slot3->finishing_date - time()), 'available' => 0];
+                    $slot3 = ['cool_down' => $info_slot3->finishing_date - time(), 'available' => 0];
                 else
                 {
                     $slot3 = ['name' => trans('mercenaries.' . $info_merc3->name), 

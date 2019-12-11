@@ -1,4 +1,13 @@
 timer("main_timing", document.getElementById("main_timing").getAttribute("duration"));
+let timing_slot1 = document.getElementById("timing_slot1");
+let timing_slot2 = document.getElementById("timing_slot2");
+let timing_slot3 = document.getElementById("timing_slot3");
+if (timing_slot1 != null)
+    timer("timing_slot1", timing_slot1.getAttribute("cool_down"));
+if (timing_slot2 != null)
+    timer("timing_slot2", timing_slot2.getAttribute("cool_down"));
+if (timing_slot3 != null)
+    timer("timing_slot3", timing_slot3.getAttribute("cool_down"));
 
 function timer(id, duration)
             {

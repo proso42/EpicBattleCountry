@@ -20,43 +20,51 @@
                         <span id="main_timing" duration="{{ $next_switch }}"></span>
                     </div>
                     <div class="mercenary-slot">
-                        <!-- SLOT 1 -->
-                        <div id="slot1" class="row" style="align-items: baseline;line-height: 31px;">
-                            <div class="mercenary-unit offset-lg-1 offset-md-1 offset-sm-1 offset-1 col-lg-3 col-md-3 col-sm-3 col-3" style="text-align:center">
-                                <span>{{ $slots['slot1']['name'] }}</span>
-                                <div class="mercenary-info-unit">
-                                    <ul>
-                                        <li>@lang('army.life') : {{ $slots['slot1']['life'] }} <i class="fas fa-heartbeat"></i></li>
-                                        <li>@lang('army.speed') : {{ $slots['slot1']['speed'] }} <i class="fas fa-tachometer-alt"></i></li>
-                                        <li>@lang('army.power') : {{ $slots['slot1']['power'] }} <i class="fas fa-fist-raised"></i></li>
-                                        <li>@lang('army.storage') : {{ $slots['slot1']['storage'] }} <i class="fas fa-box"></i></li>
-                                        <li>@lang('common.cool_down') : {{ $slots['slot1']['cool_down'] }} <i class="fas fa-clock"></i></li>
-                                    </ul>
+                        <!-- SLOT 1 ACTIF -->
+                        @if ($slots['slot1']['available'] == 1)
+                            <div id="slot1" class="row" style="align-items: baseline;line-height: 31px;">
+                                <div class="mercenary-unit offset-lg-1 offset-md-1 offset-sm-1 offset-1 col-lg-3 col-md-3 col-sm-3 col-3" style="text-align:center">
+                                    <span>{{ $slots['slot1']['name'] }}</span>
+                                    <div class="mercenary-info-unit">
+                                        <ul>
+                                            <li>@lang('army.life') : {{ $slots['slot1']['life'] }} <i class="fas fa-heartbeat"></i></li>
+                                            <li>@lang('army.speed') : {{ $slots['slot1']['speed'] }} <i class="fas fa-tachometer-alt"></i></li>
+                                            <li>@lang('army.power') : {{ $slots['slot1']['power'] }} <i class="fas fa-fist-raised"></i></li>
+                                            <li>@lang('army.storage') : {{ $slots['slot1']['storage'] }} <i class="fas fa-box"></i></li>
+                                            <li>@lang('common.cool_down') : {{ $slots['slot1']['cool_down'] }} <i class="fas fa-clock"></i></li>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="mercenary-quantity col-lg-2 col-md-2 col-sm-2 col-2">
-                                <span>@lang('common.quantity') : {{ $slots['slot1']['quantity'] }}</span>
-                            </div>
-                            <div class="mercenary-ressources col-lg-2 col-md-2 col-sm-2 col-2">
-                                <span>@lang('common.price')</span>
-                                <div class="mercenary-ressources-details">
-                                    <ul>
-                                        <li>@lang('common.gold') : {{ $slots['slot1']['gold'] }}</li>
-                                        <span>@lang('common.or')</span>
-                                        <li>@lang('common.diamond') : {{ $slots['slot1']['diamond'] }}</li>
-                                    </ul>
+                                <div class="mercenary-quantity col-lg-2 col-md-2 col-sm-2 col-2">
+                                    <span>@lang('common.quantity') : {{ $slots['slot1']['quantity'] }}</span>
                                 </div>
+                                <div class="mercenary-ressources col-lg-2 col-md-2 col-sm-2 col-2">
+                                    <span>@lang('common.price')</span>
+                                    <div class="mercenary-ressources-details">
+                                        <ul>
+                                            <li>@lang('common.gold') : {{ $slots['slot1']['gold'] }}</li>
+                                            <span>@lang('common.or')</span>
+                                            <li>@lang('common.diamond') : {{ $slots['slot1']['diamond'] }}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <input onclick="recruit()" type="button" class="mercenary-button col-lg-2 col-md-2 col-sm-2 col-2" value="@lang('common.recruit')">
                             </div>
-                            <input onclick="recruit()" type="button" class="mercenary-button col-lg-2 col-md-2 col-sm-2 col-2" value="@lang('common.recruit')">
-                        </div>
-                        <div id="slot1_option" class="row" style="align-items: baseline;line-height: 31px;">
-                            <div class="offset-lg-5 offset-md-5 offset-sm-5 offset-5 col-lg-1 col-md-1 col-sm-1 col-1">
-                                <button class="mercenary-button-rdm"><i class="fas fa-random"></i></button>
+                            <div id="slot1_option" class="row" style="align-items: baseline;line-height: 31px;">
+                                <div class="offset-lg-5 offset-md-5 offset-sm-5 offset-5 col-lg-1 col-md-1 col-sm-1 col-1">
+                                    <button class="mercenary-button-rdm"><i class="fas fa-random"></i></button>
+                                </div>
+                                <div class="col-lg-1 col-md-1 col-sm-1 col-1">
+                                    <button class="mercenary-button-up"><i class="fas fa-sort-amount-up"></i></button>
+                                </div>    
                             </div>
-                            <div class="col-lg-1 col-md-1 col-sm-1 col-1">
-                                <button class="mercenary-button-up"><i class="fas fa-sort-amount-up"></i></button>
-                            </div>    
-                        </div>
+                        @else
+                            <!-- SLOT 1 INACTIF -->
+                            <div style="text-align: center">
+                                <span>@lang('mercenaries.unavaible_slot')</span>
+                                <span id="timing_slot1" duration="{{ $slots['slot1']['cool_down'] }}"></span>
+                            </div>
+                        @endif
                     </div>
                 @endif
             </div>

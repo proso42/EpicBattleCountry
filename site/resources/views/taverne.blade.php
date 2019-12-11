@@ -14,10 +14,11 @@
                     <p>@lang('mercenaries.missing_tavern')</p>
                 @else
                     <!-- Listes des slots -->
-                    <h2 style="margin-top: 25px">@lang('building.Taverne')</h2>
+                    <h1 style="margin-top: 25px">@lang('building.Taverne')</h1>
                     <div class="mercenary-slot">
                         <!-- SLOT 1 -->
                         <div id="slot1" class="row" style="align-items: baseline;line-height: 31px;">
+                            <h2>Slot 1</h2>
                             <div class="mercenary-unit offset-lg-2 offset-md-2 offset-sm-2 offset-2 col-lg-2 col-md-2 col-sm-2 col-2" style="text-align:center">
                                 <span>{{ $slots['slot1']['name'] }}</span>
                                 <div class="mercenary-info-unit">

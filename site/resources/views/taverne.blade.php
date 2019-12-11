@@ -60,7 +60,7 @@
                             </div>
                         @else
                             <!-- SLOT 1 INACTIF -->
-                            <div style="text-align: center">
+                            <div style="text-align: center;color: white;font-weight: bold">
                                 <span>@lang('mercenaries.unavailable_slot')</span>
                                 <span id="timing_slot1" duration="{{ $slots['slot1']['cool_down'] }}"></span>
                             </div>

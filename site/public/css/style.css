@@ -1817,6 +1817,7 @@ input::placeholder
     border-radius: 4px;
     cursor: pointer;
     height: 32px;
+    width: 40px;
 }
 
 .mercenary-button-rdm:hover
@@ -1838,6 +1839,7 @@ input::placeholder
     border-radius: 4px;
     cursor: pointer;
     height: 32px;
+    width: 40px;
 }
 
 .mercenary-button-up:hover

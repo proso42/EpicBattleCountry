@@ -1,9 +1,9 @@
-timer("main_timing");
+timer("main_timing", document.getElementById("main_timing").getAttribute("duration"));
 
-function timer(id)
+function timer(id, duration)
             {
                 var compteur=document.getElementById(id);
-                var s=compteur.getAttribute("duration");
+                var s=duration;
                 var m=0;
                 var h=0;
                 var j = 0;

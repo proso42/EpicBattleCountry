@@ -42,6 +42,7 @@
             {
                 $slots = $this->get_available_mercenaries($city_id, $allowed);
                 $next_switch = $this->get_time_before_3h();
+                dd($slots);
                 return view('taverne', compact('is_admin', 'allowed' ,'util', 'slots', 'next_switch'));
             }
         }

@@ -1712,6 +1712,16 @@ input::placeholder
     align-items: baseline;
 }
 
+.mercenary-slot
+{
+    margin-top: 25px;
+    background-color: crimson;
+    color: black;
+    border: 1px solid lightblue;
+    border-radius: 4px;
+    width: 90%;
+}
+
 .mercenary-unit
 {
     text-align: center;
@@ -1808,6 +1818,7 @@ input::placeholder
 .mercenary-button-rdm
 {
     margin-top: 26px;
+    margin-bottom: 26px;
     margin-left: 20px;
     line-height: 0;
     background-color: cornflowerblue;
@@ -1830,6 +1841,7 @@ input::placeholder
 .mercenary-button-up
 {
     margin-top: 26px;
+    margin-bottom: 26px;
     margin-left: 20px;
     line-height: 0;
     background-color: greenyellow;

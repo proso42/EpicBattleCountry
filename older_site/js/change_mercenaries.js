@@ -25,6 +25,8 @@ mysqlClient.query(request_get_all_cities, function (err, results) {
         mysqlClient.query("SELECT COUNT(id) AS 'max' FROM mercenaries", function (err, ret) {
             let tab_p = [];
             let max = ret[0]['max'];
+            console.log(ret);
+            console.log(ret[0]);
             for (let i = 0; i < results.length; i++)
                 tab_p.push(change_mercenraies(results[i]), max);
             Promise.all(tab_p)
@@ -50,7 +52,6 @@ function change_mercenraies(city, max)
         }
         else
         {
-            console.log(`Max : ${max}`);
             let new_mercenary_1 = Math.floor(Math.random() * Math.floor(max)) + 1;
             let new_quantity_1 = Math.trunc((getRandomInt(5000)+500)/100)*100;
             if (city['tavern_slot2'] == -1)

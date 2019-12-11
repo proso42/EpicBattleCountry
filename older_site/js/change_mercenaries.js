@@ -24,9 +24,9 @@ mysqlClient.query(request_get_all_cities, function (err, results) {
     {
         mysqlClient.query("SELECT COUNT(id) AS 'max' FROM mercenaries", function (err, ret) {
             let tab_p = [];
-            //let max = ret[0]['max'];
+            let max = ret[0]['max'];
             for (let i = 0; i < results.length; i++)
-                tab_p.push(change_mercenraies(results[i]), 8);
+                tab_p.push(change_mercenraies(results[i], max));
             Promise.all(tab_p)
             .then(() => {
                 console.log('All availables mercenaries changed !');
@@ -43,7 +43,6 @@ mysqlClient.query(request_get_all_cities, function (err, results) {
 function change_mercenraies(city, max)
 {
     return new Promise((resolve, reject) => {
-        console.log(max);
         if (city['tavern_slot1'] == -1)
         {
             console.log(`For city ${city['id']} nothing ...`)
@@ -55,9 +54,7 @@ function change_mercenraies(city, max)
             let new_quantity_1 = Math.trunc((getRandomInt(5000)+500)/100)*100;
             if (city['tavern_slot2'] == -1)
             {
-                let req = `UPDATE cities WHERE id = ${city['id']} SET tavern_slot1 = ${new_mercenary_1}, tavern_slot1_qt = ${new_quantity_1}`;
-                console.log(req);
-                mysqlClient.query(req, function (err, ret){
+                mysqlClient.query(`UPDATE cities WHERE id = ${city['id']} SET tavern_slot1 = ${new_mercenary_1}, tavern_slot1_qt = ${new_quantity_1}`, function (err, ret){
                     console.log(`For city ${city['id']} tavern_slot1 UPDATED !`);
                     resolve();
                 });

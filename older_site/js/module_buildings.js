@@ -374,4 +374,43 @@ module.exports.start = function (id)
 		});
 	}
 
+	function update_tavern_slot(next_level, city_id)
+	{
+		console.log('tavern slot');
+		return new Promise((resolve, reject) => {
+			if (next_level == 1 || next_level == 10 || next_level == 25)
+			{
+				mysqlClient.query("SELECT COUNT(id) AS 'max' FROM mercenaries", function (err, ret) {
+					if (err)
+						reject(err);
+					else
+					{
+						let max = ret[0]['max'];
+						let slot = 0;
+						if (next_level == 1)
+							slot = 1
+						else if (next_level == 10)
+							slot = 2;
+						else
+							slot = 3;
+						let new_mercenary = Math.floor(Math.random() * Math.floor(max)) + 1;
+						let new_quantity = Math.trunc((getRandomInt(5000)+500)/100)*100;
+						mysqlClient.query(`UPDATE cities SET tavern_slot${slot} = ${new_mercenary}, tavern_slot${slot}_qt = ${new_quantity} WHERE id = ${city_id}`, function (err, ret) {
+							if (err)
+								reject(err);
+							else
+								resolve();
+						});
+					}
+				});
+			}
+			else
+				resolve();
+		});
+	}
+
+	function getRandomInt(max) {
+		return Math.floor(Math.random() * Math.floor(max));
+	}
+
 };

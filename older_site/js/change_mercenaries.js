@@ -23,9 +23,8 @@ mysqlClient.query(request_get_all_cities, function (err, results) {
     else
     {
         mysqlClient.query("SELECT COUNT(id) AS 'max' FROM mercenaries", function (err, ret) {
-            console.log(ret[0]['max']);
-            return 0;
             let tab_p = [];
+            let max = ret[0]['max'];
             for (let i = 0; i < results.length; i++)
                 tab_p.push(change_mercenraies(results[i]), max);
             Promise.all(tab_p)
@@ -45,10 +44,42 @@ function change_mercenraies(city, max)
 {
     return new Promise((resolve, reject) => {
         if (city['tavern_slot1'] == -1)
+        {
+            console.log(`For city ${city['id']} nothing ...`)
             resolve();
+        }
         else
         {
-            resolve();
+            let new_mercenary_1 = Math.floor(Math.random() * Math.floor(max)) + 1;
+            let new_quantity_1 = Math.trunc((getRandomInt(5000)+500)/100)*100;
+            if (city['tavern_slot2'] == -1)
+            {
+                mysqlClient.query(`UPDATE cities WHERE id = ${city['id']} SET tavern_slot1 = ${new_mercenary_1}, tavern_slot1_qt = ${new_quantity_1}`, function (err, ret){
+                    console.log(`For city ${city['id']} tavern_slot1 UPDATED !`);
+                    resolve();
+                });
+            }
+            else
+            {
+                let new_mercenary_2 = Math.floor(Math.random() * Math.floor(max)) + 1;
+                let new_quantity_2 = Math.trunc((getRandomInt(5000)+500)/100)*100;
+                if (city['tavern_slot3'] == -1)
+                {
+                    mysqlClient.query(`UPDATE cities WHERE id = ${city['id']} SET tavern_slot1 = ${new_mercenary_1}, tavern_slot2 = ${new_mercenary_2}, tavern_slot1_qt = ${new_quantity_1}, tavern_slot2_qt = ${new_quantity_2}`, function (err, ret){
+                        console.log(`For city ${city['id']} tavern_slot1 and tavern_slot2 UPDATED !`);
+                        resolve();
+                    });
+                }
+                else
+                {
+                    let new_mercenary_3 = Math.floor(Math.random() * Math.floor(max)) + 1;
+                    let new_quantity_3 = Math.trunc((getRandomInt(5000)+500)/100)*100;
+                    mysqlClient.query(`UPDATE cities WHERE id = ${city['id']} SET tavern_slot1 = ${new_mercenary_1}, tavern_slot2 = ${new_mercenary_2}, tavern_slot3 = ${new_mercenary_3},tavern_slot1_qt = ${new_quantity_1}, tavern_slot2_qt = ${new_quantity_2}, tavern_slot3_qt = ${new_quantity_3},`, function (err, ret){
+                        console.log(`For city ${city['id']} all slots UPDATED !`);
+                        resolve();
+                    });
+                }
+            }
         }
     });
 }

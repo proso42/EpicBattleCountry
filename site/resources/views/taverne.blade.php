@@ -22,7 +22,7 @@
                     <div class="mercenary-slot">
                         <!-- SLOT 1 -->
                         <div id="slot1" class="row" style="align-items: baseline;line-height: 31px;">
-                            <div class="mercenary-unit offset-lg-2 offset-md-2 offset-sm-2 offset-2 col-lg-2 col-md-2 col-sm-2 col-2" style="text-align:center">
+                            <div class="mercenary-unit offset-lg-1 offset-md-1 offset-sm-1 offset-1 col-lg-3 col-md-3 col-sm-3 col-3" style="text-align:center">
                                 <span>{{ $slots['slot1']['name'] }}</span>
                                 <div class="mercenary-info-unit">
                                     <ul>

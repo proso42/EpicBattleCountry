@@ -1691,7 +1691,7 @@ input::placeholder
 {
     border: 1px solid lightblue;
     border-radius: 4px;
-    background-color: #371022;
+    background-color: rgba(105, 105, 105, 0.9);
     width: 370px;
     margin-left: auto;
     margin-right: auto;
@@ -1715,7 +1715,7 @@ input::placeholder
 .mercenary-slot
 {
     margin-top: 25px;
-    background-color: ;
+    background-color: #371022;
     color: black;
     border: 1px solid lightblue;
     border-radius: 4px;

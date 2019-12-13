@@ -212,8 +212,8 @@ function catch_unflag_action()
 							return (err);
 						else
 							console.log(`Magic cool down (${entry_id}) deleted !`);
-					}, (ret[i]['finishing_date'] - (Math.round(Date.now() / 1000))) * 1000), entry_id;
-				});
+					});
+				}, (ret[i]['finishing_date'] - (Math.round(Date.now() / 1000))) * 1000);
 			}
 		}
 		else
@@ -229,7 +229,6 @@ function catch_unflag_action()
 			for (let i = 0; i < ret.length; i++)
 			{
 				let entry_id = ret[i]["id"];
-				console.log((ret[i]['finishing_date'] - (Math.round(Date.now() / 1000))) * 1000);
 				mysqlClient.query(`UPDATE mercenaries_cool_down SET flag = 1 WHERE id = ${ret[i]['id']};`, function (err, ret)
 				{
 					if (err)
@@ -245,8 +244,8 @@ function catch_unflag_action()
 							return (err);
 						else
 							console.log(`Mercenaries cool down (${entry_id}) deleted !`);
-					}, (ret[i]['finishing_date'] - (Math.round(Date.now() / 1000))) * 1000), entry_id;
-				});
+					});
+				},(ret[i]['finishing_date'] - (Math.round(Date.now() / 1000))) * 1000);
 			}
 		}
 		else

@@ -109,6 +109,11 @@
                                 <td>{{ $item['name'] }}</td><td id="item_id_{{ $item['name'] }}">{{ $item['quantity'] }}</td>
                             </tr>
                         @endforeach
+                        @if ($util->diamond > 0)
+                            <tr>
+                                <td>@lang('common.diamond')</td><td id="item_diamond }}">{{ $util->diamond }}</td>
+                            </tr>
+                        @endif
                     </table>
                 </div>
                 @endif

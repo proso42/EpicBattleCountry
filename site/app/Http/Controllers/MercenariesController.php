@@ -167,11 +167,11 @@
             $city_id = session()->get('city_id');
             $slot_db = 'tavern_slot' . $slot;
             $slot_qt_db = 'tavern_slot' . $slot . "_qt";
-            return ("ok");
             $tavern_slot_DB = DB::table('cities')
             ->select('diamond', $slot_db, $slot_qt_db)
             ->where('id', '=', $city_id)
             ->first();
+            return ("ok");
             if (($tavern_slot_DB->slot_db) == -1)
                 return ("Error upgrade : slot locked");
             else if (($tavern_slot_DB->slot_qt_db) == 5000)

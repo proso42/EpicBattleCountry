@@ -164,6 +164,7 @@
             $slot = $request['slot'];
             if ($slot != 1 && $slot != 2 && $slot != 3)
                 return ("Error upgrade : bad slot");
+            return ("ok");
             $city_id = session()->get('city_id');
             $slot_db = 'tavern_slot' . $slot;
             $slot_qt_db = 'tavern_slot' . $slot . "_qt";

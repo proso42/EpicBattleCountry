@@ -20,7 +20,7 @@ function upgrade(slot)
         {
             if (xhr.responseText == "Succes")
             {
-                window.location.reload();
+                //window.location.reload();
             }
             else
             {

@@ -66,9 +66,9 @@
                             </div>
                         @endif
                     </div>
-                    <div class="mercenary-slot">
+                    @if($allowed >= 10)
+                        <div class="mercenary-slot">
                         <!-- SLOT 2 ACTIF -->
-                        @if($allowed >= 10)
                             @if ($slots['slot2']['available'] == 1)
                                 <div id="slot2" class="row" style="align-items: baseline;line-height: 31px;">
                                     <div class="mercenary-unit offset-lg-1 offset-md-1 offset-sm-1 offset-1 col-lg-3 col-md-3 col-sm-3 col-3" style="text-align:center">
@@ -113,8 +113,8 @@
                                     <span id="timing_slot2" duration="{{ $slots['slot2']['cool_down'] }}"></span>
                                 </div>
                             @endif
-                        @endif
-                    </div>
+                        </div>
+                    @endif
                 @endif
             </div>
         </div>

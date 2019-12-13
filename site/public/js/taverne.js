@@ -9,6 +9,30 @@ if (timing_slot2 != null)
 if (timing_slot3 != null)
     timer("timing_slot3", timing_slot3.getAttribute("duration"));
 
+function upgrade(slot)
+{
+    var _token = document.getElementById("_token").value;
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'http://www.epicbattlecorp.fr/upgrade_mercenary');
+    xhr.onreadystatechange =  function()
+    {
+        if (xhr.readyState === 4 && xhr.status === 200)
+        {
+            if (xhr.responseText == "Succes")
+            {
+                window.location.reload();
+            }
+            else
+            {
+                console.log(xhr.responseText);
+                return ;
+            }
+        }
+    }
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send('_token=' + _token + '&slot=' + slot);
+}
+
 function timer(id, duration)
             {
                 var compteur=document.getElementById(id);

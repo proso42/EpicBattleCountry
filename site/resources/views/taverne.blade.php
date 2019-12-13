@@ -55,7 +55,7 @@
                                     <button class="mercenary-button-rdm"><i class="fas fa-random"></i></button>
                                 </div>
                                 <div class="col-lg-1 col-md-1 col-sm-1 col-1">
-                                    <button class="mercenary-button-up"><i class="fas fa-sort-amount-up"></i></button>
+                                    <button onclick="upgrade(1)" class="mercenary-button-up"><i class="fas fa-sort-amount-up"></i></button>
                                 </div>    
                             </div>
                         @else
@@ -103,11 +103,11 @@
                                         <button class="mercenary-button-rdm"><i class="fas fa-random"></i></button>
                                     </div>
                                     <div class="col-lg-1 col-md-1 col-sm-1 col-1">
-                                        <button class="mercenary-button-up"><i class="fas fa-sort-amount-up"></i></button>
+                                        <button onclick="upgrade(2)" class="mercenary-button-up"><i class="fas fa-sort-amount-up"></i></button>
                                     </div>    
                                 </div>
                             @else
-                                <!-- SLOT 1 INACTIF -->
+                                <!-- SLOT 2 INACTIF -->
                                 <div style="text-align: center;color: white;font-weight: bold">
                                     <span>@lang('mercenaries.unavailable_slot')</span>
                                     <span id="timing_slot2" duration="{{ $slots['slot2']['cool_down'] }}"></span>
@@ -152,7 +152,7 @@
                                         <button class="mercenary-button-rdm"><i class="fas fa-random"></i></button>
                                     </div>
                                     <div class="col-lg-1 col-md-1 col-sm-1 col-1">
-                                        <button class="mercenary-button-up"><i class="fas fa-sort-amount-up"></i></button>
+                                        <button onclick="upgrade(3)" class="mercenary-button-up"><i class="fas fa-sort-amount-up"></i></button>
                                     </div>    
                                 </div>
                             @else

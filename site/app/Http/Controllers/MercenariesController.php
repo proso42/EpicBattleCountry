@@ -158,5 +158,27 @@
                 $duration += ((3 - $hours) * 3600);
             return $duration;
         }
+
+        public function upgrade(Request $request)
+        {
+            $slot = $request['slot'];
+            if ($slot != 1 && $slot != 2 && $slot != 3)
+                return ("Error upgrade : bad slot");
+            $city_id = session()->get('city_id');
+            $tavern_slot_DB = DB::table('cities')
+            ->select('diamond', 'tavern_slot' . $slot, 'tavern_slot' . $slot . "_qt")
+            ->where('id', '=', $city_id)
+            ->first();
+            if (($tavern_slot_DB->'tavern_slot' . $slot) == -1)
+                return ("Error upgrade : slot locked");
+            else if (($tavern_slot_DB->'tavern_slot' . $slot . "_qt") == 5000)
+                return ("Error upgrade : maximum quantity reach");
+            else if ($tavern_slot_DB->diamond < 1)
+                return ("Error upgrade : not enought diamond");
+            DB::table('cities')
+            ->where('id', '=', $city_id)
+            ->update(['diamond' => $tavern_slot_DB->diamond - 1, 'tavern_slot' . $slot . '_qt' => 5000]);
+            return ("Succes");
+        }
     }
 ?>

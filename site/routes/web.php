@@ -65,10 +65,11 @@ Route::group(['middleware' => ['logged']], function(){
     Route::post('/craft_item', 'ForgeController@craft_item');
     // Army endpoints
     Route::get('/army', 'ArmyController@index');
-    Route::post('calculate_training_price', 'ArmyController@calculate_training_price');
-    Route::post('train_unit', 'ArmyController@train_unit');
+    Route::post('/calculate_training_price', 'ArmyController@calculate_training_price');
+    Route::post('/train_unit', 'ArmyController@train_unit');
     // Mercenaries endpoints
     Route::get('/mercenaries', 'MercenariesController@index');
+    Route::post('/upgrade_mercenary', 'MercenariesController@upgrade')
     // Map endpoints
     Route::get('/map', 'MapController@index');
     //Exploration endpoints

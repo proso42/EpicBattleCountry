@@ -408,6 +408,8 @@ module.exports.start = function (id)
 							slot = 3;
 						let new_mercenary = Math.floor(Math.random() * Math.floor(max)) + 1;
 						let new_quantity = Math.trunc((getRandomInt(5000)+500)/100)*100;
+						if (new_quantity > 5000)
+							new_quantity = 5000;
 						mysqlClient.query(`UPDATE cities SET tavern_slot${slot} = ${new_mercenary}, tavern_slot${slot}_qt = ${new_quantity} WHERE id = ${city_id}`, function (err, ret) {
 							if (err)
 								reject(err);

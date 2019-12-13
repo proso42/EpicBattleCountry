@@ -33,6 +33,31 @@ function upgrade(slot)
     xhr.send('_token=' + _token + '&slot=' + slot);
 }
 
+function randomize(slot)
+{
+    var _token = document.getElementById("_token").value;
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'http://www.epicbattlecorp.fr/randomize_mercenary');
+    xhr.onreadystatechange =  function()
+    {
+        if (xhr.readyState === 4 && xhr.status === 200)
+        {
+            if (xhr.responseText == "Succes")
+            {
+                window.location.reload();
+            }
+            else
+            {
+                console.log(xhr.responseText);
+                return ;
+            }
+        }
+    }
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send('_token=' + _token + '&slot=' + slot);
+}
+
+
 function timer(id, duration)
             {
                 var compteur=document.getElementById(id);

@@ -177,10 +177,47 @@
                 return ("Error upgrade : maximum quantity reach");
             else if ($tavern_slot_DB->diamond < 1)
                 return ("Error upgrade : not enought diamond");
+            $is_wip = DB::table('mercenaries_cool_down')
+            ->where('city_id', '=', $city_id)
+            -where('tavern_slot', '=', $slot_db)
+            ->first();
+            if ($is_wip != null)
+                return ("Error upgrade : slot unavailable");
             DB::table('cities')
             ->where('id', '=', $city_id)
             ->update(['diamond' => $tavern_slot_DB->diamond - 1, $slot_qt_db => 5000]);
-            return ("Succes");
+            return ("Success");
+        }
+
+        public function randomize(Request $request)
+        {
+            $slot = $request['slot'];
+            if ($slot != 1 && $slot != 2 && $slot != 3)
+                return ("Error upgrade : bad slot");
+            $city_id = session()->get('city_id');
+            $slot_db = 'tavern_slot' . $slot;
+            $slot_qt_db = 'tavern_slot' . $slot . '_qt';
+            $tavern_slot_DB = DB::table('cities')
+            ->select('diamond', $slot_db)
+            ->where('id', '=', $city_id)
+            ->first();
+            if (($tavern_slot_DB->$slot_db) == -1)
+                return ("Error upgrade : slot locked");
+            else if ($tavern_slot_DB->diamond < 1)
+                return ("Error upgrade : not enought diamond");
+            $is_wip = DB::table('mercenaries_cool_down')
+            ->where('city_id', '=', $city_id)
+            -where('tavern_slot', '=', $slot_db)
+            ->first();
+            if ($is_wip != null)
+                return ("Error upgrade : slot unavailable");
+            $max = DB::table('mercenaries')->count();
+            $new_mercenary = rand(1, $max);
+            $new_quantity = (floor(rand(500, 5000)/100))*100;
+            DB::table('cities')
+            ->where('id', '=', $city_id)
+            ->update(['diamond' => $tavern_slot_DB->diamond - 1, $slot_db => $new_mercenary, $slot_qt_db => $new_quantity]);
+            return ("Success");
         }
     }
 ?>

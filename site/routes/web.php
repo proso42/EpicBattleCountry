@@ -70,6 +70,7 @@ Route::group(['middleware' => ['logged']], function(){
     // Mercenaries endpoints
     Route::get('/mercenaries', 'MercenariesController@index');
     Route::post('/upgrade_mercenary', 'MercenariesController@upgrade');
+    Route::post('/randomize_mercenary', 'MercenariesController@randomize');
     // Map endpoints
     Route::get('/map', 'MapController@index');
     //Exploration endpoints

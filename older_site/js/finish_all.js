@@ -25,7 +25,8 @@ let unflag_techs_p = unflag_techs();
 let unflag_units_p = unflag_units();
 let unflag_travels_p = unflag_travels();
 let unflag_magic_cool_down_p = unflag_magic_cool_down();
-Promise.all([unflag_buildings_p, unflag_items_p, unflag_techs_p, unflag_units_p, unflag_travels_p, unflag_magic_cool_down_p])
+let unflag_mercenaries_cool_down_p = unflag_mercenaries_cool_down();
+Promise.all([unflag_buildings_p, unflag_items_p, unflag_techs_p, unflag_units_p, unflag_travels_p, unflag_magic_cool_down_p, unflag_mercenaries_cool_down_p])
 	.then(() => {
 		setInterval(catch_unflag_action, 1000);
 	})
@@ -228,6 +229,7 @@ function catch_unflag_action()
 			for (let i = 0; i < ret.length; i++)
 			{
 				let entry_id = ret[i]["id"];
+				console.log((ret[i]['finishing_date'] - (Math.round(Date.now() / 1000))) * 1000);
 				mysqlClient.query(`UPDATE mercenaries_cool_down SET flag = 1 WHERE id = ${ret[i]['id']};`, function (err, ret)
 				{
 					if (err)

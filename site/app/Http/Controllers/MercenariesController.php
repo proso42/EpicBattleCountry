@@ -173,10 +173,10 @@
             ->first();
             if (($tavern_slot_DB->slot_db) == -1)
                 return ("Error upgrade : slot locked");
-            else if (($tavern_slot_DB->slot_qt_db) == 5000)
+            /*else if (($tavern_slot_DB->slot_qt_db) == 5000)
                 return ("Error upgrade : maximum quantity reach");
             else if ($tavern_slot_DB->diamond < 1)
-                return ("Error upgrade : not enought diamond");
+                return ("Error upgrade : not enought diamond");*/
             return ("ok");
             DB::table('cities')
             ->where('id', '=', $city_id)

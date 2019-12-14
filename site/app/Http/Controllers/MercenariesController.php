@@ -211,6 +211,7 @@
             ->first();
             if ($is_wip != null)
                 return ("Error upgrade : slot unavailable");
+            return ("ok");
             $max = DB::table('mercenaries')->count();
             $new_mercenary = rand(1, $max);
             $new_quantity = (floor(rand(500, 5000)/100))*100;

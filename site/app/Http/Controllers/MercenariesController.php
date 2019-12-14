@@ -205,13 +205,13 @@
                 return ("Error upgrade : slot locked");
             else if ($tavern_slot_DB->diamond < 1)
                 return ("Error upgrade : not enought diamond");
+            return ("ok");
             $is_wip = DB::table('mercenaries_cool_down')
             ->where('city_id', '=', $city_id)
             -where('tavern_slot', '=', $slot_db)
             ->first();
             if ($is_wip != null)
                 return ("Error upgrade : slot unavailable");
-            return ("ok");
             $max = DB::table('mercenaries')->count();
             $new_mercenary = rand(1, $max);
             $new_quantity = (floor(rand(500, 5000)/100))*100;

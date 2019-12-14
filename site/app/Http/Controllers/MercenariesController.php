@@ -179,7 +179,7 @@
                 return ("Error upgrade : not enought diamond");
             $is_wip = DB::table('mercenaries_cool_down')
             ->where('city_id', '=', $city_id)
-            -where('tavern_slot', '=', $slot_db)
+            ->where('tavern_slot', '=', $slot_db)
             ->first();
             if ($is_wip != null)
                 return ("Error upgrade : slot unavailable");

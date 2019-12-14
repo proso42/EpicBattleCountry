@@ -29,6 +29,7 @@
                         @foreach ($notifications as $notif)
                             <div id="{{ $notif['id'] }}" class="msg-line row">
                                 <i id="seen_{{ $notif['id'] }}" @if ($notif['seen'] == 0) class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-envelope icon-color-red" @else class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-envelope-open-text icon-color-yellow" @endif></i>
+                                <span class="col-lg-1 col-md-1 col-sm-1 col-1">{{ $notif['date'] }}</span>
                                 <span class="offset-lg-3 offset-md-3 offset-sm-3 offset-3 col-lg-3 col-md-3 col-sm-3 col-3">{{ $notif['title'] }}</span>
                                 <i onclick="hide_show_msg('{{ $notif['id'] }}', 'notif')" id="eye_{{ $notif['id'] }}" class="offset-lg-1 offset-md-1 offset-sm-1 offset-1 col-lg-1 col-md-1 col-sm-1 col-1 fas fa-eye" style="cursor: pointer; margin-right: 10px"></i>
                                 <i onclick="remove_msg('{{ $notif['id'] }}', 'notif')" class="offset-lg-1 offset-md-1 offset-sm-1 offset-1 col-lg-1 col-md-1 col-sm-1 col-1 fas fa-times icon-color-red" style="cursor: pointer"></i>
@@ -45,6 +46,7 @@
                         @foreach ($msg_sended as $msg)
                             <div id="{{ $msg['id'] }}" class="msg-line row">
                                 <i class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-paper-plane"></i>
+                                <span class="col-lg-1 col-md-1 col-sm-1 col-1">{{ $notif['date'] }}</span>
                                 <span class="offset-lg-3 offset-md-3 offset-sm-3 offset-3 col-lg-3 col-md-3 col-sm-3 col-3">{{ $msg['title'] }}</span>
                                 <i onclick="hide_show_msg('{{ $msg['id'] }}', 'msg_sended')" id="eye_{{ $msg['id'] }}" class="offset-lg-1 offset-md-1 offset-sm-1 offset-1 col-lg-1 col-md-1 col-sm-1 col-1 fas fa-eye" style="cursor: pointer; margin-right: 10px"></i>
                                 <i onclick="remove_msg('{{ $msg['id'] }}', 'msg_sended')" class="offset-lg-1 offset-md-1 offset-sm-1 offset-1 col-lg-1 col-md-1 col-sm-1 col-1 fas fa-times icon-color-red" style="cursor: pointer"></i>
@@ -61,6 +63,7 @@
                         @foreach ($msg_received as $msg)
                             <div id="{{ $msg['id'] }}" class="msg-line row">
                                 <i class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-paper-plane"></i>
+                                <span class="col-lg-1 col-md-1 col-sm-1 col-1">{{ $notif['date'] }}</span>
                                 <span class="offset-lg-3 offset-md-3 offset-sm-3 offset-3 col-lg-3 col-md-3 col-sm-3 col-3">{{ $msg['title'] }}</span>
                                 <i onclick="hide_show_msg('{{ $msg['id'] }}', 'msg_received')" id="eye_{{ $msg['id'] }}" class="offset-lg-1 offset-md-1 offset-sm-1 offset-1 col-lg-1 col-md-1 col-sm-1 col-1 fas fa-eye" style="cursor: pointer; margin-right: 10px"></i>
                                 <i onclick="remove_msg('{{ $msg['id'] }}', 'msg_received')" class="offset-lg-1 offset-md-1 offset-sm-1 offset-1 col-lg-1 col-md-1 col-sm-1 col-1 fas fa-times icon-color-red" style="cursor: pointer"></i>

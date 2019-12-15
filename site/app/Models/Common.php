@@ -111,11 +111,11 @@
             // 5000000      -> 5M
             // 5120000      -> 5.1M
             // 536000000    -> 536M
-            if ($nb <= 9999)
+            if ($nb < 10000)
                 return $nb;
-            else if ($nb <99999)
+            else if ($nb <1000000)
                return ((floor($nb / 1000)) . "k");
-            else if ($nb < 9999999)
+            else if ($nb < 10000000)
             {
                 $nb = floor($nb/10000);
                 $nb_final = floor($nb/100);

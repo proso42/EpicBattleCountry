@@ -70,12 +70,10 @@ function switch_city()
 function cancel_switch()
 {
     if (g_choice != "")
-    {
         document.getElementById("city_" + g_choice).className = "city-li";
-        document.getElementById("overlay").style.display = "none";
-        document.getElementById("block_change_city").style.display = "none";
-        g_choice = "";
-    }
+    document.getElementById("overlay").style.display = "none";
+    document.getElementById("block_change_city").style.display = "none";
+    g_choice = "";
 }
 
 function show_edit_block()

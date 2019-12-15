@@ -118,10 +118,11 @@
             else if ($nb < 9999999)
             {
                 $nb = floor($nb/10000);
+                $nb_final = floor($nb/100);
                 if ($nb % 100 == 0)
                     return ($nb . "M");
                 else
-                    return ($nb . "." . ($nb % 100) . "M");
+                    return ($nb_final . "." . ($nb % 100) . "M");
 
             }
             else

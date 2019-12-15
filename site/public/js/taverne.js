@@ -10,9 +10,20 @@ if (timing_slot2 != null)
 if (timing_slot3 != null)
     timer("timing_slot3", timing_slot3.getAttribute("duration"));
 
+function get_body_height()
+{
+    let body_height = document.body.scrollHeight + 20;
+    let win_height = window.innerHeight;
+    if (body_height > win_height)
+        return (body_height + "px");
+    else
+        return (win_height + "px");
+}
+
 function upgrade(slot)
 {
     g_slot = slot;
+    document.getElementById('overlay').style.height = get_body_height();
     document.getElementById('overlay').style.display = "";
     document.getElementById('block_upgrade').style.display = "";
 }

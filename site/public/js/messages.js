@@ -36,11 +36,11 @@ function unlock_user(login, id)
 function hide_show_msg(id, type)
 {
     let eye = document.getElementById('eye_' + id);
-    if (eye.className == "offset-lg-1 offset-md-1 offset-sm-1 offset-1 col-lg-1 col-md-1 col-sm-1 col-1 fas fa-eye")
+    if (eye.className == "offset-lg-2 offset-md-2 offset-sm-2 offset-2 col-lg-1 col-md-1 col-sm-1 col-1 fas fa-eye")
     {
         //showing part
         document.getElementById('content_' + id).style.display = "";
-        eye.className = "offset-lg-1 offset-md-1 offset-sm-1 offset-1 col-lg-1 col-md-1 col-sm-1 col-1 fas fa-eye-slash";
+        eye.className = "offset-lg-2 offset-md-2 offset-sm-2 offset-2 col-lg-1 col-md-1 col-sm-1 col-1 fas fa-eye-slash";
         icon_envelope = document.getElementById('seen_' + id);
         if (icon_envelope.className == "col-lg-1 col-md-1 col-sm-1 col-1 fas fa-envelope icon-color-red")
         {
@@ -64,7 +64,7 @@ function hide_show_msg(id, type)
     {
         //hiding part
         document.getElementById('content_' + id).style.display = "none";
-        eye.className = "offset-lg-1 offset-md-1 offset-sm-1 offset-1 col-lg-1 col-md-1 col-sm-1 col-1 fas fa-eye";
+        eye.className = "offset-lg-2 offset-md-2 offset-sm-2 offset-2 col-lg-1 col-md-1 col-sm-1 col-1 fas fa-eye";
     }
 }
 

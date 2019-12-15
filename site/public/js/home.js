@@ -69,6 +69,7 @@ function switch_city()
 
 function cancel_switch()
 {
+    document.getElementById("city_" + g_choice).className = "city-li";
     document.getElementById("overlay").style.display = "none";
     document.getElementById("block_change_city").style.display = "none";
     g_choice = ""

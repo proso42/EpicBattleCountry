@@ -41,4 +41,6 @@ return [
     'city_and_dest' => 'Vous devez choisir une ville dans la liste OU des coordonnées !',
     'cannot_attack_allied' => 'Vous ne pouvez pas attaquer une ville que vous possedez !',
     'cannot_target_allied' => 'Vous ne pouvez pas cibler une ville que vous possedez !',
+    'mercenaries_upgrade_max' => 'La quantité de mercenaire est déjà au maximum !',
+    'missing_diamond' => 'Vous n\'avez pas assez de diamants !',
 ];

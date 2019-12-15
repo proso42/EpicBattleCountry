@@ -41,4 +41,6 @@ return [
     'city_and_dest' => 'You must choice a city in the list OR coordinates !',
     'cannot_attack_allied' => 'You cannot attack your own city !',
     'cannot_target_allied' => 'You cannot target your own city !',
+    'mercenaries_upgrade_max' => 'The amount of mercenary is already at the maximum !',
+    'missing_diamond' => 'You don\'t have enough diamonds !',
 ];

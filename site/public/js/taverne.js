@@ -1,3 +1,4 @@
+var g_slot = 0;
 timer("main_timing", document.getElementById("main_timing").getAttribute("duration"));
 let timing_slot1 = document.getElementById("timing_slot1");
 let timing_slot2 = document.getElementById("timing_slot2");
@@ -11,7 +12,22 @@ if (timing_slot3 != null)
 
 function upgrade(slot)
 {
+    g_slot = slot;
+    document.getElementById('overlay').style.display = "";
+    document.getElementById('block_upgrade').style.display = "";
+}
+
+function cancel_upgrade()
+{
+    g_slot = 0;
+    document.getElementById('overlay').style.display = "none";
+    document.getElementById('block_upgrade').style.display = "none";
+}
+
+function confirm_upgrade()
+{
     var _token = document.getElementById("_token").value;
+    document.getElementById("spin_upgrade").style.display = "";
     var xhr = new XMLHttpRequest();
     xhr.open('POST', 'http://www.epicbattlecorp.fr/upgrade_mercenary');
     xhr.onreadystatechange =  function()
@@ -20,17 +36,38 @@ function upgrade(slot)
         {
             if (xhr.responseText == "Succes")
             {
-                window.location.reload();
+                document.getElementById("slot" + g_slot + "_qt").style.display = 5000;
+                document.getElementById("success_mercenary_upgraed").style.display = "";
+                g_slot = 0;
+                setTimeout(() =>{
+                    document.getElementById("success_mercenary_upgraed").style.display = 'none';
+                    document.getElementById("spin_upgrade").style.display = "none";
+                    document.getElementById("block_upgrade").style.display = "none";
+                    document.getElementById("overlay").style.display = "none";
+                }, 2000);
             }
             else
             {
-                console.log(xhr.responseText);
-                return ;
+                var type_error = "";
+                g_slot = 0;
+                document.getElementById("spin_upgrade").style.display = "none";
+                document.getElementById("block_upgrade").style.display = "none";
+                document.getElementById("overlay").style.display = "none";
+                if (ret == "Error upgrade : bad slot" || ret == "Error upgrade : slot locked" || ret == "Error upgrade : slot unavailable")
+                    type_error = "error_hacker";
+                else if (ret == "Error upgrade : maximum quantity reach")
+                    type_error = "error_max";
+                else
+                    type_error = "error_diamond";
+                document.getElementById(type_error).style.display = "";
+                setTimeout(() =>{
+                    document.getElementById(type_error).style.display = "none";
+                }, 5000);
             }
         }
     }
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send('_token=' + _token + '&slot=' + slot);
+    xhr.send('_token=' + _token + '&slot=' + g_slot);
 }
 
 function randomize(slot)

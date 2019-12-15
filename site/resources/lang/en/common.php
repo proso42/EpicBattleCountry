@@ -55,4 +55,6 @@ return [
     'trigger' => 'Trigger',
     'cool_down' => 'Cool down',
     'recruit' => 'Recruit',
+    'pay' => 'Pay',
+
 ];

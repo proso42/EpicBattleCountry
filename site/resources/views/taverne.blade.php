@@ -8,6 +8,27 @@
         <link rel="stylesheet" type="text/css" href="css/style.css"/>
     </head>
     <body>
+        <div id="overlay" class="mercenary-overlay" style="display: none">
+        </div>
+        <div id="block_upgrade" class="mercenary-hidden-block" style="display: none">
+            <div id="success_mercenary_upgraded" class="mercenary-success" style="display: none;">
+                <p>@lang('mercenary.mercenary_upgraded')</p>
+            </div>
+            <div id="error_hacker" class="mercenary-error" style="display: none;">
+                <p>@lang('error.an_error_occured')</p>
+            </div>
+            <div id="error_max" class="mercenary-error" style="display: none;">
+                <p>@lang('error.mercenaries_upgrade_max')</p>
+            </div>
+            <div id="error_diamond" class="mercenary-error" style="display: none;">
+                <p>@lang('error.missing_diamond')</p>
+            </div>
+            <h3>@lang('mercenaries.up')</h3>
+            <span>@lang('mercenaries.explain_up')</span>
+            <button onclick="confirm_upgrade()" id="confirm_upgrade_button" class="mercenary-button">@lang('common.pay') 1 <i class="fas fa-gem"></i></button>
+            <button onclick="cancel_upgrade()" id="cancel_upgrade_button" class="mercenary-button-cancel">@lang('common.cancel')</button>
+            <img id="spin_upgrade" class="explo-spin" style="display: none" src="images/loader.gif">
+        </div>
         @include('default')
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding-right: 10px;">
                 @if ($allowed === 0)
@@ -36,7 +57,7 @@
                                     </div>
                                 </div>
                                 <div class="mercenary-quantity col-lg-2 col-md-2 col-sm-2 col-2">
-                                    <span>@lang('common.quantity') : {{ $slots['slot1']['quantity'] }}</span>
+                                    <span>@lang('common.quantity') : </span><span id="slot1_qt">{{ $slots['slot1']['quantity'] }}</span>
                                 </div>
                                 <div class="mercenary-ressources col-lg-2 col-md-2 col-sm-2 col-2">
                                     <span>@lang('common.price')</span>

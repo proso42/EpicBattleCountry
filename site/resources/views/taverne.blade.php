@@ -12,7 +12,7 @@
         </div>
         <div id="block_upgrade" class="mercenary-hidden-block" style="display: none">
             <div id="success_mercenary_upgraded" class="mercenary-success" style="display: none;">
-                <p>@lang('mercenary.mercenary_upgraded')</p>
+                <p>@lang('mercenaries.mercenary_upgraded')</p>
             </div>
             <div id="error_hacker" class="mercenary-error" style="display: none;">
                 <p>@lang('error.an_error_occured')</p>

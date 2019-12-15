@@ -44,7 +44,7 @@
             ->where('id', '=', $city_id)
             ->first();
             if ($util->food > 999999)
-                $util->compact_food = substr($util->food, 0, 5) . '...';
+                $util->compact_food = $this->compact_nb($util->food);
             else
                 $util->compact_food = $util->food;
             if ($util->wood > 999999)
@@ -101,6 +101,29 @@
             for ($i = 1; $i <= $niv; $i++)
                 $final_value *= $levelup;
             return floor($final_value);
+        }
+
+        public static function compact_nb($nb)
+        {
+            // 5000         -> 5000
+            // 50000        -> 50k
+            // 500000       -> 500k
+            // 5000000      -> 5M
+            // 5120000      -> 5.1M
+            if ($nb <= 9999)
+                return $nb;
+            else if ($nb <999999)
+               return ((floor($nb / 1000)) . "k");
+            else
+            {
+                $nb = floor($nb/10000);
+                if ($nb % 100 == 0)
+                    return ($nb . "M");
+                else
+                    return ($nb . "." . ($nb % 100) . "M");
+
+            }
+                
         }
     }
 

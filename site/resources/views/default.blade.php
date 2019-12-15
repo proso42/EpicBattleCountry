@@ -18,7 +18,7 @@
                     <div  class="col-lg-12" title="Food : {{ $util->food }}">
                         <img src="images/food.png">
                         <span id="food" style="margin-left: 5px;margin-top: 7px;margin-right: 10px; @if ($util->food == $util->max_food) color:maroon @elseif ($util->food >= ($util->max_food / 10 * 9)) color:darkorange @endif">
-                            {{ $util->food }}
+                            {{ $util->compact_food }}
                         </span>
                         <span id="compact_food" style="margin-left: 5px;margin-top: 7px;margin-right: 10px;@if ($util->food == $util->max_food) color:maroon @elseif ($util->food >= ($util->max_food / 10 * 9)) color:darkorange @endif; display: none">
                             {{ $util->compact_food }}

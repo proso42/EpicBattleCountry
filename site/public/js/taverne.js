@@ -49,7 +49,7 @@ function confirm_upgrade()
         {
             if (xhr.responseText == "Success")
             {
-                document.getElementById("slot" + g_slot + "_qt").style.textContent = 5000;
+                document.getElementById("slot" + g_slot + "_qt").textContent = 5000;
                 document.getElementById("success_mercenary_upgraded").style.display = "";
                 g_slot = 0;
                 setTimeout(() =>{

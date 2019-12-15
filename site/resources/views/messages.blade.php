@@ -48,8 +48,8 @@
                                 <i class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-paper-plane"></i>
                                 <span class="col-lg-1 col-md-1 col-sm-1 col-1">{{ $notif['date'] }}</span>
                                 <span class="offset-lg-3 offset-md-3 offset-sm-3 offset-3 col-lg-3 col-md-3 col-sm-3 col-3">{{ $msg['title'] }}</span>
-                                <i onclick="hide_show_msg('{{ $msg['id'] }}', 'msg_sended')" id="eye_{{ $msg['id'] }}" class="offset-lg-1 offset-md-1 offset-sm-1 offset-1 col-lg-1 col-md-1 col-sm-1 col-1 fas fa-eye" style="cursor: pointer; margin-right: 10px"></i>
-                                <i onclick="remove_msg('{{ $msg['id'] }}', 'msg_sended')" class="offset-lg-1 offset-md-1 offset-sm-1 offset-1 col-lg-1 col-md-1 col-sm-1 col-1 fas fa-times icon-color-red" style="cursor: pointer"></i>
+                                <i onclick="hide_show_msg('{{ $msg['id'] }}', 'msg_sended')" id="eye_{{ $msg['id'] }}" class="offset-lg-2 offset-md-21 offset-sm-2 offset-2 col-lg-1 col-md-1 col-sm-1 col-1 fas fa-eye" style="cursor: pointer"></i>
+                                <i onclick="remove_msg('{{ $msg['id'] }}', 'msg_sended')" class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-times icon-color-red" style="cursor: pointer"></i>
                                 <p id="content_{{ $msg['id'] }}" class="offset-lg-3 offset-md-3 offset-sm-3 offset-3 col-lg-6 col-md-6 col-sm-6 col-6" style="display:none">{{ $msg['content'] }}</p>
                             </div>
                         @endforeach
@@ -65,8 +65,8 @@
                                 <i class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-paper-plane"></i>
                                 <span class="col-lg-1 col-md-1 col-sm-1 col-1">{{ $notif['date'] }}</span>
                                 <span class="offset-lg-3 offset-md-3 offset-sm-3 offset-3 col-lg-3 col-md-3 col-sm-3 col-3">{{ $msg['title'] }}</span>
-                                <i onclick="hide_show_msg('{{ $msg['id'] }}', 'msg_received')" id="eye_{{ $msg['id'] }}" class="offset-lg-1 offset-md-1 offset-sm-1 offset-1 col-lg-1 col-md-1 col-sm-1 col-1 fas fa-eye" style="cursor: pointer; margin-right: 10px"></i>
-                                <i onclick="remove_msg('{{ $msg['id'] }}', 'msg_received')" class="offset-lg-1 offset-md-1 offset-sm-1 offset-1 col-lg-1 col-md-1 col-sm-1 col-1 fas fa-times icon-color-red" style="cursor: pointer"></i>
+                                <i onclick="hide_show_msg('{{ $msg['id'] }}', 'msg_received')" id="eye_{{ $msg['id'] }}" class="offset-lg-2 offset-md-2 offset-sm-2 offset-2 col-lg-1 col-md-1 col-sm-1 col-1 fas fa-eye" style="cursor: pointer"></i>
+                                <i onclick="remove_msg('{{ $msg['id'] }}', 'msg_received')" class="col-lg-1 col-md-1 col-sm-1 col-1 fas fa-times icon-color-red" style="cursor: pointer"></i>
                                 <p id="content_{{ $msg['id'] }}" class="offset-lg-3 offset-md-3 offset-sm-3 offset-3 col-lg-6 col-md-6 col-sm-6 col-6" style="display:none">{{ $msg['content'] }}</p>
                             </div>
                         @endforeach

@@ -66,7 +66,7 @@ function confirm_upgrade()
                 document.getElementById("overlay").style.display = "none";
                 if (xhr.responseText == "Error upgrade : bad slot" || xhr.responseText == "Error upgrade : slot locked" || xhr.responseText == "Error upgrade : slot unavailable")
                     type_error = "error_hacker";
-                else if (ret == "Error upgrade : maximum quantity reach")
+                else if (xhr.responseText == "Error upgrade : maximum quantity reach")
                     type_error = "error_max";
                 else
                     type_error = "error_diamond";

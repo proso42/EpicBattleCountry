@@ -50,10 +50,10 @@ function confirm_upgrade()
             if (xhr.responseText == "Success")
             {
                 document.getElementById("slot" + g_slot + "_qt").style.display = 5000;
-                document.getElementById("success_mercenary_upgraed").style.display = "";
+                document.getElementById("success_mercenary_upgraded").style.display = "";
                 g_slot = 0;
                 setTimeout(() =>{
-                    document.getElementById("success_mercenary_upgraed").style.display = 'none';
+                    document.getElementById("success_mercenary_upgraded").style.display = 'none';
                     document.getElementById("spin_upgrade").style.display = "none";
                     document.getElementById("block_upgrade").style.display = "none";
                     document.getElementById("overlay").style.display = "none";

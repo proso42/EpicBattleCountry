@@ -113,7 +113,7 @@
             // 536000000    -> 536M
             if ($nb <= 9999)
                 return $nb;
-            else if ($nb <999999)
+            else if ($nb <99999)
                return ((floor($nb / 1000)) . "k");
             else if ($nb < 9999999)
             {

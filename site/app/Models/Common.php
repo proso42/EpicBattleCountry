@@ -48,19 +48,19 @@
             else
                 $util->compact_food = $util->food;
             if ($util->wood > 999999)
-                $util->compact_wood = substr($util->wood, 0, 5) . '...';
+                $util->compact_wood = Common::compact_nb($util->wood);
             else
                 $util->compact_wood = $util->wood;
             if ($util->rock > 999999)
-                $util->compact_rock = substr($util->rock, 0, 5) . '...';
+                $util->compact_rock = Common::compact_nb($util->rock);
             else
                 $util->compact_rock = $util->rock;
             if ($util->steel > 999999)
-                $util->compact_steel = substr($util->steel, 0, 5) . '...';
+                $util->compact_steel = Common::compact_nb($util->steel);
             else
                 $util->compact_steel = $util->steel;
             if ($util->gold > 999999)
-                $util->compact_gold = substr($util->gold, 0, 5) . '...';
+                $util->compact_gold = Common::compact_nb($util->gold);
             else
                 $util->compact_gold = $util->gold;
             $msg_not_seen = DB::table('messages')

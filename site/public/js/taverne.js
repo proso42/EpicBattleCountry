@@ -64,7 +64,7 @@ function confirm_upgrade()
                 document.getElementById("spin_upgrade").style.display = "none";
                 document.getElementById("block_upgrade").style.display = "none";
                 document.getElementById("overlay").style.display = "none";
-                if (ret == "Error upgrade : bad slot" || ret == "Error upgrade : slot locked" || ret == "Error upgrade : slot unavailable")
+                if (xhr.responseText == "Error upgrade : bad slot" || xhr.responseText == "Error upgrade : slot locked" || xhr.responseText == "Error upgrade : slot unavailable")
                     type_error = "error_hacker";
                 else if (ret == "Error upgrade : maximum quantity reach")
                     type_error = "error_max";

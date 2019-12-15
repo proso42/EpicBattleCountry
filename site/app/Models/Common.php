@@ -44,7 +44,7 @@
             ->where('id', '=', $city_id)
             ->first();
             if ($util->food > 999999)
-                $util->compact_food = $this->compact_nb($util->food);
+                $util->compact_food = compact_nb($util->food);
             else
                 $util->compact_food = $util->food;
             if ($util->wood > 999999)

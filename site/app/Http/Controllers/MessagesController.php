@@ -44,7 +44,7 @@
             $notifications = [];
             $msg_sended = [];
             $msg_received = [];
-            $all_user_msgs = DB::table('messages')->where('target', '=', $user_id)->orWhere('sender', '=', $user_id)->get();
+            $all_user_msgs = DB::table('messages')->where('target', '=', $user_id)->orWhere('sender', '=', $user_id)->orderByRaw('sending_date DESC')->get();
             $all_users = DB::table('users')->get();
             $notif_alert = 0;
             $msg_received_alert = 0;

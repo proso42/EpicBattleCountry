@@ -105,7 +105,7 @@
                                         </div>
                                     </div>
                                     <div class="mercenary-quantity col-lg-2 col-md-2 col-sm-2 col-2">
-                                        <span>@lang('common.quantity') : </span></span id="slot2_qt">{{ $slots['slot2']['quantity'] }}</span>
+                                        <span>@lang('common.quantity') : </span><span id="slot2_qt">{{ $slots['slot2']['quantity'] }}</span>
                                     </div>
                                     <div class="mercenary-ressources col-lg-2 col-md-2 col-sm-2 col-2">
                                         <span>@lang('common.price')</span>

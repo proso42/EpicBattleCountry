@@ -47,9 +47,8 @@ function confirm_upgrade()
     {
         if (xhr.readyState === 4 && xhr.status === 200)
         {
-            if (xhr.responseText == "Succes")
+            if (xhr.responseText == "Success")
             {
-                console.log('Success');
                 document.getElementById("slot" + g_slot + "_qt").style.display = 5000;
                 document.getElementById("success_mercenary_upgraed").style.display = "";
                 g_slot = 0;
@@ -64,12 +63,8 @@ function confirm_upgrade()
             }
             else
             {
-                console.log('Error');
                 var type_error = "";
                 g_slot = 0;
-                document.getElementById("spin_upgrade").style.display = "none";
-                document.getElementById("block_upgrade").style.display = "none";
-                document.getElementById("overlay").style.display = "none";
                 if (xhr.responseText == "Error upgrade : bad slot" || xhr.responseText == "Error upgrade : slot locked" || xhr.responseText == "Error upgrade : slot unavailable")
                     type_error = "error_hacker";
                 else if (xhr.responseText == "Error upgrade : maximum quantity reach")
@@ -78,6 +73,9 @@ function confirm_upgrade()
                     type_error = "error_diamond";
                 document.getElementById(type_error).style.display = "";
                 setTimeout(() =>{
+                    document.getElementById("spin_upgrade").style.display = "none";
+                    document.getElementById("block_upgrade").style.display = "none";
+                    document.getElementById("overlay").style.display = "none";
                     document.getElementById(type_error).style.display = "none";
                     document.getElementById("confirm_upgrade_button").style.display = "";
                     document.getElementById("cancel_upgrade_button").style.display = "";

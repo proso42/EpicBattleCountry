@@ -43,23 +43,23 @@
             ->where('owner', '=', $user_id)
             ->where('id', '=', $city_id)
             ->first();
-            if ($util->food > 999999)
+            if ($util->food > 99999)
                 $util->compact_food = Common::compact_nb($util->food);
             else
                 $util->compact_food = $util->food;
-            if ($util->wood > 999999)
+            if ($util->wood > 99999)
                 $util->compact_wood = Common::compact_nb($util->wood);
             else
                 $util->compact_wood = $util->wood;
-            if ($util->rock > 999999)
+            if ($util->rock > 99999)
                 $util->compact_rock = Common::compact_nb($util->rock);
             else
                 $util->compact_rock = $util->rock;
-            if ($util->steel > 999999)
+            if ($util->steel > 99999)
                 $util->compact_steel = Common::compact_nb($util->steel);
             else
                 $util->compact_steel = $util->steel;
-            if ($util->gold > 999999)
+            if ($util->gold > 99999)
                 $util->compact_gold = Common::compact_nb($util->gold);
             else
                 $util->compact_gold = $util->gold;

@@ -39,6 +39,8 @@ function confirm_upgrade()
 {
     var _token = document.getElementById("_token").value;
     document.getElementById("spin_upgrade").style.display = "";
+    document.getElementById("confirm_upgrade_button").style.display = "none";
+    document.getElementById("cancel_upgrade_button").style.display = "none";
     var xhr = new XMLHttpRequest();
     xhr.open('POST', 'http://www.epicbattlecorp.fr/upgrade_mercenary');
     xhr.onreadystatechange =  function()
@@ -47,6 +49,7 @@ function confirm_upgrade()
         {
             if (xhr.responseText == "Succes")
             {
+                console.log('Success');
                 document.getElementById("slot" + g_slot + "_qt").style.display = 5000;
                 document.getElementById("success_mercenary_upgraed").style.display = "";
                 g_slot = 0;
@@ -55,10 +58,13 @@ function confirm_upgrade()
                     document.getElementById("spin_upgrade").style.display = "none";
                     document.getElementById("block_upgrade").style.display = "none";
                     document.getElementById("overlay").style.display = "none";
+                    document.getElementById("confirm_upgrade_button").style.display = "";
+                    document.getElementById("cancel_upgrade_button").style.display = "";
                 }, 2000);
             }
             else
             {
+                console.log('Error');
                 var type_error = "";
                 g_slot = 0;
                 document.getElementById("spin_upgrade").style.display = "none";
@@ -73,6 +79,8 @@ function confirm_upgrade()
                 document.getElementById(type_error).style.display = "";
                 setTimeout(() =>{
                     document.getElementById(type_error).style.display = "none";
+                    document.getElementById("confirm_upgrade_button").style.display = "";
+                    document.getElementById("cancel_upgrade_button").style.display = "";
                 }, 5000);
             }
         }

@@ -128,7 +128,7 @@ function confirm_randomize()
         }
     }
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send('_token=' + _token + '&slot=' + slot);
+    xhr.send('_token=' + _token + '&slot=' + g_slot);
 }
 
 

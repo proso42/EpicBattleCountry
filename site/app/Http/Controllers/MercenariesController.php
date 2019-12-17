@@ -193,7 +193,7 @@
         {
             $slot = $request['slot'];
             if ($slot != 1 && $slot != 2 && $slot != 3)
-                return ("Error" => "bad slot");
+                return (["Result" => "Error", "Type" => "bad slot"]);
             $city_id = session()->get('city_id');
             $slot_db = 'tavern_slot' . $slot;
             $slot_qt_db = 'tavern_slot' . $slot . '_qt';
@@ -202,15 +202,15 @@
             ->where('id', '=', $city_id)
             ->first();
             if (($tavern_slot_DB->$slot_db) == -1)
-                return ("Error" => "slot locked");
+                return (["Result" => "Error","Type" => "slot locked"]);
             else if ($tavern_slot_DB->diamond < 1)
-                return ("Error" => "not enought diamond");
+                return (["Result" => "Error","Type" => "not enought diamond"]);
             $is_wip = DB::table('mercenaries_cool_down')
             ->where('city_id', '=', $city_id)
             ->where('tavern_slot', '=', $slot_db)
             ->first();
             if ($is_wip != null)
-                return (["Error" => "slot unavailable"]);
+                return (["Result" => "Error","Type" => "slot unavailable"]);
             $max = DB::table('mercenaries')->count();
             $new_mercenary = rand(1, $max);
             $new_quantity = (floor(rand(500, 5000)/100))*100;

@@ -89,6 +89,21 @@ function confirm_upgrade()
 
 function randomize(slot)
 {
+    g_slot = slot;
+    document.getElementById('overlay').style.height = get_body_height();
+    document.getElementById('overlay').style.display = "";
+    document.getElementById('block_randomize').style.display = "";
+}
+
+function cancel_randomize()
+{
+    g_slot = 0;
+    document.getElementById('overlay').style.display = "none";
+    document.getElementById('block_randomize').style.display = "none";
+}
+
+function confirm_randomize()
+{
     var _token = document.getElementById("_token").value;
     var xhr = new XMLHttpRequest();
     xhr.open('POST', 'http://www.epicbattlecorp.fr/randomize_mercenary');

@@ -29,6 +29,13 @@
             <button onclick="cancel_upgrade()" id="cancel_upgrade_button" class="mercenary-button-cancel">@lang('common.cancel')</button>
             <img id="spin_upgrade" class="explo-spin" style="display: none" src="images/loader.gif">
         </div>
+        <div id="block_randomize" class="mercenary-hidden-block" style="display: none">
+            <h3>@lang('mercenary.randomize')</h3>
+            <span>@lang('mercenaries.explain_randomize')</span>
+            <button onclick="confirm_randomize()" id="confirm_randomize_button" class="mercenary-button">@lang('common.pay') 1 <i class="fas fa-gem"></i></button>
+            <button onclick="cancel_randomize()" id="cancel_randomize_button" class="mercenary-button-cancel">@lang('common.cancel')</button>
+            <img id="spin_randomize" class="explo-spin" style="display: none" src="images/loader.gif">
+        </div>
         @include('default')
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding-right: 10px;">
                 @if ($allowed === 0)

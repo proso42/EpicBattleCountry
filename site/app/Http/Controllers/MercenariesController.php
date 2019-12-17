@@ -218,7 +218,7 @@
             ->where('id', '=', $city_id)
             ->update(['diamond' => $tavern_slot_DB->diamond - 1, $slot_db => $new_mercenary, $slot_qt_db => $new_quantity]);
             $new_mercenary = DB::table('mercenaries')->where('id', '=', $new_mercenary)->value('name');
-            return (["Success", trans('mercenaries.' . $new_mercenary, $new_quantity]);
+            return (["Success", trans('mercenaries.' . $new_mercenary), $new_quantity]);
         }
     }
 ?>

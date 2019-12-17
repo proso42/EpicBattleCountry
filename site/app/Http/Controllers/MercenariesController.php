@@ -225,7 +225,7 @@
                     "Speed" => $new_mercenary_info->speed,
                     "Power" => $new_mercenary_info->power,
                     "Storage" => $new_mercenary_info->storage,
-                    "Cool_down" => $new_mercenary_info->cool_down,
+                    "Cool_down" => Common::sec_to_date($new_mercenary_info->cool_down),
                     "Gold_price" => $new_mercenary_info->gold_price,
                     "Diamond_price" => $new_mercenary_info->diamond_price,
             ]);

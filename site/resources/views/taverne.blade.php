@@ -30,7 +30,7 @@
             <img id="spin_upgrade" class="explo-spin" style="display: none" src="images/loader.gif">
         </div>
         <div id="block_randomize" class="mercenary-hidden-block" style="display: none">
-            <h3>@lang('mercenary.randomize')</h3>
+            <h3>@lang('mercenaries.randomize')</h3>
             <span>@lang('mercenaries.explain_randomize')</span>
             <button onclick="confirm_randomize()" id="confirm_randomize_button" class="mercenary-button">@lang('common.pay') 1 <i class="fas fa-gem"></i></button>
             <button onclick="cancel_randomize()" id="cancel_randomize_button" class="mercenary-button-cancel">@lang('common.cancel')</button>

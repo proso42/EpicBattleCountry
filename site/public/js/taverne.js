@@ -105,12 +105,17 @@ function cancel_randomize()
 function confirm_randomize()
 {
     var _token = document.getElementById("_token").value;
+    document.getElementById("spin_randomize").style.display = "";
+    document.getElementById("confirm_randomize_button").style.display = "none";
+    document.getElementById("cancel_randomize_button").style.display = "none";
     var xhr = new XMLHttpRequest();
     xhr.open('POST', 'http://www.epicbattlecorp.fr/randomize_mercenary');
     xhr.onreadystatechange =  function()
     {
         if (xhr.readyState === 4 && xhr.status === 200)
         {
+            let rep = xhr.responseText;
+            /*console.log(xhr.responseText);
             if (xhr.responseText == "Succes")
             {
                 window.location.reload();
@@ -119,7 +124,7 @@ function confirm_randomize()
             {
                 console.log(xhr.responseText);
                 return ;
-            }
+            }*/
         }
     }
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

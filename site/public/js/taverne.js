@@ -114,7 +114,7 @@ function confirm_randomize()
     {
         if (xhr.readyState === 4 && xhr.status === 200)
         {
-            let rep = xhr.responseText;
+            let rep = JSON.parse(xhr.responseText);
             if (rep.Result == "Success")
             {
                 document.getElementById("slot" + g_slot + "_qt").textContent = rep.Qt;

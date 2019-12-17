@@ -24,9 +24,10 @@
                 <p>@lang('error.missing_diamond')</p>
             </div>
             <h3>@lang('mercenaries.up')</h3>
-            <span>@lang('mercenaries.explain_up')</span>
+            <p>@lang('mercenaries.explain_up')</p>
             <button onclick="confirm_upgrade()" id="confirm_upgrade_button" class="mercenary-button">@lang('common.pay') 1 <i class="fas fa-gem"></i></button>
             <button onclick="cancel_upgrade()" id="cancel_upgrade_button" class="mercenary-button-cancel">@lang('common.cancel')</button>
+            </br>
             <img id="spin_upgrade" class="explo-spin" style="display: none" src="images/loader.gif">
         </div>
         <div id="block_randomize" class="mercenary-hidden-block" style="display: none">
@@ -34,9 +35,10 @@
             <div id="success_mercenary_randomized" class="mercenary-success" style="display: none;">
                 <p>@lang('mercenaries.mercenary_randomized')</p>
             </div>
-            <span>@lang('mercenaries.explain_randomize')</span>
+            <p>@lang('mercenaries.explain_randomize')</p>
             <button onclick="confirm_randomize()" id="confirm_randomize_button" class="mercenary-button">@lang('common.pay') 1 <i class="fas fa-gem"></i></button>
             <button onclick="cancel_randomize()" id="cancel_randomize_button" class="mercenary-button-cancel">@lang('common.cancel')</button>
+            </br>
             <img id="spin_randomize" class="explo-spin" style="display: none" src="images/loader.gif">
         </div>
         @include('default')

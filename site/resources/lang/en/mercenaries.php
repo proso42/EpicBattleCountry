@@ -21,6 +21,7 @@ return [
     'explain_up' => 'You are about to upgrade this contract. The amount of mercenary will increase to the maximum (5000). This costs a diamond.',
     'explain_randomize' => 'You are about to randomize this contract. A new type of mercenary will replace the existing ones (as well as a new quantity). This costs a diamond.',
     'mercenary_upgraded' => 'The contract has been upgraded !',
+    'mercenary_randomized' => 'The contract has been randomized !',
     'cham_humain' => 'Veteran chamelier',
     'royal_elfe' => 'Elven royal guard',
     'lf_nain' => 'Dwarf embers launcher',

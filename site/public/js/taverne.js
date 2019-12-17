@@ -115,16 +115,25 @@ function confirm_randomize()
         if (xhr.readyState === 4 && xhr.status === 200)
         {
             let rep = xhr.responseText;
-            console.log(xhr.responseText);
-            /*if (xhr.responseText == "Succes")
+            if (rep.Result == "Succes")
             {
-                window.location.reload();
+                document.getElementById("slot" + g_slot + "_qt").textContent = rep.Qt;
+                document.getElementById("success_mercenary_randomized").style.display = "";
+                g_slot = 0;
+                setTimeout(() =>{
+                    document.getElementById("success_mercenary_randomized").style.display = 'none';
+                    document.getElementById("spin_randomize").style.display = "none";
+                    document.getElementById("block_randomize").style.display = "none";
+                    document.getElementById("overlay").style.display = "none";
+                    document.getElementById("confirm_randomize_button").style.display = "";
+                    document.getElementById("cancel_randomize_button").style.display = "";
+                }, 2000);
             }
             else
             {
-                console.log(xhr.responseText);
+                console.log(rep);
                 return ;
-            }*/
+            }
         }
     }
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

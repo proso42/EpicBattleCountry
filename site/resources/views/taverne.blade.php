@@ -31,6 +31,9 @@
         </div>
         <div id="block_randomize" class="mercenary-hidden-block" style="display: none">
             <h3>@lang('mercenaries.randomize')</h3>
+            <div id="success_mercenary_randomized" class="mercenary-success" style="display: none;">
+                <p>@lang('mercenaries.mercenary_randomized')</p>
+            </div>
             <span>@lang('mercenaries.explain_randomize')</span>
             <button onclick="confirm_randomize()" id="confirm_randomize_button" class="mercenary-button">@lang('common.pay') 1 <i class="fas fa-gem"></i></button>
             <button onclick="cancel_randomize()" id="cancel_randomize_button" class="mercenary-button-cancel">@lang('common.cancel')</button>

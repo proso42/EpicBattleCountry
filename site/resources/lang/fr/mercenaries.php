@@ -21,6 +21,7 @@ return [
     'explain_up' => 'Vous êtes sur le point d\'améliorer ce contrat. La quantité de mercenaire va augmenter au maximum (5000). Ceci coute un diamant.',
     'explain_randomize' => 'Vous êtes sur le point de randomiser ce contrat. Un nouveau type de mercenaire va remplacer ceux existant (ansi qu\'une nouvelle quantité). Ceci coute un diamant.',
     'mercenary_upgraded' => 'Le contrat a été améliorer !',
+    'mercenary_randomized' => 'Le contrat a été randomiser !',
     'cham_humain' => 'Chamelier vétéran',
     'royal_elfe' => 'Garde royale elfique',
     'lf_nain' => 'Lanceur de braise nain',

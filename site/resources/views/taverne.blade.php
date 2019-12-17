@@ -128,7 +128,7 @@
                                 </div>
                                 <div id="slot2_option" class="row" style="align-items: baseline;line-height: 31px;">
                                     <div class="offset-lg-5 offset-md-5 offset-sm-5 offset-5 col-lg-1 col-md-1 col-sm-1 col-1">
-                                        <button onclick="randomize(1)" class="mercenary-button-rdm"><i class="fas fa-random"></i></button>
+                                        <button onclick="randomize(2)" class="mercenary-button-rdm"><i class="fas fa-random"></i></button>
                                     </div>
                                     <div class="col-lg-1 col-md-1 col-sm-1 col-1">
                                         <button onclick="upgrade(2)" class="mercenary-button-up"><i class="fas fa-sort-amount-up"></i></button>
@@ -177,7 +177,7 @@
                                 </div>
                                 <div id="slot3_option" class="row" style="align-items: baseline;line-height: 31px;">
                                     <div class="offset-lg-5 offset-md-5 offset-sm-5 offset-5 col-lg-1 col-md-1 col-sm-1 col-1">
-                                        <button onclick="randomize(1)" class="mercenary-button-rdm"><i class="fas fa-random"></i></button>
+                                        <button onclick="randomize(3)" class="mercenary-button-rdm"><i class="fas fa-random"></i></button>
                                     </div>
                                     <div class="col-lg-1 col-md-1 col-sm-1 col-1">
                                         <button onclick="upgrade(3)" class="mercenary-button-up"><i class="fas fa-sort-amount-up"></i></button>

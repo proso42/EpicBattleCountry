@@ -115,7 +115,7 @@ function confirm_randomize()
         if (xhr.readyState === 4 && xhr.status === 200)
         {
             let rep = xhr.responseText;
-            if (rep.Result == "Succes")
+            if (rep.Result == "Success")
             {
                 document.getElementById("slot" + g_slot + "_qt").textContent = rep.Qt;
                 document.getElementById("success_mercenary_randomized").style.display = "";

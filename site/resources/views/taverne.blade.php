@@ -157,11 +157,11 @@
                                         <span id="slot3_name">{{ $slots['slot3']['name'] }}</span>
                                         <div class="mercenary-info-unit">
                                             <ul>
-                                                <li><span id="slot3_life">@lang('army.life') : {{ $slots['slot3']['life'] }}</span> <i class="fas fa-heartbeat"></i></li>
-                                                <li><span id="slot3_speed">@lang('army.speed') : {{ $slots['slot3']['speed'] }}</span> <i class="fas fa-tachometer-alt"></i></li>
-                                                <li><span id="slot3_power">@lang('army.power') : {{ $slots['slot3']['power'] }}</span> <i class="fas fa-fist-raised"></i></li>
-                                                <li><span id="slot3_storage">@lang('army.storage') : {{ $slots['slot3']['storage'] }}</span> <i class="fas fa-box"></i></li>
-                                                <li><span id="slot3_cool_down">@lang('common.cool_down') : {{ $slots['slot3']['cool_down'] }}</span> <i class="fas fa-clock"></i></li>
+                                                <li>@lang('army.life') : <span id="slot3_life">{{ $slots['slot3']['life'] }}</span> <i class="fas fa-heartbeat"></i></li>
+                                                <li>@lang('army.speed') : <span id="slot3_speed">{{ $slots['slot3']['speed'] }}</span> <i class="fas fa-tachometer-alt"></i></li>
+                                                <li>@lang('army.power') : <span id="slot3_power">{{ $slots['slot3']['power'] }}</span> <i class="fas fa-fist-raised"></i></li>
+                                                <li>@lang('army.storage') : <span id="slot3_storage">{{ $slots['slot3']['storage'] }}</span> <i class="fas fa-box"></i></li>
+                                                <li>@lang('common.cool_down') : <span id="slot3_cool_down">{{ $slots['slot3']['cool_down'] }}</span> <i class="fas fa-clock"></i></li>
                                             </ul>
                                         </div>
                                     </div>

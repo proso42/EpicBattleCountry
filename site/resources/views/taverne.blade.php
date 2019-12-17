@@ -60,11 +60,11 @@
                                     <span id="slot1_name">{{ $slots['slot1']['name'] }}</span>
                                     <div class="mercenary-info-unit">
                                         <ul>
-                                            <li>@lang('army.life') : {{ $slots['slot1']['life'] }} <i class="fas fa-heartbeat"></i></li>
-                                            <li>@lang('army.speed') : {{ $slots['slot1']['speed'] }} <i class="fas fa-tachometer-alt"></i></li>
-                                            <li>@lang('army.power') : {{ $slots['slot1']['power'] }} <i class="fas fa-fist-raised"></i></li>
-                                            <li>@lang('army.storage') : {{ $slots['slot1']['storage'] }} <i class="fas fa-box"></i></li>
-                                            <li>@lang('common.cool_down') : {{ $slots['slot1']['cool_down'] }} <i class="fas fa-clock"></i></li>
+                                            <li>@lang('army.life') : <span id="slot1_life">{{ $slots['slot1']['life'] }}</span> <i class="fas fa-heartbeat"></i></li>
+                                            <li>@lang('army.speed') : <span id="slot1_speed">{{ $slots['slot1']['speed'] }}</span> <i class="fas fa-tachometer-alt"></i></li>
+                                            <li>@lang('army.power') : <span id="slot1_power">{{ $slots['slot1']['power'] }}</span> <i class="fas fa-fist-raised"></i></li>
+                                            <li>@lang('army.storage') : <span id="slot1_storage">{{ $slots['slot1']['storage'] }}</span> <i class="fas fa-box"></i></li>
+                                            <li>@lang('common.cool_down') : <span id="slot1_cool_down">{{ $slots['slot1']['cool_down'] }}</span> <i class="fas fa-clock"></i></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -75,9 +75,9 @@
                                     <span>@lang('common.price')</span>
                                     <div class="mercenary-ressources-details">
                                         <ul>
-                                            <li>@lang('common.gold') : {{ $slots['slot1']['gold'] }}</li>
+                                            <li>@lang('common.gold') : <span id="slot1_gold_price">{{ $slots['slot1']['gold'] }}</span></li>
                                             <span>@lang('common.or')</span>
-                                            <li>@lang('common.diamond') : {{ $slots['slot1']['diamond'] }}</li>
+                                            <li>@lang('common.diamond') : <span id="slot1_diamond_price">{{ $slots['slot1']['diamond'] }}</span></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -108,11 +108,11 @@
                                         <span id="slot2_name">{{ $slots['slot2']['name'] }}</span>
                                         <div class="mercenary-info-unit">
                                             <ul>
-                                                <li>@lang('army.life') : {{ $slots['slot2']['life'] }} <i class="fas fa-heartbeat"></i></li>
-                                                <li>@lang('army.speed') : {{ $slots['slot2']['speed'] }} <i class="fas fa-tachometer-alt"></i></li>
-                                                <li>@lang('army.power') : {{ $slots['slot2']['power'] }} <i class="fas fa-fist-raised"></i></li>
-                                                <li>@lang('army.storage') : {{ $slots['slot2']['storage'] }} <i class="fas fa-box"></i></li>
-                                                <li>@lang('common.cool_down') : {{ $slots['slot2']['cool_down'] }} <i class="fas fa-clock"></i></li>
+                                                <li>@lang('army.life') : <span id="slot2_life">{{ $slots['slot2']['life'] }}</span> <i class="fas fa-heartbeat"></i></li>
+                                                <li>@lang('army.speed') : <span id="slot2_speed">{{ $slots['slot2']['speed'] }}</span> <i class="fas fa-tachometer-alt"></i></li>
+                                                <li>@lang('army.power') : <span id="slot2_power">{{ $slots['slot2']['power'] }}</span> <i class="fas fa-fist-raised"></i></li>
+                                                <li>@lang('army.storage') : <span id="slot2_storage">{{ $slots['slot2']['storage'] }}</span> <i class="fas fa-box"></i></li>
+                                                <li>@lang('common.cool_down') : <span id="slot2_cool_down">{{ $slots['slot2']['cool_down'] }}</span> <i class="fas fa-clock"></i></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -123,9 +123,9 @@
                                         <span>@lang('common.price')</span>
                                         <div class="mercenary-ressources-details">
                                             <ul>
-                                                <li>@lang('common.gold') : {{ $slots['slot2']['gold'] }}</li>
+                                                <li>@lang('common.gold') : <span id="slot2_gold_price">{{ $slots['slot2']['gold'] }}</span></li>
                                                 <span>@lang('common.or')</span>
-                                                <li>@lang('common.diamond') : {{ $slots['slot2']['diamond'] }}</li>
+                                                <li>@lang('common.diamond') : <span id="slot2_diamond_price">{{ $slots['slot2']['diamond'] }}</span></li>
                                             </ul>
                                         </div>
                                     </div>

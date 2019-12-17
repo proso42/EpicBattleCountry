@@ -217,8 +217,18 @@
             DB::table('cities')
             ->where('id', '=', $city_id)
             ->update(['diamond' => $tavern_slot_DB->diamond - 1, $slot_db => $new_mercenary, $slot_qt_db => $new_quantity]);
-            $new_mercenary = DB::table('mercenaries')->where('id', '=', $new_mercenary)->value('name');
-            return (["Result" => "Success", "Name" => trans('mercenaries.' . $new_mercenary), "Qt" => $new_quantity]);
+            $new_mercenary_info = DB::table('mercenaries')->where('id', '=', $new_mercenary)->first();
+            return (["Result" => "Success",
+                    "Name" => trans('mercenaries.' . $new_mercenary_info->name),
+                    "Qt" => $new_quantity,
+                    "Life" => $new_mercenary_info->life,
+                    "Speed" => $new_mercenary_info->speed,
+                    "Power" => $new_mercenary_info->power,
+                    "Storage" => $new_mercenary_info->storage,
+                    "Cool_down" => $new_mercenary_info->cool_down,
+                    "Gold_price" => $new_mercenary_info->gold_price,
+                    "Diamond_price" => $new_mercenary_info->diamond_price,
+            ]);
         }
     }
 ?>

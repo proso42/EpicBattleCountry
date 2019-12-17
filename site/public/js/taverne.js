@@ -118,6 +118,13 @@ function confirm_randomize()
             if (rep.Result == "Success")
             {
                 document.getElementById("slot" + g_slot + "_qt").textContent = rep.Qt;
+                document.getElementById("slot" + g_slot + "_life").textContent = rep.Life;
+                document.getElementById("slot" + g_slot + "_speed").textContent = rep.Speed;
+                document.getElementById("slot" + g_slot + "_power").textContent = rep.Power;
+                document.getElementById("slot" + g_slot + "_storage").textContent = rep.Storage;
+                document.getElementById("slot" + g_slot + "_cool_down").textContent = rep.Cool_down;
+                document.getElementById("slot" + g_slot + "_gold_price").textContent = rep.Gold_price;
+                document.getElementById("slot" + g_slot + "_diamond_price").textContent = rep.Diamond_price;
                 document.getElementById("slot" + g_slot + "_name").textContent = rep.Name;
                 document.getElementById("success_mercenary_randomized").style.display = "";
                 g_slot = 0;

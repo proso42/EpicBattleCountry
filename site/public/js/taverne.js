@@ -115,8 +115,8 @@ function confirm_randomize()
         if (xhr.readyState === 4 && xhr.status === 200)
         {
             let rep = xhr.responseText;
-            /*console.log(xhr.responseText);
-            if (xhr.responseText == "Succes")
+            console.log(xhr.responseText);
+            /*if (xhr.responseText == "Succes")
             {
                 window.location.reload();
             }

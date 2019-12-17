@@ -131,6 +131,7 @@ function confirm_randomize()
             }
             else
             {
+                console.log("rep.Result");
                 console.log(rep);
                 return ;
             }

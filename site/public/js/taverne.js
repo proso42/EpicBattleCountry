@@ -118,6 +118,7 @@ function confirm_randomize()
             if (rep.Result == "Success")
             {
                 document.getElementById("slot" + g_slot + "_qt").textContent = rep.Qt;
+                document.getElementById("slot" + g_slot + "_name").textContent = rep.Name;
                 document.getElementById("success_mercenary_randomized").style.display = "";
                 g_slot = 0;
                 setTimeout(() =>{

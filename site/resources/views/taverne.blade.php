@@ -57,7 +57,7 @@
                         @if ($slots['slot1']['available'] == 1)
                             <div id="slot1" class="row" style="align-items: baseline;line-height: 31px;">
                                 <div class="mercenary-unit offset-lg-1 offset-md-1 offset-sm-1 offset-1 col-lg-3 col-md-3 col-sm-3 col-3" style="text-align:center">
-                                    <span>{{ $slots['slot1']['name'] }}</span>
+                                    <span id="slot1_name">{{ $slots['slot1']['name'] }}</span>
                                     <div class="mercenary-info-unit">
                                         <ul>
                                             <li>@lang('army.life') : {{ $slots['slot1']['life'] }} <i class="fas fa-heartbeat"></i></li>
@@ -105,7 +105,7 @@
                             @if ($slots['slot2']['available'] == 1)
                                 <div id="slot2" class="row" style="align-items: baseline;line-height: 31px;">
                                     <div class="mercenary-unit offset-lg-1 offset-md-1 offset-sm-1 offset-1 col-lg-3 col-md-3 col-sm-3 col-3" style="text-align:center">
-                                        <span>{{ $slots['slot2']['name'] }}</span>
+                                        <span id="slot2_name">{{ $slots['slot2']['name'] }}</span>
                                         <div class="mercenary-info-unit">
                                             <ul>
                                                 <li>@lang('army.life') : {{ $slots['slot2']['life'] }} <i class="fas fa-heartbeat"></i></li>
@@ -154,7 +154,7 @@
                             @if ($slots['slot3']['available'] == 1)
                                 <div id="slot3" class="row" style="align-items: baseline;line-height: 31px;">
                                     <div class="mercenary-unit offset-lg-1 offset-md-1 offset-sm-1 offset-1 col-lg-3 col-md-3 col-sm-3 col-3" style="text-align:center">
-                                        <span>{{ $slots['slot3']['name'] }}</span>
+                                        <span id="slot3_name">{{ $slots['slot3']['name'] }}</span>
                                         <div class="mercenary-info-unit">
                                             <ul>
                                                 <li>@lang('army.life') : {{ $slots['slot3']['life'] }} <i class="fas fa-heartbeat"></i></li>

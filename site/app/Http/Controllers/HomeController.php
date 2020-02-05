@@ -84,7 +84,7 @@
                 $mercenary_name = $mercenary->name;
                 $quantity = $city_mercenaries->$mercenary_name;
                 if ( $quantity > 0)
-                    array_push($units_owned, ["name" => trans('mercenaries.' $mercenary->name), "quantity" => $quantity]);
+                    array_push($units_owned, ["name" => trans('mercenaries.' . $mercenary->name), "quantity" => $quantity]);
             }
             if ($util->Cheval > 0)
                 array_push($units_owned, ["name" => trans('mount.Cheval'), "quantity" => $util->Cheval]);

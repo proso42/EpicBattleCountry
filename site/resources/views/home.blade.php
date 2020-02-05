@@ -127,7 +127,7 @@
                         </tr>
                         @foreach ($units_owned as $unit)
                             <tr>
-                                <td>{{ $unit['name'] }}</td><td id="id_{{ $unit['name'] }}">{{ $unit['quantity'] }}</td>
+                                <td>@if ($unit['is_mercenary'] == 1)  <i class="fas fa-coins"> </i> @endif{{ $unit['name'] }}</td><td id="id_{{ $unit['name'] }}">{{ $unit['quantity'] }}</td>
                             </tr>
                         @endforeach
                     </table>

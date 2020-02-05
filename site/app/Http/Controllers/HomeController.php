@@ -77,14 +77,14 @@
                 $unit_format = preg_replace('/\s/', '_', $unit->name);
                 $unit_quantity = $city_units->$unit_format;
                 if ($unit_quantity > 0)
-                    array_push($units_owned, ["name" => trans('unit.' . $unit_format), "quantity" => $unit_quantity], "is_mercenary" => 0);
+                    array_push($units_owned, ["name" => trans('unit.' . $unit_format), "quantity" => $unit_quantity, "is_mercenary" => 0]);
             }
             foreach($all_mercenaries as $mercenary)
             {
                 $mercenary_name = $mercenary->name;
                 $quantity = $city_mercenaries->$mercenary_name;
                 if ( $quantity > 0)
-                    array_push($units_owned, ["name" => trans('mercenaries.' . $mercenary->name), "quantity" => $quantity], "is_mercenary" => 1);
+                    array_push($units_owned, ["name" => trans('mercenaries.' . $mercenary->name), "quantity" => $quantity, "is_mercenary" => 1]);
             }
             if ($util->Cheval > 0)
                 array_push($units_owned, ["name" => trans('mount.Cheval'), "quantity" => $util->Cheval]);

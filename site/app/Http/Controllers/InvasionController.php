@@ -49,10 +49,10 @@
             }
             foreach ($mercenaries as $mercenary)
             {
-                $mercenary_name = $mercenary->name;
+                $mercenary_name = $mercenary['name'];
                 $mercenary_qantity = $city_mercenaries->mercenary_name;
                 if ($mercenary_qantity > 0)
-                    array_push($info_unit, ["ref" => $mercenary_name, "name" => trans('mercenaries.' . $mercenary_name), "quantity" => $mercenary_qantity, "storage" => $mercenary->storage]);
+                    array_push($info_unit, ["ref" => $mercenary_name, "name" => trans('mercenaries.' . $mercenary_name), "quantity" => $mercenary_qantity, "storage" => $mercenary['storage']]);
             }
             $info_item = [];
             foreach ($city_items as $item => $quantity)

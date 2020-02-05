@@ -68,7 +68,9 @@
                     array_push($items_owned, ["name" => trans('item.' . $item_format), "quantity" => $item_quantity]);
             }
             $all_units = DB::table('units')->get();
+            $all_mercenaries = DB::table('mercenaries')->get();
             $city_units = DB::table('cities_units')->where('city_id', '=', $city_id)->first();
+            $city_mercenaries = DB::table('cities_mercenaries')->where('city_id', '=', $city_id)->first();
             $units_owned = array();
             foreach ($all_units as $unit)
             {
@@ -76,6 +78,12 @@
                 $unit_quantity = $city_units->$unit_format;
                 if ($unit_quantity > 0)
                     array_push($units_owned, ["name" => trans('unit.' . $unit_format), "quantity" => $unit_quantity]);
+            }
+            foreach($all_mercenaries as $mercenary)
+            {
+                $quantity = $city_mercenaries->($mercenary->name);
+                if ( $quantity > 0)
+                    array_push($units_owned, ["name" => trans('mercenaries.' $mercenary->name), "quantity" => $quantity]);
             }
             if ($util->Cheval > 0)
                 array_push($units_owned, ["name" => trans('mount.Cheval'), "quantity" => $util->Cheval]);

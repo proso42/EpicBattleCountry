@@ -35,6 +35,8 @@
             $util = Common::get_utilities($user_id, $city_id);
             $city_unit = DB::table('cities_units')->where('city_id', '=', $city_id)->first();
             $units = DB::table('units')->select('name', 'storage')->get();
+            $mercenaries = DB::table('mercenaries')->select('name', 'storage')->get();
+            $city_mercenaries = DB::table('cities_mercenaries')->where('city_id', '=', $city_id)->first();
             $city_items = DB::table('cities')->select('basic_shield', 'basic_armor', 'basic_sword', 'basic_spear', 'basic_bow')->where('id', '=', $city_id)->first();
             $info_unit = [];
             foreach ($city_unit as $unit => $val)
@@ -44,6 +46,12 @@
                 if ($val <= 0)
                     continue ;
                 array_push($info_unit, ["ref" => $unit, "name" => trans("unit." . $unit), "quantity" => $val, "storage" => $this->get_unit_storage($units, $unit)]);
+            }
+            foreach ($mercenaries as $mercenary)
+            {
+                $mercenary_qantity = $city_mercenaries->($mercenary->name);
+                if ($mercenary_qantity > 0)
+                    array_push($info_unit, ["ref" => $mercenary->name, "name" => trans('mercenaries.' . $mercenary->name), "quantity" => $mercenary_qantity, "storage" => $mercenary->storage]);
             }
             $info_item = [];
             foreach ($city_items as $item => $quantity)
@@ -144,6 +152,8 @@
                 if (!isset($city_units->$unit) || $city_units->$unit < $quantity)
                     return ("invasion error : bad unit");
                 $unit_infos = DB::table('units')->select('speed', 'storage')->where('name', '=', $unit)->first();
+                if ($unit_infos == null)
+                    $unit_infos = DB::table('mercenaries')->select('speed', 'storage')->where('name', '=', $unit)->first();
                 if ($min_speed == -1 || $unit_infos->speed < $min_speed)
                     $min_speed = $unit_infos->speed;
                 $storage += ($unit_infos->storage * $quantity);

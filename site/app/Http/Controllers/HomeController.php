@@ -87,15 +87,15 @@
                     array_push($units_owned, ["name" => trans('mercenaries.' . $mercenary->name), "quantity" => $quantity, "is_mercenary" => 1]);
             }
             if ($util->Cheval > 0)
-                array_push($units_owned, ["name" => trans('mount.Cheval'), "quantity" => $util->Cheval]);
+                array_push($units_owned, ["name" => trans('mount.Cheval'), "quantity" => $util->Cheval, "is_mercenary" => 0]);
             if ($util->Likorne > 0)
-                array_push($units_owned, ["name" => trans('mount.Likorne'), "quantity" => $util->Likorne]);
+                array_push($units_owned, ["name" => trans('mount.Likorne'), "quantity" => $util->Likorne, "is_mercenary" => 0]);
             if ($util->Bouc_de_guerre > 0)
-                array_push($units_owned, ["name" => trans('mount.Bouc_de_guerre'), "quantity" => $util->Bouc_de_guerre]);
+                array_push($units_owned, ["name" => trans('mount.Bouc_de_guerre'), "quantity" => $util->Bouc_de_guerre, "is_mercenary" => 0]);
             if ($util->Loup > 0)
-                array_push($units_owned, ["name" => trans('mount.Loup'), "quantity" => $util->Loup]);
+                array_push($units_owned, ["name" => trans('mount.Loup'), "quantity" => $util->Loup, "is_mercenary" => 0]);
             if ($util->Dragon)
-                array_push($units_owned, ["name" => trans('mount.Dragon'), "quantity" => $util->Dragon]);
+                array_push($units_owned, ["name" => trans('mount.Dragon'), "quantity" => $util->Dragon, "is_mercenary" => 0]);
             $waiting_buildings = DB::table('waiting_buildings')
             ->where('city_id', '=', $city_id)
             ->get();

@@ -81,7 +81,7 @@
             }
             foreach($all_mercenaries as $mercenary)
             {
-                $quantity = $city_mercenaries->($mercenary->name);
+                $quantity = $city_mercenaries->$mercenary->name;
                 if ( $quantity > 0)
                     array_push($units_owned, ["name" => trans('mercenaries.' $mercenary->name), "quantity" => $quantity]);
             }

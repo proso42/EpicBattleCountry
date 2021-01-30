@@ -349,7 +349,7 @@
                         {
                             document.getElementById('overlay').style.display = "";
                             document.getElementById('building_desc_win').style.display = "";
-                            document.getElementById('building_desc_name').textContent = name;
+                            document.getElementById('building_desc_name').textContent = "name";
                             document.getElementById('building_desc_text').textContent = infos.description;
                         }
                     }
@@ -360,9 +360,9 @@
 
             function close_help()
             {
-                document.getElementById('overlay').sytle.display = "none";
-                document.getElementById('building_desc_win').sytle.display = "none";
-                document.getElementById('building_desc_name').value = "";
+                document.getElementById('overlay').style.display = "none";
+                document.getElementById('building_desc_win').style.display = "none";
+                document.getElementById('building_desc_name').textContent = "";
                 document.getElementById('building_desc_text').textContent = "";
             }
 

@@ -13,7 +13,7 @@
         <div id="building_desc_win" class="building-desc" style="display: none">
             <h3 id="building_desc_name"></h3>
             <p id="building_desc_text"></p>
-            <input onclick="ok()" id="ok_button" type="button" class="return-button" value="@lang('common.ok')">
+            <input onclick="close_help()" id="ok_button" type="button" class="return-button" value="@lang('common.ok')">
         </div>
             @include('default')
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding-right: 10px;">
@@ -347,15 +347,10 @@
                             console.log(infos.Reason);
                         else
                         {
-                            //console.log('0');
                             document.getElementById('overlay').style.display = "";
-                            //console.log('1');
                             document.getElementById('building_desc_win').style.display = "";
-                            //console.log('2');
-                            document.getElementById('building_desc_name').value = name;
-                            //console.log('3');
+                            document.getElementById('building_desc_name').textContent = name;
                             document.getElementById('building_desc_text').textContent = infos.description;
-                            //console.log('4');
                         }
                     }
                 }

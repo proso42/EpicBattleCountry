@@ -347,6 +347,7 @@
                             console.log(infos.Reason);
                         else
                         {
+                            console.log('0');
                             document.getElementById('overlay').sytle.display = "";
                             console.log('1');
                             document.getElementById('building_desc_win').sytle.display = "";

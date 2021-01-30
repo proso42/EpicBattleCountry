@@ -347,15 +347,15 @@
                             console.log(infos.Reason);
                         else
                         {
-                            console.log('0');
-                            document.getElementById('overlay').sytle.display = "";
-                            console.log('1');
-                            document.getElementById('building_desc_win').sytle.display = "";
-                            console.log('2');
+                            //console.log('0');
+                            document.getElementById('overlay').style.display = "";
+                            //console.log('1');
+                            document.getElementById('building_desc_win').style.display = "";
+                            //console.log('2');
                             document.getElementById('building_desc_name').value = name;
-                            console.log('3');
+                            //console.log('3');
                             document.getElementById('building_desc_text').textContent = infos.description;
-                            console.log('4');
+                            //console.log('4');
                         }
                     }
                 }

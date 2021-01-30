@@ -684,6 +684,19 @@ input::placeholder
     cursor: help;
 }
 
+.building-desc
+{
+    margin-top: 50px;
+    margin-left: 33%;
+    width: 33%;
+    background-color: rgb(105, 105, 105);
+    border: solid 1px lightblue;
+    border-radius: 4px;
+    text-align: center;
+    position: absolute;
+    z-index: 2;
+}
+
 .building-button:hover .building-res-needed
 {
     display: block;

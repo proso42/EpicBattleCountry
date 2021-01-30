@@ -8,6 +8,13 @@
         <link rel="stylesheet" type="text/css" href="css/style.css"/>
     </head>
     <body>
+        <div id="overlay" class="home-overlay" style="display: none">
+        </div>
+        <div id="building_desc_win" class="building-desc" style="display: none">
+            <h3 id="building_desc_name"></h3>
+            <p id="building_desc_text"></p>
+            <input onclick="ok()" id="ok_button" type="button" class="return-button" value="@lang('common.ok')">
+        </div>
             @include('default')
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding-right: 10px;">
                 <div class="row">
@@ -27,7 +34,7 @@
                 <div id="eco-buildings" class="row" style="margin-top: 30px;display:none">
                     @foreach ($allowed_eco_buildings as $build)
                         <div class="building-block">
-                            <div class="building-name" onclick="open_help(1, {{ $build["id"] }})">{{ $build["name"] }} @if ($build["niv"] > 0) {{$build["niv"]}} @endif</div> 
+                            <div class="building-name" onclick="open_help(1, {{ $build["id"] }}, {{ $build["name"] }})">{{ $build["name"] }} @if ($build["niv"] > 0) {{$build["niv"]}} @endif</div> 
                             <img class="building" style="width:250px;height: 250px;" src="{{ $build['illustration'] }}">
                             @if ($build['status'] == "OK")
                                 <div id="eco_{{ $build['id'] }}" name="{{ $build['name'] }}" @if ($build['food_required'] > $util->food || $build['wood_required'] > $util->wood || $build['rock_required'] > $util->rock || $build['steel_required'] > $util->steel || $build['gold_required'] > $util->gold) class="building-button-impossible" @else class="building-button"
@@ -189,6 +196,14 @@
             </div>
         </div>
         <script>
+        setTimeout(() =>{
+            let body_height = document.body.scrollHeight + 20;
+            let win_height = window.innerHeight;
+            if (body_height > win_height)
+                document.getElementById("overlay").style.height = body_height + "px";
+            else
+                document.getElementById("overlay").style.height = win_height + "px";
+        }, 1000);
             launch_all_timers();
             var activeTab = document.getElementById("fat").getAttribute("first_active_tab") + "-tab";
             var activeBuildings = document.getElementById("fat").getAttribute("first_active_tab") + "-buildings";
@@ -318,7 +333,7 @@
                 }
             }
 
-            function open_help(type, id)
+            function open_help(type, id, name)
             {
                 var _token = document.getElementById('_token').value;
                 var xhr = new XMLHttpRequest();
@@ -332,12 +347,23 @@
                             console.log(infos.Reason);
                         else
                         {
-                            console.log(infos.description);
+                            document.getElementById('overlay').sytle.display = "";
+                            document.getElementById('building_desc_win').sytle.display = "";
+                            document.getElementById('building_desc_name').value = name;
+                            document.getElementById('building_desc_text').textContent = infos.description;
                         }
                     }
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 xhr.send('_token=' + _token + '&id=' + id + '&type=' + type);
+            }
+
+            function close_help()
+            {
+                document.getElementById('overlay').sytle.display = "none";
+                document.getElementById('building_desc_win').sytle.display = "none";
+                document.getElementById('building_desc_name').value = "";
+                document.getElementById('building_desc_text').textContent = "";
             }
 
             function update_building(id, type)

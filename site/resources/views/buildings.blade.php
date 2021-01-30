@@ -320,8 +320,24 @@
 
             function open_help(type, id)
             {
-                console.log(type);
-                console.log(id);
+                var _token = document.getElementById('_token').value;
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'http://www.epicbattlecorp.fr/buildings_description');
+                xhr.onreadystatechange =  function()
+                {
+                    if (xhr.readyState === 4 && xhr.status === 200)
+                    {
+                        var infos = JSON.parse(xhr.responseText);
+                        if (infos.Result == "Error")
+                            console.log(infos.Reason);
+                        else
+                        {
+                            console.log(infos.description);
+                        }
+                    }
+                }
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.send('_token=' + _token + '&id=' + id + '&type=' + type);
             }
 
             function update_building(id, type)

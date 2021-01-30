@@ -64,6 +64,26 @@
             return ("tab saved");
         }
 
+        public function get_description(Request $request)
+        {
+            $id = $request['id'];
+            $type = $request['type'];
+            if ($type == 1)
+                $type = "eco_buildings";
+            else if ($type == 2)
+                $type = "army_buildings";
+            else if ($type == 3)
+                $type == "religious_buildings";
+            else if ($type == 4)
+                $type = "tech_buildings";
+            else
+                return (["Result" => "Error", "Reason" => "Invalid Building Type"]);
+            $building_desc = DB::table($type)->where('id', '=', $id)->value('description');
+            if (!$building_desc)
+                return(["Result" => "Error", "Reason" => "Invalid Building ID"]);
+            return (["Result" => "Success", "description" => trans('building.' . $building_desc)]);
+        }
+
         private function get_allowed_buildings($building_type)
         {
             $city_id = session()->get('city_id');

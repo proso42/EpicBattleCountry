@@ -348,9 +348,13 @@
                         else
                         {
                             document.getElementById('overlay').sytle.display = "";
+                            console.log('1');
                             document.getElementById('building_desc_win').sytle.display = "";
+                            console.log('2');
                             document.getElementById('building_desc_name').value = name;
+                            console.log('3');
                             document.getElementById('building_desc_text').textContent = infos.description;
+                            console.log('4');
                         }
                     }
                 }

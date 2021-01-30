@@ -34,7 +34,7 @@
                 <div id="eco-buildings" class="row" style="margin-top: 30px;display:none">
                     @foreach ($allowed_eco_buildings as $build)
                         <div class="building-block">
-                            <div class="building-name" onclick="open_help(1, {{ $build["id"] }}, '{{ $build["name"] }}')">{{ $build["name"] }} @if ($build["niv"] > 0) {{$build["niv"]}} @endif</div> 
+                            <div class="building-name" onclick="open_help(1, {{ $build["id"] }}, '{{ $build["name"] }}')"><a href="#top">{{ $build["name"] }} @if ($build["niv"] > 0) {{$build["niv"]}} @endif</a></div> 
                             <img class="building" style="width:250px;height: 250px;" src="{{ $build['illustration'] }}">
                             @if ($build['status'] == "OK")
                                 <div id="eco_{{ $build['id'] }}" name="{{ $build['name'] }}" @if ($build['food_required'] > $util->food || $build['wood_required'] > $util->wood || $build['rock_required'] > $util->rock || $build['steel_required'] > $util->steel || $build['gold_required'] > $util->gold) class="building-button-impossible" @else class="building-button"

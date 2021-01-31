@@ -6,7 +6,12 @@ body
     -webkit-background-size: cover;
     background-size: cover;
 }
-            
+
+a:link
+{
+    text-decoration: none;
+}
+
 .menu-left
 {
     background-color: rgba(119, 136, 153, 0.8);

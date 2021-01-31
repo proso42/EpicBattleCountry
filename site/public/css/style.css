@@ -10,6 +10,8 @@ body
 a:link
 {
     text-decoration: none;
+    color: black;
+    cursor: help;
 }
 
 .menu-left

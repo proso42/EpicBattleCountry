@@ -10,8 +10,17 @@ body
 a:link
 {
     text-decoration: none;
-    color: black;
     cursor: help;
+}
+
+a
+{
+    color: black;
+}
+
+a:hover
+{
+    color: black;
 }
 
 .menu-left

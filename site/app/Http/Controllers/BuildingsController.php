@@ -73,7 +73,7 @@
             else if ($type == 2)
                 $type = "army_buildings";
             else if ($type == 3)
-                $type == "religious_buildings";
+                $type = "religious_buildings";
             else if ($type == 4)
                 $type = "tech_buildings";
             else

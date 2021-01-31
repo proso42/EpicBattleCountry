@@ -89,7 +89,7 @@ return [
     'desc_war_goat' => 'L\'élevage de boucs de guerre permet de produire des boucs de guerre. Uniquement disponible pour les nains.',
     'desc_wolf' => 'L\'élevage de loups permet de produire des loups. Uniquement disponible pour les orcs.',
     'desc_enclosure' => 'L\'enclos  permet d\'augmenter le stock maximum d\'animaux',
-    'desc_human_temple' => 'Le Temple de Guerre est le lieu de culte des humains. La Statue de la Guerre est nécessaire pour le construire. Ce bâtiment produit de la foi.',
+    'desc_human_temple' => 'Le Temple de la Guerre est le lieu de culte des humains. La Statue de la Guerre est nécessaire pour le construire. Ce bâtiment produit de la foi.',
     'desc_elve_temple' => 'Le Temple de la Vie est le lieu de culte des elfes. L\' Arbre de la Vie est nécessaire pour le construire. Ce bâtiment produit de la foi.',
     'desc_dwarf_temple' => 'Le Temple de la Montagne est le lieu de culte des nains. La Statue du Dieu Nain est nécessaire pour le construire. Ce bâtiment produit de la foi.',
     'desc_orc_temple' => 'Le Temple de la Mort est le lieu de culte des orcs. La Statue engloutie de la Mort est nécessaire pour le construire. Ce bâtiment produit de la foi.',

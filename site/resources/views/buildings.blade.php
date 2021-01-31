@@ -74,7 +74,7 @@
                 <div id="army-buildings" class="row" style="margin-top: 30px;display:none">
                 @foreach ($allowed_army_buildings as $build)
                     <div class="building-block">
-                        <div class="building-name" onclick="open_help(2, {{ $build["id"] }})">{{ $build["name"] }} @if ($build["niv"] > 0) {{$build["niv"]}} @endif</div> 
+                        <div class="building-name" onclick="open_help(2, {{ $build["id"] }}, '{{ $build["name"] }}')"><a href="#top">{{ $build["name"] }} @if ($build["niv"] > 0) {{$build["niv"]}} @endif</a></div> 
                         <img class="building" style="width:250px;height: 250px;" src="{{ $build['illustration'] }}">
                         @if ($build['status'] == "OK")
                             <div id="army_{{ $build['id'] }}" name="{{ $build['name'] }}" @if ($build['food_required'] > $util->food || $build['wood_required'] > $util->wood || $build['rock_required'] > $util->rock || $build['steel_required'] > $util->steel || $build['gold_required'] > $util->gold) class="building-button-impossible" @else class="building-button"
@@ -114,7 +114,7 @@
                 <div id="religious-buildings" class="row" style="margin-top: 30px;display:none">
                 @foreach ($allowed_religious_buildings as $build)
                     <div class="building-block">
-                        <div class="building-name" onclick="open_help(3, {{ $build["id"] }})">{{ $build["name"] }} @if ($build["niv"] > 0) {{$build["niv"]}} @endif</div> 
+                        <div class="building-name" onclick="open_help(3, {{ $build["id"] }}, '{{ $build["name"] }}')"><a href="#top">{{ $build["name"] }} @if ($build["niv"] > 0) {{$build["niv"]}} @endif</a></div> 
                         <img class="building" style="width:250px;height: 250px;" src="{{ $build['illustration'] }}">
                         @if ($build['status'] == "OK")
                             <div id="religious_{{ $build['id'] }}" name="{{ $build['name'] }}" @if ($build['food_required'] > $util->food || $build['wood_required'] > $util->wood || $build['rock_required'] > $util->rock || $build['steel_required'] > $util->steel || $build['gold_required'] > $util->gold) class="building-button-impossible" @else class="building-button"
@@ -154,7 +154,7 @@
                 <div id="tech-buildings" class="row" style="margin-top: 30px;display:none">
                 @foreach ($allowed_tech_buildings as $build)
                     <div class="building-block">
-                        <div class="building-name" onclick="open_help(4, {{ $build["id"] }})">{{ $build["name"] }} @if ($build["niv"] > 0) {{$build["niv"]}} @endif</div> 
+                        <div class="building-name" onclick="open_help(4, {{ $build["id"] }}, '{{ $build["name"] }}')"><a href="#top">{{ $build["name"] }} @if ($build["niv"] > 0) {{$build["niv"]}} @endif</a></div> 
                         <img class="building" style="width:250px;height: 250px;" src="{{ $build['illustration'] }}">
                         @if ($build['status'] == "OK")
                             <div id="tech_{{ $build['id'] }}" name="{{ $build['name'] }}" @if ($build['food_required'] > $util->food || $build['wood_required'] > $util->wood || $build['rock_required'] > $util->rock || $build['steel_required'] > $util->steel || $build['gold_required'] > $util->gold) class="building-button-impossible" @else class="building-button"

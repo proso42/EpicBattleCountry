@@ -107,6 +107,8 @@
                                     </ul>
                                 </div>                        
                             </div>
+                        @elseif ($build['status'] == "OK" && $waiting_building == 1)
+                            <div id="unavailable_{{ $build['name'] }}" class="unavailable">@lang('common.unavailable') <i class="fas fa-hourglass-half"></i></div>
                         @else
                             <div id="compteur_{{ $build['name'] }}" duration="{{ $build['duration'] }}" class="building-wip"></div>
                         @endif
@@ -147,6 +149,8 @@
                                     </ul>
                                 </div>                        
                             </div>
+                        @elseif ($build['status'] == "OK" && $waiting_building == 1)
+                            <div id="unavailable_{{ $build['name'] }}" class="unavailable">@lang('common.unavailable') <i class="fas fa-hourglass-half"></i></div>
                         @else
                             <div id="compteur_{{ $build['name'] }}" duration="{{ $build['duration'] }}" class="building-wip"></div>
                         @endif
@@ -187,6 +191,8 @@
                                     </ul>
                                 </div>                        
                             </div>
+                        @elseif ($build['status'] == "OK" && $waiting_building == 1)
+                            <div id="unavailable_{{ $build['name'] }}" class="unavailable">@lang('common.unavailable') <i class="fas fa-hourglass-half"></i></div>
                         @else
                             <div id="compteur_{{ $build['name'] }}" duration="{{ $build['duration'] }}" class="building-wip"></div>
                         @endif

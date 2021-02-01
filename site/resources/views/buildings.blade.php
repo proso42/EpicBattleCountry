@@ -399,12 +399,29 @@
                             elem.className = "building-wip";
                             elem.onclick = function (){};
                             document.getElementById("res_" + type + "_" + id).remove();
-                            let building_buttons = document.getElementById("building-button");
-                            building_buttons.forEach(function(e){
+                            let building_buttons = document.getElementsByClassName("building-button");
+                            let stop = building_buttons.length;
+                            for(i = 0; i < stop; i++)
+                            {
+                                building_buttons[0].onclick = function(){};
+                                building_buttons[0].firstElementChild.className = "fas fa-hourglass-half";
+                                building_buttons[0].className = "unavailable";
+                            }
+                            building_buttons = document.getElementsByClassName("building-button-impossible");
+                            stop = building_buttons.length;
+                            for(i = 0; i < stop; i++)
+                            {
+                                building_buttons[0].onclick = function(){};
+                                building_buttons[0].firstElementChild.className = "fas fa-hourglass-half";
+                                building_buttons[0].className = "unavailable";
+                            }
+                            
+
+                            /*building_buttons.forEach(function(e){
                                 e.onclick = function(){};
                                 e.className = "unavailable";
                                 e.firstElementChild.className = "fas fa-hourglass-half";
-                            });
+                            });*/
                             /*infos.forbidden_buildings.forEach(function(e){
                                 let forbidden = document.getElementById(e.id);
                                 if (forbidden.className == "building-button-impossible")

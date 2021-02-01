@@ -627,7 +627,7 @@ input::placeholder
 .unavailable
 {
     width: 250px;
-    background-color: crimson;
+    background-color: lightpink;
     color: black;
     text-align: center;
     border-bottom-left-radius: 4px;

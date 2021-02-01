@@ -40,9 +40,9 @@
                                 <div id="eco_{{ $build['id'] }}" name="{{ $build['name'] }}" @if ($build['food_required'] > $util->food || $build['wood_required'] > $util->wood || $build['rock_required'] > $util->rock || $build['steel_required'] > $util->steel || $build['gold_required'] > $util->gold) class="building-button-impossible" @else class="building-button"
                                 onclick="update_building('{{ $build['id'] }}', 'eco')"@endif>                                
                                     @if ($build["niv"] == 0)
-                                        @lang('building.build') <i class="fas fa-hammer icon"></i>
+                                        <span>@lang('building.build')</span> <i class="fas fa-hammer icon"></i>
                                     @else
-                                        @lang('building.upgrade') <i class="fas fa-angle-double-up icon"></i>
+                                        <span>@lang('building.upgrade')</span> <i class="fas fa-angle-double-up icon"></i>
                                     @endif
                                     <div id="res_eco_{{ $build['id'] }}" class="building-res-needed">
                                         <ul>
@@ -404,7 +404,8 @@
                             for(i = 0; i < stop; i++)
                             {
                                 building_buttons[0].onclick = function(){};
-                                building_buttons[0].firstElementChild.className = "fas fa-hourglass-half";
+                                building_buttons[0].firstElementChild.textContent = infos.trad;
+                                building_buttons[0].children[1].className = "fas fa-hourglass-half";
                                 building_buttons[0].className = "unavailable";
                             }
                             building_buttons = document.getElementsByClassName("building-button-impossible");
@@ -412,7 +413,8 @@
                             for(i = 0; i < stop; i++)
                             {
                                 building_buttons[0].onclick = function(){};
-                                building_buttons[0].firstElementChild.className = "fas fa-hourglass-half";
+                                building_buttons[0].firstElementChild.textContent = infos.trad;
+                                building_buttons[0].children[1].className = "fas fa-hourglass-half";
                                 building_buttons[0].className = "unavailable";
                             }
                             

@@ -78,7 +78,7 @@
                     <div class="building-block">
                         <div class="building-name" onclick="open_help(2, {{ $build["id"] }}, '{{ $build["name"] }}')"><a href="#top">{{ $build["name"] }} @if ($build["niv"] > 0) {{$build["niv"]}} @endif</a></div> 
                         <img class="building" style="width:250px;height: 250px;" src="{{ $build['illustration'] }}">
-                        @if ($build['status'] == "OK")
+                        @if ($build['status'] == "OK" && $waiting_building == 0)
                             <div id="army_{{ $build['id'] }}" name="{{ $build['name'] }}" @if ($build['food_required'] > $util->food || $build['wood_required'] > $util->wood || $build['rock_required'] > $util->rock || $build['steel_required'] > $util->steel || $build['gold_required'] > $util->gold) class="building-button-impossible" @else class="building-button"
                             onclick="update_building('{{ $build['id'] }}', 'army')"@endif>                                
                                 @if ($build["niv"] == 0)
@@ -120,7 +120,7 @@
                     <div class="building-block">
                         <div class="building-name" onclick="open_help(3, {{ $build["id"] }}, '{{ $build["name"] }}')"><a href="#top">{{ $build["name"] }} @if ($build["niv"] > 0) {{$build["niv"]}} @endif</a></div> 
                         <img class="building" style="width:250px;height: 250px;" src="{{ $build['illustration'] }}">
-                        @if ($build['status'] == "OK")
+                        @if ($build['status'] == "OK" && $waiting_building == 0)
                             <div id="religious_{{ $build['id'] }}" name="{{ $build['name'] }}" @if ($build['food_required'] > $util->food || $build['wood_required'] > $util->wood || $build['rock_required'] > $util->rock || $build['steel_required'] > $util->steel || $build['gold_required'] > $util->gold) class="building-button-impossible" @else class="building-button"
                             onclick="update_building('{{ $build['id'] }}', 'religious')"@endif>                                
                                 @if ($build["niv"] == 0)
@@ -162,7 +162,7 @@
                     <div class="building-block">
                         <div class="building-name" onclick="open_help(4, {{ $build["id"] }}, '{{ $build["name"] }}')"><a href="#top">{{ $build["name"] }} @if ($build["niv"] > 0) {{$build["niv"]}} @endif</a></div> 
                         <img class="building" style="width:250px;height: 250px;" src="{{ $build['illustration'] }}">
-                        @if ($build['status'] == "OK")
+                        @if ($build['status'] == "OK" && $waiting_building == 0)
                             <div id="tech_{{ $build['id'] }}" name="{{ $build['name'] }}" @if ($build['food_required'] > $util->food || $build['wood_required'] > $util->wood || $build['rock_required'] > $util->rock || $build['steel_required'] > $util->steel || $build['gold_required'] > $util->gold) class="building-button-impossible" @else class="building-button"
                             onclick="update_building('{{ $build['id'] }}', 'tech')"@endif>                                
                                 @if ($build["niv"] == 0)

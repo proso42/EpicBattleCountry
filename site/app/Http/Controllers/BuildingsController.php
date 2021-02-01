@@ -45,11 +45,16 @@
             }
             $is_admin = DB::table('users')->where('id', '=', $user_id)->value("is_admin");
             $util = Common::get_utilities($user_id, $city_id);
+            $waiting_building = DB::table('waiting_buildings')->where('city_id', '=', $city_id)->first();
+            if ($waiting_building)
+                $waiting_building = 1;
+            else
+                $waiting_building = 0;
             $allowed_eco_buildings = $this->get_allowed_buildings('eco_buildings');
             $allowed_army_buildings = $this->get_allowed_buildings('army_buildings');
             $allowed_religious_buildings = $this->get_allowed_buildings('religious_buildings');
             $allowed_tech_buildings = $this->get_allowed_buildings('tech_buildings');
-            return view('buildings', compact('is_admin', 'first_active_tab', 'util', 'allowed_eco_buildings', 'allowed_army_buildings', 'allowed_religious_buildings', 'allowed_tech_buildings'));
+            return view('buildings', compact('is_admin', 'first_active_tab', 'util', 'waiting_building', 'allowed_eco_buildings', 'allowed_army_buildings', 'allowed_religious_buildings', 'allowed_tech_buildings'));
         }
 
         public function set_active_tab(Request $request)
@@ -311,6 +316,9 @@
             $building_name = DB::table($building_type)->where('id', '=', $building_id)->value('name');
             if ($building_name === null)
                 return ("error : bad id of building");
+            $waiting_building = DB::table('waiting_buildings')->where('city_id', '=', $city_id)->first();
+            if ($waiting_building)
+                return (['Result' => 'Error', 'Reason' => 'Waiting for building']);
             $niv = DB::table('cities_buildings')->where('city_id', '=', $city_id)->value(preg_replace('/\s/', "_", $building_name));
             $alreday_waiting = DB::table('waiting_buildings')
             ->where('city_id', '=', $city_id)
@@ -393,12 +401,14 @@
             ->update(['food' => $city_res->food - $food_required, 'wood' => $city_res->wood - $wood_required, 'rock' => $city_res->rock - $rock_required, 'steel' => $city_res->steel - $steel_required, 'gold' => $city_res->gold - $gold_required]);
             $id = DB::table('waiting_buildings')
             ->insertGetId(["city_id" => $city_id, "type" => $building_type, "building_id" => $building_id, "finishing_date" => $finishing_date, "next_level" => $niv + 1]);
-            $infos = ["time_remaining" => $finishing_date - time(), "food" => $city_res->food - $food_required, 'wood' => $city_res->wood - $wood_required, 'rock' => $city_res->rock - $rock_required, 'steel' => $city_res->steel - $steel_required, 'gold' => $city_res->gold - $gold_required];
-            $forbidden_buildings = $this->get_unavailable_buildings("eco_buildings");
+            $infos = ["time_remaining" => $finishing_date - time(), "food" => Common::compact_nb($city_res->food - $food_required), 'wood' => Common::compact_nb($city_res->wood - $wood_required), 'rock' => Common::compact_nb($city_res->rock - $rock_required), 'steel' => Common::compact_nb($city_res->steel - $steel_required), 'gold' => Common::compact_nb($city_res->gold - $gold_required)];
+            /*$forbidden_buildings = $this->get_unavailable_buildings("eco_buildings");
             $forbidden_buildings = array_merge($forbidden_buildings, $this->get_unavailable_buildings("army_buildings"));
             $forbidden_buildings = array_merge($forbidden_buildings, $this->get_unavailable_buildings("religious_buildings"));
             $forbidden_buildings = array_merge($forbidden_buildings, $this->get_unavailable_buildings("tech_buildings"));
-            $infos["forbidden_buildings"] = $forbidden_buildings;
+            $infos["forbidden_buildings"] = $forbidden_buildings;*/ 
+            //On arrête de chercher les bâtiments qu'on ne peut plus améliorer car mtn on fait les batiment 1 par 1
+            //Du coup on renvoie juste les infos du batiment en cours de construction et tout autres deviennent indisponible
             return ($infos);
         }
     }

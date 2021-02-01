@@ -36,7 +36,7 @@
                         <div class="building-block">
                             <div class="building-name" onclick="open_help(1, {{ $build["id"] }}, '{{ $build["name"] }}')"><a href="#top">{{ $build["name"] }} @if ($build["niv"] > 0) {{$build["niv"]}} @endif</a></div> 
                             <img class="building" style="width:250px;height: 250px;" src="{{ $build['illustration'] }}">
-                            @if ($build['status'] == "OK")
+                            @if ($build['status'] == "OK" && $waiting_building == 0)
                                 <div id="eco_{{ $build['id'] }}" name="{{ $build['name'] }}" @if ($build['food_required'] > $util->food || $build['wood_required'] > $util->wood || $build['rock_required'] > $util->rock || $build['steel_required'] > $util->steel || $build['gold_required'] > $util->gold) class="building-button-impossible" @else class="building-button"
                                 onclick="update_building('{{ $build['id'] }}', 'eco')"@endif>                                
                                     @if ($build["niv"] == 0)
@@ -65,6 +65,8 @@
                                         </ul>
                                     </div>                        
                                 </div>
+                            @elseif ($build['status'] == "OK" && $waiting_building == 1)
+                                <div id="unavailable_{{ $build['name'] }}" class="unavailable">@lang('common.unavailable') <i class="fas fa-hourglass-half"></i></div>
                             @else
                                 <div id="compteur_{{ $build['name'] }}" duration="{{ $build['duration'] }}" class="building-wip"></div>
                             @endif
@@ -391,7 +393,13 @@
                             elem.className = "building-wip";
                             elem.onclick = function (){};
                             document.getElementById("res_" + type + "_" + id).remove();
-                            infos.forbidden_buildings.forEach(function(e){
+                            let building_buttons = document.getElementById("building-button");
+                            building_buttons.forEach(function(e){
+                                e.onclick = function(){};
+                                e.className = "unavailable";
+                                e.firstElementChild.className = "fas fa-hourglass-half";
+                            });
+                            /*infos.forbidden_buildings.forEach(function(e){
                                 let forbidden = document.getElementById(e.id);
                                 if (forbidden.className == "building-button-impossible")
                                     return ;
@@ -410,7 +418,7 @@
                                     if (e.gold_required > 0 && e.gold_required > infos.gold)
                                         document.getElementById("icon_gold_" + e.id).className = "fas fa-times icon";
                                 }
-                            });
+                            });*/
                             timer(div_id, duration);
                         }
                         else

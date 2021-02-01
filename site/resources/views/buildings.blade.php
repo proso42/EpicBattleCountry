@@ -82,9 +82,9 @@
                             <div id="army_{{ $build['id'] }}" name="{{ $build['name'] }}" @if ($build['food_required'] > $util->food || $build['wood_required'] > $util->wood || $build['rock_required'] > $util->rock || $build['steel_required'] > $util->steel || $build['gold_required'] > $util->gold) class="building-button-impossible" @else class="building-button"
                             onclick="update_building('{{ $build['id'] }}', 'army')"@endif>                                
                                 @if ($build["niv"] == 0)
-                                    @lang('building.build') <i class="fas fa-hammer icon"></i>
+                                    <span>@lang('building.build')</span> <i class="fas fa-hammer icon"></i>
                                 @else
-                                    @lang('building.upgrade') <i class="fas fa-angle-double-up icon"></i>
+                                    <span>@lang('building.upgrade')</span> <i class="fas fa-angle-double-up icon"></i>
                                 @endif
                                 <div id="res_army_{{ $build['id'] }}" class="building-res-needed">
                                     <ul>
@@ -124,9 +124,9 @@
                             <div id="religious_{{ $build['id'] }}" name="{{ $build['name'] }}" @if ($build['food_required'] > $util->food || $build['wood_required'] > $util->wood || $build['rock_required'] > $util->rock || $build['steel_required'] > $util->steel || $build['gold_required'] > $util->gold) class="building-button-impossible" @else class="building-button"
                             onclick="update_building('{{ $build['id'] }}', 'religious')"@endif>                                
                                 @if ($build["niv"] == 0)
-                                    @lang('building.build') <i class="fas fa-hammer icon"></i>
+                                    <span>@lang('building.build')</span> <i class="fas fa-hammer icon"></i>
                                 @else
-                                    @lang('building.upgrade') <i class="fas fa-angle-double-up icon"></i>
+                                    <span>@lang('building.upgrade')</span> <i class="fas fa-angle-double-up icon"></i>
                                 @endif
                                 <div id="res_religious_{{ $build['id'] }}" class="building-res-needed">
                                     <ul>
@@ -166,9 +166,9 @@
                             <div id="tech_{{ $build['id'] }}" name="{{ $build['name'] }}" @if ($build['food_required'] > $util->food || $build['wood_required'] > $util->wood || $build['rock_required'] > $util->rock || $build['steel_required'] > $util->steel || $build['gold_required'] > $util->gold) class="building-button-impossible" @else class="building-button"
                             onclick="update_building('{{ $build['id'] }}', 'tech')"@endif>                                
                                 @if ($build["niv"] == 0)
-                                    @lang('building.build') <i class="fas fa-hammer icon"></i>
+                                    <span>@lang('building.build')</span> <i class="fas fa-hammer icon"></i>
                                 @else
-                                    @lang('building.upgrade') <i class="fas fa-angle-double-up icon"></i>
+                                    <span>@lang('building.upgrade')</span> <i class="fas fa-angle-double-up icon"></i>
                                 @endif
                                 <div id="res_tech_{{ $build['id'] }}" class="building-res-needed">
                                     <ul>

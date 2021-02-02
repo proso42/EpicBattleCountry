@@ -58,6 +58,7 @@ Route::group(['middleware' => ['logged']], function(){
     // Techs endpoints
     Route::get('/techs', 'TechsController@index');
     Route::post('/update_tech', 'TechsController@update');
+    Route::post('/techs_description', 'TechsController@get_description');
     // Interrupt endpoints
     Route::post('/interrupt', 'InterruptController@interrupt');
     // Forge endpoints

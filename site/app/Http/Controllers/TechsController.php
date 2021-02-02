@@ -45,6 +45,15 @@
             return view('techs', compact('is_admin', 'allowed', 'allowed_techs','util'));
         }
 
+        public function get_description(Request $request)
+        {
+            $id = $request['id'];
+            $tech_desc = DB::table('techs')->where('id', '=', $id)->value('description');
+            if (!$tech_desc)
+                return(["Result" => "Error", "Reason" => "Invalid Tech ID"]);
+            return (["Result" => "Success", "description" => trans('tech.' . $building_desc)]);
+        }
+
         private function get_allowed_techs()
         {
             $city_id = session()->get('city_id');

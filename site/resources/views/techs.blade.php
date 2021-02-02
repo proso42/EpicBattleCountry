@@ -8,6 +8,13 @@
         <link rel="stylesheet" type="text/css" href="css/style.css"/>
     </head>
     <body>
+        <div id="overlay" class="home-overlay" style="display: none">
+        </div>
+        <div id="tech_desc_win" class="tech-desc" style="display: none">
+            <h3 id="tech_desc_name"></h3>
+            <p id="tech_desc_text"></p>
+            <input onclick="close_help()" id="ok_button" type="button" class="return-button" value="@lang('common.ok')">
+        </div>
             @include('default')
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding-right: 10px;">
                 @if ($allowed == 1)
@@ -148,6 +155,39 @@
                         timer(same_id, new_duration);
                     },1000);
                 }
+            }
+
+            function open_help(id, name)
+            {
+                var _token = document.getElementById('_token').value;
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'http://www.epicbattlecorp.fr/techs_description');
+                xhr.onreadystatechange =  function()
+                {
+                    if (xhr.readyState === 4 && xhr.status === 200)
+                    {
+                        var infos = JSON.parse(xhr.responseText);
+                        if (infos.Result == "Error")
+                            console.log(infos.Reason);
+                        else
+                        {
+                            document.getElementById('overlay').style.display = "";
+                            document.getElementById('tech_desc_win').style.display = "";
+                            document.getElementById('tech_desc_name').textContent = name;
+                            document.getElementById('tech_desc_text').textContent = infos.description;
+                        }
+                    }
+                }
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.send('_token=' + _token + '&id=' + id + '&type=' + type);
+            }
+
+            function close_help()
+            {
+                document.getElementById('overlay').style.display = "none";
+                document.getElementById('tech_desc_win').style.display = "none";
+                document.getElementById('tech_desc_name').textContent = "";
+                document.getElementById('tech_desc_text').textContent = "";
             }
 
             function update_tech(id)

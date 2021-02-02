@@ -48,6 +48,7 @@
         public function get_description(Request $request)
         {
             $id = $request['id'];
+            return ["Result" => "Error", "Reason" => $id];
             $tech_desc = DB::table('techs')->where('id', '=', $id)->value('description');
             if (!$tech_desc)
                 return(["Result" => "Error", "Reason" => "Invalid Tech ID"]);

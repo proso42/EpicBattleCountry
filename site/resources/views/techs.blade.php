@@ -21,7 +21,7 @@
                     <div id="techs" class="row" style="margin-top: 30px">
                         @foreach ($allowed_techs as $tech)
                             <div class="tech-block">
-                                <div class="tech-name" onclick="open_help({{ $tech["id"] }}, '{{ $tech["name"] }}')">{{ $tech["name"] }} @if ($tech["niv"] > 0) {{$tech["niv"]}} @endif</div>
+                                <div class="tech-name" onclick="open_help({{ $tech["tech_id"] }}, '{{ $tech["name"] }}')">{{ $tech["name"] }} @if ($tech["niv"] > 0) {{$tech["niv"]}} @endif</div>
                                 <img class="tech" style="width:250px;height: 250px;" src="{{ $tech['illustration'] }}">
                                 @if ($tech['status'] == "OK")
                                     <div id="tech_{{ $tech['tech_id'] }}" @if ($tech['food_required'] > $util->food || $tech['wood_required'] > $util->wood || $tech['rock_required'] > $util->rock || $tech['steel_required'] > $util->steel || $tech['gold_required'] > $util->gold) class="tech-button-impossible" @else class="tech-button"

@@ -179,7 +179,7 @@
                     }
                 }
                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                xhr.send('_token=' + _token + '&id=' + id + '&type=' + type);
+                xhr.send('_token=' + _token + '&id=' + id);
             }
 
             function close_help()

@@ -204,14 +204,14 @@
             </div>
         </div>
         <script>
-        setTimeout(() =>{
-            let body_height = document.body.scrollHeight + 20;
-            let win_height = window.innerHeight;
-            if (body_height > win_height)
-                document.getElementById("overlay").style.height = body_height + "px";
-            else
-                document.getElementById("overlay").style.height = win_height + "px";
-        }, 1000);
+            setTimeout(() =>{
+                let body_height = document.body.scrollHeight + 20;
+                let win_height = window.innerHeight;
+                if (body_height > win_height)
+                    document.getElementById("overlay").style.height = body_height + "px";
+                else
+                    document.getElementById("overlay").style.height = win_height + "px";
+            }, 1000);
             launch_all_timers();
             var activeTab = document.getElementById("fat").getAttribute("first_active_tab") + "-tab";
             var activeBuildings = document.getElementById("fat").getAttribute("first_active_tab") + "-buildings";

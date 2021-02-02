@@ -64,7 +64,14 @@
         </div>
         <script>
             launch_all_timers();
-
+            setTimeout(() =>{
+                let body_height = document.body.scrollHeight + 20;
+                let win_height = window.innerHeight;
+                if (body_height > win_height)
+                    document.getElementById("overlay").style.height = body_height + "px";
+                else
+                    document.getElementById("overlay").style.height = win_height + "px";
+            }, 1000);
             function launch_all_timers()
             {
                 var timers = Array.prototype.slice.call(document.getElementsByClassName('tech-wip'));

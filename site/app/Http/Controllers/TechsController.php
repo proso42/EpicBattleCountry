@@ -49,10 +49,9 @@
         {
             $id = $request['id'];
             $tech_desc = DB::table('techs')->where('id', '=', $id)->value('description');
-            return ["Result" => "Error", "Reason" => $tech_desc];
             if (!$tech_desc)
                 return(["Result" => "Error", "Reason" => "Invalid Tech ID"]);
-            return (["Result" => "Success", "description" => trans('tech.' . $building_desc)]);
+            return (["Result" => "Success", "description" => trans('tech.' . $tech_desc)]);
         }
 
         private function get_allowed_techs()

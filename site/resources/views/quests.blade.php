@@ -9,14 +9,20 @@
     </head>
     <body>
             @include('default')
-            
-            @if ($quests === null)
-                <h3>@lang('quests.no_quest')</h3>
-            @else
-                <div>
-                    QUETES
-                </div>
-            @endif
+            <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding-right: 10px;">
+                @if ($quests === null)
+                    <h3>@lang('quests.no_quest')</h3>
+                @else
+                    <h1 style="margin-top: 25px">@lang('common.quests')</h1>
+                    @foreach ($quests as $quest)
+                        <div class="quest-slot">
+                            <div><i class="fas fa-dungeon"></i>
+                            <span>Quete de donjon</span>
+                            <input  type="button" class="quest-button col-lg-2 col-md-2 col-sm-2 col-2" value="Reprendre"></div>
+                        </div>
+                    @endforeach
+                @endif
+            </div>
         <script>
         </script>
     </body>

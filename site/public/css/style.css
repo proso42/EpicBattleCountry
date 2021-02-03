@@ -1983,3 +1983,29 @@ input::placeholder
     margin-right: auto;
     margin-top: 10px;
 }
+
+.quest-slot
+{
+    border: solid 1px lightblue;
+    border-radius: 4px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+    background-color: rgba(105, 105, 105, 0.9);
+    margin-top: 25px;
+    text-align: left
+}
+
+.quest-button
+{
+    margin-top: 26px;
+    line-height: 0;
+    background-color: aquamarine;
+    color: black;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 32px;
+    width: 204px;
+}

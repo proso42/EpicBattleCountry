@@ -2016,3 +2016,27 @@ input::placeholder
     font-weight: bold;
     color: white;
 }
+
+.quest-logo
+{
+    text-align: center;
+    background-color: floralwhite;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin-right: 20px;
+    height: 32px;
+}
+
+.quest-type
+{
+    margin-top: 25px;
+    margin-right: 20px;
+    margin-left: 20px;
+    background-color: rgba(105, 105, 105, 0.9);
+    color: black;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    height: 32px;
+    width: 204px;
+}

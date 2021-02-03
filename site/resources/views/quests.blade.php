@@ -16,9 +16,9 @@
                     <h1 style="margin-top: 25px">@lang('common.quests')</h1>
                     @foreach ($quests as $quest)
                         <div class="quest-slot">
-                            <div><i class="fas fa-dungeon"></i>
+                            <div style="margin-bottom: 25px"><i class="fas fa-dungeon"></i>
                             <span>Quete de donjon</span>
-                            <input  type="button" class="quest-button col-lg-2 col-md-2 col-sm-2 col-2" value="Reprendre"></div>
+                            <input  type="button" class="quest-button" value="Reprendre"></div>
                         </div>
                     @endforeach
                 @endif

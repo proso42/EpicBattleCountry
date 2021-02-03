@@ -2009,3 +2009,10 @@ input::placeholder
     height: 32px;
     width: 204px;
 }
+
+.quest-button:hover
+{
+    background-color: darkcyan;
+    font-weight: bold;
+    color: white;
+}

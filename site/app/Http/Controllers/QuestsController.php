@@ -35,7 +35,7 @@
             $is_admin = DB::table('users')->where('id', '=', $user_id)->value("is_admin");
             $util = Common::get_utilities($user_id, $city_id);
             $quests = DB::table('city_quests')->where('city_id', '=', $city_id)->get();
-            return view('messages', compact('is_admin', 'util', 'quests'));
+            return view('quests', compact('is_admin', 'util', 'quests'));
         }
 
         

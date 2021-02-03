@@ -56,5 +56,6 @@ return [
     'cool_down' => 'Cool down',
     'recruit' => 'Recruit',
     'pay' => 'Pay',
+    'quests' => 'Quests',
 
 ];

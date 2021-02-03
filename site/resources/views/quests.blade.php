@@ -22,7 +22,7 @@
                             <div class="quest-type col-lg-2 col-md-2 col-sm-2 col-2">
                                 <span>Quete de donjon</span>
                             </div>
-                            <input type="button" class="quest-button col-lg-2 col-md-2 col-sm-2 col-2" value="@if({{ $quests['position'] }} == -1) @lang('common.start') @else @lang('common.resume') @endif">
+                            <input type="button" class="quest-button col-lg-2 col-md-2 col-sm-2 col-2" value="@if({{ $quests['position'] }} == -1) '@lang('common.start')' @else '@lang('common.resume')' @endif">
                         </div>
                     @endforeach
                 @endif

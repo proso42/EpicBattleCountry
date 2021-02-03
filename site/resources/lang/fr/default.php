@@ -32,4 +32,5 @@ return [
     'shop' => 'Boutique',
     'admin' => 'Admin',
     'logout' => 'Déconnexion',
+    'quests' => 'Quêtes',
 ];

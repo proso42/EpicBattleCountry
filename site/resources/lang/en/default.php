@@ -32,5 +32,5 @@ return [
     'shop' => 'Shop',
     'admin' => 'Admin',
     'logout' => 'Logout',
-
+    'quests' => 'Quests',
 ];

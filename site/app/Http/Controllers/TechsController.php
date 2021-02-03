@@ -42,7 +42,12 @@
                 $allowed = 0;
             $util = Common::get_utilities($user_id, $city_id);
             $allowed_techs = $this->get_allowed_techs();
-            return view('techs', compact('is_admin', 'allowed', 'allowed_techs','util'));
+            $waiting_tech = DB::table('waiting_techs')->where('city_id', '=', $city_id)->first();
+            if ($waiting_tech)
+                $waiting_tech = 1;
+            else
+                $waiting_tech = 0;
+            return view('techs', compact('is_admin', 'waiting_tech', 'allowed', 'allowed_techs','util'));
         }
 
         public function get_description(Request $request)
@@ -183,7 +188,7 @@
             }
         }
 
-        private function get_unavailable_techs()
+        /*private function get_unavailable_techs()
         {
             $city_id = session()->get('city_id');
             $city_res = DB::table('cities')->select('food', 'wood', 'rock', 'steel', 'gold')->where('id', '=', $city_id)->first();
@@ -289,7 +294,7 @@
                     continue;
             }
             return $forbidden_techs;
-        }
+        }*/
 
         public function update(Request $request)
         {
@@ -368,9 +373,9 @@
             ->update(['food' => $city_res->food - $food_required, 'wood' => $city_res->wood - $wood_required, 'rock' => $city_res->rock - $rock_required, 'steel' => $city_res->steel - $steel_required, 'gold' => $city_res->gold - $gold_required]);
             $id = DB::table('waiting_techs')
             ->insertGetId(["city_id" => $city_id, "tech_id" => $tech_id, "finishing_date" => $finishing_date, "next_level" => $niv + 1]);
-            $infos = ["time_remaining" => $finishing_date - time(), "food" => $city_res->food - $food_required, 'wood' => $city_res->wood - $wood_required, 'rock' => $city_res->rock - $rock_required, 'steel' => $city_res->steel - $steel_required, 'gold' => $city_res->gold - $gold_required];
-            $forbidden_techs = $this->get_unavailable_techs();
-            $infos["forbidden_techs"] = $forbidden_techs;
+            $infos = ["time_remaining" => $finishing_date - time(), "food" => Common::compact_nb($city_res->food - $food_required), 'wood' => Common::compact_nb($city_res->wood - $wood_required), 'rock' => Common::compact_nb($city_res->rock - $rock_required), 'steel' => Common::compact_nb($city_res->steel - $steel_required), 'gold' => Common::compact_nb($city_res->gold - $gold_required)];
+            /*$forbidden_techs = $this->get_unavailable_techs();
+            $infos["forbidden_techs"] = $forbidden_techs;*/
             return ($infos);
         }
     }

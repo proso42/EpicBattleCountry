@@ -208,104 +208,6 @@
             }
         }
 
-        private function get_unavailable_buildings($type)
-        {
-            $simple_type = preg_replace('/_buildings/', "", $type);
-            $city_id = session()->get('city_id');
-            $city_res = DB::table('cities')->select('food', 'wood', 'rock', 'steel', 'gold')->where('id', '=', $city_id)->first();
-            $all_type_buildings = DB::table($type)
-            ->get();
-            $forbidden_buildings = array();
-            foreach ($all_type_buildings as $val)
-            {
-                $is_wip = DB::table('waiting_buildings')
-                ->where('city_id', '=', $city_id)
-                ->where('type', '=', $type)
-                ->where('building_id', '=', $val->id)
-                ->value('finishing_date');
-                if ($is_wip != null)
-                    continue ;
-                $niv = DB::table('cities_buildings')
-                ->where('city_id', '=', $city_id)
-                ->value(preg_replace('/\s/',"_", $val->name));
-                if ($niv >= 0)
-                {
-                    if ($niv == 0)
-                    {
-                        $allowed = 0;
-                        if ($val->race_required !== "ALL")
-                        {
-                            $races_required = explode(";", $val->race_required);
-                            foreach ($races_required as $race => $key)
-                            {
-                                if ($key == session()->get('user_race'))
-                                {
-                                    $allowed = 1;
-                                    break; 
-                                }
-                            }
-                        }
-                        else
-                            $allowed = 1;
-                        if ($allowed == 0)
-                            continue;
-                        if ($val->building_required !== "NONE")
-                        {
-                            $buildings_required = explode(";", $val->building_required);
-                            foreach ($buildings_required as $building => $key)
-                            {
-                                $building_name = DB::table($type)
-                                ->where('id', '=', $key)
-                                ->value('name');
-                                $building_name_format = preg_replace('/\s/', "_", $building_name);
-                                $building_niv = DB::table('cities_buildings')
-                                ->where('city_id', '=', $city_id)
-                                ->value($building_name_format);
-                                if ($building_niv <= 0)
-                                {
-                                    $allowed = 0;
-                                    break;
-                                }
-                            }
-                        }
-                        if ($allowed == 0)
-                            continue;
-                        if ($val->tech_required !== "NONE")
-                        {
-                            $tech_name = preg_replace('/\s/', "_", DB::table('techs')->where('id', '=', $val->tech_required)->value("name"));
-                            $tech_niv = DB::table('cities_techs')->where('city_id', '=', $city_id)->value($tech_name);
-                            if ($tech_niv <= 0)
-                                continue ;
-                        }
-                    }
-                    $res_required = explode(";", $val->basic_price);
-                    $food_required = 0;
-                    $wood_required = 0;
-                    $rock_required = 0;
-                    $steel_required = 0;
-                    $gold_required = 0;
-                    foreach ($res_required as $res => $amount)
-                    {
-                        if ($amount[-1] == "F")
-                            $food_required = Common::get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);
-                        else if ($amount[-1] == "W")
-                            $wood_required = Common::get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);
-                        else if ($amount[-1] == "R")
-                            $rock_required = Common::get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);
-                        else if ($amount[-1] == "S")
-                            $steel_required = Common::get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);
-                        else
-                            $gold_required = Common::get_exp_value($niv, intval(substr($amount, 0, -1)), $val->levelup_price);
-                    }
-                    if ($food_required > $city_res->food || $wood_required > $city_res->wood || $rock_required > $city_res->rock || $steel_required > $city_res->steel || $gold_required > $city_res->gold)
-                        array_push($forbidden_buildings, ["id" =>  $simple_type . "_" . $val->id, "food_required" => $food_required, "wood_required" => $wood_required, "rock_required" => $rock_required, "steel_required" => $steel_required, "gold_required" => $gold_required]);
-                }
-                else
-                    continue;
-            }
-            return $forbidden_buildings;
-        }
-
         public function update(Request $request)
         {
             $city_id = session()->get('city_id');
@@ -402,13 +304,6 @@
             $id = DB::table('waiting_buildings')
             ->insertGetId(["city_id" => $city_id, "type" => $building_type, "building_id" => $building_id, "finishing_date" => $finishing_date, "next_level" => $niv + 1]);
             $infos = ["trad" => trans('common.unavailable'), "time_remaining" => $finishing_date - time(), "food" => Common::compact_nb($city_res->food - $food_required), 'wood' => Common::compact_nb($city_res->wood - $wood_required), 'rock' => Common::compact_nb($city_res->rock - $rock_required), 'steel' => Common::compact_nb($city_res->steel - $steel_required), 'gold' => Common::compact_nb($city_res->gold - $gold_required)];
-            /*$forbidden_buildings = $this->get_unavailable_buildings("eco_buildings");
-            $forbidden_buildings = array_merge($forbidden_buildings, $this->get_unavailable_buildings("army_buildings"));
-            $forbidden_buildings = array_merge($forbidden_buildings, $this->get_unavailable_buildings("religious_buildings"));
-            $forbidden_buildings = array_merge($forbidden_buildings, $this->get_unavailable_buildings("tech_buildings"));
-            $infos["forbidden_buildings"] = $forbidden_buildings;*/ 
-            //On arrête de chercher les bâtiments qu'on ne peut plus améliorer car mtn on fait les batiment 1 par 1
-            //Du coup on renvoie juste les infos du batiment en cours de construction et tout autres deviennent indisponible
             return ($infos);
         }
     }

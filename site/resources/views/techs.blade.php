@@ -23,7 +23,7 @@
                             <div class="tech-block">
                                 <div class="tech-name" onclick="open_help({{ $tech["tech_id"] }}, '{{ $tech["name"] }}')"><a href="#top">{{ $tech["name"] }} @if ($tech["niv"] > 0) {{$tech["niv"]}} @endif</a></div>
                                 <img class="tech" style="width:250px;height: 250px;" src="{{ $tech['illustration'] }}">
-                                @if ($tech['status'] == "OK")
+                                @if ($tech['status'] == "OK" && $waiting_tech == 0)
                                     <div id="tech_{{ $tech['tech_id'] }}" @if ($tech['food_required'] > $util->food || $tech['wood_required'] > $util->wood || $tech['rock_required'] > $util->rock || $tech['steel_required'] > $util->steel || $tech['gold_required'] > $util->gold) class="tech-button-impossible" @else class="tech-button"
                                     onclick="update_tech('{{ $tech['tech_id'] }}')"@endif>
                                         @lang('tech.search') <i class="fas fa-flask icon"></i>
@@ -48,6 +48,8 @@
                                             </ul>
                                         </div>                        
                                     </div>
+                                @elseif ($tech['status'] == "OK" && $waiting_tech == 1)
+                                    <div id="unavailable_{{ $tech['name'] }}" class="unavailable">@lang('common.unavailable') <i class="fas fa-hourglass-half"></i></div>
                                 @else
                                     <div id="compteur_{{ $tech['name'] }}" duration="{{ $tech['duration'] }}" class="tech-wip"></div>
                                 @endif
@@ -220,7 +222,25 @@
                             elem.className = "tech-wip";
                             elem.onclick = function (){};
                             document.getElementById("res_tech_" + id).remove();
-                            infos.forbidden_techs.forEach(function(e){
+                            let techs_buttons = document.getElementsByClassName("tech-button");
+                            let stop = techs_buttons.length;
+                            for(i = 0; i < stop; i++)
+                            {
+                                techs_buttons[0].onclick = function(){};
+                                techs_buttons[0].firstElementChild.textContent = infos.trad;
+                                techs_buttons[0].children[1].className = "fas fa-hourglass-half";
+                                techs_buttons[0].className = "unavailable";
+                            }
+                            techs_buttons = document.getElementsByClassName("tech-button-impossible");
+                            stop = techs_buttons.length;
+                            for(i = 0; i < stop; i++)
+                            {
+                                techs_buttons[0].onclick = function(){};
+                                techs_buttons[0].firstElementChild.textContent = infos.trad;
+                                techs_buttons[0].children[1].className = "fas fa-hourglass-half";
+                                techs_buttons[0].className = "unavailable";
+                            }
+                            /*infos.forbidden_techs.forEach(function(e){
                                 let forbidden = document.getElementById(e.tech_id);
                                 if (forbidden.className == "tech-button-impossible")
                                     return ;
@@ -239,7 +259,7 @@
                                     if (e.gold_required > 0 && e.gold_required > infos.gold)
                                         document.getElementById("icon_gold_" + e.tech_id).className = "fas fa-times icon";
                                 }
-                            });
+                            });*/
                             timer("tech_" + id, duration);
                         }
                         else

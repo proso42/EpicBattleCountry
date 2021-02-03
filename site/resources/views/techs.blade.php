@@ -26,7 +26,7 @@
                                 @if ($tech['status'] == "OK" && $waiting_tech == 0)
                                     <div id="tech_{{ $tech['tech_id'] }}" @if ($tech['food_required'] > $util->food || $tech['wood_required'] > $util->wood || $tech['rock_required'] > $util->rock || $tech['steel_required'] > $util->steel || $tech['gold_required'] > $util->gold) class="tech-button-impossible" @else class="tech-button"
                                     onclick="update_tech('{{ $tech['tech_id'] }}')"@endif>
-                                        @lang('tech.search') <i class="fas fa-flask icon"></i>
+                                        <span>@lang('tech.search')</span> <i class="fas fa-flask icon"></i>
                                         <div id="res_tech_{{ $tech['tech_id'] }}" class="tech-res-needed">
                                             <ul>
                                             @if ($tech['food_required'] > 0)

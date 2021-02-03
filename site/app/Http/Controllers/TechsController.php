@@ -373,7 +373,7 @@
             ->update(['food' => $city_res->food - $food_required, 'wood' => $city_res->wood - $wood_required, 'rock' => $city_res->rock - $rock_required, 'steel' => $city_res->steel - $steel_required, 'gold' => $city_res->gold - $gold_required]);
             $id = DB::table('waiting_techs')
             ->insertGetId(["city_id" => $city_id, "tech_id" => $tech_id, "finishing_date" => $finishing_date, "next_level" => $niv + 1]);
-            $infos = ["time_remaining" => $finishing_date - time(), "food" => Common::compact_nb($city_res->food - $food_required), 'wood' => Common::compact_nb($city_res->wood - $wood_required), 'rock' => Common::compact_nb($city_res->rock - $rock_required), 'steel' => Common::compact_nb($city_res->steel - $steel_required), 'gold' => Common::compact_nb($city_res->gold - $gold_required)];
+            $infos = ["time_remaining" => $finishing_date - time(), "trad" => trans('common.unavalaible'),"food" => Common::compact_nb($city_res->food - $food_required), 'wood' => Common::compact_nb($city_res->wood - $wood_required), 'rock' => Common::compact_nb($city_res->rock - $rock_required), 'steel' => Common::compact_nb($city_res->steel - $steel_required), 'gold' => Common::compact_nb($city_res->gold - $gold_required)];
             /*$forbidden_techs = $this->get_unavailable_techs();
             $infos["forbidden_techs"] = $forbidden_techs;*/
             return ($infos);

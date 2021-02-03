@@ -16,13 +16,13 @@
                     <h1 style="margin-top: 25px">@lang('common.quests')</h1>
                     @foreach ($quests as $quest)
                         <div class="row" style="align-items: baseline;line-height: 31px;">
-                            <div class="quest-logo offset-lg-2 offset-md-2 offset-sm-2 offset-2 col-lg-1 col-md-1 col-sm-1 col-1" style="text-align:center">
+                            <div class="quest-logo offset-lg-3 offset-md-3 offset-sm-3 offset-3 col-lg-1 col-md-1 col-sm-1 col-1" style="text-align:center">
                                 <i class="fas fa-dungeon"></i>
                             </div>
                             <div class="quest-type col-lg-2 col-md-2 col-sm-2 col-2">
                                 <span>Quete de donjon</span>
                             </div>
-                            <input type="button" class="quest-button col-lg-2 col-md-2 col-sm-2 col-2" value="Reprendre">
+                            <input type="button" class="quest-button col-lg-2 col-md-2 col-sm-2 col-2" value="@if({{ $quests['position'] }} == -1) @lang('common.start') @else @lang('common.resume') @endif">
                         </div>
                     @endforeach
                 @endif

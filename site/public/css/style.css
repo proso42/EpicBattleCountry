@@ -2004,6 +2004,7 @@ input::placeholder
 .quest-button
 {
     margin-top: 26px;
+    margin-right: 20px;
     line-height: 0;
     background-color: aquamarine;
     color: black;
@@ -2036,7 +2037,6 @@ input::placeholder
 {
     margin-top: 25px;
     margin-right: 20px;
-    margin-left: 20px;
     background-color: rgba(105, 105, 105, 0.9);
     color: black;
     text-align: center;

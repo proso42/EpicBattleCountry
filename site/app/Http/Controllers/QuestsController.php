@@ -39,7 +39,7 @@
             {
                 $quest_type = "";
                 if ($quest->type == 1)
-                    $quest_type = "dunegons";
+                    $quest_type = "dungeons";
                 else if ($quest->type == 2)
                     $quest_type = "dragons_cave";
                 else if ($quest->type == 3)

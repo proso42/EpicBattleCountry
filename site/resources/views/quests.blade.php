@@ -41,7 +41,7 @@
                                             @elseif($quest->difficulty == 2) 
                                                 <i class="fas fa-skull icon-color-black"></i><i class="fas fa-skull icon-color-black"></i>
                                             @else
-                                                <i class="fas fa-skull icon-color-black"></i><i class="fas fa-skull icon-color-black"></i>
+                                                <i class="fas fa-skull icon-color-black"></i><i class="fas fa-skull icon-color-black"></i><i class="fas fa-skull icon-color-black"></i>
                                             @endif
                                         </li>
                                         <li>

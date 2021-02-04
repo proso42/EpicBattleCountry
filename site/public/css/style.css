@@ -297,6 +297,11 @@ a:hover
     color: lightyellow;
 }
 
+.icon-color-black
+{
+    color: black;
+}
+
 .icon-eye
 {
     cursor: pointer;

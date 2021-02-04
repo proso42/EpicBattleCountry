@@ -36,11 +36,11 @@
                                         <li>@lang('common.quest') #{{ $quest->id }}</li>
                                         <li>@lang('common.location') : {{ $quest->coord }}</li>
                                         <li>
-                                            @lang('common.difficulty') : <i class="fas fa-skull"></i> @if($quest->difficulty >= 2) 
-                                                <i class="fas fa-skull"></i> 
+                                            @lang('common.difficulty') : <i class="fas fa-skull icon-color-black"></i> @if($quest->difficulty >= 2) 
+                                                <i class="fas fa-skull icon-color-black"></i> 
                                             @endif
                                             @if($quest->difficulty == 3) 
-                                                <i class="fas fa-skull"></i> 
+                                                <i class="fas fa-skull icon-color-black"></i> 
                                             @endif
                                         </li>
                                         <li>

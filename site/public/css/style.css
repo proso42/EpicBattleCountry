@@ -2063,3 +2063,25 @@ input::placeholder
 {
     display: block;
 }
+
+.quest-button-cancel
+{
+    margin-top: 26px;
+    margin-bottom: 20px;
+    line-height: 0;
+    background-color: lightpink;
+    color: black;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+    height: 32px;
+    width: 204px;
+}
+
+.quest-button-cancel:hover
+{
+    background-color: crimson;
+    font-weight: bold;
+    color: white;
+}

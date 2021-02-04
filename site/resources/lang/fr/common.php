@@ -62,4 +62,5 @@ return [
     'resume' => 'Reprendre',
     'location' => 'Localisation',
     'difficulty' => 'Difficulté',
+    'give_up' => 'Abandonner',
 ];

@@ -62,4 +62,5 @@ return [
     'resume' => 'Resume',
     'location' => 'Location',
     'difficulty' => 'Difficulty',
+    'give_up' => 'Give up',
 ];

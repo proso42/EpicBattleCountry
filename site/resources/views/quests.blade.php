@@ -19,7 +19,7 @@
                             <div class="quest-logo offset-lg-3 offset-md-3 offset-sm-3 offset-3 col-lg-1 col-md-1 col-sm-1 col-1" style="text-align:center">
                                 <i class="fas fa-dungeon"></i>
                             </div>
-                            <div class="quest-type col-lg-2 col-md-2 col-sm-2 col-2">
+                            <div class="quest-type col-lg-3 col-md-3 col-sm-3 col-3">
                                 <span>
                                     @if ($quest->type == 1) 
                                         @lang('quests.dunegon_quest') 

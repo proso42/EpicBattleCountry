@@ -55,7 +55,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <input type="button" class="quest-button col-lg-2 col-md-2 col-sm-2 col-2" value="@if($quest->position == -1) @lang('common.start') @else @lang('common.resume') @endif">
+                            <input type="button" class="quest-button col-lg-2 col-md-2 col-sm-2 col-2" value="@if($quest->user_position == -1) @lang('common.start') @else @lang('common.resume') @endif">
                         </div>
                     @endforeach
                 @endif

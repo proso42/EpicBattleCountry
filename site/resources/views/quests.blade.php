@@ -44,11 +44,11 @@
                                             @endif
                                         </li>
                                         <li>
-                                            @lang('quests.life_remaining') : @if ($quest->life == 1) <i class="fas fa-heart"></i> 
+                                            @lang('quests.life_remaining') : @if ($quest->life == 1) <i class="fas fa-heart icon-color-red"></i> 
                                             @elseif ($quest->life == 2)
-                                                <i class="fas fa-heart"></i><i class="fas fa-heart"></i>
+                                                <i class="fas fa-heart icon-color-red"></i><i class="fas fa-heart icon-color-red"></i>
                                             @else
-                                                <i class="fas fa-heart"></i><i class="fas fa-heart"></i><i class="fas fa-heart"></i>
+                                                <i class="fas fa-heart icon-color-red"></i><i class="fas fa-heart icon-color-red"></i><i class="fas fa-heart icon-color-red"></i>
                                             @endif
                                         </li>
 

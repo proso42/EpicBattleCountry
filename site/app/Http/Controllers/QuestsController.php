@@ -48,7 +48,7 @@
                     $quest_type = "heroic_quests";
                 else
                     $quest_type = "error";
-                $difficulty = DB::table($quest->type)->where('id', '=', $quest->scenario)->value('difficulty');
+                $difficulty = DB::table($quest_type)->where('id', '=', $quest->scenario)->value('difficulty');
                 $quest->difficulty = $difficulty;
             }
             return view('quests', compact('is_admin', 'util', 'quests'));

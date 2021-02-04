@@ -20,7 +20,17 @@
                                 <i class="fas fa-dungeon"></i>
                             </div>
                             <div class="quest-type col-lg-2 col-md-2 col-sm-2 col-2">
-                                <span>Quete de donjon</span>
+                                <span>
+                                    @if ($quest->type == 1) 
+                                        @lang('quests.dunegon_quest') 
+                                    @elseif ($quest->type == 2) 
+                                        @lang('quests.spider_quest') 
+                                    @elseif ($quest->type == 3)
+                                        @lang('quests.dragon_quest')
+                                    @else
+                                        @lang('quests.heroic_quest')
+                                    @endif
+                                </span>
                             </div>
                             <input type="button" class="quest-button col-lg-2 col-md-2 col-sm-2 col-2" value="@if($quest->position == -1) @lang('common.start') @else @lang('common.resume') @endif">
                         </div>

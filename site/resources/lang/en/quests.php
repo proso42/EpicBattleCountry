@@ -14,4 +14,8 @@ return [
     */
 
     'no_quest' => 'You don\'t have any quests in progress.',
+    'dunegon_quest' => 'Dunegon quest',
+    'spider_quest' => 'Giant Spider quest',
+    'dragon_quest' => 'Dragon quest',
+    'heroic_quest' => 'Heroic quest',
 ];

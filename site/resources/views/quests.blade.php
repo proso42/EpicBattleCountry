@@ -31,6 +31,29 @@
                                         @lang('quests.heroic_quest')
                                     @endif
                                 </span>
+                                <div class="quest-details">
+                                    <ul>
+                                        <li>@lang('common.quest') #{{ $quest->id }}</li>
+                                        <li>@lang('common.location') : {{ $quest->coord }}</li>
+                                        <li>
+                                            @lang('common.difficulty') : <i class="fas fa-skull"></i> @if($quest->difficulty >= 2) 
+                                                <i class="fas fa-skull"></i> 
+                                            @endif
+                                            @if($quest->difficulty == 3) 
+                                                <i class="fas fa-skull"></i> 
+                                            @endif
+                                        </li>
+                                        <li>
+                                            @lang('quests.life_remaining') : @if ($quest->life == 1) <i class="fas fa-heart"></i> 
+                                            @elseif ($quest->life == 2)
+                                                <i class="fas fa-heart"></i><i class="fas fa-heart"></i>
+                                            @else
+                                                <i class="fas fa-heart"></i><i class="fas fa-heart"></i><i class="fas fa-heart"></i>
+                                            @endif
+                                        </li>
+
+                                    </ul>
+                                </div>
                             </div>
                             <input type="button" class="quest-button col-lg-2 col-md-2 col-sm-2 col-2" value="@if($quest->position == -1) @lang('common.start') @else @lang('common.resume') @endif">
                         </div>

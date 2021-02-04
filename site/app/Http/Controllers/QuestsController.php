@@ -35,6 +35,22 @@
             $is_admin = DB::table('users')->where('id', '=', $user_id)->value("is_admin");
             $util = Common::get_utilities($user_id, $city_id);
             $quests = DB::table('city_quests')->where('city_id', '=', $city_id)->get();
+            foreach ($quests as $quest)
+            {
+                $quest_type = "";
+                if ($quest->type == 1)
+                    $quest_type = "dunegons";
+                else if ($quest->type == 2)
+                    $quest_type = "dragons_cave";
+                else if ($quest->type == 3)
+                    $quest_type = "Giant_spider_nest";
+                else if ($quest->type == 4)
+                    $quest_type = "heroic_quests";
+                else
+                    $quest_type = "error";
+                $difficulty = DB::table($quest->type)->where('id', '=', $quest->scenario)->value('difficulty');
+                $quest->difficulty = $difficulty;
+            }
             return view('quests', compact('is_admin', 'util', 'quests'));
         }
 

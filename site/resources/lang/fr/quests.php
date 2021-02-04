@@ -18,4 +18,5 @@ return [
     'spider_quest' => 'Quête de d\'Araignée Géante',
     'dragon_quest' => 'Quête de Dragon',
     'heroic_quest' => 'Quête de Héros',
+    'life_remaining' => 'Vie restante',
 ];

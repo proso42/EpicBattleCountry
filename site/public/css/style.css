@@ -2040,3 +2040,21 @@ input::placeholder
     height: 32px;
     width: 204px;
 }
+
+.quest-type:hover
+{
+    color: white;
+    font-weight: bold;
+    height: 100%;
+}
+
+.quest-details
+{
+    text-align: left;
+    display: none;
+}
+
+.quest-type:hover .quest-details
+{
+    display: block;
+}

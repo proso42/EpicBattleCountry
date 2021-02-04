@@ -18,4 +18,5 @@ return [
     'spider_quest' => 'Giant Spider quest',
     'dragon_quest' => 'Dragon quest',
     'heroic_quest' => 'Heroic quest',
+    'life_remaining' => 'Life remaining',
 ];

@@ -57,6 +57,9 @@ return [
     'recruit' => 'Recruter',
     'pay' => 'Payer',
     'quests' => 'Quêtes',
+    'quest' => 'Quête',
     'start' => 'Commencer',
     'resume' => 'Reprendre',
+    'location' => 'Localisation',
+    'difficulty' => 'Difficulté',
 ];

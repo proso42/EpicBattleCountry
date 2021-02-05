@@ -173,7 +173,7 @@ module.exports.start = function (id)
 									}
 									else
 									{
-										let create_new_dungeon_quest = `INSERT INTO city_quests (city_id, type, scenario, coord, life) VALUES (${city_id}, 1, 1, ${ending_point}, 3)`;
+										let create_new_dungeon_quest = `INSERT INTO city_quests (city_id, type, scenario, coord, life) VALUES (${city_id}, 1, 1, "${ending_point}", 3)`;
 										mysqlClient.query(create_new_dungeon_quest, function (error, result){
 											if (error)
 											{

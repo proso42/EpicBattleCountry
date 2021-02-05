@@ -104,7 +104,7 @@ module.exports.start = function (id)
 					// Raid Dungeon
 
 					// On vérifie qu'il y a toujours un donjon à cet emplacement
-					let check_dungeon = `SELECT id FROM map WHERE x_pos == ${dest_x} AND y_pos == ${dest_y} AND type == 'city'`;
+					let check_dungeon = `SELECT id FROM map WHERE x_pos = ${dest_x} AND y_pos = ${dest_y} AND type = 'city'`;
 					console.log(check_dungeon);
 					mysqlClient.query(check_dungeon, function(error, result){
 						if (error)

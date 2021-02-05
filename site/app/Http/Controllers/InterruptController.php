@@ -119,7 +119,7 @@
             DB::table('messages')->insert(["seen" => 0, "sender" => "notification", "target" => $user_id, "target_city" => $city_id, "title" => trans('exploration.canceled_mission'), "content" => $content, "sending_date" => time()]);
             DB::table('traveling_units')->where('id', '=', $wait_id)->delete();
             DB::table('traveling_units')->insert(["city_id" => $explo->city_id, "owner" => $explo->owner, "starting_point" => $starting_point, "ending_point" => $ending_point, "units" => $explo->units, "res_taken" => $explo->res_taken, "traveling_duration" => $time_elapsed, "finishing_date" => $finishing_date, "mission" => 6]);
-            $infos = ["type" => "explo", "duration" => $time_elapsed, "mission_name" => trans('exploration.Go_Home')];
+            $infos = ["type" => "explo", "duration" => $time_elapsed, "mission_name" => trans('exploration.go_home')];
             return ($infos);
         }
 

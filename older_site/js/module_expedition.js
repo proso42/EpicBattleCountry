@@ -99,6 +99,105 @@ module.exports.start = function (id)
 						return -1;
 					});
 				}
+				else if (mission == 2)
+				{
+					// Raid Dungeon
+
+					// On vérifie qu'il y a toujours un donjon à cet emplacement
+					let check_dungeon = `SELECT id FROM map WHERE x_pos == ${dest_x} AND y_pos == ${dest_y} AND type = 'city'`;
+					console.log(check_dungeon);
+					mysqlClient.query(check_dungeon, function(error, result){
+						if (error)
+						{
+							console.log(error)
+							mysqlClient.end();
+							return -1;
+						}
+						else if (result == null)
+						{
+							// rien à cet endroit. On envoie un message comme quoi le raid à échouer et on renvoie le scout chez lui
+							console.log("Pas de donjon ici");
+							let title = "Echec du raid";
+							let text_notif = `Aucun donjon n'a été trouvé en ${dest_x}/${dest_y}.`;
+							let p0 = send_notif(text_notif, title, owner, city_id, finishing_date);
+							Promise.all([p0]).then(() => {
+								let delete_request = `DELETE FROM traveling_units WHERE id =  ${id}`;
+								mysqlClient.query(delete_request, function(error, result){
+									if (error)
+									{
+										console.log(error)
+										mysqlClient.end();
+										return -1;
+									}
+									else
+									{
+										finishing_date += traveling_duration;
+										let return_travel = `INSERT INTO traveling_units (city_id, owner, starting_point, ending_point, units, traveling_duration, finishing_date, mission, flag) VALUES (${city_id}, ${owner}, ${ending_point}, ${starting_point}, ${units}, ${traveling_duration}, ${finishing_date}, 6, 0)`;
+										mysqlClient.query(return_travel, function(error, result){
+											if (error)
+											{
+												console.log(error);
+												mysqlClient.end();
+												return -1;
+											}
+											else
+											{
+												console.log(result);
+												mysqlClient.end();
+												return 0;
+											}
+										});
+									}
+								});
+							}).catch((err) => {
+								console.log(err);
+								mysqlClient.end();
+								return -1;
+							});
+						}
+						else
+						{
+							// il y a bien un donjon à cet endroit. On envoie un message et on commence la quete
+							console.log('Donjon atteint !');
+							let title = "Donjon atteint";
+							let text_notif = `Une unitée attend vos ordres à l'entrée du donjon [${ending_point}].`;
+							let p0 = send_notif(text_notif, title, owner, city_id, finishing_date);
+							Promise.all([p0]).then(() => {
+								let delete_request = `DELETE FROM traveling_units WHERE id =  ${id}`;
+								mysqlClient.query(delete_request, function(error, result){
+									if (error)
+									{
+										console.log(error)
+										mysqlClient.end();
+										return -1;
+									}
+									else
+									{
+										let create_new_dungeon_quest = `INSERT INTO city_quests (city_id, type, scenario, coord, life) VALUES (${city_id}, 1, 1, ${ending_point}, 3)`;
+										mysqlClient.query(create_new_dungeon_quest, function (error, result){
+											if (error)
+											{
+												console.log(error)
+												mysqlClient.end();
+												return -1;
+											}
+											else
+											{
+												console.log(result)
+												mysqlClient.end();
+												return 0;
+											}
+										});
+									}
+								});
+							}).catch((err) => {
+								console.log(err);
+								mysqlClient.end();
+								return -1;
+							});
+						}
+					});
+				}
 				else if (mission == 4)
 				{
 					// Colonize
@@ -148,7 +247,7 @@ module.exports.start = function (id)
 									}).catch((err) => {
 										console.log(err);
 										mysqlClient.end();
-										return -1;;
+										return -1;
 									});
 								}
 								else

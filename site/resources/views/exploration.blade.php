@@ -33,7 +33,7 @@
                     </div>
                     <div id="explo_choice" class="row" style="margin-top: 30px">
                         <div class="explo-block">
-                            <div class="explo-name">@lang('exploration.Scouting')</div>
+                            <div class="explo-name">@lang('exploration.scouting')</div>
                             <img class="explo" style="width:250px;height: 250px;" src="{{ $explo[0]['illustration'] }}">
                             <div id="exp_0" @if ($allowed - $waiting_scouting <= 0) class="explo-button-lock" @elseif ($explo[0]['unit_required'] > $unit_avaible || $explo[0]['food_required'] > $util->food || $explo[0]['wood_required'] > $util->wood || $explo[0]['rock_required'] > $util->rock || $explo[0]['steel_required'] > $util->steel || $explo[0]['gold_required'] > $util->gold) class="explo-button-impossible" @else class="explo-button" onclick="choice(1)"@endif>                                
                                 @if ($allowed - $waiting_scouting <= 0)
@@ -64,7 +64,7 @@
                             </div>
                         </div>
                         <div class="explo-block">
-                            <div class="explo-name">@lang('exploration.Raid_Dungeon')</div>
+                            <div class="explo-name">@lang('exploration.raid_dungeon')</div>
                             <img class="explo" style="width:250px;height: 250px;" src="{{ $explo[1]['illustration'] }}">
                             <div id="exp_1" @if ($allowed - $waiting_scouting <= 0) class="explo-button-lock" @elseif ($explo[1]['unit_required'] > $unit_avaible || $explo[1]['food_required'] > $util->food || $explo[1]['wood_required'] > $util->wood || $explo[1]['rock_required'] > $util->rock || $explo[1]['steel_required'] > $util->steel || $explo[1]['gold_required'] > $util->gold) class="explo-button-impossible" @else class="explo-button" onclick="choice(2)"@endif>                                
                                 @if ($allowed - $waiting_scouting <= 0)
@@ -95,7 +95,7 @@
                             </div>
                         </div>
                         <div class="explo-block">
-                            <div class="explo-name">@lang('exploration.Raid_Battlefield')</div>
+                            <div class="explo-name">@lang('exploration.raid_battlefield')</div>
                             <img class="explo" style="width:250px;height: 250px;" src="{{ $explo[2]['illustration'] }}">
                             <div id="exp_2" @if ($allowed - $waiting_scouting <= 0) class="explo-button-lock" @elseif ($explo[2]['unit_required'] > $unit_avaible || $explo[2]['food_required'] > $util->food || $explo[2]['wood_required'] > $util->wood || $explo[2]['rock_required'] > $util->rock || $explo[2]['steel_required'] > $util->steel || $explo[2]['gold_required'] > $util->gold) class="explo-button-impossible" @else class="explo-button" onclick="choice(3)"@endif>                                
                                 @if ($allowed - $waiting_scouting <= 0)
@@ -126,7 +126,7 @@
                             </div>
                         </div>
                         <div class="explo-block">
-                            <div class="explo-name">@lang('exploration.Colonize')</div>
+                            <div class="explo-name">@lang('exploration.colonize')</div>
                             <img class="explo" style="width:250px;height: 250px;" src="{{ $explo[3]['illustration'] }}">
                             <div id="exp_3" @if ($allowed - $waiting_scouting <= 0) class="explo-button-lock" @elseif ($explo[3]['unit_required'] > $unit_avaible || $explo[3]['food_required'] > $util->food || $explo[3]['wood_required'] > $util->wood || $explo[3]['rock_required'] > $util->rock || $explo[3]['steel_required'] > $util->steel || $explo[3]['gold_required'] > $util->gold) class="explo-button-impossible" @else class="explo-button" onclick="choice(4)"@endif>                                
                                 @if ($allowed - $waiting_scouting <= 0)

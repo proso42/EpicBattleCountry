@@ -27,6 +27,7 @@ function cancel_give_up()
 
 function give_up(quest_id)
 {
+    window.scrollBy(0, ((window.innerHeight)*(-1)) - (document.body.scrollHeight + 20));
     if (confirm_give_up_state)
     {
         var _token = document.getElementById('_token').value;

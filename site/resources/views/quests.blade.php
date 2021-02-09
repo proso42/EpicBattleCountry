@@ -14,7 +14,7 @@
             
             <h3 id="confirm_give_up_title">@lang('quests.confirm_give_up_title')</h3>
             <span id="confirm_give_up_text">@lang('quests.confirm_give_up_text')</span>
-            <input onclick="confirm_give_up()" type="button" class="quest-button" style="width: 100px" value="@lang('common.confirm')" href="#top">
+            <input onclick="confirm_give_up()" type="button" class="quest-button" style="width: 100px" value="@lang('common.confirm')">
             <input onclick="cancel_give_up()" type="button" class="quest-button-cancel" style="width: 100px" value="@lang('common.cancel')">
         </div>
             @include('default')

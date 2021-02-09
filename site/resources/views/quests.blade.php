@@ -12,15 +12,15 @@
         </div>
         <div id="confirm_give_up_win" class="quest-give-up-win" style="display: none">
             
-            <h3 id="confirm_give_up_title">@lang('quest.confirm_give_up_title')</h3>
-            <span id="confirm_give_up_text">@lang('quest.confirm_give_up_text')</span>
+            <h3 id="confirm_give_up_title">@lang('quests.confirm_give_up_title')</h3>
+            <span id="confirm_give_up_text">@lang('quests.confirm_give_up_text')</span>
             <input onclick="confirm_give_up()" type="button" class="quest-button" value="@lang('common.confirm')" href="#top">
             <input onclick="cancel_give_up()" type="button" class="quest-button-cancel" value="@lang('common.cancel')">
         </div>
             @include('default')
             <div class="offset-lg-0 offset-md-2 offset-sm-1 offset-1 col-lg-9 col-md-7 col-sm-10 col-10 center-win" style="margin-top: 50px; padding-right: 10px;">
                 <div id="give_up_success" class="quest-input-success" style="display: none;">
-                    <p>@lang('quest.give_up_success')</p>
+                    <p>@lang('quests.give_up_success')</p>
                 </div>
                 <div id="give_up_error" class="quest-input-success" style="display: none;">
                     <p>@lang('error.an_error_occured')</p>

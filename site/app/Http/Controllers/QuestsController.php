@@ -54,6 +54,27 @@
             return view('quests', compact('is_admin', 'util', 'quests'));
         }
 
+        public function give_up(Request $request)
+        {
+            $city_id = session()->get('city_id');
+            $quest_id = $request['quest_id'];
+            $check_quest = DB::table('city_quests')->where('city_id', '=', $city_id)
+            ->where('id', '=', $quest_id)
+            ->first();
+            if ($check_quest)
+            {
+                $quest_deleted = DB::table('city_quests')->where('city_id', '=', $city_id)
+                ->where('id', '=', $quest_id)
+                ->delete();
+                if ($quest_deleted)
+                    return (["Result" => "Success"]);
+                else
+                    return (["Result" => "Error", "Reason" => "Quest deleting request has failed !"]);
+            }
+            else
+                return (["Result" => "Error", "Reason" => "Quest_id does not match with city_id or quest not found in database."]);
+        }
+
         
     }
 

@@ -41,13 +41,13 @@ function give_up(quest_id)
                 {
                     console.log(infos.Reason);
                     document.getElementById("give_up_error").style.display = "";
-                    document.getElementById("quest_id_" + quest_id).remove();
                     setTimeout(() =>{
                         document.getElementById("give_up_error").style.display = "none";
                     }, 3000);
                 }
                 else
                 {
+                    document.getElementById("quest_id_" + quest_id).remove();
                     document.getElementById("give_up_success").style.display = "";
                     setTimeout(() =>{
                         document.getElementById("give_up_success").style.display = "none";

@@ -97,6 +97,7 @@ Route::group(['middleware' => ['logged']], function(){
     Route::post('/trigger_disaster', 'DivinityController@trigger_disaster');
     // Quests endpoints
     Route::get('/quests', 'QuestsController@index');
+    Route::post('/give_up_quest', 'QuestsController@give_up');
 });
 
 // ADMIN ROUTES

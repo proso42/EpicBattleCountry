@@ -101,9 +101,9 @@
 
         private function get_room($user_position, $quest_scenario)
         {
+            return (["Result" => "ok"]);
             $split = explode("\n", $quest_scenario);
             $rooms = [];
-            return (["Result" => "ok"]);
             foreach ($split as $room)
             {
                 $split_2 = explode("/", $room);

@@ -62,9 +62,9 @@
                                         <li>
                                             @lang('quests.life_remaining') : @for ($i = 0; $i < 3; $i++)
                                                 @if ($quest->life <= $i)
-                                                    <i class="fas fa-heart-broken icon-color-black"></i>
+                                                    <i class="fas fa-heart-broken icon-color-l-gray"></i>
                                                 @else
-                                                    <i class="fas fa-heart icon-color-l-gray"></i>
+                                                    <i class="fas fa-heart icon-color-red"></i>
                                                 @endif
                                             @endfor
                                         </li>

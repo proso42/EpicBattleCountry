@@ -90,7 +90,6 @@
                     ->where('id', '=', $quest_id)
                     ->where('city_id', '=', $city_id)
                     ->update(['user_position' => 0]);
-                    return (["Result" => "ok"]);
                     return (get_room(0, $quest->scenario));
                 }
                 else
@@ -104,6 +103,7 @@
         {
             $split = explode("\n", $quest_scenario);
             $rooms = [];
+            return (["Result" => "ok"]);
             foreach ($split as $room)
             {
                 $split_2 = explode("/", $room);

@@ -82,7 +82,6 @@
             $quest = DB::table('city_quests')->where('city_id', '=', $city_id)
             ->where('id', '=', $quest_id)
             ->first();
-            return ($quest->user_position);
             if ($quest)
             {
                 if ($quest->user_position == -1)
@@ -91,6 +90,7 @@
                     ->where('id', '=', $quest_id)
                     ->where('city_id', '=', $city_id)
                     ->update(['user_position' => 0]);
+                    return ("ok");
                     return (get_room(0, $quest->scenario));
                 }
                 else

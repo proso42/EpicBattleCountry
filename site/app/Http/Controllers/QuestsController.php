@@ -88,7 +88,7 @@
                     DB::table('city_quests')
                     ->where('id', '=', $quest_id)
                     ->where('city_id', '=', $city_id)
-                    ->update('user_position' => 0);
+                    ->update(['user_position' => 0]);
                     return (get_room(0, $quest->scenario));
                 }
                 else

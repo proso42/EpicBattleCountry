@@ -64,7 +64,7 @@
                                                 @if ($quest->life <= $i)
                                                     <i class="fas fa-heart-broken icon-color-black"></i>
                                                 @else
-                                                    <i class="fas fa-heart icon-color-red"></i>
+                                                    <i class="fas fa-heart icon-color-l-gray"></i>
                                                 @endif
                                             @endfor
                                         </li>

@@ -60,12 +60,13 @@
                                             @endif
                                         </li>
                                         <li>
-                                            @lang('quests.life_remaining') : @if ($quest->life == 1) <i class="fas fa-heart icon-color-red"></i> 
-                                            @elseif ($quest->life == 2)
-                                                <i class="fas fa-heart icon-color-red"></i><i class="fas fa-heart icon-color-red"></i>
-                                            @else
-                                                <i class="fas fa-heart icon-color-red"></i><i class="fas fa-heart icon-color-red"></i><i class="fas fa-heart icon-color-red"></i>
-                                            @endif
+                                            @lang('quests.life_remaining') : @for ($i = 0; $i < 3; $i++)
+                                                @if ($quest->life < $i)
+                                                    <i class="fas fa-heart-broken icon-color-black"></i>
+                                                @else
+                                                    <i class="fas fa-heart icon-color-red"></i>
+                                                @endif
+                                            @endfor
                                         </li>
 
                                     </ul>

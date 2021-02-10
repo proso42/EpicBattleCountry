@@ -75,7 +75,65 @@
                 return (["Result" => "Error", "Reason" => "Quest_id does not match with city_id or quest not found in database."]);
         }
 
-        
+        public function resume(Request $request)
+        {
+            $city_id = session()->get('city_id');
+            $quest = DB::table('city_quests')->where('city_id', '=', $city_id)
+            ->where('id', '=', $quest_id)
+            ->first();
+            if ($quest)
+            {
+                if ($quest->user_position == -1)
+                {
+                    DB::table('city_quests')
+                    ->where('id', '=', $quest_id)
+                    ->where('city_id', '=', $city_id)
+                    ->update('user_position' => 0);
+                    return (get_room(0, $quest->scenario));
+                }
+                else
+                    return (get_room($quest->user_position, $quest->scenario))
+            }
+            else
+                return (["Result" => "Error", "Reason" => "Quest_id does not match with city_id or quest not found in database."]);
+        }
+
+        private function get_room($user_position, $quest_scenario)
+        {
+            $split = explode("\n", $quest_scenario);
+            $rooms = [];
+            foreach ($split as $room)
+            {
+                $split_2 = explode("/", $room);
+                $next = explode(":", $split2[2]);
+                switch ($next[0])
+                {
+                    case "fork" :
+                        $next = ["type" => "fork", "choice_1" => $next[1], "choice_2" => $next[2]];
+                        break;
+                    case "stairs" :
+                        $next = ["type" => "stairs", "choice_1" => $next[1]];
+                        break;
+                    case "door" :
+                        $next = ["type" => "door", "choice_1" => $next[1]];
+                        break;
+                    case "catacomb" :
+                        $next = ["type" => "catacomb", "choice_1" => $next[1]];
+                        break;
+                    case "wall" :
+                        $next = ["type" => "wall"];
+                        break;
+                    case "reward" :
+                        $next = ["type" => "reward"];
+                        break;
+                    case "figth" :
+                        $next = ["type" => "figth"];
+                        break;
+                }
+                $rooms[] = ["room_id" => $split_2[0], "room_type" => $split_2[1], "next" => $next];
+            }
+            return (["Result" => "Success", "Room" => $rooms[$user_position]]);
+        }
     }
 
 ?>

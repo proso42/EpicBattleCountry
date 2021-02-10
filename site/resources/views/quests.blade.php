@@ -22,7 +22,7 @@
                 <div id="give_up_success" class="quest-input-success" style="display: none;">
                     <p>@lang('quests.give_up_success')</p>
                 </div>
-                <div id="give_up_error" class="quest-input-success" style="display: none;">
+                <div id="quest_error" class="quest-input-success" style="display: none;">
                     <p>@lang('error.an_error_occured')</p>
                 </div>
                 @if ($quests === null)
@@ -72,7 +72,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <input type="button" class="quest-button col-lg-2 col-md-2 col-sm-2 col-2" value="@if($quest->user_position == -1) @lang('common.start') @else @lang('common.resume') @endif">
+                            <input onclick="resume_quest({{ $quest->id }})" type="button" class="quest-button col-lg-2 col-md-2 col-sm-2 col-2" value="@if($quest->user_position == -1) @lang('common.start') @else @lang('common.resume') @endif">
                             <input onclick="give_up({{ $quest->id }})" type="button" class="quest-button-cancel col-lg-2 col-md-2 col-sm-2 col-2" value="@lang('common.give_up')">
                         </div>
                     @endforeach

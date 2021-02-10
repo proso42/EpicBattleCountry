@@ -98,6 +98,7 @@ Route::group(['middleware' => ['logged']], function(){
     // Quests endpoints
     Route::get('/quests', 'QuestsController@index');
     Route::post('/give_up_quest', 'QuestsController@give_up');
+    Route::post('/resume_quest', 'QuestsController@resume');
 });
 
 // ADMIN ROUTES

@@ -81,7 +81,7 @@
             $quest_id = $request['quest_id'];
             $quest = DB::table('city_quests')->where('city_id', '=', $city_id)
             ->where('id', '=', $quest_id)
-            ->get();
+            ->first();
             if ($quest)
             {
                 if ($quest->user_position == -1)
@@ -90,6 +90,7 @@
                     ->where('id', '=', $quest_id)
                     ->where('city_id', '=', $city_id)
                     ->update(['user_position' => 0]);
+                    return (["Result" => $quest->scenario]);
                     return (get_room(0, $quest->scenario));
                 }
                 else
@@ -101,7 +102,6 @@
 
         private function get_room($user_position, $quest_scenario)
         {
-            return (["Result" => "ok"]);
             $split = explode("\n", $quest_scenario);
             $rooms = [];
             foreach ($split as $room)

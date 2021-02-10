@@ -67,32 +67,32 @@ function give_up(quest_id)
         document.getElementById('confirm_give_up_win').style.display = "";
         save_quest_id = quest_id;
     }
+}
 
-    function resume_quest(quest_id)
+function resume_quest(quest_id)
+{
+    var _token = document.getElementById('_token').value;
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'http://www.epicbattlecorp.fr/resume_quest');
+    xhr.onreadystatechange =  function()
     {
-        var _token = document.getElementById('_token').value;
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://www.epicbattlecorp.fr/resume_quest');
-        xhr.onreadystatechange =  function()
+        if (xhr.readyState === 4 && xhr.status === 200)
         {
-            if (xhr.readyState === 4 && xhr.status === 200)
+            var infos = JSON.parse(xhr.responseText);
+            if (infos.Result == "Error")
             {
-                var infos = JSON.parse(xhr.responseText);
-                if (infos.Result == "Error")
-                {
-                    console.log(infos.Reason);
-                    document.getElementById("quest_error").style.display = "";
-                    setTimeout(() =>{
-                        document.getElementById("quest_error").style.display = "none";
-                    }, 3000);
-                }
-                else
-                {
-                    console.log(infos);
-                }
+                console.log(infos.Reason);
+                document.getElementById("quest_error").style.display = "";
+                setTimeout(() =>{
+                    document.getElementById("quest_error").style.display = "none";
+                }, 3000);
+            }
+            else
+            {
+                console.log(infos);
             }
         }
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.send('_token=' + _token + '&quest_id=' + quest_id);
     }
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send('_token=' + _token + '&quest_id=' + quest_id);
 }

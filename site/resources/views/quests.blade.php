@@ -60,7 +60,7 @@
                                             @endif
                                         </li>
                                         <li>
-                                            @lang('quests.life_remaining') : @for ($i = 1; $i < 3; $i++)
+                                            @lang('quests.life_remaining') : @for ($i = 0; $i < 3; $i++)
                                                 @if ($quest->life < $i)
                                                     <i class="fas fa-heart-broken icon-color-black"></i>
                                                 @else

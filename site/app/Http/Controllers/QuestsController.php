@@ -81,6 +81,7 @@
             $quest = DB::table('city_quests')->where('city_id', '=', $city_id)
             ->where('id', '=', $quest_id)
             ->first();
+            dd($quest);
             if ($quest)
             {
                 if ($quest->user_position == -1)

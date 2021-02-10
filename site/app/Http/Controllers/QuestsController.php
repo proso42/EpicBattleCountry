@@ -92,7 +92,7 @@
                     return (get_room(0, $quest->scenario));
                 }
                 else
-                    return (get_room($quest->user_position, $quest->scenario))
+                    return (get_room($quest->user_position, $quest->scenario));
             }
             else
                 return (["Result" => "Error", "Reason" => "Quest_id does not match with city_id or quest not found in database."]);

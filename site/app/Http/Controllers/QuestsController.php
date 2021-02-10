@@ -78,10 +78,10 @@
         public function resume(Request $request)
         {
             $city_id = session()->get('city_id');
+            return ($city_id);
             $quest = DB::table('city_quests')->where('city_id', '=', $city_id)
             ->where('id', '=', $quest_id)
             ->first();
-            return ($quest);
             if ($quest)
             {
                 if ($quest->user_position == -1)

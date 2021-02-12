@@ -111,6 +111,7 @@ function update_room(room, trad)
             document.getElementById("quest_choice_1").style.display = "";
             document.getElementById("quest_choice_1").value = trad.enter;
             document.getElementById("quest_choice_2").style.display = "none";
+            document.getElementById("quest_choice_return").onclick = function(){return_quests_list()};
             break;
         case ("fork") :
             //console.log("fork");
@@ -134,4 +135,11 @@ function update_room(room, trad)
             //console.log("figth");
             break;
     }
+}
+
+function return_quets_list()
+{
+    document.getElementById("quest_win").style.display = "none";
+    document.getElementById("quest_title").style.display = "none";
+    document.getElementById("quests_list").style.display = "none";
 }

@@ -85,19 +85,15 @@
             if ($quest)
             {
                 $scenario_template = DB::table('dungeons')->where('id', '=', $quest->scenario)->value("scenario");
-                //return (["Result" => $scenario_template]);
                 if ($quest->user_position == -1)
                 {
                     DB::table('city_quests')
                     ->where('id', '=', $quest_id)
                     ->where('city_id', '=', $city_id)
                     ->update(['user_position' => 0]);
-                    //il faut aller cherche le scenario dans la table "dungeons" !!!
-                    //return (["Result" => "IF"]);
                     return ($this->get_room(0, $scenario_template));
                 }
                 else
-                    //return (["Result" => "ELSE"]);
                     return ($this->get_room($quest->user_position, $scenario_template));
             }
             else
@@ -106,7 +102,6 @@
 
         private function get_room($user_position, $quest_scenario)
         {
-            return (["Result" => "GET ROOM"]);
             $split = explode("\n", $quest_scenario);
             $rooms = [];
             foreach ($split as $room)

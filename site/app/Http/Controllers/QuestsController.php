@@ -136,7 +136,7 @@
                         $next = ["type" => "entrance", "choice_1" => $next[1]];
                         break;
                 }
-                $rooms[] = ["title" => trans("quests.dunegon_quest") . "#" . $split_2[0], "type" => $split_2[1], "illustration" => "images/dungeon_" . $split_2[1]. ,"next" => $next];
+                $rooms[] = ["title" => trans("quests.dunegon_quest") . "#" . $split_2[0], "type" => $split_2[1], "illustration" => "images/dungeon_" . $split_2[1] ,"next" => $next];
             }
             return (["Result" => "Success", "Room" => $rooms[$user_position], "Trad" => $trad]);
         }

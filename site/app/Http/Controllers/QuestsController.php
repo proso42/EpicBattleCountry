@@ -84,7 +84,7 @@
             ->first();
             if ($quest)
             {
-                $scenario_template = DB::table('dungeons')->where('id', '=', $quest->scenario)->get();
+                $scenario_template = DB::table('dungeons')->where('id', '=', $quest->scenario)->value("scenario");
                 return (["Result" => $scenario_template]);
                 if ($quest->user_position == -1)
                 {

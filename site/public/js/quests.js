@@ -89,10 +89,49 @@ function resume_quest(quest_id)
             }
             else
             {
-                console.log(infos);
+                document.getElementById("quest_title").style.display = "none";
+                document.getElementById("quests_list").style.display = "none";
+                upodate_room(infos.Room, infos.Trad);
             }
         }
     }
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.send('_token=' + _token + '&quest_id=' + quest_id);
+}
+
+function update_room(room, trad)
+{
+    document.getElementById("quest_win").style.display = "";
+    document.getElementById("quest_win_title").textContent = room.title;
+    document.getElementById("img_quest").src = room.illustration;
+    switch (room.type)
+    {
+        case ("entrance") :
+            //console.log("entrance");
+            document.getElementById("quest_choice_1").style.display = "";
+            document.getElementById("quest_choice_1").value = room.trad.enter;
+            document.getElementById("quest_choice_2").style.display = "none";
+            break;
+        case ("fork") :
+            //console.log("fork");
+            break;
+        case ("wall") :
+            //console.log("wall");
+            break;
+        case ("catacomb") :
+            //console.log("catacomb");
+            break;
+        case ("strairs") :
+            //console.log("stairs");
+            break;
+        case ("door") :
+            //console.log("door");
+            break;
+        case ("reward") :
+            //console.log("reward");
+            break;
+        case ("figth") :
+            //console.log("figth");
+            break;
+    }
 }

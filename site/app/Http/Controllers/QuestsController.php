@@ -102,6 +102,7 @@
 
         private function get_room($user_position, $quest_scenario)
         {
+            $trad = ["enter" => trans('quests.enter')];
             $split = explode("\n", $quest_scenario);
             $rooms = [];
             foreach ($split as $room)
@@ -131,10 +132,13 @@
                     case "figth" :
                         $next = ["type" => "figth"];
                         break;
+                    case "entrance" :
+                        $next = ["type" => "entrance", "choice_1" => $next[1]];
+                        break;
                 }
-                $rooms[] = ["room_id" => $split_2[0], "room_type" => $split_2[1], "next" => $next];
+                $rooms[] = ["title" => trans("quests.dunegon_quest") . "#" . $split_2[0], "type" => $split_2[1], "illustration" => "images/dungeon_" $split_2[1]. ,"next" => $next];
             }
-            return (["Result" => "Success", "Room" => $rooms[$user_position]]);
+            return (["Result" => "Success", "Room" => $rooms[$user_position], "Trad" => $trad]);
         }
     }
 

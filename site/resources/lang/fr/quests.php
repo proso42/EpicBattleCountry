@@ -22,4 +22,5 @@ return [
     'dragon_quest' => 'Quête de Dragon',
     'heroic_quest' => 'Quête de Héros',
     'life_remaining' => 'Vie restante',
+    'enter' => "Entrer",
 ];

@@ -109,7 +109,7 @@ function update_room(room, trad)
         case ("entrance") :
             //console.log("entrance");
             document.getElementById("quest_choice_1").style.display = "";
-            document.getElementById("quest_choice_1").value = room.trad["enter"];
+            document.getElementById("quest_choice_1").value = trad.enter;
             document.getElementById("quest_choice_2").style.display = "none";
             break;
         case ("fork") :

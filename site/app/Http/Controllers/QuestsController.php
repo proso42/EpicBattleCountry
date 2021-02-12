@@ -107,7 +107,7 @@
             foreach ($split as $room)
             {
                 $split_2 = explode("/", $room);
-                $next = explode(":", $split2[2]);
+                $next = explode(":", $split_2[2]);
                 return (["Result" => "Avant switch"]);
                 switch ($next[0])
                 {

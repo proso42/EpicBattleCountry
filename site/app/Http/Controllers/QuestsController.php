@@ -104,11 +104,11 @@
         {
             $split = explode("\n", $quest_scenario);
             $rooms = [];
-            return (["Result" => "Avant foreach"]);
             foreach ($split as $room)
             {
                 $split_2 = explode("/", $room);
                 $next = explode(":", $split2[2]);
+                return (["Result" => "Avant switch"]);
                 switch ($next[0])
                 {
                     case "fork" :

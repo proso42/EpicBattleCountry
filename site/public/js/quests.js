@@ -140,6 +140,6 @@ function update_room(room, trad)
 function return_quests_list()
 {
     document.getElementById("quest_win").style.display = "none";
-    document.getElementById("quest_title").style.display = "none";
-    document.getElementById("quests_list").style.display = "none";
+    document.getElementById("quest_title").style.display = "";
+    document.getElementById("quests_list").style.display = "";
 }

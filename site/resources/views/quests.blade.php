@@ -28,10 +28,12 @@
                 <div id="quest_win" class="quest-win" style="display: none">
                     <h3 id="quest_win_title"></h3>
                     <img id="quest_img" class="quest-img" style="width:250px;height: 250px;" src="">
-                    <input id="quest_choice_1" onclick="" type="button" class="quest-button-choice col-lg-2 col-md-2 col-sm-2 col-2" value="">
-                    <input id="quest_choice_2" onclick="" type="button" class="quest-button-choice col-lg-2 col-md-2 col-sm-2 col-2" value="">
-                    <input id="quest_choice_return" onclick="" type="button" class="quest-button-cancel col-lg-2 col-md-2 col-sm-2 col-2" value="@lang('commun.return')">
-                    <p id="quest_texte"></p>
+                    <div>
+                        <input id="quest_choice_1" onclick="" type="button" class="quest-button-choice col-lg-2 col-md-2 col-sm-2 col-2" value="">
+                        <input id="quest_choice_2" onclick="" type="button" class="quest-button-choice col-lg-2 col-md-2 col-sm-2 col-2" value="">
+                        <input id="quest_choice_return" onclick="" type="button" class="quest-button-cancel col-lg-2 col-md-2 col-sm-2 col-2" value="@lang('common.return')">
+                        <p id="quest_texte"></p>
+                    </div>
                 </div>
                 @if ($quests === null)
                     <h3>@lang('quests.no_quest')</h3>

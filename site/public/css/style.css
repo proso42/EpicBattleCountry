@@ -2154,7 +2154,7 @@ input::placeholder
     margin-top: 26px;
     margin-bottom: 20px;
     line-height: 0;
-    background-color: deepskyblue;
+    background-color: cornflowerblue;
     color: black;
     text-align: center;
     border: 1px solid black;
@@ -2166,7 +2166,7 @@ input::placeholder
 
 .quest-button-choice:hover
 {
-    background-color: dodgerblue;
+    background-color: royalblue;
     font-weight: bold;
     color: white;
 }

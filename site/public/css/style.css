@@ -2133,8 +2133,8 @@ input::placeholder
 .quest-win
 {
     margin-top: 50px;
-    margin-left: 33%;
-    width: 33%;
+    margin-left: 25%;
+    width: 50%;
     background-color: rgb(105, 105, 105);
     border: solid 1px lightblue;
     border-radius: 4px;

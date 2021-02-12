@@ -29,9 +29,9 @@
                     <h3 id="quest_win_title"></h3>
                     <img id="quest_img" class="quest-img" style="width:250px;height: 250px;" src="">
                     <div>
-                        <input id="quest_choice_1" onclick="" type="button" class="quest-button-choice col-lg-2 col-md-2 col-sm-2 col-2" value="">
-                        <input id="quest_choice_2" onclick="" type="button" class="quest-button-choice col-lg-2 col-md-2 col-sm-2 col-2" value="">
-                        <input id="quest_choice_return" onclick="" type="button" class="quest-button-cancel col-lg-2 col-md-2 col-sm-2 col-2" value="@lang('common.return')">
+                        <input id="quest_choice_1" onclick="" type="button" class="quest-button-choice col-lg-3 col-md-3 col-sm-3 col-3" value="">
+                        <input id="quest_choice_2" onclick="" type="button" class="quest-button-choice col-lg-3 col-md-3 col-sm-3 col-3" value="">
+                        <input id="quest_choice_return" onclick="" type="button" class="quest-button-cancel col-lg-3 col-md-3 col-sm-3 col-3" value="@lang('common.return')">
                         <p id="quest_texte"></p>
                     </div>
                 </div>

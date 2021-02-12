@@ -94,11 +94,11 @@
                     ->update(['user_position' => 0]);
                     //il faut aller cherche le scenario dans la table "dungeons" !!!
                     //return (["Result" => "IF"]);
-                    return (get_room(0, $scenario_template));
+                    return ($this->get_room(0, $scenario_template));
                 }
                 else
                     //return (["Result" => "ELSE"]);
-                    return (get_room($quest->user_position, $scenario_template));
+                    return ($this->get_room($quest->user_position, $scenario_template));
             }
             else
                 return (["Result" => "Error", "Reason" => "Quest_id does not match with city_id or quest not found in database."]);

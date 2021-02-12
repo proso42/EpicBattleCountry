@@ -93,7 +93,7 @@
                     ->where('city_id', '=', $city_id)
                     ->update(['user_position' => 0]);
                     //il faut aller cherche le scenario dans la table "dungeons" !!!
-                    return (["Result" => "IF"]);
+                    //return (["Result" => "IF"]);
                     return (get_room(0, $scenario_template));
                 }
                 else

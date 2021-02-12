@@ -97,8 +97,8 @@
                     return (get_room(0, $scenario_template));
                 }
                 else
-                    return (["Result" => "ELSE"]);
-                    //return (get_room($quest->user_position, $scenario_template));
+                    //return (["Result" => "ELSE"]);
+                    return (get_room($quest->user_position, $scenario_template));
             }
             else
                 return (["Result" => "Error", "Reason" => "Quest_id does not match with city_id or quest not found in database."]);

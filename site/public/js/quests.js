@@ -91,7 +91,7 @@ function resume_quest(quest_id)
             {
                 document.getElementById("quest_title").style.display = "none";
                 document.getElementById("quests_list").style.display = "none";
-                upodate_room(infos.Room, infos.Trad);
+                update_room(infos.Room, infos.Trad);
             }
         }
     }

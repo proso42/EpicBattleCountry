@@ -103,7 +103,7 @@ function update_room(room, trad)
 {
     document.getElementById("quest_win").style.display = "";
     document.getElementById("quest_win_title").textContent = room.title;
-    document.getElementById("img_quest").src = room.illustration;
+    document.getElementById("quest_img").src = room.illustration;
     switch (room.type)
     {
         case ("entrance") :

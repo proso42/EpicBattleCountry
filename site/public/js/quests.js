@@ -89,6 +89,7 @@ function resume_quest(quest_id)
             }
             else
             {
+                console.log(infos)
                 document.getElementById("quest_title").style.display = "none";
                 document.getElementById("quests_list").style.display = "none";
                 update_room(infos.Room, infos.Trad);

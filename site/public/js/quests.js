@@ -137,7 +137,7 @@ function update_room(room, trad)
     }
 }
 
-function return_quets_list()
+function return_quests_list()
 {
     document.getElementById("quest_win").style.display = "none";
     document.getElementById("quest_title").style.display = "none";

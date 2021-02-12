@@ -27,7 +27,7 @@
                 </div>
                 <div id="quest_win" class="quest-win" style="display: none">
                     <h3 id="quest_win_title"></h3>
-                    <img id="quest_img" class="quest-img" style="width:250px;height: 250px;" src="">
+                    <img id="quest_img" class="quest-img" style="width:350px;height: 350px;" src="">
                     <div>
                         <input id="quest_choice_1" onclick="" type="button" class="quest-button-choice col-lg-3 col-md-3 col-sm-3 col-3" value="">
                         <input id="quest_choice_2" onclick="" type="button" class="quest-button-choice col-lg-3 col-md-3 col-sm-3 col-3" value="">

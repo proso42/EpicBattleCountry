@@ -85,6 +85,7 @@
             if ($quest)
             {
                 $scenario_template = DB::table('dungeons')->where('id', '=', $quest->scenario)->get();
+                return (["Result" => "template of"]);
                 if ($quest->user_position == -1)
                 {
                     DB::table('city_quests')
@@ -92,10 +93,12 @@
                     ->where('city_id', '=', $city_id)
                     ->update(['user_position' => 0]);
                     //il faut aller cherche le scenario dans la table "dungeons" !!!
+                    return (["Result" => "IF"]);
                     return (get_room(0, $scenario_template));
                 }
                 else
-                    return (get_room($quest->user_position, $scenario_template));
+                    return (["Result" => "ELSE"]);
+                    //return (get_room($quest->user_position, $scenario_template));
             }
             else
                 return (["Result" => "Error", "Reason" => "Quest_id does not match with city_id or quest not found in database."]);

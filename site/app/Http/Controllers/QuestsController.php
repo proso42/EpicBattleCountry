@@ -91,16 +91,16 @@
                     ->where('id', '=', $quest_id)
                     ->where('city_id', '=', $city_id)
                     ->update(['user_position' => 0]);
-                    return ($this->get_room(0, $scenario_template));
+                    return ($this->get_room(0, $scenario_template, $quest_id));
                 }
                 else
-                    return ($this->get_room($quest->user_position, $scenario_template));
+                    return ($this->get_room($quest->user_position, $scenario_template, $quest_id));
             }
             else
                 return (["Result" => "Error", "Reason" => "Quest_id does not match with city_id or quest not found in database."]);
         }
 
-        private function get_room($user_position, $quest_scenario)
+        private function get_room($user_position, $quest_scenario, $quest_id)
         {
             $trad = ["enter" => trans('quests.enter')];
             $split = explode("\n", $quest_scenario);
@@ -136,7 +136,7 @@
                         $next = ["type" => "entrance", "choice_1" => $next[1]];
                         break;
                 }
-                $rooms[] = ["title" => trans("quests.dunegon_quest") . " #" . $split_2[0], "type" => $split_2[1], "illustration" => "images/dungeon_" . $split_2[1] . ".jpg","next" => $next];
+                $rooms[] = ["title" => trans("quests.dunegon_quest") . " #" . $quest_id, "type" => $split_2[1], "illustration" => "images/dungeon_" . $split_2[1] . ".jpg","next" => $next];
             }
             return (["Result" => "Success", "Room" => $rooms[$user_position], "Trad" => $trad]);
         }

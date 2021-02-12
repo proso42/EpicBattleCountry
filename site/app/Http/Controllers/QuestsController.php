@@ -104,6 +104,7 @@
         {
             $split = explode("\n", $quest_scenario);
             $rooms = [];
+            return (["Result" => "Avant foreach"]);
             foreach ($split as $room)
             {
                 $split_2 = explode("/", $room);
